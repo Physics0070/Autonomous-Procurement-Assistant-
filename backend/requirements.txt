@@ -1,0 +1,37 @@
+# --- Web framework ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pydantic==2.10.4
+pydantic-settings==2.7.0
+email-validator==2.2.0
+
+# --- Database (async MongoDB) ---
+motor==3.6.0
+pymongo==4.9.2
+
+# --- Security ---
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+PyJWT==2.10.1
+
+# --- Document processing ---
+PyMuPDF==1.25.1
+pandas==2.2.3
+openpyxl==3.1.5
+Pillow==11.0.0
+pytesseract==0.3.13
+
+# --- Normalization / matching ---
+rapidfuzz==3.11.0
+
+# --- AI provider ---
+google-generativeai==0.8.3
+
+# --- Utilities ---
+python-dotenv==1.0.1
+httpx==0.28.1
+
+# --- Testing ---
+pytest==8.3.4
+pytest-asyncio==0.25.0
