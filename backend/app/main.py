@@ -10,6 +10,8 @@ from fastapi.responses import JSONResponse
 
 from app.api.routes import (
     auth,
+    channels,
+    organizations,
     comparison,
     dashboard,
     documents,
@@ -22,6 +24,7 @@ from app.core.database import close_database_connection, connect_to_database
 from app.core.errors import AppError
 from app.integrations.ai.factory import get_ai_provider
 from app.services.documents.ocr import get_ocr_service
+from app.workers.channel_scheduler import get_channel_scheduler
 from app.workers.processing import get_processing_queue, recover_pending_jobs
 
 logging.basicConfig(
@@ -52,6 +55,8 @@ async def lifespan(app: FastAPI):
 
     queue = get_processing_queue()
     await queue.start()
+    scheduler = get_channel_scheduler()
+    await scheduler.start()
     try:
         await recover_pending_jobs()
     except Exception as exc:
@@ -59,6 +64,7 @@ async def lifespan(app: FastAPI):
 
     yield
 
+    await scheduler.stop()
     await queue.stop()
     await close_database_connection()
 
@@ -93,15 +99,30 @@ async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     )
 
 
+def _serialisable_errors(errors: list[dict]) -> list[dict]:
+    """Custom validators put the raised exception object in `ctx`; JSON can't hold it."""
+    cleaned = []
+    for error in errors:
+        item = dict(error)
+        if "ctx" in item:
+            item["ctx"] = {key: str(value) for key, value in item["ctx"].items()}
+        item.pop("url", None)
+        cleaned.append(item)
+    return cleaned
+
+
 @app.exception_handler(RequestValidationError)
 async def validation_error_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+    errors = _serialisable_errors(exc.errors())
+    # Surface the first field message so the UI can show something specific.
+    first = errors[0].get("msg") if errors else None
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={
             "error": {
                 "code": "validation_error",
-                "message": "Request payload failed validation.",
-                "details": {"errors": exc.errors()},
+                "message": first.removeprefix("Value error, ") if first else "Request payload failed validation.",
+                "details": {"errors": errors},
             }
         },
     )
@@ -139,6 +160,8 @@ for router in (
     quotations.router,
     comparison.router,
     dashboard.router,
+    channels.router,
+    organizations.router,
 ):
     app.include_router(router, prefix=settings.API_V1_PREFIX)
 

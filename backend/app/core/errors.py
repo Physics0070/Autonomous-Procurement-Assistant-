@@ -46,3 +46,10 @@ class ConfigurationError(AppError):
 
     status_code = 503
     code = "not_configured"
+
+
+class UpstreamError(AppError):
+    """An external service failed in a way that is not the caller's fault."""
+
+    status_code = 502
+    code = "upstream_error"

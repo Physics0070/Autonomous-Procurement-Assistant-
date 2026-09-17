@@ -1,0 +1,184 @@
+{
+  "model_version": "reliability-scms-20260917",
+  "model_name": "random_forest",
+  "trained_at": "2026-09-17T16:48:04+00:00",
+  "trained_on": "USAID SCMS delivery history 2006-2013 (7,779 shipments)",
+  "dataset_sha256": "918b992dd3e8d4b64d2a727b2c4ea607603d0c58f19484e73f7b78528c6a8673",
+  "label": "late = delivered_date > scheduled_date",
+  "feature_columns": [
+    "has_history",
+    "prior_count",
+    "prior_on_time_rate",
+    "prior_mean_delay_days",
+    "recent_late_rate",
+    "days_since_previous",
+    "log_order_value",
+    "log_quantity",
+    "shipment_mode",
+    "fulfil_via"
+  ],
+  "knowledge_gap_days": 30,
+  "recent_window": 10,
+  "decision_threshold": 0.6179068170613777,
+  "base_late_rate": 0.10669751896130608,
+  "sklearn_version": "1.9.1",
+  "random_state": 42,
+  "cv_folds": 5,
+  "train_rows": 7779,
+  "test_rows": 2545,
+  "train_period": {
+    "start": "2006-05-02",
+    "end": "2013-12-31"
+  },
+  "test_period": {
+    "start": "2014-01-03",
+    "end": "2015-12-31"
+  },
+  "cv": {
+    "logistic_regression": {
+      "roc_auc": 0.7750229945373114,
+      "pr_auc": 0.264561994951265
+    },
+    "random_forest": {
+      "roc_auc": 0.8833512985078901,
+      "pr_auc": 0.5127150044142836
+    },
+    "hist_gradient_boosting": {
+      "roc_auc": 0.8760911529955301,
+      "pr_auc": 0.4915245376298351
+    }
+  },
+  "test": {
+    "rows": 2545,
+    "late_rate": 0.13988212180746562,
+    "roc_auc": 0.8305527894836799,
+    "pr_auc": 0.32884405125543437,
+    "macro_f1": 0.6664403373459762,
+    "brier": 0.16706073862542936,
+    "mean_score": 0.37355845981598224,
+    "confusion_matrix": [
+      [
+        1706,
+        483
+      ],
+      [
+        93,
+        263
+      ]
+    ],
+    "external_vendors": {
+      "rows": 1550,
+      "late_rate": 0.024516129032258065,
+      "roc_auc": 0.7998642439431913,
+      "pr_auc": 0.1901408767961191,
+      "macro_f1": 0.5195972490974125,
+      "brier": 0.0595645314591959,
+      "mean_score": 0.1862418117552874,
+      "confusion_matrix": [
+        [
+          1512,
+          0
+        ],
+        [
+          37,
+          1
+        ]
+      ]
+    }
+  },
+  "baselines": {
+    "always_on_time": {
+      "rows": 2545,
+      "late_rate": 0.13988212180746562,
+      "roc_auc": 0.5,
+      "pr_auc": 0.13988212180746562,
+      "macro_f1": 0.4623996620194339,
+      "brier": 0.13988212180746562,
+      "mean_score": 0.0,
+      "confusion_matrix": [
+        [
+          2189,
+          0
+        ],
+        [
+          356,
+          0
+        ]
+      ],
+      "external_vendors": {
+        "rows": 1550,
+        "late_rate": 0.024516129032258065,
+        "roc_auc": 0.5,
+        "pr_auc": 0.024516129032258065,
+        "macro_f1": 0.4937949052906597,
+        "brier": 0.024516129032258065,
+        "mean_score": 0.0,
+        "confusion_matrix": [
+          [
+            1512,
+            0
+          ],
+          [
+            38,
+            0
+          ]
+        ]
+      }
+    },
+    "prior_on_time_rate": {
+      "rows": 2545,
+      "late_rate": 0.13988212180746562,
+      "roc_auc": 0.7609273384286088,
+      "pr_auc": 0.25073056910354125,
+      "macro_f1": 0.5448005553251618,
+      "brier": 0.11093009999343025,
+      "mean_score": 0.08328726435620579,
+      "confusion_matrix": [
+        [
+          1155,
+          1034
+        ],
+        [
+          8,
+          348
+        ]
+      ],
+      "external_vendors": {
+        "rows": 1550,
+        "late_rate": 0.024516129032258065,
+        "roc_auc": 0.7465886939571151,
+        "pr_auc": 0.06309866780605551,
+        "macro_f1": 0.5023639362286971,
+        "brier": 0.023978520867357953,
+        "mean_score": 0.037634440788809044,
+        "confusion_matrix": [
+          [
+            1155,
+            357
+          ],
+          [
+            8,
+            30
+          ]
+        ]
+      },
+      "decision_threshold": 0.04074702886247883
+    }
+  },
+  "risk_bands": {
+    "medium": 0.30895340853068887,
+    "high": 0.6179068170613777
+  },
+  "permutation_importance": {
+    "has_history": 2.0387974102575867e-05,
+    "prior_count": 0.02573924529985271,
+    "prior_on_time_rate": 0.014700089317994824,
+    "prior_mean_delay_days": -0.0039706336655402855,
+    "recent_late_rate": 0.008618720433824978,
+    "days_since_previous": -0.00023500715825991447,
+    "log_order_value": -3.5187585047991024e-05,
+    "log_quantity": -0.003847484480414637,
+    "shipment_mode": -0.002326940361980451,
+    "fulfil_via": -0.0031974098562556784
+  }
+}

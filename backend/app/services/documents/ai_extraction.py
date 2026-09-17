@@ -16,6 +16,7 @@ from typing import Any, Optional
 
 from pydantic import ValidationError as PydanticValidationError
 
+from app.core.gstin import GSTIN_SEARCH_RE
 from app.integrations.ai.base import AIProvider
 from app.integrations.ai.factory import get_ai_provider
 from app.integrations.ai.prompts import EXTRACTION_SYSTEM, build_extraction_prompt
@@ -153,7 +154,7 @@ def _salvage(data: dict) -> dict:
 
 _EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 _PHONE_RE = re.compile(r"(?:\+91[\s-]?)?\b\d{5}[\s-]?\d{5}\b|\b0\d{2,4}[\s-]?\d{6,8}\b")
-_GST_RE = re.compile(r"\b\d{2}[A-Z]{5}\d{4}[A-Z]\d[A-Z]{2}\b", re.IGNORECASE)
+_GST_RE = GSTIN_SEARCH_RE
 # Must stay on one line and the captured reference must contain a digit,
 # otherwise a bare "QUOTATION" heading is mistaken for the reference itself.
 _REF_RE = re.compile(

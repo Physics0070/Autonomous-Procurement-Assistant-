@@ -72,6 +72,18 @@ async def ensure_indexes(db: AsyncIOMotorDatabase) -> None:
     await db.quotations.create_index([("organization_id", 1), ("processing_status", 1)])
     await db.quotations.create_index([("organization_id", 1), ("procurement_request_id", 1)])
 
+    # One quotation per channel message part. Partial, so manual uploads
+    # (which have no external reference) never collide.
+    await db.quotations.create_index(
+        [("organization_id", 1), ("source.external_reference", 1)],
+        unique=True,
+        partialFilterExpression={"source.external_reference": {"$type": "string"}},
+        name="uniq_channel_reference",
+    )
+    await db.channel_connections.create_index(
+        [("organization_id", 1), ("provider", 1)], unique=True, name="uniq_org_provider"
+    )
+
     await db.comparisons.create_index([("organization_id", 1), ("procurement_request_id", 1)])
     await db.price_history.create_index([("organization_id", 1), ("normalized_name", 1)])
     logger.info("MongoDB indexes ensured")

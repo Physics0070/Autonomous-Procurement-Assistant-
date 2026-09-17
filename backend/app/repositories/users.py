@@ -17,6 +17,17 @@ class OrganizationRepository(BaseRepository):
     async def get(self, organization_id: str) -> Optional[dict[str, Any]]:
         return serialize(await self.collection.find_one({"_id": to_object_id(organization_id)}))
 
+    async def update_profile(self, organization_id: str, fields: dict[str, Any]) -> Optional[dict[str, Any]]:
+        """Update the caller's own organization. The id comes from the session, never the request."""
+        if not fields:
+            return await self.get(organization_id)
+        doc = await self.collection.find_one_and_update(
+            {"_id": to_object_id(organization_id)},
+            {"$set": {**fields, "updated_at": utcnow()}},
+            return_document=True,
+        )
+        return serialize(doc)
+
 
 class UserRepository(BaseRepository):
     collection_name = "users"

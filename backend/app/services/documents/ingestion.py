@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from typing import Any, Optional
 
 from app.core.config import settings
-from app.core.errors import ValidationError
+from app.core.errors import ConflictError, ValidationError
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import ProcessingStatus, SourceType
 from app.services.documents.detection import detect_document_type, is_allowed_upload
@@ -66,7 +66,7 @@ async def ingest_document(
     if not is_allowed_upload(payload.filename, payload.mime_type):
         raise ValidationError(
             f"Unsupported file type '{payload.filename}'. "
-            "Supported formats: PDF, Excel (.xlsx/.xls), CSV, PNG, JPG."
+            "Supported formats: PDF, Excel (.xlsx/.xls), CSV, PNG, JPG, plain text."
         )
 
     document_type = detect_document_type(payload.data, payload.filename, payload.mime_type)
@@ -124,6 +124,47 @@ async def ingest_document(
         quotation.get("id"),
     )
     return quotation
+
+
+async def ingest_document_once(
+    payload: IngestionPayload,
+    *,
+    organization_id: str,
+    uploaded_by: Optional[str],
+    repository: QuotationRepository,
+    storage: StorageBackend,
+) -> tuple[dict[str, Any], bool]:
+    """Ingest unless this external reference was already ingested.
+
+    Returns (quotation, created). Polling channels see the same message on every
+    sync; the external reference is what stops that becoming duplicate quotations.
+    """
+    if not payload.external_reference:
+        raise ValidationError("ingest_document_once requires an external_reference.")
+
+    existing = await repository.find_by_external_reference(
+        organization_id, payload.external_reference
+    )
+    if existing is not None:
+        return existing, False
+
+    try:
+        created = await ingest_document(
+            payload,
+            organization_id=organization_id,
+            uploaded_by=uploaded_by,
+            repository=repository,
+            storage=storage,
+        )
+    except ConflictError:
+        # A concurrent sync inserted it between the lookup and the insert.
+        existing = await repository.find_by_external_reference(
+            organization_id, payload.external_reference
+        )
+        if existing is None:
+            raise
+        return existing, False
+    return created, True
 
 
 def _oid(value: Optional[str]):

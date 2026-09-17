@@ -35,6 +35,15 @@ class QuotationRepository(OrgScopedRepository):
         )
         return [serialize(d) for d in await cursor.to_list(length=limit)]
 
+    async def find_by_external_reference(
+        self, organization_id: str, external_reference: str
+    ) -> Optional[dict[str, Any]]:
+        doc = await self.collection.find_one(
+            self._scope(organization_id, {"source.external_reference": external_reference}),
+            {"raw_content": 0, "ai_extraction.raw_response": 0},
+        )
+        return serialize(doc)
+
     async def for_request(self, organization_id: str, procurement_request_id: str) -> list[dict[str, Any]]:
         cursor = self.collection.find(
             self._scope(

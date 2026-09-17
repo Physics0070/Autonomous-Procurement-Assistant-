@@ -10,6 +10,7 @@ import re
 from datetime import datetime, timezone
 from typing import Optional
 
+from app.core.gstin import is_valid_gstin
 from app.schemas.extraction import AIExtractionResult, ValidationIssue, ValidationReport
 from app.schemas.common import Severity
 
@@ -86,9 +87,7 @@ def validate_extraction(extraction: AIExtractionResult) -> ValidationReport:
     supplier = extraction.supplier
     if not supplier.name:
         add("supplier.name", "missing_supplier_name", "No supplier name could be identified.")
-    if supplier.gst_number and not re.fullmatch(
-        r"\d{2}[A-Z]{5}\d{4}[A-Z]\d[A-Z]{2}", supplier.gst_number.strip().upper()
-    ):
+    if supplier.gst_number and not is_valid_gstin(supplier.gst_number):
         add(
             "supplier.gst_number",
             "invalid_gst_format",

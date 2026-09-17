@@ -1,21 +1,17 @@
-"""Future ingestion channels - architecture, not implementation.
+"""Ingestion channel abstraction, and WhatsApp as documented future work.
 
-Both Gmail and WhatsApp converge on the SAME ingestion service and therefore
-the SAME document pipeline. These adapters exist so that adding a channel is
-a matter of fetching bytes and calling `ingest_document`, with zero duplication
-of extraction, AI, normalization or comparison logic.
+Every channel converges on the same ingestion service and therefore the same
+document pipeline, so adding one means fetching bytes - never duplicating
+extraction, AI, normalization or comparison logic.
 
     Gmail attachment ──┐
-    WhatsApp media ────┼──> IngestionPayload ──> ingest_document() ──> pipeline
-    Manual upload ─────┘
+    WhatsApp media ────┼──> IngestionPayload ──> ingest_document_once() ──> pipeline
+    Manual upload ─────┘  (manual upload uses ingest_document directly)
 
-Nothing below performs network calls. They are deliberately inert until the
-corresponding credentials and provider onboarding exist:
-  * Gmail    - OAuth client + refresh token, Gmail API readonly scope
-  * WhatsApp - Meta WhatsApp Business Cloud API (phone number id + token);
-               unofficial libraries are not an acceptable route for a business
-               product, so this stays unimplemented until the official API is
-               provisioned.
+Gmail is implemented in `app/services/channels/gmail_sync.py`. WhatsApp is
+scoped by the synopsis as future support and stays inert: it needs the official
+Meta WhatsApp Business Cloud API (verified business, phone number id, permanent
+token, public HTTPS webhook). Unofficial libraries are not an acceptable route.
 """
 from __future__ import annotations
 
@@ -27,7 +23,7 @@ from typing import Any, Iterable, Optional
 from app.core.errors import ConfigurationError
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import SourceType
-from app.services.documents.ingestion import IngestionPayload, ingest_document
+from app.services.documents.ingestion import IngestionPayload, ingest_document_once
 from app.services.storage.base import StorageBackend
 
 logger = logging.getLogger(__name__)
@@ -77,14 +73,16 @@ class IngestionChannel(abc.ABC):
 
         created = []
         for message in await self.fetch():
-            for filename, data, mime in message.attachments:
-                quotation = await ingest_document(
+            for index, (filename, data, mime) in enumerate(message.attachments, start=1):
+                quotation, is_new = await ingest_document_once(
                     IngestionPayload(
                         data=data,
                         filename=filename,
                         mime_type=mime,
                         source_type=self.source_type,
-                        external_reference=message.external_id,
+                        # One reference per attachment; the message id alone
+                        # would collide with the unique channel-reference index.
+                        external_reference=f"{self.name}:{message.external_id}:{index}",
                         metadata={
                             "channel": self.name,
                             "sender": message.sender,
@@ -98,34 +96,9 @@ class IngestionChannel(abc.ABC):
                     repository=repository,
                     storage=storage,
                 )
-                created.append(quotation)
+                if is_new:
+                    created.append(quotation)
         return created
-
-
-class GmailIngestionChannel(IngestionChannel):
-    """Planned: poll a mailbox and ingest quotation attachments.
-
-        Gmail API -> message list -> attachment bytes -> IngestionPayload
-    """
-
-    source_type = SourceType.EMAIL
-    name = "gmail"
-
-    def __init__(self, credentials: Optional[dict[str, Any]] = None):
-        self.credentials = credentials or {}
-
-    def is_configured(self) -> bool:
-        return False
-
-    def configuration_error(self) -> Optional[str]:
-        return (
-            "Gmail ingestion is not implemented yet. It requires a Google OAuth client, "
-            "a stored refresh token and the gmail.readonly scope. The adapter is wired to "
-            "the shared ingestion service so enabling it needs no pipeline changes."
-        )
-
-    async def fetch(self, since: Optional[str] = None) -> Iterable[InboundMessage]:
-        raise ConfigurationError(self.configuration_error())
 
 
 class WhatsAppIngestionChannel(IngestionChannel):
@@ -155,7 +128,7 @@ class WhatsAppIngestionChannel(IngestionChannel):
         raise ConfigurationError(self.configuration_error())
 
 
+# Gmail is implemented in app/services/channels/gmail_sync.py (Phase 3).
 AVAILABLE_CHANNELS: dict[str, type[IngestionChannel]] = {
-    "gmail": GmailIngestionChannel,
     "whatsapp": WhatsAppIngestionChannel,
 }

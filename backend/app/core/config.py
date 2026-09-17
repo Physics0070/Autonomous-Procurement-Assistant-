@@ -46,7 +46,20 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 25
 
     # --- AI provider ---
-    AI_PROVIDER: str = "gemini"  # gemini | none
+    AI_PROVIDER: str = "openrouter"  # openrouter | ollama | gemini | none
+
+    # OpenRouter (OpenAI-compatible). Free model IDs end in ":free".
+    OPENROUTER_API_KEY: str = ""
+    OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
+    OPENROUTER_MODEL: str = "google/gemma-4-31b-it:free"
+    # Comma-separated; OpenRouter falls through to these when the primary fails.
+    OPENROUTER_FALLBACK_MODELS: str = "nvidia/nemotron-3-super-120b-a12b:free"
+    OPENROUTER_APP_URL: str = "http://localhost:5173"
+
+    # Ollama (local, free, no key).
+    OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
+    OLLAMA_MODEL: str = "llama3.1"
+
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL: str = "gemini-2.0-flash"
     AI_REQUEST_TIMEOUT_SECONDS: int = 90
@@ -72,17 +85,51 @@ class Settings(BaseSettings):
     MATCH_REVIEW_THRESHOLD: float = 0.62   # >= -> match but flag for review
     # below MATCH_REVIEW_THRESHOLD -> unmatched / requires manual review
 
+    # --- Secrets at rest ---
+    # Fernet key for OAuth refresh tokens. Generate with:
+    #   python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+    # Derived from JWT_SECRET_KEY when empty.
+    TOKEN_ENCRYPTION_KEY: str = ""
+
+    # --- Frontend (OAuth callbacks redirect here) ---
+    FRONTEND_URL: str = "http://localhost:5173"
+
+    # --- Google OAuth 2.0 / Gmail ingestion ---
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+    GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/v1/channels/gmail/callback"
+    GMAIL_SCOPES: str = "https://www.googleapis.com/auth/gmail.readonly"
+    # Deliberately narrow: importing every PDF in a mailbox would pull in bank
+    # statements and invoices. Use e.g. `label:quotations` for a dedicated label.
+    GMAIL_SYNC_QUERY: str = (
+        "newer_than:30d subject:(quotation OR quotations OR quote OR RFQ "
+        'OR "price list" OR proforma OR "rate list")'
+    )
+    GMAIL_MAX_MESSAGES_PER_SYNC: int = 25
+    GMAIL_SYNC_INTERVAL_MINUTES: int = 15  # 0 disables automatic collection
+
     @property
     def cors_origins(self) -> List[str]:
         return [o.strip() for o in self.CORS_ORIGINS.split(",") if o.strip()]
 
     @property
+    def openrouter_fallback_models(self) -> List[str]:
+        return [m.strip() for m in self.OPENROUTER_FALLBACK_MODELS.split(",") if m.strip()]
+
+    @property
     def ai_configured(self) -> bool:
-        if self.AI_PROVIDER.lower() == "none":
-            return False
-        if self.AI_PROVIDER.lower() == "gemini":
+        provider = self.AI_PROVIDER.lower()
+        if provider == "openrouter":
+            return bool(self.OPENROUTER_API_KEY.strip())
+        if provider == "ollama":
+            return bool(self.OLLAMA_MODEL.strip())
+        if provider == "gemini":
             return bool(self.GEMINI_API_KEY.strip())
         return False
+
+    @property
+    def google_configured(self) -> bool:
+        return bool(self.GOOGLE_CLIENT_ID.strip() and self.GOOGLE_CLIENT_SECRET.strip())
 
     def scoring_weights(self) -> dict:
         return {

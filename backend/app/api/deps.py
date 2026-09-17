@@ -15,6 +15,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.core.database import get_database
 from app.core.security import decode_access_token
+from app.repositories.channels import ChannelConnectionRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import ComparisonRepository, PriceHistoryRepository, QuotationRepository
 from app.repositories.suppliers import SupplierRepository
@@ -77,6 +78,10 @@ def price_history_repo(database: DB) -> PriceHistoryRepository:
     return PriceHistoryRepository(database)
 
 
+def channel_repo(database: DB) -> ChannelConnectionRepository:
+    return ChannelConnectionRepository(database)
+
+
 def storage() -> StorageBackend:
     return get_storage()
 
@@ -106,6 +111,11 @@ async def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
     except jwt.PyJWTError:
+        raise _CREDENTIALS_ERROR
+
+    # Other signed tokens (e.g. OAuth state, which travels through browser URLs)
+    # share the signing key and must never authenticate an API call.
+    if payload.get("type") != "access":
         raise _CREDENTIALS_ERROR
 
     user_id = payload.get("sub")

@@ -1,6 +1,7 @@
 """Password hashing and JWT handling."""
 from __future__ import annotations
 
+import secrets
 from datetime import datetime, timedelta, timezone
 from typing import Any, Optional
 
@@ -40,3 +41,40 @@ def create_access_token(subject: str, extra_claims: Optional[dict[str, Any]] = N
 def decode_access_token(token: str) -> dict[str, Any]:
     """Raises jwt.PyJWTError subclasses on invalid/expired tokens."""
     return jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+
+
+OAUTH_STATE_TTL_MINUTES = 10
+
+
+def create_oauth_state(
+    *,
+    organization_id: str,
+    user_id: str,
+    provider: str,
+    ttl_minutes: int = OAUTH_STATE_TTL_MINUTES,
+) -> str:
+    """Signed, short-lived OAuth `state`.
+
+    Binds a provider callback to the organization and user that started the
+    flow, and doubles as CSRF protection: a callback carrying a state this
+    server did not sign is rejected.
+    """
+    now = datetime.now(timezone.utc)
+    payload = {
+        "type": "oauth_state",
+        "provider": provider,
+        "org": organization_id,
+        "sub": user_id,
+        "nonce": secrets.token_urlsafe(16),
+        "iat": now,
+        "exp": now + timedelta(minutes=ttl_minutes),
+    }
+    return jwt.encode(payload, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
+
+
+def verify_oauth_state(state: str, *, provider: str) -> dict[str, Any]:
+    """Return the state claims, or raise a jwt.PyJWTError subclass."""
+    claims = jwt.decode(state, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+    if claims.get("type") != "oauth_state" or claims.get("provider") != provider:
+        raise jwt.InvalidTokenError("State was not issued for this provider.")
+    return claims

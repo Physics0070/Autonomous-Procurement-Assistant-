@@ -11,9 +11,10 @@ from typing import Any, Mapping, Optional, Sequence
 
 from bson import ObjectId
 from bson.errors import InvalidId
+from pymongo.errors import DuplicateKeyError
 from motor.motor_asyncio import AsyncIOMotorCollection, AsyncIOMotorDatabase
 
-from app.core.errors import NotFoundError, ValidationError
+from app.core.errors import ConflictError, NotFoundError, ValidationError
 
 
 def to_object_id(value: Any, field: str = "id") -> ObjectId:
@@ -117,7 +118,11 @@ class OrgScopedRepository(BaseRepository):
         payload["organization_id"] = to_object_id(organization_id, "organization_id")
         payload.setdefault("created_at", utcnow())
         payload["updated_at"] = utcnow()
-        result = await self.collection.insert_one(payload)
+        try:
+            result = await self.collection.insert_one(payload)
+        except DuplicateKeyError as exc:
+            # Services stay database-agnostic: they only ever see ConflictError.
+            raise ConflictError(f"A matching {self.collection_name} record already exists.") from exc
         payload["_id"] = result.inserted_id
         return serialize(payload)  # type: ignore[return-value]
 

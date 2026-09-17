@@ -19,8 +19,10 @@ PDF_EXT = {".pdf"}
 EXCEL_EXT = {".xlsx", ".xls", ".xlsm", ".ods"}
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp"}
 CSV_EXT = {".csv", ".tsv"}
+# Plain text carries quotations written directly in an email body.
+TEXT_EXT = {".txt"}
 
-ALLOWED_EXTENSIONS = PDF_EXT | EXCEL_EXT | IMAGE_EXT | CSV_EXT
+ALLOWED_EXTENSIONS = PDF_EXT | EXCEL_EXT | IMAGE_EXT | CSV_EXT | TEXT_EXT
 
 
 def detect_document_type(
@@ -71,7 +73,7 @@ def is_allowed_upload(filename: Optional[str], mime_type: Optional[str]) -> bool
     if ext in ALLOWED_EXTENSIONS:
         return True
     mime = (mime_type or "").lower().split(";")[0].strip()
-    return mime in (PDF_MIMES | EXCEL_MIMES | IMAGE_MIMES | CSV_MIMES)
+    return mime in (PDF_MIMES | EXCEL_MIMES | IMAGE_MIMES | CSV_MIMES | {"text/plain"})
 
 
 def detect_language(text: str) -> str:
