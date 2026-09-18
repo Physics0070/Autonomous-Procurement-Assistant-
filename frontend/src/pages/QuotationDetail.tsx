@@ -34,7 +34,8 @@ import {
   useReprocess,
   useRequests,
 } from "@/hooks/queries"
-import { fileUrl } from "@/lib/api"
+import { downloadFile, fileUrl } from "@/lib/api"
+import { AgentRuns } from "@/components/AgentRuns"
 import { formatCurrency, formatDateTime, formatNumber, percent } from "@/lib/utils"
 import type { NormalizedQuotation, QuotationDetail } from "@/types"
 
@@ -243,11 +244,9 @@ export function QuotationDetailPage() {
         }
         actions={
           <>
-            <Button variant="outline" asChild>
-              <a href={fileUrl(data.id)} target="_blank" rel="noreferrer">
-                <Download className="h-4 w-4" />
-                Original
-              </a>
+            <Button variant="outline" onClick={() => downloadFile(fileUrl(data.id))}>
+              <Download className="h-4 w-4" />
+              Original
             </Button>
             <Button variant="outline" onClick={() => reprocess.mutate()} disabled={reprocess.isPending}>
               {reprocess.isPending ? <Spinner /> : <RefreshCw className="h-4 w-4" />}
@@ -280,9 +279,11 @@ export function QuotationDetailPage() {
         <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           <ProvenanceRow label="1 · Original file" tone="muted" note={`${data.document_type.replace(/_/g, " ")}`}>
             <a
-              href={fileUrl(data.id)}
-              target="_blank"
-              rel="noreferrer"
+              href="#"
+              onClick={(event) => {
+                event.preventDefault()
+                void downloadFile(fileUrl(data.id))
+              }}
               className="text-primary underline-offset-4 hover:underline"
             >
               {data.source.original_filename}
@@ -909,6 +910,7 @@ export function QuotationDetailPage() {
           </div>
         </TabsContent>
       </Tabs>
+      <AgentRuns filters={{ quotation_id: data.id, graph: "quotation_processing" }} title="Processing agents" />
     </div>
   )
 }

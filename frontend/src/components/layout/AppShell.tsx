@@ -7,8 +7,14 @@ import {
   FileStack,
   LayoutDashboard,
   LogOut,
+  Bot,
+  FileText,
+  LineChart,
+  Mail,
   Menu,
   Moon,
+  Plug,
+  Settings,
   Sun,
   X,
 } from "lucide-react"
@@ -24,6 +30,12 @@ const NAV = [
   { to: "/documents", label: "Documents", icon: FileStack },
   { to: "/suppliers", label: "Suppliers", icon: Building2 },
   { to: "/comparison", label: "Comparison", icon: BarChart3 },
+  { to: "/communications", label: "Communications", icon: Mail },
+  { to: "/purchase-orders", label: "Purchase orders", icon: FileText },
+  { to: "/assistant", label: "Assistant", icon: Bot },
+  { to: "/analytics", label: "Analytics", icon: LineChart },
+  { to: "/integrations", label: "Integrations", icon: Plug },
+  { to: "/settings", label: "Settings", icon: Settings },
 ]
 
 function useTheme() {
@@ -84,7 +96,7 @@ export function AppShell() {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1 p-3">
+        <nav className="flex-1 space-y-1 overflow-y-auto p-3">
           {NAV.map(({ to, label, icon: Icon, end }) => (
             <NavLink
               key={to}

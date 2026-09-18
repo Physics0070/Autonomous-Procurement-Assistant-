@@ -4,12 +4,14 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, Query, status
 
-from app.api.deps import CurrentUser, quotation_repo, supplier_repo
+from app.api.deps import DB, CurrentUser, quotation_repo, supplier_repo
 from app.core.errors import ConflictError
+from app.repositories.automation import PurchaseOrderRepository
 from app.repositories.quotations import QuotationRepository
 from app.repositories.suppliers import SupplierRepository
 from app.schemas.common import Paginated
 from app.schemas.supplier import SupplierCreate, SupplierOut, SupplierUpdate
+from app.services.analytics.reliability_ml import ORDER_FIELDS, load_model, orders_frame, predict, predict_all
 from app.services.procurement.reliability import compute_reliability
 
 router = APIRouter(prefix="/suppliers", tags=["suppliers"])
@@ -18,6 +20,7 @@ router = APIRouter(prefix="/suppliers", tags=["suppliers"])
 @router.get("", response_model=Paginated[SupplierOut])
 async def list_suppliers(
     context: CurrentUser,
+    database: DB,
     search: Optional[str] = Query(default=None, max_length=200),
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=50, ge=1, le=200),
@@ -32,8 +35,11 @@ async def list_suppliers(
         rows = await suppliers.list(context.organization_id, skip=skip, limit=page_size)
         total = await suppliers.count(context.organization_id)
 
+    ml = predict_all(load_model(context.organization_id), [row["id"] for row in rows],
+                     await _delivered_orders(context.organization_id, database))
     items = []
     for row in rows:
+        row.setdefault("reliability", {})["ml"] = ml.get(row["id"])
         row["quotation_count"] = await quotations.count(
             context.organization_id, {"supplier_id": _oid(row["id"])}
         )
@@ -65,6 +71,7 @@ async def create_supplier(
 async def get_supplier(
     supplier_id: str,
     context: CurrentUser,
+    database: DB,
     suppliers: SupplierRepository = Depends(supplier_repo),
     quotations: QuotationRepository = Depends(quotation_repo),
 ) -> SupplierOut:
@@ -72,6 +79,8 @@ async def get_supplier(
     related = await quotations.list_filtered(context.organization_id, supplier_id=supplier_id, limit=100)
     # Recompute on read so the score reflects the latest quotation history.
     supplier["reliability"] = compute_reliability(supplier, quotations=related)
+    supplier["reliability"]["ml"] = predict(load_model(context.organization_id), supplier_id,
+                                            await _delivered_orders(context.organization_id, database))
     supplier["quotation_count"] = len(related)
     return SupplierOut.model_validate(supplier)
 
@@ -88,6 +97,12 @@ async def update_supplier(
         context.organization_id, supplier_id, payload.model_dump(exclude_unset=True)
     )
     return SupplierOut.model_validate(updated)
+
+
+async def _delivered_orders(organization_id: str, database):
+    pos = await PurchaseOrderRepository(database).find_all(
+        organization_id, {"status": {"$in": ["delivered", "closed"]}}, fields=ORDER_FIELDS)
+    return orders_frame(pos)
 
 
 def _oid(value):

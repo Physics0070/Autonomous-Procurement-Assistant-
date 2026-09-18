@@ -190,6 +190,11 @@ class PriceHistoryRepository(OrgScopedRepository):
             }
         )
 
+    async def prices(self, organization_id: str, normalized_name: str, limit: int = 1000) -> list[float]:
+        cursor = self.collection.find(self._scope(organization_id, {"normalized_name": normalized_name}),
+                                      {"unit_price": 1}).sort("created_at", -1).limit(limit)
+        return [d["unit_price"] for d in await cursor.to_list(length=limit)]
+
     async def stats(self, organization_id: str, normalized_name: str) -> Optional[dict[str, Any]]:
         pipeline = [
             {"$match": self._scope(organization_id, {"normalized_name": normalized_name})},

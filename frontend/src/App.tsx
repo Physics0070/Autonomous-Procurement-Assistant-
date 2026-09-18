@@ -8,10 +8,17 @@ import { RequestDetailPage, RequestsPage } from "@/pages/Requests"
 import { DocumentsPage } from "@/pages/Documents"
 import { QuotationDetailPage } from "@/pages/QuotationDetail"
 import { SuppliersPage } from "@/pages/Suppliers"
+import { CommunicationsPage } from "@/pages/Communications"
+import { PurchaseOrdersPage } from "@/pages/PurchaseOrders"
+import { IntegrationsPage, SettingsPage } from "@/pages/Settings"
+import { AssistantPage } from "@/pages/Assistant"
 
 // Recharts is heavy and only these routes need it, so they load on demand.
 const DashboardPage = lazy(() =>
   import("@/pages/Dashboard").then((m) => ({ default: m.DashboardPage })),
+)
+const AnalyticsPage = lazy(() =>
+  import("@/pages/Analytics").then((m) => ({ default: m.AnalyticsPage })),
 )
 const ComparisonIndexPage = lazy(() =>
   import("@/pages/Comparison").then((m) => ({ default: m.ComparisonIndexPage })),
@@ -48,6 +55,12 @@ export default function App() {
           <Route path="/suppliers" element={<SuppliersPage />} />
           <Route path="/comparison" element={<ComparisonIndexPage />} />
           <Route path="/comparison/:requestId" element={<ComparisonPage />} />
+          <Route path="/communications" element={<CommunicationsPage />} />
+          <Route path="/purchase-orders" element={<PurchaseOrdersPage />} />
+          <Route path="/assistant" element={<AssistantPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/integrations" element={<IntegrationsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

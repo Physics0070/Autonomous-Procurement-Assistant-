@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "react-router-dom"
 import { Building2, Plus, Search } from "lucide-react"
 import { PageHeader } from "@/components/layout/AppShell"
 import { Button } from "@/components/ui/button"
@@ -204,6 +205,15 @@ export function SuppliersPage() {
                       <p className="mt-1 text-[11px] text-muted-foreground">
                         rule-based · n={supplier.reliability.sample_size}
                       </p>
+                      {supplier.reliability.ml && (
+                        <p className="mt-1 text-[11px]" title={[`${supplier.reliability.ml.model_version} · ${supplier.reliability.ml.trained_on}`,
+                                  ...supplier.reliability.ml.signals.map((s) => s.text)].join(" | ")}>
+                          <Badge variant={{ low: "success", medium: "warning", high: "destructive" }[supplier.reliability.ml.risk_level] as "success"}>
+                            ML late risk {percent(supplier.reliability.ml.late_probability)}
+                          </Badge>{" "}
+                          <span className="text-muted-foreground">from {supplier.reliability.ml.history_count} deliveries</span>
+                        </p>
+                      )}
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
                       {formatDate(supplier.created_at)}
@@ -218,10 +228,14 @@ export function SuppliersPage() {
 
       <Alert tone="info" title="How reliability is calculated">
         <p>
-          A transparent rule-based score from profile completeness, quotation history, extraction
-          data quality and responsiveness. It is <strong>not</strong> a machine-learning prediction —
-          there is not enough historical data to justify one, and claiming otherwise would be
-          misleading.
+          The bar is a transparent rule-based score from profile completeness, quotation history,
+          extraction data quality and responsiveness.
+        </p>
+        <p>
+          Once a supplier has delivered purchase orders, an <strong>ML late-delivery risk</strong> appears
+          under it: a random-forest model trained on real USAID SCMS shipments (2006–2013) and tested on
+          later ones it never saw. Hover it for the reasons. Its test scores are on the{" "}
+          <Link to="/analytics" className="text-primary hover:underline">Analytics</Link> page.
         </p>
       </Alert>
     </div>

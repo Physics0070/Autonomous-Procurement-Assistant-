@@ -39,6 +39,8 @@ import {
   ValueOrMissing,
 } from "@/components/ui/feedback"
 import { useComparison, useComputeComparison, useRequests } from "@/hooks/queries"
+import { useCommunicationActions, usePurchaseOrderActions, useRunSourcing } from "@/hooks/automation"
+import { AgentRuns } from "@/components/AgentRuns"
 import { cn, formatCurrency, formatDateTime, percent } from "@/lib/utils"
 import type { SupplierScore } from "@/types"
 
@@ -130,6 +132,13 @@ export function ComparisonPage() {
   const { data, isLoading, error, refetch } = useComparison(requestId)
   const compute = useComputeComparison(requestId ?? "")
   const [selected, setSelected] = React.useState<string | null>(null)
+  const navigate = useNavigate()
+  const { award } = usePurchaseOrderActions()
+  const { draftNegotiation } = useCommunicationActions()
+  const sourcing = useRunSourcing()
+  const [actionError, setActionError] = React.useState<string | null>(null)
+  const act = (promise: Promise<unknown>, to: string) =>
+    promise.then(() => navigate(to)).catch((e: Error) => setActionError(e.message))
 
   if (isLoading) return <LoadingState label="Computing comparison…" />
   if (error) return <ErrorState error={error} onRetry={refetch} />
@@ -170,16 +179,34 @@ export function ComparisonPage() {
         title={data.procurement_request_title ?? "Supplier comparison"}
         description={`Computed ${formatDateTime(data.computed_at)} · ${data.method.replace(/_/g, " ")}`}
         actions={
-          <Button
-            variant="outline"
-            onClick={() => compute.mutate({})}
-            disabled={compute.isPending}
-          >
-            {compute.isPending ? <Spinner /> : <RefreshCw className="h-4 w-4" />}
-            Recompute
-          </Button>
+          <>
+            <Button
+              variant="outline"
+              onClick={() => sourcing.mutateAsync(requestId ?? "").catch((e: Error) => setActionError(e.message))}
+              disabled={sourcing.isPending || suppliers.length === 0}
+              title="Comparison, recommendation and a negotiation draft for the top supplier. Nothing is sent."
+            >
+              {sourcing.isPending && <Spinner />}
+              Run sourcing agents
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => compute.mutate({})}
+              disabled={compute.isPending}
+            >
+              {compute.isPending ? <Spinner /> : <RefreshCw className="h-4 w-4" />}
+              Recompute
+            </Button>
+          </>
         }
       />
+      {actionError && <Alert tone="error">{actionError}</Alert>}
+      {sourcing.data?.status === "awaiting_approval" && (
+        <Alert tone="success" title="Sourcing agents finished">
+          A negotiation draft for {sourcing.data.output?.recommended_supplier_name} is waiting for your approval on{" "}
+          <Link to="/communications" className="text-primary hover:underline">Communications</Link>.
+        </Alert>
+      )}
 
       {suppliers.length === 0 ? (
         <EmptyState
@@ -267,11 +294,13 @@ export function ComparisonPage() {
                     <TableHead className="w-12">Rank</TableHead>
                     <TableHead>Supplier</TableHead>
                     <TableHead className="text-right">Total cost</TableHead>
+                    <TableHead className="text-right">Transport</TableHead>
                     <TableHead className="text-right">Delivery</TableHead>
                     <TableHead className="text-right">Payment</TableHead>
                     <TableHead>Reliability</TableHead>
                     <TableHead className="text-right">Items quoted</TableHead>
                     <TableHead>Final score</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -315,6 +344,13 @@ export function ComparisonPage() {
                         )}
                       </TableCell>
                       <TableCell className="tabular text-right">
+                        {supplier.transport_cost != null ? (
+                          formatCurrency(supplier.transport_cost, supplier.currency)
+                        ) : (
+                          <ValueOrMissing value={null} />
+                        )}
+                      </TableCell>
+                      <TableCell className="tabular text-right">
                         {supplier.delivery_days != null ? (
                           `${supplier.delivery_days}d`
                         ) : (
@@ -352,6 +388,18 @@ export function ComparisonPage() {
                           <span className="tabular text-sm font-semibold">
                             {supplier.overall_score.toFixed(3)}
                           </span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right" onClick={(event) => event.stopPropagation()}>
+                        <div className="flex justify-end gap-1">
+                          <Button size="sm" variant="ghost" disabled={draftNegotiation.isPending}
+                                  onClick={() => act(draftNegotiation.mutateAsync({ requestId: requestId ?? "", quotationId: supplier.quotation_id }), "/communications")}>
+                            Negotiate
+                          </Button>
+                          <Button size="sm" variant={supplier.rank === 1 ? "default" : "outline"} disabled={award.isPending}
+                                  onClick={() => act(award.mutateAsync({ requestId: requestId ?? "", quotationId: supplier.quotation_id }), "/purchase-orders")}>
+                            Award
+                          </Button>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -584,6 +632,7 @@ export function ComparisonPage() {
           )}
         </>
       )}
+      <AgentRuns filters={{ procurement_request_id: requestId, graph: "sourcing" }} title="Sourcing agent runs" />
     </div>
   )
 }

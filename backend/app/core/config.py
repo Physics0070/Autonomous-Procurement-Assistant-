@@ -6,15 +6,20 @@ Nothing secret is ever hardcoded here.
 from __future__ import annotations
 
 from functools import lru_cache
+from pathlib import Path
 from typing import List
 
-from pydantic import Field
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+BACKEND_DIR = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        # Anchored to backend/, so the app reads the same .env whatever directory it starts from.
+        env_file=BACKEND_DIR / ".env",
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,
@@ -107,6 +112,18 @@ class Settings(BaseSettings):
     )
     GMAIL_MAX_MESSAGES_PER_SYNC: int = 25
     GMAIL_SYNC_INTERVAL_MINUTES: int = 15  # 0 disables automatic collection
+
+    # --- Procurement automation, agents, analytics ---
+    NEGOTIATION_DEFAULT_DISCOUNT_PCT: float = 5.0  # target price below the quote when none is given
+    NEGOTIATION_WEAK_CRITERION_SCORE: float = 0.5  # delivery/payment scores below this are negotiated
+    ASSISTANT_MAX_TOOL_ROUNDS: int = 6
+    ML_MIN_RETRAIN_ORDERS: int = 50  # delivered POs needed to retrain the reliability model
+
+    @model_validator(mode="after")
+    def _no_placeholder_secret_outside_development(self) -> "Settings":
+        if self.ENVIRONMENT.lower() != "development" and self.JWT_SECRET_KEY == "CHANGE_ME_IN_PRODUCTION":
+            raise ValueError("JWT_SECRET_KEY must be set outside development (it signs logins and OAuth state).")
+        return self
 
     @property
     def cors_origins(self) -> List[str]:

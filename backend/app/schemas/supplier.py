@@ -41,6 +41,8 @@ class SupplierReliability(APIModel):
     sample_size: int = 0
     factors: dict[str, Any] = Field(default_factory=dict)
     notes: list[str] = Field(default_factory=list)
+    # Late-delivery risk from the ML model, when the supplier has delivered POs.
+    ml: Optional[dict[str, Any]] = None
 
 
 class SupplierOut(SupplierBase):

@@ -5,7 +5,7 @@ Assistant using Multi-Agent AI and Machine Learning*). Phases 1 and 2 were built
 from earlier briefs; this document re-maps all work onto the synopsis's key
 features, methodology stages and architecture modules.
 
-Status as of 17 Sep 2026.
+Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the team's keys.
 
 ---
 
@@ -15,26 +15,26 @@ Status as of 17 Sep 2026.
 
 | # | Synopsis item | Status | Evidence / gap | Phase |
 |---|---|---|---|---|
-| 1.1 | Automatic quotation collection from Gmail | Not started | Adapter stub only | **3** |
+| 1.1 | Automatic quotation collection from Gmail | **Done** | OAuth, sync, dedup, scheduler; tested against a fake Google (needs team's OAuth client for live) | 3 |
 | 1.2 | Upload PDF, Excel, images, scanned | **Done** | `test_extraction.py` 5/5 formats | 2 |
 | 1.3 | WhatsApp Business integration *(future)* | Architecture only | Stub in `integrations/ingestion/channels.py` | Future |
 | 2.1 | OCR extraction from scanned documents | **Done** | RapidOCR in use; Tesseract engine built but needs admin install | 2 |
 | 2.2 | Automatic supplier information extraction | **Done** | Heuristic parser verified; Gemini path built, live call unverified | 2 |
 | 2.3 | Products, quantities, unit prices, GST, delivery, payment terms | **Done** | Delivery captured as lead-time days, not calendar dates | 2 |
 | 3.1 | Standardise quotation formats | **Done** | `normalizer_service.py`; Hindi item matches English at 1.00 | 2 |
-| 3.2 | Compare on multiple parameters | **Done** (small gap) | Transportation cost sits inside landed total, not shown as its own column | 4 |
+| 3.2 | Compare on multiple parameters | **Done** | Transport cost has its own column | 4 |
 | 3.3 | Supplier ranking with explanation | **Done** | Deterministic ranking; explanation is computed until an LLM is available | 2 |
-| 4.1 | Generate RFQ emails | Not started | — | **4** |
-| 4.2 | Draft negotiation emails | Not started | — | **4** |
-| 4.3 | Generate purchase orders | Not started | `purchase_orders` collection never built | **4** |
-| 4.4 | Conversational procurement recommendations | Not started | — | **5** |
-| 5.1 | Supplier reliability **prediction** | Partial | Rule-based score only; no trained model | **6** |
-| 5.2 | Price anomaly detection | Partial | Mean + Z-score; no scikit-learn model | **6** |
-| 5.3 | Procurement spending analytics | Partial | Dashboard counts and quoted total only | **6** |
-| 5.4 | Demand forecasting *(future)* | Not started | — | 6 (stretch) |
+| 4.1 | Generate RFQ emails | **Done** | LLM + template fallback; approval workflow; `.eml` export | 4 |
+| 4.2 | Draft negotiation emails | **Done** | Competitor guardrail; target price; weakest criteria | 4 |
+| 4.3 | Generate purchase orders | **Done** | Award, GST split, lifecycle, PDF, delivery recording | 4 |
+| 4.4 | Conversational procurement recommendations | **Done** | LangGraph assistant, 9 org-bound tools (live answers need `OPENROUTER_API_KEY`) | 5 |
+| 5.1 | Supplier reliability **prediction** | **Done** | Random forest on USAID SCMS; test ROC-AUC 0.83, PR-AUC 0.33 vs 0.25 baseline | 6 |
+| 5.2 | Price anomaly detection | **Done** | Isolation Forest from 20 prices; Z-score below | 6 |
+| 5.3 | Procurement spending analytics | **Done** | Analytics page: spend, on-time, savings | 6 |
+| 5.4 | Demand forecasting *(future)* | **Done** | Linear trend vs seasonal naive, back-tested | 6 |
 
-**Count, excluding the two items the synopsis marks as future:** 7 done, 3 partial,
-5 not started.
+**Count, excluding the two items the synopsis marks as future:** 15 of 15 done
+(WhatsApp remains future work, as the synopsis marks it).
 
 ### Technology stack
 
@@ -43,41 +43,41 @@ Status as of 17 Sep 2026.
 | React.js, Tailwind CSS, JavaScript | Done — written in TypeScript, which compiles to JavaScript |
 | Python, FastAPI | Done |
 | PostgreSQL / MongoDB | MongoDB done; repository layer keeps PostgreSQL swappable |
-| Ollama / Gemini API | Gemini provider built, no key; **Ollama not built** → Phase 5 |
-| **LangGraph** | **Not used** → Phase 5 |
+| Ollama / Gemini API | OpenRouter (primary), Ollama and Gemini providers built; key needed for live calls |
+| **LangGraph** | Done — processing, sourcing and assistant graphs |
 | OCR (Tesseract / LlamaParse) | Tesseract engine built, not installable on this machine; RapidOCR used |
-| **Scikit-Learn** | **Not used** → Phase 6 |
+| **Scikit-Learn** | Done — random forest, Isolation Forest, linear regression |
 | Pandas | Done |
-| **Gmail API, Google OAuth 2.0** | **Not started** → Phase 3 |
-| Google Drive API | Not started → Phase 4 (optional: store generated POs) |
+| **Gmail API, Google OAuth 2.0** | Done (read-only) |
+| Google Drive API | Out of scope by decision — POs download as PDF |
 
 ### Architecture modules (synopsis diagram)
 
 | Module | Status | Phase |
 |---|---|---|
-| Data Collection | Partial — upload only | 3 |
+| Data Collection | Done — upload + Gmail | 3 |
 | OCR & AI Document Extraction | Done | 2 |
 | Data Normalization | Done | 2 |
-| AI Procurement Engine (LLM + Agentic AI) | Partial — LLM calls, no agent orchestration | 5 |
-| Machine Learning Module | Partial — rules and statistics, no models | 6 |
+| AI Procurement Engine (LLM + Agentic AI) | Done — LangGraph agents | 5 |
+| Machine Learning Module | Done | 6 |
 | Supplier Comparison Engine | Done | 2 |
 | AI Recommendation Module | Done | 2 |
-| Email Generation & Purchase Order Generation | Not started | 4 |
-| User Approval | Partial — quotation corrections only | 4 |
-| Execution (send emails / save PO) | Not started | 4 |
-| Procurement Dashboard | Mostly done — analytics and reports thin | 6 |
+| Email Generation & Purchase Order Generation | Done | 4 |
+| User Approval | Done — drafts and POs need approval | 4 |
+| Execution (send emails / save PO) | Done — `.eml` export, mark sent, PO PDF (no automatic sending, by decision) | 4 |
+| Procurement Dashboard | Done — plus Analytics page | 6 |
 
 ### Methodology stages
 
 | Stage | Status |
 |---|---|
-| 1. Data Collection | Partial (Gmail missing) |
+| 1. Data Collection | Done |
 | 2. Document Processing | Done |
 | 3. Data Normalization | Done |
 | 4. Supplier Evaluation | Done |
 | 5. AI Recommendation | Done |
-| 6. Procurement Automation | Not started |
-| 7. Machine Learning Analysis | Partial |
+| 6. Procurement Automation | Done |
+| 7. Machine Learning Analysis | Done |
 
 ---
 
@@ -93,7 +93,7 @@ matching, deterministic scoring, explanation, review and comparison screens.
 120 end-to-end assertions passing.
 *Open item:* the live Gemini call is unverified until a key is supplied.
 
-### Phase 3 — Gmail ingestion · **Next**
+### Phase 3 — Gmail ingestion · **Done**
 Methodology stage 1; synopsis APIs *Gmail API* and *Google OAuth 2.0*.
 
 - Connect a Gmail mailbox with Google OAuth 2.0 (read-only scope).
@@ -113,7 +113,7 @@ Detailed task plan: `docs/superpowers/plans/2026-09-17-gmail-ingestion.md`
 mailbox connected and a real emailed quotation imported and processed.
 **Needs from the team:** a Google Cloud OAuth client (free) — steps in the plan, Task 9.
 
-### Phase 4 — Procurement automation
+### Phase 4 — Procurement automation · **Done**
 Methodology stage 6; modules *Email Generation & PO Generation*, *User Approval*,
 *Execution*; key features 4.1–4.3.
 
@@ -133,7 +133,7 @@ Methodology stage 6; modules *Email Generation & PO Generation*, *User Approval*
 **Exit criteria:** request → RFQs approved and sent → quotations arrive via Gmail →
 comparison → award → PO approved → PO emailed, all demonstrable end to end.
 
-### Phase 5 — Multi-agent orchestration
+### Phase 5 — Multi-agent orchestration · **Done**
 The title's *Multi-Agent AI*; module *AI Procurement Engine (LLM + Agentic AI)*;
 key feature 4.4.
 
@@ -151,7 +151,7 @@ key feature 4.4.
 answers questions with citations to real quotations and refuses to invent figures.
 **Blocked on:** an LLM — a free Gemini key from Google AI Studio, or Ollama.
 
-### Phase 6 — Machine learning analytics
+### Phase 6 — Machine learning analytics · **Done**
 Methodology stage 7; module *Machine Learning Module*; key features 5.1–5.4.
 
 - **Reliability prediction** with scikit-learn (gradient boosting or logistic

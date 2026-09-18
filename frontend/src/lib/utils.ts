@@ -12,7 +12,8 @@ export function formatCurrency(
 ): string {
   if (value === null || value === undefined || Number.isNaN(value)) return "—"
   try {
-    return new Intl.NumberFormat("en-IN", {
+    // Lakh/crore grouping only makes sense for rupees.
+    return new Intl.NumberFormat(currency === "INR" ? "en-IN" : "en-US", {
       style: "currency",
       currency,
       maximumFractionDigits: 2,

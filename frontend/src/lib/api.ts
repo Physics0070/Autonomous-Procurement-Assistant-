@@ -114,7 +114,23 @@ export const api = {
     request<T>(path, { method: "POST", body, auth: false }),
 }
 
-/** Absolute URL for links the browser follows directly (file downloads). */
-export function fileUrl(quotationId: string): string {
-  return `${BASE_URL}/quotations/${quotationId}/file`
+/**
+ * Download (or open) a protected file. A plain <a href> can't send the bearer
+ * token, so the file is fetched with it and handed to the browser as a blob.
+ */
+export async function downloadFile(path: string, filename?: string): Promise<void> {
+  const token = tokenStore.get()
+  const response = await fetch(`${BASE_URL}${path}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  })
+  if (!response.ok) throw new ApiError(`Download failed (${response.status})`, response.status)
+  const url = URL.createObjectURL(await response.blob())
+  const link = document.createElement("a")
+  link.href = url
+  if (filename) link.download = filename
+  else Object.assign(link, { target: "_blank", rel: "noreferrer" })
+  link.click()
+  setTimeout(() => URL.revokeObjectURL(url), 60_000)
 }
+
+export const fileUrl = (quotationId: string) => `/quotations/${quotationId}/file`

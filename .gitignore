@@ -27,3 +27,6 @@ Thumbs.db
 # Team documents containing phone numbers and personal emails
 Synopsis.pdf
 ff_180 format.docx
+graphify-out/
+backend/ml/artifacts/orgs/
+.claude/

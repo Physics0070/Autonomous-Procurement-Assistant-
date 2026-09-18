@@ -20,6 +20,7 @@ from app.core.database import get_database
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import PriceHistoryRepository, QuotationRepository
 from app.schemas.common import ProcessingStatus
+from app.repositories.automation import AgentRunRepository
 from app.services.documents.pipeline import ProcessingPipeline
 from app.services.storage.local import get_storage
 
@@ -116,6 +117,7 @@ class ProcessingQueue:
             requests=ProcurementRequestRepository(database),
             price_history=PriceHistoryRepository(database),
             storage=get_storage(),
+            runs=AgentRunRepository(database),
         )
         logger.info("Processing quotation %s", job.quotation_id)
         await pipeline.run(job.organization_id, job.quotation_id)

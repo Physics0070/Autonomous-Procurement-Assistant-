@@ -1,4 +1,6 @@
 import * as React from "react"
+import { DraftRfqDialog } from "@/pages/Communications"
+import { AgentRuns } from "@/components/AgentRuns"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import {
   ArrowLeft,
@@ -353,6 +355,7 @@ export function RequestDetailPage() {
         actions={
           <>
             <UploadDialog defaultRequestId={request.id} />
+            <DraftRfqDialog requestId={request.id} />
             <Button variant="outline" asChild>
               <Link to={`/comparison/${request.id}`}>
                 <BarChart3 className="h-4 w-4" />
@@ -481,6 +484,7 @@ export function RequestDetailPage() {
           )}
         </CardContent>
       </Card>
+      <AgentRuns filters={{ procurement_request_id: request.id }} />
     </div>
   )
 }

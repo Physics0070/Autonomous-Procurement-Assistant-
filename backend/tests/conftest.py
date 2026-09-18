@@ -93,3 +93,58 @@ def google(monkeypatch):
     monkeypatch.setattr(settings, "GOOGLE_CLIENT_SECRET", "secret-xyz")
     monkeypatch.setattr(settings, "FRONTEND_URL", "http://localhost:5173")
     return FakeGoogle()
+
+
+@pytest.fixture
+async def sourcing(api, db, org_a):
+    """A request for two items, two processed quotations and a stored comparison.
+
+    Shree Steel (Maharashtra GSTIN) quotes both items; Apex Metals (Karnataka)
+    quotes only the first and is cheaper per unit but slower.
+    """
+    from bson import ObjectId
+
+    from app.repositories.quotations import QuotationRepository
+
+    h = org_a["headers"]
+    await api.put("/api/v1/organizations/me", headers=h, json={"gst_number": "27AABCV1234K1Z5", "address": "Pune"})
+    shree = (await api.post("/api/v1/suppliers", headers=h, json={
+        "name": "Shree Steel", "email": "sales@shreesteel.com", "gst_number": "27AABCS1429B1ZQ"})).json()
+    apex = (await api.post("/api/v1/suppliers", headers=h, json={
+        "name": "Apex Metals", "email": "quotes@apexmetals.com", "gst_number": "29ABCDE1234F2Z5"})).json()
+    request = (await api.post("/api/v1/procurement-requests", headers=h, json={
+        "title": "MS plates for press line",
+        "items": [{"name": "MS plate 10mm", "quantity": 100, "unit": "kg", "specifications": "IS 2062"},
+                  {"name": "Hex bolt M12", "quantity": 500, "unit": "pcs"}]})).json()
+    item1, item2 = (i["item_id"] for i in request["items"])
+
+    def quotation(supplier, lines, delivery_days, payment_days, freight):
+        subtotal = sum(q * p for _, _, q, p in lines)
+        return {
+            "procurement_request_id": ObjectId(request["id"]), "supplier_id": ObjectId(supplier["id"]),
+            "supplier_name": supplier["name"], "processing_status": "COMPLETED",
+            "effective_data": {
+                "supplier": {"name": supplier["name"], "gst_number": supplier["gst_number"]},
+                "items": [{"line_id": lid, "original_name": lid, "quantity": q, "unit_price": p, "tax_percentage": 18}
+                          for lid, _, q, p in lines],
+                "pricing": {"currency": "INR", "subtotal": subtotal, "tax_percentage": 18,
+                            "transportation_cost": freight, "landed_total": round(subtotal * 1.18 + freight, 2)},
+                "delivery": {"delivery_days": delivery_days},
+                "payment_terms": {"payment_days": payment_days, "raw_terms": f"{payment_days} days credit"},
+            },
+            "match_result": {
+                "matches": [{"request_item_id": rid, "request_item_name": rid, "quotation_line_id": lid,
+                             "matched": True, "unit_price": p} for lid, rid, _, p in lines],
+                "matched_count": len(lines), "coverage": len(lines) / 2,
+            },
+        }
+
+    repo = QuotationRepository(db)
+    q_shree = await repo.create(org_a["org_id"], quotation(
+        shree, [("L1", item1, 100, 72.0), ("L2", item2, 500, 8.5)], 7, 30, 1500))
+    q_apex = await repo.create(org_a["org_id"], quotation(apex, [("L1", item1, 100, 68.0)], 30, 0, 800))
+    comparison = await api.post(f"/api/v1/comparisons/procurement-requests/{request['id']}", headers=h,
+                                json={"include_ai_explanation": False})
+    assert comparison.status_code == 200, comparison.text
+    return {"headers": h, "request": request, "shree": shree, "apex": apex,
+            "q_shree": q_shree, "q_apex": q_apex, "comparison": comparison.json()}

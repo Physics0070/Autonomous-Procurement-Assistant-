@@ -36,6 +36,7 @@ class SupplierScore(APIModel):
 
     total_cost: Optional[float] = None
     landed_cost: Optional[float] = None
+    transport_cost: Optional[float] = None
     currency: str = "INR"
     delivery_days: Optional[int] = None
     payment_days: Optional[int] = None

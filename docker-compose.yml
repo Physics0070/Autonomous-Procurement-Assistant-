@@ -23,13 +23,20 @@ services:
       MONGODB_DB_NAME: procurement_assistant
       # Override in a .env file next to this compose file - never commit secrets.
       JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set JWT_SECRET_KEY in .env}
-      AI_PROVIDER: ${AI_PROVIDER:-gemini}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      AI_PROVIDER: ${AI_PROVIDER:-openrouter}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-google/gemma-4-31b-it:free}
+      OPENROUTER_FALLBACK_MODELS: ${OPENROUTER_FALLBACK_MODELS:-nvidia/nemotron-3-super-120b-a12b:free}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.0-flash}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:-http://localhost:8000/api/v1/channels/gmail/callback}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
       OCR_ENGINE: auto
       STORAGE_BACKEND: local
       STORAGE_LOCAL_PATH: /data/storage
-      CORS_ORIGINS: http://localhost:5173,http://localhost
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost}
     volumes:
       - file-storage:/data/storage
     ports:

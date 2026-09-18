@@ -86,4 +86,8 @@ async def ensure_indexes(db: AsyncIOMotorDatabase) -> None:
 
     await db.comparisons.create_index([("organization_id", 1), ("procurement_request_id", 1)])
     await db.price_history.create_index([("organization_id", 1), ("normalized_name", 1)])
+    await db.communications.create_index([("organization_id", 1), ("created_at", -1)])
+    await db.purchase_orders.create_index([("organization_id", 1), ("created_at", -1)])
+    await db.purchase_orders.create_index([("organization_id", 1), ("po_number", 1)], unique=True)
+    await db.counters.create_index([("organization_id", 1), ("name", 1)], unique=True)
     logger.info("MongoDB indexes ensured")

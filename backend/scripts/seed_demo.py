@@ -1,6 +1,7 @@
 """Seed the demo workspace with a request and the sample quotations."""
 from __future__ import annotations
 
+import os
 import sys
 import time
 from pathlib import Path
@@ -10,10 +11,10 @@ import httpx
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-API = "http://127.0.0.1:8000/api/v1"
+API = os.getenv("API_BASE_URL", "http://127.0.0.1:8000") + "/api/v1"
 SAMPLES = Path(__file__).resolve().parents[1] / "samples"
-EMAIL = "soham.demo@vishwakarma-eng.com"
-PASSWORD = "DemoPassw0rd!"
+EMAIL = os.getenv("DEMO_EMAIL", "soham.demo@vishwakarma-eng.com")
+PASSWORD = os.getenv("DEMO_PASSWORD", "DemoPassw0rd!")  # demo-only account
 
 MIME = {
     ".pdf": "application/pdf",

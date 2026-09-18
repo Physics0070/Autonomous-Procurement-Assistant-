@@ -9,7 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.api.routes import (
+    agents,
+    analytics,
     auth,
+    automation,
     channels,
     organizations,
     comparison,
@@ -162,6 +165,10 @@ for router in (
     dashboard.router,
     channels.router,
     organizations.router,
+    automation.router,
+    agents.router,
+    agents.assistant_router,
+    analytics.router,
 ):
     app.include_router(router, prefix=settings.API_V1_PREFIX)
 

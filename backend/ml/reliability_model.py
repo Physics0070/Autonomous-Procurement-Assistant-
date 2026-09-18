@@ -89,24 +89,37 @@ class ReliabilityModel:
 
     def predict_for_supplier(self, history: pd.DataFrame, order: dict,
                              as_of: pd.Timestamp | None = None) -> ReliabilityPrediction:
-        features = features_for_order(history, order, as_of)
-        late = float(self.pipeline.predict_proba(
-            features[self.metadata["feature_columns"]])[:, 1][0])
+        return self.predict_many([(history, order, as_of)])[0]
+
+    def predict_many(self, requests: list[tuple[pd.DataFrame, dict, pd.Timestamp | None]]
+                     ) -> list[ReliabilityPrediction]:
+        """Score several (history, order, as_of) requests with one model call.
+
+        A forest's per-call overhead dominates single-row predictions, so pages that
+        score many suppliers use this instead of one call per supplier.
+        """
+        if not requests:
+            return []
+        features = pd.concat([features_for_order(h, o, a) for h, o, a in requests], ignore_index=True)
+        late_scores = self.pipeline.predict_proba(features[self.metadata["feature_columns"]])[:, 1]
         bands = self.metadata["risk_bands"]
-        if late >= bands["high"]:
-            risk_level = "high"
-        elif late >= bands["medium"]:
-            risk_level = "medium"
-        else:
-            risk_level = "low"
-        row = features.iloc[0]
-        return ReliabilityPrediction(
-            late_probability=late,
-            on_time_probability=1.0 - late,
-            risk_level=risk_level,
-            model_version=self.metadata["model_version"],
-            model_name=self.metadata["model_name"],
-            trained_on=self.metadata["trained_on"],
-            history_count=int(row["prior_count"]),
-            signals=_signals(row),
-        )
+        predictions = []
+        for late, (_, row) in zip(late_scores, features.iterrows()):
+            late = float(late)
+            if late >= bands["high"]:
+                risk_level = "high"
+            elif late >= bands["medium"]:
+                risk_level = "medium"
+            else:
+                risk_level = "low"
+            predictions.append(ReliabilityPrediction(
+                late_probability=late,
+                on_time_probability=1.0 - late,
+                risk_level=risk_level,
+                model_version=self.metadata["model_version"],
+                model_name=self.metadata["model_name"],
+                trained_on=self.metadata["trained_on"],
+                history_count=int(row["prior_count"]),
+                signals=_signals(row),
+            ))
+        return predictions

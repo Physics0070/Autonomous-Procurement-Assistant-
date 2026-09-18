@@ -17,6 +17,14 @@ def _positive(values) -> np.ndarray:
     return array[np.isfinite(array) & (array > 0)]
 
 
+def _outside_fence(value: float, past: np.ndarray) -> float | None:
+    """IQRs beyond the past range when at least 1.5 (Tukey's fence), else None."""
+    q1, q3 = np.percentile(past, [25, 75])
+    spread = (q3 - q1) or np.ptp(past)
+    beyond = max(past.min() - value, value - past.max(), 0.0) / spread
+    return float(beyond) if beyond >= 1.5 else None
+
+
 def assess_price(unit_price: float, history_prices: Sequence[float]) -> dict | None:
     """Classify ``unit_price`` as NORMAL, POSSIBLE_ANOMALY or HIGH_ANOMALY.
 
@@ -47,6 +55,12 @@ def assess_price(unit_price: float, history_prices: Sequence[float]) -> dict | N
         else:
             status = "NORMAL"
             reason = f"Unit price {price:,.4g} matches the median of {len(history)} identical past prices."
+    elif (fence := _outside_fence(np.log(ratio), past.ravel())) is not None:
+        # Isolation Forest only splits within the observed range, so a price beyond it
+        # scores like the most extreme past price. Tukey fences on log price catch those.
+        status = "HIGH_ANOMALY" if fence >= 3 else "POSSIBLE_ANOMALY"
+        reason = (f"Unit price {price:,.4g} is {comparison}; it lies outside every past price, "
+                  f"{fence:.1f} interquartile ranges beyond the nearest one.")
     elif score < np.percentile(past_scores, HIGH_PERCENTILE):
         status = "HIGH_ANOMALY"
         reason = (f"Unit price {price:,.4g} is {comparison}; it is more unusual than "

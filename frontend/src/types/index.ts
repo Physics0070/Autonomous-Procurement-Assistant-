@@ -70,6 +70,15 @@ export interface SupplierReliability {
   sample_size: number
   factors: Record<string, any>
   notes: string[]
+  /** Late-delivery risk from the ML model; present once the supplier has delivered POs. */
+  ml?: {
+    late_probability: number
+    risk_level: "low" | "medium" | "high"
+    history_count: number
+    model_version: string
+    trained_on: string
+    signals: Array<{ text: string; direction: string }>
+  } | null
 }
 
 export interface Supplier {
@@ -393,6 +402,7 @@ export interface SupplierScore {
   criteria: CriterionScore[]
   total_cost: number | null
   landed_cost: number | null
+  transport_cost: number | null
   currency: string
   delivery_days: number | null
   payment_days: number | null

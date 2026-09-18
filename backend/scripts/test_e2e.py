@@ -6,6 +6,7 @@ the dashboard. Run with the backend already listening on BASE_URL.
 """
 from __future__ import annotations
 
+import os
 import sys
 import time
 import uuid
@@ -16,7 +17,7 @@ import httpx
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-BASE = "http://127.0.0.1:8000"
+BASE = os.getenv("API_BASE_URL", "http://127.0.0.1:8000")
 API = f"{BASE}/api/v1"
 SAMPLES = Path(__file__).resolve().parents[1] / "samples"
 
@@ -407,6 +408,74 @@ def main() -> int:
           [s["supplier_name"] for s in stored["suppliers"]] == [s["supplier_name"] for s in suppliers_scored])
 
     # ------------------------------------------------------------------
+    section("10b. PHASES 4-6: DRAFTS, PURCHASE ORDERS, AGENTS, ANALYTICS")
+    # ------------------------------------------------------------------
+    top, runner_up = suppliers_scored[0], suppliers_scored[1]
+    check("comparison rows carry a transport cost field", all("transport_cost" in s for s in suppliers_scored))
+
+    runs = client.get(f"{API}/agents/runs?quotation_id={quotation_ids[0]}", headers=auth_a).json()
+    check("processing ran as a recorded agent graph", bool(runs) and runs[0]["graph"] == "quotation_processing", str(runs)[:200])
+    if runs:
+        agents = [s["agent"] for s in runs[0]["steps"]]
+        print(f"  ..  processing agents: {agents}")
+        check("processing graph starts with the Document Extraction Agent", agents[:1] == ["Document Extraction Agent"])
+
+    rfq = client.post(f"{API}/procurement-requests/{request_id}/rfqs", headers=auth_a,
+                      json={"supplier_ids": [supplier_id]})
+    check("RFQ draft created", rfq.status_code == 201, rfq.text[:300])
+    rfq_draft = rfq.json()[0]
+    check("RFQ lists the requested items",
+          all(item["name"] in rfq_draft["body"] for item in created.json()["items"]), rfq_draft["body"][:300])
+    check("RFQ records how it was written", rfq_draft["generated_by"] in ("ai", "template"))
+
+    negotiation = client.post(f"{API}/comparisons/procurement-requests/{request_id}/negotiations", headers=auth_a,
+                              json={"quotation_id": top["quotation_id"]})
+    check("negotiation draft created", negotiation.status_code == 201, negotiation.text[:300])
+    neg = negotiation.json()
+    check("negotiation never names a competitor",
+          all(s["supplier_name"] not in neg["body"] for s in suppliers_scored[1:]), neg["body"][:300])
+    check("mark-sent before approval is refused",
+          client.post(f"{API}/communications/{neg['id']}/mark-sent", headers=auth_a).status_code == 409)
+    check("draft approves", client.post(f"{API}/communications/{neg['id']}/approve", headers=auth_a).json()["status"] == "approved")
+    check("approved draft marked sent",
+          client.post(f"{API}/communications/{neg['id']}/mark-sent", headers=auth_a).json()["status"] == "sent")
+    eml = client.get(f"{API}/communications/{neg['id']}/eml", headers=auth_a)
+    check(".eml export", eml.status_code == 200 and b"Subject:" in eml.content, eml.text[:200])
+
+    sourcing = client.post(f"{API}/agents/sourcing/{request_id}", headers=auth_a)
+    check("sourcing agents stop for approval",
+          sourcing.status_code == 201 and sourcing.json()["status"] == "awaiting_approval", sourcing.text[:300])
+
+    award = client.post(f"{API}/comparisons/procurement-requests/{request_id}/award", headers=auth_a,
+                        json={"quotation_id": top["quotation_id"]})
+    check("award creates a purchase order", award.status_code == 201, award.text[:300])
+    po = award.json()
+    print(f"  ..  {po.get('po_number')}: {len(po.get('lines', []))} lines, taxes "
+          f"{[t['name'] for t in po.get('pricing', {}).get('taxes', [])]}, total {po.get('pricing', {}).get('total')}")
+    check("PO lines come from matched items", len(po.get("lines", [])) >= 1)
+    check("PO number format", str(po.get("po_number", "")).startswith("PO-"), str(po.get("po_number")))
+    for action in ("approve", "issue"):
+        client.post(f"{API}/purchase-orders/{po['id']}/{action}", headers=auth_a)
+    delivered = client.post(f"{API}/purchase-orders/{po['id']}/deliver", headers=auth_a, json={}).json()
+    check("delivery recorded with on-time flag", delivered.get("status") == "delivered" and delivered.get("on_time") is True,
+          str(delivered)[:200])
+    pdf = client.get(f"{API}/purchase-orders/{po['id']}/pdf", headers=auth_a)
+    check("PO PDF renders", pdf.content.startswith(b"%PDF"))
+    po_mail = client.get(f"{API}/communications?kind=purchase_order", headers=auth_a).json()
+    check("approved PO produced a covering email draft", any(c["purchase_order_id"] == po["id"] for c in po_mail))
+
+    spend = client.get(f"{API}/analytics/spend", headers=auth_a).json()
+    check("spend counts the delivered PO", spend["orders"] == 1 and spend["total_spend"] == po["pricing"]["total"], str(spend)[:200])
+    models = client.get(f"{API}/analytics/models", headers=auth_a).json()
+    check("reliability model is loaded", models["reliability"]["available"] is True)
+    awarded_supplier = client.get(f"{API}/suppliers/{po['supplier_id']}", headers=auth_a).json() if po.get("supplier_id") else {}
+    ml = (awarded_supplier.get("reliability") or {}).get("ml")
+    check("delivered supplier gets an ML late-delivery risk", bool(ml) and ml["method"] == "ml_model", str(ml)[:200])
+    assistant = client.post(f"{API}/assistant/messages", headers=auth_a, json={"message": "hello"})
+    check("assistant answers or explains it needs an LLM",
+          assistant.status_code == 200 if ai_configured else assistant.status_code == 503, assistant.text[:200])
+
+    # ------------------------------------------------------------------
     section("11. DASHBOARD (real data)")
     # ------------------------------------------------------------------
     dash = client.get(f"{API}/dashboard/summary", headers=auth_a)
@@ -457,6 +526,14 @@ def main() -> int:
     check("org B cannot compare org A's request",
           client.post(f"{API}/comparisons/procurement-requests/{request_id}", headers=auth_b,
                       json={}).status_code == 404)
+
+    check("org B sees none of org A's purchase orders",
+          client.get(f"{API}/purchase-orders", headers=auth_b).json() == [])
+    check("org B sees none of org A's communications",
+          client.get(f"{API}/communications", headers=auth_b).json() == [])
+    check("org B cannot open org A's purchase order",
+          client.get(f"{API}/purchase-orders/{po['id']}", headers=auth_b).status_code == 404)
+    check("org B spend is empty", client.get(f"{API}/analytics/spend", headers=auth_b).json()["orders"] == 0)
 
     b_dash = client.get(f"{API}/dashboard/summary", headers=auth_b).json()
     check("org B dashboard is empty", b_dash["quotations"]["total"] == 0, str(b_dash["quotations"]))

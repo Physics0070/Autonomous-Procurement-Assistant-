@@ -46,6 +46,15 @@ def detect_price_anomaly(
             "sample_size": 0,
         }
 
+    if history and not stats:
+        # Enough history for a learned model: Isolation Forest (ml/anomaly.py).
+        from ml.anomaly import MIN_SAMPLES as ML_MIN_SAMPLES, assess_price
+
+        if len([v for v in history if v]) >= ML_MIN_SAMPLES:
+            assessed = assess_price(unit_price, history)
+            if assessed is not None:
+                return assessed
+
     if stats:
         mean = stats.get("mean")
         stdev = stats.get("stdev")
