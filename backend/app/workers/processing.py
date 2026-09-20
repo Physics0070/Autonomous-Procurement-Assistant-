@@ -21,6 +21,7 @@ from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import PriceHistoryRepository, QuotationRepository
 from app.schemas.common import ProcessingStatus
 from app.repositories.automation import AgentRunRepository
+from app.services.agents.monitor import on_quotation_processed
 from app.services.documents.pipeline import ProcessingPipeline
 from app.services.storage.local import get_storage
 
@@ -120,7 +121,12 @@ class ProcessingQueue:
             runs=AgentRunRepository(database),
         )
         logger.info("Processing quotation %s", job.quotation_id)
-        await pipeline.run(job.organization_id, job.quotation_id)
+        quotation = await pipeline.run(job.organization_id, job.quotation_id)
+        try:
+            # The monitor agent may start sourcing now that another quotation is in.
+            await on_quotation_processed(database, job.organization_id, quotation)
+        except Exception:
+            logger.exception("Monitor agent failed after quotation %s", job.quotation_id)
 
     async def wait_until_idle(self, timeout: float = 120.0) -> bool:
         """Block until the queue drains. Used by tests and the E2E script."""

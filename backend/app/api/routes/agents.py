@@ -13,11 +13,14 @@ from app.core.errors import ConfigurationError
 from app.integrations.ai.base import AIProvider, ChatMessage, ToolCall
 from app.repositories.automation import AgentRunRepository, CommunicationRepository, ConversationRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
-from app.repositories.quotations import ComparisonRepository, QuotationRepository
+from app.repositories.automation import PurchaseOrderRepository
+from app.repositories.quotations import ComparisonRepository, PriceHistoryRepository, QuotationRepository
 from app.repositories.suppliers import SupplierRepository
 from app.schemas.common import APIModel
 from app.services.agents.assistant import AssistantTools, run_assistant
 from app.services.agents.runs import RunRecorder
+from app.services.agents.specialists import AgentContext
+from app.services.agents.supervisor import resume_supervisor, run_supervisor
 from app.services.automation.communications import now
 from app.services.agents.sourcing import run_sourcing
 
@@ -48,6 +51,49 @@ async def start_sourcing(
         buyer=context.organization, user_id=context.user_id,
         comparisons=comparisons, communications=communications, provider=provider,
     )
+
+
+class ResumeIn(APIModel):
+    approved: bool = True
+
+
+def _context(database, context: CurrentUser, recorder: RunRecorder, provider: AIProvider) -> AgentContext:
+    return AgentContext(
+        organization=context.organization, user_id=context.user_id, provider=provider, recorder=recorder,
+        requests=ProcurementRequestRepository(database), quotations=QuotationRepository(database),
+        suppliers=SupplierRepository(database), comparisons=ComparisonRepository(database),
+        communications=CommunicationRepository(database), purchase_orders=PurchaseOrderRepository(database),
+        price_history=PriceHistoryRepository(database),
+    )
+
+
+@router.post("/supervisor/{request_id}", status_code=201)
+async def start_supervisor(
+    request_id: str, context: CurrentUser, database: DB,
+    requests: ProcurementRequestRepository = Depends(request_repo),
+    runs: AgentRunRepository = Depends(run_repo),
+    provider: AIProvider = Depends(ai_provider),
+) -> dict:
+    """Hand the whole request to the supervisor: it decides which agents run, and stops for approval."""
+    request = await requests.get_or_404(context.organization_id, request_id)
+    recorder = await RunRecorder(runs, context.organization_id, "supervisor",
+                                 {"procurement_request_id": request_id}, context.user_id).start()
+    return await run_supervisor(_context(database, context, recorder, provider), request)
+
+
+@router.post("/runs/{run_id}/resume")
+async def resume_run(
+    run_id: str, context: CurrentUser, database: DB, payload: Optional[ResumeIn] = None,
+    requests: ProcurementRequestRepository = Depends(request_repo),
+    runs: AgentRunRepository = Depends(run_repo),
+    provider: AIProvider = Depends(ai_provider),
+) -> dict:
+    """Continue a run that paused for approval (or cancel it)."""
+    run = await runs.get_or_404(context.organization_id, run_id)
+    request = await requests.get_or_404(context.organization_id, str((run.get("input") or {}).get("procurement_request_id")))
+    recorder = RunRecorder.attach(runs, {**run, "organization_id": context.organization_id})
+    return await resume_supervisor(_context(database, context, recorder, provider), run, request,
+                                   approved=(payload or ResumeIn()).approved)
 
 
 @router.get("/runs")

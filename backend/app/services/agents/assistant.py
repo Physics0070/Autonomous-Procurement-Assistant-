@@ -5,19 +5,15 @@ supplies an organization id; any argument it invents that a tool doesn't take is
 """
 from __future__ import annotations
 
-import inspect
-import json
-from typing import Any, Optional, TypedDict
-
-from langgraph.graph import END, START, StateGraph
+from typing import Any, Optional
 
 from app.core.config import settings
-from app.core.errors import AppError, UpstreamError
 from app.integrations.ai.base import AIProvider, ChatMessage
 from app.repositories.automation import CommunicationRepository, PurchaseOrderRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import ComparisonRepository, QuotationRepository
 from app.repositories.suppliers import SupplierRepository
+from app.services.agents.loop import call_method, run_tool_loop, tool_schema
 from app.services.analytics.spend import spend_summary
 from app.services.automation import communications as comms
 
@@ -31,29 +27,19 @@ SYSTEM = (
 )
 
 
-def _schema(name: str, description: str, **props: tuple[str, str]) -> dict:
-    """props: name -> (json type, description); every prop ending in '?' is optional."""
-    properties = {k.rstrip("?"): {"type": t, "description": d} for k, (t, d) in props.items()}
-    for k, (t, _) in props.items():
-        if t == "array":
-            properties[k.rstrip("?")]["items"] = {"type": "string"}
-    return {"type": "function", "function": {"name": name, "description": description, "parameters": {
-        "type": "object", "properties": properties, "required": [k for k in props if not k.endswith("?")]}}}
-
-
 TOOLS = [
-    _schema("list_procurement_requests", "List procurement requests, newest first.", **{"status?": ("string", "draft|open|comparing|awarded|closed|cancelled")}),
-    _schema("get_procurement_request", "One procurement request with its items.", request_id=("string", "Request id")),
-    _schema("search_quotations", "Quotations, optionally for one request or supplier, or matching a supplier name.",
+    tool_schema("list_procurement_requests", "List procurement requests, newest first.", **{"status?": ("string", "draft|open|comparing|awarded|closed|cancelled")}),
+    tool_schema("get_procurement_request", "One procurement request with its items.", request_id=("string", "Request id")),
+    tool_schema("search_quotations", "Quotations, optionally for one request or supplier, or matching a supplier name.",
             **{"procurement_request_id?": ("string", "Request id"), "supplier_name?": ("string", "Part of a supplier name")}),
-    _schema("get_quotation", "One quotation's extracted items, prices and terms.", quotation_id=("string", "Quotation id")),
-    _schema("get_comparison", "The stored supplier comparison (scores, ranking, recommendation) for a request.",
+    tool_schema("get_quotation", "One quotation's extracted items, prices and terms.", quotation_id=("string", "Quotation id")),
+    tool_schema("get_comparison", "The stored supplier comparison (scores, ranking, recommendation) for a request.",
             procurement_request_id=("string", "Request id")),
-    _schema("get_supplier", "A supplier by id or name, with reliability.", **{"supplier_id?": ("string", "Supplier id"), "name?": ("string", "Supplier name")}),
-    _schema("spend_summary", "Spend by supplier, month and item from issued/delivered purchase orders, plus savings and on-time rates."),
-    _schema("draft_rfq", "Create RFQ email DRAFTS (not sent) for a request to chosen suppliers.",
+    tool_schema("get_supplier", "A supplier by id or name, with reliability.", **{"supplier_id?": ("string", "Supplier id"), "name?": ("string", "Supplier name")}),
+    tool_schema("spend_summary", "Spend by supplier, month and item from issued/delivered purchase orders, plus savings and on-time rates."),
+    tool_schema("draft_rfq", "Create RFQ email DRAFTS (not sent) for a request to chosen suppliers.",
             procurement_request_id=("string", "Request id"), supplier_ids=("array", "Supplier ids")),
-    _schema("draft_negotiation", "Create a negotiation email DRAFT (not sent) to the supplier of one compared quotation.",
+    tool_schema("draft_negotiation", "Create a negotiation email DRAFT (not sent) to the supplier of one compared quotation.",
             procurement_request_id=("string", "Request id"), quotation_id=("string", "Quotation id")),
 ]
 
@@ -129,58 +115,16 @@ class AssistantTools:
         return {"communication_id": saved["id"], "status": saved["status"], "target_price": saved.get("target_price")}
 
     async def call(self, name: str, arguments: dict) -> Any:
-        fn = getattr(self, name, None) if name in {t["function"]["name"] for t in TOOLS} else None
-        if fn is None:
-            return {"error": f"Unknown tool {name}."}
-        accepted = inspect.signature(fn).parameters
-        try:
-            return await fn(**{k: v for k, v in arguments.items() if k in accepted})
-        except (AppError, TypeError) as exc:
-            return {"error": getattr(exc, "message", str(exc))}
-
-
-class AssistantState(TypedDict, total=False):
-    messages: list[ChatMessage]
-    rounds: int
+        return await call_method(self, {t["function"]["name"] for t in TOOLS}, name, arguments)
 
 
 async def run_assistant(history: list[ChatMessage], tools: AssistantTools, provider: AIProvider) -> list[ChatMessage]:
     """Returns only the messages produced in this turn (assistant + tool messages)."""
-    system = ChatMessage(role="system", content=SYSTEM.format(org=tools.org.get("name")))
-
-    async def agent(state: AssistantState) -> dict:
-        result = await provider.chat([system, *state["messages"]], tools=TOOLS)
-        if not result.ok:
-            raise UpstreamError(f"The AI provider failed: {result.error}")
-        reply = ChatMessage(role="assistant", content=result.content, tool_calls=result.tool_calls)
-        return {"messages": [*state["messages"], reply]}
-
-    async def run_tools(state: AssistantState) -> dict:
-        outputs = [
-            ChatMessage(role="tool", tool_call_id=call.id, name=call.name,
-                        content=json.dumps(await tools.call(call.name, call.arguments), default=str)[:12000])
-            for call in state["messages"][-1].tool_calls
-        ]
-        return {"messages": [*state["messages"], *outputs], "rounds": state["rounds"] + 1}
-
-    async def give_up(state: AssistantState) -> dict:
-        note = ChatMessage(role="assistant", content=f"I stopped after {MAX_TOOL_ROUNDS} tool rounds without a final answer. "
-                                                     "Please ask a narrower question.")
-        return {"messages": [*state["messages"], note]}
-
-    def route(state: AssistantState) -> str:
-        if not state["messages"][-1].tool_calls:
-            return END
-        return "tools" if state["rounds"] < MAX_TOOL_ROUNDS else "give_up"
-
-    graph = StateGraph(AssistantState)
-    graph.add_node("agent", agent)
-    graph.add_node("tools", run_tools)
-    graph.add_node("give_up", give_up)
-    graph.add_edge(START, "agent")
-    graph.add_conditional_edges("agent", route)
-    graph.add_edge("tools", "agent")
-    graph.add_edge("give_up", END)
-    state = await graph.compile().ainvoke({"messages": list(history), "rounds": 0},
-                                          {"recursion_limit": 3 * MAX_TOOL_ROUNDS + 5})
-    return state["messages"][len(history):]
+    return await run_tool_loop(
+        provider,
+        system=SYSTEM.format(org=tools.org.get("name")),
+        history=history,
+        tools=TOOLS,
+        execute=tools.call,
+        max_rounds=MAX_TOOL_ROUNDS,
+    )

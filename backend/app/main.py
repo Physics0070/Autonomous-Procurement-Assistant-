@@ -27,6 +27,7 @@ from app.core.database import close_database_connection, connect_to_database
 from app.core.errors import AppError
 from app.integrations.ai.factory import get_ai_provider
 from app.services.documents.ocr import get_ocr_service
+from app.workers.agent_monitor import get_agent_watchdog
 from app.workers.channel_scheduler import get_channel_scheduler
 from app.workers.processing import get_processing_queue, recover_pending_jobs
 
@@ -60,6 +61,8 @@ async def lifespan(app: FastAPI):
     await queue.start()
     scheduler = get_channel_scheduler()
     await scheduler.start()
+    watchdog = get_agent_watchdog()
+    await watchdog.start()
     try:
         await recover_pending_jobs()
     except Exception as exc:
@@ -68,6 +71,7 @@ async def lifespan(app: FastAPI):
     yield
 
     await scheduler.stop()
+    await watchdog.stop()
     await queue.stop()
     await close_database_connection()
 

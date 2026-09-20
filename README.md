@@ -90,10 +90,10 @@ cd backend
 ./.venv/Scripts/python.exe scripts/test_extraction.py    # PDF/scan/image/Excel extraction
 ./.venv/Scripts/python.exe scripts/test_normalization.py # normalization + fuzzy matching
 ./.venv/Scripts/python.exe scripts/test_ai_extraction.py # structured extraction
-./.venv/Scripts/python.exe scripts/test_e2e.py           # 147 assertions against the live API
+./.venv/Scripts/python.exe scripts/test_e2e.py           # 155 assertions against the live API
 ./.venv/Scripts/python.exe scripts/seed_demo.py          # populate a demo workspace
 ./.venv/Scripts/python.exe -m scripts.load_scms_demo     # real-data demo org (USAID SCMS)
-./.venv/Scripts/python.exe -m pytest -q                  # 144 unit/API tests (MongoDB needed)
+./.venv/Scripts/python.exe -m pytest -q                  # 158 unit/API tests (MongoDB needed)
 ```
 
 `test_e2e.py` and `seed_demo.py` require the backend to be running. The pytest suite uses
@@ -224,6 +224,11 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `NEGOTIATION_DEFAULT_DISCOUNT_PCT` | `5.0` | Target price below the quote |
 | `NEGOTIATION_WEAK_CRITERION_SCORE` | `0.5` | Delivery/payment scores below this are negotiated |
 | `ASSISTANT_MAX_TOOL_ROUNDS` | `6` | |
+| `AGENT_MAX_STEPS` | `12` | Supervisor routing decisions per run |
+| `AGENT_AUTOPILOT` | `true` | The monitor agent starts sourcing and chases late deliveries by itself (drafts only) |
+| `AGENT_AUTOPILOT_MIN_QUOTATIONS` | `2` | Quotations needed before it starts |
+| `AGENT_WATCHDOG_INTERVAL_MINUTES` | `60` | Overdue-delivery check; `0` disables |
+| `EXTRACTION_SELF_CORRECTION` | `true` | Re-read a document once when validation finds errors |
 | `ML_MIN_RETRAIN_ORDERS` | `50` | Delivered POs needed to retrain on your own data |
 | `OCR_ENGINE` | `auto` | `auto` · `tesseract` · `rapidocr` · `none` |
 | `TESSERACT_CMD` | — | Only if `tesseract` is not on `PATH` |
@@ -259,11 +264,34 @@ Tesseract later needs no code change.
 | RFQ and negotiation drafts | Communications page · `services/automation/communications.py` | LLM writes, template fallback; negotiation guardrail rejects any draft naming a competitor or its figures |
 | Approval workflow | Communications page | draft → approved → sent; the app never sends email — export `.eml` or copy |
 | Purchase orders | Purchase Orders page · `services/automation/purchase_orders.py` | Award from comparison; `PO-<year>-<0001>`; CGST+SGST / IGST / GST from GSTIN state codes; PDF; delivery recording |
-| Agents (LangGraph) | `services/agents/` | Quotation processing graph, sourcing graph (stops at approval), assistant tool loop; every run recorded as a timeline |
+| Agents (LangGraph) | `services/agents/` | Supervisor routes 5 specialists, they hand back with `Command`; runs pause for approval and resume; every run recorded as a timeline |
 | Procurement Assistant | Assistant page | 9 organization-bound tools; drafts only; max 6 tool rounds |
 | ML late-delivery risk | Suppliers page · `backend/ml/` | Random forest on USAID SCMS; shown beside the rule-based score |
 | Price anomalies | Quotation detail | Isolation Forest (+ out-of-range fence) from 20 past prices; Z-score below that |
 | Spend and forecasts | Analytics page | Spend by supplier/month/item, on-time rate, savings; 3-month forecasts after 12 months of history |
+
+### The agents
+
+| Agent | Decides | Tools of its own |
+|---|---|---|
+| **Supervisor** | which specialist runs next, and when to stop for approval | — (picks from the actions the policy allows) |
+| **Document Extraction** | whether its own reading is good enough | re-reads the document once with the validator's complaints |
+| **Matching** | which quoted line answers which requested item | AI adjudication for ambiguous pairs only |
+| **Comparison** | *nothing* — scoring stays deterministic | — |
+| **Recommendation** | how to explain the ranking | — |
+| **Risk** | whether the supplier's delivery record is a concern | the ML late-delivery model |
+| **Negotiation** | what to argue and how | supplier performance, price history, past negotiations, guardrail-checked submit |
+| **Critic** | whether a draft is fit to send | — |
+| **Purchase Order** | *nothing* — tax and totals stay deterministic | — |
+| **Monitor** | when work should start without being asked | starts sourcing on new quotations; chases overdue deliveries |
+| **Assistant** | how to answer your question | 9 organisation-bound read/draft tools |
+
+Three safety rules hold whatever the model decides: the supervisor may only pick an action the
+policy allows (so it cannot order before comparing, or skip an approval), every run has a step
+budget, and nothing is ever sent — agents produce drafts that wait for a person.
+
+Without an LLM the same graph still runs: the supervisor follows the policy order, drafts come
+from templates, and every run says which path it took.
 
 ### ML results (held-out test, 2014–2015, 2,545 shipments)
 

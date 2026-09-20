@@ -44,7 +44,7 @@ Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the tea
 | Python, FastAPI | Done |
 | PostgreSQL / MongoDB | MongoDB done; repository layer keeps PostgreSQL swappable |
 | Ollama / Gemini API | OpenRouter (primary), Ollama and Gemini providers built; key needed for live calls |
-| **LangGraph** | Done — processing, sourcing and assistant graphs |
+| **LangGraph** | Done — supervisor + 5 specialists with handoffs, processing graph, assistant loop |
 | OCR (Tesseract / LlamaParse) | Tesseract engine built, not installable on this machine; RapidOCR used |
 | **Scikit-Learn** | Done — random forest, Isolation Forest, linear regression |
 | Pandas | Done |
@@ -58,7 +58,7 @@ Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the tea
 | Data Collection | Done — upload + Gmail | 3 |
 | OCR & AI Document Extraction | Done | 2 |
 | Data Normalization | Done | 2 |
-| AI Procurement Engine (LLM + Agentic AI) | Done — LangGraph agents | 5 |
+| AI Procurement Engine (LLM + Agentic AI) | Done — supervisor-routed multi-agent system with pause/resume | 5 |
 | Machine Learning Module | Done | 6 |
 | Supplier Comparison Engine | Done | 2 |
 | AI Recommendation Module | Done | 2 |

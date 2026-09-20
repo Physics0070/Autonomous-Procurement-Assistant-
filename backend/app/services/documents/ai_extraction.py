@@ -55,7 +55,7 @@ def parse_json_response(text: str) -> tuple[Optional[dict], Optional[str]]:
 
 
 async def extract_structured(
-    document: ProcessedDocument, provider: Optional[AIProvider] = None
+    document: ProcessedDocument, provider: Optional[AIProvider] = None, feedback: Optional[str] = None
 ) -> tuple[AIExtractionResult, Optional[str]]:
     """Returns (result, error). `error` is set when AI could not be used.
 
@@ -91,6 +91,7 @@ async def extract_structured(
         document_type=document.document_type.value,
         language=document.detected_language,
         ocr_used=document.ocr_used,
+        feedback=feedback,
     )
     response = await provider.generate(prompt, system=EXTRACTION_SYSTEM, json_mode=True, temperature=0.0)
 

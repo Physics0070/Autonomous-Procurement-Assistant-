@@ -464,6 +464,30 @@ def main() -> int:
     po_mail = client.get(f"{API}/communications?kind=purchase_order", headers=auth_a).json()
     check("approved PO produced a covering email draft", any(c["purchase_order_id"] == po["id"] for c in po_mail))
 
+    # --- Supervisor agent: routes specialists, pauses for approval, resumes ---
+    before_ids = {c["id"] for c in client.get(f"{API}/communications", headers=auth_a).json()}
+    supervised = client.post(f"{API}/agents/supervisor/{request_id}", headers=auth_a)
+    check("supervisor run starts", supervised.status_code == 201, supervised.text[:300])
+    srun = supervised.json()
+    agents_used = [s["agent"] for s in srun["steps"]]
+    print(f"  ..  agents: {' -> '.join(dict.fromkeys(agents_used))}")
+    print(f"  ..  decisions: {[d['action'] for d in srun['output']['decisions']]}")
+    check("supervisor routed to the specialists",
+          {"Supervisor Agent", "Comparison Agent", "Risk Agent", "Negotiation Agent"} <= set(agents_used), str(set(agents_used)))
+    check("supervisor stops for human approval", srun["status"] == "awaiting_approval", srun["status"])
+    # Only what this run produced: earlier sections deliberately approved and sent things.
+    new_comms = [c for c in client.get(f"{API}/communications", headers=auth_a).json() if c["id"] not in before_ids]
+    check("the agents produced a draft", len(new_comms) == 1, str([(c["kind"], c["status"]) for c in new_comms]))
+    check("nothing the agents produced was approved or sent",
+          all(c["status"] == "draft" for c in new_comms), str([(c["kind"], c["status"]) for c in new_comms]))
+
+    waiting_id = srun["output"]["pending"]["communication_id"]
+    client.post(f"{API}/communications/{waiting_id}/approve", headers=auth_a)
+    resumed = client.post(f"{API}/agents/runs/{srun['id']}/resume", headers=auth_a, json={"approved": True})
+    check("approval resumes the run", resumed.status_code == 200, resumed.text[:200])
+    check("the purchase order agent then drafts the order",
+          bool(resumed.json()["output"].get("po_number")), str(resumed.json()["output"])[:200])
+
     spend = client.get(f"{API}/analytics/spend", headers=auth_a).json()
     check("spend counts the delivered PO", spend["orders"] == 1 and spend["total_spend"] == po["pricing"]["total"], str(spend)[:200])
     models = client.get(f"{API}/analytics/models", headers=auth_a).json()
@@ -534,6 +558,8 @@ def main() -> int:
     check("org B cannot open org A's purchase order",
           client.get(f"{API}/purchase-orders/{po['id']}", headers=auth_b).status_code == 404)
     check("org B spend is empty", client.get(f"{API}/analytics/spend", headers=auth_b).json()["orders"] == 0)
+    check("org B cannot resume org A's agent run",
+          client.post(f"{API}/agents/runs/{srun['id']}/resume", headers=auth_b, json={"approved": True}).status_code == 404)
 
     b_dash = client.get(f"{API}/dashboard/summary", headers=auth_b).json()
     check("org B dashboard is empty", b_dash["quotations"]["total"] == 0, str(b_dash["quotations"]))

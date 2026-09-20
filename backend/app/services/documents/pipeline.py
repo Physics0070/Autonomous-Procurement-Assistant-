@@ -14,6 +14,7 @@ from typing import Any, Optional, TypedDict
 
 from langgraph.graph import END, START, StateGraph
 
+from app.core.config import settings
 from app.core.errors import NotFoundError
 from app.repositories.automation import AgentRunRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
@@ -173,19 +174,35 @@ class ProcessingPipeline:
             details={"ocr_used": processed.ocr_used, "chars": len(processed.raw_text)},
         )
         extraction, ai_error = await extract_structured(processed)
-        await self.quotations.store_stage(
-            organization_id, quotation_id, "ai_extraction", extraction.model_dump(mode="json")
-        )
 
         # Stage 3: validation (flags only; never edits the extraction)
         validation = validate_extraction(extraction)
+
+        # The agent gets one chance to correct itself: re-read the document with the
+        # validator's complaints, and keep the attempt that validates better.
+        retried = False
+        if not ai_error and validation.error_count and settings.EXTRACTION_SELF_CORRECTION:
+            complaints = "\n".join(
+                f"- {issue.message}" for issue in validation.issues if issue.severity == "error")
+            second, second_error = await extract_structured(processed, feedback=complaints)
+            if not second_error:
+                second_validation = validate_extraction(second)
+                retried = True
+                if second_validation.error_count < validation.error_count:
+                    extraction, validation = second, second_validation
+                    extraction.notes.append("Corrected after a validation check found problems in the first reading.")
+
+        await self.quotations.store_stage(
+            organization_id, quotation_id, "ai_extraction", extraction.model_dump(mode="json")
+        )
         await self.quotations.store_stage(
             organization_id, quotation_id, "validation", validation.model_dump(mode="json")
         )
         return {
             "processed": processed, "extraction": extraction, "ai_error": ai_error, "validation": validation,
             "_summary": f"{len(extraction.items)} items via {extraction.provider or 'heuristics'}; "
-                        f"{validation.error_count} error(s), {validation.warning_count} warning(s)",
+                        f"{validation.error_count} error(s), {validation.warning_count} warning(s)"
+                        + (" (after one self-correction)" if retried else ""),
         }
 
     async def _normalize(self, state: ProcessingState) -> dict[str, Any]:

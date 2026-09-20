@@ -117,6 +117,13 @@ class Settings(BaseSettings):
     NEGOTIATION_DEFAULT_DISCOUNT_PCT: float = 5.0  # target price below the quote when none is given
     NEGOTIATION_WEAK_CRITERION_SCORE: float = 0.5  # delivery/payment scores below this are negotiated
     ASSISTANT_MAX_TOOL_ROUNDS: int = 6
+    AGENT_MAX_STEPS: int = 12  # supervisor routing decisions per run
+    # The monitor agent starts work on its own. It only ever produces drafts that wait
+    # for approval; set AGENT_AUTOPILOT=false to require a person to press the button.
+    AGENT_AUTOPILOT: bool = True
+    AGENT_AUTOPILOT_MIN_QUOTATIONS: int = 2
+    AGENT_WATCHDOG_INTERVAL_MINUTES: int = 60  # overdue-delivery check; 0 disables
+    EXTRACTION_SELF_CORRECTION: bool = True  # re-read a document once when validation finds errors
     ML_MIN_RETRAIN_ORDERS: int = 50  # delivered POs needed to retrain the reliability model
 
     @model_validator(mode="after")

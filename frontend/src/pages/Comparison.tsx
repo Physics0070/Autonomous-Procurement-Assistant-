@@ -39,7 +39,7 @@ import {
   ValueOrMissing,
 } from "@/components/ui/feedback"
 import { useComparison, useComputeComparison, useRequests } from "@/hooks/queries"
-import { useCommunicationActions, usePurchaseOrderActions, useRunSourcing } from "@/hooks/automation"
+import { useCommunicationActions, usePurchaseOrderActions, useRunSupervisor } from "@/hooks/automation"
 import { AgentRuns } from "@/components/AgentRuns"
 import { cn, formatCurrency, formatDateTime, percent } from "@/lib/utils"
 import type { SupplierScore } from "@/types"
@@ -135,7 +135,7 @@ export function ComparisonPage() {
   const navigate = useNavigate()
   const { award } = usePurchaseOrderActions()
   const { draftNegotiation } = useCommunicationActions()
-  const sourcing = useRunSourcing()
+  const sourcing = useRunSupervisor()
   const [actionError, setActionError] = React.useState<string | null>(null)
   const act = (promise: Promise<unknown>, to: string) =>
     promise.then(() => navigate(to)).catch((e: Error) => setActionError(e.message))
@@ -184,10 +184,10 @@ export function ComparisonPage() {
               variant="outline"
               onClick={() => sourcing.mutateAsync(requestId ?? "").catch((e: Error) => setActionError(e.message))}
               disabled={sourcing.isPending || suppliers.length === 0}
-              title="Comparison, recommendation and a negotiation draft for the top supplier. Nothing is sent."
+              title="The supervisor agent decides which specialists run: comparison, recommendation, delivery risk, negotiation drafting. It stops for your approval and never sends anything."
             >
               {sourcing.isPending && <Spinner />}
-              Run sourcing agents
+              Run agents
             </Button>
             <Button
               variant="outline"
@@ -202,9 +202,15 @@ export function ComparisonPage() {
       />
       {actionError && <Alert tone="error">{actionError}</Alert>}
       {sourcing.data?.status === "awaiting_approval" && (
-        <Alert tone="success" title="Sourcing agents finished">
-          A negotiation draft for {sourcing.data.output?.recommended_supplier_name} is waiting for your approval on{" "}
-          <Link to="/communications" className="text-primary hover:underline">Communications</Link>.
+        <Alert tone="success" title="The agents paused for your approval">
+          {sourcing.data.output?.pending?.waiting_for === "the negotiation draft" ? (
+            <>A negotiation draft for {sourcing.data.output?.recommended_supplier_name} is waiting on{" "}
+              <Link to="/communications" className="text-primary hover:underline">Communications</Link>.</>
+          ) : (
+            <>{sourcing.data.output?.po_number} is waiting on{" "}
+              <Link to="/purchase-orders" className="text-primary hover:underline">Purchase orders</Link>.</>
+          )}{" "}
+          Approve it, then press Continue in the timeline below to let them carry on.
         </Alert>
       )}
 
@@ -632,7 +638,7 @@ export function ComparisonPage() {
           )}
         </>
       )}
-      <AgentRuns filters={{ procurement_request_id: requestId, graph: "sourcing" }} title="Sourcing agent runs" />
+      <AgentRuns filters={{ procurement_request_id: requestId }} title="Agent runs" />
     </div>
   )
 }

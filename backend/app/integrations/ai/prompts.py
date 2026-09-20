@@ -72,7 +72,15 @@ EXTRACTION_SCHEMA = {
 }
 
 
-def build_extraction_prompt(document_text: str, *, document_type: str, language: str | None, ocr_used: bool) -> str:
+def build_extraction_prompt(document_text: str, *, document_type: str, language: str | None, ocr_used: bool,
+                            feedback: str | None = None) -> str:
+    correction = (
+        f"\nA previous extraction of this same document was checked and these problems were found:\n"
+        f"{feedback}\n"
+        "Read the document again and fix them. Change only what is wrong; leave a field null if the "
+        "document genuinely does not state it.\n"
+        if feedback else ""
+    )
     ocr_warning = (
         "\nThis text came from OCR and may contain recognition errors. Apply rule 4 strictly.\n"
         if ocr_used
@@ -83,7 +91,7 @@ def build_extraction_prompt(document_text: str, *, document_type: str, language:
 {json.dumps(EXTRACTION_SCHEMA, indent=2)}
 
 Document type: {document_type}
-Detected language: {language or "unknown"}{ocr_warning}
+Detected language: {language or "unknown"}{ocr_warning}{correction}
 
 Reminder: {NO_INVENTION_RULE}
 Use null for every field you cannot support with text from the document.

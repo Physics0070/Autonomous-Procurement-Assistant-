@@ -26,3 +26,21 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | 19 | Commit on `feature/phases-3-6` | ✅ | local only, not pushed; merge target (`master` vs `main`) awaits the team |
 | 20 | Team adds `OPENROUTER_API_KEY` + Google OAuth client, verifies live | ⚠️ | needs the team |
 | – | `/graphify` knowledge graph of the repo | ⏸️ | stopped on request; unlabeled graph in `graphify-out/` (git-ignored) |
+
+## Multi-agent upgrade (20 Sep 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| A1 | Shared agent loop (assistant + specialists on one LangGraph loop) | ✅ | `services/agents/loop.py` |
+| A2 | Supervisor agent routes each turn (LLM, bounded by policy) | ✅ | `tests/test_supervisor.py` — illegal model choices fall back to policy |
+| A3 | Handoffs between agents (`Command(goto=...)`) | ✅ | supervisor ↔ 5 specialists |
+| A4 | Durable pause/resume for approval + step budget | ✅ | state in `agent_runs`; resume after approval creates the PO |
+| B1 | Negotiation Agent with retrieval (performance, price history, past negotiations) | ✅ | guardrail tool rejects leaks; agent rewrites |
+| B2 | Critic Agent reviews drafts; deterministic guardrail stays the hard gate | ✅ | rejection falls back to template |
+| B3 | Risk Agent (ML) consulted before ordering | ✅ | raises a concern → negotiate first |
+| C1 | Monitor Agent starts sourcing when quotations arrive | ✅ | `tests/test_monitor_agent.py` |
+| C2 | Watchdog drafts follow-ups for overdue deliveries | ✅ | one draft per order, never repeated |
+| D1 | Extraction Agent self-corrects using validator feedback | ✅ | re-reads once, keeps the better result |
+| E1 | Backend regression | ✅ | **158 passed** |
+| E2 | Frontend for supervisor runs (reasoning + resume) | ✅ | timeline shows routing reasons; Continue/Stop resume the run — verified in the browser |
+| E3 | Docs, E2E extension, commit and push | ✅ | E2E **155/155**; README agent table; pushed to `main` |

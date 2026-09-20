@@ -84,13 +84,25 @@ export interface AgentStep {
   error: string | null
 }
 
+export interface SupervisorDecision {
+  action: string
+  reason: string
+  by: "llm" | "policy"
+}
+
 export interface AgentRun {
   id: string
   graph: string
   status: string
   input: Record<string, string>
   steps: AgentStep[]
-  output: Record<string, any> | null
+  output: {
+    decisions?: SupervisorDecision[]
+    pending?: { waiting_for: string; communication_id: string | null; purchase_order_id: string | null } | null
+    recommended_supplier_name?: string | null
+    po_number?: string | null
+    [key: string]: any
+  } | null
   created_at: string
 }
 
@@ -259,11 +271,22 @@ export const useAgentRuns = (filters: Record<string, string | undefined>) =>
       api.get<AgentRun[]>(`/agents/runs?${new URLSearchParams(Object.entries(filters).filter(([, v]) => v) as [string, string][])}`),
   })
 
-export function useRunSourcing() {
+/** Hand the request to the supervisor agent: it decides which specialists run. */
+export function useRunSupervisor() {
   const invalidate = useInvalidate()
   return useMutation({
-    mutationFn: (requestId: string) => api.post<AgentRun>(`/agents/sourcing/${requestId}`),
-    onSuccess: () => invalidate("agent-runs", "communications", "comparison"),
+    mutationFn: (requestId: string) => api.post<AgentRun>(`/agents/supervisor/${requestId}`),
+    onSuccess: () => invalidate("agent-runs", "communications", "comparison", "purchase-orders", "requests"),
+  })
+}
+
+/** Continue (or stop) a run that paused for approval. */
+export function useResumeRun() {
+  const invalidate = useInvalidate()
+  return useMutation({
+    mutationFn: ({ runId, approved }: { runId: string; approved: boolean }) =>
+      api.post<AgentRun>(`/agents/runs/${runId}/resume`, { approved }),
+    onSuccess: () => invalidate("agent-runs", "communications", "purchase-orders", "requests"),
   })
 }
 

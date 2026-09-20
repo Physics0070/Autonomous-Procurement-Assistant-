@@ -18,6 +18,14 @@ class RunRecorder:
                     "created_by": created_by}
         self.id: Optional[str] = None
 
+    @classmethod
+    def attach(cls, repo: AgentRunRepository, run: dict) -> "RunRecorder":
+        """Continue recording into an existing run (used when a paused run resumes)."""
+        recorder = cls(repo, str(run["organization_id"]), run["graph"], run.get("input") or {}, run.get("created_by"))
+        recorder.id = str(run["id"])
+        recorder.doc["steps"] = list(run.get("steps") or [])
+        return recorder
+
     async def start(self) -> "RunRecorder":
         if self.repo:
             self.id = (await self.repo.create(self.org_id, self.doc))["id"]
@@ -37,6 +45,12 @@ class RunRecorder:
             self.doc["steps"].append(entry)
             if self.repo and self.id:
                 await self.repo.raw_update(self.org_id, self.id, {"$push": {"steps": entry}})
+
+    async def save_state(self, state: dict[str, Any]) -> None:
+        """Persist the run's own state so a paused run can be resumed later."""
+        if self.repo and self.id:
+            await self.repo.update(self.org_id, self.id, {"state": state})
+        self.doc["state"] = state
 
     async def finish(self, status: str, output: Optional[dict[str, Any]] = None) -> dict[str, Any]:
         self.doc.update(status=status, output=output)

@@ -21,9 +21,13 @@ class ScriptedProvider(AIProvider):
         self,
         responses: Optional[list[Union[AIResponse, str]]] = None,
         chat_responses: Optional[list[ChatScript]] = None,
+        responder: Optional[Callable[[str, Optional[str]], Union[AIResponse, str, None]]] = None,
     ) -> None:
         self.responses = list(responses or [])
         self.chat_responses = list(chat_responses or [])
+        # Used when the queue is empty: lets a test answer by *which agent* is asking
+        # (several agents call generate() in one run, so queue order is fragile).
+        self.responder = responder
         self.calls: list[dict[str, Any]] = []
         self.chat_calls: list[dict[str, Any]] = []
 
@@ -36,9 +40,9 @@ class ScriptedProvider(AIProvider):
     async def generate(self, prompt: str, *, system: Optional[str] = None, json_mode: bool = False,
                        temperature: float = 0.1, max_output_tokens: int = 8192) -> AIResponse:
         self.calls.append({"prompt": prompt, "system": system, "json_mode": json_mode})
-        if not self.responses:
+        item = self.responses.pop(0) if self.responses else (self.responder(prompt, system) if self.responder else None)
+        if item is None:
             return AIResponse(ok=False, error="script exhausted", provider=self.name, model=self.model)
-        item = self.responses.pop(0)
         if isinstance(item, str):
             return AIResponse(text=item, ok=True, provider=self.name, model=self.model)
         return item
