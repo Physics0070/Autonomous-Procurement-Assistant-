@@ -90,10 +90,10 @@ cd backend
 ./.venv/Scripts/python.exe scripts/test_extraction.py    # PDF/scan/image/Excel extraction
 ./.venv/Scripts/python.exe scripts/test_normalization.py # normalization + fuzzy matching
 ./.venv/Scripts/python.exe scripts/test_ai_extraction.py # structured extraction
-./.venv/Scripts/python.exe scripts/test_e2e.py           # 155 assertions against the live API
+./.venv/Scripts/python.exe scripts/test_e2e.py           # 156 assertions against the live API
 ./.venv/Scripts/python.exe scripts/seed_demo.py          # populate a demo workspace
 ./.venv/Scripts/python.exe -m scripts.load_scms_demo     # real-data demo org (USAID SCMS)
-./.venv/Scripts/python.exe -m pytest -q                  # 158 unit/API tests (MongoDB needed)
+./.venv/Scripts/python.exe -m pytest -q                  # 172 unit/API tests (MongoDB needed)
 ```
 
 `test_e2e.py` and `seed_demo.py` require the backend to be running. The pytest suite uses
@@ -263,7 +263,7 @@ Tesseract later needs no code change.
 | Gmail collection | Integrations page · `services/channels/gmail_sync.py` | `gmail.readonly` only; refresh token encrypted; dedup per message part; auto-sync every 15 min |
 | RFQ and negotiation drafts | Communications page · `services/automation/communications.py` | LLM writes, template fallback; negotiation guardrail rejects any draft naming a competitor or its figures |
 | Approval workflow | Communications page | draft → approved → sent; the app never sends email — export `.eml` or copy |
-| Purchase orders | Purchase Orders page · `services/automation/purchase_orders.py` | Award from comparison; `PO-<year>-<0001>`; CGST+SGST / IGST / GST from GSTIN state codes; PDF; delivery recording |
+| Purchase orders | Purchase Orders page · `services/automation/purchase_orders.py` | Award from comparison; `PO-<year>-<0001>`; CGST+SGST / IGST / GST from GSTIN state codes; PDF; **Save to Drive**; delivery recording; a supplier-committed delivery date sets the expected date |
 | Agents (LangGraph) | `services/agents/` | Supervisor routes 5 specialists, they hand back with `Command`; runs pause for approval and resume; every run recorded as a timeline |
 | Procurement Assistant | Assistant page | 9 organization-bound tools; drafts only; max 6 tool rounds |
 | ML late-delivery risk | Suppliers page · `backend/ml/` | Random forest on USAID SCMS; shown beside the rule-based score |
@@ -295,14 +295,21 @@ from templates, and every run says which path it took.
 
 ### ML results (held-out test, 2014–2015, 2,545 shipments)
 
-| Scorer | ROC-AUC | PR-AUC | Macro-F1 |
-|---|---:|---:|---:|
-| Random forest (selected by 5-fold CV PR-AUC) | 0.831 | 0.329 | 0.666 |
-| Baseline: always on time | 0.500 | 0.140 | 0.462 |
-| Baseline: supplier's prior on-time rate | 0.761 | 0.251 | 0.545 |
+| Scorer | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier |
+|---|---:|---:|---:|---:|---:|---:|
+| Random forest, calibrated (selected by 5-fold CV PR-AUC) | **0.832** | **0.334** | **0.656** | 0.358 | 0.553 | **0.099** |
+| Baseline: always on time | 0.500 | 0.140 | 0.462 | 0.000 | 0.000 | 0.140 |
+| Baseline: supplier's prior on-time rate | 0.761 | 0.251 | 0.545 | 0.252 | 0.978 | 0.111 |
 
-Accuracy is 77.4% against 86.0% for "always on time" — with 14% of shipments late,
-accuracy rewards never predicting lateness, which is why PR-AUC and F1 are reported.
+Accuracy (77%) is not reported as the headline: with 14% of shipments late, "always on time"
+scores 86% while being useless.
+
+The model is wrapped in `CalibratedClassifierCV`, so a displayed percentage can be read
+literally — calibration cut the Brier score from 0.167 to 0.099, better than both baselines,
+and brought the mean prediction (0.14) in line with the observed late rate (0.14).
+The report also gives a **screening operating point** (threshold 0.14: 92% of late deliveries
+caught, 32% of warnings right, 41% of orders flagged) for deployments that would rather
+over-warn than miss.
 Full report: `backend/ml/artifacts/evaluation_report.md`; anomaly and forecast evaluation:
 `backend/ml/artifacts/analytics_evaluation.md`.
 

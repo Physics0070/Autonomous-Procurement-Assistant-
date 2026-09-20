@@ -20,7 +20,7 @@ Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the tea
 | 1.3 | WhatsApp Business integration *(future)* | Architecture only | Stub in `integrations/ingestion/channels.py` | Future |
 | 2.1 | OCR extraction from scanned documents | **Done** | RapidOCR in use; Tesseract engine built but needs admin install | 2 |
 | 2.2 | Automatic supplier information extraction | **Done** | Heuristic parser verified; Gemini path built, live call unverified | 2 |
-| 2.3 | Products, quantities, unit prices, GST, delivery, payment terms | **Done** | Delivery captured as lead-time days, not calendar dates | 2 |
+| 2.3 | Products, quantities, unit prices, GST, delivery, payment terms | **Done** | Delivery captured as lead-time days **and** a stated delivery date | 2 |
 | 3.1 | Standardise quotation formats | **Done** | `normalizer_service.py`; Hindi item matches English at 1.00 | 2 |
 | 3.2 | Compare on multiple parameters | **Done** | Transport cost has its own column | 4 |
 | 3.3 | Supplier ranking with explanation | **Done** | Deterministic ranking; explanation is computed until an LLM is available | 2 |
@@ -28,7 +28,7 @@ Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the tea
 | 4.2 | Draft negotiation emails | **Done** | Competitor guardrail; target price; weakest criteria | 4 |
 | 4.3 | Generate purchase orders | **Done** | Award, GST split, lifecycle, PDF, delivery recording | 4 |
 | 4.4 | Conversational procurement recommendations | **Done** | LangGraph assistant, 9 org-bound tools (live answers need `OPENROUTER_API_KEY`) | 5 |
-| 5.1 | Supplier reliability **prediction** | **Done** | Random forest on USAID SCMS; test ROC-AUC 0.83, PR-AUC 0.33 vs 0.25 baseline | 6 |
+| 5.1 | Supplier reliability **prediction** | **Done** | Calibrated random forest on USAID SCMS; ROC-AUC 0.83, PR-AUC 0.33 vs 0.25 baseline, Brier 0.099 vs 0.111 | 6 |
 | 5.2 | Price anomaly detection | **Done** | Isolation Forest from 20 prices; Z-score below | 6 |
 | 5.3 | Procurement spending analytics | **Done** | Analytics page: spend, on-time, savings | 6 |
 | 5.4 | Demand forecasting *(future)* | **Done** | Linear trend vs seasonal naive, back-tested | 6 |
@@ -49,7 +49,7 @@ Status as of 18 Sep 2026 — Phases 1–6 built; live AI and Gmail await the tea
 | **Scikit-Learn** | Done — random forest, Isolation Forest, linear regression |
 | Pandas | Done |
 | **Gmail API, Google OAuth 2.0** | Done (read-only) |
-| Google Drive API | Out of scope by decision — POs download as PDF |
+| Google Drive API | Done — purchase orders file to Drive (`drive.file` scope, same Google connection) |
 
 ### Architecture modules (synopsis diagram)
 

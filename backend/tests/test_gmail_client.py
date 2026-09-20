@@ -35,7 +35,12 @@ def test_consent_url_requests_offline_read_only_access(google):
     assert url.params["access_type"] == "offline"
     assert url.params["prompt"] == "consent"
     assert url.params["state"] == "state-abc"
-    assert url.params["scope"] == "https://www.googleapis.com/auth/gmail.readonly"
+    scopes = url.params["scope"].split()
+    assert "https://www.googleapis.com/auth/gmail.readonly" in scopes
+    # Filing purchase orders needs drive.file, which only reaches files this app creates.
+    assert "https://www.googleapis.com/auth/drive.file" in scopes
+    # Never a Gmail write scope: the app reads mail and never sends it.
+    assert not any("gmail." in s and "readonly" not in s for s in scopes)
     assert url.params["redirect_uri"].endswith("/api/v1/channels/gmail/callback")
 
 

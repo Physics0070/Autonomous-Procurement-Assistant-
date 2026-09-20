@@ -6,6 +6,7 @@ consume. Swapping the persistence layer must not require changing this.
 """
 from __future__ import annotations
 
+from datetime import date
 from typing import Any, List, Optional
 
 from pydantic import Field
@@ -66,6 +67,7 @@ class NormalizedPricing(APIModel):
 
 class NormalizedDelivery(APIModel):
     delivery_days: Optional[int] = None
+    delivery_date: Optional[date] = None  # when the quotation commits to a date
     delivery_terms: Optional[str] = None
     incoterm: Optional[str] = None
 

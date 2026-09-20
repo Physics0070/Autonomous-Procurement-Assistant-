@@ -5,8 +5,8 @@ Autonomous Procurement Assistant (VIT SY-K10, `Synopsis.pdf`) through **Phase 6*
 `docs/superpowers/specs/2026-09-17-phases-3-6-design.md`. Progress table: `CHECKLIST.md`.
 
 ## 2. State — everything built and verified
-- **Backend:** Phases 1–6 plus the multi-agent upgrade. `pytest -q` from `backend/` → **158 passed**, ~3 min.
-- **End-to-end:** `scripts/test_e2e.py` against the live API → **155/155**.
+- **Backend:** Phases 1–6, the multi-agent upgrade, Drive filing and delivery dates. `pytest -q` from `backend/` → **172 passed**, ~4 min.
+- **End-to-end:** `scripts/test_e2e.py` against the live API → **156/156**. `pytest` → **172 passed**.
 - **Multi-agent:** a Supervisor Agent routes 5 specialists (comparison, recommendation, risk,
   negotiation, purchase order) with `Command` handoffs; runs pause for approval and resume from
   state stored in `agent_runs`; a Monitor Agent starts sourcing when quotations arrive and chases
@@ -25,13 +25,20 @@ Autonomous Procurement Assistant (VIT SY-K10, `Synopsis.pdf`) through **Phase 6*
   `scms.demo@procurement-demo.com` / `ScmsDemo2026!` (73 suppliers, 10,324 POs). Loaded in the dev DB.
 - **Git:** single branch `main`, pushed to github.com/Physics0070/Autonomous-Procurement-Assistant-
 
-## 3. Agent design notes
+## 3. What still needs credentials (placeholders in place)
+Every one of these returns a clear message naming the missing setting instead of failing:
+- No `OPENROUTER_API_KEY` → heuristic extraction, template drafts, assistant 503, supervisor routes by policy.
+- No Google OAuth client → Gmail and Drive endpoints return 503 naming `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`.
+- Google connected without Drive permission → 409 asking for a reconnect (the consent screen now
+  requests `drive.file` too, so a fresh connection covers both).
+
+## 4. Agent design notes
 - LangGraph's MongoDB checkpointer needs pymongo ≥ 4.12 but Motor pins < 4.10, so runs persist
   their own state in `agent_runs` instead. Do not install `langgraph-checkpoint-mongodb`.
 - Tests drive the agents with `tests/fakes/llm.py`. Several agents call `generate()` in one run,
   so answer by *which agent is asking* (`ScriptedProvider(responder=...)`), not by queue order.
 
-## 4. Fixed this session (worth knowing)
+## 5. Fixed this session (worth knowing)
 - `Settings` read `.env` relative to the working directory → now anchored to `backend/`.
 - The app refuses the placeholder `JWT_SECRET_KEY` outside `ENVIRONMENT=development`.
 - Repository lists cap at 500 → analytics use `PurchaseOrderRepository.find_all`.
@@ -40,13 +47,13 @@ Autonomous Procurement Assistant (VIT SY-K10, `Synopsis.pdf`) through **Phase 6*
 - `scrollIntoView` returns a Promise in current Chrome → effects must use a block body.
 - docker-compose / root `.env.example` still targeted Gemini → OpenRouter + Google vars.
 
-## 5. Needs the team
+## 6. Needs the team
 1. `OPENROUTER_API_KEY` in `backend/.env` (live extraction, AI drafts, assistant).
 2. Google OAuth client ID/secret; redirect URI `http://localhost:8000/api/v1/channels/gmail/callback`;
    add the Gmail account as a test user.
 3. Nothing else — `main` is pushed and up to date.
 
-## 6. Gotchas (don't repeat)
+## 7. Gotchas (don't repeat)
 - Tesseract needs admin — RapidOCR locally, Docker installs Tesseract.
 - Python in bash heredocs: `\n` escapes get mangled — use the Write/Edit tools for code with escapes.
 - `pydantic-settings` `List[str]` from `.env` fails — keep as comma-separated `str`.

@@ -111,6 +111,7 @@ class ExtractedCommercials(APIModel):
     total_amount: Optional[float] = None
     transportation_cost: Optional[float] = None
     delivery_days: Optional[int] = None
+    delivery_date: Optional[str] = None  # as written; normalized later
     delivery_terms: Optional[str] = None
     payment_terms: Optional[str] = None
     payment_days: Optional[int] = None

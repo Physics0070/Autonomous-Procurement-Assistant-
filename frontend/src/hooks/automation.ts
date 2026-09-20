@@ -66,7 +66,8 @@ export interface PurchaseOrder {
   lines: Array<{ description: string; quantity: number; unit: string | null; unit_price: number; tax_percentage: number; line_total: number }>
   warnings: string[]
   pricing: { currency: string; subtotal: number; taxes: Array<{ name: string; rate: number; amount: number }>; freight: number; total: number }
-  terms: { delivery_days: number | null; payment_terms: string | null }
+  terms: { delivery_days: number | null; delivery_date: string | null; payment_terms: string | null }
+  drive_file?: { id: string; name: string; link: string } | null
   expected_delivery_date?: string | null
   delivered_at?: string | null
   on_time?: boolean | null
@@ -251,6 +252,15 @@ export function usePurchaseOrderActions() {
       ...done,
     }),
   }
+}
+
+/** File the PO's PDF in the buyer's Google Drive. */
+export function useFileToDrive() {
+  const invalidate = useInvalidate()
+  return useMutation({
+    mutationFn: (poId: string) => api.post<{ id: string; name: string; link: string }>(`/purchase-orders/${poId}/drive`),
+    onSuccess: () => invalidate("purchase-orders"),
+  })
 }
 
 export const useOrganizationProfile = () =>

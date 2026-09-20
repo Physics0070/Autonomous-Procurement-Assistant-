@@ -1,7 +1,7 @@
 {
-  "model_version": "reliability-scms-20260917",
+  "model_version": "reliability-scms-20260920",
   "model_name": "random_forest",
-  "trained_at": "2026-09-17T16:48:04+00:00",
+  "trained_at": "2026-09-20T13:30:46+00:00",
   "trained_on": "USAID SCMS delivery history 2006-2013 (7,779 shipments)",
   "dataset_sha256": "918b992dd3e8d4b64d2a727b2c4ea607603d0c58f19484e73f7b78528c6a8673",
   "label": "late = delivered_date > scheduled_date",
@@ -19,7 +19,40 @@
   ],
   "knowledge_gap_days": 30,
   "recent_window": 10,
-  "decision_threshold": 0.6179068170613777,
+  "decision_threshold": 0.2905859482778858,
+  "threshold_objective": "F1 on out-of-fold training predictions",
+  "screening_threshold": 0.14448391193009905,
+  "screening_beta": 2.0,
+  "screening_test": {
+    "rows": 2545,
+    "late_rate": 0.13988212180746562,
+    "roc_auc": 0.8319996304299845,
+    "pr_auc": 0.33440967558418694,
+    "macro_f1": 0.6361129299013973,
+    "precision_late": 0.31665062560153995,
+    "recall_late": 0.9241573033707865,
+    "brier": 0.09854207811167384,
+    "mean_score": 0.13586833246287078,
+    "confusion_matrix": [
+      [
+        1479,
+        710
+      ],
+      [
+        27,
+        329
+      ]
+    ]
+  },
+  "calibration": {
+    "method": "sigmoid",
+    "brier_before": 0.16706073862542936,
+    "brier_after": 0.09854207811167384,
+    "mean_score_before": 0.37355845981598224,
+    "mean_score_after": 0.13586833246287078,
+    "observed_late_rate": 0.13988212180746562,
+    "decision_threshold_before": 0.5026973293655124
+  },
   "base_late_rate": 0.10669751896130608,
   "sklearn_version": "1.9.1",
   "random_state": 42,
@@ -48,40 +81,45 @@
       "pr_auc": 0.4915245376298351
     }
   },
+  "cv_calibrated_pr_auc": 0.4994132155595638,
   "test": {
     "rows": 2545,
     "late_rate": 0.13988212180746562,
-    "roc_auc": 0.8305527894836799,
-    "pr_auc": 0.32884405125543437,
-    "macro_f1": 0.6664403373459762,
-    "brier": 0.16706073862542936,
-    "mean_score": 0.37355845981598224,
+    "roc_auc": 0.8319996304299845,
+    "pr_auc": 0.33440967558418694,
+    "macro_f1": 0.6558799319237497,
+    "precision_late": 0.35753176043557167,
+    "recall_late": 0.5533707865168539,
+    "brier": 0.09854207811167384,
+    "mean_score": 0.13586833246287078,
     "confusion_matrix": [
       [
-        1706,
-        483
+        1835,
+        354
       ],
       [
-        93,
-        263
+        159,
+        197
       ]
     ],
     "external_vendors": {
       "rows": 1550,
       "late_rate": 0.024516129032258065,
-      "roc_auc": 0.7998642439431913,
-      "pr_auc": 0.1901408767961191,
-      "macro_f1": 0.5195972490974125,
-      "brier": 0.0595645314591959,
-      "mean_score": 0.1862418117552874,
+      "roc_auc": 0.8077659426343637,
+      "pr_auc": 0.1569668287626705,
+      "macro_f1": 0.4937949052906597,
+      "precision_late": 0.0,
+      "recall_late": 0.0,
+      "brier": 0.02256873281326779,
+      "mean_score": 0.03364630672295988,
       "confusion_matrix": [
         [
           1512,
           0
         ],
         [
-          37,
-          1
+          38,
+          0
         ]
       ]
     }
@@ -93,6 +131,8 @@
       "roc_auc": 0.5,
       "pr_auc": 0.13988212180746562,
       "macro_f1": 0.4623996620194339,
+      "precision_late": 0.0,
+      "recall_late": 0.0,
       "brier": 0.13988212180746562,
       "mean_score": 0.0,
       "confusion_matrix": [
@@ -111,6 +151,8 @@
         "roc_auc": 0.5,
         "pr_auc": 0.024516129032258065,
         "macro_f1": 0.4937949052906597,
+        "precision_late": 0.0,
+        "recall_late": 0.0,
         "brier": 0.024516129032258065,
         "mean_score": 0.0,
         "confusion_matrix": [
@@ -131,6 +173,8 @@
       "roc_auc": 0.7609273384286088,
       "pr_auc": 0.25073056910354125,
       "macro_f1": 0.5448005553251618,
+      "precision_late": 0.25180897250361794,
+      "recall_late": 0.9775280898876404,
       "brier": 0.11093009999343025,
       "mean_score": 0.08328726435620579,
       "confusion_matrix": [
@@ -149,6 +193,8 @@
         "roc_auc": 0.7465886939571151,
         "pr_auc": 0.06309866780605551,
         "macro_f1": 0.5023639362286971,
+        "precision_late": 0.07751937984496124,
+        "recall_late": 0.7894736842105263,
         "brier": 0.023978520867357953,
         "mean_score": 0.037634440788809044,
         "confusion_matrix": [
@@ -162,23 +208,23 @@
           ]
         ]
       },
-      "decision_threshold": 0.04074702886247883
+      "decision_threshold": 0.03405017921146958
     }
   },
   "risk_bands": {
-    "medium": 0.30895340853068887,
-    "high": 0.6179068170613777
+    "medium": 0.1452929741389429,
+    "high": 0.2905859482778858
   },
   "permutation_importance": {
-    "has_history": 2.0387974102575867e-05,
-    "prior_count": 0.02573924529985271,
-    "prior_on_time_rate": 0.014700089317994824,
-    "prior_mean_delay_days": -0.0039706336655402855,
-    "recent_late_rate": 0.008618720433824978,
-    "days_since_previous": -0.00023500715825991447,
-    "log_order_value": -3.5187585047991024e-05,
-    "log_quantity": -0.003847484480414637,
-    "shipment_mode": -0.002326940361980451,
-    "fulfil_via": -0.0031974098562556784
+    "has_history": 2.3763936202525483e-05,
+    "prior_count": 0.02699513518603135,
+    "prior_on_time_rate": 0.022302629852475143,
+    "prior_mean_delay_days": -0.004375005199591969,
+    "recent_late_rate": 0.012152051141699333,
+    "days_since_previous": 0.003271606830765261,
+    "log_order_value": 0.002442594895364836,
+    "log_quantity": -0.0021659760009365703,
+    "shipment_mode": 0.0010418373389840696,
+    "fulfil_via": -0.0030901464141101565
   }
 }

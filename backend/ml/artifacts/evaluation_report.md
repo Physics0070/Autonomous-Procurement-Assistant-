@@ -1,6 +1,6 @@
 # Supplier late-delivery risk model
 
-Model version `reliability-scms-20260917`, trained 2026-09-17T16:48:04+00:00 with scikit-learn
+Model version `reliability-scms-20260920`, trained 2026-09-20T13:30:46+00:00 with scikit-learn
 1.9.1. Selected model: **random_forest**.
 
 ## Dataset
@@ -46,42 +46,67 @@ selected and refitted on the whole training period.
 | hist_gradient_boosting | 0.8761 | 0.4915 |
 
 Decision threshold (maximises F1 on the selected model's out-of-fold predictions):
-0.6179. Risk bands: medium from 0.3090,
-high from 0.6179.
+0.2906. Risk bands: medium from 0.1453,
+high from 0.2906.
 
 ## Test period results
 
-| Subset | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Brier | Mean score |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| All shipments | 2,545 | 13.99% | 0.8306 | 0.3288 | 0.6664 | 0.1671 | 0.3736 |
-| External vendors | 1,550 | 2.45% | 0.7999 | 0.1901 | 0.5196 | 0.0596 | 0.1862 |
+| Subset | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier | Mean score |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| All shipments | 2,545 | 13.99% | 0.8320 | 0.3344 | 0.6559 | 0.358 | 0.553 | 0.0985 | 0.1359 |
+| External vendors | 1,550 | 2.45% | 0.8078 | 0.1570 | 0.4938 | 0.000 | 0.000 | 0.0226 | 0.0336 |
 
-Confusion matrix, all test shipments, at threshold 0.6179:
+Confusion matrix, all test shipments, at threshold 0.2906:
 
 | | Predicted on time | Predicted late |
 |---|---:|---:|
-| Actually on time | 1,706 | 483 |
-| Actually late | 93 | 263 |
+| Actually on time | 1,835 | 354 |
+| Actually late | 159 | 197 |
 
-"Mean score" is the average predicted late probability. The candidates are trained with
-balanced class weights, so their scores are risk scores rather than calibrated
-probabilities; compare the mean score with the observed late rate.
+"Precision" is how often a "late" warning is right; "recall" is the share of late shipments
+caught. At this threshold the model catches 55% of late shipments,
+and 36% of its warnings are correct.
+
+## Operating points
+
+The shipped threshold balances the two errors. A deployment that would rather catch almost
+every late delivery, and accept more needless checks, can use the screening threshold instead
+(F2, recall weighted above precision). Both are measured on the same
+calibrated model and the same test period.
+
+| Operating point | Threshold | Precision | Recall | Orders flagged |
+|---|---:|---:|---:|---:|
+| Shipped (balanced F1) | 0.2906 | 0.358 | 0.553 | 21.7% |
+| Screening (F2) | 0.1445 | 0.317 | 0.924 | 40.8% |
+
+## Calibration
+
+The selected model is class-weighted, which makes its raw scores good for ranking but far too
+high to read as probabilities. It is wrapped in `CalibratedClassifierCV`
+(sigmoid, fitted on the training period only), so a displayed
+percentage can be read literally.
+
+| | Mean predicted | Brier (lower is better) |
+|---|---:|---:|
+| Before calibration | 0.3736 | 0.1671 |
+| After calibration | 0.1359 | 0.0985 |
+| Observed late rate | 0.1399 | - |
 
 ## Baselines
 
 Same test period. "Always on time" scores every shipment 0. "Prior on-time rate" scores a
 shipment as 1 - the supplier's prior on-time rate (training late rate when the supplier has
 no history), with its own F1-maximising threshold from the training period
-(0.0407).
+(0.0341).
 
-| Scorer | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Brier |
-|---|---:|---:|---:|---:|---:|---:|
-| random_forest (all shipments) | 2,545 | 14.0% | 0.8306 | 0.3288 | 0.6664 | 0.1671 |
-| baseline: always on time (all shipments) | 2,545 | 14.0% | 0.5000 | 0.1399 | 0.4624 | 0.1399 |
-| baseline: prior on-time rate (all shipments) | 2,545 | 14.0% | 0.7609 | 0.2507 | 0.5448 | 0.1109 |
-| random_forest (external vendors) | 1,550 | 2.5% | 0.7999 | 0.1901 | 0.5196 | 0.0596 |
-| baseline: always on time (external vendors) | 1,550 | 2.5% | 0.5000 | 0.0245 | 0.4938 | 0.0245 |
-| baseline: prior on-time rate (external vendors) | 1,550 | 2.5% | 0.7466 | 0.0631 | 0.5024 | 0.0240 |
+| Scorer | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| random_forest (all shipments) | 2,545 | 14.0% | 0.8320 | 0.3344 | 0.6559 | 0.358 | 0.553 | 0.0985 |
+| baseline: always on time (all shipments) | 2,545 | 14.0% | 0.5000 | 0.1399 | 0.4624 | 0.000 | 0.000 | 0.1399 |
+| baseline: prior on-time rate (all shipments) | 2,545 | 14.0% | 0.7609 | 0.2507 | 0.5448 | 0.252 | 0.978 | 0.1109 |
+| random_forest (external vendors) | 1,550 | 2.5% | 0.8078 | 0.1570 | 0.4938 | 0.000 | 0.000 | 0.0226 |
+| baseline: always on time (external vendors) | 1,550 | 2.5% | 0.5000 | 0.0245 | 0.4938 | 0.000 | 0.000 | 0.0245 |
+| baseline: prior on-time rate (external vendors) | 1,550 | 2.5% | 0.7466 | 0.0631 | 0.5024 | 0.078 | 0.789 | 0.0240 |
 
 ## Feature importance
 
@@ -90,16 +115,16 @@ Permutation importance of the selected model on the test period (mean drop in PR
 
 | Feature | Importance |
 |---|---:|
-| prior_count | 0.0257 |
-| prior_on_time_rate | 0.0147 |
-| recent_late_rate | 0.0086 |
+| prior_count | 0.0270 |
+| prior_on_time_rate | 0.0223 |
+| recent_late_rate | 0.0122 |
+| days_since_previous | 0.0033 |
+| log_order_value | 0.0024 |
+| shipment_mode | 0.0010 |
 | has_history | 0.0000 |
-| log_order_value | -0.0000 |
-| days_since_previous | -0.0002 |
-| shipment_mode | -0.0023 |
-| fulfil_via | -0.0032 |
-| log_quantity | -0.0038 |
-| prior_mean_delay_days | -0.0040 |
+| log_quantity | -0.0022 |
+| fulfil_via | -0.0031 |
+| prior_mean_delay_days | -0.0044 |
 
 ## Limitations
 
@@ -116,11 +141,11 @@ Permutation importance of the selected model on the test period (mean drop in PR
   might add.
 - Shuffled cross-validation mixes years, so the cross-validated scores above are more
   optimistic than the time-ordered test (random_forest: CV PR-AUC
-  0.5127, test PR-AUC 0.3288).
-- Scores are not calibrated probabilities: balanced class weights push them up (mean test
-  score 0.3736 against an observed late rate of
-  13.99%), which is why the Brier score can be worse than a baseline's.
-  Use them to rank suppliers and with the risk bands, not as literal chances.
+  0.5127, test PR-AUC 0.3344).
+- Calibration is fitted on the training period and applied to a later one with a different base
+  rate (10.67% then, 13.99% in the test period), so
+  the probabilities are close but not exact: mean predicted 0.1359
+  against 13.99% observed.
 - Narrow training range: the lowest prior on-time rate of any training shipment's supplier is
   60%. Tree models give flat scores outside the range they were trained on, so a supplier that is late far more often than any SCMS supplier is not scored as riskier than a moderately unreliable one, and may not reach the high band.
 - More than half of all shipments share one supplier key ("SCMS from RDC"). For those rows

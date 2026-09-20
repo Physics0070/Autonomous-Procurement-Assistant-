@@ -157,12 +157,19 @@ def normalize_quotation(extraction: AIExtractionResult, currency_default: str = 
     if commercials.delivery_terms:
         match = _INCOTERM_RE.search(commercials.delivery_terms)
         incoterm = match.group(1).lower() if match else None
+    parsed_delivery = parse_date(commercials.delivery_date)
+    delivery_date = parsed_delivery.date() if parsed_delivery else None
+    delivery_days = commercials.delivery_days
+    if delivery_days is None and delivery_date is not None:
+        # A date-only quotation still needs a lead time: comparison scores days.
+        delivery_days = max((delivery_date - datetime.now(timezone.utc).date()).days, 0)
     normalized.delivery = NormalizedDelivery(
-        delivery_days=commercials.delivery_days,
+        delivery_days=delivery_days,
+        delivery_date=delivery_date,
         delivery_terms=commercials.delivery_terms,
         incoterm=incoterm,
     )
-    if commercials.delivery_days is None:
+    if delivery_days is None:
         missing.append("delivery.delivery_days")
 
     # ------------------------------------------------------------------

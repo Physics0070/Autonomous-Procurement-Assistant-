@@ -8,6 +8,7 @@ IDs change on every message fetch; only the MIME partId is stable.
 from __future__ import annotations
 
 import base64
+import re
 from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import parse_qs
@@ -105,7 +106,10 @@ class FakeMessage:
 
 class FakeGoogle:
     ACCOUNT = "purchase@vishwakarma-eng.com"
-    SCOPE = "https://www.googleapis.com/auth/gmail.readonly"
+    # Google returns the scopes the user actually consented to, which are the ones the
+    # app asked for - Gmail reading plus Drive filing.
+    SCOPE = ("https://www.googleapis.com/auth/gmail.readonly "
+             "https://www.googleapis.com/auth/drive.file")
 
     def __init__(self) -> None:
         self.messages: dict[str, FakeMessage] = {}
@@ -118,6 +122,8 @@ class FakeGoogle:
         self._attachment_data: dict[str, bytes] = {}
         self._issued = 0
         self._fetches = 0
+        self._files = 0
+        self.uploads: list[dict[str, Any]] = []
 
     def add_message(self, message: FakeMessage) -> None:
         self.messages[message.id] = message
@@ -139,6 +145,8 @@ class FakeGoogle:
             return httpx.Response(200, json={})
         if host == "gmail.googleapis.com":
             return self._gmail(request)
+        if host == "www.googleapis.com" and path.startswith("/upload/drive/v3/files"):
+            return self._drive_upload(request)
         return httpx.Response(404, json={"error": f"unexpected host {host}"})
 
     def _issue_access_token(self) -> str:
@@ -183,6 +191,30 @@ class FakeGoogle:
                 },
             )
         return httpx.Response(400, json={"error": "unsupported_grant_type"})
+
+    def _drive_upload(self, request: httpx.Request) -> httpx.Response:
+        token = request.headers.get("Authorization", "").removeprefix("Bearer ")
+        if token not in self.valid_access_tokens:
+            return httpx.Response(401, json={"error": {"code": 401, "message": "Invalid Credentials"}})
+        # Pick the filename, type and bytes out of the multipart body the client sent.
+        # CRLF is spelled out because a literal escape here is easy to mangle.
+        crlf = bytes([13, 10])
+        body = request.content
+        name = re.search(rb'"name": ?"([^"]+)"', body)
+        mime = re.search(rb"Content-Type: ([\w/.+-]+)" + crlf + crlf + rb"%PDF", body)
+        data = body[body.index(b"%PDF"):].split(crlf + b"--")[0] if b"%PDF" in body else b""
+        self._files += 1
+        file_id = f"drive-file-{self._files}"
+        self.uploads.append({
+            "id": file_id,
+            "name": name.group(1).decode() if name else "",
+            "mime_type": mime.group(1).decode() if mime else "",
+            "data": data,
+        })
+        return httpx.Response(200, json={
+            "id": file_id, "name": self.uploads[-1]["name"],
+            "webViewLink": f"https://drive.google.com/file/d/{file_id}/view",
+        })
 
     def _gmail(self, request: httpx.Request) -> httpx.Response:
         token = request.headers.get("Authorization", "").removeprefix("Bearer ")

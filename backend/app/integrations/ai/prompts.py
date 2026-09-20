@@ -62,6 +62,7 @@ EXTRACTION_SCHEMA = {
         "total_amount": "number or null",
         "transportation_cost": "number or null",
         "delivery_days": "integer or null",
+        "delivery_date": "string or null (a stated delivery date, as written)",
         "delivery_terms": "string or null",
         "payment_terms": "string or null",
         "payment_days": "integer or null",

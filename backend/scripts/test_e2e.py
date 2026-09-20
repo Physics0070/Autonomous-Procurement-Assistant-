@@ -461,6 +461,10 @@ def main() -> int:
           str(delivered)[:200])
     pdf = client.get(f"{API}/purchase-orders/{po['id']}/pdf", headers=auth_a)
     check("PO PDF renders", pdf.content.startswith(b"%PDF"))
+    drive = client.post(f"{API}/purchase-orders/{po['id']}/drive", headers=auth_a)
+    check("filing a PO to Drive says what it needs when Google is unconfigured",
+          drive.status_code in (200, 409, 503), f"{drive.status_code} {drive.text[:160]}")
+    print(f"  ..  Drive: {drive.status_code} {drive.json().get('error', {}).get('message', drive.text)[:90]}")
     po_mail = client.get(f"{API}/communications?kind=purchase_order", headers=auth_a).json()
     check("approved PO produced a covering email draft", any(c["purchase_order_id"] == po["id"] for c in po_mail))
 

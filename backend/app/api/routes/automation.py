@@ -10,10 +10,17 @@ from pydantic import EmailStr, Field
 from app.api.deps import (
     DB, CurrentUser, RequestContext, comparison_repo, quotation_repo, request_repo, require_roles, supplier_repo,
 )
-from app.core.errors import ConflictError, ValidationError
+from app.core.config import settings
+from app.core.crypto import decrypt_secret
+from app.core.errors import ConfigurationError, ConflictError, ValidationError
 from app.integrations.ai.base import AIProvider
 from app.integrations.ai.factory import get_ai_provider
+from app.api.routes.channels import get_gmail_client
+from app.integrations.ingestion.gmail_client import GmailAuthError, GmailClient
+from app.integrations.storage.google_drive import SCOPE as DRIVE_SCOPE
+from app.integrations.storage.google_drive import upload_file
 from app.repositories.automation import CommunicationRepository, PurchaseOrderRepository
+from app.repositories.channels import ChannelConnectionRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import ComparisonRepository, QuotationRepository
 from app.repositories.suppliers import SupplierRepository
@@ -213,6 +220,40 @@ async def list_purchase_orders(context: CurrentUser, status: Optional[str] = Non
 @router.get("/purchase-orders/{po_id}")
 async def get_purchase_order(po_id: str, context: CurrentUser, repo: PurchaseOrderRepository = Depends(po_repo)) -> dict:
     return await repo.get_or_404(context.organization_id, po_id)
+
+
+@router.post("/purchase-orders/{po_id}/drive")
+async def file_purchase_order_to_drive(
+    po_id: str, context: CurrentUser, database: DB,
+    repo: PurchaseOrderRepository = Depends(po_repo),
+    client: GmailClient = Depends(get_gmail_client),
+) -> dict:
+    """Upload the PO's PDF to the buyer's Google Drive, reusing the Gmail connection."""
+    if not settings.google_configured:
+        raise ConfigurationError(
+            "Google is not configured on the server. Add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET "
+            "to backend/.env and restart the backend.")
+    po = await repo.get_or_404(context.organization_id, po_id)
+    connection = await ChannelConnectionRepository(database).get_for_provider(context.organization_id, "gmail")
+    if not connection or connection.get("status") != "connected":
+        raise ConflictError("Connect your Google account on the Integrations page first.")
+    if DRIVE_SCOPE not in (connection.get("scopes") or []):
+        raise ConflictError("This Google connection has no Drive permission. Reconnect it on the "
+                            "Integrations page to grant access.")
+    try:
+        access_token = await client.refresh_access_token(decrypt_secret(connection["encrypted_refresh_token"]))
+    except GmailAuthError as exc:
+        await ChannelConnectionRepository(database).update_status(
+            context.organization_id, "gmail", {"status": "reauthorization_required", "last_error": str(exc)})
+        raise ConflictError("Google access has expired. Please reconnect the account on the Integrations page.")
+
+    uploaded = await upload_file(client.http, access_token, filename=f"{po['po_number']}.pdf",
+                                 data=pos.render_po_pdf(po), folder_id=settings.GOOGLE_DRIVE_FOLDER_ID or None)
+    await repo.raw_update(context.organization_id, po_id, {
+        "$set": {"drive_file": uploaded},
+        "$push": {"history": comms.history_entry("filed_to_drive", context.user_id, file_id=uploaded["id"])},
+    })
+    return uploaded
 
 
 @router.post("/purchase-orders/{po_id}/{action}")

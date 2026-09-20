@@ -24,13 +24,16 @@ from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score,
+    precision_score,
+    recall_score,
     brier_score_loss,
     confusion_matrix,
     f1_score,
     precision_recall_curve,
     roc_auc_score,
 )
-from sklearn.model_selection import StratifiedKFold
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
@@ -80,11 +83,18 @@ def _candidates(random_state: int) -> dict[str, Pipeline]:
     }
 
 
-def _best_f1_threshold(y_true: np.ndarray, scores: np.ndarray) -> float:
+# Screening beta: for a buyer, missing a late delivery costs more than one needless
+# check, so the operating point weights recall above precision.
+THRESHOLD_BETA = 2.0
+
+
+def _best_fbeta_threshold(y_true: np.ndarray, scores: np.ndarray, beta: float = THRESHOLD_BETA) -> float:
     precision, recall, thresholds = precision_recall_curve(y_true, scores)
+    b2 = beta * beta
     with np.errstate(divide="ignore", invalid="ignore"):
-        f1 = np.nan_to_num(2 * precision[:-1] * recall[:-1] / (precision[:-1] + recall[:-1]))
-    return float(thresholds[int(np.argmax(f1))])
+        fbeta = np.nan_to_num((1 + b2) * precision[:-1] * recall[:-1]
+                              / (b2 * precision[:-1] + recall[:-1]))
+    return float(thresholds[int(np.argmax(fbeta))])
 
 
 def _metrics(y_true: np.ndarray, scores: np.ndarray, predicted: np.ndarray) -> dict:
@@ -96,6 +106,9 @@ def _metrics(y_true: np.ndarray, scores: np.ndarray, predicted: np.ndarray) -> d
         "roc_auc": float(roc_auc_score(y_true, scores)) if both_classes else None,
         "pr_auc": float(average_precision_score(y_true, scores)) if both_classes else None,
         "macro_f1": float(f1_score(y_true, predicted, average="macro", zero_division=0)),
+        # How often a "late" warning is right, and how many late orders are caught.
+        "precision_late": float(precision_score(y_true, predicted, zero_division=0)),
+        "recall_late": float(recall_score(y_true, predicted, zero_division=0)),
         "brier": float(brier_score_loss(y_true, scores, labels=[0, 1])),
         "mean_score": float(np.mean(scores)),
         "confusion_matrix": confusion_matrix(y_true, predicted, labels=[0, 1]).tolist(),
@@ -114,9 +127,16 @@ def _period(dates: pd.Series) -> dict:
 
 
 def train_and_evaluate(orders: pd.DataFrame, *, train_end_year: int = 2013,
+                       train_end_date: pd.Timestamp | None = None,
                        cv_folds: int = 5, random_state: int = 42) -> TrainingResult:
+    """Time-ordered training and one honest evaluation on the held-out later period.
+
+    The split is by calendar year, or by `train_end_date` when a caller (an organization
+    retraining on its own short history) needs a finer cut.
+    """
     frame = build_training_frame(orders)
-    is_train = frame["scheduled_date"].dt.year <= train_end_year
+    is_train = (frame["scheduled_date"] <= pd.Timestamp(train_end_date) if train_end_date is not None
+                else frame["scheduled_date"].dt.year <= train_end_year)
     train, test = frame[is_train], frame[~is_train]
     if train.empty or test.empty:
         raise ValueError("time split left the training or test period empty")
@@ -140,20 +160,49 @@ def train_and_evaluate(orders: pd.DataFrame, *, train_end_year: int = 2013,
         cv_scores[name] = {"roc_auc": float(np.mean(roc)), "pr_auc": float(np.mean(pr))}
         out_of_fold[name] = oof
     model_name = max(cv_scores, key=lambda name: cv_scores[name]["pr_auc"])
-    threshold = _best_f1_threshold(y_train, out_of_fold[model_name])
-    pipeline = clone(candidates[model_name]).fit(x_train, y_train)
+
+    # Calibration. The candidates are class-weighted, which makes their scores good for
+    # ranking but far too high to read as probabilities. Wrapping the selected model
+    # maps those scores onto observed frequencies, so "31% late" means what it says.
+    # Isotonic needs plenty of positives; below that sigmoid is the safer fit.
+    positives = int(y_train.sum())
+    calibration_method = "isotonic" if positives >= 1000 else "sigmoid"
+    calibrated = CalibratedClassifierCV(clone(candidates[model_name]), method=calibration_method, cv=folds)
+    # Out-of-fold calibrated probabilities: the threshold is chosen on the training period only.
+    calibrated_oof = cross_val_predict(calibrated, x_train, y_train, cv=folds,
+                                       method="predict_proba", n_jobs=None)[:, 1]
+    # Two operating points. The app ships the balanced one, because the risk *bands* are
+    # derived from it and a recall-first threshold would mark almost every supplier
+    # "medium risk", which tells a buyer nothing. The screening point is reported so the
+    # trade-off is visible and a deployment can choose it deliberately.
+    threshold = _best_fbeta_threshold(y_train, calibrated_oof, beta=1.0)
+    screening_threshold = _best_fbeta_threshold(y_train, calibrated_oof, beta=THRESHOLD_BETA)
+    pipeline = clone(calibrated).fit(x_train, y_train)
+    uncalibrated = clone(candidates[model_name]).fit(x_train, y_train)
 
     # Test period.
     external = (test["fulfil_via"] == EXTERNAL_FULFILMENT).to_numpy()
     test_scores = pipeline.predict_proba(x_test)[:, 1]
     test_metrics = _with_external(y_test, test_scores, (test_scores >= threshold).astype(int),
                                   external)
+    screening_metrics = _metrics(y_test, test_scores, (test_scores >= screening_threshold).astype(int))
+    raw_scores = uncalibrated.predict_proba(x_test)[:, 1]
+    raw_threshold = _best_fbeta_threshold(y_train, out_of_fold[model_name])
+    calibration = {
+        "method": calibration_method,
+        "brier_before": float(brier_score_loss(y_test, raw_scores, labels=[0, 1])),
+        "brier_after": test_metrics["brier"],
+        "mean_score_before": float(np.mean(raw_scores)),
+        "mean_score_after": test_metrics["mean_score"],
+        "observed_late_rate": test_metrics["late_rate"],
+        "decision_threshold_before": raw_threshold,
+    }
 
     base_late_rate = float(y_train.mean())
     zeros = np.zeros(len(test))
     prior_train = 1.0 - train["prior_on_time_rate"].fillna(1.0 - base_late_rate).to_numpy()
     prior_test = 1.0 - test["prior_on_time_rate"].fillna(1.0 - base_late_rate).to_numpy()
-    prior_threshold = _best_f1_threshold(y_train, prior_train)
+    prior_threshold = _best_fbeta_threshold(y_train, prior_train)
     baselines = {
         "always_on_time": _with_external(y_test, zeros, zeros.astype(int), external),
         "prior_on_time_rate": {
@@ -182,6 +231,11 @@ def train_and_evaluate(orders: pd.DataFrame, *, train_end_year: int = 2013,
         "knowledge_gap_days": KNOWLEDGE_GAP_DAYS,
         "recent_window": RECENT_WINDOW,
         "decision_threshold": threshold,
+        "threshold_objective": "F1 on out-of-fold training predictions",
+        "screening_threshold": screening_threshold,
+        "screening_beta": THRESHOLD_BETA,
+        "screening_test": screening_metrics,
+        "calibration": calibration,
         "base_late_rate": base_late_rate,
         "sklearn_version": sklearn.__version__,
         "random_state": random_state,
@@ -191,6 +245,7 @@ def train_and_evaluate(orders: pd.DataFrame, *, train_end_year: int = 2013,
         "train_period": train_period,
         "test_period": test_period,
         "cv": cv_scores,
+        "cv_calibrated_pr_auc": float(average_precision_score(y_train, calibrated_oof)),
         "test": test_metrics,
         "baselines": baselines,
         "risk_bands": {"medium": threshold / 2, "high": threshold},
@@ -206,11 +261,12 @@ def _number(value, digits: int = 4) -> str:
 def _metric_row(label: str, metrics: dict) -> str:
     return (f"| {label} | {metrics['rows']:,} | {metrics['late_rate']:.1%} | "
             f"{_number(metrics['roc_auc'])} | {_number(metrics['pr_auc'])} | "
-            f"{_number(metrics['macro_f1'])} | {_number(metrics['brier'])} |")
+            f"{_number(metrics['macro_f1'])} | {_number(metrics.get('precision_late'), 3)} | "
+            f"{_number(metrics.get('recall_late'), 3)} | {_number(metrics['brier'])} |")
 
 
-_METRIC_HEADER = ("| Scorer | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Brier |\n"
-                  "|---|---:|---:|---:|---:|---:|---:|")
+_METRIC_HEADER = ("| Scorer | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier |\n"
+                  "|---|---:|---:|---:|---:|---:|---:|---:|---:|")
 
 
 def results_table(metadata: dict) -> str:
@@ -230,6 +286,7 @@ def results_table(metadata: dict) -> str:
 def _report(meta: dict, train: pd.DataFrame, test: pd.DataFrame) -> str:
     test_metrics = meta["test"]
     external = test_metrics["external_vendors"]
+    screening = meta["screening_test"]
     (tn, fp), (fn, tp) = test_metrics["confusion_matrix"]
     cv_rows = "\n".join(
         f"| {name}{' (selected)' if name == meta['model_name'] else ''} | "
@@ -302,10 +359,10 @@ high from {meta['risk_bands']['high']:.4f}.
 
 ## Test period results
 
-| Subset | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Brier | Mean score |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| All shipments | {test_metrics['rows']:,} | {test_metrics['late_rate']:.2%} | {_number(test_metrics['roc_auc'])} | {_number(test_metrics['pr_auc'])} | {_number(test_metrics['macro_f1'])} | {_number(test_metrics['brier'])} | {_number(test_metrics['mean_score'])} |
-| External vendors | {external['rows']:,} | {external['late_rate']:.2%} | {_number(external['roc_auc'])} | {_number(external['pr_auc'])} | {_number(external['macro_f1'])} | {_number(external['brier'])} | {_number(external['mean_score'])} |
+| Subset | Rows | Late rate | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier | Mean score |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| All shipments | {test_metrics['rows']:,} | {test_metrics['late_rate']:.2%} | {_number(test_metrics['roc_auc'])} | {_number(test_metrics['pr_auc'])} | {_number(test_metrics['macro_f1'])} | {_number(test_metrics['precision_late'], 3)} | {_number(test_metrics['recall_late'], 3)} | {_number(test_metrics['brier'])} | {_number(test_metrics['mean_score'])} |
+| External vendors | {external['rows']:,} | {external['late_rate']:.2%} | {_number(external['roc_auc'])} | {_number(external['pr_auc'])} | {_number(external['macro_f1'])} | {_number(external['precision_late'], 3)} | {_number(external['recall_late'], 3)} | {_number(external['brier'])} | {_number(external['mean_score'])} |
 
 Confusion matrix, all test shipments, at threshold {meta['decision_threshold']:.4f}:
 
@@ -314,9 +371,34 @@ Confusion matrix, all test shipments, at threshold {meta['decision_threshold']:.
 | Actually on time | {tn:,} | {fp:,} |
 | Actually late | {fn:,} | {tp:,} |
 
-"Mean score" is the average predicted late probability. The candidates are trained with
-balanced class weights, so their scores are risk scores rather than calibrated
-probabilities; compare the mean score with the observed late rate.
+"Precision" is how often a "late" warning is right; "recall" is the share of late shipments
+caught. At this threshold the model catches {test_metrics['recall_late']:.0%} of late shipments,
+and {test_metrics['precision_late']:.0%} of its warnings are correct.
+
+## Operating points
+
+The shipped threshold balances the two errors. A deployment that would rather catch almost
+every late delivery, and accept more needless checks, can use the screening threshold instead
+(F{meta['screening_beta']:g}, recall weighted above precision). Both are measured on the same
+calibrated model and the same test period.
+
+| Operating point | Threshold | Precision | Recall | Orders flagged |
+|---|---:|---:|---:|---:|
+| Shipped (balanced F1) | {meta['decision_threshold']:.4f} | {test_metrics['precision_late']:.3f} | {test_metrics['recall_late']:.3f} | {(test_metrics['confusion_matrix'][0][1] + test_metrics['confusion_matrix'][1][1]) / test_metrics['rows']:.1%} |
+| Screening (F{meta['screening_beta']:g}) | {meta['screening_threshold']:.4f} | {screening['precision_late']:.3f} | {screening['recall_late']:.3f} | {(screening['confusion_matrix'][0][1] + screening['confusion_matrix'][1][1]) / screening['rows']:.1%} |
+
+## Calibration
+
+The selected model is class-weighted, which makes its raw scores good for ranking but far too
+high to read as probabilities. It is wrapped in `CalibratedClassifierCV`
+({meta['calibration']['method']}, fitted on the training period only), so a displayed
+percentage can be read literally.
+
+| | Mean predicted | Brier (lower is better) |
+|---|---:|---:|
+| Before calibration | {_number(meta['calibration']['mean_score_before'])} | {_number(meta['calibration']['brier_before'])} |
+| After calibration | {_number(meta['calibration']['mean_score_after'])} | {_number(meta['calibration']['brier_after'])} |
+| Observed late rate | {meta['calibration']['observed_late_rate']:.4f} | - |
 
 ## Baselines
 
@@ -352,10 +434,10 @@ Permutation importance of the selected model on the test period (mean drop in PR
 - Shuffled cross-validation mixes years, so the cross-validated scores above are more
   optimistic than the time-ordered test ({meta['model_name']}: CV PR-AUC
   {_number(meta['cv'][meta['model_name']]['pr_auc'])}, test PR-AUC {_number(test_metrics['pr_auc'])}).
-- Scores are not calibrated probabilities: balanced class weights push them up (mean test
-  score {_number(test_metrics['mean_score'])} against an observed late rate of
-  {test_metrics['late_rate']:.2%}), which is why the Brier score can be worse than a baseline's.
-  Use them to rank suppliers and with the risk bands, not as literal chances.
+- Calibration is fitted on the training period and applied to a later one with a different base
+  rate ({meta['base_late_rate']:.2%} then, {test_metrics['late_rate']:.2%} in the test period), so
+  the probabilities are close but not exact: mean predicted {_number(test_metrics['mean_score'])}
+  against {test_metrics['late_rate']:.2%} observed.
 - Narrow training range: the lowest prior on-time rate of any training shipment's supplier is
   {train['prior_on_time_rate'].min():.0%}. {tree_note}
 - More than half of all shipments share one supplier key ("SCMS from RDC"). For those rows

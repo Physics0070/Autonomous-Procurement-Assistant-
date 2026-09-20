@@ -44,3 +44,15 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | E1 | Backend regression | ✅ | **158 passed** |
 | E2 | Frontend for supervisor runs (reasoning + resume) | ✅ | timeline shows routing reasons; Continue/Stop resume the run — verified in the browser |
 | E3 | Docs, E2E extension, commit and push | ✅ | E2E **155/155**; README agent table; pushed to `main` |
+
+## Synopsis completion + ML strengthening (20 Sep 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| F1 | ML: probability calibration | ✅ | Brier 0.167 → **0.099**, now better than both baselines |
+| F2 | ML: precision/recall reported, plus a screening operating point | ✅ | shipped 0.36/0.55; screening 0.32/0.92 |
+| F3 | ML: date-based split so an org can retrain on a short history | ✅ | `train_end_date` |
+| G1 | Google Drive upload for purchase orders (last unbuilt stack item) | ✅ | `tests/test_drive.py` 6 tests; "Save to Drive" on the PO page |
+| G2 | Delivery **dates** extracted, not just lead days | ✅ | `tests/test_delivery_dates.py` 8 tests; sets the PO's expected date |
+| G3 | Verification | ✅ | pytest **172 passed**; E2E **156/156**; tsc + build clean |
+| G4 | Placeholders where credentials are missing | ⚠️ | Drive/Gmail → 503 naming the missing setting; AI → template fallback |

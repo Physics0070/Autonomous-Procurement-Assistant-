@@ -40,12 +40,22 @@ class TokenGrant:
     scope: str
 
 
+def google_scopes() -> str:
+    """Everything this app asks Google for: Gmail reading, plus Drive when PO filing is on."""
+    from app.integrations.storage.google_drive import SCOPE as DRIVE_SCOPE
+
+    scopes = settings.GMAIL_SCOPES.split()
+    if settings.GOOGLE_DRIVE_ENABLED and DRIVE_SCOPE not in scopes:
+        scopes.append(DRIVE_SCOPE)
+    return " ".join(scopes)
+
+
 def build_authorize_url(state: str) -> str:
     params = {
         "client_id": settings.GOOGLE_CLIENT_ID,
         "redirect_uri": settings.GOOGLE_REDIRECT_URI,
         "response_type": "code",
-        "scope": settings.GMAIL_SCOPES,
+        "scope": google_scopes(),
         # offline + consent guarantees a refresh token on every connect,
         # including a reconnect after the user revoked access.
         "access_type": "offline",

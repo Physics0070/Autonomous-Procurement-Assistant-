@@ -7,6 +7,7 @@ from typing import Any, Optional
 from app.core.errors import ConflictError
 from app.core.gstin import state_code
 from app.services.automation.communications import history_entry, now
+from app.services.procurement.validation import parse_date
 
 # action -> (statuses it is allowed from, resulting status)
 TRANSITIONS = {
@@ -77,6 +78,7 @@ def build_purchase_order(request: dict, quotation: dict, supplier: Optional[dict
         },
         "terms": {
             "delivery_days": (data.get("delivery") or {}).get("delivery_days"),
+            "delivery_date": (data.get("delivery") or {}).get("delivery_date"),
             "payment_terms": (data.get("payment_terms") or {}).get("raw_terms"),
         },
         "status": "draft",
@@ -90,9 +92,13 @@ def transition(po: dict, action: str, user_id: str, delivered_at: Optional[datet
     fields: dict[str, Any] = {"status": target}
     if action == "issue":
         fields["issued_at"] = now()
-        days = (po.get("terms") or {}).get("delivery_days")
-        if days is not None:
-            fields["expected_delivery_date"] = now() + timedelta(days=days)
+        terms = po.get("terms") or {}
+        # A date the supplier actually committed to beats a lead time counted from today.
+        promised = parse_date(terms.get("delivery_date"))
+        if promised is not None:
+            fields["expected_delivery_date"] = promised.replace(tzinfo=timezone.utc)
+        elif terms.get("delivery_days") is not None:
+            fields["expected_delivery_date"] = now() + timedelta(days=terms["delivery_days"])
     if action == "deliver":
         fields.update(record_delivery(po.get("expected_delivery_date"), delivered_at or now()))
     return {"$set": fields, "$push": {"history": history_entry(action, user_id)}}

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Download, FileText, PackageCheck } from "lucide-react"
+import { CloudUpload, Download, ExternalLink, FileText, PackageCheck } from "lucide-react"
 import { Link } from "react-router-dom"
 import { PageHeader } from "@/components/layout/AppShell"
 import { Badge } from "@/components/ui/badge"
@@ -9,7 +9,7 @@ import { Alert, EmptyState, ErrorState, LoadingState, Spinner } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { usePurchaseOrderActions, usePurchaseOrders, type PurchaseOrder } from "@/hooks/automation"
+import { useFileToDrive, usePurchaseOrderActions, usePurchaseOrders, type PurchaseOrder } from "@/hooks/automation"
 import { downloadFile } from "@/lib/api"
 import { cn, formatCurrency, formatDate, formatDateTime, formatNumber } from "@/lib/utils"
 
@@ -26,6 +26,7 @@ const NEXT: Partial<Record<PurchaseOrder["status"], { action: string; label: str
 
 function Detail({ po }: { po: PurchaseOrder }) {
   const { act } = usePurchaseOrderActions()
+  const drive = useFileToDrive()
   const [deliveredOn, setDeliveredOn] = React.useState(() => new Date().toISOString().slice(0, 10))
   const [error, setError] = React.useState<string | null>(null)
   const run = (action: string, deliveredAt?: string) =>
@@ -44,6 +45,7 @@ function Detail({ po }: { po: PurchaseOrder }) {
       </CardHeader>
       <CardContent className="space-y-4">
         {error && <Alert tone="error">{error}</Alert>}
+        {drive.error && <Alert tone="warning">{drive.error.message}</Alert>}
         {po.warnings.length > 0 && (
           <Alert tone="warning" title="Not on this purchase order">
             <ul className="list-inside list-disc">{po.warnings.map((w) => <li key={w}>{w}</li>)}</ul>
@@ -85,7 +87,12 @@ function Detail({ po }: { po: PurchaseOrder }) {
         <div className="grid gap-2 text-sm sm:grid-cols-2">
           <p><span className="text-muted-foreground">Delivery terms:</span> {po.terms.delivery_days != null ? `${po.terms.delivery_days} days` : "not stated"}</p>
           <p><span className="text-muted-foreground">Payment:</span> {po.terms.payment_terms ?? "not stated"}</p>
-          {po.expected_delivery_date && <p><span className="text-muted-foreground">Expected:</span> {formatDate(po.expected_delivery_date)}</p>}
+          {po.expected_delivery_date && (
+            <p>
+              <span className="text-muted-foreground">Expected:</span> {formatDate(po.expected_delivery_date)}
+              {po.terms.delivery_date && <span className="text-muted-foreground"> (supplier committed to this date)</span>}
+            </p>
+          )}
           {po.delivered_at && (
             <p>
               <span className="text-muted-foreground">Delivered:</span> {formatDate(po.delivered_at)}{" "}
@@ -116,6 +123,18 @@ function Detail({ po }: { po: PurchaseOrder }) {
           <Button variant="outline" onClick={() => downloadFile(`/purchase-orders/${po.id}/pdf`, `${po.po_number}.pdf`).catch((e) => setError(e.message))}>
             <Download className="h-4 w-4" />PDF
           </Button>
+          {po.drive_file ? (
+            <Button variant="outline" asChild>
+              <a href={po.drive_file.link} target="_blank" rel="noreferrer">
+                <ExternalLink className="h-4 w-4" />In Drive
+              </a>
+            </Button>
+          ) : (
+            <Button variant="outline" onClick={() => drive.mutate(po.id)} disabled={drive.isPending}
+                    title="Uploads this PO's PDF to your Google Drive (needs the Google connection)">
+              {drive.isPending ? <Spinner /> : <CloudUpload className="h-4 w-4" />}Save to Drive
+            </Button>
+          )}
           {["draft", "approved", "issued"].includes(po.status) && (
             <Button variant="ghost" className="text-destructive" onClick={() => run("cancel")} disabled={act.isPending}>Cancel</Button>
           )}

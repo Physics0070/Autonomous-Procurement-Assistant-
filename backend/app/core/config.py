@@ -104,6 +104,9 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_SECRET: str = ""
     GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/v1/channels/gmail/callback"
     GMAIL_SCOPES: str = "https://www.googleapis.com/auth/gmail.readonly"
+    # drive.file only reaches files this app creates; it cannot read an existing Drive.
+    GOOGLE_DRIVE_ENABLED: bool = True
+    GOOGLE_DRIVE_FOLDER_ID: str = ""  # optional: file POs into one folder
     # Deliberately narrow: importing every PDF in a mailbox would pull in bank
     # statements and invoices. Use e.g. `label:quotations` for a dedicated label.
     GMAIL_SYNC_QUERY: str = (
