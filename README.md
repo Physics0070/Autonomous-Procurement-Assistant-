@@ -13,6 +13,22 @@ real USAID shipment data.
 canonical normalized data → comparison. Each layer is stored separately and later
 layers never overwrite earlier ones.
 
+**Status:** all synopsis features built · 172 backend tests · 156 end-to-end assertions ·
+live AI, Gmail and Drive need the credentials listed in [Environment variables](#environment-variables).
+
+## What it does
+
+| | Feature |
+|---|---|
+| **Collect** | Upload PDF / scan / photo / Excel / CSV, or collect automatically from Gmail (read-only) |
+| **Understand** | OCR when needed, AI extraction with a heuristic fallback, validation that flags rather than fixes, normalization of units, names and terms |
+| **Compare** | Deterministic weighted scoring across price, transport, delivery, payment, reliability and completeness, with a written explanation |
+| **Act** | RFQ and negotiation email drafts with a competitor guardrail, purchase orders with the correct CGST/SGST/IGST split, PDF, Drive filing, delivery recording |
+| **Decide** | A supervisor agent routes specialist agents, pauses for your approval, and resumes; an assistant answers questions from your own records |
+| **Learn** | Calibrated late-delivery risk, Isolation Forest price anomalies, spend analytics and demand forecasts |
+
+Nothing is ever emailed by the app, and nothing is ordered without a person approving it.
+
 ---
 
 ## The pipeline
@@ -24,9 +40,10 @@ Text / table extraction        PyMuPDF · pandas/openpyxl · Pillow
         ↓  OCR only when a page has no usable text layer
 Common raw representation      ProcessedDocument
         ↓
-AI structured extraction       Gemini (heuristic parser when unconfigured)
+AI structured extraction       OpenRouter / Ollama / Gemini (heuristic parser when unconfigured)
         ↓  Pydantic validation — the model cannot invent fields
 Validation                     inconsistencies flagged, never silently fixed
+        ↓  one self-correction: re-read the document with the validator's complaints
         ↓
 Normalization                  deterministic → fuzzy → AI (only if ambiguous)
         ↓
@@ -38,7 +55,21 @@ AI explanation                 describes the ranking; cannot change it
 ```
 
 Manual upload, Gmail and WhatsApp all funnel through **one** ingestion service, so
-document processing is never duplicated per channel.
+document processing is never duplicated per channel. Each stage above runs as a named
+agent in a LangGraph graph, and every run is recorded step by step.
+
+After a quotation lands, the sourcing side takes over:
+
+```
+Monitor Agent (a quotation arrived, or an order is overdue)
+        ↓
+Supervisor Agent ──► Comparison ──► Recommendation ──► Risk (ML) ──► Negotiation ──► Purchase Order
+        ▲                │              │               │              │                │
+        └────────────────┴──────────────┴───────────────┴──────────────┴────────────────┘
+                     every specialist hands control back; the supervisor decides what is next
+
+                     ⏸ pauses for your approval — and resumes where it stopped
+```
 
 ---
 
@@ -125,8 +156,9 @@ backend/app/
 ├── core/                       config · database · security · errors
 ├── api/
 │   ├── deps.py                 auth + org-scoping dependencies
-│   └── routes/                 auth · suppliers · procurement_requests
-│                               documents · quotations · comparison · dashboard
+│   └── routes/                 auth · suppliers · procurement_requests · documents
+│                               quotations · comparison · dashboard · channels
+│                               organizations · automation · agents · analytics
 ├── schemas/                    API + domain models
 │   ├── document.py             ProcessedDocument (the common raw representation)
 │   ├── extraction.py           AI extraction contract + validation report
@@ -139,11 +171,20 @@ backend/app/
 │   ├── procurement/            validation · normalization · normalizer_service
 │   │                           matching · comparison · explanation
 │   │                           reliability · anomaly
+│   ├── channels/gmail_sync.py  Gmail → the shared ingestion service
+│   ├── automation/             communications (drafts, guardrail, .eml)
+│   │                           purchase_orders (GST split, lifecycle, PDF)
+│   ├── agents/                 loop · supervisor · specialists · monitor · runs
+│   │                           assistant · sourcing
+│   ├── analytics/              spend · reliability_ml
 │   └── storage/                StorageBackend abstraction + local implementation
 ├── integrations/
-│   ├── ai/                     AIProvider → GeminiProvider · factory · prompts
-│   └── ingestion/channels.py   Gmail / WhatsApp adapters (architecture only)
-└── workers/processing.py       in-process async queue
+│   ├── ai/                     AIProvider → OpenAICompatible · Gemini · factory · prompts
+│   ├── ingestion/              gmail_client · channels (WhatsApp: architecture only)
+│   └── storage/google_drive.py purchase-order filing
+├── workers/                    processing queue · gmail scheduler · agent watchdog
+└── ml/                         scms · features · train_reliability · reliability_model
+                                anomaly · forecast · artifacts/ (model + reports)
 
 frontend/src/
 ├── lib/api.ts                  single API client
@@ -151,14 +192,18 @@ frontend/src/
 ├── hooks/queries.ts            all TanStack Query hooks
 ├── components/ui/              hand-written shadcn-style primitives
 ├── components/layout/          app shell + navigation
+├── components/AgentRuns.tsx    agent timeline, reasoning and resume
 └── pages/                      Login · Dashboard · Requests · Documents
                                 QuotationDetail · Suppliers · Comparison
+                                Communications · PurchaseOrders · Assistant
+                                Analytics · Integrations · Settings
 ```
 
 ### Collections
 
 `users` · `organizations` · `suppliers` · `procurement_requests` · `quotations` ·
-`comparisons` · `price_history`
+`comparisons` · `price_history` · `channel_connections` · `communications` ·
+`purchase_orders` · `counters` · `agent_runs` · `conversations`
 
 Quotation items, processing history and corrections are **embedded**; suppliers and
 requests are **referenced** because they are reused independently.
@@ -173,10 +218,11 @@ checked ad hoc.
 
 ## Design decisions worth knowing
 
-**The model is never asked to do arithmetic.** Supplier scores and rankings are
-computed in Python from configurable weights. Gemini receives the finished ranking
-and writes prose about it. If it is unavailable, a clearly-labelled computed summary
-is shown instead — never a fabricated one.
+**The model is never asked to do arithmetic.** Supplier scores, rankings, GST splits and
+purchase-order totals are computed in Python. The model receives the finished ranking and
+writes prose about it. If it is unavailable, a clearly-labelled computed summary is shown
+instead — never a fabricated one. The same rule bounds the agents: a supervisor decides
+*what happens next*, never what a number is.
 
 **Missing data stays missing.** The extraction prompt states the no-invention rule,
 Pydantic enforces it, and the heuristic fallback leaves a field null when a line's
@@ -191,8 +237,10 @@ quantity or unit price rather than a plausible guess.
 only pages below `PDF_TEXT_MIN_CHARS_PER_PAGE` get rendered and OCR'd.
 
 **Reliability is rule-based, and says so.** There is not enough history for an ML
-model, so the score is a transparent rule set with `method: "rule_based"` and
-`is_ml_prediction: false` on every response.
+model of an organisation's own suppliers until it has delivery history, so the headline
+score stays a transparent rule set with `method: "rule_based"`. Once a supplier has
+delivered purchase orders, a calibrated ML late-delivery risk is shown **beside** it —
+labelled with its model version, what it was trained on, and how many deliveries it saw.
 
 ---
 
@@ -256,7 +304,7 @@ Tesseract later needs no code change.
 
 ---
 
-## Phases 3–6 at a glance
+## Features in detail
 
 | Feature | Where | Notes |
 |---|---|---|
@@ -321,5 +369,11 @@ Full report: `backend/ml/artifacts/evaluation_report.md`; anomaly and forecast e
 it needs the official Meta Business Cloud API and a verified business account — an
 unofficial library is not an acceptable route for a business product.
 
-**Sending email and Google Drive** are out of scope by decision: drafts are approved in
-the app and sent by a person; purchase orders download as PDF.
+**Sending email** is out of scope by decision, and the synopsis agrees: the app drafts,
+a person approves, and that person sends from their own mail client (export `.eml` or copy),
+then marks it sent. Gmail access stays read-only. Purchase orders download as PDF or file
+to Google Drive.
+
+**Live AI, Gmail and Drive are unverified** until credentials are supplied — every one of
+those paths is exercised against a scripted model and a fake Google, and reports the missing
+setting rather than failing obscurely.
