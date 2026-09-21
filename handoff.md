@@ -22,7 +22,7 @@ Autonomous Procurement Assistant (VIT SY-K10, `Synopsis.pdf`) through **Phase 6*
   accuracy 77.4% vs 86.0% always-on-time). Isolation Forest anomalies (with a Tukey-fence fix
   for out-of-range prices). Forecasts. Reports in `backend/ml/artifacts/`.
 - **Demo data:** `python -m scripts.load_scms_demo` → org "SCMS demo — USAID public data",
-  `scms.demo@procurement-demo.com` / `ScmsDemo2026!` (73 suppliers, 10,324 POs). Loaded in the dev DB.
+  `scms.demo@procurement-demo.com`, password from `SCMS_DEMO_PASSWORD` (73 suppliers, 10,324 POs).
 - **Git:** single branch `main`, pushed to github.com/Physics0070/Autonomous-Procurement-Assistant-
 
 ## 3. What still needs credentials (placeholders in place)

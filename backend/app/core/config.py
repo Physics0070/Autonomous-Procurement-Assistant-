@@ -131,8 +131,15 @@ class Settings(BaseSettings):
 
     @model_validator(mode="after")
     def _no_placeholder_secret_outside_development(self) -> "Settings":
-        if self.ENVIRONMENT.lower() != "development" and self.JWT_SECRET_KEY == "CHANGE_ME_IN_PRODUCTION":
-            raise ValueError("JWT_SECRET_KEY must be set outside development (it signs logins and OAuth state).")
+        if self.ENVIRONMENT.lower() != "development":
+            secret = self.JWT_SECRET_KEY
+            # Any placeholder that ships in this repo (or a short secret) is known or guessable,
+            # and whoever knows it can forge a login. Match the pattern, not one exact string.
+            placeholder = "change" in secret.lower().replace("-", "").replace("_", "") and "me" in secret.lower()
+            if placeholder or len(secret) < 32:
+                raise ValueError("JWT_SECRET_KEY must be a real random secret of at least 32 characters outside "
+                                 "development (it signs logins and OAuth state). Generate one with: "
+                                 "python -c \"import secrets; print(secrets.token_urlsafe(48))\"")
         return self
 
     @property

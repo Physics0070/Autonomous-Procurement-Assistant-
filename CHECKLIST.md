@@ -18,7 +18,7 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | 12 | P6.1 ML reliability from delivered POs + retrain endpoint | ✅ | `reliability.ml` on suppliers; retrain needs ≥ 50 delivered POs |
 | 13 | P6.2 Isolation Forest price anomalies (≥ 20 prices) | ✅ | fixed: out-of-range prices now caught (Tukey fence); report regenerated |
 | 14 | P6.3 Analytics API — spend, forecast, models | ✅ | `tests/test_analytics.py` 3 passed |
-| 15 | P6.4 SCMS real-data demo organization loader | ✅ | 73 suppliers, 10,324 POs, 10,306 prices; login `scms.demo@procurement-demo.com` / `ScmsDemo2026!` |
+| 15 | P6.4 SCMS real-data demo organization loader | ✅ | 73 suppliers, 10,324 POs, 10,306 prices; login `scms.demo@procurement-demo.com` (password set via `SCMS_DEMO_PASSWORD`) |
 | 16 | Frontend — Integrations, Communications, Purchase Orders, Settings, Assistant, Analytics | ✅ | + Award/Negotiate/Run agents on comparison, Draft RFQs, agent timelines, ML badge; all pages browser-checked |
 | 16b | Hardcoding review | ✅ | tunables → settings; placeholder JWT secret refused outside dev; `.env` anchored; compose/env examples → OpenRouter; demo creds env-overridable |
 | 17 | Final verification — full pytest, E2E script, `tsc` + `vite build`, browser check | ✅ | pytest 144 passed · E2E 147/147 · tsc + build clean · pages checked |

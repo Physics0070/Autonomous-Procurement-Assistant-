@@ -14,7 +14,7 @@ if hasattr(sys.stdout, "reconfigure"):
 API = os.getenv("API_BASE_URL", "http://127.0.0.1:8000") + "/api/v1"
 SAMPLES = Path(__file__).resolve().parents[1] / "samples"
 EMAIL = os.getenv("DEMO_EMAIL", "soham.demo@vishwakarma-eng.com")
-PASSWORD = os.getenv("DEMO_PASSWORD", "DemoPassw0rd!")  # demo-only account
+PASSWORD = os.getenv("DEMO_PASSWORD")  # the demo account's password; never hardcoded
 
 MIME = {
     ".pdf": "application/pdf",
@@ -24,6 +24,9 @@ MIME = {
 
 
 def main() -> int:
+    if not PASSWORD:
+        print("Set DEMO_PASSWORD to the demo account's password first.")
+        return 1
     client = httpx.Client(timeout=120.0)
     token = client.post(f"{API}/auth/login", json={"email": EMAIL, "password": PASSWORD}).json()[
         "access_token"

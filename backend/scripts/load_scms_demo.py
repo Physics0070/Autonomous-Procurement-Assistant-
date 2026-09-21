@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import secrets
 import sys
 
 from bson import ObjectId
@@ -26,7 +27,8 @@ from ml.scms import load_scms
 
 ORG_NAME = "SCMS demo — USAID public data"
 EMAIL = os.getenv("SCMS_DEMO_EMAIL", "scms.demo@procurement-demo.com")
-PASSWORD = os.getenv("SCMS_DEMO_PASSWORD", "ScmsDemo2026!")  # demo-only account; override via env
+# No password is ever hardcoded: set SCMS_DEMO_PASSWORD, or a random one is generated and printed once.
+PASSWORD = os.getenv("SCMS_DEMO_PASSWORD") or secrets.token_urlsafe(12)
 ORG_COLLECTIONS = ("suppliers", "purchase_orders", "price_history", "procurement_requests", "quotations",
                    "comparisons", "communications", "agent_runs", "conversations", "counters", "users")
 
@@ -82,6 +84,8 @@ async def main() -> int:
 
     print(f"{ORG_NAME}: {len(vendors)} suppliers, {len(pos):,} delivered purchase orders, {len(prices):,} prices.")
     print(f"Log in as {EMAIL} / {PASSWORD}")
+    if not os.getenv("SCMS_DEMO_PASSWORD"):
+        print("(random password - note it now; set SCMS_DEMO_PASSWORD to choose your own)")
     return 0
 
 

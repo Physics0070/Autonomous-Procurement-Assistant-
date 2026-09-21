@@ -131,8 +131,9 @@ cd backend
 a throwaway database (`procurement_assistant_test`), a fake Google backend and a scripted
 fake LLM, so it needs no credentials.
 
-The **SCMS demo organization** (`scms.demo@procurement-demo.com` / `ScmsDemo2026!`,
-override with `SCMS_DEMO_EMAIL` / `SCMS_DEMO_PASSWORD`) holds 73 real suppliers and
+The **SCMS demo organization** (login `scms.demo@procurement-demo.com`; set
+`SCMS_DEMO_PASSWORD` before running the loader, or it generates a random password and
+prints it once) holds 73 real suppliers and
 10,324 delivered purchase orders in USD, so ML risk, anomalies, spend and forecasts can
 be shown on real data. The reliability model was trained on the same shipments up to
 2013, so in-app scores for this organization are partly in-sample; the held-out results
