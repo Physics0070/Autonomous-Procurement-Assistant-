@@ -68,5 +68,8 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | C2 | LLM council: answer → anonymous peer review → monitor decides | ✅ | `CouncilProvider`; failing members dropped; transcript kept |
 | C3 | Council wired into real agent runs | ✅ | e.g. council as Critic rejects a draft in a full supervisor run |
 | C4 | API key placeholders | ⚠️ | `OPENROUTER_API_KEY`, `LLM_TASK_MODELS`, `COUNCIL_MODELS`, `COUNCIL_MONITOR_MODEL` await your values |
-| I1 | Indian-data accuracy >90% | 🔄 | next |
+| I1 | Official Indian data: GST HSN master (21,935 codes) | ✅ | `ml/data/india/`; found a data error in the official file (8539) |
+| I2 | Indian benchmark: 114 quotation-style items, 29 dev / 85 held-out test | ✅ | labels checked against the master |
+| I3 | HSN suggestion: text shortlist + checked model decision | ✅ | `tests/test_ml_hsn.py` 9 tests; `GET /analytics/hsn` |
+| I4 | Held-out accuracy | ⚠️ | text alone **54.1%** top-1; right answer on shortlist **97.6%**; model stage **not yet measured (needs key)** — `python -m ml.hsn test --llm` |
 

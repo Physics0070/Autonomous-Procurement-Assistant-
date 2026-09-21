@@ -61,7 +61,7 @@ class Settings(BaseSettings):
     OPENROUTER_FALLBACK_MODELS: str = "nvidia/nemotron-3-super-120b-a12b:free"
     OPENROUTER_APP_URL: str = "http://localhost:5173"
     # A different model per task: "extraction=vendor/model, negotiation=vendor/model, critic=council".
-    # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant.
+    # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn.
     # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
     # tasks (negotiation, assistant) need a single model.
     # Unlisted tasks use OPENROUTER_MODEL. "council" hands the task to the LLM council below.

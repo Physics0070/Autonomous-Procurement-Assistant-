@@ -3,10 +3,12 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 
 from app.api.deps import CurrentUser, RequestContext, quotation_repo, require_roles
-from app.api.routes.automation import po_repo
+from app.api.routes.automation import ai_provider, po_repo
+from app.integrations.ai.base import AIProvider
+from app.integrations.ai.factory import for_task
 from app.repositories.automation import PurchaseOrderRepository
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import UserRole
@@ -36,6 +38,15 @@ async def forecast(context: CurrentUser, horizon: int = 3, pos: PurchaseOrderRep
     items = [{"item": item, **forecast_demand(monthly_series(dates[item], quantities[item]), horizon=min(max(horizon, 1), 12))}
              for item in dates]
     return {"min_months": MIN_MONTHS, "items": sorted(items, key=lambda r: r["status"] != "ok")}
+
+
+@router.get("/hsn")
+async def suggest_hsn(context: CurrentUser, item: str = Query(min_length=2, max_length=300),
+                      provider: AIProvider = Depends(ai_provider)) -> dict:
+    """The HSN heading for a quotation line: the model's checked choice, or the best text match."""
+    from ml.hsn import classify_hsn
+
+    return await classify_hsn(item, for_task(provider, "hsn"))
 
 
 @router.get("/models")

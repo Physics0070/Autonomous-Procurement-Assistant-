@@ -1,0 +1,115 @@
+item,heading,split
+MS Plate 10mm IS 2062 E250 hot rolled,7208,dev
+CR Sheet 1mm cold rolled,7209,test
+GI Sheet 0.5mm galvanised,7210,dev
+MS Angle 50x50x5,7216,test
+MS Channel 100x50,7216,test
+TMT Bar Fe500D 12mm,7214,dev
+MS Round Bar 25mm,7214,test
+MS ERW Pipe 2 inch,7306,test
+Seamless Steel Pipe 4 inch,7304,test
+SS 304 Sheet 2mm,7219,test
+SS 304 Round Bar 20mm,7222,dev
+GI Binding Wire,7217,test
+Wire Nails 3 inch,7317,test
+Hex Bolt M12x50 HT 8.8,7318,dev
+Hex Nut M16,7318,test
+Plain Washer M10,7318,test
+Self Tapping Screw,7318,test
+Compression Spring,7320,test
+Roller Chain 1 inch pitch,7315,test
+Aluminium Sheet 2mm,7606,dev
+Aluminium Extrusion Profile,7604,test
+Copper Wire 2mm bare,7408,test
+PVC Pipe 2 inch 6 kg/cm2,3917,dev
+HDPE Pipe 90mm PE100,3917,test
+PVC Elbow 2 inch,3917,test
+Plastic Water Storage Tank 1000 L,3925,test
+PP Granules homopolymer,3902,dev
+LDPE Granules,3901,test
+Plastic Carry Bags,3923,test
+Solvent Cement 500 ml,3506,dev
+Enamel Paint synthetic 20 L,3208,test
+Paint Thinner,3814,test
+Lubricating Oil SAE 20W40,2710,test
+OPC Cement 53 Grade 50 kg,2523,dev
+River Sand,2505,test
+Ceramic Floor Tiles 600x600,6907,test
+Float Glass Sheet 5mm,7005,test
+Plywood 19mm BWR,4412,dev
+Particle Board 18mm,4410,test
+Induction Motor 5 HP 3 phase,8501,dev
+Distribution Transformer 100 kVA,8504,test
+Modular Switch 6A,8536,test
+MCB 32A double pole,8536,dev
+Copper Armoured Cable 4C x 16 sqmm,8544,test
+PVC Insulated Wire 1.5 sqmm,8544,test
+LED Bulb 9W,8539,dev
+Lead Acid Battery 12V 150Ah,8507,test
+AA Alkaline Cells,8506,test
+Ceiling Fan 1200 mm,8414,test
+Centrifugal Pump Monoblock 2 HP,8413,dev
+Air Compressor 10 HP,8414,test
+Ball Bearing 6205 ZZ,8482,dev
+Taper Roller Bearing,8482,test
+Gearbox Helical,8483,test
+V Belt B 52,4010,test
+Welding Electrodes E6013 3.15mm,8311,dev
+Arc Welding Machine 400A,8515,test
+Double Ended Spanner Set,8204,test
+HSS Drill Bit 10mm,8207,test
+Hacksaw Blade 12 inch,8202,test
+Grinding Wheel 100mm,6804,dev
+Emery Paper,6805,test
+Safety Helmet,6506,test
+A4 Copier Paper 75 GSM,4802,dev
+Corrugated Box 5 ply,4819,test
+Kraft Paper Roll,4804,test
+Office Register Notebook,4820,test
+Ball Point Pen,9608,test
+Laptop i5 16GB,8471,dev
+Inkjet Printer,8443,test
+Mobile Phone,8517,test
+WiFi Router,8517,test
+Office Revolving Chair,9401,dev
+Steel Almirah,9403,test
+Wooden Office Table,9403,test
+Basmati Rice,1006,dev
+Wheat Flour Atta 10 kg,1101,test
+Sugar S30,1701,test
+Refined Sunflower Oil 15 L,1512,test
+Mustard Oil,1514,test
+Tea Leaves CTC,0902,dev
+Coffee Beans,0901,test
+Turmeric Powder,0910,test
+Toor Dal,0713,test
+Skimmed Milk Powder,0402,test
+Biscuits,1905,test
+Cotton Yarn 40s combed,5205,dev
+Woven Cotton Fabric,5208,test
+Polyester Filament Yarn,5402,test
+Jute Gunny Bags,6305,test
+Caustic Soda Flakes,2815,dev
+Sulphuric Acid 98%,2807,test
+Hydrochloric Acid,2806,test
+Soda Ash Light,2836,test
+Urea Fertiliser 45 kg,3102,test
+Liquid Detergent,3402,test
+Toilet Soap,3401,test
+Rubber Hose Pipe,4009,dev
+Truck Tyre 10.00-20,4011,test
+Rubber O Ring,4016,test
+Door Padlock,8301,test
+Door Hinges,8302,test
+Water Meter 15mm,9028,dev
+Pressure Gauge 0-10 bar,9026,test
+Weighing Scale 100 kg,8423,test
+Fire Extinguisher ABC 6 kg,8424,test
+Diesel Generator Set 62.5 kVA,8502,dev
+Solar Panel 540 W,8541,test
+CCTV Camera,8525,test
+RO Water Purifier,8421,test
+Split Air Conditioner 1.5 Ton,8415,test
+Refrigerator 250 L,8418,test
+Ball Valve Brass 1 inch,8481,dev
+Gate Valve Cast Iron 4 inch,8481,test

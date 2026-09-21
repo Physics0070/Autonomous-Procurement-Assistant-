@@ -13,7 +13,7 @@ real USAID shipment data.
 canonical normalized data → comparison. Each layer is stored separately and later
 layers never overwrite earlier ones.
 
-**Status:** all synopsis features built · 172 backend tests · 156 end-to-end assertions ·
+**Status:** all synopsis features built · 195 backend tests · 156 end-to-end assertions ·
 live AI, Gmail and Drive need the credentials listed in [Environment variables](#environment-variables).
 
 ## What it does
@@ -25,7 +25,7 @@ live AI, Gmail and Drive need the credentials listed in [Environment variables](
 | **Compare** | Deterministic weighted scoring across price, transport, delivery, payment, reliability and completeness, with a written explanation |
 | **Act** | RFQ and negotiation email drafts with a competitor guardrail, purchase orders with the correct CGST/SGST/IGST split, PDF, Drive filing, delivery recording |
 | **Decide** | A supervisor agent routes specialist agents, pauses for your approval, and resumes; an assistant answers questions from your own records |
-| **Learn** | Calibrated late-delivery risk, Isolation Forest price anomalies, spend analytics and demand forecasts |
+| **Learn** | Calibrated late-delivery risk, Isolation Forest price anomalies, spend analytics, demand forecasts, and HSN code suggestion from the official GST master |
 
 Nothing is ever emailed by the app, and nothing is ordered without a person approving it.
 
@@ -124,7 +124,7 @@ cd backend
 ./.venv/Scripts/python.exe scripts/test_e2e.py           # 156 assertions against the live API
 ./.venv/Scripts/python.exe scripts/seed_demo.py          # populate a demo workspace
 ./.venv/Scripts/python.exe -m scripts.load_scms_demo     # real-data demo org (USAID SCMS)
-./.venv/Scripts/python.exe -m pytest -q                  # 172 unit/API tests (MongoDB needed)
+./.venv/Scripts/python.exe -m pytest -q                  # 195 unit/API tests (MongoDB needed)
 ```
 
 `test_e2e.py` and `seed_demo.py` require the backend to be running. The pytest suite uses
@@ -272,6 +272,8 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `GMAIL_SYNC_QUERY` / `GMAIL_MAX_MESSAGES_PER_SYNC` / `GMAIL_SYNC_INTERVAL_MINUTES` | quotation subjects, 30 days / `25` / `15` | `0` disables automatic sync |
 | `NEGOTIATION_DEFAULT_DISCOUNT_PCT` | `5.0` | Target price below the quote |
 | `NEGOTIATION_WEAK_CRITERION_SCORE` | `0.5` | Delivery/payment scores below this are negotiated |
+| `LLM_TASK_MODELS` | — | A different model per task, e.g. `extraction=<model>,critic=council`. Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn |
+| `COUNCIL_MODELS` / `COUNCIL_MONITOR_MODEL` | — | The council's members (2+, ideally different vendors) and the model that decides |
 | `ASSISTANT_MAX_TOOL_ROUNDS` | `6` | |
 | `AGENT_MAX_STEPS` | `12` | Supervisor routing decisions per run |
 | `AGENT_AUTOPILOT` | `true` | The monitor agent starts sourcing and chases late deliveries by itself (drafts only) |
@@ -341,6 +343,36 @@ budget, and nothing is ever sent — agents produce drafts that wait for a perso
 
 Without an LLM the same graph still runs: the supervisor follows the policy order, drafts come
 from templates, and every run says which path it took.
+
+### The LLM council
+
+Any task that writes text can be handed to a **council** instead of one model
+(`LLM_TASK_MODELS=critic=council,recommendation=council`):
+
+```
+round 1  answer    every member answers on its own
+round 2  review    each member reads the others' answers - anonymously - and revises
+round 3  decision  the monitor model reads every revised answer and writes the final one
+```
+
+Members that fail are dropped; with fewer than two answers the council reports that instead
+of pretending. The whole deliberation is kept (explanations store it as `deliberation`).
+Tool-using tasks (negotiation, the assistant) stay on single models. All models go through the
+one `OPENROUTER_API_KEY`.
+
+### HSN codes on Indian data
+
+`GET /api/v1/analytics/hsn?item=...` suggests the 4-digit HSN heading for a quotation line,
+from the official GST master (21,935 codes). Text matching builds a shortlist of 30 official
+headings; a language model picks one — its answer must exist in the master.
+
+| Held-out test (85 items) | Heading top-1 | Right answer on the shortlist |
+|---|---:|---:|
+| Text matching alone | 54.1% | **97.6%** |
+| Text matching + model | *measured once a key is set:* `python -m ml.hsn test --llm` | |
+
+Text matching alone is **not** above 90%; the model stage can be, but that has not been
+measured yet. Report: `backend/ml/artifacts/hsn_evaluation.md`.
 
 ### ML results (held-out test, 2014–2015, 2,545 shipments)
 
