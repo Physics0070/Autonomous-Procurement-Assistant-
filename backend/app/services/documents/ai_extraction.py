@@ -62,7 +62,7 @@ async def extract_structured(
     Even on error a result is returned - built by the heuristic fallback - so
     the pipeline continues and the user still sees something reviewable.
     """
-    provider = provider or get_ai_provider()
+    provider = provider or get_ai_provider("extraction")
     now = datetime.now(timezone.utc).isoformat()
 
     text = document.text_for_ai()

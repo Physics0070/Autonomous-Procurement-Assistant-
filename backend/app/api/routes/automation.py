@@ -14,7 +14,7 @@ from app.core.config import settings
 from app.core.crypto import decrypt_secret
 from app.core.errors import ConfigurationError, ConflictError, ValidationError
 from app.integrations.ai.base import AIProvider
-from app.integrations.ai.factory import get_ai_provider
+from app.integrations.ai.factory import for_task, get_ai_provider
 from app.api.routes.channels import get_gmail_client
 from app.integrations.ingestion.gmail_client import GmailAuthError, GmailClient
 from app.integrations.storage.google_drive import SCOPE as DRIVE_SCOPE
@@ -105,7 +105,7 @@ async def create_rfqs(
 ) -> list[dict]:
     request = await requests.get_or_404(context.organization_id, request_id)
     chosen = [await suppliers.get_or_404(context.organization_id, sid) for sid in payload.supplier_ids]
-    drafts = await comms.draft_rfqs(request, chosen, context.organization, provider)
+    drafts = await comms.draft_rfqs(request, chosen, context.organization, for_task(provider, "drafting"))
     return [await _create(repo, context, d) for d in drafts]
 
 
@@ -125,7 +125,7 @@ async def create_negotiation(
         raise ValidationError("That quotation is not part of the comparison.")
     supplier = await suppliers.get(context.organization_id, row["supplier_id"]) if row.get("supplier_id") else None
     draft = await comms.draft_negotiation(
-        row, rows, request, context.organization, provider, discount_pct=payload.discount_pct,
+        row, rows, request, context.organization, for_task(provider, "negotiation"), discount_pct=payload.discount_pct,
         target_price=payload.target_price, to_email=(supplier or {}).get("email"),
     )
     return await _create(repo, context, draft)

@@ -11,6 +11,7 @@ from app.api.deps import DB, CurrentUser, comparison_repo, quotation_repo, reque
 from app.api.routes.automation import ai_provider, communication_repo
 from app.core.errors import ConfigurationError
 from app.integrations.ai.base import AIProvider, ChatMessage, ToolCall
+from app.integrations.ai.factory import for_task
 from app.repositories.automation import AgentRunRepository, CommunicationRepository, ConversationRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.automation import PurchaseOrderRepository
@@ -138,6 +139,7 @@ async def send_message(
     conversations: ConversationRepository = Depends(conversation_repo),
     provider: AIProvider = Depends(ai_provider),
 ) -> dict:
+    provider = for_task(provider, "assistant")
     if not provider.is_configured() or not provider.supports_tools:
         raise ConfigurationError(provider.configuration_error()
                                  or f"The {provider.name} provider does not support tool calling; use OpenRouter or Ollama.")

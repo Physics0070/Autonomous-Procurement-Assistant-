@@ -14,6 +14,7 @@ from typing import Any, Optional
 
 from app.core.errors import AppError
 from app.integrations.ai.base import AIProvider, ChatMessage
+from app.integrations.ai.factory import for_task
 from app.repositories.automation import CommunicationRepository, PurchaseOrderRepository
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.quotations import ComparisonRepository, PriceHistoryRepository, QuotationRepository
@@ -80,7 +81,7 @@ async def comparison_agent(ctx: AgentContext, request: dict) -> dict:
 
 async def recommendation_agent(ctx: AgentContext, request: dict, comparison) -> dict:
     async with ctx.recorder.step("Recommendation Agent", "explain ranking") as step:
-        comparison.ai_explanation = await explain_comparison(comparison, ctx.provider)
+        comparison.ai_explanation = await explain_comparison(comparison, for_task(ctx.provider, "recommendation"))
         stored = await ctx.comparisons.upsert_for_request(
             ctx.org_id, request["id"], comparison.model_dump(mode="json", exclude={"id", "organization_id"}))
         summary = comparison.ai_explanation.summary or comparison.ai_explanation.unavailable_reason or ""
@@ -198,15 +199,16 @@ async def negotiation_agent(ctx: AgentContext, request: dict, row: dict, rows: l
         tools = NegotiationTools(ctx, request, row, rows, risk)
         draft: Optional[dict] = None
         evidence: list[str] = []
+        llm = for_task(ctx.provider, "negotiation")
 
-        if ctx.has_llm():
+        if llm.is_configured() and llm.supports_tools:
             asks = negotiation_asks(row, None) or ["a better overall offer"]
             task = (f"Their quotation totals {row.get('total_cost')} {row.get('currency')}, delivery "
                     f"{row.get('delivery_days')} days, payment {row.get('payment_days')} days. "
                     f"We want: {', '.join(asks)}.")
             try:
                 produced = await run_tool_loop(
-                    ctx.provider,
+                    llm,
                     system=NEGOTIATION_SYSTEM.format(org=ctx.organization.get("name"),
                                                      supplier=row.get("supplier_name"), title=request["title"]),
                     history=[ChatMessage(role="user", content=task)],
@@ -218,7 +220,7 @@ async def negotiation_agent(ctx: AgentContext, request: dict, row: dict, rows: l
                 if tools.accepted:
                     draft = {
                         "kind": "negotiation", "status": "draft", **tools.accepted,
-                        "generated_by": "ai", "provider": ctx.provider.name, "model": ctx.provider.model,
+                        "generated_by": "ai", "provider": llm.name, "model": llm.model,
                         "fallback_reason": None, "guardrail_findings": tools.rejections,
                         "procurement_request_id": request["id"], "supplier_id": row.get("supplier_id"),
                         "quotation_id": row.get("quotation_id"), "to_email": (supplier or {}).get("email"),
@@ -233,7 +235,7 @@ async def negotiation_agent(ctx: AgentContext, request: dict, row: dict, rows: l
                 step["summary"] = f"AI unavailable ({exc.message}); using the template."
 
         if draft is None:
-            draft = await draft_negotiation(row, rows, request, ctx.organization, ctx.provider,
+            draft = await draft_negotiation(row, rows, request, ctx.organization, llm,
                                             to_email=(supplier or {}).get("email"))
             if tools.rejections:
                 draft["guardrail_findings"] = tools.rejections
@@ -257,10 +259,11 @@ CRITIC_SYSTEM = (
 async def critic_agent(ctx: AgentContext, draft: dict) -> dict:
     """Second opinion on a draft. The deterministic guardrail stays the hard gate;
     this catches tone and invented facts, and never overrides a guardrail pass into a fail silently."""
-    if not ctx.has_llm():
+    critic = for_task(ctx.provider, "critic")  # may be a council: several models review the draft
+    if not critic.is_configured():
         return {"approved": True, "issues": [], "method": "skipped_no_llm"}
     async with ctx.recorder.step("Critic Agent", "review draft") as step:
-        response = await ctx.provider.generate(
+        response = await critic.generate(
             f"Subject: {draft['subject']}\n\n{draft['body']}", system=CRITIC_SYSTEM, json_mode=True, temperature=0.0)
         if not response.ok:
             step["summary"] = f"Review skipped: {response.error}"

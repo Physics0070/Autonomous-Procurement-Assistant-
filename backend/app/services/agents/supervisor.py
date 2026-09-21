@@ -25,6 +25,7 @@ from langgraph.types import Command
 
 from app.core.config import settings
 from app.core.errors import ConflictError, NotFoundError
+from app.integrations.ai.factory import for_task
 from app.services.agents import specialists as ag
 from app.services.agents.runs import RunRecorder
 from app.services.agents.specialists import AgentContext
@@ -76,10 +77,11 @@ def allowed_actions(facts: dict, done: list[str]) -> list[Action]:
 async def _choose(ctx: AgentContext, goal: str, state: SupervisorState, options: list[Action]) -> dict[str, str]:
     """LLM picks from `options`; anything else (or no LLM) falls back to the policy's first choice."""
     default = {"action": options[0], "reason": "Policy order.", "by": "policy"}
-    if len(options) == 1 or not (ctx.provider and ctx.provider.is_configured()):
+    router = for_task(ctx.provider, "supervisor")
+    if len(options) == 1 or not router.is_configured():
         return default
     facts = {k: v for k, v in state["facts"].items() if k != "result"}
-    response = await ctx.provider.generate(
+    response = await router.generate(
         f"Allowed actions: {options}\nDone so far: {state['done']}\nWhat we know: {json.dumps(facts, default=str)[:2000]}",
         system=ROUTING_SYSTEM.format(org=ctx.organization.get("name"), goal=goal), json_mode=True, temperature=0.0)
     if not response.ok:

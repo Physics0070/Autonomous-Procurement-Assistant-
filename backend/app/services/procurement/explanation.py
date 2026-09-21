@@ -113,7 +113,7 @@ def _deterministic_explanation(comparison: ComparisonResult) -> AIExplanation:
 async def explain_comparison(
     comparison: ComparisonResult, provider: Optional[AIProvider] = None
 ) -> AIExplanation:
-    provider = provider or get_ai_provider()
+    provider = provider or get_ai_provider("recommendation")
 
     if not comparison.suppliers:
         return AIExplanation(
@@ -174,4 +174,5 @@ async def explain_comparison(
         reasoning=_list("reasoning"),
         risks=_list("risks"),
         generated_at=datetime.now(timezone.utc).isoformat(),
+        deliberation=response.meta.get("transcript") or [],
     )

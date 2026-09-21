@@ -56,3 +56,17 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | G2 | Delivery **dates** extracted, not just lead days | ✅ | `tests/test_delivery_dates.py` 8 tests; sets the PO's expected date |
 | G3 | Verification | ✅ | pytest **172 passed**; E2E **156/156**; tsc + build clean |
 | G4 | Placeholders where credentials are missing | ⚠️ | Drive/Gmail → 503 naming the missing setting; AI → template fallback |
+
+## Security + LLM council (21 Sep 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| S1 | GitHub secret audit | ✅ | no API key ever committed (tracked files + full history scanned) |
+| S2 | JWT placeholder guard bypass fixed | ✅ | the `.env.example` placeholder used to pass in production; `tests/test_config_secrets.py` |
+| S3 | Published demo password removed and rotated | ✅ | loader generates a random one unless `SCMS_DEMO_PASSWORD` is set |
+| C1 | A different model per task (`LLM_TASK_MODELS`) | ✅ | 8 tasks; unlisted tasks use the default model |
+| C2 | LLM council: answer → anonymous peer review → monitor decides | ✅ | `CouncilProvider`; failing members dropped; transcript kept |
+| C3 | Council wired into real agent runs | ✅ | e.g. council as Critic rejects a draft in a full supervisor run |
+| C4 | API key placeholders | ⚠️ | `OPENROUTER_API_KEY`, `LLM_TASK_MODELS`, `COUNCIL_MODELS`, `COUNCIL_MONITOR_MODEL` await your values |
+| I1 | Indian-data accuracy >90% | 🔄 | next |
+

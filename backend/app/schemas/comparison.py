@@ -63,6 +63,8 @@ class AIExplanation(APIModel):
     risks: List[str] = Field(default_factory=list)
     unavailable_reason: Optional[str] = None
     generated_at: Optional[str] = None
+    # When a council wrote it: every member's answer, review and the monitor's decision.
+    deliberation: List[dict[str, Any]] = Field(default_factory=list)
 
 
 class ComparisonResult(APIModel):

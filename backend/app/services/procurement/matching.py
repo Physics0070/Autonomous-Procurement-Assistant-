@@ -137,7 +137,7 @@ async def match_items(
 
     # --- Layer 3: AI adjudication for the genuinely ambiguous only ---
     if ambiguous and allow_ai:
-        provider = provider or get_ai_provider()
+        provider = provider or get_ai_provider("matching")
         if provider.is_configured():
             for match_index, payload in ambiguous:
                 decision = await _adjudicate(provider, payload["requested"], payload["candidates"])

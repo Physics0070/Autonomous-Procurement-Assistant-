@@ -67,7 +67,7 @@ async def test_the_extraction_agent_corrects_itself_when_validation_finds_errors
 
     # First reading misreads the price as negative; the second, after feedback, is right.
     provider = ScriptedProvider(responses=[_extraction(-72.0), _extraction(72.0)])
-    monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda: provider)
+    monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda task=None: provider)
 
     result, agent_run = await run(db, org_a, storage, QUOTE)
 
@@ -85,6 +85,6 @@ async def test_a_clean_extraction_is_not_read_twice(db, org_a, storage, monkeypa
     from tests.fakes.llm import ScriptedProvider
 
     provider = ScriptedProvider(responses=[_extraction(72.0)])
-    monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda: provider)
+    monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda task=None: provider)
     await run(db, org_a, storage, QUOTE)
     assert len(provider.calls) == 1

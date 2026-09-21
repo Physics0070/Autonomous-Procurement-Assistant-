@@ -60,6 +60,14 @@ class Settings(BaseSettings):
     # Comma-separated; OpenRouter falls through to these when the primary fails.
     OPENROUTER_FALLBACK_MODELS: str = "nvidia/nemotron-3-super-120b-a12b:free"
     OPENROUTER_APP_URL: str = "http://localhost:5173"
+    # A different model per task: "extraction=vendor/model, negotiation=vendor/model, critic=council".
+    # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant.
+    # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
+    # tasks (negotiation, assistant) need a single model.
+    # Unlisted tasks use OPENROUTER_MODEL. "council" hands the task to the LLM council below.
+    LLM_TASK_MODELS: str = ""
+    COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
+    COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
 
     # Ollama (local, free, no key).
     OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
