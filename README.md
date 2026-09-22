@@ -382,8 +382,9 @@ measured yet. Report: `backend/ml/artifacts/hsn_evaluation.md`.
 | Baseline: always on time | 0.500 | 0.140 | 0.462 | 0.000 | 0.000 | 0.140 |
 | Baseline: supplier's prior on-time rate | 0.761 | 0.251 | 0.545 | 0.252 | 0.978 | 0.111 |
 
-Accuracy (77%) is not reported as the headline: with 14% of shipments late, "always on time"
-scores 86% while being useless.
+Accuracy (79.8%) is not reported as the headline: with 14% of shipments late, "always on time"
+scores 86% while catching none of them. At the shipped setting the model catches 197 of 356
+late shipments, and 36% of its warnings are real.
 
 The model is wrapped in `CalibratedClassifierCV`, so a displayed percentage can be read
 literally — calibration cut the Brier score from 0.167 to 0.099, better than both baselines,
