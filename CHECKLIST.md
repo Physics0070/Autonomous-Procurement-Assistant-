@@ -73,3 +73,9 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | I3 | HSN suggestion: text shortlist + checked model decision | ✅ | `tests/test_ml_hsn.py` 9 tests; `GET /analytics/hsn` |
 | I4 | Held-out accuracy | ⚠️ | text alone **54.1%** top-1; right answer on shortlist **97.6%**; model stage **not yet measured (needs key)** — `python -m ml.hsn test --llm` |
 
+## Reporting decision (22 Sep 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| R1 | USAID dataset is the headline ML result | ✅ | README leads with ROC-AUC 0.83 on 2,545 unseen shipments; HSN marked supplementary until its model stage is measured |
+

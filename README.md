@@ -14,6 +14,7 @@ canonical normalized data → comparison. Each layer is stored separately and la
 layers never overwrite earlier ones.
 
 **Status:** all synopsis features built · 195 backend tests · 156 end-to-end assertions ·
+headline ML result: **ROC-AUC 0.83** on 2,545 unseen USAID shipments ·
 live AI, Gmail and Drive need the credentials listed in [Environment variables](#environment-variables).
 
 ## What it does
@@ -360,21 +361,16 @@ of pretending. The whole deliberation is kept (explanations store it as `deliber
 Tool-using tasks (negotiation, the assistant) stay on single models. All models go through the
 one `OPENROUTER_API_KEY`.
 
-### HSN codes on Indian data
+### Headline ML result — USAID supply-chain dataset
 
-`GET /api/v1/analytics/hsn?item=...` suggests the 4-digit HSN heading for a quotation line,
-from the official GST master (21,935 codes). Text matching builds a shortlist of 30 official
-headings; a language model picks one — its answer must exist in the master.
+The project's main machine-learning result: supplier late-delivery prediction, trained on
+real USAID SCMS shipments from 2006–2013 and tested once on **2,545 later shipments it never
+saw** (2014–2015).
 
-| Held-out test (85 items) | Heading top-1 | Right answer on the shortlist |
-|---|---:|---:|
-| Text matching alone | 54.1% | **97.6%** |
-| Text matching + model | *measured once a key is set:* `python -m ml.hsn test --llm` | |
-
-Text matching alone is **not** above 90%; the model stage can be, but that has not been
-measured yet. Report: `backend/ml/artifacts/hsn_evaluation.md`.
-
-### ML results (held-out test, 2014–2015, 2,545 shipments)
+> On 2,545 unseen shipments, the model distinguishes late from on-time deliveries with
+> **ROC-AUC 0.83**, against 0.76 for the supplier's own track record. It catches **55%** of late
+> deliveries at the shipped setting (92% at the screening setting), and its probabilities are
+> calibrated: it predicted **13.6%** late against **14.0%** actual.
 
 | Scorer | ROC-AUC | PR-AUC | Macro-F1 | Precision | Recall | Brier |
 |---|---:|---:|---:|---:|---:|---:|
@@ -394,6 +390,20 @@ caught, 32% of warnings right, 41% of orders flagged) for deployments that would
 over-warn than miss.
 Full report: `backend/ml/artifacts/evaluation_report.md`; anomaly and forecast evaluation:
 `backend/ml/artifacts/analytics_evaluation.md`.
+
+### Supplementary — HSN codes on Indian GST data (model stage pending measurement)
+
+`GET /api/v1/analytics/hsn?item=...` suggests the 4-digit HSN heading for a quotation line,
+from the official GST master (21,935 codes). Text matching builds a shortlist of 30 official
+headings; a language model picks one — its answer must exist in the master.
+
+| Held-out test (85 items) | Heading top-1 | Right answer on the shortlist |
+|---|---:|---:|
+| Text matching alone | 54.1% | **97.6%** |
+| Text matching + model | *measured once a key is set:* `python -m ml.hsn test --llm` | |
+
+Text matching alone is **not** above 90%; the model stage can be, but that has not been
+measured yet. Report: `backend/ml/artifacts/hsn_evaluation.md`.
 
 ---
 
