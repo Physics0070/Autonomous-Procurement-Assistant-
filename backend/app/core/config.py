@@ -51,7 +51,25 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 25
 
     # --- AI provider ---
-    AI_PROVIDER: str = "openrouter"  # openrouter | ollama | gemini | none
+    # The default vendor: gemini | grok | qwen | ollama | openrouter | none.
+    # Every vendor speaks the OpenAI chat-completions format; each has its own key.
+    AI_PROVIDER: str = "gemini"
+
+    # xAI Grok - https://console.x.ai
+    GROK_API_KEY: str = ""
+    GROK_BASE_URL: str = "https://api.x.ai/v1"
+    GROK_MODEL: str = "grok-4-fast"
+
+    # Alibaba Qwen (Model Studio / DashScope). International endpoint by default; mainland China
+    # accounts use https://dashscope.aliyuncs.com/compatible-mode/v1
+    QWEN_API_KEY: str = ""
+    QWEN_BASE_URL: str = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+    QWEN_MODEL: str = "qwen-plus"
+
+    # Google Gemini through its OpenAI-compatible endpoint - https://aistudio.google.com/apikey
+    GEMINI_API_KEY: str = ""
+    GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
+    GEMINI_MODEL: str = "gemini-2.5-flash"
 
     # OpenRouter (OpenAI-compatible). Free model IDs end in ":free".
     OPENROUTER_API_KEY: str = ""
@@ -60,22 +78,20 @@ class Settings(BaseSettings):
     # Comma-separated; OpenRouter falls through to these when the primary fails.
     OPENROUTER_FALLBACK_MODELS: str = "nvidia/nemotron-3-super-120b-a12b:free"
     OPENROUTER_APP_URL: str = "http://localhost:5173"
-    # A different model per task: "extraction=vendor/model, negotiation=vendor/model, critic=council".
-    # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn.
-    # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
-    # tasks (negotiation, assistant) need a single model.
-    # Unlisted tasks use OPENROUTER_MODEL. "council" hands the task to the LLM council below.
-    LLM_TASK_MODELS: str = ""
-    COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
-    COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
 
     # Ollama (local, free, no key).
     OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
     OLLAMA_MODEL: str = "llama3.1"
 
-    GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-2.0-flash"
-    AI_REQUEST_TIMEOUT_SECONDS: int = 90
+    # A different model per task: "extraction=gemini:gemini-2.5-flash, negotiation=qwen:qwen-plus,
+    # critic=council". A model is "vendor:model"; without a vendor prefix, AI_PROVIDER's vendor is used.
+    # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn.
+    # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
+    # tasks (negotiation, assistant) need a single model. Unlisted tasks use the default vendor's model.
+    LLM_TASK_MODELS: str = ""
+    COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
+    COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
+    AI_REQUEST_TIMEOUT_SECONDS: int = 120
 
     # --- OCR ---
     OCR_ENGINE: str = "auto"  # auto | tesseract | rapidocr | none
@@ -161,13 +177,10 @@ class Settings(BaseSettings):
     @property
     def ai_configured(self) -> bool:
         provider = self.AI_PROVIDER.lower()
-        if provider == "openrouter":
-            return bool(self.OPENROUTER_API_KEY.strip())
         if provider == "ollama":
             return bool(self.OLLAMA_MODEL.strip())
-        if provider == "gemini":
-            return bool(self.GEMINI_API_KEY.strip())
-        return False
+        key = getattr(self, f"{provider.upper()}_API_KEY", "") if provider != "none" else ""
+        return bool(key.strip())
 
     @property
     def google_configured(self) -> bool:

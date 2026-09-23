@@ -13,6 +13,9 @@ import uuid
 os.environ["MONGODB_DB_NAME"] = "procurement_assistant_test"
 os.environ["GMAIL_SYNC_INTERVAL_MINUTES"] = "0"
 os.environ["AI_PROVIDER"] = "none"
+# `vendor:model` routing in a developer's .env would otherwise reach real APIs.
+for _name in ("LLM_TASK_MODELS", "COUNCIL_MODELS", "COUNCIL_MONITOR_MODEL"):
+    os.environ[_name] = ""
 
 import httpx  # noqa: E402
 import pytest  # noqa: E402

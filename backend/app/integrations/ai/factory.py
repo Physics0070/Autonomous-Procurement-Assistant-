@@ -6,12 +6,13 @@ from typing import Optional
 from app.core.config import settings
 from app.integrations.ai.base import AIProvider, UnconfiguredProvider
 from app.integrations.ai.council import CouncilProvider
-from app.integrations.ai.gemini import GeminiProvider
 from app.integrations.ai.openai_compatible import OpenAICompatibleProvider
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_PROVIDERS = ("openrouter", "ollama", "gemini", "none")
+# Direct vendors that need nothing beyond a key, an endpoint and a model (settings <VENDOR>_*).
+KEYED_VENDORS = ("gemini", "grok", "qwen")
+SUPPORTED_PROVIDERS = (*KEYED_VENDORS, "ollama", "openrouter", "none")
 
 _providers: dict[Optional[str], AIProvider] = {}
 
@@ -20,8 +21,17 @@ def build_provider(name: Optional[str] = None, *, model: Optional[str] = None) -
     """One provider. `model` overrides the configured default (per-task routing, council members)."""
     name = (name or settings.AI_PROVIDER or "none").strip().lower()
 
-    if name == "openrouter":
+    if name in KEYED_VENDORS:
+        prefix = name.upper()
         provider: AIProvider = OpenAICompatibleProvider(
+            name=name,
+            base_url=getattr(settings, f"{prefix}_BASE_URL"),
+            api_key=getattr(settings, f"{prefix}_API_KEY"),
+            model=model or getattr(settings, f"{prefix}_MODEL"),
+            key_setting=f"{prefix}_API_KEY",
+        )
+    elif name == "openrouter":
+        provider = OpenAICompatibleProvider(
             name="openrouter",
             base_url=settings.OPENROUTER_BASE_URL,
             api_key=settings.OPENROUTER_API_KEY,
@@ -39,8 +49,6 @@ def build_provider(name: Optional[str] = None, *, model: Optional[str] = None) -
             model=model or settings.OLLAMA_MODEL,
             requires_key=False,
         )
-    elif name == "gemini":
-        provider = GeminiProvider()
     elif name == "none":
         return UnconfiguredProvider("AI_PROVIDER is set to 'none'; AI features are disabled.")
     else:
@@ -52,6 +60,15 @@ def build_provider(name: Optional[str] = None, *, model: Optional[str] = None) -
     if provider.is_configured():
         return provider
     return UnconfiguredProvider(provider.configuration_error() or f"{name} is not configured.")
+
+
+def build_model(spec: Optional[str]) -> AIProvider:
+    """'qwen:qwen-plus' -> that vendor; anything else is a model of the default vendor.
+    Only a known vendor counts as a prefix: OpenRouter and Ollama IDs contain ':' too."""
+    vendor, _, model = (spec or "").partition(":")
+    if model and vendor.lower() in SUPPORTED_PROVIDERS:
+        return build_provider(vendor, model=model)
+    return build_provider(model=spec or None)
 
 
 def _split(value: str) -> list[str]:
@@ -66,9 +83,9 @@ def task_models() -> dict[str, str]:
 def _build_for_task(task: Optional[str]) -> AIProvider:
     spec = task_models().get(task) if task else None
     if spec != "council":
-        return build_provider(model=spec)
-    members = [build_provider(model=m) for m in _split(settings.COUNCIL_MODELS)]
-    monitor = build_provider(model=settings.COUNCIL_MONITOR_MODEL or None)
+        return build_model(spec)
+    members = [build_model(m) for m in _split(settings.COUNCIL_MODELS)]
+    monitor = build_model(settings.COUNCIL_MONITOR_MODEL)
     for participant in (*members, monitor):
         # No silent fallbacks inside a council: a member that quietly becomes another
         # vendor's model destroys the diversity the council exists for, and its errors
