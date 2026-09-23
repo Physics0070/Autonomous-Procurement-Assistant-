@@ -90,3 +90,5 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V4 | Mid-sem review sheet (stack, full forms, all parameters) | ✅ | published as a private artifact |
 | V5 | Live council + HSN-with-LLM measurement | ⬜ | runs as soon as the keys are in |
 | V6 | Ollama dropped from the plan (no local install) | ✅ | still supported in code (synopsis option); nothing configured to use it |
+| V7 | Training curves (trees, boosting rounds, depth, LR iterations) measured on training years only | ✅ | `python -m ml.training_curves` -> `ml/artifacts/training_curves.json`; boosting peaks at round 827; time-ordered check prefers shallow trees |
+| V8 | Review sheet: exact agent behaviour + "vs AI wrapper" + training section | ✅ | same artifact, version 3 |
