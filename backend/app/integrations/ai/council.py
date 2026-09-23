@@ -77,14 +77,23 @@ class CouncilProvider(AIProvider):
 
         # Round 3: the monitor decides.
         board = "\n\n".join(f"Member {chr(65 + k)}:\n{text}" for k, text in enumerate(revised))
-        decision = await self.monitor.generate(
-            f"{DECISION_INSTRUCTION}\n\nQuestion:\n{prompt}\n\nRevised answers:\n{board}", **options)
-        if not decision.ok:
-            return AIResponse(ok=False, provider=self.name, model=self.model, meta={"transcript": transcript,
-                              "dropped": dropped}, error=f"The council monitor failed: {decision.error}")
-        transcript.append({"round": "decision", "member": self.monitor.model, "text": decision.text})
-        return AIResponse(text=decision.text, ok=True, provider=self.name, model=self.model,
-                          meta={"transcript": transcript, "dropped": dropped})
+        decision_prompt = f"{DECISION_INSTRUCTION}\n\nQuestion:\n{prompt}\n\nRevised answers:\n{board}"
+        # Providers (free tiers especially) intermittently answer 200 with no content, so an
+        # empty reply counts as a failure and is retried once before the council degrades.
+        failure = "no answer"
+        for _ in range(2):
+            decision = await self.monitor.generate(decision_prompt, **options)
+            if decision.ok and (decision.text or "").strip():
+                transcript.append({"round": "decision", "member": self.monitor.model, "text": decision.text})
+                return AIResponse(text=decision.text, ok=True, provider=self.name, model=self.model,
+                                  meta={"transcript": transcript, "dropped": dropped})
+            failure = decision.error or "the monitor returned an empty answer"
+
+        # The monitor is down, but the members did the work: stand their best answer in for it.
+        return AIResponse(text=revised[0], ok=True, provider=self.name, model=self.model,
+                          meta={"transcript": transcript, "dropped": dropped,
+                                "degraded": f"The council monitor failed twice ({failure}); "
+                                            "the first member's revised answer is used instead."})
 
     async def chat(self, messages: list[ChatMessage], *, tools: Optional[list[dict]] = None,
                    temperature: float = 0.2, max_output_tokens: int = 2048) -> ChatResult:

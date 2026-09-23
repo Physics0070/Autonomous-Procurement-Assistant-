@@ -69,6 +69,11 @@ def _build_for_task(task: Optional[str]) -> AIProvider:
         return build_provider(model=spec)
     members = [build_provider(model=m) for m in _split(settings.COUNCIL_MODELS)]
     monitor = build_provider(model=settings.COUNCIL_MONITOR_MODEL or None)
+    for participant in (*members, monitor):
+        # No silent fallbacks inside a council: a member that quietly becomes another
+        # vendor's model destroys the diversity the council exists for, and its errors
+        # would be reported against the wrong model. Failures are visible instead.
+        participant.fallback_models = []
     unusable = next((p for p in (*members, monitor) if not p.is_configured()), None)
     if unusable is not None:
         return UnconfiguredProvider(unusable.configuration_error() or "The council's models are not configured.")

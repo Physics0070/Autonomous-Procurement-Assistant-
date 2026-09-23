@@ -141,3 +141,42 @@ async def test_a_council_reviews_drafts_inside_a_real_agent_run(api, sourcing, m
     assert len(seen["a/one"]) == 2 and len(seen["b/two"]) == 2  # both members answered and reviewed
     draft = (await api.get("/api/v1/communications", headers=sourcing["headers"])).json()[0]
     assert draft["generated_by"] == "template"  # the council's rejection sent it back to the safe template
+
+
+async def test_a_flaky_monitor_is_retried_once():
+    """Free-tier providers intermittently return 200 with no content; one retry usually lands."""
+    seen: dict[str, list[str]] = {}
+    members = [member("a/one", "A", "A2", seen), member("b/two", "B", "B2", seen)]
+    attempts = []
+
+    def monitor_reply(prompt, system):
+        attempts.append(prompt)
+        return "" if len(attempts) == 1 else "the decision"
+
+    result = await CouncilProvider(members, ScriptedProvider(responder=monitor_reply)).generate("q")
+    assert result.ok and result.text == "the decision"
+    assert len(attempts) == 2
+
+
+async def test_when_the_monitor_keeps_failing_the_members_still_answer():
+    """A dead monitor must not throw away the members' work."""
+    seen: dict[str, list[str]] = {}
+    members = [member("a/one", "A", "A revised", seen), member("b/two", "B", "B revised", seen)]
+    dead_monitor = ScriptedProvider(responder=lambda prompt, system: "")
+
+    result = await CouncilProvider(members, dead_monitor).generate("q")
+    assert result.ok                      # degraded, not failed
+    assert result.text == "A revised"     # the first member's revised answer stands in
+    assert "monitor" in result.meta["degraded"].lower()
+
+
+def test_council_members_do_not_share_the_global_fallback_models(openrouter, monkeypatch):
+    """A member that silently falls back to another vendor's model destroys the council's
+    diversity - and makes its errors look like the fallback's."""
+    monkeypatch.setattr(settings, "OPENROUTER_FALLBACK_MODELS", "nvidia/backup:free")
+    factory.reset_ai_provider()
+    council = factory.get_ai_provider("critic")
+    assert [m.fallback_models for m in council.members] == [[], [], []]
+    assert council.monitor.fallback_models == []
+    # A single-model task still uses the configured fallbacks.
+    assert factory.get_ai_provider("negotiation").fallback_models == ["nvidia/backup:free"]
