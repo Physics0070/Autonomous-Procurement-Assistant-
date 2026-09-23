@@ -79,3 +79,13 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 |---|---|---|---|
 | R1 | USAID dataset is the headline ML result | ✅ | README leads with ROC-AUC 0.83 on 2,545 unseen shipments; HSN marked supplementary until its model stage is measured |
 
+
+## Direct AI vendors + review prep (23 Sep 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| V1 | Direct vendors (Gemini, Grok, Qwen, Ollama) usable at once via `vendor:model` | ✅ | `tests/test_vendors.py` 6 tests; Gemini SDK removed (one HTTPX client for all) |
+| V2 | Full regression | ✅ | pytest **204 passed** (MongoDB must be running) |
+| V3 | Key placeholders in `backend/.env` | ⚠️ | `GROK_API_KEY`, `QWEN_API_KEY` await your values; `GEMINI_API_KEY` has a value, and a live call returned 404 "model not found", to be checked when the keys land |
+| V4 | Mid-sem review sheet (stack, full forms, all parameters) | ✅ | published as a private artifact |
+| V5 | Live council + HSN-with-LLM measurement | ⬜ | runs as soon as the keys are in |
