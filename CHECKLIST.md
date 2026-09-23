@@ -89,3 +89,4 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V3 | Key placeholders in `backend/.env` | ⚠️ | `GROK_API_KEY`, `QWEN_API_KEY` await your values; `GEMINI_API_KEY` has a value, and a live call returned 404 "model not found", to be checked when the keys land |
 | V4 | Mid-sem review sheet (stack, full forms, all parameters) | ✅ | published as a private artifact |
 | V5 | Live council + HSN-with-LLM measurement | ⬜ | runs as soon as the keys are in |
+| V6 | Ollama dropped from the plan (no local install) | ✅ | still supported in code (synopsis option); nothing configured to use it |
