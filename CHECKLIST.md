@@ -92,3 +92,6 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V6 | Ollama dropped from the plan (no local install) | ✅ | still supported in code (synopsis option); nothing configured to use it |
 | V7 | Training curves (trees, boosting rounds, depth, LR iterations) measured on training years only | ✅ | `python -m ml.training_curves` -> `ml/artifacts/training_curves.json`; boosting peaks at round 827; time-ordered check prefers shallow trees |
 | V8 | Review sheet: exact agent behaviour + "vs AI wrapper" + training section | ✅ | same artifact, version 3 |
+| V9 | RapidOCR pinned (the OCR engine actually in use) | ✅ | Tesseract not installed on the demo laptop |
+| V10 | Presentation screenshots (16, 3200x1800) | ✅ | `presentation-screenshots/` |
+| V11 | Review sheet: slide check + ROC-AUC/OCR/RF/IF explanations + PDF | ✅ | `Procurement_Assistant_Review_Sheet.pdf` |
