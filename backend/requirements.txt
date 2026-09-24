@@ -21,6 +21,7 @@ pandas==2.2.3
 openpyxl==3.1.5
 Pillow==11.0.0
 pytesseract==0.3.13
+rapidocr-onnxruntime==1.4.4  # used when Tesseract isn't installed (OCR_ENGINE=auto)
 
 # --- Normalization / matching ---
 rapidfuzz==3.11.0
