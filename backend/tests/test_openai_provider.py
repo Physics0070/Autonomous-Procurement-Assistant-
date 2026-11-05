@@ -125,6 +125,16 @@ async def test_http_failures_become_explained_failures(status, phrase):
     assert phrase in response.error
 
 
+async def test_a_rate_limit_with_retry_after_is_retried_once():
+    """Free tiers (Groq: 8k tokens/min) ask callers to wait a few seconds; honour that once."""
+    replies = iter([httpx.Response(429, headers={"retry-after": "0"}, json={"error": {"message": "slow down"}}),
+                    httpx.Response(200, json=_completion("OK"))])
+    provider, captured = _provider(lambda r: next(replies))
+    response = await provider.generate("hello")
+    assert response.ok and response.text == "OK"
+    assert len(captured) == 2
+
+
 async def test_an_error_inside_a_200_response_is_a_failure():
     provider, _ = _provider(lambda r: httpx.Response(
         200, json={"error": {"code": 429, "message": "Rate limit exceeded: free-models-per-day"}}))

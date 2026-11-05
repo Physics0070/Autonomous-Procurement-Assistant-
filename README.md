@@ -41,7 +41,7 @@ Text / table extraction        PyMuPDF · pandas/openpyxl · Pillow
         ↓  OCR only when a page has no usable text layer
 Common raw representation      ProcessedDocument
         ↓
-AI structured extraction       OpenRouter / Ollama / Gemini (heuristic parser when unconfigured)
+AI structured extraction       Gemini / Groq / any OpenAI-compatible vendor (heuristic parser when unconfigured)
         ↓  Pydantic validation — the model cannot invent fields
 Validation                     inconsistencies flagged, never silently fixed
         ↓  one self-correction: re-read the document with the validator's complaints
@@ -79,7 +79,7 @@ Supervisor Agent ──► Comparison ──► Recommendation ──► Risk (M
 ### Option A — Docker (everything, including Tesseract)
 
 ```bash
-cp .env.example .env    # then set JWT_SECRET_KEY (and OPENROUTER_API_KEY / Google OAuth if you have them)
+cp .env.example .env    # then set JWT_SECRET_KEY (and GEMINI_API_KEY / GROQ_API_KEY / OPENROUTER_API_KEY / Google OAuth if you have them)
 docker compose up --build
 ```
 
@@ -181,7 +181,7 @@ backend/app/
 │   ├── analytics/              spend · reliability_ml
 │   └── storage/                StorageBackend abstraction + local implementation
 ├── integrations/
-│   ├── ai/                     AIProvider → OpenAICompatible · Gemini · factory · prompts
+│   ├── ai/                     AIProvider → OpenAICompatible (every vendor) · council · factory · prompts
 │   ├── ingestion/              gmail_client · channels (WhatsApp: architecture only)
 │   └── storage/google_drive.py purchase-order filing
 ├── workers/                    processing queue · gmail scheduler · agent watchdog
@@ -261,11 +261,13 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `STORAGE_LOCAL_PATH` | `../storage` | Originals live here, not in MongoDB |
 | `MAX_UPLOAD_SIZE_MB` | `25` | |
 | `ENVIRONMENT` | `development` | Outside `development` the app refuses the placeholder `JWT_SECRET_KEY` |
-| `AI_PROVIDER` | `openrouter` | `openrouter` · `ollama` · `gemini` · `none` |
-| `OPENROUTER_API_KEY` | — | Free key at openrouter.ai. Without it: heuristic extraction, template drafts, assistant off |
+| `AI_PROVIDER` | `gemini` | Default vendor: `gemini` · `grok` · `groq` · `qwen` · `ollama` · `openrouter` · `none`. Every vendor goes through one OpenAI-compatible client; a model is written `vendor:model`. With no key at all: heuristic extraction, template drafts, assistant off |
+| `GEMINI_API_KEY` / `GEMINI_MODEL` | — / `gemini-3.5-flash` | Free key at aistudio.google.com. `gemini-2.5-*` is closed to new keys; `gemini-3.1-flash-lite` is the fast option |
+| `GROQ_API_KEY` / `GROQ_MODEL` | — / `openai/gpt-oss-120b` | Groq (`gsk_` keys, open models; not xAI's Grok). Key at console.groq.com/keys |
+| `OPENROUTER_API_KEY` | — | Optional aggregator, used here for NVIDIA Nemotron on the free tier (~50 requests/day without credits) |
 | `OPENROUTER_MODEL` / `OPENROUTER_FALLBACK_MODELS` | `google/gemma-4-31b-it:free` / `nvidia/nemotron-3-super-120b-a12b:free` | |
-| `OLLAMA_BASE_URL` / `OLLAMA_MODEL` | `http://localhost:11434/v1` / — | Local, keyless alternative |
-| `GEMINI_API_KEY` / `GEMINI_MODEL` | — / `gemini-2.0-flash` | Extraction only (no tool calling) |
+| `GROK_API_KEY` / `QWEN_API_KEY` | — | xAI Grok / Alibaba Qwen; supported but not used in the verified setup |
+| `OLLAMA_BASE_URL` / `OLLAMA_MODEL` | `http://localhost:11434/v1` / `llama3.1` | Local, keyless alternative |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | — | Gmail OAuth client; without it the Integrations page says so |
 | `GOOGLE_REDIRECT_URI` | `http://localhost:8000/api/v1/channels/gmail/callback` | Must match the Google Cloud client |
 | `FRONTEND_URL` | `http://localhost:5173` | Where the OAuth callback returns |
@@ -273,7 +275,7 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `GMAIL_SYNC_QUERY` / `GMAIL_MAX_MESSAGES_PER_SYNC` / `GMAIL_SYNC_INTERVAL_MINUTES` | quotation subjects, 30 days / `25` / `15` | `0` disables automatic sync |
 | `NEGOTIATION_DEFAULT_DISCOUNT_PCT` | `5.0` | Target price below the quote |
 | `NEGOTIATION_WEAK_CRITERION_SCORE` | `0.5` | Delivery/payment scores below this are negotiated |
-| `LLM_TASK_MODELS` | — | A different model per task, e.g. `extraction=<model>,critic=council`. Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn |
+| `LLM_TASK_MODELS` | — | A different model per task, e.g. `extraction=gemini:gemini-3.5-flash,critic=council`. Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn |
 | `COUNCIL_MODELS` / `COUNCIL_MONITOR_MODEL` | — | The council's members (2+, ideally different vendors) and the model that decides |
 | `ASSISTANT_MAX_TOOL_ROUNDS` | `6` | |
 | `AGENT_MAX_STEPS` | `12` | Supervisor routing decisions per run |
@@ -299,7 +301,7 @@ Frontend (`frontend/.env`): `VITE_API_BASE_URL` — leave empty in dev.
 | Dependency | Status | Effect if absent |
 |---|---|---|
 | MongoDB | Required | Backend will not start |
-| `OPENROUTER_API_KEY` (or Ollama) | Optional | Heuristic extractor, computed explanation, template drafts; assistant returns 503 |
+| `GEMINI_API_KEY` / `GROQ_API_KEY` / `OPENROUTER_API_KEY` (any vendor, or Ollama) | Optional | Heuristic extractor, computed explanation, template drafts; assistant returns 503 |
 | Google OAuth client | Optional | Gmail collection unavailable (manual upload still works) |
 | Tesseract OCR | Optional | `rapidocr-onnxruntime` is the automatic pip-only fallback |
 
@@ -358,8 +360,20 @@ round 3  decision  the monitor model reads every revised answer and writes the f
 
 Members that fail are dropped; with fewer than two answers the council reports that instead
 of pretending. The whole deliberation is kept (explanations store it as `deliberation`).
-Tool-using tasks (negotiation, the assistant) stay on single models. All models go through the
-one `OPENROUTER_API_KEY`.
+Tool-using tasks (negotiation, the assistant) stay on single models.
+
+Members can come from any vendor, each with its own key. The verified line-up uses three keys
+(`GEMINI_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY`):
+
+```
+LLM_TASK_MODELS=extraction=gemini:gemini-3.5-flash,supervisor=groq:openai/gpt-oss-120b,negotiation=groq:openai/gpt-oss-120b,assistant=gemini:gemini-3.1-flash-lite,hsn=groq:openai/gpt-oss-120b,recommendation=council,critic=council
+COUNCIL_MODELS=groq:openai/gpt-oss-120b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,gemini:gemini-3.1-flash-lite
+COUNCIL_MONITOR_MODEL=gemini:gemini-3.5-flash
+```
+
+A live run with this line-up succeeded: Groq gpt-oss-120b, NVIDIA Nemotron Ultra (via
+OpenRouter's free tier, roughly 50 requests/day without credits) and Gemini 3.1 Flash-Lite
+answered and peer-reviewed anonymously, and Gemini 3.5 Flash decided — no member dropped, 33 s.
 
 ### Headline ML result — USAID supply-chain dataset
 

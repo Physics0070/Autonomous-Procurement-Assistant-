@@ -67,6 +67,19 @@ def test_unprefixed_models_keep_using_the_default_vendor(monkeypatch):
         factory.reset_ai_provider()
 
 
+def test_groq_is_its_own_vendor(monkeypatch):
+    """Groq (gsk_ keys, open models) is not xAI's Grok: different key, different endpoint."""
+    monkeypatch.setattr(settings, "GROQ_API_KEY", "gsk-test")
+    monkeypatch.setattr(settings, "LLM_TASK_MODELS", "supervisor=groq:openai/gpt-oss-120b")
+    factory.reset_ai_provider()
+    try:
+        provider = factory.get_ai_provider("supervisor")
+        assert (provider.name, provider.model, provider.base_url) == (
+            "groq", "openai/gpt-oss-120b", settings.GROQ_BASE_URL)
+    finally:
+        factory.reset_ai_provider()
+
+
 def test_ollama_models_may_contain_colons(monkeypatch):
     monkeypatch.setattr(settings, "LLM_TASK_MODELS", "hsn=ollama:qwen2.5:7b")
     factory.reset_ai_provider()

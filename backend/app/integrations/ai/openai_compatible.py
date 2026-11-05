@@ -7,6 +7,7 @@ missing credits, outages, timeouts, malformed bodies - comes back as
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 from contextlib import asynccontextmanager
@@ -91,12 +92,19 @@ class OpenAICompatibleProvider(AIProvider):
         """Returns (body, error, status). Never raises for transport problems."""
         try:
             async with self._client() as client:
-                response = await client.post(
-                    f"{self.base_url}/chat/completions",
-                    json=payload,
-                    headers=self._headers(),
-                    timeout=self.timeout,
-                )
+                for attempt in range(2):
+                    response = await client.post(
+                        f"{self.base_url}/chat/completions",
+                        json=payload,
+                        headers=self._headers(),
+                        timeout=self.timeout,
+                    )
+                    # A rate limit that says when to come back (Groq's free tier: 8k tokens/min)
+                    # is waited out once; without Retry-After, or a long wait, it fails as before.
+                    wait = _retry_after(response) if response.status_code == 429 and attempt == 0 else None
+                    if wait is None:
+                        break
+                    await asyncio.sleep(wait)
         except httpx.TimeoutException:
             return None, f"{self.name} request timed out after {self.timeout:.0f}s", 0
         except httpx.HTTPError as exc:
@@ -223,6 +231,18 @@ class OpenAICompatibleProvider(AIProvider):
             finish_reason=choice.get("finish_reason"),
             meta={"usage": body.get("usage") or {}},
         )
+
+
+MAX_RETRY_AFTER_SECONDS = 30.0
+
+
+def _retry_after(response: httpx.Response) -> Optional[float]:
+    """Seconds the provider asked us to wait, when it said so and it is short enough to wait."""
+    try:
+        seconds = float(response.headers.get("retry-after", ""))
+    except ValueError:
+        return None
+    return seconds if 0 <= seconds <= MAX_RETRY_AFTER_SECONDS else None
 
 
 def _serialise(message: ChatMessage) -> dict[str, Any]:

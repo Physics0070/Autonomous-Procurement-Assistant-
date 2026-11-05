@@ -51,7 +51,7 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 25
 
     # --- AI provider ---
-    # The default vendor: gemini | grok | qwen | ollama | openrouter | none.
+    # The default vendor: gemini | grok | groq | qwen | ollama | openrouter | none.
     # Every vendor speaks the OpenAI chat-completions format; each has its own key.
     AI_PROVIDER: str = "gemini"
 
@@ -59,6 +59,11 @@ class Settings(BaseSettings):
     GROK_API_KEY: str = ""
     GROK_BASE_URL: str = "https://api.x.ai/v1"
     GROK_MODEL: str = "grok-4-fast"
+
+    # Groq (gsk_ keys) - fast hosting of open models; not xAI's Grok. https://console.groq.com/keys
+    GROQ_API_KEY: str = ""
+    GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
+    GROQ_MODEL: str = "openai/gpt-oss-120b"
 
     # Alibaba Qwen (Model Studio / DashScope). International endpoint by default; mainland China
     # accounts use https://dashscope.aliyuncs.com/compatible-mode/v1
@@ -69,7 +74,7 @@ class Settings(BaseSettings):
     # Google Gemini through its OpenAI-compatible endpoint - https://aistudio.google.com/apikey
     GEMINI_API_KEY: str = ""
     GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GEMINI_MODEL: str = "gemini-3.5-flash"  # 2.5 is closed to new keys
 
     # OpenRouter (OpenAI-compatible). Free model IDs end in ":free".
     OPENROUTER_API_KEY: str = ""
@@ -83,7 +88,7 @@ class Settings(BaseSettings):
     OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
     OLLAMA_MODEL: str = "llama3.1"
 
-    # A different model per task: "extraction=gemini:gemini-2.5-flash, negotiation=qwen:qwen-plus,
+    # A different model per task: "extraction=gemini:gemini-3.5-flash, negotiation=groq:openai/gpt-oss-120b,
     # critic=council". A model is "vendor:model"; without a vendor prefix, AI_PROVIDER's vendor is used.
     # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn.
     # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
