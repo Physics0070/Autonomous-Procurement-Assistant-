@@ -17,6 +17,7 @@ Usage (from backend/):  python -m ml.hsn [dev|test] [--llm]
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from dataclasses import dataclass
@@ -35,6 +36,7 @@ MASTER_PATH = DATA_DIR / "HSN_SAC.xlsx"
 BENCHMARK_PATH = DATA_DIR / "hsn_benchmark.csv"
 REPORT_PATH = Path(__file__).resolve().parent / "artifacts" / "hsn_evaluation.md"
 SHORTLIST_SIZE = 30
+EVAL_PACE_SECONDS = 5.0  # pause between model calls in evaluate(); free tiers allow ~15 requests/minute
 
 # Standard Indian trade shorthand -> the wording the HSN master uses. General vocabulary
 # of Indian purchasing, not tuned to individual benchmark items.
@@ -151,6 +153,8 @@ async def evaluate(split: str, provider=None, index: Optional[HsnIndex] = None) 
     rows = []
     for item, truth in zip(bench["item"], bench["heading"]):
         result = await classify_hsn(item, provider, index=index)
+        if provider is not None:
+            await asyncio.sleep(EVAL_PACE_SECONDS)
         shortlist = [s["heading"] for s in index.suggest(item, k=SHORTLIST_SIZE)]
         rows.append({"item": item, "truth": truth, "predicted": result["heading"], "method": result["method"],
                      "correct": result["heading"] == truth, "chapter": result["heading"][:2] == truth[:2],
