@@ -71,7 +71,7 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | I1 | Official Indian data: GST HSN master (21,935 codes) | ✅ | `ml/data/india/`; found a data error in the official file (8539) |
 | I2 | Indian benchmark: 114 quotation-style items, 29 dev / 85 held-out test | ✅ | labels checked against the master |
 | I3 | HSN suggestion: text shortlist + checked model decision | ✅ | `tests/test_ml_hsn.py` 9 tests; `GET /analytics/hsn` |
-| I4 | Held-out accuracy | ⚠️ | text alone **54.1%** top-1; right answer on shortlist **97.6%**; model stage **not yet measured (needs key)** — `python -m ml.hsn test --llm` |
+| I4 | Held-out accuracy | ✅ | text alone **54.1%**; with the model stage **98.8%** (84/85, all 85 answered by the model), dev 93.1% — `python -m ml.hsn dev test --llm` |
 
 ## Reporting decision (22 Sep 2026)
 
@@ -95,3 +95,5 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V9 | RapidOCR pinned (the OCR engine actually in use) | ✅ | Tesseract not installed on the demo laptop |
 | V10 | Presentation screenshots (16, 3200x1800) | ✅ | `presentation-screenshots/` |
 | V11 | Review sheet: slide check + ROC-AUC/OCR/RF/IF explanations + PDF | ✅ | `Procurement_Assistant_Review_Sheet.pdf` |
+| V12 | HSN with the model stage, measured cleanly (paced to stay inside free-tier limits) | ✅ | 98.8% held-out, 100% chapter; an unpaced run scored 80.0% because 27 items fell back to text matching |
+| V13 | Project report (16 sections, VIT format: A4, margins, Times New Roman, logo) | ✅ | `Autonomous_Procurement_Assistant_Project_Report.docx`, schema-validated; kept local, not pushed |

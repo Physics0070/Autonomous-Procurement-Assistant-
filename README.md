@@ -405,7 +405,7 @@ over-warn than miss.
 Full report: `backend/ml/artifacts/evaluation_report.md`; anomaly and forecast evaluation:
 `backend/ml/artifacts/analytics_evaluation.md`.
 
-### Supplementary — HSN codes on Indian GST data (model stage pending measurement)
+### Supplementary — HSN codes on Indian GST data
 
 `GET /api/v1/analytics/hsn?item=...` suggests the 4-digit HSN heading for a quotation line,
 from the official GST master (21,935 codes). Text matching builds a shortlist of 30 official
@@ -414,10 +414,12 @@ headings; a language model picks one — its answer must exist in the master.
 | Held-out test (85 items) | Heading top-1 | Right answer on the shortlist |
 |---|---:|---:|
 | Text matching alone | 54.1% | **97.6%** |
-| Text matching + model | *measured once a key is set:* `python -m ml.hsn test --llm` | |
+| Text matching + model (Gemini 3.1 Flash-Lite) | **98.8%** (84 of 85; chapter 100%) | |
 
-Text matching alone is **not** above 90%; the model stage can be, but that has not been
-measured yet. Report: `backend/ml/artifacts/hsn_evaluation.md`.
+Text matching alone is **not** above 90%; with the model stage the held-out heading accuracy is 98.8% (dev set 93.1%),
+with the model answering all 85 items. Free-tier rate limits can silently turn model answers into text-match fallbacks, so
+the evaluation is paced (`EVAL_PACE_SECONDS`) and prints how many items the model answered. The benchmark was written by
+the team, so treat it as evidence the method works, not as a general accuracy. Report: `backend/ml/artifacts/hsn_evaluation.md`.
 
 ---
 
