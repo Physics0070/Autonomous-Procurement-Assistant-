@@ -135,6 +135,23 @@ async def test_a_rate_limit_with_retry_after_is_retried_once():
     assert len(captured) == 2
 
 
+async def test_a_temporary_outage_is_retried_once(monkeypatch):
+    """Gemini answers 503 'high demand' in bursts; one short retry saves the call."""
+    monkeypatch.setattr("app.integrations.ai.openai_compatible.RETRY_BACKOFF_SECONDS", 0)
+    replies = iter([httpx.Response(503, json={"error": {"message": "high demand"}}),
+                    httpx.Response(200, json=_completion("OK"))])
+    provider, captured = _provider(lambda r: next(replies))
+    response = await provider.generate("hello")
+    assert response.ok and len(captured) == 2
+
+
+async def test_a_persistent_outage_gives_up_after_one_retry(monkeypatch):
+    monkeypatch.setattr("app.integrations.ai.openai_compatible.RETRY_BACKOFF_SECONDS", 0)
+    provider, captured = _provider(lambda r: httpx.Response(503, json={"error": {"message": "down"}}))
+    response = await provider.generate("hello")
+    assert response.ok is False and "unavailable" in response.error and len(captured) == 2
+
+
 async def test_an_error_inside_a_200_response_is_a_failure():
     provider, _ = _provider(lambda r: httpx.Response(
         200, json={"error": {"code": 429, "message": "Rate limit exceeded: free-models-per-day"}}))

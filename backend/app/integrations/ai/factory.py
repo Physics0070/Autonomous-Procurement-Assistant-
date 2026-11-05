@@ -91,6 +91,7 @@ def _build_for_task(task: Optional[str]) -> AIProvider:
         # vendor's model destroys the diversity the council exists for, and its errors
         # would be reported against the wrong model. Failures are visible instead.
         participant.fallback_models = []
+        participant.timeout = float(settings.COUNCIL_MEMBER_TIMEOUT_SECONDS)
     unusable = next((p for p in (*members, monitor) if not p.is_configured()), None)
     if unusable is not None:
         return UnconfiguredProvider(unusable.configuration_error() or "The council's models are not configured.")

@@ -99,9 +99,10 @@ class OpenAICompatibleProvider(AIProvider):
                         headers=self._headers(),
                         timeout=self.timeout,
                     )
-                    # A rate limit that says when to come back (Groq's free tier: 8k tokens/min)
-                    # is waited out once; without Retry-After, or a long wait, it fails as before.
-                    wait = _retry_after(response) if response.status_code == 429 and attempt == 0 else None
+                    # One retry for what clears by itself: a rate limit that says when to come back
+                    # (Groq's free tier: 8k tokens/min) and a brief provider outage (Gemini 503 bursts).
+                    # Anything else, or a long wait, fails as before.
+                    wait = _retry_wait(response) if attempt == 0 else None
                     if wait is None:
                         break
                     await asyncio.sleep(wait)
@@ -234,10 +235,15 @@ class OpenAICompatibleProvider(AIProvider):
 
 
 MAX_RETRY_AFTER_SECONDS = 30.0
+RETRY_BACKOFF_SECONDS = 2.0
 
 
-def _retry_after(response: httpx.Response) -> Optional[float]:
-    """Seconds the provider asked us to wait, when it said so and it is short enough to wait."""
+def _retry_wait(response: httpx.Response) -> Optional[float]:
+    """Seconds to wait before one retry, or None when this response should not be retried."""
+    if response.status_code in (502, 503, 504):
+        return RETRY_BACKOFF_SECONDS
+    if response.status_code != 429:
+        return None
     try:
         seconds = float(response.headers.get("retry-after", ""))
     except ValueError:

@@ -88,3 +88,26 @@ async def test_a_clean_extraction_is_not_read_twice(db, org_a, storage, monkeypa
     monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda task=None: provider)
     await run(db, org_a, storage, QUOTE)
     assert len(provider.calls) == 1
+
+
+async def test_glued_ocr_digits_are_repaired_by_the_second_reading(db, org_a, storage, monkeypatch):
+    """OCR read "100  292" as "100292": the line has a total but no quantity or rate. That is now an
+    error, so the agent re-reads once with the hint that quantity x rate must equal the total."""
+    from app.services.documents import ai_extraction
+    from tests.fakes.llm import ScriptedProvider
+
+    def reading(quantity, rate):
+        return json.dumps({
+            "supplier": {"name": "Shree Steel Traders", "gst_number": "27AABCS1429B1ZQ"},
+            "items": [{"original_name": "PVC PIPE-2INCH", "quantity": quantity, "unit_price": rate, "total_price": 29200}],
+            "pricing": {"currency": "INR", "total_amount": 29200}, "delivery": {"delivery_days": 7}})
+
+    provider = ScriptedProvider(responses=[reading(None, None), reading(100, 292)])
+    monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda task=None: provider)
+
+    result, _ = await run(db, org_a, storage, QUOTE)
+
+    assert len(provider.calls) == 2 and "merged by OCR" in provider.calls[1]["prompt"]
+    item = result["ai_extraction"]["items"][0]
+    assert (item["quantity"], item["unit_price"]) == (100, 292)
+    assert result["validation"]["error_count"] == 0

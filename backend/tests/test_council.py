@@ -180,3 +180,12 @@ def test_council_members_do_not_share_the_global_fallback_models(openrouter, mon
     assert council.monitor.fallback_models == []
     # A single-model task still uses the configured fallbacks.
     assert factory.get_ai_provider("negotiation").fallback_models == ["nvidia/backup:free"]
+
+
+def test_council_members_get_a_short_timeout_so_one_slow_model_cannot_stall_the_council(openrouter, monkeypatch):
+    monkeypatch.setattr(settings, "COUNCIL_MEMBER_TIMEOUT_SECONDS", 30)
+    factory.reset_ai_provider()
+    council = factory.get_ai_provider("critic")
+    assert {m.timeout for m in council.members} == {30.0}
+    assert council.monitor.timeout == 30.0
+    assert factory.get_ai_provider("negotiation").timeout == float(settings.AI_REQUEST_TIMEOUT_SECONDS)

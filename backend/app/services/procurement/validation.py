@@ -201,10 +201,17 @@ def validate_extraction(extraction: AIExtractionResult) -> ValidationReport:
             if value is None
         ]
         if missing:
+            # A priced line with neither quantity nor rate is usually OCR gluing two numbers together
+            # ("100 292" read as "100292"). That is an error, so the extraction agent re-reads once
+            # with the hint that quantity x unit price must equal the line total.
+            glued = item.total_price is not None and item.quantity is None and item.unit_price is None
             add(
                 f"{prefix}",
                 "incomplete_item",
-                f"Line item is missing {', '.join(missing)}.",
+                f"Line item is missing {', '.join(missing)}."
+                + (" Digits may have been merged by OCR: quantity x unit price must equal the line total, "
+                   "so split the digits accordingly." if glued else ""),
+                severity=Severity.ERROR if glued else Severity.WARNING,
                 observed=item.original_name,
                 item_index=index,
             )

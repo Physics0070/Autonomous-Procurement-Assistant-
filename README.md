@@ -261,7 +261,7 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `STORAGE_LOCAL_PATH` | `../storage` | Originals live here, not in MongoDB |
 | `MAX_UPLOAD_SIZE_MB` | `25` | |
 | `ENVIRONMENT` | `development` | Outside `development` the app refuses the placeholder `JWT_SECRET_KEY` |
-| `AI_PROVIDER` | `gemini` | Default vendor: `gemini` · `grok` · `groq` · `qwen` · `ollama` · `openrouter` · `none`. Every vendor goes through one OpenAI-compatible client; a model is written `vendor:model`. With no key at all: heuristic extraction, template drafts, assistant off |
+| `AI_PROVIDER` | `groq` | Default vendor: `gemini` · `grok` · `groq` · `qwen` · `ollama` · `openrouter` · `none`. Every vendor goes through one OpenAI-compatible client; a model is written `vendor:model`. With no key at all: heuristic extraction, template drafts, assistant off |
 | `GEMINI_API_KEY` / `GEMINI_MODEL` | — / `gemini-3.5-flash` | Free key at aistudio.google.com. `gemini-2.5-*` is closed to new keys; `gemini-3.1-flash-lite` is the fast option |
 | `GROQ_API_KEY` / `GROQ_MODEL` | — / `openai/gpt-oss-120b` | Groq (`gsk_` keys, open models; not xAI's Grok). Key at console.groq.com/keys |
 | `OPENROUTER_API_KEY` | — | Optional aggregator, used here for NVIDIA Nemotron on the free tier (~50 requests/day without credits) |
@@ -366,9 +366,9 @@ Members can come from any vendor, each with its own key. The verified line-up us
 (`GEMINI_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY`):
 
 ```
-LLM_TASK_MODELS=extraction=gemini:gemini-3.5-flash,supervisor=groq:openai/gpt-oss-120b,negotiation=groq:openai/gpt-oss-120b,assistant=gemini:gemini-3.1-flash-lite,hsn=groq:openai/gpt-oss-120b,recommendation=council,critic=council
-COUNCIL_MODELS=groq:openai/gpt-oss-120b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,gemini:gemini-3.1-flash-lite
-COUNCIL_MONITOR_MODEL=gemini:gemini-3.5-flash
+LLM_TASK_MODELS=extraction=groq:openai/gpt-oss-120b,supervisor=groq:openai/gpt-oss-120b,negotiation=groq:openai/gpt-oss-120b,assistant=groq:openai/gpt-oss-120b,hsn=groq:openai/gpt-oss-120b,recommendation=council,critic=council
+COUNCIL_MODELS=groq:qwen/qwen3.8-27b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,gemini:gemini-3.1-flash-lite
+COUNCIL_MONITOR_MODEL=groq:openai/gpt-oss-120b
 ```
 
 A live run with this line-up succeeded: Groq gpt-oss-120b, NVIDIA Nemotron Ultra (via

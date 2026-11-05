@@ -53,7 +53,7 @@ class Settings(BaseSettings):
     # --- AI provider ---
     # The default vendor: gemini | grok | groq | qwen | ollama | openrouter | none.
     # Every vendor speaks the OpenAI chat-completions format; each has its own key.
-    AI_PROVIDER: str = "gemini"
+    AI_PROVIDER: str = "groq"
 
     # xAI Grok - https://console.x.ai
     GROK_API_KEY: str = ""
@@ -97,6 +97,7 @@ class Settings(BaseSettings):
     COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
     COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
     AI_REQUEST_TIMEOUT_SECONDS: int = 120
+    COUNCIL_MEMBER_TIMEOUT_SECONDS: int = 45  # a slow free-tier member is dropped instead of stalling the council
 
     # --- OCR ---
     OCR_ENGINE: str = "auto"  # auto | tesseract | rapidocr | none
