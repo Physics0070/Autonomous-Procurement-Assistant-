@@ -74,9 +74,11 @@ def negotiation_asks(row: dict, target_price: Optional[float]) -> list[str]:
     scores = {c["criterion"]: c.get("score", 1) for c in row.get("criteria") or []}
     weak = settings.NEGOTIATION_WEAK_CRITERION_SCORE
     if scores.get("delivery", 1) < weak:
-        asks.append(f"faster delivery than {row.get('delivery_days') or 'the quoted'} days")
+        days = row.get("delivery_days")
+        asks.append(f"faster delivery than {days} days" if days else "faster delivery")
     if scores.get("payment", 1) < weak:
-        asks.append(f"a longer credit period than {row.get('payment_days') or 0} days")
+        days = row.get("payment_days")
+        asks.append(f"a longer credit period than {days} days" if days else "some credit instead of advance payment")
     return asks
 
 

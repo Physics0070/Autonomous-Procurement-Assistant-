@@ -12,18 +12,18 @@ export function LoadingState({ label = "Loading…" }: { label?: string }) {
   // A skeleton of the page that is about to appear, so waiting reads as progress, not a hang.
   return (
     <div className="space-y-6 py-4" role="status" aria-live="polite" aria-label={label}>
-      <div className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+      <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
         <Spinner className="h-3.5 w-3.5 text-primary" />
         {label}
       </div>
       <div className="stagger space-y-4">
-        <Skeleton className="h-40 w-full rounded-2xl" />
+        <Skeleton className="h-40 w-full rounded-xl" />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[0, 1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-28 rounded-2xl" />
+            <Skeleton key={i} className="h-28 rounded-xl" />
           ))}
         </div>
-        <Skeleton className="h-64 w-full rounded-2xl" />
+        <Skeleton className="h-64 w-full rounded-xl" />
       </div>
     </div>
   )

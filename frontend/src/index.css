@@ -3,74 +3,62 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   Ledger Console: graphite ground, ignition-amber signal, cyan for data.
-   Every component reads these tokens, so changing them restyles the whole app,
-   charts included (they use hsl(var(--primary)) etc.).
+   One calm, high-contrast system: white surfaces, a single blue for actions, and colours that always
+   mean the same thing (green = done, orange = needs a look, red = problem). Every component reads
+   these tokens, so the whole app, charts included, follows them.
    --------------------------------------------------------------------------- */
 @layer base {
   :root {
-    --background: 220 22% 95%;
-    --foreground: 228 30% 10%;
+    --background: 214 32% 97%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 228 30% 10%;
-    --primary: 35 96% 47%;
-    --primary-foreground: 30 100% 8%;
-    --secondary: 220 20% 92%;
-    --secondary-foreground: 228 30% 10%;
-    --muted: 220 20% 92%;
-    --muted-foreground: 224 12% 38%;
-    --accent: 220 24% 90%;
-    --accent-foreground: 228 30% 10%;
-    --destructive: 352 82% 50%;
+    --card-foreground: 222 47% 11%;
+    --primary: 221 83% 46%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 28% 94%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 28% 94%;
+    --muted-foreground: 217 19% 35%;
+    --accent: 214 40% 93%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 46%;
     --destructive-foreground: 0 0% 100%;
-    --success: 160 84% 28%;
+    --success: 152 62% 30%;
     --success-foreground: 0 0% 100%;
-    --warning: 24 95% 42%;
+    --warning: 28 92% 38%;
     --warning-foreground: 0 0% 100%;
-    --info: 192 90% 34%;
+    --info: 199 89% 33%;
     --info-foreground: 0 0% 100%;
-    --border: 222 20% 84%;
-    --input: 222 20% 82%;
-    --ring: 35 96% 47%;
-    --ring-pulse: 35 96% 47%;
-    --glow: 35 96% 55%;
-    --glow-2: 352 90% 62%;
-    --aurora-a: 35 100% 60%;
-    --aurora-b: 192 95% 55%;
-    --aurora-c: 352 95% 66%;
-    --radius: 0.9rem;
+    --border: 214 24% 87%;
+    --input: 214 20% 78%;
+    --ring: 221 83% 46%;
+    --radius: 0.6rem;
   }
 
   .dark {
-    --background: 228 28% 6%;
+    --background: 222 28% 9%;
     --foreground: 210 30% 96%;
-    --card: 228 24% 10%;
+    --card: 222 24% 12%;
     --card-foreground: 210 30% 96%;
-    --primary: 40 100% 58%;
-    --primary-foreground: 30 100% 8%;
-    --secondary: 228 20% 15%;
+    --primary: 217 91% 64%;
+    --primary-foreground: 222 47% 8%;
+    --secondary: 222 20% 17%;
     --secondary-foreground: 210 30% 96%;
-    --muted: 228 20% 14%;
-    --muted-foreground: 222 14% 66%;
-    --accent: 228 22% 18%;
+    --muted: 222 20% 16%;
+    --muted-foreground: 215 20% 70%;
+    --accent: 222 22% 20%;
     --accent-foreground: 210 30% 96%;
-    --destructive: 352 92% 64%;
-    --destructive-foreground: 0 0% 100%;
-    --success: 160 84% 48%;
-    --success-foreground: 160 100% 6%;
-    --warning: 24 100% 62%;
-    --warning-foreground: 24 100% 6%;
-    --info: 190 95% 56%;
-    --info-foreground: 190 100% 6%;
-    --border: 228 18% 20%;
-    --input: 228 18% 22%;
-    --ring: 40 100% 58%;
-    --ring-pulse: 40 100% 58%;
-    --glow: 40 100% 58%;
-    --glow-2: 352 92% 64%;
-    --aurora-a: 38 100% 52%;
-    --aurora-b: 190 100% 50%;
-    --aurora-c: 352 100% 60%;
+    --destructive: 0 80% 66%;
+    --destructive-foreground: 222 47% 8%;
+    --success: 152 60% 50%;
+    --success-foreground: 222 47% 8%;
+    --warning: 34 95% 58%;
+    --warning-foreground: 222 47% 8%;
+    --info: 199 90% 60%;
+    --info-foreground: 222 47% 8%;
+    --border: 222 18% 22%;
+    --input: 222 18% 30%;
+    --ring: 217 91% 64%;
   }
 
   * { @apply border-border; }
@@ -79,72 +67,15 @@
   html.dark { color-scheme: dark; }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
-    overflow-x: hidden;
+    @apply bg-background font-sans text-[15px] leading-relaxed text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1, h2, h3 { font-family: "Bricolage Grotesque", Geist, ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; }
-  ::selection { background: hsl(var(--primary) / 0.35); }
+  h1, h2, h3 { letter-spacing: -0.015em; }
+  ::selection { background: hsl(var(--primary) / 0.25); }
 
-  /* Tabular figures keep money columns aligned across rows. */
-  .tabular { font-variant-numeric: tabular-nums; font-family: "Geist Mono", ui-monospace, monospace; letter-spacing: -0.02em; }
-}
-
-@layer components {
-  /* The page ground: slow aurora blobs under a film of grain. Transform-only animation. */
-  .stage { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-  .stage::before, .stage::after, .stage > i {
-    content: ""; position: absolute; width: 58vmax; height: 58vmax; border-radius: 50%;
-    filter: blur(90px); opacity: 0.34; will-change: transform; animation: drift 24s ease-in-out infinite;
-  }
-  .stage::before { top: -22vmax; left: -14vmax; background: radial-gradient(circle, hsl(var(--aurora-a)), transparent 62%); }
-  .stage::after { bottom: -26vmax; right: -16vmax; background: radial-gradient(circle, hsl(var(--aurora-b)), transparent 62%); animation-delay: -9s; opacity: 0.26; }
-  .stage > i { top: 28%; left: 38%; width: 40vmax; height: 40vmax; background: radial-gradient(circle, hsl(var(--aurora-c)), transparent 62%); animation-delay: -15s; opacity: 0.18; }
-  html:not(.dark) .stage::before, html:not(.dark) .stage::after, html:not(.dark) .stage > i { opacity: 0.16; }
-  .grain {
-    position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* Glass surface with a hairline gradient edge and a spotlight that follows the cursor (--mx / --my). */
-  .glass {
-    position: relative; isolation: isolate;
-    background: linear-gradient(180deg, hsl(var(--card) / 0.78), hsl(var(--card) / 0.58));
-    -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
-    box-shadow: 0 1px 0 hsl(0 0% 100% / 0.06) inset, 0 18px 50px -24px hsl(228 60% 2% / 0.7);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
-  }
-  html:not(.dark) .glass { box-shadow: 0 1px 0 hsl(0 0% 100% / 0.9) inset, 0 14px 40px -22px hsl(228 40% 20% / 0.28); }
-  .glass::before {                       /* gradient hairline border */
-    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; z-index: -1;
-    background: linear-gradient(140deg, hsl(0 0% 100% / 0.22), hsl(0 0% 100% / 0.04) 40%, hsl(var(--glow) / 0.18));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
-  }
-  html:not(.dark) .glass::before { background: linear-gradient(140deg, hsl(222 25% 70% / 0.55), hsl(222 25% 80% / 0.25) 45%, hsl(var(--glow) / 0.35)); }
-  .glass::after {                        /* cursor spotlight */
-    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), hsl(var(--glow) / 0.16), transparent 62%);
-    transition: opacity 0.3s;
-  }
-  .glass:hover::after { opacity: 1; }
-  .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 hsl(0 0% 100% / 0.08) inset, 0 28px 60px -22px hsl(var(--glow) / 0.35); }
-
-  .text-gradient {
-    background: linear-gradient(100deg, hsl(var(--glow)) 0%, hsl(var(--glow-2)) 55%, hsl(var(--aurora-b)) 110%);
-    -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 100%;
-    animation: gradient-pan 9s ease-in-out infinite alternate;
-  }
-  @keyframes gradient-pan { to { background-position: 100% 0; } }
-
-  /* Staggered entrance: put .stagger on a parent and every direct child rises in turn. */
-  .stagger > * { animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .stagger > *:nth-child(1) { animation-delay: 0.02s; } .stagger > *:nth-child(2) { animation-delay: 0.08s; }
-  .stagger > *:nth-child(3) { animation-delay: 0.14s; } .stagger > *:nth-child(4) { animation-delay: 0.2s; }
-  .stagger > *:nth-child(5) { animation-delay: 0.26s; } .stagger > *:nth-child(6) { animation-delay: 0.32s; }
-  .stagger > *:nth-child(n+7) { animation-delay: 0.38s; }
-
-  .kbd { @apply inline-flex h-5 min-w-5 items-center justify-center rounded-md border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground; }
+  /* Numbers line up in columns (amounts, counts). */
+  .tabular { font-variant-numeric: tabular-nums; }
 }
 
 @layer utilities {
@@ -154,7 +85,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage::before, .stage::after, .stage > i, .text-gradient, .stagger > *, .animate-rise, .animate-pulse-ring { animation: none !important; }
-  .glass, .lift { transition: none; }
-  html { scroll-behavior: auto; }
+  *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

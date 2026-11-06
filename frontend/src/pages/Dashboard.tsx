@@ -1,339 +1,94 @@
 import { Link } from "react-router-dom"
-import {
-  Area,
-  AreaChart,
-  Cell,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
-import {
-  AlertTriangle,
-  Building2,
-  ClipboardList,
-  FileStack,
-  IndianRupee,
-  Loader2,
-} from "lucide-react"
-import { PageHeader } from "@/components/layout/AppShell"
+import { AlertTriangle, ArrowRight, CheckCircle2, ClipboardList, FileText, Mail, Plus, Upload } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { StatusBadge } from "@/components/ui/badge"
 import { EmptyState, ErrorState, LoadingState } from "@/components/ui/feedback"
+import { useAuth } from "@/features/auth"
+import { useCommunications, usePurchaseOrders } from "@/hooks/automation"
 import { useDashboard } from "@/hooks/queries"
-import { useCountUp } from "@/hooks/useCountUp"
-import { SupplyNetwork } from "@/components/SupplyNetwork"
-import { formatCompactCurrency, formatCurrency, relativeTime } from "@/lib/utils"
+import { formatCurrency, relativeTime } from "@/lib/utils"
 
-const STATUS_COLORS: Record<string, string> = {
-  COMPLETED: "hsl(var(--success))",
-  REQUIRES_REVIEW: "hsl(var(--warning))",
-  FAILED: "hsl(var(--destructive))",
-  QUEUED: "hsl(var(--muted-foreground))",
-  UPLOADED: "hsl(var(--muted-foreground))",
-  EXTRACTING: "hsl(var(--primary))",
-  AI_EXTRACTING: "hsl(var(--primary))",
-  NORMALIZING: "hsl(var(--primary))",
+function greeting(): string {
+  const hour = new Date().getHours()
+  return hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening"
 }
 
-const STATUS_LABELS: Record<string, string> = {
-  COMPLETED: "Completed",
-  REQUIRES_REVIEW: "Needs review",
-  FAILED: "Failed",
-  QUEUED: "Queued",
-  UPLOADED: "Uploaded",
-  EXTRACTING: "Extracting",
-  AI_EXTRACTING: "Reading data",
-  NORMALIZING: "Normalizing",
-}
-
-function CountUp({ value }: { value: number }) {
-  const shown = useCountUp(value)
-  return <>{Math.round(shown).toLocaleString("en-IN")}</>
-}
-
-function StatCard({
-  label,
-  value,
-  sub,
-  icon: Icon,
-  tone = "default",
-  to,
-}: {
-  label: string
-  value: string | number
-  sub?: string
-  icon: React.ComponentType<{ className?: string }>
-  tone?: "default" | "warning" | "success"
-  to?: string
-}) {
-  const toneClass = {
-    default: "from-primary/25 to-primary/5 text-primary shadow-[0_0_28px_-6px_hsl(var(--primary)/0.7)]",
-    warning: "from-warning/25 to-warning/5 text-warning shadow-[0_0_28px_-6px_hsl(var(--warning)/0.7)]",
-    success: "from-success/25 to-success/5 text-success shadow-[0_0_28px_-6px_hsl(var(--success)/0.7)]",
-  }[tone]
-
-  const body = (
-    <Card className="lift h-full">
-      <CardContent className="flex items-start justify-between gap-3 p-5">
-        <div className="min-w-0 space-y-1.5">
-          <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
-          <p className="font-display text-4xl font-bold tabular-nums tracking-tight">
-            {typeof value === "number" ? <CountUp value={value} /> : value}
-          </p>
-          {sub && <p className="truncate text-xs text-muted-foreground">{sub}</p>}
-        </div>
-        <div className={`rounded-2xl bg-gradient-to-br p-3 ${toneClass}`}>
-          <Icon className="h-5 w-5" />
-        </div>
-      </CardContent>
-    </Card>
-  )
-
-  return to ? <Link to={to} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{body}</Link> : body
-}
+type Task = { id: string; text: string; to: string; action: string; icon: React.ComponentType<{ className?: string }> }
 
 export function DashboardPage() {
+  const { user } = useAuth()
   const { data, isLoading, error, refetch } = useDashboard()
+  const emails = useCommunications({ status: "draft" })
+  const orders = usePurchaseOrders()
 
-  if (isLoading) return <LoadingState label="Loading dashboard…" />
+  if (isLoading) return <LoadingState label="Loading your home page…" />
   if (error) return <ErrorState error={error} onRetry={refetch} />
   if (!data) return null
 
-  const statusData = Object.entries(data.quotations.by_status)
-    .filter(([, count]) => count > 0)
-    .map(([status, count]) => ({
-      name: STATUS_LABELS[status] ?? status,
-      value: count,
-      color: STATUS_COLORS[status] ?? "hsl(var(--muted-foreground))",
-    }))
+  const draftEmails = emails.data?.length ?? 0
+  const ordersToApprove = orders.data?.filter((order) => order.status === "draft").length ?? 0
+  const toCheck = data.quotations.requires_review
+  const unreadable = data.quotations.failed
 
-  const hasTrend = data.trend.some((point) => point.quotations > 0)
+  // Only things the person can act on, most urgent first. Zero-count items are not shown.
+  const tasks: Task[] = [
+    toCheck > 0 && { id: "check", icon: AlertTriangle, text: `${toCheck} ${toCheck === 1 ? "quotation needs" : "quotations need"} checking`, to: "/documents?status=REQUIRES_REVIEW", action: "Check" },
+    unreadable > 0 && { id: "failed", icon: AlertTriangle, text: `${unreadable} ${unreadable === 1 ? "quotation" : "quotations"} could not be read`, to: "/documents?status=FAILED", action: "See" },
+    ordersToApprove > 0 && { id: "orders", icon: FileText, text: `${ordersToApprove} purchase ${ordersToApprove === 1 ? "order is" : "orders are"} waiting for your approval`, to: "/purchase-orders", action: "Open" },
+    draftEmails > 0 && { id: "emails", icon: Mail, text: `${draftEmails} ${draftEmails === 1 ? "email is" : "emails are"} ready to send`, to: "/communications", action: "Open" },
+  ].filter(Boolean) as Task[]
+
+  const stats = [
+    { label: "Open requests", value: data.procurement_requests.active.toLocaleString("en-IN"), to: "/requests" },
+    { label: "Quotations received", value: data.quotations.total.toLocaleString("en-IN"), to: "/documents" },
+    { label: "Suppliers", value: data.suppliers.total.toLocaleString("en-IN"), to: "/suppliers" },
+    { label: "Total quoted", value: formatCurrency(Math.round(data.value.quoted_total), data.value.currency).replace(/\.00$/, ""), to: "/documents" },
+  ]
 
   return (
-    <div className="stagger space-y-6">
-      <PageHeader
-        title="Dashboard"
-        description="Live figures from your organization's procurement data."
-      />
-
-      <Card className="relative overflow-hidden">
-        <SupplyNetwork className="absolute inset-0 h-full w-full" hubPulse={Math.max(1, data.quotations.in_progress)} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/75 to-card/30 lg:via-card/55 lg:to-transparent" />
-        <div className="relative flex min-h-[19rem] flex-col justify-between gap-8 p-7 sm:p-9 lg:max-w-[58%]">
-          <div className="space-y-4">
-            <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
-              <span className="h-px w-8 bg-primary" /> Live supply network
-            </p>
-            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              Every quotation,<br />
-              <span className="text-gradient">read, ranked, ready.</span>
-            </h2>
-            <p className="max-w-md text-[15px] text-muted-foreground">
-              Suppliers feed the hub; agents extract, compare and draft. You only approve.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-x-10 gap-y-4">
-            <div>
-              <p className="font-display text-4xl font-bold tabular-nums">{formatCompactCurrency(data.value.quoted_total, data.value.currency)}</p>
-              <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">quoted so far</p>
-            </div>
-            <div>
-              <p className="font-display text-4xl font-bold tabular-nums"><CountUp value={data.quotations.processed} /></p>
-              <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">quotations processed</p>
-            </div>
-          </div>
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {greeting()}, {user?.name?.split(" ")[0] ?? "there"}
+          </h1>
+          <p className="text-muted-foreground">Here is what needs you today.</p>
         </div>
-      </Card>
-
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          label="Active requests"
-          value={data.procurement_requests.active}
-          sub={`${data.procurement_requests.total} total`}
-          icon={ClipboardList}
-          to="/requests"
-        />
-        <StatCard
-          label="Quotations"
-          value={data.quotations.total}
-          sub={`${data.quotations.processed} processed · ${data.quotations.in_progress} in progress`}
-          icon={FileStack}
-          to="/documents"
-        />
-        <StatCard
-          label="Needs review"
-          value={data.quotations.requires_review}
-          sub={data.quotations.failed > 0 ? `${data.quotations.failed} failed` : "No failures"}
-          icon={AlertTriangle}
-          tone={data.quotations.requires_review > 0 ? "warning" : "default"}
-          to="/documents?status=REQUIRES_REVIEW"
-        />
-        <StatCard
-          label="Suppliers"
-          value={data.suppliers.total}
-          sub={`${formatCompactCurrency(data.value.quoted_total, data.value.currency)} quoted`}
-          icon={Building2}
-          to="/suppliers"
-        />
-      </div>
-
-      {data.queue.depth > 0 || data.queue.in_flight > 0 ? (
-        <Card className="border-primary/25 bg-primary/5">
-          <CardContent className="flex items-center gap-3 p-4 text-sm">
-            <Loader2 className="h-4 w-4 animate-spin text-primary" />
-            <span>
-              Processing {data.queue.in_flight} document{data.queue.in_flight === 1 ? "" : "s"}
-              {data.queue.depth > 0 && `, ${data.queue.depth} queued`}. This page updates automatically.
-            </span>
-          </CardContent>
-        </Card>
-      ) : null}
-
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle className="text-base">Quotations received</CardTitle>
-            <p className="text-sm text-muted-foreground">Last 14 days</p>
-          </CardHeader>
-          <CardContent>
-            {hasTrend ? (
-              <ResponsiveContainer width="100%" height={220}>
-                <AreaChart data={data.trend} margin={{ top: 4, right: 8, left: -24, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.28} />
-                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0.02} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis
-                    dataKey="date"
-                    tickFormatter={(value: string) => value.slice(5)}
-                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-                    axisLine={false}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    allowDecimals={false}
-                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-                    axisLine={false}
-                    tickLine={false}
-                    width={40}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      background: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: 8,
-                      fontSize: 12,
-                    }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="quotations"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth={2}
-                    fill="url(#trendFill)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="flex h-[220px] items-center justify-center text-sm text-muted-foreground">
-                No quotations received in the last 14 days.
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Processing status</CardTitle>
-            <p className="text-sm text-muted-foreground">All quotations</p>
-          </CardHeader>
-          <CardContent>
-            {statusData.length > 0 ? (
-              <>
-                <ResponsiveContainer width="100%" height={160}>
-                  <PieChart>
-                    <Pie
-                      data={statusData}
-                      dataKey="value"
-                      nameKey="name"
-                      innerRadius={45}
-                      outerRadius={72}
-                      paddingAngle={2}
-                      stroke="none"
-                    >
-                      {statusData.map((entry) => (
-                        <Cell key={entry.name} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      contentStyle={{
-                        background: "hsl(var(--card))",
-                        border: "1px solid hsl(var(--border))",
-                        borderRadius: 8,
-                        fontSize: 12,
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-                <ul className="mt-3 space-y-1.5">
-                  {statusData.map((entry) => (
-                    <li key={entry.name} className="flex items-center gap-2 text-sm">
-                      <span className="h-2 w-2 rounded-full" style={{ background: entry.color }} />
-                      <span className="flex-1 text-muted-foreground">{entry.name}</span>
-                      <span className="tabular font-medium">{entry.value}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <div className="flex h-[160px] items-center justify-center text-sm text-muted-foreground">
-                No quotations yet.
-              </div>
-            )}
-          </CardContent>
-        </Card>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild>
+            <Link to="/documents">
+              <Upload /> Upload quotation
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/requests">
+              <Plus /> New purchase request
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Recent activity</CardTitle>
+        <CardHeader className="pb-3">
+          <CardTitle>Needs your attention</CardTitle>
         </CardHeader>
         <CardContent>
-          {data.recent_activity.length === 0 ? (
-            <EmptyState
-              icon={FileStack}
-              title="Nothing here yet"
-              description="Upload a supplier quotation to see it move through the pipeline."
-            />
+          {tasks.length === 0 ? (
+            <p className="flex items-center gap-2 text-muted-foreground">
+              <CheckCircle2 className="h-5 w-5 text-success" /> You are all caught up. Nothing is waiting for you.
+            </p>
           ) : (
             <ul className="divide-y">
-              {data.recent_activity.map((row) => (
-                <li key={row.quotation_id}>
-                  <Link
-                    to={`/documents/${row.quotation_id}`}
-                    className="-mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-accent"
-                  >
-                    <div className="rounded-md bg-muted p-2">
-                      <FileStack className="h-3.5 w-3.5 text-muted-foreground" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium">{row.filename ?? "Untitled document"}</p>
-                      <p className="truncate text-xs text-muted-foreground">
-                        {row.supplier_name ?? "Supplier not identified"} · {relativeTime(row.created_at)}
-                      </p>
-                    </div>
-                    {row.total_amount != null && (
-                      <span className="hidden tabular text-sm sm:inline">
-                        {formatCurrency(row.total_amount)}
-                      </span>
-                    )}
-                    <StatusBadge status={row.status} />
-                  </Link>
+              {tasks.map(({ id, icon: Icon, text, to, action }) => (
+                <li key={id} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+                  <Icon className="h-5 w-5 shrink-0 text-warning" />
+                  <span className="flex-1">{text}</span>
+                  <Button asChild size="sm" variant="outline">
+                    <Link to={to}>
+                      {action} <ArrowRight />
+                    </Link>
+                  </Button>
                 </li>
               ))}
             </ul>
@@ -341,10 +96,52 @@ export function DashboardPage() {
         </CardContent>
       </Card>
 
-      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-        <IndianRupee className="h-3 w-3" />
-        Every figure above is a live count or aggregate from the database — nothing is simulated.
-      </p>
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <Link key={stat.label} to={stat.to} className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <Card className="h-full transition-colors hover:bg-accent/40">
+              <CardContent className="p-5">
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="mt-1 text-2xl font-semibold tabular tracking-tight sm:text-3xl">{stat.value}</p>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
+
+      <Card>
+        <CardHeader className="flex-row items-center justify-between space-y-0 pb-3">
+          <CardTitle>Latest quotations</CardTitle>
+          <Button asChild variant="ghost" size="sm">
+            <Link to="/documents">
+              See all <ArrowRight />
+            </Link>
+          </Button>
+        </CardHeader>
+        <CardContent>
+          {data.recent_activity.length === 0 ? (
+            <EmptyState icon={ClipboardList} title="No quotations yet" description="Upload your first quotation to get started." />
+          ) : (
+            <ul className="divide-y">
+              {data.recent_activity.slice(0, 6).map((item) => (
+                <li key={item.quotation_id}>
+                  <Link
+                    to={`/documents/${item.quotation_id}`}
+                    className="flex flex-wrap items-center gap-x-4 gap-y-1 py-3 hover:bg-accent/40 sm:flex-nowrap"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-medium">{item.supplier_name ?? item.filename ?? "Quotation"}</p>
+                      <p className="text-sm text-muted-foreground">{relativeTime(item.created_at)}</p>
+                    </div>
+                    {item.total_amount != null && <span className="tabular font-medium">{formatCurrency(item.total_amount, data.value.currency)}</span>}
+                    <StatusBadge status={item.status} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
     </div>
   )
 }

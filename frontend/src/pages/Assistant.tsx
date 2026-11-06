@@ -1,42 +1,26 @@
 import * as React from "react"
-import { Bot, Plus, Send, Wrench } from "lucide-react"
+import { Bot, Plus, Send } from "lucide-react"
 import { PageHeader } from "@/components/layout/AppShell"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Alert, Spinner } from "@/components/ui/feedback"
 import { Textarea } from "@/components/ui/input"
 import { useConversation, useConversations, useSendMessage, type ConversationMessage } from "@/hooks/automation"
-import { ApiError } from "@/lib/api"
 import { cn, relativeTime } from "@/lib/utils"
 
 const EXAMPLES = [
-  "Which open procurement requests have quotations waiting?",
-  "Who is recommended for my latest request, and why?",
-  "Summarise our spend by supplier and their on-time delivery.",
+  "Which purchase requests are waiting for me?",
+  "Which supplier should I pick for my latest request?",
+  "How much did I spend with each supplier?",
 ]
 
-function ToolStep({ call, result }: { call: ConversationMessage["tool_calls"][number]; result?: ConversationMessage }) {
-  return (
-    <details className="rounded-md border bg-muted/40 px-3 py-2 text-xs">
-      <summary className="cursor-pointer select-none">
-        <Wrench className="mr-1 inline h-3 w-3" />
-        {call.name.replace(/_/g, " ")}
-      </summary>
-      <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-muted-foreground">{JSON.stringify(call.arguments, null, 2)}</pre>
-      {result?.content && <pre className="mt-2 max-h-60 overflow-auto whitespace-pre-wrap">{result.content}</pre>}
-    </details>
-  )
-}
-
 function Messages({ messages }: { messages: ConversationMessage[] }) {
-  const results = new Map(messages.filter((m) => m.role === "tool").map((m) => [m.tool_call_id, m]))
   return (
     <div className="space-y-3">
       {messages.filter((m) => m.role === "user" || m.role === "assistant").map((m, i) => (
         <div key={i} className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}>
           <div className={cn("max-w-[85%] space-y-2 rounded-lg px-3.5 py-2.5 text-sm",
                              m.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border")}>
-            {m.tool_calls.map((call) => <ToolStep key={call.id} call={call} result={results.get(call.id)} />)}
             {m.content && <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>}
           </div>
         </div>
@@ -69,15 +53,13 @@ export function AssistantPage() {
     }
   }
 
-  const notConfigured = send.error instanceof ApiError && send.error.status === 503
-
   return (
     <div>
-      <PageHeader title="Assistant" description="Ask about your requests, quotations, suppliers and spend. Answers come from your own records; drafts it prepares still need your approval." />
+      <PageHeader title="Ask AI" />
       <div className="grid gap-4 lg:grid-cols-[16rem_minmax(0,1fr)]">
         <Card className="h-fit p-2">
           <Button variant="ghost" className="w-full justify-start" onClick={() => setConversationId(null)}>
-            <Plus className="h-4 w-4" />New conversation
+            <Plus className="h-4 w-4" />New chat
           </Button>
           <ul className="mt-1 space-y-0.5">
             {conversations.data?.map((c) => (
@@ -97,7 +79,8 @@ export function AssistantPage() {
             {!conversationId && !pending && (
               <div className="flex flex-col items-center gap-3 py-10 text-center">
                 <Bot className="h-8 w-8 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">Try one of these:</p>
+                <p className="font-medium">Ask me anything about your business</p>
+                <p className="text-sm text-muted-foreground">Try one of these.</p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {EXAMPLES.map((e) => <Button key={e} variant="outline" size="sm" onClick={() => submit(e)}>{e}</Button>)}
                 </div>
@@ -107,18 +90,16 @@ export function AssistantPage() {
             {pending && (
               <>
                 <Messages messages={[{ role: "user", content: pending, tool_calls: [], tool_call_id: null, name: null, at: "" }]} />
-                <p className="flex items-center gap-2 text-sm text-muted-foreground"><Spinner />Looking through your records…</p>
+                <p className="flex items-center gap-2 text-sm text-muted-foreground"><Spinner />Thinking…</p>
               </>
             )}
             {send.error && (
-              <Alert tone={notConfigured ? "warning" : "error"} title={notConfigured ? "The assistant needs an AI provider" : undefined}>
-                {send.error.message}
-              </Alert>
+              <Alert tone="error">We could not do this right now. Please try again in a minute.</Alert>
             )}
             <div ref={bottom} />
           </div>
           <form className="mt-3 flex gap-2" onSubmit={(e) => { e.preventDefault(); void submit(draft) }}>
-            <Textarea rows={2} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Ask a question…"
+            <Textarea rows={2} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Type your question"
                       onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); void submit(draft) } }} />
             <Button type="submit" disabled={!draft.trim() || send.isPending} aria-label="Send"><Send className="h-4 w-4" /></Button>
           </form>

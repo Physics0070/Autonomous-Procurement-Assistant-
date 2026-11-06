@@ -12,7 +12,7 @@ from app.integrations.ai.factory import for_task
 from app.repositories.automation import PurchaseOrderRepository
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import UserRole
-from app.services.analytics import reliability_ml
+from app.services.analytics import cache, reliability_ml
 from app.services.analytics.spend import COMMITTED, spend_summary
 from ml.anomaly import MIN_SAMPLES as ANOMALY_MIN_SAMPLES
 from ml.forecast import MIN_MONTHS, forecast_demand, monthly_series
@@ -20,24 +20,36 @@ from ml.forecast import MIN_MONTHS, forecast_demand, monthly_series
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 
 
+# Only what spend_summary reads: fetching whole documents for 10,000 orders costs ~0.5 s more.
+SPEND_FIELDS = ["status", "pricing.total", "pricing.currency", "supplier.name", "created_at", "lines.description",
+                "lines.quantity", "lines.line_total", "procurement_request_id", "po_number", "on_time"]
+
+
 @router.get("/spend")
 async def spend(context: CurrentUser, pos: PurchaseOrderRepository = Depends(po_repo),
                 quotations: QuotationRepository = Depends(quotation_repo)) -> dict:
-    return spend_summary(await pos.find_all(context.organization_id),
-                         await quotations.list_filtered(context.organization_id, limit=500))
+    async def compute() -> dict:
+        return spend_summary(await pos.find_all(context.organization_id, None, SPEND_FIELDS),
+                             await quotations.list_filtered(context.organization_id, limit=500))
+    return await cache.cached("spend", context.organization_id, [pos.collection, quotations.collection], compute)
 
 
 @router.get("/forecast")
 async def forecast(context: CurrentUser, horizon: int = 3, pos: PurchaseOrderRepository = Depends(po_repo)) -> dict:
     """Monthly quantity per item from committed POs; items with < MIN_MONTHS months say so."""
-    dates, quantities = defaultdict(list), defaultdict(list)
-    for po in await pos.find_all(context.organization_id, {"status": {"$in": list(COMMITTED)}}):
-        for line in po["lines"]:
-            dates[line["description"]].append(po["created_at"])
-            quantities[line["description"]].append(line["quantity"])
-    items = [{"item": item, **forecast_demand(monthly_series(dates[item], quantities[item]), horizon=min(max(horizon, 1), 12))}
-             for item in dates]
-    return {"min_months": MIN_MONTHS, "items": sorted(items, key=lambda r: r["status"] != "ok")}
+    horizon = min(max(horizon, 1), 12)
+
+    async def compute() -> dict:
+        dates, quantities = defaultdict(list), defaultdict(list)
+        for po in await pos.find_all(context.organization_id, {"status": {"$in": list(COMMITTED)}},
+                                     ["lines.description", "lines.quantity", "created_at"]):
+            for line in po["lines"]:
+                dates[line["description"]].append(po["created_at"])
+                quantities[line["description"]].append(line["quantity"])
+        items = [{"item": item, **forecast_demand(monthly_series(dates[item], quantities[item]), horizon=horizon)}
+                 for item in dates]
+        return {"min_months": MIN_MONTHS, "items": sorted(items, key=lambda r: r["status"] != "ok")}
+    return await cache.cached(f"forecast:{horizon}", context.organization_id, [pos.collection], compute)
 
 
 @router.get("/hsn")

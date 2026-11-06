@@ -26,6 +26,12 @@ def org_artifact_dir(organization_id: str) -> Path:
     return ARTIFACT_DIR / "orgs" / organization_id
 
 
+@lru_cache(maxsize=1)
+def _shared_model() -> Optional[ReliabilityModel]:
+    """The SCMS model: read from disk once (~2.5 s, 10 s cold), shared by every organisation without its own."""
+    return ReliabilityModel.load()
+
+
 @lru_cache(maxsize=32)
 def load_model(organization_id: Optional[str] = None) -> Optional[ReliabilityModel]:
     """The organization's retrained model if it has one, else the SCMS model."""
@@ -33,7 +39,7 @@ def load_model(organization_id: Optional[str] = None) -> Optional[ReliabilityMod
         own = ReliabilityModel.load(org_artifact_dir(organization_id))
         if own is not None:
             return own
-    return ReliabilityModel.load()
+    return _shared_model()
 
 
 def orders_frame(purchase_orders: list[dict]) -> pd.DataFrame:

@@ -1,12 +1,12 @@
 import * as React from "react"
-import { Bot, CheckCircle2, CircleAlert, PauseCircle, Play, Workflow } from "lucide-react"
+import { CheckCircle2, CircleAlert, PauseCircle, Play } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, Spinner } from "@/components/ui/feedback"
 import { useAgentRuns, useResumeRun, type AgentRun } from "@/hooks/automation"
-import { cn, formatDateTime } from "@/lib/utils"
+import { formatDateTime } from "@/lib/utils"
 
 const STATUS_TONE: Record<string, "warning" | "success" | "destructive" | "muted"> = {
   awaiting_approval: "warning",
@@ -16,7 +16,15 @@ const STATUS_TONE: Record<string, "warning" | "success" | "destructive" | "muted
   no_quotations: "muted",
 }
 
-/** What the run is waiting for, and the button that lets it carry on. */
+const STATUS_LABEL: Record<string, string> = {
+  awaiting_approval: "Waiting for you",
+  completed: "Done",
+  cancelled: "Stopped",
+  step_budget_reached: "Stopped",
+  no_quotations: "No quotations",
+}
+
+/** What is waiting for the user, and the button that lets it carry on. */
 function Pending({ run }: { run: AgentRun }) {
   const resume = useResumeRun()
   const pending = run.output?.pending
@@ -24,13 +32,15 @@ function Pending({ run }: { run: AgentRun }) {
   const target = pending.purchase_order_id ? "/purchase-orders" : "/communications"
 
   return (
-    <Alert tone="warning" title={`Paused — waiting for you to approve ${pending.waiting_for}`}>
+    <Alert tone="warning" title="This is waiting for you">
       <p>
-        Approve it on the <Link to={target} className="text-primary hover:underline">
-          {pending.purchase_order_id ? "Purchase orders" : "Communications"}
-        </Link> page, then let the agents carry on.
+        Approve it on the{" "}
+        <Link to={target} className="text-primary hover:underline">
+          {pending.purchase_order_id ? "Purchase orders" : "Emails"}
+        </Link>{" "}
+        page, then continue.
       </p>
-      {resume.error && <p className="text-destructive">{resume.error.message}</p>}
+      {resume.error && <p className="text-destructive">We could not do this right now. Please try again in a minute.</p>}
       <div className="mt-2 flex gap-2">
         <Button size="sm" onClick={() => resume.mutate({ runId: run.id, approved: true })} disabled={resume.isPending}>
           {resume.isPending ? <Spinner /> : <Play className="h-4 w-4" />}Continue
@@ -44,66 +54,54 @@ function Pending({ run }: { run: AgentRun }) {
   )
 }
 
-function Decisions({ run }: { run: AgentRun }) {
-  const decisions = run.output?.decisions ?? []
-  if (!decisions.length) return null
+function Run({ run }: { run: AgentRun }) {
   return (
-    <details className="rounded-md border bg-muted/40 px-3 py-2 text-xs">
-      <summary className="cursor-pointer select-none">
-        <Bot className="mr-1 inline h-3 w-3" />Why the supervisor chose each agent
-      </summary>
-      <ol className="mt-2 space-y-1">
-        {decisions.map((d, i) => (
-          <li key={i} className="flex gap-2">
-            <span className="font-medium">{d.action.replace(/_/g, " ")}</span>
-            <span className="text-muted-foreground">{d.reason}</span>
-            <Badge variant={d.by === "llm" ? "default" : "muted"} className="ml-auto shrink-0">{d.by}</Badge>
+    <div className="space-y-2">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+        <Badge variant={STATUS_TONE[run.status] ?? "muted"}>{STATUS_LABEL[run.status] ?? "Done"}</Badge>
+        <span className="text-xs">{formatDateTime(run.created_at)}</span>
+      </div>
+      <ul className="space-y-2">
+        {run.steps.map((step, i) => (
+          <li key={i} className="flex gap-2 text-sm">
+            {step.error ? (
+              <CircleAlert className="mt-0.5 h-4 w-4 shrink-0 text-destructive" />
+            ) : (
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+            )}
+            <span>{step.error ? "We could not finish this step." : step.summary}</span>
           </li>
         ))}
-      </ol>
-    </details>
+        {run.status === "awaiting_approval" && (
+          <li className="flex gap-2 text-sm">
+            <PauseCircle className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
+            <span>Waiting for your approval</span>
+          </li>
+        )}
+      </ul>
+      <Pending run={run} />
+    </div>
   )
 }
 
-/** Step-by-step timeline of the agent runs for one request or quotation. */
-export function AgentRuns({ filters, title = "Agent runs" }: { filters: Record<string, string | undefined>; title?: string }) {
+/** Short plain-words activity list for one request or quotation. */
+export function AgentRuns({ filters, title = "Activity" }: { filters: Record<string, string | undefined>; title?: string }) {
   const { data } = useAgentRuns(filters)
   if (!data?.length) return null
+  const [latest, ...older] = data.slice(0, 4)
   return (
     <Card>
-      <CardHeader><CardTitle className="flex items-center gap-2 text-base"><Workflow className="h-4 w-4" />{title}</CardTitle></CardHeader>
-      <CardContent className="space-y-5">
-        {data.slice(0, 3).map((run) => (
-          <div key={run.id} className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">{run.graph.replace(/_/g, " ")}</span>
-              <Badge variant={STATUS_TONE[run.status] ?? "muted"}>{run.status.replace(/_/g, " ")}</Badge>
-              {run.input?.started_by === "monitor_agent" && <Badge variant="secondary">started automatically</Badge>}
-              {formatDateTime(run.created_at)}
+      <CardHeader><CardTitle className="text-base">{title}</CardTitle></CardHeader>
+      <CardContent className="space-y-4">
+        <Run run={latest} />
+        {older.length > 0 && (
+          <details className="text-sm">
+            <summary className="cursor-pointer select-none text-muted-foreground">Earlier activity</summary>
+            <div className="mt-3 space-y-5">
+              {older.map((run) => <Run key={run.id} run={run} />)}
             </div>
-            <ol className="relative space-y-2 border-l pl-4">
-              {run.steps.map((step, i) => (
-                <li key={i} className={cn("text-sm", step.agent === "Supervisor Agent" && "text-muted-foreground")}>
-                  {step.error
-                    ? <CircleAlert className="absolute -left-2 h-4 w-4 bg-card text-destructive" />
-                    : step.agent === "Supervisor Agent"
-                      ? <Bot className="absolute -left-2 h-4 w-4 bg-card text-primary" />
-                      : <CheckCircle2 className="absolute -left-2 h-4 w-4 bg-card text-success" />}
-                  <span className="font-medium">{step.agent}</span>
-                  <span className="text-muted-foreground"> — {step.error ?? step.summary}</span>
-                </li>
-              ))}
-              {run.status === "awaiting_approval" && (
-                <li className="text-sm">
-                  <PauseCircle className="absolute -left-2 h-4 w-4 bg-card text-warning" />
-                  <span className="font-medium">Paused for approval</span>
-                </li>
-              )}
-            </ol>
-            <Decisions run={run} />
-            <Pending run={run} />
-          </div>
-        ))}
+          </details>
+        )}
       </CardContent>
     </Card>
   )

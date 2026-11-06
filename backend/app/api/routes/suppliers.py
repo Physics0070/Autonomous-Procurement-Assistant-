@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+from datetime import date
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query, status
@@ -7,10 +9,12 @@ from fastapi import APIRouter, Depends, Query, status
 from app.api.deps import DB, CurrentUser, quotation_repo, supplier_repo
 from app.core.errors import ConflictError
 from app.repositories.automation import PurchaseOrderRepository
+from app.repositories.base import to_object_id
 from app.repositories.quotations import QuotationRepository
 from app.repositories.suppliers import SupplierRepository
 from app.schemas.common import Paginated
 from app.schemas.supplier import SupplierCreate, SupplierOut, SupplierUpdate
+from app.services.analytics import cache
 from app.services.analytics.reliability_ml import ORDER_FIELDS, load_model, orders_frame, predict, predict_all
 from app.services.procurement.reliability import compute_reliability
 
@@ -35,14 +39,27 @@ async def list_suppliers(
         rows = await suppliers.list(context.organization_id, skip=skip, limit=page_size)
         total = await suppliers.count(context.organization_id)
 
-    ml = predict_all(load_model(context.organization_id), [row["id"] for row in rows],
-                     await _delivered_orders(context.organization_id, database))
+    ids = [row["id"] for row in rows]
+    orders = await _delivered_orders(context.organization_id, database)
+    pos = PurchaseOrderRepository(database)
+
+    async def predict() -> dict:
+        return predict_all(load_model(context.organization_id), ids, orders)
+    # ~40 ms per supplier, so ~2 s for a page of 50. The risk only changes when an order does; it also
+    # drifts with the calendar ("days since the last delivery"), so the key carries today's date.
+    ml = await cache.cached(f"supplier_risk:{date.today()}:{hashlib.sha1(','.join(ids).encode()).hexdigest()}",
+                            context.organization_id, [pos.collection], predict)
+
+    # One grouped query for every supplier on the page, instead of one count per supplier (~8 ms each).
+    counted = await quotations.collection.aggregate([
+        {"$match": {"organization_id": to_object_id(context.organization_id), "supplier_id": {"$in": [_oid(i) for i in ids]}}},
+        {"$group": {"_id": "$supplier_id", "n": {"$sum": 1}}},
+    ]).to_list(length=None)
+    quotation_counts = {str(row["_id"]): row["n"] for row in counted}
     items = []
     for row in rows:
         row.setdefault("reliability", {})["ml"] = ml.get(row["id"])
-        row["quotation_count"] = await quotations.count(
-            context.organization_id, {"supplier_id": _oid(row["id"])}
-        )
+        row["quotation_count"] = quotation_counts.get(row["id"], 0)
         items.append(SupplierOut.model_validate(row))
     return Paginated[SupplierOut](items=items, total=total, page=page, page_size=page_size)
 
@@ -100,9 +117,13 @@ async def update_supplier(
 
 
 async def _delivered_orders(organization_id: str, database):
-    pos = await PurchaseOrderRepository(database).find_all(
-        organization_id, {"status": {"$in": ["delivered", "closed"]}}, fields=ORDER_FIELDS)
-    return orders_frame(pos)
+    repository = PurchaseOrderRepository(database)
+
+    async def compute():
+        return orders_frame(await repository.find_all(
+            organization_id, {"status": {"$in": ["delivered", "closed"]}}, fields=ORDER_FIELDS))
+    # Building this table for 10,000 orders takes ~2 s; it only changes when an order does.
+    return await cache.cached("delivered_orders", organization_id, [repository.collection], compute)
 
 
 def _oid(value):

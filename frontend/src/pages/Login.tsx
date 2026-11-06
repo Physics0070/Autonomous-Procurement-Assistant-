@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input, Select } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, Spinner } from "@/components/ui/feedback"
-import { SupplyNetwork } from "@/components/SupplyNetwork"
 import { BrandMark } from "@/components/BrandMark"
 
 const INDUSTRIES = [
@@ -55,57 +54,41 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen">
-      <div className="stage" aria-hidden>
-        <i />
-      </div>
-      <div className="grain" aria-hidden />
-
-      {/* Brand panel: the live supply network is the first thing anyone sees. */}
-      <div className="relative hidden w-[55%] flex-col justify-between overflow-hidden p-12 lg:flex">
-        <SupplyNetwork className="absolute inset-0 h-full w-full [mask-image:linear-gradient(to_right,black_70%,transparent)]" nodes={34} hubPulse={3} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background/80" />
-        <div className="relative flex items-center gap-3">
-          <BrandMark className="h-11 w-11 drop-shadow-[0_0_18px_hsl(var(--glow)/0.6)]" />
-          <span className="font-display text-lg font-bold tracking-tight">Autonomous Procurement Assistant</span>
+    <div className="flex min-h-screen bg-background">
+      <div className="hidden w-1/2 flex-col justify-between bg-primary p-12 text-primary-foreground lg:flex">
+        <div className="flex items-center gap-3">
+          <BrandMark className="h-10 w-10" />
+          <span className="text-lg font-semibold">Procurement</span>
         </div>
 
-        <div className="relative space-y-7">
-          <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-            <span className="h-px w-8 bg-primary" /> Ledger console
-          </p>
-          <h1 className="max-w-xl font-display text-5xl font-bold leading-[1.02] tracking-tight xl:text-6xl">
-            Turn messy quotations into <span className="text-gradient">decisions you can defend.</span>
-          </h1>
-          <p className="max-w-md text-[15px] text-muted-foreground">
-            Ingest PDFs, scans, photos and spreadsheets. Normalise them into one comparable structure. Rank suppliers on numbers you can audit.
-          </p>
-          <ul className="space-y-3 text-sm">
+        <div className="space-y-8">
+          <h1 className="max-w-md text-4xl font-semibold leading-tight tracking-tight">Buy smarter. Compare supplier prices in minutes.</h1>
+          <ul className="space-y-4 text-lg">
             {[
-              "Original documents are never overwritten",
-              "Scoring is deterministic; AI only explains it",
-              "Missing data is flagged, never invented",
+              "Upload quotations as a PDF, photo or Excel file",
+              "See the best supplier at a glance",
+              "Create the purchase order in one click",
             ].map((line) => (
-              <li key={line} className="flex items-center gap-3 text-foreground/85">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--glow))]" />
+              <li key={line} className="flex items-start gap-3">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary-foreground" />
                 {line}
               </li>
             ))}
           </ul>
         </div>
 
-        <p className="relative font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Built for small and mid-sized enterprises</p>
+        <p className="text-sm text-primary-foreground/80">Made for small and medium businesses in India.</p>
       </div>
 
       {/* Form panel */}
-      <div className="relative flex w-full items-center justify-center px-6 py-12 lg:w-[45%]">
-        <div className="glass w-full max-w-sm animate-rise space-y-6 rounded-3xl p-8">
+      <div className="flex w-full items-center justify-center px-6 py-12 lg:w-1/2">
+        <div className="w-full max-w-sm space-y-6">
           <div className="space-y-2 lg:hidden">
             <BrandMark className="h-10 w-10" />
           </div>
 
           <div className="space-y-1.5">
-            <h2 className="font-display text-3xl font-bold tracking-tight">
+            <h2 className="text-2xl font-semibold tracking-tight">
               {mode === "login" ? "Sign in" : "Create your workspace"}
             </h2>
             <p className="text-sm text-muted-foreground">

@@ -21,7 +21,6 @@ import { Badge, RequestStatusBadge, StatusBadge } from "@/components/ui/badge"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -42,6 +41,15 @@ import { formatCurrency, formatDate, formatNumber } from "@/lib/utils"
 import type { ProcurementStatus } from "@/types"
 
 const STATUSES: ProcurementStatus[] = ["draft", "open", "comparing", "awarded", "closed", "cancelled"]
+
+const STATUS_LABELS: Record<ProcurementStatus, string> = {
+  draft: "Draft",
+  open: "Open",
+  comparing: "Comparing",
+  awarded: "Awarded",
+  closed: "Closed",
+  cancelled: "Cancelled",
+}
 
 interface DraftItem {
   key: string
@@ -81,7 +89,7 @@ function CreateRequestDialog() {
       }))
 
     if (payloadItems.length === 0) {
-      setError("Add at least one item with a name.")
+      setError("Add at least one item and give it a name.")
       return
     }
 
@@ -98,7 +106,7 @@ function CreateRequestDialog() {
       setItems([newItem()])
       navigate(`/requests/${created.id}`)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Could not create the request.")
+      setError(err instanceof Error ? err.message : "We could not save this request. Please try again.")
     }
   }
 
@@ -112,23 +120,19 @@ function CreateRequestDialog() {
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>New procurement request</DialogTitle>
-          <DialogDescription>
-            Describe what you need. Item names are normalized on save so supplier quotations can be
-            matched against them regardless of how each supplier writes them.
-          </DialogDescription>
+          <DialogTitle>New purchase request</DialogTitle>
         </DialogHeader>
 
         {error && <Alert tone="error">{error}</Alert>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="title">Title *</Label>
+            <Label htmlFor="title">Title</Label>
             <Input id="title" name="title" required placeholder="Plumbing materials for Unit 2" />
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Details (optional)</Label>
             <Textarea
               id="description"
               name="description"
@@ -139,7 +143,7 @@ function CreateRequestDialog() {
 
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="space-y-1.5">
-              <Label htmlFor="department">Department</Label>
+              <Label htmlFor="department">Department (optional)</Label>
               <Input id="department" name="department" placeholder="Maintenance" />
             </div>
             <div className="space-y-1.5">
@@ -154,8 +158,8 @@ function CreateRequestDialog() {
               <Label htmlFor="status">Status</Label>
               <Select id="status" name="status" defaultValue="open">
                 {STATUSES.map((status) => (
-                  <option key={status} value={status} className="capitalize">
-                    {status}
+                  <option key={status} value={status}>
+                    {STATUS_LABELS[status]}
                   </option>
                 ))}
               </Select>
@@ -164,7 +168,7 @@ function CreateRequestDialog() {
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label>Items *</Label>
+              <Label>Items</Label>
               <Button type="button" variant="ghost" size="sm" onClick={() => setItems((c) => [...c, newItem()])}>
                 <Plus className="h-3.5 w-3.5" />
                 Add item
@@ -175,7 +179,7 @@ function CreateRequestDialog() {
               {items.map((item, index) => (
                 <div key={item.key} className="rounded-lg border p-3">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-xs font-medium text-muted-foreground">Item {index + 1}</span>
+                    <span className="text-sm font-medium text-muted-foreground">Item {index + 1}</span>
                     {items.length > 1 && (
                       <button
                         type="button"
@@ -189,7 +193,7 @@ function CreateRequestDialog() {
                   </div>
                   <div className="grid gap-2 sm:grid-cols-[1fr_90px_90px]">
                     <Input
-                      placeholder="PVC Pipe, 2 inch"
+                      placeholder="Item name, e.g. PVC pipe 2 inch"
                       value={item.name}
                       onChange={(e) => update(item.key, { name: e.target.value })}
                     />
@@ -197,7 +201,7 @@ function CreateRequestDialog() {
                       type="number"
                       min={0}
                       step="any"
-                      placeholder="Qty"
+                      placeholder="Quantity"
                       value={item.quantity}
                       onChange={(e) => update(item.key, { quantity: e.target.value })}
                     />
@@ -209,7 +213,7 @@ function CreateRequestDialog() {
                   </div>
                   <Input
                     className="mt-2"
-                    placeholder="Specifications (optional)"
+                    placeholder="Details (optional)"
                     value={item.specifications}
                     onChange={(e) => update(item.key, { specifications: e.target.value })}
                   />
@@ -224,7 +228,7 @@ function CreateRequestDialog() {
             </Button>
             <Button type="submit" disabled={create.isPending}>
               {create.isPending && <Spinner />}
-              Create request
+              Save request
             </Button>
           </DialogFooter>
         </form>
@@ -241,16 +245,15 @@ export function RequestsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Procurement requests"
-        description="What your organization needs to buy, and the quotations received against each."
+        title="Purchase requests"
         actions={<CreateRequestDialog />}
       />
 
       <Select value={status} onChange={(e) => setStatus(e.target.value)} className="max-w-[200px]">
-        <option value="">All statuses</option>
+        <option value="">All requests</option>
         {STATUSES.map((s) => (
-          <option key={s} value={s} className="capitalize">
-            {s}
+          <option key={s} value={s}>
+            {STATUS_LABELS[s]}
           </option>
         ))}
       </Select>
@@ -262,8 +265,7 @@ export function RequestsPage() {
       ) : !data || data.items.length === 0 ? (
         <EmptyState
           icon={ClipboardList}
-          title="No procurement requests yet"
-          description="Create one to describe what you need, then upload supplier quotations against it."
+          title="No purchase requests yet. Create your first request."
           action={<CreateRequestDialog />}
         />
       ) : (
@@ -289,7 +291,7 @@ export function RequestsPage() {
                         {request.title}
                       </Link>
                       {request.description && (
-                        <p className="max-w-md truncate text-xs text-muted-foreground">
+                        <p className="max-w-md truncate text-sm text-muted-foreground">
                           {request.description}
                         </p>
                       )}
@@ -310,7 +312,7 @@ export function RequestsPage() {
                         className="rounded p-1.5 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
                         aria-label={`Delete ${request.title}`}
                         onClick={() => {
-                          if (window.confirm(`Delete "${request.title}"? This cannot be undone.`)) {
+                          if (window.confirm(`Delete "${request.title}"? You cannot undo this.`)) {
                             remove.mutate(request.id)
                           }
                         }}
@@ -346,7 +348,7 @@ export function RequestDetailPage() {
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        All requests
+        Purchase requests
       </Link>
 
       <PageHeader
@@ -371,54 +373,39 @@ export function RequestDetailPage() {
         <Select
           value={request.status}
           onChange={(e) => update.mutate({ status: e.target.value })}
-          className="h-8 max-w-[160px] text-xs"
+          className="h-9 max-w-[160px] text-sm"
         >
           {STATUSES.map((s) => (
-            <option key={s} value={s} className="capitalize">
-              {s}
+            <option key={s} value={s}>
+              {STATUS_LABELS[s]}
             </option>
           ))}
         </Select>
         <span className="text-sm text-muted-foreground">
-          {request.department ?? "No department"} · {request.currency} · created{" "}
-          {formatDate(request.created_at)}
+          {request.department ? `${request.department} · ` : ""}Created {formatDate(request.created_at)}
         </span>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Requested items</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            The normalized form is what quotation line items are matched against.
-          </p>
+          <CardTitle className="text-base">Items you need</CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Item</TableHead>
-                <TableHead>Normalized</TableHead>
                 <TableHead className="text-right">Quantity</TableHead>
                 <TableHead>Unit</TableHead>
-                <TableHead>Specifications</TableHead>
+                <TableHead>Details</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {request.items.map((item) => (
                 <TableRow key={item.item_id}>
                   <TableCell className="font-medium">{item.name}</TableCell>
-                  <TableCell>
-                    <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
-                      {item.normalized_name ?? "—"}
-                    </code>
-                  </TableCell>
                   <TableCell className="tabular text-right">{formatNumber(item.quantity, 2)}</TableCell>
-                  <TableCell className="text-sm">
-                    {item.unit ?? "—"}
-                    {item.normalized_unit && item.normalized_unit !== item.unit?.toLowerCase() && (
-                      <span className="ml-1 text-xs text-muted-foreground">→ {item.normalized_unit}</span>
-                    )}
-                  </TableCell>
+                  <TableCell className="text-sm">{item.unit ?? "—"}</TableCell>
                   <TableCell className="max-w-xs text-sm text-muted-foreground">
                     <ValueOrMissing value={item.specifications} missingLabel="—" />
                   </TableCell>
@@ -442,15 +429,14 @@ export function RequestDetailPage() {
           {!quotations || quotations.items.length === 0 ? (
             <EmptyState
               icon={FileStack}
-              title="No quotations yet"
-              description="Upload supplier quotations against this request to compare them."
+              title="No quotations yet. Upload your first quotation."
               action={<UploadDialog defaultRequestId={request.id} />}
             />
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Document</TableHead>
+                  <TableHead>Quotation</TableHead>
                   <TableHead>Supplier</TableHead>
                   <TableHead className="text-right">Items</TableHead>
                   <TableHead className="text-right">Total</TableHead>
@@ -466,7 +452,7 @@ export function RequestDetailPage() {
                       </Link>
                     </TableCell>
                     <TableCell className="text-sm">
-                      <ValueOrMissing value={quotation.supplier_name} missingLabel="Not identified" />
+                      <ValueOrMissing value={quotation.supplier_name} missingLabel="Not known" />
                     </TableCell>
                     <TableCell className="tabular text-right">{quotation.item_count}</TableCell>
                     <TableCell className="tabular text-right">
@@ -484,7 +470,7 @@ export function RequestDetailPage() {
           )}
         </CardContent>
       </Card>
-      <AgentRuns filters={{ procurement_request_id: request.id }} />
+      <AgentRuns filters={{ procurement_request_id: request.id }} title="Activity" />
     </div>
   )
 }

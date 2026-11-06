@@ -4,12 +4,12 @@ import { Mail, MessageCircle, RefreshCw, Unplug } from "lucide-react"
 import { PageHeader } from "@/components/layout/AppShell"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, ErrorState, LoadingState, Spinner } from "@/components/ui/feedback"
 import { Input, Textarea } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useChannels, useGmailActions, useOrganizationProfile, useUpdateOrganization } from "@/hooks/automation"
-import { formatDateTime, relativeTime } from "@/lib/utils"
+import { relativeTime } from "@/lib/utils"
 
 export function SettingsPage() {
   const { data, isLoading, error, refetch } = useOrganizationProfile()
@@ -30,19 +30,19 @@ export function SettingsPage() {
       })
       setMessage({ tone: "success", text: "Saved." })
     } catch (e) {
-      setMessage({ tone: "error", text: e instanceof Error ? e.message : "Could not save." })
+      setMessage({ tone: "error", text: "Could not save. Please try again." })
     }
   }
 
   return (
     <div className="max-w-2xl">
-      <PageHeader title="Settings" description="Your organization's details. They appear as the buyer on purchase orders and decide CGST/SGST versus IGST." />
+      <PageHeader title="Settings" />
       <Card>
         <CardContent className="pt-6">
           <form onSubmit={save} className="space-y-4">
             {message && <Alert tone={message.tone}>{message.text}</Alert>}
             <div className="space-y-1.5">
-              <Label htmlFor="name">Organization name</Label>
+              <Label htmlFor="name">Business name</Label>
               <Input id="name" name="name" defaultValue={data.name} required />
             </div>
             <div className="space-y-1.5">
@@ -51,9 +51,8 @@ export function SettingsPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label htmlFor="gst_number">GSTIN</Label>
-                <Input id="gst_number" name="gst_number" defaultValue={data.gst_number ?? ""} placeholder="15 characters" />
-                <p className="text-xs text-muted-foreground">State: {data.state ?? "set from the GSTIN"}</p>
+                <Label htmlFor="gst_number">GST number</Label>
+                <Input id="gst_number" name="gst_number" defaultValue={data.gst_number ?? ""} placeholder="15 letters and numbers" />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="contact_phone">Phone</Label>
@@ -61,7 +60,7 @@ export function SettingsPage() {
               </div>
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="contact_email">Purchase email</Label>
+              <Label htmlFor="contact_email">Email</Label>
               <Input id="contact_email" name="contact_email" type="email" defaultValue={data.contact_email ?? ""} />
             </div>
             <Button type="submit" disabled={update.isPending}>{update.isPending && <Spinner />}Save</Button>
@@ -86,41 +85,34 @@ export function IntegrationsPage() {
 
   return (
     <div className="max-w-3xl space-y-4">
-      <PageHeader title="Integrations" description="Collect supplier quotations automatically. Everything collected goes through the same processing pipeline as manual uploads." />
+      <PageHeader title="Connections" />
       {outcome === "connected" && <Alert tone="success">Gmail connected.</Alert>}
-      {outcome && outcome !== "connected" && <Alert tone="error" title="Gmail was not connected">{params.get("reason") ?? outcome}</Alert>}
-      {actionError && <Alert tone="error">{actionError.message}</Alert>}
+      {outcome && outcome !== "connected" && <Alert tone="error">Gmail could not be connected. Please try again.</Alert>}
+      {actionError && <Alert tone="error">Something went wrong, please try again.</Alert>}
 
       <Card>
         <CardHeader className="flex-row items-start gap-3 space-y-0">
           <Mail className="mt-0.5 h-5 w-5 text-primary" />
           <div className="flex-1 space-y-1">
             <CardTitle className="text-base">Gmail</CardTitle>
-            <CardDescription>Read-only access. Quotation attachments and quotation-like emails are imported; nothing is ever sent from your mailbox.</CardDescription>
           </div>
           <Badge variant={gmail.connected ? "success" : gmail.status === "reauthorization_required" ? "destructive" : "muted"}>
-            {gmail.status.replace(/_/g, " ")}
+            {gmail.connected ? "Connected" : gmail.status === "reauthorization_required" ? "Reconnect needed" : "Not connected"}
           </Badge>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           {!gmail.configured ? (
-            <Alert tone="warning" title="Google sign-in is not configured on the server">
-              Add <code>GOOGLE_CLIENT_ID</code> and <code>GOOGLE_CLIENT_SECRET</code> to <code>backend/.env</code> and restart the backend.
-            </Alert>
+            <Alert tone="warning">Connecting Gmail is not set up yet. Please contact support.</Alert>
           ) : (
             <>
-              {gmail.account_email && <p>Connected mailbox: <span className="font-medium">{gmail.account_email}</span></p>}
-              {gmail.last_error && <Alert tone="error">{gmail.last_error}</Alert>}
+              {gmail.account_email && <p>Connected email: <span className="font-medium">{gmail.account_email}</span></p>}
+              {gmail.last_error && <Alert tone="error">Gmail had a problem. Please try again.</Alert>}
               {gmail.last_synced_at && (
                 <p className="text-muted-foreground">
-                  Last checked {relativeTime(gmail.last_synced_at)} ({formatDateTime(gmail.last_synced_at)})
-                  {result && ` — ${result.documents_imported} imported, ${result.duplicates_skipped} already imported, ${result.messages_scanned} emails scanned.`}
+                  Last checked {relativeTime(gmail.last_synced_at)}.
+                  {result && ` ${result.documents_imported} new quotations found.`}
                 </p>
               )}
-              <p className="text-xs text-muted-foreground">
-                {gmail.sync_interval_minutes > 0 ? `Checked automatically every ${gmail.sync_interval_minutes} minutes.` : "Automatic checking is off."}{" "}
-                Search: <code>{gmail.query}</code>
-              </p>
               <div className="flex flex-wrap gap-2">
                 {gmail.connected ? (
                   <>
@@ -146,10 +138,9 @@ export function IntegrationsPage() {
         <CardHeader className="flex-row items-start gap-3 space-y-0">
           <MessageCircle className="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div className="flex-1 space-y-1">
-            <CardTitle className="text-base">WhatsApp Business</CardTitle>
-            <CardDescription>{data.whatsapp.message}</CardDescription>
+            <CardTitle className="text-base">WhatsApp</CardTitle>
           </div>
-          <Badge variant="muted">Planned</Badge>
+          <Badge variant="muted">Coming soon</Badge>
         </CardHeader>
       </Card>
     </div>

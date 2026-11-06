@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 
@@ -26,6 +27,7 @@ from app.core.config import settings
 from app.core.database import close_database_connection, connect_to_database
 from app.core.errors import AppError
 from app.integrations.ai.factory import get_ai_provider
+from app.services.analytics.reliability_ml import load_model
 from app.services.documents.ocr import get_ocr_service
 from app.workers.agent_monitor import get_agent_watchdog
 from app.workers.channel_scheduler import get_channel_scheduler
@@ -56,6 +58,10 @@ async def lifespan(app: FastAPI):
         logger.info("AI provider: %s / %s", provider.name, provider.model)
     else:
         logger.warning("AI disabled: %s", provider.configuration_error())
+
+    # Reading the ML model takes seconds; do it now, off the event loop, so the first Suppliers or
+    # Analytics page after a restart is not the one that pays for it.
+    asyncio.get_running_loop().run_in_executor(None, load_model)
 
     queue = get_processing_queue()
     await queue.start()

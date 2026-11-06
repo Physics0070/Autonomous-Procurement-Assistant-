@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Badge, StatusBadge } from "@/components/ui/badge"
+import { StatusBadge } from "@/components/ui/badge"
 import {
   Dialog,
   DialogContent,
@@ -17,10 +17,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Alert, EmptyState, ErrorState, LoadingState, Spinner, ValueOrMissing } from "@/components/ui/feedback"
-import { useCapabilities, useQuotations, useRequests, useUploadDocument } from "@/hooks/queries"
-import { cn, formatCurrency, relativeTime } from "@/lib/utils"
-import type { ProcessingStatus, SourceType } from "@/types"
+import { Alert, EmptyState, ErrorState, LoadingState, Spinner } from "@/components/ui/feedback"
+import { useQuotations, useRequests, useUploadDocument } from "@/hooks/queries"
+import { cn, formatCurrency, formatDate } from "@/lib/utils"
+import type { ProcessingStatus } from "@/types"
 
 const STATUS_OPTIONS: ProcessingStatus[] = [
   "QUEUED",
@@ -32,11 +32,14 @@ const STATUS_OPTIONS: ProcessingStatus[] = [
   "FAILED",
 ]
 
-const SOURCE_LABELS: Record<SourceType, string> = {
-  manual_upload: "Upload",
-  email: "Email",
-  whatsapp: "WhatsApp",
-  api: "API",
+const STATUS_LABELS: Record<string, string> = {
+  QUEUED: "Waiting",
+  EXTRACTING: "Reading",
+  AI_EXTRACTING: "Reading",
+  NORMALIZING: "Reading",
+  COMPLETED: "Ready",
+  REQUIRES_REVIEW: "Needs checking",
+  FAILED: "Could not read",
 }
 
 const ACCEPT = ".pdf,.xlsx,.xls,.csv,.png,.jpg,.jpeg"
@@ -50,7 +53,6 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const { data: requests } = useRequests()
-  const { data: capabilities } = useCapabilities()
   const upload = useUploadDocument()
 
   function addFiles(list: FileList | null) {
@@ -87,21 +89,12 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Upload supplier quotations</DialogTitle>
-          <DialogDescription>
-            PDFs, scans, photos and spreadsheets. Processing runs in the background — you can close
-            this straight away.
-          </DialogDescription>
+          <DialogTitle>Upload quotation</DialogTitle>
+          <DialogDescription>PDF, photo or spreadsheet.</DialogDescription>
         </DialogHeader>
 
-        {capabilities && !capabilities.ocr.available && (
-          <Alert tone="warning" title="No OCR engine installed">
-            <p>Scanned PDFs and images cannot be read on this deployment. Digital PDFs and spreadsheets still work.</p>
-          </Alert>
-        )}
-
         {errors.length > 0 && (
-          <Alert tone="error" title="Some files were rejected">
+          <Alert tone="error" title="Some files could not be uploaded">
             <ul className="list-inside list-disc space-y-0.5">
               {errors.map((message) => (
                 <li key={message}>{message}</li>
@@ -130,10 +123,7 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
           <div className="rounded-full bg-muted p-3">
             <CloudUpload className="h-5 w-5 text-muted-foreground" />
           </div>
-          <p className="text-sm font-medium">Drop files here, or click to browse</p>
-          <p className="text-xs text-muted-foreground">
-            PDF, Excel, CSV, PNG, JPG · up to 25 MB each
-          </p>
+          <p className="font-medium">Drop files here, or click to choose</p>
           <input
             ref={inputRef}
             type="file"
@@ -156,10 +146,7 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
               >
                 <FileStack className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                 <span className="min-w-0 flex-1 truncate">{file.name}</span>
-                <span className="shrink-0 text-xs text-muted-foreground">
-                  {(file.size / 1024).toFixed(0)} KB
-                </span>
-                <button
+                                <button
                   className="rounded p-0.5 text-muted-foreground hover:bg-accent"
                   onClick={() => setFiles((c) => c.filter((_, i) => i !== index))}
                   aria-label={`Remove ${file.name}`}
@@ -172,7 +159,7 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
         )}
 
         <div className="space-y-1.5">
-          <Label htmlFor="request">Link to procurement request</Label>
+          <Label htmlFor="request">Purchase request</Label>
           <Select id="request" value={requestId} onChange={(e) => setRequestId(e.target.value)}>
             <option value="">Not linked</option>
             {requests?.items.map((request) => (
@@ -181,9 +168,6 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
               </option>
             ))}
           </Select>
-          <p className="text-xs text-muted-foreground">
-            Linking enables item matching and supplier comparison. You can link it later too.
-          </p>
         </div>
 
         <DialogFooter>
@@ -192,7 +176,7 @@ export function UploadDialog({ defaultRequestId }: { defaultRequestId?: string }
           </Button>
           <Button onClick={handleUpload} disabled={files.length === 0 || upload.isPending}>
             {upload.isPending && <Spinner />}
-            Upload {files.length > 0 && `(${files.length})`}
+            Upload{files.length > 0 && ` (${files.length})`}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -208,8 +192,7 @@ export function DocumentsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Documents"
-        description="Every quotation received, from any channel, with its live processing state."
+        title="Quotations"
         actions={<UploadDialog />}
       />
 
@@ -223,10 +206,10 @@ export function DocumentsPage() {
         }}
         className="max-w-[220px]"
       >
-        <option value="">All statuses</option>
+        <option value="">All quotations</option>
         {STATUS_OPTIONS.map((option) => (
           <option key={option} value={option}>
-            {option.replace(/_/g, " ").toLowerCase()}
+            {STATUS_LABELS[option]}
           </option>
         ))}
       </Select>
@@ -238,12 +221,8 @@ export function DocumentsPage() {
       ) : !data || data.items.length === 0 ? (
         <EmptyState
           icon={FileStack}
-          title={status ? "No documents with that status" : "No documents yet"}
-          description={
-            status
-              ? "Try clearing the filter."
-              : "Upload a supplier quotation — PDF, scan, photo or spreadsheet — to start the pipeline."
-          }
+          title={status ? "No quotations with that status" : "No quotations yet"}
+          description={status ? "Try another status." : "Upload your first quotation."}
           action={!status ? <UploadDialog /> : undefined}
         />
       ) : (
@@ -252,13 +231,11 @@ export function DocumentsPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Document</TableHead>
-                  <TableHead>Source</TableHead>
                   <TableHead>Supplier</TableHead>
                   <TableHead className="text-right">Items</TableHead>
                   <TableHead className="text-right">Total</TableHead>
                   <TableHead>Status</TableHead>
-                  <TableHead>Uploaded</TableHead>
+                  <TableHead>Added</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -266,20 +243,13 @@ export function DocumentsPage() {
                   <TableRow key={quotation.id}>
                     <TableCell>
                       <Link to={`/documents/${quotation.id}`} className="font-medium hover:underline">
-                        {quotation.source.original_filename ?? "Untitled"}
+                        {quotation.supplier_name ?? quotation.source.original_filename ?? "Untitled"}
                       </Link>
-                      <p className="text-xs text-muted-foreground">
-                        {quotation.document_type.replace(/_/g, " ")}
-                        {quotation.issue_count > 0 && ` · ${quotation.issue_count} issue(s)`}
-                      </p>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="secondary">
-                        {SOURCE_LABELS[quotation.source.type] ?? quotation.source.type}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-sm">
-                      <ValueOrMissing value={quotation.supplier_name} missingLabel="Not identified" />
+                      {quotation.issue_count > 0 && (
+                        <p className="text-sm text-muted-foreground">
+                          {quotation.issue_count} {quotation.issue_count === 1 ? "thing" : "things"} to check
+                        </p>
+                      )}
                     </TableCell>
                     <TableCell className="tabular text-right">{quotation.item_count}</TableCell>
                     <TableCell className="tabular text-right">
@@ -291,7 +261,7 @@ export function DocumentsPage() {
                       <StatusBadge status={quotation.processing_status} />
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {relativeTime(quotation.created_at)}
+                      {formatDate(quotation.created_at)}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -300,13 +270,6 @@ export function DocumentsPage() {
           </CardContent>
         </Card>
       )}
-
-      <Alert tone="info" title="One pipeline, every channel">
-        <p>
-          Manual uploads run through the same ingestion service that Gmail and WhatsApp will use once
-          their credentials are provisioned — document processing is never duplicated per source.
-        </p>
-      </Alert>
     </div>
   )
 }

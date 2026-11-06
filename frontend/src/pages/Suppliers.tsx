@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
 import { Building2, Plus, Search } from "lucide-react"
 import { PageHeader } from "@/components/layout/AppShell"
 import { Button } from "@/components/ui/button"
@@ -10,21 +9,20 @@ import { Badge } from "@/components/ui/badge"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Alert, EmptyState, ErrorState, LoadingState, ScoreBar, Spinner, ValueOrMissing } from "@/components/ui/feedback"
+import { Alert, EmptyState, ErrorState, LoadingState, Spinner, ValueOrMissing } from "@/components/ui/feedback"
 import { useCreateSupplier, useSuppliers } from "@/hooks/queries"
 import { formatDate, percent } from "@/lib/utils"
 
-function reliabilityTone(score: number) {
-  if (score >= 0.7) return "success" as const
-  if (score >= 0.45) return "warning" as const
-  return "destructive" as const
+function reliabilityWord(score: number) {
+  if (score >= 0.7) return { label: "Good", tone: "success" as const }
+  if (score >= 0.45) return { label: "Average", tone: "warning" as const }
+  return { label: "Low", tone: "destructive" as const }
 }
 
 function CreateSupplierDialog() {
@@ -50,7 +48,7 @@ function CreateSupplierDialog() {
       } as any)
       setOpen(false)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Could not create the supplier.")
+      setError("Could not add the supplier. Please try again.")
     }
   }
 
@@ -65,17 +63,13 @@ function CreateSupplierDialog() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add supplier</DialogTitle>
-          <DialogDescription>
-            Only the name is required. Suppliers routinely arrive with partial details, and missing
-            fields lower the reliability score rather than blocking the record.
-          </DialogDescription>
         </DialogHeader>
 
         {error && <Alert tone="error">{error}</Alert>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="name">Name *</Label>
+            <Label htmlFor="name">Name</Label>
             <Input id="name" name="name" required placeholder="Shree Plastics & Pipes Pvt Ltd" />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -125,7 +119,6 @@ export function SuppliersPage() {
     <div className="space-y-6">
       <PageHeader
         title="Suppliers"
-        description="Suppliers you added, plus any identified automatically from uploaded quotations."
         actions={<CreateSupplierDialog />}
       />
 
@@ -134,7 +127,7 @@ export function SuppliersPage() {
         <Input
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search suppliers…"
+          placeholder="Search suppliers"
           className="pl-9"
         />
       </div>
@@ -150,7 +143,7 @@ export function SuppliersPage() {
           description={
             debounced
               ? "Try a different name."
-              : "Add one manually, or upload a quotation — suppliers are created automatically from extracted GST numbers, emails and names."
+              : "Add your first supplier."
           }
           action={!debounced ? <CreateSupplierDialog /> : undefined}
         />
@@ -164,7 +157,7 @@ export function SuppliersPage() {
                   <TableHead>Contact</TableHead>
                   <TableHead>GST</TableHead>
                   <TableHead className="text-right">Quotations</TableHead>
-                  <TableHead className="w-44">Reliability</TableHead>
+                  <TableHead>Reliability</TableHead>
                   <TableHead>Added</TableHead>
                 </TableRow>
               </TableHeader>
@@ -174,7 +167,7 @@ export function SuppliersPage() {
                     <TableCell>
                       <div className="font-medium">{supplier.name}</div>
                       {supplier.address && (
-                        <div className="max-w-xs truncate text-xs text-muted-foreground">
+                        <div className="max-w-xs truncate text-sm text-muted-foreground">
                           {supplier.address}
                         </div>
                       )}
@@ -183,35 +176,21 @@ export function SuppliersPage() {
                       <div>
                         <ValueOrMissing value={supplier.email} missingLabel="No email" />
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm text-muted-foreground">
                         <ValueOrMissing value={supplier.phone} missingLabel="No phone" />
                       </div>
                     </TableCell>
-                    <TableCell className="font-mono text-xs">
+                    <TableCell className="text-sm">
                       <ValueOrMissing value={supplier.gst_number} missingLabel="Not provided" />
                     </TableCell>
                     <TableCell className="tabular text-right">{supplier.quotation_count}</TableCell>
                     <TableCell>
-                      <div className="flex items-center gap-2">
-                        <ScoreBar
-                          value={supplier.reliability.score}
-                          tone={reliabilityTone(supplier.reliability.score)}
-                          className="flex-1"
-                        />
-                        <span className="tabular w-9 text-right text-xs">
-                          {percent(supplier.reliability.score)}
-                        </span>
-                      </div>
-                      <p className="mt-1 text-[11px] text-muted-foreground">
-                        rule-based · n={supplier.reliability.sample_size}
-                      </p>
+                      <Badge variant={reliabilityWord(supplier.reliability.score).tone}>
+                        {reliabilityWord(supplier.reliability.score).label}
+                      </Badge>
                       {supplier.reliability.ml && (
-                        <p className="mt-1 text-[11px]" title={[`${supplier.reliability.ml.model_version} · ${supplier.reliability.ml.trained_on}`,
-                                  ...supplier.reliability.ml.signals.map((s) => s.text)].join(" | ")}>
-                          <Badge variant={{ low: "success", medium: "warning", high: "destructive" }[supplier.reliability.ml.risk_level] as "success"}>
-                            ML late risk {percent(supplier.reliability.ml.late_probability)}
-                          </Badge>{" "}
-                          <span className="text-muted-foreground">from {supplier.reliability.ml.history_count} deliveries</span>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          About {percent(supplier.reliability.ml.late_probability)} chance of being late
                         </p>
                       )}
                     </TableCell>
@@ -225,19 +204,6 @@ export function SuppliersPage() {
           </CardContent>
         </Card>
       )}
-
-      <Alert tone="info" title="How reliability is calculated">
-        <p>
-          The bar is a transparent rule-based score from profile completeness, quotation history,
-          extraction data quality and responsiveness.
-        </p>
-        <p>
-          Once a supplier has delivered purchase orders, an <strong>ML late-delivery risk</strong> appears
-          under it: a random-forest model trained on real USAID SCMS shipments (2006–2013) and tested on
-          later ones it never saw. Hover it for the reasons. Its test scores are on the{" "}
-          <Link to="/analytics" className="text-primary hover:underline">Analytics</Link> page.
-        </p>
-      </Alert>
     </div>
   )
 }

@@ -94,3 +94,15 @@ async def test_communications_are_isolated_per_organization(api, sourcing, org_b
     assert (await api.get(f"/api/v1/communications/{draft['id']}", headers=org_b["headers"])).status_code == 404
     assert (await api.get("/api/v1/communications", headers=org_b["headers"])).json() == []
     assert (await api.post(f"/api/v1/communications/{draft['id']}/approve", headers=org_b["headers"])).status_code == 404
+
+
+def test_negotiation_asks_never_print_zero_or_missing_days():
+    """"a longer credit period than 0 days" reads as a mistake to the supplier."""
+    from app.services.automation.communications import negotiation_asks
+
+    weak = [{"criterion": "delivery", "score": 0.1}, {"criterion": "payment", "score": 0.1}]
+    advance = negotiation_asks({"criteria": weak, "payment_days": 0, "delivery_days": None}, None)
+    assert advance == ["faster delivery", "some credit instead of advance payment"]
+
+    with_terms = negotiation_asks({"criteria": weak, "payment_days": 15, "delivery_days": 12}, None)
+    assert with_terms == ["faster delivery than 12 days", "a longer credit period than 15 days"]

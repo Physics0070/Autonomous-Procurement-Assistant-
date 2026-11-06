@@ -26,7 +26,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
   ({ className, ...props }, ref) => (
     <tr
       ref={ref}
-      className={cn("group/row border-b border-border/60 transition-colors hover:bg-primary/[0.06] data-[state=selected]:bg-muted [&>td:first-child]:relative [&>td:first-child]:before:absolute [&>td:first-child]:before:inset-y-1 [&>td:first-child]:before:left-0 [&>td:first-child]:before:w-0.5 [&>td:first-child]:before:scale-y-0 [&>td:first-child]:before:rounded-full [&>td:first-child]:before:bg-primary [&>td:first-child]:before:shadow-[0_0_12px_hsl(var(--glow))] [&>td:first-child]:before:transition-transform hover:[&>td:first-child]:before:scale-y-100", className)}
+      className={cn("border-b transition-colors hover:bg-muted/60 data-[state=selected]:bg-muted", className)}
       {...props}
     />
   ),
@@ -38,7 +38,7 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
     <th
       ref={ref}
       className={cn(
-        "h-10 px-3 text-left align-middle font-mono text-[10.5px] font-medium uppercase tracking-[0.14em] text-muted-foreground",
+        "h-11 px-3 text-left align-middle text-xs font-semibold text-muted-foreground",
         className,
       )}
       {...props}

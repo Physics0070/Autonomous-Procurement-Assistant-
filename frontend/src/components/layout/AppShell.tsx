@@ -1,55 +1,52 @@
 import * as React from "react"
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom"
 import {
-  BarChart3,
+  Bot,
   Building2,
   ClipboardList,
   FileStack,
-  LayoutDashboard,
-  LogOut,
-  Bot,
   FileText,
+  GitCompareArrows,
+  LayoutDashboard,
   LineChart,
+  LogOut,
   Mail,
   Menu,
   Moon,
   Plug,
-  Search,
   Settings,
   Sun,
   X,
 } from "lucide-react"
 import { useAuth } from "@/features/auth"
-import { useCapabilities } from "@/hooks/queries"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { cn, initials } from "@/lib/utils"
-import { CommandPalette, type Command } from "@/components/CommandPalette"
 import { BrandMark } from "@/components/BrandMark"
+import { cn, initials } from "@/lib/utils"
 
-const NAV = [
-  { to: "/", label: "Dashboard", icon: LayoutDashboard, end: true },
-  { to: "/requests", label: "Procurement", icon: ClipboardList },
-  { to: "/documents", label: "Documents", icon: FileStack },
+// Everyday words only. The first group is the daily work; the second is occasional.
+const MAIN_NAV = [
+  { to: "/", label: "Home", icon: LayoutDashboard, end: true },
+  { to: "/requests", label: "Purchase requests", icon: ClipboardList },
+  { to: "/documents", label: "Quotations", icon: FileStack },
+  { to: "/comparison", label: "Compare prices", icon: GitCompareArrows },
   { to: "/suppliers", label: "Suppliers", icon: Building2 },
-  { to: "/comparison", label: "Comparison", icon: BarChart3 },
-  { to: "/communications", label: "Communications", icon: Mail },
   { to: "/purchase-orders", label: "Purchase orders", icon: FileText },
-  { to: "/assistant", label: "Assistant", icon: Bot },
-  { to: "/analytics", label: "Analytics", icon: LineChart },
-  { to: "/integrations", label: "Integrations", icon: Plug },
+  { to: "/communications", label: "Emails", icon: Mail },
+]
+const MORE_NAV = [
+  { to: "/analytics", label: "Reports", icon: LineChart },
+  { to: "/assistant", label: "Ask AI", icon: Bot },
+  { to: "/integrations", label: "Connections", icon: Plug },
   { to: "/settings", label: "Settings", icon: Settings },
 ]
 
 function useTheme() {
   const [theme, setTheme] = React.useState<"light" | "dark">(() => {
     try {
-      const stored = localStorage.getItem("apa.theme")
-      if (stored === "dark" || stored === "light") return stored
+      return localStorage.getItem("apa.theme") === "dark" ? "dark" : "light"
     } catch {
-      /* storage unavailable */
+      return "light"
     }
-    return "dark"
   })
 
   React.useEffect(() => {
@@ -64,133 +61,67 @@ function useTheme() {
   return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) }
 }
 
+type NavItem = (typeof MAIN_NAV)[number]
+
+function NavGroup({ items, onNavigate }: { items: NavItem[]; onNavigate: () => void }) {
+  return (
+    <div className="space-y-0.5">
+      {items.map(({ to, label, icon: Icon, end }) => (
+        <NavLink
+          key={to}
+          to={to}
+          end={end}
+          onClick={onNavigate}
+          className={({ isActive }) =>
+            cn(
+              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors",
+              isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-accent hover:text-foreground",
+            )
+          }
+        >
+          <Icon className="h-[18px] w-[18px] shrink-0" />
+          {label}
+        </NavLink>
+      ))}
+    </div>
+  )
+}
+
 export function AppShell() {
   const { user, organization, logout } = useAuth()
-  const { data: capabilities } = useCapabilities()
   const navigate = useNavigate()
   const location = useLocation()
   const { theme, toggle } = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [paletteOpen, setPaletteOpen] = React.useState(false)
-
-  const degraded = capabilities && (!capabilities.ai.configured || !capabilities.ocr.available)
-  const current = NAV.find((item) => (item.end ? location.pathname === item.to : location.pathname.startsWith(item.to)))
-
-  React.useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault()
-        setPaletteOpen((open) => !open)
-      }
-    }
-    window.addEventListener("keydown", onKey)
-    return () => window.removeEventListener("keydown", onKey)
-  }, [])
-
-  const commands: Command[] = React.useMemo(
-    () => [
-      ...NAV.map((item) => ({ id: item.to, label: item.label, hint: "Go to page", icon: item.icon, run: () => navigate(item.to) })),
-      {
-        id: "theme",
-        label: theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
-        hint: "Appearance",
-        icon: theme === "dark" ? Sun : Moon,
-        run: toggle,
-      },
-      {
-        id: "signout",
-        label: "Sign out",
-        hint: "Account",
-        icon: LogOut,
-        run: () => {
-          logout()
-          navigate("/login")
-        },
-      },
-    ],
-    [navigate, theme, toggle, logout],
-  )
+  const close = () => setMobileOpen(false)
 
   return (
-    <div className="min-h-screen">
-      <div className="stage" aria-hidden>
-        <i />
-      </div>
-      <div className="grain" aria-hidden />
-      <CommandPalette commands={commands} open={paletteOpen} onOpenChange={setPaletteOpen} />
-
-      {/* Floating glass sidebar */}
+    <div className="min-h-screen bg-background">
       <aside
         className={cn(
-          "glass fixed inset-y-3 left-3 z-40 flex w-64 flex-col rounded-3xl transition-transform duration-300 lg:translate-x-0",
-          mobileOpen ? "translate-x-0" : "-translate-x-[110%]",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r bg-card transition-transform lg:translate-x-0",
+          mobileOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex h-[4.5rem] items-center gap-3 px-5">
-          <BrandMark className="h-9 w-9 shrink-0 drop-shadow-[0_0_14px_hsl(var(--glow)/0.55)]" />
-          <div className="min-w-0">
-            <p className="truncate font-display text-[15px] font-bold leading-tight tracking-tight">Procurement</p>
-            <p className="truncate font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Ledger console</p>
-          </div>
-          <button className="ml-auto rounded-md p-1 lg:hidden" onClick={() => setMobileOpen(false)} aria-label="Close navigation">
-            <X className="h-4 w-4" />
+        <div className="flex h-16 items-center gap-3 border-b px-5">
+          <BrandMark className="h-8 w-8 shrink-0" />
+          <p className="truncate text-base font-semibold leading-tight">Procurement</p>
+          <button className="ml-auto rounded-md p-1 lg:hidden" onClick={close} aria-label="Close menu">
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-1 scrollbar-thin" aria-label="Main">
-          {NAV.map(({ to, label, icon: Icon, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              onClick={() => setMobileOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  "group/nav relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
-                  isActive ? "text-foreground" : "text-muted-foreground hover:translate-x-0.5 hover:text-foreground",
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <span className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-r from-primary/20 via-primary/10 to-transparent shadow-[0_0_0_1px_hsl(var(--primary)/0.28)_inset]" />
-                  )}
-                  {isActive && (
-                    <span className="absolute -left-3 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-primary shadow-[0_0_14px_hsl(var(--glow))]" />
-                  )}
-                  <Icon
-                    className={cn(
-                      "h-4 w-4 shrink-0 transition-all duration-200",
-                      isActive ? "text-primary drop-shadow-[0_0_8px_hsl(var(--glow)/0.8)]" : "group-hover/nav:text-primary",
-                    )}
-                  />
-                  {label}
-                </>
-              )}
-            </NavLink>
-          ))}
+        <nav className="flex-1 space-y-6 overflow-y-auto p-3 scrollbar-thin" aria-label="Main">
+          <NavGroup items={MAIN_NAV} onNavigate={close} />
+          <div className="space-y-1">
+            <p className="px-3 text-xs font-semibold text-muted-foreground">More</p>
+            <NavGroup items={MORE_NAV} onNavigate={close} />
+          </div>
         </nav>
 
-        {/* Capability status: says plainly when the deployment is degraded. */}
-        {capabilities && (
-          <div className="mx-3 mb-2 space-y-2 rounded-2xl border bg-background/30 p-3 text-xs">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-muted-foreground">AI</span>
-              <Badge variant={capabilities.ai.configured ? "success" : "warning"}>
-                {capabilities.ai.configured ? capabilities.ai.provider : "Not configured"}
-              </Badge>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-muted-foreground">OCR</span>
-              <Badge variant={capabilities.ocr.available ? "success" : "destructive"}>{capabilities.ocr.engine ?? "Unavailable"}</Badge>
-            </div>
-          </div>
-        )}
-
         <div className="border-t p-3">
-          <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[hsl(var(--glow-2))] text-xs font-bold text-primary-foreground shadow-[0_0_18px_-4px_hsl(var(--glow)/0.8)]">
+          <div className="flex items-center gap-3 px-2 py-1.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
               {initials(user?.name)}
             </div>
             <div className="min-w-0 flex-1">
@@ -201,7 +132,7 @@ export function AppShell() {
           <div className="mt-2 flex gap-1.5">
             <Button variant="ghost" size="sm" className="flex-1 justify-start" onClick={toggle}>
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              {theme === "dark" ? "Light" : "Dark"}
+              {theme === "dark" ? "Light mode" : "Dark mode"}
             </Button>
             <Button
               variant="ghost"
@@ -219,46 +150,18 @@ export function AppShell() {
         </div>
       </aside>
 
-      {mobileOpen && <div className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden" onClick={() => setMobileOpen(false)} aria-hidden />}
+      {mobileOpen && <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={close} aria-hidden />}
 
-      {/* Main */}
-      <div className="lg:pl-[17.5rem]">
-        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 px-4 backdrop-blur-xl sm:px-6 lg:px-8">
-          <button className="rounded-lg p-2 hover:bg-accent lg:hidden" onClick={() => setMobileOpen(true)} aria-label="Open navigation">
-            <Menu className="h-4 w-4" />
+      <div className="lg:pl-64">
+        <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-card px-4 lg:hidden">
+          <button className="rounded-md p-2 hover:bg-accent" onClick={() => setMobileOpen(true)} aria-label="Open menu">
+            <Menu className="h-5 w-5" />
           </button>
-          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
-            </span>
-            <span className="hidden sm:inline">Agents online</span>
-            <span className="hidden text-border sm:inline">/</span>
-            <span className="text-foreground">{current?.label ?? "Workspace"}</span>
-          </div>
-          <button
-            onClick={() => setPaletteOpen(true)}
-            className="ml-auto flex h-9 items-center gap-2 rounded-xl border bg-background/40 px-3 text-sm text-muted-foreground backdrop-blur transition-all hover:border-primary/50 hover:text-foreground hover:shadow-[0_0_24px_-8px_hsl(var(--glow)/0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Open command palette"
-          >
-            <Search className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Jump to…</span>
-            <span className="kbd">Ctrl K</span>
-          </button>
+          <span className="text-base font-semibold">Procurement</span>
         </header>
 
-        {degraded && (
-          <div className="mx-4 mb-2 rounded-xl border border-warning/30 bg-warning/10 px-4 py-2 text-xs text-foreground sm:mx-6 lg:mx-8">
-            <span className="font-medium">Running in degraded mode.</span>{" "}
-            {capabilities && !capabilities.ai.configured && (
-              <span className="text-muted-foreground">AI extraction is off, so a deterministic heuristic parser is being used instead. </span>
-            )}
-            {capabilities && !capabilities.ocr.available && <span className="text-muted-foreground">No OCR engine: scanned documents cannot be read.</span>}
-          </div>
-        )}
-
-        <main className="px-4 pb-16 pt-2 sm:px-6 lg:px-8">
-          <div key={location.pathname} className="animate-rise">
+        <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+          <div key={location.pathname} className="animate-fade-in">
             <Outlet />
           </div>
         </main>
@@ -277,12 +180,10 @@ export function PageHeader({
   actions?: React.ReactNode
 }) {
   return (
-    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div className="min-w-0 space-y-2">
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
-          <span className="text-gradient">{title}</span>
-        </h1>
-        {description && <p className="max-w-2xl text-[15px] text-muted-foreground">{description}</p>}
+    <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+      <div className="min-w-0 space-y-1">
+        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
+        {description && <p className="text-muted-foreground">{description}</p>}
       </div>
       {actions && <div className="flex shrink-0 flex-wrap gap-2">{actions}</div>}
     </div>

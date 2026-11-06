@@ -12,13 +12,21 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { useCommunicationActions, useCommunications, type Communication } from "@/hooks/automation"
 import { useSuppliers } from "@/hooks/queries"
 import { downloadFile } from "@/lib/api"
-import { cn, formatDateTime, relativeTime } from "@/lib/utils"
+import { cn, relativeTime } from "@/lib/utils"
 
-const KIND_LABEL = { rfq: "RFQ", negotiation: "Negotiation", purchase_order: "Purchase order" } as const
+const KIND_LABEL = { rfq: "Price request", negotiation: "Negotiation", purchase_order: "Purchase order" } as const
+const STATUS_LABEL = { draft: "Draft", approved: "Approved", sent: "Sent", cancelled: "Cancelled" } as const
+
+const GENERIC_ERROR = "Something went wrong, please try again."
+function friendly(e: unknown): string {
+  const msg = e instanceof Error ? e.message : ""
+  if (!msg || msg.length > 140 || /[45]\d\d|gateway|unavailable|traceback|exception|json|provider/i.test(msg)) return GENERIC_ERROR
+  return msg
+}
 const STATUS_TONE = { draft: "muted", approved: "default", sent: "success", cancelled: "destructive" } as const
 
 export function CommunicationStatusBadge({ status }: { status: Communication["status"] }) {
-  return <Badge variant={STATUS_TONE[status]}>{status}</Badge>
+  return <Badge variant={STATUS_TONE[status]}>{STATUS_LABEL[status]}</Badge>
 }
 
 function Detail({ item }: { item: Communication }) {
@@ -37,7 +45,7 @@ function Detail({ item }: { item: Communication }) {
 
   const editable = item.status === "draft"
   const dirty = subject !== item.subject || body !== item.body || to !== (item.to_email ?? "")
-  const run = (promise: Promise<unknown>) => promise.then(() => setError(null)).catch((e) => setError(e.message))
+  const run = (promise: Promise<unknown>) => promise.then(() => setError(null)).catch((e) => setError(friendly(e)))
 
   return (
     <Card>
@@ -45,21 +53,10 @@ function Detail({ item }: { item: Communication }) {
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{KIND_LABEL[item.kind]}</Badge>
           <CommunicationStatusBadge status={item.status} />
-          <Badge variant={item.generated_by === "ai" ? "default" : "outline"}>
-            {item.generated_by === "ai" ? `AI · ${item.model ?? item.provider}` : "Template"}
-          </Badge>
         </div>
         <CardTitle className="text-base">{item.subject}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {item.fallback_reason && item.generated_by === "template" && (
-          <Alert tone="info" title="Template used">{item.fallback_reason}</Alert>
-        )}
-        {item.guardrail_findings.length > 0 && (
-          <Alert tone="warning" title="The AI draft was rejected by the competitor guardrail">
-            <ul className="list-inside list-disc">{item.guardrail_findings.map((f) => <li key={f}>{f}</li>)}</ul>
-          </Alert>
-        )}
         {error && <Alert tone="error">{error}</Alert>}
 
         <div className="space-y-1.5">
@@ -72,7 +69,7 @@ function Detail({ item }: { item: Communication }) {
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="body">Message</Label>
-          <Textarea id="body" rows={14} value={body} disabled={!editable} onChange={(e) => setBody(e.target.value)} className="font-mono text-xs" />
+          <Textarea id="body" rows={14} value={body} disabled={!editable} onChange={(e) => setBody(e.target.value)} />
         </div>
 
         <div className="flex flex-wrap gap-2">
@@ -93,7 +90,7 @@ function Detail({ item }: { item: Communication }) {
             </Button>
           )}
           <Button variant="outline" onClick={() => run(downloadFile(`/communications/${item.id}/eml`, `${item.kind}-${item.id}.eml`))}>
-            <Download className="h-4 w-4" />Export .eml
+            <Download className="h-4 w-4" />Download
           </Button>
           <Button variant="outline" onClick={() => navigator.clipboard.writeText(`Subject: ${item.subject}\n\n${item.body}`).then(() => setCopied(true))}>
             <Copy className="h-4 w-4" />{copied ? "Copied" : "Copy"}
@@ -104,22 +101,9 @@ function Detail({ item }: { item: Communication }) {
             </Button>
           )}
         </div>
-        {editable && dirty && <p className="text-xs text-muted-foreground">Save your changes before approving.</p>}
-        <p className="text-xs text-muted-foreground">
-          The app never sends email. Approve the draft, send it from your own mail client (open the .eml or copy it), then mark it as sent.
-        </p>
+        {editable && dirty && <p className="text-sm text-muted-foreground">Save your changes before approving.</p>}
+        <p className="text-sm text-muted-foreground">Approve, then download or copy it and send it from your own email.</p>
 
-        <div className="border-t pt-3">
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">History</p>
-          <ul className="space-y-1 text-xs">
-            {item.history.map((h, i) => (
-              <li key={i} className="flex justify-between gap-2">
-                <span>{h.action.replace(/_/g, " ")}</span>
-                <span className="text-muted-foreground">{formatDateTime(h.at)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </CardContent>
     </Card>
   )
@@ -134,17 +118,17 @@ export function CommunicationsPage() {
 
   return (
     <div>
-      <PageHeader title="Communications" description="RFQ, negotiation and purchase-order emails. Drafts are reviewed and approved here; nothing is sent automatically." />
+      <PageHeader title="Emails" />
       <div className="mb-4 flex flex-wrap gap-2">
-        <Select value={kind} onChange={(e) => setKind(e.target.value)} className="w-44" aria-label="Kind">
-          <option value="">All kinds</option>
-          <option value="rfq">RFQ</option>
+        <Select value={kind} onChange={(e) => setKind(e.target.value)} className="w-44" aria-label="Type">
+          <option value="">All emails</option>
+          <option value="rfq">Price request</option>
           <option value="negotiation">Negotiation</option>
           <option value="purchase_order">Purchase order</option>
         </Select>
         <Select value={status} onChange={(e) => setStatus(e.target.value)} className="w-40" aria-label="Status">
-          <option value="">All statuses</option>
-          {Object.keys(STATUS_TONE).map((s) => <option key={s} value={s}>{s}</option>)}
+          <option value="">Any status</option>
+          {Object.keys(STATUS_TONE).map((s) => <option key={s} value={s}>{STATUS_LABEL[s as keyof typeof STATUS_LABEL]}</option>)}
         </Select>
       </div>
       {isLoading ? (
@@ -152,8 +136,8 @@ export function CommunicationsPage() {
       ) : error ? (
         <ErrorState error={error} onRetry={refetch} />
       ) : !data?.length ? (
-        <EmptyState icon={Mail} title="No communications yet"
-                    description="Draft RFQs from a procurement request, or negotiation emails and purchase orders from a comparison." />
+        <EmptyState icon={Mail} title="No emails yet"
+                    description="Emails you create from a purchase request will show up here." />
       ) : (
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
           <Card className="h-fit">
@@ -167,7 +151,7 @@ export function CommunicationsPage() {
                       <CommunicationStatusBadge status={c.status} />
                     </div>
                     <p className="mt-0.5 text-xs text-muted-foreground">
-                      {KIND_LABEL[c.kind]} · {c.to_email ?? "no recipient"} · {relativeTime(c.created_at)}
+                      {KIND_LABEL[c.kind]} · {c.to_email ?? "No recipient"} · {relativeTime(c.created_at)}
                     </p>
                   </button>
                 </li>
@@ -193,20 +177,20 @@ export function DraftRfqDialog({ requestId }: { requestId: string }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline"><Mail className="h-4 w-4" />Draft RFQs</Button>
+        <Button variant="outline"><Mail className="h-4 w-4" />Draft price requests</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Draft requests for quotation</DialogTitle>
-          <DialogDescription>One draft per supplier, listing every item. You review and approve them before anything is sent.</DialogDescription>
+          <DialogTitle>Draft price requests</DialogTitle>
+          <DialogDescription>Pick the suppliers. We make one draft for each.</DialogDescription>
         </DialogHeader>
-        {draftRfqs.error && <Alert tone="error">{draftRfqs.error.message}</Alert>}
+        {draftRfqs.error && <Alert tone="error">{friendly(draftRfqs.error)}</Alert>}
         <div className="max-h-72 space-y-1 overflow-y-auto">
           {suppliers.data?.items.map((s) => (
             <label key={s.id} className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-accent">
               <input type="checkbox" checked={chosen.includes(s.id)} onChange={() => toggle(s.id)} />
               <span className="flex-1">{s.name}</span>
-              <span className="text-xs text-muted-foreground">{s.email ?? "no email"}</span>
+              <span className="text-sm text-muted-foreground">{s.email ?? "No email"}</span>
             </label>
           ))}
           {suppliers.data?.items.length === 0 && <p className="text-sm text-muted-foreground">Add suppliers first.</p>}

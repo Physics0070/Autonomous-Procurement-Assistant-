@@ -54,7 +54,40 @@ type RequestOptions = {
   auth?: boolean
 }
 
+/** The server (or the proxy in front of it) is restarting or busy: a short wait usually fixes it. */
+const TRANSIENT = new Set([502, 503, 504])
+const RETRY_DELAYS_MS = [500, 1500, 3500]
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+const FRIENDLY: Record<number, string> = {
+  502: "The service is starting up or busy. Please wait a few seconds and try again.",
+  503: "The service is busy right now. Please try again in a minute.",
+  504: "The service took too long to answer. Please try again.",
+  500: "Something went wrong on our side. Please try again.",
+}
+
 async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
+  const { method = "GET", body, formData, signal, auth = true } = options
+  // Reading is safe to repeat, so a brief outage is retried quietly. Writes are never repeated.
+  const attempts = method === "GET" ? RETRY_DELAYS_MS.length + 1 : 1
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await send<T>(path, { method, body, formData, signal, auth })
+    } catch (error) {
+      const transient = (error instanceof ApiError && TRANSIENT.has(error.status)) || error instanceof NetworkError
+      if (!transient || attempt >= attempts || signal?.aborted) throw error
+      await sleep(RETRY_DELAYS_MS[attempt - 1])
+    }
+  }
+}
+
+class NetworkError extends ApiError {
+  constructor() {
+    super("We could not reach the server. Check your internet connection and try again.", 0, "network_error")
+  }
+}
+
+async function send<T>(path: string, options: RequestOptions): Promise<T> {
   const { method = "GET", body, formData, signal, auth = true } = options
   const headers: Record<string, string> = {}
 
@@ -64,12 +97,18 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
   }
   if (body !== undefined) headers["Content-Type"] = "application/json"
 
-  const response = await fetch(`${BASE_URL}${path}`, {
-    method,
-    headers,
-    body: formData ?? (body !== undefined ? JSON.stringify(body) : undefined),
-    signal,
-  })
+  let response: Response
+  try {
+    response = await fetch(`${BASE_URL}${path}`, {
+      method,
+      headers,
+      body: formData ?? (body !== undefined ? JSON.stringify(body) : undefined),
+      signal,
+    })
+  } catch (error) {
+    if (signal?.aborted) throw error
+    throw new NetworkError()
+  }
 
   if (response.status === 204) return undefined as T
 
@@ -86,11 +125,12 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
   if (!response.ok) {
     // The backend wraps domain errors as { error: { code, message, details } }.
     const envelope = payload?.error
+    // Gateway and server failures carry no useful message: say something a person can act on.
     const message =
       envelope?.message ??
-      payload?.detail ??
-      (typeof payload === "string" ? payload : null) ??
-      `Request failed with status ${response.status}`
+      FRIENDLY[response.status] ??
+      (typeof payload?.detail === "string" ? payload.detail : null) ??
+      `Something went wrong (error ${response.status}). Please try again.`
     throw new ApiError(
       typeof message === "string" ? message : JSON.stringify(message),
       response.status,
