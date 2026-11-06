@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
+from pathlib import Path
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 from app.api.routes import (
     agents,
@@ -191,3 +193,20 @@ async def root() -> dict:
         "docs": "/docs",
         "api": settings.API_V1_PREFIX,
     }
+
+
+# One-site deployment: when the built frontend is present (the Docker image copies it to
+# /app/static), this same server shows the web app, so no second host is needed.
+_STATIC_DIR = Path(os.environ.get("FRONTEND_DIST", "/app/static"))
+if (_STATIC_DIR / "index.html").is_file():
+    _API_PREFIXES = (settings.API_V1_PREFIX.strip("/"), "docs", "openapi.json", "redoc", "health")
+    app.router.routes = [r for r in app.router.routes if getattr(r, "path", None) != "/"]
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def web_app(full_path: str):
+        if any(full_path == p or full_path.startswith(p + "/") for p in _API_PREFIXES):
+            return JSONResponse({"detail": "Not found"}, status_code=404)
+        target = (_STATIC_DIR / full_path).resolve()
+        if full_path and target.is_file() and _STATIC_DIR.resolve() in target.parents:
+            return FileResponse(target)
+        return FileResponse(_STATIC_DIR / "index.html")
