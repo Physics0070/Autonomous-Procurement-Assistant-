@@ -11,7 +11,7 @@ from app.integrations.ai.openai_compatible import OpenAICompatibleProvider
 logger = logging.getLogger(__name__)
 
 # Direct vendors that need nothing beyond a key, an endpoint and a model (settings <VENDOR>_*).
-KEYED_VENDORS = ("gemini", "grok", "groq", "qwen")
+KEYED_VENDORS = ("gemini", "grok", "groq", "nvidia", "qwen")
 SUPPORTED_PROVIDERS = (*KEYED_VENDORS, "ollama", "openrouter", "none")
 
 _providers: dict[Optional[str], AIProvider] = {}

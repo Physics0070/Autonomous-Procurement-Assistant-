@@ -51,7 +51,7 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 25
 
     # --- AI provider ---
-    # The default vendor: gemini | grok | groq | qwen | ollama | openrouter | none.
+    # The default vendor: gemini | grok | groq | nvidia | qwen | ollama | openrouter | none.
     # Every vendor speaks the OpenAI chat-completions format; each has its own key.
     AI_PROVIDER: str = "groq"
 
@@ -64,6 +64,11 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
     GROQ_MODEL: str = "openai/gpt-oss-120b"
+
+    # NVIDIA Nemotron on NVIDIA's own API (nvapi_ keys) - https://build.nvidia.com
+    NVIDIA_API_KEY: str = ""
+    NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
+    NVIDIA_MODEL: str = "nvidia/nemotron-3-super-120b-a12b"
 
     # Alibaba Qwen (Model Studio / DashScope). International endpoint by default; mainland China
     # accounts use https://dashscope.aliyuncs.com/compatible-mode/v1

@@ -80,6 +80,22 @@ def test_groq_is_its_own_vendor(monkeypatch):
         factory.reset_ai_provider()
 
 
+def test_nvidia_nemotron_has_its_own_key_and_endpoint(monkeypatch):
+    """Nemotron called directly on NVIDIA's API (nvapi- keys), not through OpenRouter."""
+    monkeypatch.setattr(settings, "NVIDIA_API_KEY", "nvapi-test")
+    monkeypatch.setattr(settings, "LLM_TASK_MODELS", "critic=nvidia:nvidia/nemotron-3-super-120b-a12b")
+    factory.reset_ai_provider()
+    try:
+        provider = factory.get_ai_provider("critic")
+        assert (provider.name, provider.model, provider.base_url) == (
+            "nvidia", "nvidia/nemotron-3-super-120b-a12b", settings.NVIDIA_BASE_URL)
+        monkeypatch.setattr(settings, "NVIDIA_API_KEY", "")
+        factory.reset_ai_provider()
+        assert "NVIDIA_API_KEY" in factory.get_ai_provider("critic").configuration_error()
+    finally:
+        factory.reset_ai_provider()
+
+
 def test_ollama_models_may_contain_colons(monkeypatch):
     monkeypatch.setattr(settings, "LLM_TASK_MODELS", "hsn=ollama:qwen2.5:7b")
     factory.reset_ai_provider()
