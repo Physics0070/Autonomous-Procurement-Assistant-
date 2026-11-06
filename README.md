@@ -275,7 +275,7 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `GMAIL_SYNC_QUERY` / `GMAIL_MAX_MESSAGES_PER_SYNC` / `GMAIL_SYNC_INTERVAL_MINUTES` | quotation subjects, 30 days / `25` / `15` | `0` disables automatic sync |
 | `NEGOTIATION_DEFAULT_DISCOUNT_PCT` | `5.0` | Target price below the quote |
 | `NEGOTIATION_WEAK_CRITERION_SCORE` | `0.5` | Delivery/payment scores below this are negotiated |
-| `LLM_TASK_MODELS` | — | A different model per task, e.g. `extraction=gemini:gemini-3.5-flash,critic=council`. Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn |
+| `LLM_TASK_MODELS` | — | A different model per task (a model may list fallbacks with `|`, e.g. `hsn=gemini:gemini-3.1-flash-lite|groq:qwen/qwen3.8-27b`), e.g. `extraction=gemini:gemini-3.5-flash,critic=council`. Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn |
 | `COUNCIL_MODELS` / `COUNCIL_MONITOR_MODEL` | — | The council's members (2+, ideally different vendors) and the model that decides |
 | `ASSISTANT_MAX_TOOL_ROUNDS` | `6` | |
 | `AGENT_MAX_STEPS` | `12` | Supervisor routing decisions per run |
@@ -366,9 +366,9 @@ Members can come from any vendor, each with its own key. The verified line-up us
 (`GEMINI_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY`):
 
 ```
-LLM_TASK_MODELS=extraction=gemini:gemini-3.1-flash-lite,supervisor=groq:openai/gpt-oss-20b,negotiation=groq:openai/gpt-oss-20b,assistant=nvidia:nvidia/nemotron-3.5-bolt-e4b,hsn=gemini:gemini-3.1-flash-lite,recommendation=council,critic=council
-COUNCIL_MODELS=groq:openai/gpt-oss-20b,nvidia:nvidia/nemotron-3.5-bolt-e4b,gemini:gemini-3.1-flash-lite
-COUNCIL_MONITOR_MODEL=groq:qwen/qwen3.8-27b
+LLM_TASK_MODELS=extraction=gemini:gemini-3.1-flash-lite|groq:openai/gpt-oss-20b|nvidia:nvidia/nemotron-3.5-bolt-e4b,supervisor=groq:openai/gpt-oss-20b|nvidia:nvidia/nemotron-3.5-bolt-e4b|groq:qwen/qwen3.8-27b,negotiation=groq:openai/gpt-oss-20b|nvidia:nvidia/nemotron-3.5-bolt-e4b,assistant=nvidia:nvidia/nemotron-3.5-bolt-e4b|groq:openai/gpt-oss-20b,hsn=gemini:gemini-3.1-flash-lite|groq:qwen/qwen3.8-27b,recommendation=council,critic=council
+COUNCIL_MODELS=groq:openai/gpt-oss-20b|nvidia:nvidia/nemotron-3.5-bolt-e4b,nvidia:nvidia/nemotron-3.5-bolt-e4b|groq:qwen/qwen3.8-27b,gemini:gemini-3.1-flash-lite|groq:qwen/qwen3.8-27b
+COUNCIL_MONITOR_MODEL=groq:qwen/qwen3.8-27b|groq:openai/gpt-oss-20b|nvidia:nvidia/nemotron-3.5-bolt-e4b
 ```
 
 A live run with this line-up succeeded: Groq gpt-oss-120b, NVIDIA Nemotron Ultra (via
@@ -437,3 +437,10 @@ to Google Drive.
 **Live AI, Gmail and Drive are unverified** until credentials are supplied — every one of
 those paths is exercised against a scripted model and a fake Google, and reports the missing
 setting rather than failing obscurely.
+
+### Vendor fallback
+
+Free tiers run out (Groq: 200,000 tokens/day per model) or go down, so any model spec can list fallbacks with `|`: `a|b|c` tries `a`, and if it fails (rate limit, outage,
+bad key) moves to `b`, then `c`. A vendor that just failed is tried last for `FALLBACK_COOLDOWN_SECONDS` (30), so a dead one is not waited on at the start of every call. Tool-using
+agents (negotiation, assistant) only use vendors that can call tools, which excludes Gemini. Unconfigured vendors are dropped from the chain. Tested live with Groq's key broken:
+calls moved to NVIDIA with the reason recorded and nothing failed. Code: `backend/app/integrations/ai/fallback.py`.

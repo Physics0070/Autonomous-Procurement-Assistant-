@@ -94,7 +94,8 @@ class Settings(BaseSettings):
     OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
     OLLAMA_MODEL: str = "llama3.1"
 
-    # A different model per task: "extraction=gemini:gemini-3.5-flash, negotiation=groq:openai/gpt-oss-120b,
+    # A model may list fallbacks with "|": "extraction=gemini:gemini-3.1-flash-lite|groq:openai/gpt-oss-20b" tries Gemini, then
+    # Groq if it fails. A different model per task: "extraction=gemini:gemini-3.5-flash, negotiation=groq:openai/gpt-oss-120b,
     # critic=council". A model is "vendor:model"; without a vendor prefix, AI_PROVIDER's vendor is used.
     # Tasks: extraction, matching, recommendation, supervisor, drafting, negotiation, critic, assistant, hsn.
     # "council" suits tasks that write text (recommendation, critic, drafting, supervisor); tool-using
@@ -103,6 +104,7 @@ class Settings(BaseSettings):
     COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
     COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
     AI_REQUEST_TIMEOUT_SECONDS: int = 120
+    FALLBACK_COOLDOWN_SECONDS: int = 30  # a vendor that just failed is tried last for this long
     COUNCIL_MEMBER_TIMEOUT_SECONDS: int = 45  # a slow free-tier member is dropped instead of stalling the council
 
     # --- OCR ---

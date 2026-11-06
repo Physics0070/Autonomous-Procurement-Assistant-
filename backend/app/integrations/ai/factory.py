@@ -6,6 +6,7 @@ from typing import Optional
 from app.core.config import settings
 from app.integrations.ai.base import AIProvider, UnconfiguredProvider
 from app.integrations.ai.council import CouncilProvider
+from app.integrations.ai.fallback import FallbackProvider
 from app.integrations.ai.openai_compatible import OpenAICompatibleProvider
 
 logger = logging.getLogger(__name__)
@@ -64,13 +65,24 @@ def build_provider(name: Optional[str] = None, *, model: Optional[str] = None) -
     return UnconfiguredProvider(provider.configuration_error() or f"{name} is not configured.")
 
 
-def build_model(spec: Optional[str]) -> AIProvider:
+def _build_one(spec: Optional[str]) -> AIProvider:
     """'qwen:qwen-plus' -> that vendor; anything else is a model of the default vendor.
     Only a known vendor counts as a prefix: OpenRouter and Ollama IDs contain ':' too."""
     vendor, _, model = (spec or "").partition(":")
     if model and vendor.lower() in SUPPORTED_PROVIDERS:
         return build_provider(vendor, model=model)
     return build_provider(model=spec or None)
+
+
+def build_model(spec: Optional[str]) -> AIProvider:
+    """One model, or 'a|b|c': a chain that falls back to the next vendor when one fails.
+    Unconfigured links are dropped; a single survivor is returned as itself."""
+    parts = [p.strip() for p in (spec or "").split("|") if p.strip()] or [None]
+    built = [_build_one(p) for p in parts]
+    configured = [p for p in built if p.is_configured()]
+    if not configured:
+        return built[0]
+    return configured[0] if len(configured) == 1 else FallbackProvider(configured)
 
 
 def _split(value: str) -> list[str]:
