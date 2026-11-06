@@ -99,3 +99,4 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V13 | Project report (16 sections, VIT format: A4, margins, Times New Roman, logo) | ✅ | `Autonomous_Procurement_Assistant_Project_Report.docx`, schema-validated; kept local, not pushed |
 | V14 | Extraction routed to NVIDIA Nemotron 3.5 Bolt to keep Groq's 8k tokens/min free | ✅ | 5/5 sample quotations good at 10.3 s average (Nemotron Ultra 5/5 at ~38 s; Groq Qwen 3/5). Small sample: 5 files |
 | V15 | Council on three vendors (Groq Qwen, NVIDIA Nemotron Ultra, Gemini Flash-Lite), Groq monitor | ✅ | live run 17 s, no member dropped |
+| V16 | HSN routed to Gemini 3.1 Flash-Lite, the model the 98.8% was measured with | ✅ | a Groq-only run was invalid (78 of 114 calls rate-limited: HSN calls ~1.5k tokens vs Groq's 8k tokens/min) |
