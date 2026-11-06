@@ -97,3 +97,5 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V11 | Review sheet: slide check + ROC-AUC/OCR/RF/IF explanations + PDF | ✅ | `Procurement_Assistant_Review_Sheet.pdf` |
 | V12 | HSN with the model stage, measured cleanly (paced to stay inside free-tier limits) | ✅ | 98.8% held-out, 100% chapter; an unpaced run scored 80.0% because 27 items fell back to text matching |
 | V13 | Project report (16 sections, VIT format: A4, margins, Times New Roman, logo) | ✅ | `Autonomous_Procurement_Assistant_Project_Report.docx`, schema-validated; kept local, not pushed |
+| V14 | Extraction routed to NVIDIA Nemotron 3.5 Bolt to keep Groq's 8k tokens/min free | ✅ | 5/5 sample quotations good at 10.3 s average (Nemotron Ultra 5/5 at ~38 s; Groq Qwen 3/5). Small sample: 5 files |
+| V15 | Council on three vendors (Groq Qwen, NVIDIA Nemotron Ultra, Gemini Flash-Lite), Groq monitor | ✅ | live run 17 s, no member dropped |

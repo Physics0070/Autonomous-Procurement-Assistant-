@@ -68,7 +68,7 @@ class Settings(BaseSettings):
     # NVIDIA Nemotron on NVIDIA's own API (nvapi_ keys) - https://build.nvidia.com
     NVIDIA_API_KEY: str = ""
     NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
-    NVIDIA_MODEL: str = "nvidia/nemotron-3-super-120b-a12b"
+    NVIDIA_MODEL: str = "nvidia/nemotron-3-ultra-550b-a55b"  # fast alternative: nvidia/nemotron-3.5-bolt-e4b
 
     # Alibaba Qwen (Model Studio / DashScope). International endpoint by default; mainland China
     # accounts use https://dashscope.aliyuncs.com/compatible-mode/v1
