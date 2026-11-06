@@ -41,8 +41,12 @@ def test_a_task_can_use_another_vendor_than_the_default(vendors):
     assert (default.name, default.model) == ("gemini", "gemini-default")
 
 
-def test_gemini_speaks_the_openai_format_so_it_can_use_tools(vendors):
-    assert factory.get_ai_provider().supports_tools
+def test_gemini_cannot_run_tool_loops_through_its_openai_endpoint(vendors):
+    """Measured: Gemini rejects every tool-calling request on the OpenAI-compatible endpoint (it expects
+    thought signatures echoed back), so agents must treat it as text-only and fall back, not fail."""
+    assert factory.get_ai_provider().supports_tools is False          # AI_PROVIDER=gemini in this fixture
+    assert factory.build_model("qwen:qwen-plus").supports_tools is True
+    assert factory.build_model("groq:openai/gpt-oss-20b").supports_tools is True
 
 
 def test_a_missing_vendor_key_is_named(vendors, monkeypatch):

@@ -1,0 +1,37 @@
+{
+ "model": "groq:openai/gpt-oss-120b",
+ "configured": true,
+ "routing": {
+  "decisions": 5,
+  "valid": "2/5",
+  "agrees_with_policy": "2/5",
+  "mean_s": 0.3
+ },
+ "negotiation_leak": {
+  "emails": "1/4",
+  "leaked": "0/1",
+  "mean_s": 0.3
+ },
+ "extraction": {
+  "field_accuracy": 0.875,
+  "fields": "49/56",
+  "ai_answered": "0/5",
+  "failed_calls": 5,
+  "mean_s": 0.2,
+  "per_file": {
+   "quotation_balaji_hardware.png": "9/12",
+   "quotation_balaji_scanned.pdf": "9/12",
+   "quotation_maruti_traders.xlsx": "12/13",
+   "quotation_new_bharat.pdf": "7/7",
+   "quotation_shree_plastics.pdf": "12/12"
+  }
+ },
+ "hsn": {
+  "items": 43,
+  "accuracy": 0.512,
+  "model_answered": "1/43",
+  "text_only_baseline": 0.488,
+  "mean_s": 0.8
+ },
+ "done": true
+}

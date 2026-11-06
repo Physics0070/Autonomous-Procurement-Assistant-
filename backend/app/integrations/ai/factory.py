@@ -30,6 +30,8 @@ def build_provider(name: Optional[str] = None, *, model: Optional[str] = None) -
             model=model or getattr(settings, f"{prefix}_MODEL"),
             key_setting=f"{prefix}_API_KEY",
         )
+        # Measured: Gemini's OpenAI-compatible endpoint rejects tool-calling requests, so it is text-only.
+        provider.supports_tools = name != "gemini"
     elif name == "openrouter":
         provider = OpenAICompatibleProvider(
             name="openrouter",

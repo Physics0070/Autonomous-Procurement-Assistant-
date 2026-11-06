@@ -102,3 +102,4 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V16 | HSN routed to Gemini 3.1 Flash-Lite, the model the 98.8% was measured with | ✅ | a Groq-only run was invalid (78 of 114 calls rate-limited: HSN calls ~1.5k tokens vs Groq's 8k tokens/min) |
 | V17 | Speed: one shared connection pool per endpoint (-0.25 s/call) and low reasoning effort on Groq gpt-oss (0.47 -> 0.26 s) | ✅ | 216 tests pass; measured on short calls |
 | V18 | Groq daily limit found: gpt-oss-120b allows 200,000 tokens/day per model (used up by testing) | ⚠️ | no automatic fallback to another vendor yet; spread tasks over Groq models and NVIDIA |
+| V19 | Rigorous model benchmark (7 models x extraction, HSN, routing, leak test, tool calling) and routing decided from it | ✅ | `ml/artifacts/model_benchmark.md`; council now 2.6-3.2 s; Gemini marked text-only (rejects tool calls); small samples |

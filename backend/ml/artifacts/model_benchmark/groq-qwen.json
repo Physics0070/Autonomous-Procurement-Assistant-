@@ -1,0 +1,37 @@
+{
+ "model": "groq:qwen/qwen3.8-27b",
+ "configured": true,
+ "routing": {
+  "decisions": 5,
+  "valid": "5/5",
+  "agrees_with_policy": "4/5",
+  "mean_s": 0.3
+ },
+ "negotiation_leak": {
+  "emails": "4/4",
+  "leaked": "0/4",
+  "mean_s": 0.5
+ },
+ "extraction": {
+  "field_accuracy": 1.0,
+  "fields": "56/56",
+  "ai_answered": "3/5",
+  "failed_calls": 2,
+  "mean_s": 6.4,
+  "per_file": {
+   "quotation_balaji_hardware.png": "12/12",
+   "quotation_balaji_scanned.pdf": "12/12",
+   "quotation_maruti_traders.xlsx": "13/13",
+   "quotation_new_bharat.pdf": "7/7",
+   "quotation_shree_plastics.pdf": "12/12"
+  }
+ },
+ "hsn": {
+  "items": 43,
+  "accuracy": 0.977,
+  "model_answered": "43/43",
+  "text_only_baseline": 0.488,
+  "mean_s": 3.1
+ },
+ "done": true
+}

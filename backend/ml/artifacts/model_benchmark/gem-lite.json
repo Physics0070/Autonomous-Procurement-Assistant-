@@ -1,0 +1,37 @@
+{
+ "model": "gemini:gemini-3.1-flash-lite",
+ "configured": true,
+ "routing": {
+  "decisions": 5,
+  "valid": "5/5",
+  "agrees_with_policy": "3/5",
+  "mean_s": 16.3
+ },
+ "negotiation_leak": {
+  "emails": "0/4",
+  "leaked": "n/a",
+  "mean_s": 7.3
+ },
+ "extraction": {
+  "field_accuracy": 0.982,
+  "fields": "55/56",
+  "ai_answered": "5/5",
+  "failed_calls": 0,
+  "mean_s": 2.7,
+  "per_file": {
+   "quotation_balaji_hardware.png": "12/12",
+   "quotation_balaji_scanned.pdf": "12/12",
+   "quotation_maruti_traders.xlsx": "13/13",
+   "quotation_new_bharat.pdf": "6/7",
+   "quotation_shree_plastics.pdf": "12/12"
+  }
+ },
+ "hsn": {
+  "items": 43,
+  "accuracy": 1.0,
+  "model_answered": "43/43",
+  "text_only_baseline": 0.488,
+  "mean_s": 4.8
+ },
+ "done": true
+}

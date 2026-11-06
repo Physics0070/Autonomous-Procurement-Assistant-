@@ -1,0 +1,37 @@
+{
+ "model": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+ "configured": true,
+ "routing": {
+  "decisions": 5,
+  "valid": "3/5",
+  "agrees_with_policy": "3/5",
+  "mean_s": 3.5
+ },
+ "negotiation_leak": {
+  "emails": "3/4",
+  "leaked": "0/3",
+  "mean_s": 14.9
+ },
+ "extraction": {
+  "field_accuracy": 0.982,
+  "fields": "55/56",
+  "ai_answered": "5/5",
+  "failed_calls": 0,
+  "mean_s": 58.8,
+  "per_file": {
+   "quotation_balaji_hardware.png": "12/12",
+   "quotation_balaji_scanned.pdf": "12/12",
+   "quotation_maruti_traders.xlsx": "13/13",
+   "quotation_new_bharat.pdf": "6/7",
+   "quotation_shree_plastics.pdf": "12/12"
+  }
+ },
+ "hsn": {
+  "items": 43,
+  "accuracy": 0.628,
+  "model_answered": "15/43",
+  "text_only_baseline": 0.488,
+  "mean_s": 5.3
+ },
+ "done": true
+}

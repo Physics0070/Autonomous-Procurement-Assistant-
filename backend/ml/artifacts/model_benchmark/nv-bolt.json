@@ -1,0 +1,37 @@
+{
+ "model": "nvidia:nvidia/nemotron-3.5-bolt-e4b",
+ "configured": true,
+ "routing": {
+  "decisions": 5,
+  "valid": "5/5",
+  "agrees_with_policy": "3/5",
+  "mean_s": 0.7
+ },
+ "negotiation_leak": {
+  "emails": "4/4",
+  "leaked": "0/4",
+  "mean_s": 1.4
+ },
+ "extraction": {
+  "field_accuracy": 0.964,
+  "fields": "54/56",
+  "ai_answered": "5/5",
+  "failed_calls": 0,
+  "mean_s": 8.2,
+  "per_file": {
+   "quotation_balaji_hardware.png": "11/12",
+   "quotation_balaji_scanned.pdf": "11/12",
+   "quotation_maruti_traders.xlsx": "13/13",
+   "quotation_new_bharat.pdf": "7/7",
+   "quotation_shree_plastics.pdf": "12/12"
+  }
+ },
+ "hsn": {
+  "items": 43,
+  "accuracy": 0.86,
+  "model_answered": "43/43",
+  "text_only_baseline": 0.488,
+  "mean_s": 1.1
+ },
+ "done": true
+}

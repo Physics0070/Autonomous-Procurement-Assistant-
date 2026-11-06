@@ -366,9 +366,9 @@ Members can come from any vendor, each with its own key. The verified line-up us
 (`GEMINI_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY`):
 
 ```
-LLM_TASK_MODELS=extraction=nvidia:nvidia/nemotron-3.5-bolt-e4b,supervisor=groq:openai/gpt-oss-120b,negotiation=groq:openai/gpt-oss-120b,assistant=groq:openai/gpt-oss-120b,hsn=gemini:gemini-3.1-flash-lite,recommendation=council,critic=council
-COUNCIL_MODELS=groq:qwen/qwen3.8-27b,nvidia:nvidia/nemotron-3-ultra-550b-a55b,gemini:gemini-3.1-flash-lite
-COUNCIL_MONITOR_MODEL=groq:openai/gpt-oss-120b
+LLM_TASK_MODELS=extraction=gemini:gemini-3.1-flash-lite,supervisor=groq:openai/gpt-oss-20b,negotiation=groq:openai/gpt-oss-20b,assistant=nvidia:nvidia/nemotron-3.5-bolt-e4b,hsn=gemini:gemini-3.1-flash-lite,recommendation=council,critic=council
+COUNCIL_MODELS=groq:openai/gpt-oss-20b,nvidia:nvidia/nemotron-3.5-bolt-e4b,gemini:gemini-3.1-flash-lite
+COUNCIL_MONITOR_MODEL=groq:qwen/qwen3.8-27b
 ```
 
 A live run with this line-up succeeded: Groq gpt-oss-120b, NVIDIA Nemotron Ultra (via
