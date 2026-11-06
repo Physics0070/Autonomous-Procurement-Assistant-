@@ -100,3 +100,5 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V14 | Extraction routed to NVIDIA Nemotron 3.5 Bolt to keep Groq's 8k tokens/min free | ✅ | 5/5 sample quotations good at 10.3 s average (Nemotron Ultra 5/5 at ~38 s; Groq Qwen 3/5). Small sample: 5 files |
 | V15 | Council on three vendors (Groq Qwen, NVIDIA Nemotron Ultra, Gemini Flash-Lite), Groq monitor | ✅ | live run 17 s, no member dropped |
 | V16 | HSN routed to Gemini 3.1 Flash-Lite, the model the 98.8% was measured with | ✅ | a Groq-only run was invalid (78 of 114 calls rate-limited: HSN calls ~1.5k tokens vs Groq's 8k tokens/min) |
+| V17 | Speed: one shared connection pool per endpoint (-0.25 s/call) and low reasoning effort on Groq gpt-oss (0.47 -> 0.26 s) | ✅ | 216 tests pass; measured on short calls |
+| V18 | Groq daily limit found: gpt-oss-120b allows 200,000 tokens/day per model (used up by testing) | ⚠️ | no automatic fallback to another vendor yet; spread tasks over Groq models and NVIDIA |

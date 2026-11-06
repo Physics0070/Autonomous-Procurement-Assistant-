@@ -64,6 +64,7 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
     GROQ_MODEL: str = "openai/gpt-oss-120b"
+    GROQ_REASONING_EFFORT: str = "low"  # low | medium | high for gpt-oss models; "" leaves Groq's default
 
     # NVIDIA Nemotron on NVIDIA's own API (nvapi_ keys) - https://build.nvidia.com
     NVIDIA_API_KEY: str = ""

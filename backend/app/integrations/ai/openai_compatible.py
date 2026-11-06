@@ -78,9 +78,15 @@ class OpenAICompatibleProvider(AIProvider):
     async def _client(self) -> AsyncIterator[httpx.AsyncClient]:
         if self._http is not None:
             yield self._http
-        else:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                yield client
+            return
+        # One pool per (event loop, endpoint): a fresh client per call pays a TLS handshake each
+        # time (~0.25 s of a ~0.5 s call). Auth is sent per request, so vendors can share a host.
+        # ponytail: pools are never closed or evicted; fine for a handful of endpoints per process.
+        key = (id(asyncio.get_running_loop()), self.base_url)
+        client = _POOLS.get(key)
+        if client is None or client.is_closed:
+            client = _POOLS[key] = httpx.AsyncClient(timeout=self.timeout)
+        yield client
 
     def _headers(self) -> dict[str, str]:
         headers = {"Content-Type": "application/json", **self.extra_headers}
@@ -144,6 +150,9 @@ class OpenAICompatibleProvider(AIProvider):
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
+        if self.name == "groq" and self.model.startswith("openai/gpt-oss") and settings.GROQ_REASONING_EFFORT:
+            # Halves latency on short calls (measured 0.47 s -> 0.26 s); "medium" is Groq's default.
+            payload["reasoning_effort"] = settings.GROQ_REASONING_EFFORT
         if self.fallback_models:
             # OpenRouter routes to the next model when one is rate-limited or down.
             payload["models"] = [self.model, *self.fallback_models]
@@ -234,6 +243,7 @@ class OpenAICompatibleProvider(AIProvider):
         )
 
 
+_POOLS: dict[tuple[int, str], httpx.AsyncClient] = {}
 MAX_RETRY_AFTER_SECONDS = 30.0
 RETRY_BACKOFF_SECONDS = 2.0
 

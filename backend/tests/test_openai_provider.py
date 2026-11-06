@@ -226,3 +226,25 @@ async def test_rate_limited_extraction_falls_back_to_the_heuristic_parser():
     assert result.provider == "heuristic"
     assert result.commercials.total_amount == 40777.20
     assert "rate limit" in error
+
+
+async def test_calls_without_an_injected_client_share_one_connection_pool():
+    """A fresh client per call pays a TLS handshake each time (~0.25 s); one pool per endpoint does not."""
+    a = OpenAICompatibleProvider(name="a", base_url="https://x.example/v1", api_key="k", model="m")
+    b = OpenAICompatibleProvider(name="b", base_url="https://x.example/v1", api_key="k2", model="m2")
+    async with a._client() as first, b._client() as second, a._client() as third:
+        assert first is second is third
+
+
+async def test_groq_gpt_oss_models_ask_for_low_reasoning_effort(monkeypatch):
+    monkeypatch.setattr(settings, "GROQ_REASONING_EFFORT", "low")
+    seen = []
+
+    def handler(request):
+        seen.append(json.loads(request.content)); return httpx.Response(200, json=_completion("OK"))
+
+    for name, model, expected in [("groq", "openai/gpt-oss-120b", "low"), ("groq", "qwen/qwen3.8-27b", None), ("gemini", "openai/gpt-oss-120b", None)]:
+        seen.clear()
+        provider, _ = _provider(handler, name=name, model=model, fallback_models=[])
+        await provider.generate("hi")
+        assert seen[0].get("reasoning_effort") == expected, (name, model)
