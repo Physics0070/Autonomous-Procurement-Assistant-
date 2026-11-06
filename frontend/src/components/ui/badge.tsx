@@ -4,16 +4,16 @@ import { cn } from "@/lib/utils"
 import type { ProcessingStatus, ProcurementStatus, MatchConfidenceLevel } from "@/types"
 
 const badgeVariants = cva(
-  "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors whitespace-nowrap",
+  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium whitespace-nowrap ring-1 ring-inset ring-current/15 backdrop-blur transition-colors",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary/10 text-primary",
+        default: "border-transparent bg-primary/12 text-primary before:size-1.5 before:animate-pulse-ring before:rounded-full before:bg-current before:content-['']",
         secondary: "border-transparent bg-secondary text-secondary-foreground",
         outline: "text-foreground",
-        success: "border-transparent bg-success/12 text-success",
-        warning: "border-transparent bg-warning/15 text-warning",
-        destructive: "border-transparent bg-destructive/12 text-destructive",
+        success: "border-transparent bg-success/15 text-success before:size-1.5 before:rounded-full before:bg-current before:shadow-[0_0_8px_currentColor] before:content-['']",
+        warning: "border-transparent bg-warning/15 text-warning before:size-1.5 before:rounded-full before:bg-current before:shadow-[0_0_8px_currentColor] before:content-['']",
+        destructive: "border-transparent bg-destructive/15 text-destructive before:size-1.5 before:rounded-full before:bg-current before:shadow-[0_0_8px_currentColor] before:content-['']",
         muted: "border-transparent bg-muted text-muted-foreground",
       },
     },

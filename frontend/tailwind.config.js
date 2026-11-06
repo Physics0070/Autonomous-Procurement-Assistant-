@@ -5,7 +5,13 @@ export default {
   theme: {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
+      fontFamily: {
+        sans: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Bricolage Grotesque", "Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
       colors: {
+        info: { DEFAULT: "hsl(var(--info))", foreground: "hsl(var(--info-foreground))" },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -30,12 +36,19 @@ export default {
         "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
         "fade-in": { from: { opacity: "0", transform: "translateY(4px)" }, to: { opacity: "1", transform: "none" } },
         shimmer: { "100%": { transform: "translateX(100%)" } },
+        rise: { from: { opacity: "0", transform: "translateY(14px) scale(0.985)" }, to: { opacity: "1", transform: "none" } },
+        drift: { "0%,100%": { transform: "translate3d(0,0,0) scale(1)" }, "50%": { transform: "translate3d(4%,-6%,0) scale(1.12)" } },
+        "pulse-ring": { "0%": { boxShadow: "0 0 0 0 hsl(var(--ring-pulse) / .55)" }, "100%": { boxShadow: "0 0 0 10px hsl(var(--ring-pulse) / 0)" } },
+        sweep: { from: { transform: "translateX(-120%) skewX(-18deg)" }, to: { transform: "translateX(260%) skewX(-18deg)" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.25s ease-out",
         shimmer: "shimmer 1.6s infinite",
+        rise: "rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both",
+        drift: "drift 22s ease-in-out infinite",
+        "pulse-ring": "pulse-ring 1.8s ease-out infinite",
       },
     },
   },

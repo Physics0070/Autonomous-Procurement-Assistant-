@@ -23,6 +23,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { StatusBadge } from "@/components/ui/badge"
 import { EmptyState, ErrorState, LoadingState } from "@/components/ui/feedback"
 import { useDashboard } from "@/hooks/queries"
+import { useCountUp } from "@/hooks/useCountUp"
+import { SupplyNetwork } from "@/components/SupplyNetwork"
 import { formatCompactCurrency, formatCurrency, relativeTime } from "@/lib/utils"
 
 const STATUS_COLORS: Record<string, string> = {
@@ -47,6 +49,11 @@ const STATUS_LABELS: Record<string, string> = {
   NORMALIZING: "Normalizing",
 }
 
+function CountUp({ value }: { value: number }) {
+  const shown = useCountUp(value)
+  return <>{Math.round(shown).toLocaleString("en-IN")}</>
+}
+
 function StatCard({
   label,
   value,
@@ -63,27 +70,29 @@ function StatCard({
   to?: string
 }) {
   const toneClass = {
-    default: "bg-primary/10 text-primary",
-    warning: "bg-warning/12 text-warning",
-    success: "bg-success/12 text-success",
+    default: "from-primary/25 to-primary/5 text-primary shadow-[0_0_28px_-6px_hsl(var(--primary)/0.7)]",
+    warning: "from-warning/25 to-warning/5 text-warning shadow-[0_0_28px_-6px_hsl(var(--warning)/0.7)]",
+    success: "from-success/25 to-success/5 text-success shadow-[0_0_28px_-6px_hsl(var(--success)/0.7)]",
   }[tone]
 
   const body = (
-    <Card className="transition-shadow hover:shadow-md">
+    <Card className="lift h-full">
       <CardContent className="flex items-start justify-between gap-3 p-5">
-        <div className="min-w-0 space-y-1">
-          <p className="text-sm text-muted-foreground">{label}</p>
-          <p className="text-2xl font-semibold tabular tracking-tight">{value}</p>
+        <div className="min-w-0 space-y-1.5">
+          <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
+          <p className="font-display text-4xl font-bold tabular-nums tracking-tight">
+            {typeof value === "number" ? <CountUp value={value} /> : value}
+          </p>
           {sub && <p className="truncate text-xs text-muted-foreground">{sub}</p>}
         </div>
-        <div className={`rounded-lg p-2.5 ${toneClass}`}>
-          <Icon className="h-4 w-4" />
+        <div className={`rounded-2xl bg-gradient-to-br p-3 ${toneClass}`}>
+          <Icon className="h-5 w-5" />
         </div>
       </CardContent>
     </Card>
   )
 
-  return to ? <Link to={to}>{body}</Link> : body
+  return to ? <Link to={to} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{body}</Link> : body
 }
 
 export function DashboardPage() {
@@ -104,11 +113,40 @@ export function DashboardPage() {
   const hasTrend = data.trend.some((point) => point.quotations > 0)
 
   return (
-    <div className="space-y-6">
+    <div className="stagger space-y-6">
       <PageHeader
         title="Dashboard"
         description="Live figures from your organization's procurement data."
       />
+
+      <Card className="relative overflow-hidden">
+        <SupplyNetwork className="absolute inset-0 h-full w-full" hubPulse={Math.max(1, data.quotations.in_progress)} />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-card via-card/75 to-card/30 lg:via-card/55 lg:to-transparent" />
+        <div className="relative flex min-h-[19rem] flex-col justify-between gap-8 p-7 sm:p-9 lg:max-w-[58%]">
+          <div className="space-y-4">
+            <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+              <span className="h-px w-8 bg-primary" /> Live supply network
+            </p>
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              Every quotation,<br />
+              <span className="text-gradient">read, ranked, ready.</span>
+            </h2>
+            <p className="max-w-md text-[15px] text-muted-foreground">
+              Suppliers feed the hub; agents extract, compare and draft. You only approve.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div>
+              <p className="font-display text-4xl font-bold tabular-nums">{formatCompactCurrency(data.value.quoted_total, data.value.currency)}</p>
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">quoted so far</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-bold tabular-nums"><CountUp value={data.quotations.processed} /></p>
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">quotations processed</p>
+            </div>
+          </div>
+        </div>
+      </Card>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard

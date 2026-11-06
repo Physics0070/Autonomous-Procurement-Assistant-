@@ -9,18 +9,30 @@ export function Spinner({ className }: { className?: string }) {
 }
 
 export function LoadingState({ label = "Loading…" }: { label?: string }) {
+  // A skeleton of the page that is about to appear, so waiting reads as progress, not a hang.
   return (
-    <div className="flex items-center justify-center gap-2 py-16 text-sm text-muted-foreground">
-      <Spinner />
-      {label}
+    <div className="space-y-6 py-4" role="status" aria-live="polite" aria-label={label}>
+      <div className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        <Spinner className="h-3.5 w-3.5 text-primary" />
+        {label}
+      </div>
+      <div className="stagger space-y-4">
+        <Skeleton className="h-40 w-full rounded-2xl" />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {[0, 1, 2, 3].map((i) => (
+            <Skeleton key={i} className="h-28 rounded-2xl" />
+          ))}
+        </div>
+        <Skeleton className="h-64 w-full rounded-2xl" />
+      </div>
     </div>
   )
 }
 
 export function Skeleton({ className }: { className?: string }) {
   return (
-    <div className={cn("relative overflow-hidden rounded-md bg-muted", className)}>
-      <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-black/5 to-transparent" />
+    <div className={cn("relative overflow-hidden rounded-md bg-muted/60 ring-1 ring-inset ring-border/50", className)}>
+      <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
     </div>
   )
 }
