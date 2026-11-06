@@ -3,68 +3,68 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   One calm, high-contrast system: white surfaces, a single blue for actions, and colours that always
+   Graphite surfaces, one amber for actions (dark by default, light optional), and colours that always
    mean the same thing (green = done, orange = needs a look, red = problem). Every component reads
    these tokens, so the whole app, charts included, follows them.
    --------------------------------------------------------------------------- */
 @layer base {
   :root {
-    --background: 214 32% 97%;
-    --foreground: 222 47% 11%;
+    --background: 40 20% 96%;
+    --foreground: 228 30% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --primary: 221 83% 46%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 214 28% 94%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 214 28% 94%;
-    --muted-foreground: 217 19% 35%;
-    --accent: 214 40% 93%;
-    --accent-foreground: 222 47% 11%;
+    --card-foreground: 228 30% 10%;
+    --primary: 36 96% 46%;
+    --primary-foreground: 30 100% 7%;
+    --secondary: 40 14% 92%;
+    --secondary-foreground: 228 30% 10%;
+    --muted: 40 14% 92%;
+    --muted-foreground: 224 10% 36%;
+    --accent: 40 20% 90%;
+    --accent-foreground: 228 30% 10%;
     --destructive: 0 72% 46%;
     --destructive-foreground: 0 0% 100%;
-    --success: 152 62% 30%;
+    --success: 152 62% 28%;
     --success-foreground: 0 0% 100%;
-    --warning: 28 92% 38%;
+    --warning: 24 92% 40%;
     --warning-foreground: 0 0% 100%;
-    --info: 199 89% 33%;
+    --info: 192 90% 32%;
     --info-foreground: 0 0% 100%;
-    --border: 214 24% 87%;
-    --input: 214 20% 78%;
-    --ring: 221 83% 46%;
+    --border: 40 12% 85%;
+    --input: 40 10% 76%;
+    --ring: 36 96% 46%;
     --radius: 0.6rem;
   }
 
   .dark {
-    --background: 222 28% 9%;
-    --foreground: 210 30% 96%;
-    --card: 222 24% 12%;
-    --card-foreground: 210 30% 96%;
-    --primary: 217 91% 64%;
-    --primary-foreground: 222 47% 8%;
-    --secondary: 222 20% 17%;
-    --secondary-foreground: 210 30% 96%;
-    --muted: 222 20% 16%;
-    --muted-foreground: 215 20% 70%;
-    --accent: 222 22% 20%;
-    --accent-foreground: 210 30% 96%;
-    --destructive: 0 80% 66%;
-    --destructive-foreground: 222 47% 8%;
-    --success: 152 60% 50%;
-    --success-foreground: 222 47% 8%;
-    --warning: 34 95% 58%;
-    --warning-foreground: 222 47% 8%;
-    --info: 199 90% 60%;
-    --info-foreground: 222 47% 8%;
-    --border: 222 18% 22%;
-    --input: 222 18% 30%;
-    --ring: 217 91% 64%;
+    --background: 228 28% 7%;
+    --foreground: 40 20% 95%;
+    --card: 228 22% 11%;
+    --card-foreground: 40 20% 95%;
+    --primary: 40 100% 58%;
+    --primary-foreground: 30 100% 7%;
+    --secondary: 228 18% 16%;
+    --secondary-foreground: 40 20% 95%;
+    --muted: 228 18% 15%;
+    --muted-foreground: 222 12% 68%;
+    --accent: 228 20% 19%;
+    --accent-foreground: 40 20% 95%;
+    --destructive: 0 84% 66%;
+    --destructive-foreground: 228 28% 7%;
+    --success: 152 60% 52%;
+    --success-foreground: 228 28% 7%;
+    --warning: 28 96% 62%;
+    --warning-foreground: 228 28% 7%;
+    --info: 190 90% 58%;
+    --info-foreground: 228 28% 7%;
+    --border: 228 16% 21%;
+    --input: 228 16% 28%;
+    --ring: 40 100% 58%;
   }
 
   * { @apply border-border; }
 
-  html { color-scheme: light; }
-  html.dark { color-scheme: dark; }
+  html { color-scheme: dark; }
+  html:not(.dark) { color-scheme: light; }
 
   body {
     @apply bg-background font-sans text-[15px] leading-relaxed text-foreground antialiased;

@@ -217,9 +217,16 @@ export function ComparisonPage() {
                     </ul>
                   )}
                 </div>
-                <Button asChild variant="outline">
-                  <Link to={`/documents/${top.quotation_id}`}>View quotation</Link>
-                </Button>
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="outline" disabled={draftNegotiation.isPending}
+                          onClick={() => act(draftNegotiation.mutateAsync({ requestId: requestId ?? "", quotationId: top.quotation_id }), "/communications")}>
+                    Negotiate
+                  </Button>
+                  <Button disabled={award.isPending}
+                          onClick={() => act(award.mutateAsync({ requestId: requestId ?? "", quotationId: top.quotation_id }), "/purchase-orders")}>
+                    Award
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           )}

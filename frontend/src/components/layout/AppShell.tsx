@@ -13,7 +13,6 @@ import {
   Mail,
   Menu,
   Moon,
-  Plug,
   Settings,
   Sun,
   X,
@@ -36,16 +35,15 @@ const MAIN_NAV = [
 const MORE_NAV = [
   { to: "/analytics", label: "Reports", icon: LineChart },
   { to: "/assistant", label: "Ask AI", icon: Bot },
-  { to: "/integrations", label: "Connections", icon: Plug },
   { to: "/settings", label: "Settings", icon: Settings },
 ]
 
 function useTheme() {
   const [theme, setTheme] = React.useState<"light" | "dark">(() => {
     try {
-      return localStorage.getItem("apa.theme") === "dark" ? "dark" : "light"
+      return localStorage.getItem("apa.theme") === "light" ? "light" : "dark"
     } catch {
-      return "light"
+      return "dark"
     }
   })
 
