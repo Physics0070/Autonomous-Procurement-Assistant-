@@ -104,8 +104,15 @@ async def test_glued_ocr_digits_are_repaired_by_the_second_reading(db, org_a, st
 
     provider = ScriptedProvider(responses=[reading(None, None), reading(100, 292)])
     monkeypatch.setattr(ai_extraction, "get_ai_provider", lambda task=None: provider)
+    glued = b"""SHREE STEEL TRADERS
+GST No: 27AABCS1429B1ZQ
+Quotation No: Q-101
+PVC PIPE-2INCH 100292 29,200.00
+Grand Total 29,200.00
+Delivery: 7 days
+"""
 
-    result, _ = await run(db, org_a, storage, QUOTE)
+    result, _ = await run(db, org_a, storage, glued)
 
     assert len(provider.calls) == 2 and "merged by OCR" in provider.calls[1]["prompt"]
     item = result["ai_extraction"]["items"][0]

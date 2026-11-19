@@ -226,6 +226,8 @@ writes prose about it. If it is unavailable, a clearly-labelled computed summary
 instead — never a fabricated one. The same rule bounds the agents: a supervisor decides
 *what happens next*, never what a number is.
 
+**A figure must be in the document.** After extraction, every price, quantity, total and identifier the model reported is looked up in the text it read (`services/procurement/grounding.py`). Invented amounts are errors, which triggers the one self-correction; totals that are just quantity x price are not invention. Tested by fault injection on the sample quotations.
+
 **Missing data stays missing.** The extraction prompt states the no-invention rule,
 Pydantic enforces it, and the heuristic fallback leaves a field null when a line's
 columns are ambiguous. In testing, an OCR-merged `100292` correctly produced *no*
@@ -319,7 +321,7 @@ Tesseract later needs no code change.
 | Approval workflow | Communications page | draft → approved → sent; the app never sends email — export `.eml` or copy |
 | Purchase orders | Purchase Orders page · `services/automation/purchase_orders.py` | Award from comparison; `PO-<year>-<0001>`; CGST+SGST / IGST / GST from GSTIN state codes; PDF; **Save to Drive**; delivery recording; a supplier-committed delivery date sets the expected date |
 | Agents (LangGraph) | `services/agents/` | Supervisor routes 5 specialists, they hand back with `Command`; runs pause for approval and resume; every run recorded as a timeline |
-| Procurement Assistant | Assistant page | 9 organization-bound tools; drafts only; max 6 tool rounds |
+| Procurement Assistant | Assistant page | 10 organization-bound tools, incl. `search_records` (TF-IDF search of your own quotations and e-mails; every hit names its record); drafts only; max 6 tool rounds |
 | ML late-delivery risk | Suppliers page · `backend/ml/` | Random forest on USAID SCMS; shown beside the rule-based score |
 | Price anomalies | Quotation detail | Isolation Forest (+ out-of-range fence) from 20 past prices; Z-score below that |
 | Spend and forecasts | Analytics page | Spend by supplier/month/item, on-time rate, savings; 3-month forecasts after 12 months of history |
@@ -338,7 +340,7 @@ Tesseract later needs no code change.
 | **Critic** | whether a draft is fit to send | — |
 | **Purchase Order** | *nothing* — tax and totals stay deterministic | — |
 | **Monitor** | when work should start without being asked | starts sourcing on new quotations; chases overdue deliveries |
-| **Assistant** | how to answer your question | 9 organisation-bound read/draft tools |
+| **Assistant** | how to answer your question | 10 organisation-bound read/search/draft tools |
 
 Three safety rules hold whatever the model decides: the supervisor may only pick an action the
 policy allows (so it cannot order before comparing, or skip an approval), every run has a step

@@ -56,7 +56,8 @@ def _close_enough(a: float, b: float) -> bool:
     return diff <= ABS_TOLERANCE or diff <= REL_TOLERANCE * max(abs(a), abs(b), 1.0)
 
 
-def validate_extraction(extraction: AIExtractionResult) -> ValidationReport:
+def validate_extraction(extraction: AIExtractionResult, source_text: Optional[str] = None) -> ValidationReport:
+    """``source_text`` (the text the model read) turns on the grounding check: figures the document does not contain are flagged."""
     issues: list[ValidationIssue] = []
 
     def add(
@@ -274,6 +275,11 @@ def validate_extraction(extraction: AIExtractionResult) -> ValidationReport:
         add("commercials.payment_days", "implausible_payment_terms",
             "Payment period is outside the plausible 0-365 day range.",
             observed=commercials.payment_days)
+
+    if source_text:
+        from app.services.procurement.grounding import grounding_issues
+
+        issues.extend(grounding_issues(extraction, source_text))
 
     errors = sum(1 for i in issues if i.severity == Severity.ERROR)
     warnings = sum(1 for i in issues if i.severity == Severity.WARNING)

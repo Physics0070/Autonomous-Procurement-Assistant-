@@ -15,6 +15,7 @@ from app.repositories.quotations import ComparisonRepository, QuotationRepositor
 from app.repositories.suppliers import SupplierRepository
 from app.services.agents.loop import call_method, run_tool_loop, tool_schema
 from app.services.analytics.spend import spend_summary
+from app.services.agents.retrieval import build_chunks, search
 from app.services.automation import communications as comms
 
 MAX_TOOL_ROUNDS = settings.ASSISTANT_MAX_TOOL_ROUNDS
@@ -37,6 +38,9 @@ TOOLS = [
             procurement_request_id=("string", "Request id")),
     tool_schema("get_supplier", "A supplier by id or name, with reliability.", **{"supplier_id?": ("string", "Supplier id"), "name?": ("string", "Supplier name")}),
     tool_schema("spend_summary", "Spend by supplier, month and item from issued/delivered purchase orders, plus savings and on-time rates."),
+    tool_schema("search_records", "Search the text of the organization's own quotations and e-mails. Use it for questions "
+            "the other tools cannot answer, such as who quoted a particular item or what was said to a supplier. "
+            "Every hit names its record; answer only from the hits.", query=("string", "What to look for")),
     tool_schema("draft_rfq", "Create RFQ email DRAFTS (not sent) for a request to chosen suppliers.",
             procurement_request_id=("string", "Request id"), supplier_ids=("array", "Supplier ids")),
     tool_schema("draft_negotiation", "Create a negotiation email DRAFT (not sent) to the supplier of one compared quotation.",
@@ -95,6 +99,12 @@ class AssistantTools:
 
     async def spend_summary(self):
         return spend_summary(await self.pos.find_all(self.org_id), await self.quotations.list_filtered(self.org_id, limit=500))
+
+    async def search_records(self, query: str):
+        chunks = build_chunks(await self.quotations.list_filtered(self.org_id, limit=500),
+                              await self.communications.list(self.org_id, limit=200))
+        hits = search(chunks, query)
+        return {"results": hits} if hits else {"results": [], "note": "Nothing in the records matches that."}
 
     async def draft_rfq(self, procurement_request_id: str, supplier_ids: list[str]):
         request = await self.requests.get_or_404(self.org_id, procurement_request_id)

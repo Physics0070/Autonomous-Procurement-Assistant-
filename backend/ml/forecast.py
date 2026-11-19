@@ -52,7 +52,21 @@ def _seasonal_naive(history: np.ndarray, steps: int) -> np.ndarray:
     return np.clip(np.asarray(extended[len(history):], dtype=float), 0.0, None)
 
 
-_METHODS = {"linear_trend": _linear_trend, "seasonal_naive": _seasonal_naive}
+def _moving_average(history: np.ndarray, steps: int) -> np.ndarray:
+    # Lumpy monthly totals are better summarised by a recent average than by one past month.
+    return np.full(steps, float(np.mean(history[-3:])))
+
+
+def _smoothed_level(history: np.ndarray, steps: int, alpha: float = 0.3) -> np.ndarray:
+    level = history[0]
+    for value in history[1:]:
+        level = alpha * value + (1 - alpha) * level
+    return np.full(steps, float(level))
+
+
+_METHODS = {"linear_trend": _linear_trend, "seasonal_naive": _seasonal_naive,
+            "moving_average": _moving_average, "smoothed_level": _smoothed_level}
+ORIGIN_STEP = 3  # months between the backtest origins
 
 
 def forecast_demand(series: pd.Series, horizon: int = 3) -> dict:
@@ -64,11 +78,17 @@ def forecast_demand(series: pd.Series, horizon: int = 3) -> dict:
 
     values = series.to_numpy(dtype=float)
     holdout = min(MAX_HOLDOUT, months // 4)
-    train, actual = values[:-holdout], values[-holdout:]
-    methods = ["linear_trend"]
+    methods = ["linear_trend", "moving_average", "smoothed_level"]
     if months >= SEASON + holdout:
         methods.append("seasonal_naive")
-    backtest = {name: smape(actual, _METHODS[name](train, holdout)) for name in methods}
+    # A single holdout is a coin toss on lumpy data, so each method is scored from several origins.
+    origins = [months - holdout - k * ORIGIN_STEP for k in range(3)]
+    origins = [o for o in origins if o >= MIN_MONTHS // 2 + 1] or [months - holdout]
+    backtest = {
+        name: float(np.mean([smape(values[o:o + holdout], _METHODS[name](values[:o], holdout))
+                             for o in origins if o + holdout <= months]))
+        for name in methods
+    }
     method = min(backtest, key=lambda name: (backtest[name], name != "seasonal_naive"))
 
     predictions = _METHODS[method](values, horizon)

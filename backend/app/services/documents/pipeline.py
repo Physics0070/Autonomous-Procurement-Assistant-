@@ -176,7 +176,8 @@ class ProcessingPipeline:
         extraction, ai_error = await extract_structured(processed)
 
         # Stage 3: validation (flags only; never edits the extraction)
-        validation = validate_extraction(extraction)
+        source_text = processed.text_for_ai(max_chars=10_000_000)
+        validation = validate_extraction(extraction, source_text)
 
         # The agent gets one chance to correct itself: re-read the document with the
         # validator's complaints, and keep the attempt that validates better.
@@ -186,7 +187,7 @@ class ProcessingPipeline:
                 f"- {issue.message}" for issue in validation.issues if issue.severity == "error")
             second, second_error = await extract_structured(processed, feedback=complaints)
             if not second_error:
-                second_validation = validate_extraction(second)
+                second_validation = validate_extraction(second, source_text)
                 retried = True
                 if second_validation.error_count < validation.error_count:
                     extraction, validation = second, second_validation

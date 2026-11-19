@@ -1,6 +1,6 @@
 # Analytics evaluation (USAID SCMS)
 
-Generated 2026-09-18T03:03:01+00:00 by `python -m ml.evaluate_analytics` from the verified SCMS file
+Generated 2026-11-19T18:05:00+00:00 by `python -m ml.evaluate_analytics` from the verified SCMS file
 (see `ml/data/README.md`).
 
 ## Price anomaly detection
@@ -94,8 +94,8 @@ refitted on the full series to forecast the next 3 months.
 
 | Product group | Shipments | Series | Holdout months | sMAPE linear_trend | sMAPE seasonal_naive | Chosen | Forecast |
 |---|---:|---|---:|---:|---:|---|---|
-| ARV | 8,550 | 2006-08 to 2015-12 (113 months, 1 with no shipments) | 6 | 147.4 | 137.7 | seasonal_naive | 2016-01: 2,464,205, 2016-02: 4,180,775, 2016-03: 2,940,312 |
-| HRDT | 1,728 | 2006-05 to 2015-08 (112 months, 0 with no shipments) | 6 | 66.9 | 83.9 | linear_trend | 2015-09: 50,323, 2015-10: 50,566, 2015-11: 50,809 |
+| ARV | 8,550 | 2006-08 to 2015-12 (113 months, 1 with no shipments) | 6 | 77.0 | 73.4 | seasonal_naive | 2016-01: 2,464,205, 2016-02: 4,180,775, 2016-03: 2,940,312 |
+| HRDT | 1,728 | 2006-05 to 2015-08 (112 months, 0 with no shipments) | 6 | 66.3 | 81.2 | smoothed_level | 2015-09: 35,699, 2015-10: 35,699, 2015-11: 35,699 |
 
 Limitations: a single holdout of a few months is a small test; monthly shipment quantities
 are lumpy (large one-off orders), which neither a trend line nor last year's value can

@@ -30,3 +30,15 @@ def test_seasonal_series_prefers_seasonal_naive():
 def test_smape_handles_zeros():
     assert smape([0, 0], [0, 0]) == 0.0
     assert smape([10], [0]) == 200.0
+
+
+def test_a_noisy_flat_series_is_forecast_by_a_recent_level_not_a_trend_line():
+    import numpy as np
+
+    rng = np.random.default_rng(0)
+    index = pd.date_range("2022-01-01", periods=30, freq="MS")
+    values = 100 + rng.normal(0, 40, size=30).clip(-90)
+    result = forecast_demand(pd.Series(values, index=index), horizon=3)
+    assert result["method"] in {"moving_average", "smoothed_level", "linear_trend"}
+    assert set(result["backtest_smape"]) >= {"moving_average", "smoothed_level", "linear_trend"}
+    assert all(p["quantity"] >= 0 for p in result["forecast"])
