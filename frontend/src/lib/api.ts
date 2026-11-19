@@ -173,4 +173,13 @@ export async function downloadFile(path: string, filename?: string): Promise<voi
   setTimeout(() => URL.revokeObjectURL(url), 60_000)
 }
 
+/** A protected file as a blob URL the browser can show inline. The caller revokes the URL when done. */
+export async function fetchBlobUrl(path: string): Promise<{ url: string; type: string }> {
+  const token = tokenStore.get()
+  const response = await fetch(`${BASE_URL}${path}`, { headers: token ? { Authorization: `Bearer ${token}` } : {} })
+  if (!response.ok) throw new ApiError(`Could not load the file (${response.status})`, response.status)
+  const blob = await response.blob()
+  return { url: URL.createObjectURL(blob), type: blob.type }
+}
+
 export const fileUrl = (quotationId: string) => `/quotations/${quotationId}/file`

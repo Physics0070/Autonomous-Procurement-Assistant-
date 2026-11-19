@@ -92,6 +92,22 @@ class AIProvider(abc.ABC):
             model=self.model,
         )
 
+    async def read_image(
+        self,
+        prompt: str,
+        images: list[bytes],
+        *,
+        system: Optional[str] = None,
+        json_mode: bool = True,
+        max_output_tokens: int = 4096,
+    ) -> AIResponse:
+        """Answer a question about one or more page images. Providers that cannot see images say so."""
+        return AIResponse(ok=False, error=f"The {self.name} provider cannot read images.", provider=self.name)
+
+    async def embed(self, texts: list[str]) -> Optional[list[list[float]]]:
+        """One vector per text, or None when this provider has no embedding model."""
+        return None
+
 
 class UnconfiguredProvider(AIProvider):
     """Stand-in used when no AI provider is configured.

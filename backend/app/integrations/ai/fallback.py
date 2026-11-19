@@ -99,3 +99,25 @@ class FallbackProvider(AIProvider):
             skipped.append(f"{provider.name}: {result.error}")
         return ChatResult(ok=False, error="; ".join(skipped) or "no vendor that can call tools is configured",
                           provider=self.name, model=self.model, meta={"fallback": skipped})
+
+    async def read_image(self, prompt: str, images: list[bytes], *, system: Optional[str] = None,
+                         json_mode: bool = True, max_output_tokens: int = 4096) -> AIResponse:
+        skipped: list[str] = []
+        for provider in self._order([p for p in self.providers if p.is_configured()]):
+            result = await provider.read_image(prompt, images, system=system, json_mode=json_mode,
+                                               max_output_tokens=max_output_tokens)
+            if result.ok:
+                COOLING.pop(_key(provider), None)
+                return result
+            if "cannot read images" not in (result.error or ""):
+                self._failed(provider)
+            skipped.append(f"{provider.name}: {result.error}")
+        return AIResponse(ok=False, error="; ".join(skipped) or "no vendor is configured", provider=self.name, model=self.model)
+
+    async def embed(self, texts: list[str]) -> Optional[list[list[float]]]:
+        for provider in self._order([p for p in self.providers if p.is_configured()]):
+            vectors = await provider.embed(texts)
+            if vectors is not None:
+                return vectors
+        return None
+

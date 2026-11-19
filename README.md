@@ -228,6 +228,8 @@ instead — never a fabricated one. The same rule bounds the agents: a superviso
 
 **A figure must be in the document.** After extraction, every price, quantity, total and identifier the model reported is looked up in the text it read (`services/procurement/grounding.py`). Invented amounts are errors, which triggers the one self-correction; totals that are just quantity x price are not invention. Tested by fault injection on the sample quotations.
 
+**Two readers, not one.** Scanned files and photos are also read from the page image by a vision model and compared with the OCR reading (`services/documents/second_reader.py`). Where they disagree on a price, quantity or total, the cell is highlighted next to the original on the quotation page; neither reading is changed.
+
 **Missing data stays missing.** The extraction prompt states the no-invention rule,
 Pydantic enforces it, and the heuristic fallback leaves a field null when a line's
 columns are ambiguous. In testing, an OCR-merged `100292` correctly produced *no*
@@ -285,6 +287,7 @@ Backend (`backend/.env`, see `backend/.env.example`):
 | `AGENT_AUTOPILOT_MIN_QUOTATIONS` | `2` | Quotations needed before it starts |
 | `AGENT_WATCHDOG_INTERVAL_MINUTES` | `60` | Overdue-delivery check; `0` disables |
 | `EXTRACTION_SELF_CORRECTION` | `true` | Re-read a document once when validation finds errors |
+| `VISION_SECOND_READER` | `true` | Read scanned files and photos from the page image too; amounts the two readers disagree on are flagged for a person |
 | `ML_MIN_RETRAIN_ORDERS` | `50` | Delivered POs needed to retrain on your own data |
 | `OCR_ENGINE` | `auto` | `auto` · `tesseract` · `rapidocr` · `none` |
 | `TESSERACT_CMD` | — | Only if `tesseract` is not on `PATH` |
@@ -321,7 +324,7 @@ Tesseract later needs no code change.
 | Approval workflow | Communications page | draft → approved → sent; the app never sends email — export `.eml` or copy |
 | Purchase orders | Purchase Orders page · `services/automation/purchase_orders.py` | Award from comparison; `PO-<year>-<0001>`; CGST+SGST / IGST / GST from GSTIN state codes; PDF; **Save to Drive**; delivery recording; a supplier-committed delivery date sets the expected date |
 | Agents (LangGraph) | `services/agents/` | Supervisor routes 5 specialists, they hand back with `Command`; runs pause for approval and resume; every run recorded as a timeline |
-| Procurement Assistant | Assistant page | 10 organization-bound tools, incl. `search_records` (TF-IDF search of your own quotations and e-mails; every hit names its record); drafts only; max 6 tool rounds |
+| Procurement Assistant | Assistant page | 11 organization-bound tools, incl. `search_records` (keyword + meaning search of your own quotations and e-mails, "tubing" finds "pipe") and `similar_past_prices`; every hit names its record; drafts only; max 6 tool rounds |
 | ML late-delivery risk | Suppliers page · `backend/ml/` | Random forest on USAID SCMS; shown beside the rule-based score |
 | Price anomalies | Quotation detail | Isolation Forest (+ out-of-range fence) from 20 past prices; Z-score below that |
 | Spend and forecasts | Analytics page | Spend by supplier/month/item, on-time rate, savings; 3-month forecasts after 12 months of history |
@@ -340,7 +343,7 @@ Tesseract later needs no code change.
 | **Critic** | whether a draft is fit to send | — |
 | **Purchase Order** | *nothing* — tax and totals stay deterministic | — |
 | **Monitor** | when work should start without being asked | starts sourcing on new quotations; chases overdue deliveries |
-| **Assistant** | how to answer your question | 10 organisation-bound read/search/draft tools |
+| **Assistant** | how to answer your question | 11 organisation-bound read/search/draft tools |
 
 Three safety rules hold whatever the model decides: the supervisor may only pick an action the
 policy allows (so it cannot order before comparing, or skip an approval), every run has a step

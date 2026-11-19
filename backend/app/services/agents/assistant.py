@@ -15,7 +15,7 @@ from app.repositories.quotations import ComparisonRepository, QuotationRepositor
 from app.repositories.suppliers import SupplierRepository
 from app.services.agents.loop import call_method, run_tool_loop, tool_schema
 from app.services.analytics.spend import spend_summary
-from app.services.agents.retrieval import build_chunks, search
+from app.services.agents.retrieval import asearch, build_chunks, embedding_provider, price_rows, similar_prices
 from app.services.automation import communications as comms
 
 MAX_TOOL_ROUNDS = settings.ASSISTANT_MAX_TOOL_ROUNDS
@@ -41,6 +41,8 @@ TOOLS = [
     tool_schema("search_records", "Search the text of the organization's own quotations and e-mails. Use it for questions "
             "the other tools cannot answer, such as who quoted a particular item or what was said to a supplier. "
             "Every hit names its record; answer only from the hits.", query=("string", "What to look for")),
+    tool_schema("similar_past_prices", "What the organization was quoted before for items like this one, whatever the spelling "
+                "or wording (tubing finds pipe). Gives supplier, price and date for each.", item=("string", "Item name")),
     tool_schema("draft_rfq", "Create RFQ email DRAFTS (not sent) for a request to chosen suppliers.",
             procurement_request_id=("string", "Request id"), supplier_ids=("array", "Supplier ids")),
     tool_schema("draft_negotiation", "Create a negotiation email DRAFT (not sent) to the supplier of one compared quotation.",
@@ -103,8 +105,13 @@ class AssistantTools:
     async def search_records(self, query: str):
         chunks = build_chunks(await self.quotations.list_filtered(self.org_id, limit=500),
                               await self.communications.list(self.org_id, limit=200))
-        hits = search(chunks, query)
+        hits = await asearch(chunks, query, embedding_provider())
         return {"results": hits} if hits else {"results": [], "note": "Nothing in the records matches that."}
+
+    async def similar_past_prices(self, item: str):
+        rows = price_rows(await self.quotations.list_filtered(self.org_id, limit=500))
+        found = await similar_prices(rows, item, embedding_provider())
+        return {"results": found} if found else {"results": [], "note": "No similar item was quoted before."}
 
     async def draft_rfq(self, procurement_request_id: str, supplier_ids: list[str]):
         request = await self.requests.get_or_404(self.org_id, procurement_request_id)

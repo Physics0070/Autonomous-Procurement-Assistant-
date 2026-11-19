@@ -8,6 +8,7 @@ missing credits, outages, timeouts, malformed bodies - comes back as
 from __future__ import annotations
 
 import asyncio
+import base64
 import json
 import logging
 from contextlib import asynccontextmanager
@@ -29,6 +30,10 @@ _STATUS_REASONS = {
     408: "the provider timed out",
     429: "the provider's rate limit was reached",
 }
+
+
+def _image_mime(data: bytes) -> str:
+    return "image/png" if data[1:4] == b"PNG" else "image/jpeg"
 
 
 class OpenAICompatibleProvider(AIProvider):
@@ -200,6 +205,54 @@ class OpenAICompatibleProvider(AIProvider):
         return AIResponse(
             text=text, ok=True, provider=self.name, model=used_model, meta={"usage": body.get("usage") or {}}
         )
+
+    async def read_image(
+        self,
+        prompt: str,
+        images: list[bytes],
+        *,
+        system: Optional[str] = None,
+        json_mode: bool = True,
+        max_output_tokens: int = 4096,
+    ) -> AIResponse:
+        error = self.configuration_error()
+        if error:
+            return AIResponse(ok=False, error=error, provider=self.name, model=self.model)
+        parts: list[dict[str, Any]] = [{"type": "text", "text": prompt}]
+        for data in images:
+            parts.append({"type": "image_url", "image_url": {"url": f"data:{_image_mime(data)};base64,{base64.b64encode(data).decode()}"}})
+        messages: list[dict[str, Any]] = ([{"role": "system", "content": system}] if system else [])
+        messages.append({"role": "user", "content": parts})
+        payload = self._base_payload(messages, 0.0, max_output_tokens)
+        if json_mode:
+            payload["response_format"] = {"type": "json_object"}
+        body, failure, status = await self._post(payload)
+        if failure and json_mode and status == 400:
+            payload.pop("response_format", None)
+            body, failure, status = await self._post(payload)
+        if failure:
+            return AIResponse(ok=False, error=failure, provider=self.name, model=self.model)
+        text = (((body["choices"][0] or {}).get("message") or {}).get("content") or "").strip()
+        if not text:
+            return AIResponse(ok=False, error=f"{self.name} returned an empty answer", provider=self.name, model=self.model)
+        return AIResponse(text=text, ok=True, provider=self.name, model=body.get("model") or self.model)
+
+    async def embed(self, texts: list[str]) -> Optional[list[list[float]]]:
+        if self.configuration_error() or not texts:
+            return None
+        try:
+            async with self._client() as client:
+                response = await client.post(f"{self.base_url}/embeddings", json={"model": self.model, "input": texts},
+                                             headers=self._headers(), timeout=self.timeout)
+            data = response.json().get("data") if response.status_code < 400 else None
+        except (httpx.HTTPError, ValueError, AttributeError):
+            return None
+        if not isinstance(data, list) or len(data) != len(texts):
+            return None
+        try:
+            return [[float(x) for x in row["embedding"]] for row in sorted(data, key=lambda r: r.get("index", 0))]
+        except (KeyError, TypeError, ValueError):
+            return None
 
     async def chat(
         self,

@@ -120,7 +120,7 @@ NEGOTIATION_SYSTEM = (
     "You are the Negotiation Agent for {org}. Write one short, courteous negotiation email to {supplier} "
     "about {title}.\n"
     "First gather evidence with the tools: the supplier's own delivery record, what this organisation has paid "
-    "for these items before, and how earlier negotiations with them went. Then call submit_draft.\n"
+    "for these items before (price_history, similar_past_prices), and how earlier negotiations with them went. Then call submit_draft.\n"
     "Rules: argue only from evidence you retrieved; never invent figures; never mention or imply any other "
     "supplier, their prices or that you have other quotations. submit_draft checks this and will reject a "
     "draft that breaks it — fix it and submit again. Stop after submit_draft accepts."
@@ -130,6 +130,8 @@ NEGOTIATION_TOOLS = [
     tool_schema("supplier_performance", "This supplier's delivery record and predicted late-delivery risk."),
     tool_schema("price_history", "What this organisation paid before for the requested items."),
     tool_schema("past_negotiations", "Earlier RFQ/negotiation emails to this supplier and what happened to them."),
+    tool_schema("similar_past_prices", "The range this organisation was quoted before for items like the requested ones "
+                "(anonymous), and what THIS supplier quoted before for them."),
     tool_schema("submit_draft", "Submit the finished email. Returns accepted, or the guardrail's objections.",
                 subject=("string", "Email subject"), body=("string", "Plain-text email body"),
                 **{"target_price?": ("number", "Total you are asking for, in the quotation's currency")}),
@@ -168,6 +170,23 @@ class NegotiationTools:
                                 "lowest": stats.get("min"), "highest": stats.get("max"), "observations": stats["count"]})
         return {"items": history or "No past prices recorded for these items.",
                 "this_quotation_total": self.row.get("total_cost"), "currency": self.row.get("currency")}
+
+    async def similar_past_prices(self) -> dict:
+        """Aggregates only, plus this supplier's own earlier prices: no other supplier's name or price reaches the model."""
+        from app.services.agents.retrieval import embedding_provider, price_rows, price_summary, similar_prices
+
+        rows = price_rows(await self.ctx.quotations.list_filtered(self.ctx.org_id, limit=500))
+        mine_id = str(self.row.get("supplier_id") or "")
+        current = str(self.row.get("quotation_id") or "")
+        items = []
+        for item in (self.request.get("items") or [])[:8]:
+            found = await similar_prices(rows, item.get("name") or "", embedding_provider(), exclude_quotation=current)
+            if not found:
+                continue
+            items.append({"item": item.get("name"), "all_quotes_before": price_summary(found),
+                          "this_supplier_before": [{"price": r["unit_price"], "date": r["date"]}
+                                                   for r in found if mine_id and r["supplier_id"] == mine_id][:3]})
+        return {"items": items or "No similar items were quoted before."}
 
     async def past_negotiations(self) -> list[dict]:
         if not self.row.get("supplier_id"):

@@ -16,9 +16,9 @@ import {
   useReprocess,
   useRequests,
 } from "@/hooks/queries"
-import { downloadFile, fileUrl } from "@/lib/api"
+import { downloadFile, fetchBlobUrl, fileUrl } from "@/lib/api"
 import { AgentRuns } from "@/components/AgentRuns"
-import { formatCurrency, formatDate, formatDateTime, formatNumber } from "@/lib/utils"
+import { cn, formatCurrency, formatDate, formatDateTime, formatNumber } from "@/lib/utils"
 import type { NormalizedQuotation } from "@/types"
 
 function ItemsTable({
@@ -26,11 +26,13 @@ function ItemsTable({
   currency,
   editable,
   onEdit,
+  flags,
 }: {
   data: NormalizedQuotation
   currency: string
   editable: boolean
   onEdit: (path: string, value: unknown) => void
+  flags: Record<string, string>
 }) {
   if (data.items.length === 0) {
     return <p className="px-5 py-8 text-center text-muted-foreground">No items found in this quotation.</p>
@@ -48,12 +50,16 @@ function ItemsTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.items.map((item, index) => (
+        {data.items.map((item, index) => {
+          // A whole-line warning ("missing quantity") marks only the cells that are actually empty.
+          const flag = (field: string, value: unknown) =>
+            flags[`items.${index}.${field}`] ?? (value == null ? flags[`items.${index}`] : undefined)
+          return (
           <TableRow key={item.line_id}>
             <TableCell className="max-w-[240px] font-medium">
               <ValueOrMissing value={item.original_name} missingLabel="No name" />
             </TableCell>
-            <TableCell className="text-right">
+            <TableCell className={cn("text-right", flag("quantity", item.quantity) && FLAGGED)} title={flag("quantity", item.quantity)}>
               {editable ? (
                 <Input
                   type="number"
@@ -71,7 +77,7 @@ function ItemsTable({
                 </span>
               )}
             </TableCell>
-            <TableCell className="text-right">
+            <TableCell className={cn("text-right", flag("unit_price", item.unit_price) && FLAGGED)} title={flag("unit_price", item.unit_price)}>
               {editable ? (
                 <Input
                   type="number"
@@ -91,7 +97,7 @@ function ItemsTable({
             <TableCell className="tabular text-right">
               {item.tax_percentage != null ? `${item.tax_percentage}%` : "—"}
             </TableCell>
-            <TableCell className="tabular text-right">
+            <TableCell className={cn("tabular text-right", flag("total_price", item.total_price ?? item.computed_total) && FLAGGED)} title={flag("total_price", item.total_price ?? item.computed_total)}>
               {item.total_price != null
                 ? formatCurrency(item.total_price, currency)
                 : item.computed_total != null
@@ -99,9 +105,59 @@ function ItemsTable({
                   : "—"}
             </TableCell>
           </TableRow>
-        ))}
+          )
+        })}
       </TableBody>
     </Table>
+  )
+}
+
+/** Cells the checks are unsure about get this look, so the eye goes straight to them. */
+const FLAGGED = "bg-warning/15 outline outline-1 -outline-offset-1 outline-warning/50"
+
+/** The uploaded file next to the numbers, so a value can be checked against the original in a glance. */
+function OriginalPreview({ quotationId }: { quotationId: string }) {
+  const [shown, setShown] = React.useState<{ url: string; type: string } | null>(null)
+  const [failed, setFailed] = React.useState(false)
+  React.useEffect(() => {
+    let revoke: string | null = null
+    let cancelled = false
+    setShown(null)
+    setFailed(false)
+    fetchBlobUrl(fileUrl(quotationId))
+      .then((file) => {
+        if (cancelled) return URL.revokeObjectURL(file.url)
+        revoke = file.url
+        setShown(file)
+      })
+      .catch(() => !cancelled && setFailed(true))
+    return () => {
+      cancelled = true
+      if (revoke) URL.revokeObjectURL(revoke)
+    }
+  }, [quotationId])
+
+  const isImage = shown?.type.startsWith("image/")
+  const isPdf = shown?.type === "application/pdf"
+  return (
+    <Card className="xl:sticky xl:top-4">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-base">Original</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {failed ? (
+          <p className="text-muted-foreground">We could not show the original. Use Download original above.</p>
+        ) : !shown ? (
+          <div className="h-64 animate-pulse rounded-md bg-muted" />
+        ) : isImage ? (
+          <img src={shown.url} alt="The uploaded quotation" className="max-h-[70vh] w-full rounded-md border object-contain" />
+        ) : isPdf ? (
+          <iframe src={shown.url} title="The uploaded quotation" className="h-[70vh] w-full rounded-md border" />
+        ) : (
+          <p className="text-muted-foreground">This file type cannot be shown here. Use Download original above.</p>
+        )}
+      </CardContent>
+    </Card>
   )
 }
 
@@ -148,6 +204,12 @@ export function QuotationDetailPage() {
       setSaveError("We could not save your changes. Please try again.")
     }
   }
+
+  // Where each warning belongs, so the doubtful cells can be highlighted next to the original.
+  const flags: Record<string, string> = {}
+  validation?.issues.forEach((issue) => {
+    flags[issue.field] = flags[issue.field] ? `${flags[issue.field]} ${issue.message}` : issue.message
+  })
 
   // One plain list of things the buyer should look at.
   const things: string[] = []
@@ -229,8 +291,10 @@ export function QuotationDetailPage() {
         </Alert>
       )}
 
+      <div className={cn("grid gap-6", effective && "xl:grid-cols-2")}>
+      {!busy && <OriginalPreview quotationId={data.id} />}
       {effective && (
-        <>
+        <div className="min-w-0 space-y-6">
           <Card>
             <CardHeader className="flex-row items-center justify-between space-y-0">
               <CardTitle className="text-base">Items</CardTitle>
@@ -266,11 +330,11 @@ export function QuotationDetailPage() {
               </div>
             </CardHeader>
             <CardContent className="p-0">
-              <ItemsTable data={effective} currency={currency} editable={editing} onEdit={onEdit} />
+              <ItemsTable data={effective} currency={currency} editable={editing} onEdit={onEdit} flags={flags} />
             </CardContent>
           </Card>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-1">
             <Card>
               <CardHeader>
                 <CardTitle className="text-base">Total</CardTitle>
@@ -290,7 +354,10 @@ export function QuotationDetailPage() {
                       <span className="tabular">{formatCurrency(amount as number, currency)}</span>
                     </div>
                   ))}
-                <div className="flex justify-between gap-3 border-t pt-2 font-semibold">
+                <div
+                  className={cn("flex justify-between gap-3 border-t pt-2 font-semibold", flags["commercials.total_amount"] && FLAGGED)}
+                  title={flags["commercials.total_amount"]}
+                >
                   <span>Grand total</span>
                   <span className="tabular">
                     {grandTotal != null ? formatCurrency(grandTotal, currency) : "—"}
@@ -370,8 +437,9 @@ export function QuotationDetailPage() {
               </CardContent>
             </Card>
           </div>
-        </>
+        </div>
       )}
+      </div>
 
       <Card>
         <CardHeader>

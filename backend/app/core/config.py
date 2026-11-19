@@ -165,6 +165,7 @@ class Settings(BaseSettings):
     AGENT_AUTOPILOT_MIN_QUOTATIONS: int = 2
     AGENT_WATCHDOG_INTERVAL_MINUTES: int = 60  # overdue-delivery check; 0 disables
     EXTRACTION_SELF_CORRECTION: bool = True  # re-read a document once when validation finds errors
+    VISION_SECOND_READER: bool = True  # scanned files and photos are also read from the image and compared
     ML_MIN_RETRAIN_ORDERS: int = 50  # delivered POs needed to retrain the reliability model
 
     @model_validator(mode="after")

@@ -193,6 +193,19 @@ class ProcessingPipeline:
                     extraction, validation = second, second_validation
                     extraction.notes.append("Corrected after a validation check found problems in the first reading.")
 
+        # Second reader: scanned files and photos are also read from the image. Disagreements on an amount
+        # are flagged for a person; neither reading is changed.
+        if processed.ocr_used and not ai_error:
+            from app.services.documents.second_reader import second_reading_issues
+
+            image_issues, image_reading = await second_reading_issues(data, extraction)
+            if image_reading is not None:
+                await self.quotations.store_stage(organization_id, quotation_id, "second_reading", image_reading)
+                validation.issues.extend(image_issues)
+                validation.warning_count += len(image_issues)
+                if image_issues:
+                    validation.requires_review = True
+
         await self.quotations.store_stage(
             organization_id, quotation_id, "ai_extraction", extraction.model_dump(mode="json")
         )
