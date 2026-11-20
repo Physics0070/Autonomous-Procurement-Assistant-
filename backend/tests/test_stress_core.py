@@ -239,3 +239,17 @@ def test_a_forecast_is_never_negative_and_has_the_asked_length(seed):
     result = forecast_demand(pd.Series(values, index=index), horizon=horizon)
     assert result["status"] == "ok" and len(result["forecast"]) == horizon
     assert all(p["quantity"] >= 0 and np.isfinite(p["quantity"]) for p in result["forecast"]), seed
+
+
+@pytest.mark.parametrize("seed", range(300))
+def test_short_and_strongly_seasonal_series_never_crash_and_give_a_sane_range(seed):
+    rng = np.random.default_rng(100_000 + seed)
+    months = int(rng.integers(12, 40))
+    index = pd.date_range("2022-01-01", periods=months, freq="MS")
+    wave = 100 + 80 * np.sin(2 * np.pi * np.arange(months) / 12)
+    values = np.clip(wave + rng.normal(0, float(rng.uniform(0, 30)), months), 0, None)
+    values[rng.random(months) < float(rng.uniform(0, 0.4))] = 0  # empty months, the lumpy case
+    result = forecast_demand(pd.Series(values, index=index), horizon=int(rng.integers(1, 7)))
+    assert result["status"] == "ok", seed
+    for p in result["forecast"]:
+        assert 0 <= p["low"] <= p["high"] and np.isfinite(p["quantity"]) and p["quantity"] >= 0, (seed, p)

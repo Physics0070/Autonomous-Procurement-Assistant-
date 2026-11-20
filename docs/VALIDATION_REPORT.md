@@ -17,9 +17,9 @@ verified its source independently, and it is labelled wherever it is used.
 | HSN with no model | 53% (closest labelled item) | team-supplied | Holds. |
 | Extraction, fields correct | **96.6 to 96.9%** (282 of 291 fields) over three runs on 16 real documents; typed photos 98.0% (4 docs), digital PDFs 97.8% (10 docs), **handwritten 56 to 67% (2 docs)** | Real documents; answers read by me | Holds for typed documents. Handwriting is weak and the sample is tiny. Run-to-run variation is about 2 fields. |
 | Price errors caught | Later 150 quotes: any flag precision **0.75** [0.63, 0.86], recall **1.00**; HIGH-only precision 0.83 [0.71, 0.94], recall 0.90 [0.79, 0.98]. 10.3% of correct quotes flagged. | Team-supplied labels | Holds on this file only. Reliable at 20% or more off the item's usual price; 0 of 2 below 10% off, 2 of 4 at 10 to 20%. |
-| Forecast error (sMAPE) | **About 55 for both product groups** (ARV 55.8, HRDT 55.0; five cut-off months each) | Real SCMS | **Weak.** Present as a trend aid. My earlier "HRDT 66.9 to 53.6" did not hold at other cut-offs and is withdrawn. |
+| Forecast error (total miss over total demand, 3-month totals, 12 cut-off months) | **ARV 30%, HRDT 55%, all-shipments order value 31%, shipment count 21%**, against 38 / 58 / 35 / 26% for the plain linear trend. The range shown covers 75 to 78% of the actual months (aimed at 80%). | Real SCMS, months before Aug 2015 | **Better than before, still rough.** Presented as a range with a "how sure" label. The label is only a crude guide. The earlier "HRDT 66.9 to 53.6" and "about 55% error" figures are withdrawn: they were scored partly against four months in which SCMS stopped recording shipments. |
 | GSTIN check digit | 4 of 4 GSTINs from real quotations and the published sample pass; every one-character corruption fails (300 generated cases) | Real | Holds. |
-| Automated tests | **8,117 pass, 60 skipped** (277 hand-written + 7,900 generated stress cases) | n/a | Holds. |
+| Automated tests | **8,420 pass, 60 skipped** (about 280 hand-written + 8,100 generated stress cases) | n/a | Holds. |
 
 ## 2. Latency (client wall-clock over 127.0.0.1, demo organization of 9 quotations)
 
@@ -41,7 +41,7 @@ Installing Tesseract (not installed here) would cut the photo time further; the 
 
 ## 3. How hard the tests are
 
-* **7,900 generated cases**, each from a seed so a failure names its seed: 2,300 validation and grounding cases (clean quotations raise
+* **8,100 generated cases**, each from a seed so a failure names its seed: 2,300 validation and grounding cases (clean quotations raise
   nothing; inflated prices, changed totals, invented prices, invented GST numbers and dropped lines are each caught), 1,500
   second-reader cases (an extra trailing digit is always corrected; a genuine difference is never changed), 700 price-detector
   cases, 1,000 GST cases, 1,400 parsing cases (garbage never raises), 700 ranking cases (cheapest ranks first; scaling every price
@@ -55,7 +55,8 @@ Installing Tesseract (not installed here) would cut the photo time further; the 
 | Fault | How it was found | Fix |
 |---|---|---|
 | Forecast crashed on series of about 12 to 20 months | Stress tests (24 of 200 cases failed) | Seasonal backtests need a full year of history |
-| "Pick the best backtest" forecast lost to the plain linear trend | Five cut-off months | Another method must beat the linear trend by 25% |
+| Forecasts were scored against months with no data: SCMS records 27, 1, 0 and 2 shipments in its last four months, because later shipments were not yet logged | Looking at the end of the series | Those months are excluded; the app also leaves out the current, unfinished month |
+| The linear trend was the worst of nine methods tried | Twelve cut-offs on four real series | Croston's method for lumpy demand is now the default; another method must beat it by 25% to replace it |
 | A quotation with a missing quantity or price could pass as fine | Real keychain quotation | Any incomplete line now needs a person |
 | A PDF whose page image shows different figures from its text layer was trusted | Same quotation | PDFs that carry page images are also read as images |
 | A misread or invented GST number looked valid | Design review | Check digit verified against real GSTINs |
@@ -66,7 +67,7 @@ Installing Tesseract (not installed here) would cut the photo time further; the 
 
 * Results on the team-supplied files (price errors, broad HSN set, order features) as proven field accuracy until their source is documented in the report.
 * The risk model as accurate within shipment types; it separates types well and ranks RDC shipments only slightly better than chance.
-* A forecast better than about 55% error.
+* A forecast better than the figures above; the HRDT group is still about 55% off and every forecast should be shown with its range.
 * Handwriting reading as reliable: two documents, 56 to 67%.
 * OCR accuracy beyond these 16 documents; most are typed.
 

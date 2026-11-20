@@ -56,7 +56,13 @@ def evaluate_anomaly(scms: pd.DataFrame, jobs: int = -1) -> tuple[pd.DataFrame, 
     return pd.DataFrame(rows, columns=["product", "price", "status", "score", "median", "ratio"]), skipped
 
 
+# SCMS stops recording shipments after August 2015 (27, 1, 0 and 2 shipments in the last four months). Those months are
+# missing data, not missing demand, so forecasts are evaluated on the months before them.
+LAST_COMPLETE_MONTH = "2015-09-01"
+
+
 def evaluate_forecasts(scms: pd.DataFrame) -> dict[str, dict]:
+    scms = scms[scms["scheduled_date"] < LAST_COMPLETE_MONTH]
     results = {}
     for group in FORECAST_GROUPS:
         rows = scms[scms["product_group"] == group]
@@ -98,13 +104,13 @@ def build_report(anomalies: pd.DataFrame, skipped: int, forecasts: dict[str, dic
 
     forecast_rows = []
     for group, result in forecasts.items():
-        scores = result["backtest_smape"]
+        scores = result["backtest_error"]
         forecast_rows.append(
             f"| {group} | {result['shipments']:,} | {result['first_month']} to {result['last_month']} "
             f"({result['history_months']} months, {result['zero_months']} with no shipments) | "
-            f"{result['holdout_months']} | {scores.get('linear_trend', float('nan')):.1f} | "
-            f"{scores.get('seasonal_naive', float('nan')):.1f} | {result['method']} | "
-            + ", ".join(f"{p['month']}: {p['quantity']:,.0f}" for p in result["forecast"])
+            f"{result['holdout_months']} | {100 * scores.get('croston_sba', float('nan')):.0f}% | "
+            f"{100 * scores.get('linear_trend', float('nan')):.0f}% | {result['method']} ({result['confidence']}) | "
+            + ", ".join(f"{p['month']}: {p['quantity']:,.0f} ({p['low']:,.0f} to {p['high']:,.0f})" for p in result["forecast"])
             + " |"
         )
     forecast_table = "\n".join(forecast_rows)
@@ -157,7 +163,7 @@ largest product groups. Each method is backtested once on the last `holdout` mon
 (min(6, months // 4)); the method with the lower sMAPE (percent, 0-200) is chosen and
 refitted on the full series to forecast the next {FORECAST_HORIZON} months.
 
-| Product group | Shipments | Series | Holdout months | sMAPE linear_trend | sMAPE seasonal_naive | Chosen | Forecast |
+| Product group | Shipments | Series | Holdout months | Error Croston | Error linear trend | Chosen | Forecast (range) |
 |---|---:|---|---:|---:|---:|---|---|
 {forecast_table}
 
@@ -183,7 +189,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Prices assessed: {len(anomalies):,} across {anomalies['product'].nunique()} products; "
           f"POSSIBLE {_share(anomalies, 'POSSIBLE_ANOMALY')}, HIGH {_share(anomalies, 'HIGH_ANOMALY')}")
     for group, result in forecasts.items():
-        print(f"{group}: sMAPE {result['backtest_smape']} -> {result['method']}")
+        print(f"{group}: error {result['backtest_error']} -> {result['method']} ({result['confidence']})")
     print(f"Report written to {args.output}")
     return 0
 

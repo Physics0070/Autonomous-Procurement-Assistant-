@@ -108,12 +108,17 @@ export function AnalyticsPage() {
             <p className="text-sm text-muted-foreground">Not enough past orders yet to guess what you may need.</p>
           ) : (
             <Table>
-              <TableHeader><TableRow><TableHead>Item</TableHead><TableHead>Next 3 months</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Item</TableHead><TableHead>Next 3 months (likely range)</TableHead><TableHead>How sure</TableHead></TableRow></TableHeader>
               <TableBody>
                 {forecasts.slice(0, 15).map((f) => (
                   <TableRow key={f.item}>
                     <TableCell className="max-w-48 truncate">{f.item}</TableCell>
-                    <TableCell className="text-sm">{f.forecast?.map((p) => `${monthName(p.month)}: ${formatNumber(p.quantity)}`).join(" · ")}</TableCell>
+                    <TableCell className="text-sm">
+                      {f.forecast?.map((p) => `${monthName(p.month)}: ${formatNumber(p.quantity)}${p.low != null && p.high != null ? ` (${formatNumber(p.low)} to ${formatNumber(p.high)})` : ""}`).join(" · ")}
+                    </TableCell>
+                    <TableCell className="text-sm text-muted-foreground">
+                      {f.confidence === "fair" ? "Fair guess" : f.confidence === "rough" ? "Rough guess" : "Very rough guess"}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

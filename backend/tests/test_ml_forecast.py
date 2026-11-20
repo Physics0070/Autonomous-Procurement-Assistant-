@@ -22,7 +22,7 @@ def test_seasonal_series_prefers_seasonal_naive():
     result = forecast_demand(pd.Series(values, index=index), horizon=3)
     assert result["status"] == "ok"
     assert result["method"] == "seasonal_naive"
-    assert result["backtest_smape"]["seasonal_naive"] <= result["backtest_smape"]["linear_trend"]
+    assert result["backtest_error"]["seasonal_naive"] <= result["backtest_error"]["croston_sba"]
     assert [p["month"] for p in result["forecast"]] == ["2024-01", "2024-02", "2024-03"]
     assert all(p["quantity"] >= 0 for p in result["forecast"])
 
@@ -39,6 +39,34 @@ def test_a_noisy_flat_series_is_forecast_by_a_recent_level_not_a_trend_line():
     index = pd.date_range("2022-01-01", periods=30, freq="MS")
     values = 100 + rng.normal(0, 40, size=30).clip(-90)
     result = forecast_demand(pd.Series(values, index=index), horizon=3)
-    assert result["method"] in {"moving_average", "smoothed_level", "linear_trend"}
-    assert set(result["backtest_smape"]) >= {"moving_average", "smoothed_level", "linear_trend"}
+    assert result["method"] in {"croston_sba", "mean_last_12", "linear_trend", "seasonal_naive"}
+    assert set(result["backtest_error"]) >= {"croston_sba", "mean_last_12", "linear_trend"}
     assert all(p["quantity"] >= 0 for p in result["forecast"])
+
+
+def test_a_noisy_flat_series_defaults_to_croston_and_gives_an_honest_range():
+    import numpy as np
+
+    rng = np.random.default_rng(3)
+    index = pd.date_range("2022-01-01", periods=36, freq="MS")
+    result = forecast_demand(pd.Series(100 + rng.normal(0, 40, 36).clip(-90), index=index), horizon=3)
+    assert result["method"] == "croston_sba"
+    for point in result["forecast"]:
+        assert point["low"] <= point["quantity"] * 1.0001 and point["high"] >= point["quantity"] * 0.9999
+        assert point["low"] >= 0
+    assert result["confidence"] in {"fair", "rough", "poor"} and 0 <= result["error_pct"]
+
+
+def test_a_short_history_never_earns_the_label_fair():
+    index = pd.date_range("2024-01-01", periods=14, freq="MS")
+    result = forecast_demand(pd.Series([100.0] * 14, index=index), horizon=3)
+    assert result["confidence"] != "fair"
+
+
+def test_the_month_still_in_progress_is_left_out():
+    index = pd.date_range("2025-01-01", periods=18, freq="MS")  # ends 2026-06
+    values = pd.Series([100.0] * 17 + [3.0], index=index)  # the last month has barely started
+    full = forecast_demand(values, horizon=1)
+    trimmed = forecast_demand(values, horizon=1, as_of=pd.Timestamp("2026-06-15"))
+    assert trimmed["history_months"] == 17 and trimmed["forecast"][0]["month"] == "2026-06"
+    assert trimmed["forecast"][0]["quantity"] > full["forecast"][0]["quantity"]

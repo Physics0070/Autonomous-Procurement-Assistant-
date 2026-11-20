@@ -207,29 +207,64 @@
   }
  },
  "forecast": {
-  "ARV": {
-   "cutoffs": 5,
-   "mean_smape": {
-    "linear_trend": 55.9,
-    "seasonal_naive": 59.0,
-    "moving_average": 64.5,
-    "smoothed_level": 59.9,
-    "chosen": 54.1
+  "ARV quantity": {
+   "cutoffs": 12,
+   "mean_error_pct": {
+    "croston_sba": 29.8,
+    "mean_last_12": 31.3,
+    "linear_trend": 37.5,
+    "seasonal_naive": 40.1,
+    "chosen by the app": 29.8
    },
-   "chosen_beats_last_year_share": 0.6,
-   "chosen_beats_linear_share": 1.0
+   "actual_months_inside_the_range": 0.78,
+   "error_when_labelled": {
+    "rough": 36.4,
+    "fair": 25.1
+   }
   },
-  "HRDT": {
-   "cutoffs": 5,
-   "mean_smape": {
-    "linear_trend": 55.0,
-    "seasonal_naive": 65.6,
-    "moving_average": 55.9,
-    "smoothed_level": 56.5,
-    "chosen": 62.3
+  "HRDT quantity": {
+   "cutoffs": 12,
+   "mean_error_pct": {
+    "croston_sba": 54.8,
+    "mean_last_12": 56.8,
+    "linear_trend": 58.1,
+    "seasonal_naive": 71.8,
+    "chosen by the app": 54.8
    },
-   "chosen_beats_last_year_share": 0.8,
-   "chosen_beats_linear_share": 0.4
+   "actual_months_inside_the_range": 0.75,
+   "error_when_labelled": {
+    "poor": 52.6,
+    "rough": 55.3
+   }
+  },
+  "all shipments, order value": {
+   "cutoffs": 12,
+   "mean_error_pct": {
+    "croston_sba": 30.7,
+    "mean_last_12": 31.7,
+    "linear_trend": 35.1,
+    "seasonal_naive": 39.8,
+    "chosen by the app": 30.7
+   },
+   "actual_months_inside_the_range": 0.75,
+   "error_when_labelled": {
+    "rough": 27.6,
+    "fair": 35.1
+   }
+  },
+  "all shipments, count": {
+   "cutoffs": 12,
+   "mean_error_pct": {
+    "croston_sba": 21.4,
+    "mean_last_12": 22.2,
+    "linear_trend": 25.7,
+    "seasonal_naive": 33.4,
+    "chosen by the app": 21.4
+   },
+   "actual_months_inside_the_range": 0.75,
+   "error_when_labelled": {
+    "fair": 21.4
+   }
   }
  }
 }

@@ -155,8 +155,10 @@ export interface ForecastItem {
   status: "ok" | "insufficient_data"
   method?: string
   history_months: number
-  backtest_smape?: Record<string, number>
-  forecast?: Array<{ month: string; quantity: number }>
+  backtest_error?: Record<string, number>
+  error_pct?: number
+  confidence?: "fair" | "rough" | "poor"
+  forecast?: Array<{ month: string; quantity: number; low?: number; high?: number }>
 }
 
 export interface ModelsInfo {

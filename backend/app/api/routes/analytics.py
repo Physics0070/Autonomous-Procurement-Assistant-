@@ -2,6 +2,9 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import datetime, timezone
+
+import pandas as pd
 
 from fastapi import APIRouter, Depends, Query
 
@@ -46,7 +49,7 @@ async def forecast(context: CurrentUser, horizon: int = 3, pos: PurchaseOrderRep
             for line in po["lines"]:
                 dates[line["description"]].append(po["created_at"])
                 quantities[line["description"]].append(line["quantity"])
-        items = [{"item": item, **forecast_demand(monthly_series(dates[item], quantities[item]), horizon=horizon)}
+        items = [{"item": item, **forecast_demand(monthly_series(dates[item], quantities[item]), horizon=horizon, as_of=pd.Timestamp(datetime.now(timezone.utc)).tz_localize(None))}
                  for item in dates]
         return {"min_months": MIN_MONTHS, "items": sorted(items, key=lambda r: r["status"] != "ok")}
     return await cache.cached(f"forecast:{horizon}", context.organization_id, [pos.collection], compute)
@@ -75,7 +78,7 @@ async def models(context: CurrentUser) -> dict:
         },
         "price_anomaly": {"method": "isolation_forest", "min_samples": ANOMALY_MIN_SAMPLES,
                           "fallback": "z_score / deviation_ratio below the minimum"},
-        "forecast": {"methods": ["linear_trend", "seasonal_naive"], "min_months": MIN_MONTHS},
+        "forecast": {"methods": ["croston_sba", "mean_last_12", "linear_trend", "seasonal_naive"], "min_months": MIN_MONTHS},
     }
 
 

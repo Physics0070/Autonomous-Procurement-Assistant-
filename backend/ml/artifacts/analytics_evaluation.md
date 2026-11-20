@@ -1,6 +1,6 @@
 # Analytics evaluation (USAID SCMS)
 
-Generated 2026-11-20T06:25:14+00:00 by `python -m ml.evaluate_analytics` from the verified SCMS file
+Generated 2026-11-20T10:43:23+00:00 by `python -m ml.evaluate_analytics` from the verified SCMS file
 (see `ml/data/README.md`).
 
 ## Price anomaly detection
@@ -101,12 +101,12 @@ largest product groups. Each method is backtested once on the last `holdout` mon
 (min(6, months // 4)); the method with the lower sMAPE (percent, 0-200) is chosen and
 refitted on the full series to forecast the next 3 months.
 
-| Product group | Shipments | Series | Holdout months | sMAPE linear_trend | sMAPE seasonal_naive | Chosen | Forecast |
+| Product group | Shipments | Series | Holdout months | Error Croston | Error linear trend | Chosen | Forecast (range) |
 |---|---:|---|---:|---:|---:|---|---|
-| ARV | 8,550 | 2006-08 to 2015-12 (113 months, 1 with no shipments) | 6 | 77.0 | 73.4 | seasonal_naive | 2016-01: 2,464,205, 2016-02: 4,180,775, 2016-03: 2,940,312 |
-| HRDT | 1,728 | 2006-05 to 2015-08 (112 months, 0 with no shipments) | 6 | 66.3 | 81.2 | smoothed_level | 2015-09: 35,699, 2015-10: 35,699, 2015-11: 35,699 |
+| ARV | 8,520 | 2006-08 to 2015-08 (109 months, 0 with no shipments) | 6 | 33% | 36% | croston_sba (rough) | 2015-09: 2,460,045 (1,694,957 to 4,676,044), 2015-10: 2,460,045 (1,694,957 to 4,676,044), 2015-11: 2,460,045 (1,694,957 to 4,676,044) |
+| HRDT | 1,728 | 2006-05 to 2015-08 (112 months, 0 with no shipments) | 6 | 62% | 74% | croston_sba (poor) | 2015-09: 39,513 (9,349 to 55,335), 2015-10: 39,513 (9,349 to 55,335), 2015-11: 39,513 (9,349 to 55,335) |
 
 Limitations: a single holdout of a few months is a small test; monthly shipment quantities
 are lumpy (large one-off orders), which neither a trend line nor last year's value can
-anticipate; the series end in 2015-08 and 2015-12,
+anticipate; the series end in 2015-08,
 so the forecast months are historical, not current demand.

@@ -20,7 +20,7 @@ from sklearn.metrics import average_precision_score, precision_score, recall_sco
 
 from ml.anomaly import assess_price
 from ml.features import FEATURE_COLUMNS
-from ml.forecast import _METHODS, SEASON, forecast_demand, monthly_series, smape
+from ml.forecast import _METHODS, SEASON, forecast_demand, monthly_series, wape
 from ml.reliability_model import ARTIFACT_DIR, METADATA_FILE, MODEL_FILE
 from ml.scms import load_scms, scms_orders
 from ml.train_reliability import build_training_frame
@@ -130,22 +130,32 @@ def price_errors() -> dict:
 
 
 def forecasts() -> dict:
+    """Twelve cut-off months per series, three-month totals, on the months before SCMS stops recording shipments."""
     scms = load_scms()
+    scms = scms[scms["scheduled_date"] < "2015-09-01"]
+    series = {f"{g} quantity": monthly_series(rows["scheduled_date"], rows["quantity"]).to_numpy(float)
+              for g, rows in scms.groupby("product_group") if rows["product_group"].nunique() and g in ("ARV", "HRDT")}
+    series["all shipments, order value"] = monthly_series(scms["scheduled_date"], scms["order_value"]).to_numpy(float)
+    series["all shipments, count"] = monthly_series(scms["scheduled_date"], np.ones(len(scms))).to_numpy(float)
     out = {}
-    for group in ("ARV", "HRDT"):
-        rows = scms[scms["product_group"] == group]
-        values = monthly_series(rows["scheduled_date"], rows["quantity"]).to_numpy(float)
-        cuts, per = [], {}
-        for end in range(len(values) - 30, len(values) - 5, 6):  # five different outer cut-off months
-            train, actual = values[:end], values[end:end + 6]
-            chosen = forecast_demand(pd.Series(train, index=pd.date_range("2000-01-01", periods=len(train), freq="MS")), horizon=6)["method"]
-            row = {name: smape(actual, _METHODS[name](train, 6)) for name in _METHODS if name != "seasonal_naive" or len(train) >= SEASON + 6}
-            row["chosen"] = row[chosen]
-            cuts.append(row)
-        for name in cuts[0]:
-            per[name] = round(float(np.mean([c[name] for c in cuts if name in c])), 1)
-        out[group] = {"cutoffs": len(cuts), "mean_smape": per, "chosen_beats_last_year_share": round(float(np.mean([c["chosen"] <= c.get("seasonal_naive", 1e9) for c in cuts])), 2),
-                      "chosen_beats_linear_share": round(float(np.mean([c["chosen"] <= c["linear_trend"] for c in cuts])), 2)}
+    for name, values in series.items():
+        errors = {m: [] for m in _METHODS}
+        errors["chosen by the app"] = []
+        inside, ranked = [], {}
+        for end in range(len(values) - 36, len(values) - 2, 3):
+            train, actual = values[:end], values[end:end + 3]
+            for method in _METHODS:
+                if method != "seasonal_naive" or len(train) >= SEASON + 3:
+                    errors[method].append(wape(actual, _METHODS[method](train, 3)))
+            result = forecast_demand(pd.Series(train, index=pd.date_range("2000-01-01", periods=len(train), freq="MS")), horizon=3)
+            predicted = np.array([p["quantity"] for p in result["forecast"]])
+            errors["chosen by the app"].append(wape(actual, predicted))
+            inside.extend(float(l <= a <= h) for a, (l, h) in zip(actual, [(p["low"], p["high"]) for p in result["forecast"]]))
+            ranked.setdefault(result["confidence"], []).append(errors["chosen by the app"][-1])
+        out[name] = {"cutoffs": len(errors["chosen by the app"]),
+                     "mean_error_pct": {m: round(100 * float(np.mean(v)), 1) for m, v in errors.items() if v},
+                     "actual_months_inside_the_range": round(float(np.mean(inside)), 2),
+                     "error_when_labelled": {label: round(100 * float(np.mean(v)), 1) for label, v in ranked.items()}}
     return out
 
 
