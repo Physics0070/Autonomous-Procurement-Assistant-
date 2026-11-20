@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import re
+from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from typing import Optional
 
@@ -117,12 +118,72 @@ def compare_readings(text_reading: AIExtractionResult, image_reading: AIExtracti
     return issues
 
 
-async def second_reading_issues(data: bytes, text_reading: AIExtractionResult) -> tuple[list[ValidationIssue], Optional[dict]]:
-    """(issues, the image reading as a dict for storage). Both empty/None when the second reader is off or unavailable."""
+def _drop_extra_digit(mine: Optional[float], theirs: Optional[float]) -> Optional[float]:
+    """Amount the image reader saw when the text reader's number is the same number plus one more digit on the end.
+    Handwritten amounts end in "/-" and OCR often reads that as a 1 (4800/- becomes 48001, 12154/- becomes 121541)."""
+    if mine is None or theirs is None or theirs <= 0 or mine == theirs:
+        return None
+    return theirs if 10 * theirs <= mine < 10 * theirs + 10 and float(mine).is_integer() and float(theirs).is_integer() else None
+
+
+def reconcile_readings(text_reading: AIExtractionResult, image: AIExtractionResult) -> tuple[AIExtractionResult, list[str], bool]:
+    """(the reading to keep, what was changed, whether the image reading was adopted whole).
+
+    Nothing is changed when the readers agree. Two cases are settled in the image reading's favour because the text
+    reading is plainly the damaged one: it found no line items at all, or an amount has one extra trailing digit.
+    Everything else the readers disagree on is left for a person (see compare_readings)."""
+    if not text_reading.items and image.items:
+        adopted = image.model_copy(deep=True)
+        adopted.notes.append("The text reading found no line items; this is the reading from the page image. Check it against the original.")
+        return adopted, ["Read from the page image because the text reading found no items."], True
+
+    merged = text_reading.model_copy(deep=True)
+    notes: list[str] = []
+    free = list(range(len(image.items)))
+    for index, item in enumerate(merged.items):
+        mine = _squash(item.original_name)
+        scored = [(SequenceMatcher(None, mine, _squash(image.items[j].original_name)).ratio(), j) for j in free]
+        if scored and max(scored)[0] >= _MIN_NAME_MATCH:
+            match = max(scored)[1]
+        elif len(merged.items) == len(image.items) and index in free:
+            match = index  # badly misread handwriting: same number of lines, so pair them by position
+        else:
+            continue
+        free.remove(match)
+        other = image.items[match]
+        for field in ("quantity", "unit_price", "total_price"):
+            fixed = _drop_extra_digit(getattr(item, field), getattr(other, field))
+            if fixed is not None:
+                notes.append(f"{item.original_name}: {field.replace('_', ' ')} {getattr(item, field):,.0f} corrected to {fixed:,.0f} (an extra digit on the end).")
+                setattr(item, field, fixed)
+    for field in ("subtotal", "tax_amount", "total_amount", "transportation_cost"):
+        fixed = _drop_extra_digit(getattr(merged.commercials, field), getattr(image.commercials, field))
+        if fixed is not None:
+            notes.append(f"{field.replace('_', ' ').capitalize()} {getattr(merged.commercials, field):,.0f} corrected to {fixed:,.0f} (an extra digit on the end).")
+            setattr(merged.commercials, field, fixed)
+    merged.notes.extend(notes)
+    return merged, notes, False
+
+
+@dataclass
+class SecondReading:
+    reading: Optional[dict] = None  # the image reading, for storage
+    keep: Optional[AIExtractionResult] = None  # what the quotation should now hold (may be the original)
+    changed: bool = False
+    adopted: bool = False
+    notes: list[str] = field(default_factory=list)
+    issues: list[ValidationIssue] = field(default_factory=list)
+
+
+async def second_reading(data: bytes, text_reading: AIExtractionResult) -> SecondReading:
+    """Read the pages as images, settle the clear-cut disagreements, and flag the rest. Empty when switched off or unavailable."""
     if not settings.VISION_SECOND_READER:
-        return [], None
+        return SecondReading()
     images = page_images(data)
     other = await second_read(images) if images else None
     if other is None:
-        return [], None
-    return compare_readings(text_reading, other), other.model_dump(mode="json", exclude={"raw_response"})
+        return SecondReading()
+    keep, notes, adopted = reconcile_readings(text_reading, other)
+    return SecondReading(reading=other.model_dump(mode="json", exclude={"raw_response"}), keep=keep,
+                         changed=bool(notes), adopted=adopted, notes=notes,
+                         issues=[] if adopted else compare_readings(keep, other))

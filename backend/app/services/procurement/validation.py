@@ -243,6 +243,13 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
         if tax is None and commercials.tax_percentage is not None:
             tax = base * commercials.tax_percentage / 100.0
         freight = commercials.transportation_cost or 0.0
+        # Freight that is also a line ("TRANSPORTATION 600") is already inside the subtotal.
+        if freight and any(
+            i.total_price is not None and abs(i.total_price - freight) <= ABS_TOLERANCE
+            and re.search(r"transport|freight|carriage|cartage|delivery|tempo|loading", i.original_name or "", re.I)
+            for i in extraction.items
+        ):
+            freight = 0.0
         if tax is not None:
             expected_total = base + tax + freight
             if not _close_enough(expected_total, commercials.total_amount):

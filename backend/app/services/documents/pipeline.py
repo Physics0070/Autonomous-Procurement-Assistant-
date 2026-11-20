@@ -196,14 +196,19 @@ class ProcessingPipeline:
         # Second reader: scanned files and photos are also read from the image. Disagreements on an amount
         # are flagged for a person; neither reading is changed.
         if processed.ocr_used and not ai_error:
-            from app.services.documents.second_reader import second_reading_issues
+            from app.services.documents.second_reader import second_reading
 
-            image_issues, image_reading = await second_reading_issues(data, extraction)
-            if image_reading is not None:
-                await self.quotations.store_stage(organization_id, quotation_id, "second_reading", image_reading)
-                validation.issues.extend(image_issues)
-                validation.warning_count += len(image_issues)
-                if image_issues:
+            sr = await second_reading(data, extraction)
+            if sr.reading is not None:
+                await self.quotations.store_stage(organization_id, quotation_id, "second_reading", sr.reading)
+                if sr.changed:
+                    # Keep what the text reading said, then continue with the settled reading.
+                    await self.quotations.store_stage(organization_id, quotation_id, "text_reading", extraction.model_dump(mode="json"))
+                    extraction = sr.keep
+                    validation = validate_extraction(extraction, None if sr.adopted else source_text)
+                validation.issues.extend(sr.issues)
+                validation.warning_count += len(sr.issues)
+                if sr.issues or sr.adopted:
                     validation.requires_review = True
 
         await self.quotations.store_stage(

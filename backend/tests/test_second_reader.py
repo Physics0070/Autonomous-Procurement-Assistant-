@@ -72,13 +72,13 @@ async def test_pipeline_helper_returns_issues_and_the_stored_reading(monkeypatch
 
     monkeypatch.setattr(second_reader, "second_read", fake)
     monkeypatch.setattr(second_reader, "page_images", lambda data: [b"img"])
-    issues, stored = await second_reader.second_reading_issues(b"x", _reading())
-    assert issues and stored["items"][0]["unit_price"] == 72.0
+    sr = await second_reader.second_reading(b"x", _reading())
+    assert sr.issues and sr.reading["items"][0]["unit_price"] == 72.0 and not sr.changed
 
 
 async def test_the_switch_turns_it_off(monkeypatch):
     monkeypatch.setattr(second_reader.settings, "VISION_SECOND_READER", False)
-    assert await second_reader.second_reading_issues(b"x", _reading()) == ([], None)
+    assert (await second_reader.second_reading(b"x", _reading())).reading is None
 
 
 def test_page_images_ignores_files_it_cannot_show():
@@ -90,3 +90,39 @@ def test_names_the_ocr_spaced_differently_still_match():
     text = _reading(unit_price=292.0, name="PVCELBOW-2INCH")
     image = _reading(unit_price=72.0, total=7200.0, name="PVC ELBOW - 2 INCH")
     assert any(i.field == "items.0.unit_price" for i in compare_readings(text, image))
+
+
+# ---- settling the clear-cut disagreements (found on real handwritten quotations) ----
+from app.services.documents.second_reader import reconcile_readings  # noqa: E402
+
+
+def _tanpure(total, line):
+    return AIExtractionResult.model_validate({
+        "items": [{"original_name": "10x10 Tent", "quantity": 6, "total_price": line}],
+        "commercials": {"subtotal": line * 2 if line < 10000 else None, "total_amount": total}})
+
+
+def test_a_slash_dash_read_as_a_digit_is_corrected_from_the_image():
+    text, image = _tanpure(121541.0, 48001.0), _tanpure(12154.0, 4800.0)
+    kept, notes, adopted = reconcile_readings(text, image)
+    assert kept.items[0].total_price == 4800.0 and kept.commercials.total_amount == 12154.0 and not adopted
+    assert notes and "extra digit" in notes[0]
+    assert text.items[0].total_price == 48001.0  # the original reading is not touched
+
+
+def test_a_genuine_difference_is_left_alone_for_a_person():
+    text, image = _reading(unit_price=292.0, total=29200.0), _reading(unit_price=72.0, total=7200.0)
+    kept, notes, adopted = reconcile_readings(text, image)
+    assert kept.items[0].unit_price == 292.0 and notes == [] and not adopted
+
+
+def test_when_the_text_found_no_items_the_image_reading_is_used_and_marked():
+    empty = AIExtractionResult.model_validate({"supplier": {"name": "Trimurti"}})
+    kept, notes, adopted = reconcile_readings(empty, _reading())
+    assert adopted and kept.items and "Check it against the original" in kept.notes[-1]
+
+
+def test_xls_workbooks_can_be_read():
+    import xlrd  # the old Excel format needs this package; it was missing
+
+    assert xlrd.__version__

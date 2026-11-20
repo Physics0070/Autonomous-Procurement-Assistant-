@@ -27,7 +27,10 @@ CRITICAL RULES
 4. If the document is OCR output it may contain errors such as missing spaces or merged
    numbers. Do not silently repair them into plausible values. If a number is unreadable
    or ambiguous, return null and mention it in "notes".
-5. Return ONLY a JSON object. No markdown fences, no commentary.
+5. Column headings on small-business quotations are sometimes swapped. Decide which column is the quantity and which
+   is the rate from the values: a whole number carrying a unit (10pkt, 1kg, 2 Nos) is a quantity; a decimal such as 75.00
+   is a rate, whatever the heading says. Apply that to every row of the table the same way.
+6. Return ONLY a JSON object. No markdown fences, no commentary.
 """
 
 EXTRACTION_SCHEMA = {

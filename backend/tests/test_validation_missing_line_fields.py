@@ -23,3 +23,19 @@ def test_a_complete_line_has_no_such_issue():
 def test_a_line_with_nothing_priced_stays_a_warning():
     report = validate_extraction(_extraction(quantity=100.0))
     assert next(i for i in report.issues if i.code == "incomplete_item").severity == Severity.WARNING
+
+
+def test_freight_that_is_also_a_line_item_is_not_added_twice():
+    ext = AIExtractionResult.model_validate({
+        "supplier": {"name": "Agarwal Veneers"},
+        "items": [{"original_name": "MDF BOARD", "quantity": 3, "unit_price": 434.23, "total_price": 1302.69},
+                  {"original_name": "TRANSPORTATION", "quantity": 1, "unit_price": 600.0, "total_price": 600.0}],
+        "commercials": {"subtotal": 1902.69, "tax_amount": 342.48, "transportation_cost": 600.0, "total_amount": 2245.17}})
+    assert not [i for i in validate_extraction(ext).issues if i.code == "total_mismatch"]
+
+
+def test_freight_that_is_not_a_line_item_still_counts():
+    ext = AIExtractionResult.model_validate({
+        "supplier": {"name": "X"}, "items": [{"original_name": "PIPE", "quantity": 1, "unit_price": 1000.0, "total_price": 1000.0}],
+        "commercials": {"subtotal": 1000.0, "tax_amount": 180.0, "transportation_cost": 600.0, "total_amount": 1180.0}})
+    assert [i for i in validate_extraction(ext).issues if i.code == "total_mismatch"]
