@@ -41,6 +41,25 @@ def is_valid_gstin(value: Optional[str]) -> bool:
     return bool(normalized and _GSTIN_RE.match(normalized))
 
 
+_CHECK_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def check_digit(first_fourteen: str) -> str:
+    """The 15th GSTIN character, from the first 14 (the GST network's base-36 weighted checksum)."""
+    total = 0
+    for position, char in enumerate(first_fourteen):
+        value = _CHECK_CHARS.index(char) * (1 if position % 2 == 0 else 2)
+        total += value // 36 + value % 36
+    return _CHECK_CHARS[(36 - total % 36) % 36]
+
+
+def has_valid_check_digit(value: Optional[str]) -> bool:
+    """True for a well-formed GSTIN whose last character matches its checksum. Catches a misread or invented number
+    that still looks like a GSTIN (checked: the sample 27AAPFU0939F1ZV and four GSTINs from real quotations pass)."""
+    normalized = normalize_gstin(value)
+    return bool(normalized and _GSTIN_RE.match(normalized) and check_digit(normalized[:14]) == normalized[14])
+
+
 def state_code(value: Optional[str]) -> Optional[str]:
     normalized = normalize_gstin(value)
     if not normalized or not _GSTIN_RE.match(normalized):

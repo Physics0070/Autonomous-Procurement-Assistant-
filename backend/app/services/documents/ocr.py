@@ -170,7 +170,9 @@ class RapidOCREngine(OCREngine):
         if RapidOCREngine._engine is None:
             from rapidocr_onnxruntime import RapidOCR
 
-            RapidOCREngine._engine = RapidOCR()
+            # 4 threads and larger recognition batches: 16 s per photo against 38 s with the default 16 threads, same 102 text boxes
+            # (measured: 1 thread 29 s, 2 threads 17 s, 4 threads 16 s, 8 threads 28 s on a 16-thread laptop).
+            RapidOCREngine._engine = RapidOCR(intra_op_num_threads=4, inter_op_num_threads=1, rec_batch_num=16)
         return RapidOCREngine._engine
 
     def run(self, image_bytes: bytes, lang: Optional[str] = None) -> OCRResult:

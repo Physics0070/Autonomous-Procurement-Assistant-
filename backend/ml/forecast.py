@@ -67,6 +67,7 @@ def _smoothed_level(history: np.ndarray, steps: int, alpha: float = 0.3) -> np.n
 _METHODS = {"linear_trend": _linear_trend, "seasonal_naive": _seasonal_naive,
             "moving_average": _moving_average, "smoothed_level": _smoothed_level}
 ORIGIN_STEP = 3  # months between the backtest origins
+SWITCH_MARGIN = 0.75  # another method must score at least 25% better than the linear trend to replace it (swept at five cut-offs: 0.75 matched the linear trend, "pick the best" was 5% worse)
 
 
 def forecast_demand(series: pd.Series, horizon: int = 3) -> dict:
@@ -84,12 +85,17 @@ def forecast_demand(series: pd.Series, horizon: int = 3) -> dict:
     # A single holdout is a coin toss on lumpy data, so each method is scored from several origins.
     origins = [months - holdout - k * ORIGIN_STEP for k in range(3)]
     origins = [o for o in origins if o >= MIN_MONTHS // 2 + 1] or [months - holdout]
-    backtest = {
-        name: float(np.mean([smape(values[o:o + holdout], _METHODS[name](values[:o], holdout))
-                             for o in origins if o + holdout <= months]))
-        for name in methods
-    }
+    backtest = {}
+    for name in methods:
+        # Last year's value needs a full year of history before the origin.
+        usable = [o for o in origins if o + holdout <= months and (name != "seasonal_naive" or o >= SEASON)]
+        if usable:
+            backtest[name] = float(np.mean([smape(values[o:o + holdout], _METHODS[name](values[:o], holdout)) for o in usable]))
+    # Backtests on lumpy series are noisy, so the plain linear trend is kept unless another method beats it clearly:
+    # measured at five different cut-off months, "pick the best backtest" lost to the linear trend on one product group.
     method = min(backtest, key=lambda name: (backtest[name], name != "seasonal_naive"))
+    if method != "linear_trend" and backtest[method] > SWITCH_MARGIN * backtest["linear_trend"]:
+        method = "linear_trend"
 
     predictions = _METHODS[method](values, horizon)
     first = pd.Timestamp(series.index[-1]).to_period("M") + 1

@@ -48,6 +48,23 @@ def page_images(data: bytes) -> list[bytes]:
     return []
 
 
+def pdf_has_images(data: bytes) -> bool:
+    """True when a PDF with a text layer also carries page images. An image can sit over the text and show different
+    figures from the ones the text layer holds (seen in a real quotation: text 14.00 and 8,400.00, picture 19.00 and 11,400.00)."""
+    if data[:4] != b"%PDF":
+        return False
+    try:
+        import fitz  # PyMuPDF
+
+        pdf = fitz.open(stream=data, filetype="pdf")
+        try:
+            return any(page.get_images(full=True) for page in list(pdf)[:MAX_PAGES])
+        finally:
+            pdf.close()
+    except Exception:
+        return False
+
+
 async def second_read(images: list[bytes], *, provider: Optional[AIProvider] = None) -> Optional[AIExtractionResult]:
     """Read the quotation from its images alone. None when no vendor could."""
     from app.services.documents.ai_extraction import _salvage, parse_json_response

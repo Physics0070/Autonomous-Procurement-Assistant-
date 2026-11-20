@@ -13,7 +13,7 @@ real USAID shipment data.
 canonical normalized data → comparison. Each layer is stored separately and later
 layers never overwrite earlier ones.
 
-**Status:** all synopsis features built · 195 backend tests · 156 end-to-end assertions ·
+**Status:** all synopsis features built · 8,117 automated tests (7,900 generated stress cases) · every headline number re-measured with intervals in [docs/VALIDATION_REPORT.md](docs/VALIDATION_REPORT.md) ·
 headline ML result: **ROC-AUC 0.83** on 2,545 unseen USAID shipments ·
 live AI, Gmail and Drive need the credentials listed in [Environment variables](#environment-variables).
 
@@ -125,7 +125,7 @@ cd backend
 ./.venv/Scripts/python.exe scripts/test_e2e.py           # 156 assertions against the live API
 ./.venv/Scripts/python.exe scripts/seed_demo.py          # populate a demo workspace
 ./.venv/Scripts/python.exe -m scripts.load_scms_demo     # real-data demo org (USAID SCMS)
-./.venv/Scripts/python.exe -m pytest -q                  # 195 unit/API tests (MongoDB needed)
+./.venv/Scripts/python.exe -m pytest -q                  # 8,000+ unit, API and stress tests (MongoDB needed; about 6 minutes)
 ```
 
 `test_e2e.py` and `seed_demo.py` require the backend to be running. The pytest suite uses

@@ -195,8 +195,9 @@ class ProcessingPipeline:
 
         # Second reader: scanned files and photos are also read from the image. Disagreements on an amount
         # are flagged for a person; neither reading is changed.
-        if processed.ocr_used and not ai_error:
-            from app.services.documents.second_reader import second_reading
+        from app.services.documents.second_reader import pdf_has_images, second_reading
+
+        if (processed.ocr_used or pdf_has_images(data)) and not ai_error:
 
             sr = await second_reading(data, extraction)
             if sr.reading is not None:

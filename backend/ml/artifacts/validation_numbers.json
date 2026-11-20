@@ -1,0 +1,235 @@
+{
+ "risk": {
+  "test_rows": 2545,
+  "late_rate": 0.1399,
+  "overall": {
+   "roc_auc": 0.832,
+   "roc_auc_ci95": [
+    0.8147,
+    0.8499
+   ],
+   "pr_auc": 0.3344,
+   "pr_auc_ci95": [
+    0.3004,
+    0.3797
+   ],
+   "baseline_roc_auc": 0.7609,
+   "baseline_roc_auc_ci95": [
+    0.7402,
+    0.7802
+   ],
+   "gain_over_baseline": 0.0714,
+   "gain_ci95": [
+    0.0541,
+    0.0895
+   ],
+   "gain_is_positive_share": 1.0
+  },
+  "external_vendors": {
+   "rows": 1550,
+   "late_rate": 0.0245,
+   "roc_auc": 0.8078
+  },
+  "rdc_shipments": {
+   "rows": 995,
+   "late_rate": 0.3196,
+   "roc_auc": 0.5622
+  },
+  "by_year": {
+   "2014": {
+    "rows": 1528,
+    "late_rate": 0.1545,
+    "roc_auc": 0.8427
+   },
+   "2015": {
+    "rows": 1017,
+    "late_rate": 0.118,
+    "roc_auc": 0.8002
+   }
+  },
+  "calibration_ece": 0.0304,
+  "calibration_bins": [
+   [
+    0.01,
+    0.0,
+    255
+   ],
+   [
+    0.012,
+    0.0,
+    254
+   ],
+   [
+    0.016,
+    0.012,
+    255
+   ],
+   [
+    0.02,
+    0.02,
+    254
+   ],
+   [
+    0.028,
+    0.035,
+    256
+   ],
+   [
+    0.087,
+    0.051,
+    254
+   ],
+   [
+    0.186,
+    0.233,
+    253
+   ],
+   [
+    0.264,
+    0.318,
+    255
+   ],
+   [
+    0.337,
+    0.402,
+    254
+   ],
+   [
+    0.4,
+    0.329,
+    255
+   ]
+  ],
+  "threshold_shipped": {
+   "threshold": 0.2906,
+   "share_flagged": 0.2165,
+   "precision": 0.3575,
+   "precision_ci95": [
+    0.3197,
+    0.3965
+   ],
+   "recall": 0.5534,
+   "recall_ci95": [
+    0.5027,
+    0.6044
+   ]
+  },
+  "threshold_screening": {
+   "threshold": 0.1445,
+   "share_flagged": 0.4083,
+   "precision": 0.3167,
+   "precision_ci95": [
+    0.2877,
+    0.3454
+   ],
+   "recall": 0.9242,
+   "recall_ci95": [
+    0.8955,
+    0.9508
+   ]
+  }
+ },
+ "price_errors": {
+  "history_rows": 468,
+  "quotes": 300,
+  "wrong": 76,
+  "later_half_any_flag": {
+   "precision": 0.75,
+   "precision_ci95": [
+    0.6326,
+    0.86
+   ],
+   "recall": 1.0,
+   "recall_ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "later_half_high_only": {
+   "precision": 0.833,
+   "precision_ci95": [
+    0.7143,
+    0.9412
+   ],
+   "recall": 0.897,
+   "recall_ci95": [
+    0.7941,
+    0.9773
+   ]
+  },
+  "all_any_flag": {
+   "precision": 0.758,
+   "precision_ci95": [
+    0.6712,
+    0.8444
+   ],
+   "recall": 0.947,
+   "recall_ci95": [
+    0.8928,
+    0.9885
+   ]
+  },
+  "false_alarm_rate_on_correct_quotes": 0.103,
+  "recall_by_error_type": {
+   "currency_mixup": 1.0,
+   "decimal_shift": 1.0,
+   "digit_transposition": 0.75,
+   "gst_added_twice": 0.8,
+   "overcharge": 1.0,
+   "suspiciously_low": 1.0,
+   "unit_mismatch": 1.0
+  },
+  "detection_by_size_of_error": {
+   "0-10% off the item's median": {
+    "wrong_quotes": 2,
+    "flagged": 0.0
+   },
+   "10-20% off the item's median": {
+    "wrong_quotes": 4,
+    "flagged": 0.5
+   },
+   "20-35% off the item's median": {
+    "wrong_quotes": 7,
+    "flagged": 1.0
+   },
+   "35-60% off the item's median": {
+    "wrong_quotes": 11,
+    "flagged": 1.0
+   },
+   "60-100% off the item's median": {
+    "wrong_quotes": 28,
+    "flagged": 1.0
+   },
+   "100-up% off the item's median": {
+    "wrong_quotes": 24,
+    "flagged": 1.0
+   }
+  }
+ },
+ "forecast": {
+  "ARV": {
+   "cutoffs": 5,
+   "mean_smape": {
+    "linear_trend": 55.9,
+    "seasonal_naive": 59.0,
+    "moving_average": 64.5,
+    "smoothed_level": 59.9,
+    "chosen": 54.1
+   },
+   "chosen_beats_last_year_share": 0.6,
+   "chosen_beats_linear_share": 1.0
+  },
+  "HRDT": {
+   "cutoffs": 5,
+   "mean_smape": {
+    "linear_trend": 55.0,
+    "seasonal_naive": 65.6,
+    "moving_average": 55.9,
+    "smoothed_level": 56.5,
+    "chosen": 62.3
+   },
+   "chosen_beats_last_year_share": 0.8,
+   "chosen_beats_linear_share": 0.4
+  }
+ }
+}

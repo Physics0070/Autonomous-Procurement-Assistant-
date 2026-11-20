@@ -10,7 +10,7 @@ import re
 from datetime import datetime, timezone
 from typing import Optional
 
-from app.core.gstin import is_valid_gstin
+from app.core.gstin import has_valid_check_digit, is_valid_gstin
 from app.schemas.extraction import AIExtractionResult, ValidationIssue, ValidationReport
 from app.schemas.common import Severity
 
@@ -93,6 +93,13 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
             "supplier.gst_number",
             "invalid_gst_format",
             "GST number does not match the 15-character GSTIN format.",
+            observed=supplier.gst_number,
+        )
+    elif supplier.gst_number and not has_valid_check_digit(supplier.gst_number):
+        add(
+            "supplier.gst_number",
+            "gst_check_digit_failed",
+            "GST number looks right but fails its check digit, so a character may have been misread.",
             observed=supplier.gst_number,
         )
     if supplier.email and not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", supplier.email.strip()):
@@ -293,7 +300,7 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
     return ValidationReport(
         issues=issues,
         # Any hard error, or a meaningful pile of warnings, needs a human.
-        requires_review=errors > 0 or warnings >= 3,
+        requires_review=errors > 0 or warnings >= 3 or any(i.code == "incomplete_item" for i in issues),
         checked_at=datetime.now(timezone.utc).isoformat(),
         error_count=errors,
         warning_count=warnings,
