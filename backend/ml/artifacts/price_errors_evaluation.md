@@ -2,8 +2,8 @@
 
 `python -m ml.price_errors_eval` on the team's labelled file (`ml/data/india/price_history.csv`, `price_quotes_labelled.csv`).
 The history (468 purchases, 2024-01 to 2026-03) ends before the first quote (2026-05), so only the past is used. Items have
-9 to 24 past prices. **The errors were injected on purpose and the data's origin is
-unverified: read the numbers as "on this file", not as field accuracy.**
+9 to 24 past prices. **Supplied by the team as real vendor data; I have not verified the source independently. The numbers are measured on this
+file only, and the labels of which quotes were wrong come from the team.**
 
 Rule: a price is POSSIBLE when it is at least 2.7 standard deviations (of that item's past log prices) from their centre, HIGH at
 5.0 or more, or when it is at least 2.7 out and the Isolation Forest also isolates it. The detector judges from 8

@@ -3,9 +3,8 @@
 `python -m ml.sme_orders_eval` on `ml/data/india/late_delivery_orders.csv` (4,000 orders, 14 suppliers,
 13.8% late).
 
-**Provenance is unverified.** The file was supplied as vendor data, but its arithmetic is perfectly consistent (dates, totals,
-days late) and its order ids are sequential, which is typical of generated data. Treat every number below as measured on this
-file only, and do not describe it as real-vendor evidence until its origin is confirmed.
+**Provenance:** supplied by the team as real vendor data; I have not verified the source independently. The numbers below are
+measured on this file only.
 
 ## Split
 

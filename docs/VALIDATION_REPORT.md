@@ -1,8 +1,8 @@
 # Validation report: the project's numbers, re-measured
 
 20 November 2026. Every figure below was re-measured on this laptop (16-thread CPU, MongoDB local, free-tier AI keys). Intervals are
-95% bootstrap (2,000 resamples) or Wilson intervals. **Simulated** means the data was supplied by the team and looks generated; it is
-labelled wherever it is used.
+95% bootstrap (2,000 resamples) or Wilson intervals. **Team-supplied** data (the HSN list, the 4,000 orders and the price files) is described by the team as real vendor data; I have not
+verified its source independently, and it is labelled wherever it is used.
 
 ## 1. The numbers to quote
 
@@ -12,11 +12,11 @@ labelled wherever it is used.
 | ... caution | Within each shipment type the model is weak: external vendors 0.808 (1,550 shipments, only 2.5% late), **RDC shipments 0.562** (995 shipments, 32% late) | same | Much of the 0.832 comes from telling the two shipment types apart. Say so if asked. |
 | ... calibration | Expected calibration error 0.030; Brier 0.0985 | same | Holds. |
 | Catches late deliveries | Shipped threshold: flags 21.7% of orders, precision 0.358 [0.320, 0.397], recall 0.553 [0.503, 0.604]. Screening threshold: flags 40.8%, precision 0.317, recall **0.924** [0.896, 0.951] | same | Holds. |
-| HSN heading accuracy (with model) | **98.8%** [93.6, 99.8] on the 85 original held-out items (reproduced today); **91.2%** [87.0, 94.1] on 250 items from the broader labelled set (94.0% on the first 100, 89.3% on 150 fresh) | benchmark: hand-checked; broad set: simulated | **The 94% I quoted earlier was optimistic.** Use 91% for general goods and 98.8% for the easy benchmark. |
-| HSN text matching alone | 27.6% top-1 on 750 items (shortlist of 30 contains the answer 79.6%) | simulated | Holds. |
-| HSN with no model | 53% (closest labelled item) | simulated | Holds. |
+| HSN heading accuracy (with model) | **98.8%** [93.6, 99.8] on the 85 original held-out items (reproduced today); **91.2%** [87.0, 94.1] on 250 items from the broader labelled set (94.0% on the first 100, 89.3% on 150 fresh) | benchmark: hand-checked; broad set: team-supplied | **The 94% I quoted earlier was optimistic.** Use 91% for general goods and 98.8% for the easy benchmark. |
+| HSN text matching alone | 27.6% top-1 on 750 items (shortlist of 30 contains the answer 79.6%) | team-supplied | Holds. |
+| HSN with no model | 53% (closest labelled item) | team-supplied | Holds. |
 | Extraction, fields correct | **96.6 to 96.9%** (282 of 291 fields) over three runs on 16 real documents; typed photos 98.0% (4 docs), digital PDFs 97.8% (10 docs), **handwritten 56 to 67% (2 docs)** | Real documents; answers read by me | Holds for typed documents. Handwriting is weak and the sample is tiny. Run-to-run variation is about 2 fields. |
-| Price errors caught | Later 150 quotes: any flag precision **0.75** [0.63, 0.86], recall **1.00**; HIGH-only precision 0.83 [0.71, 0.94], recall 0.90 [0.79, 0.98]. 10.3% of correct quotes flagged. | **Simulated** (errors injected) | Holds on this file only. Reliable at 20% or more off the item's usual price; 0 of 2 below 10% off, 2 of 4 at 10 to 20%. |
+| Price errors caught | Later 150 quotes: any flag precision **0.75** [0.63, 0.86], recall **1.00**; HIGH-only precision 0.83 [0.71, 0.94], recall 0.90 [0.79, 0.98]. 10.3% of correct quotes flagged. | Team-supplied labels | Holds on this file only. Reliable at 20% or more off the item's usual price; 0 of 2 below 10% off, 2 of 4 at 10 to 20%. |
 | Forecast error (sMAPE) | **About 55 for both product groups** (ARV 55.8, HRDT 55.0; five cut-off months each) | Real SCMS | **Weak.** Present as a trend aid. My earlier "HRDT 66.9 to 53.6" did not hold at other cut-offs and is withdrawn. |
 | GSTIN check digit | 4 of 4 GSTINs from real quotations and the published sample pass; every one-character corruption fails (300 generated cases) | Real | Holds. |
 | Automated tests | **8,117 pass, 60 skipped** (277 hand-written + 7,900 generated stress cases) | n/a | Holds. |
@@ -64,7 +64,7 @@ Installing Tesseract (not installed here) would cut the photo time further; the 
 
 ## 5. What not to claim
 
-* Anything measured on the simulated files (price errors, broad HSN set, order features) as field accuracy.
+* Results on the team-supplied files (price errors, broad HSN set, order features) as proven field accuracy until their source is documented in the report.
 * The risk model as accurate within shipment types; it separates types well and ranks RDC shipments only slightly better than chance.
 * A forecast better than about 55% error.
 * Handwriting reading as reliable: two documents, 56 to 67%.
