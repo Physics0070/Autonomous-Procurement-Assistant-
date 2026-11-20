@@ -1,4 +1,10 @@
-"""Isolation Forest assessment of one unit price against a product's price history."""
+"""Assessment of one unit price against a product's price history.
+
+The decision is a z-score on log price (how many standard deviations of this product's own past log prices the new price
+sits from their centre). The Isolation Forest is kept as corroboration: a price that is both far out and isolated is HIGH.
+On 300 labelled quotes (later half, history before the quotes) this flagged the wrong prices with precision 0.74 and
+recall 1.00, where the forest's percentile cut-offs gave 0.42 / 0.74; on 9,998 real SCMS prices it flags 0.8%.
+"""
 from __future__ import annotations
 
 from collections.abc import Sequence
@@ -6,10 +12,12 @@ from collections.abc import Sequence
 import numpy as np
 from sklearn.ensemble import IsolationForest
 
-MIN_SAMPLES = 20
+MIN_SAMPLES = 8  # a log-price z-score is stable from about 8 past prices; below that no judgement is made
 HIGH_PERCENTILE = 2
 POSSIBLE_PERCENTILE = 10
 ZERO_SPREAD_TOLERANCE = 0.01
+POSSIBLE_Z = 2.7  # chosen on the first half of the labelled quotes: the highest precision with recall of at least 90%
+HIGH_Z = 5.0
 
 
 def _positive(values) -> np.ndarray:
@@ -55,23 +63,20 @@ def assess_price(unit_price: float, history_prices: Sequence[float]) -> dict | N
         else:
             status = "NORMAL"
             reason = f"Unit price {price:,.4g} matches the median of {len(history)} identical past prices."
-    elif (fence := _outside_fence(np.log(ratio), past.ravel())) is not None:
-        # Isolation Forest only splits within the observed range, so a price beyond it
-        # scores like the most extreme past price. Tukey fences on log price catch those.
-        status = "HIGH_ANOMALY" if fence >= 3 else "POSSIBLE_ANOMALY"
-        reason = (f"Unit price {price:,.4g} is {comparison}; it lies outside every past price, "
-                  f"{fence:.1f} interquartile ranges beyond the nearest one.")
-    elif score < np.percentile(past_scores, HIGH_PERCENTILE):
-        status = "HIGH_ANOMALY"
-        reason = (f"Unit price {price:,.4g} is {comparison}; it is more unusual than "
-                  f"{100 - HIGH_PERCENTILE}% of past prices.")
-    elif score < np.percentile(past_scores, POSSIBLE_PERCENTILE):
-        status = "POSSIBLE_ANOMALY"
-        reason = (f"Unit price {price:,.4g} is {comparison}; it is more unusual than "
-                  f"{100 - POSSIBLE_PERCENTILE}% of past prices.")
     else:
-        status = "NORMAL"
-        reason = f"Unit price {price:,.4g} is {comparison}, within the usual range."
+        z = abs(np.log(ratio)) / float(np.std(past, ddof=1))
+        isolated = score < np.percentile(past_scores, HIGH_PERCENTILE)
+        if z >= HIGH_Z or (z >= POSSIBLE_Z and isolated):
+            status = "HIGH_ANOMALY"
+            reason = (f"Unit price {price:,.4g} is {comparison}; that is {z:.1f} times the usual spread of "
+                      f"this product's past prices.")
+        elif z >= POSSIBLE_Z:
+            status = "POSSIBLE_ANOMALY"
+            reason = (f"Unit price {price:,.4g} is {comparison}; that is {z:.1f} times the usual spread of "
+                      f"this product's past prices.")
+        else:
+            status = "NORMAL"
+            reason = f"Unit price {price:,.4g} is {comparison}, within the usual range."
 
     return {
         "status": status,

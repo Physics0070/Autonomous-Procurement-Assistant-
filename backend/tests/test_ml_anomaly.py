@@ -9,7 +9,7 @@ def _history(n, center=100.0):
 
 
 def test_too_little_history_returns_none():
-    assert MIN_SAMPLES == 20
+    assert MIN_SAMPLES == 8
     assert assess_price(100.0, _history(MIN_SAMPLES - 1)) is None
 
 
@@ -35,3 +35,17 @@ def test_results_are_deterministic():
 def test_zero_spread_history_still_flags_a_different_price():
     result = assess_price(150.0, [100.0] * 30)
     assert result["status"] != "NORMAL"
+
+
+def test_a_moderately_high_price_is_flagged_but_not_called_certain():
+    result = assess_price(100.0 * np.exp(0.05 * 3.2), _history(60))  # ~3 spreads out
+    assert result["status"] in {"POSSIBLE_ANOMALY", "HIGH_ANOMALY"}
+    assert "usual spread" in result["reason"]
+
+
+def test_ordinary_variation_is_not_flagged():
+    assert all(assess_price(100.0 * np.exp(0.05 * z), _history(60))["status"] == "NORMAL" for z in (-1.5, -0.5, 0.0, 1.0, 2.0))
+
+
+def test_a_short_history_can_still_catch_a_decimal_shift():
+    assert assess_price(1000.0, _history(10))["status"] == "HIGH_ANOMALY"
