@@ -130,7 +130,7 @@ python scripts/make_samples.py             # regenerate the sample quotations
 python -m ml.hsn dev test --llm            # HSN accuracy with the model (paced for free-tier limits)
 ```
 
-More detail on the pipeline, design decisions, the agents, the LLM council and every ML result is in the [technical reference](docs/TECHNICAL_REFERENCE.md).
+The complete picture (all numbers, models, APIs and limits) is in the [final report](docs/FINAL_REPORT.md); more detail on the pipeline and design decisions is in the [technical reference](docs/TECHNICAL_REFERENCE.md).
 
 ## Project Structure
 ```text
