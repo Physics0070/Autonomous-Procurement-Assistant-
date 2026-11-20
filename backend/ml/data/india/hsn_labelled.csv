@@ -1,0 +1,751 @@
+id,item,hsn6,chapter,heading,category,confidence
+1,"A4 copier paper 75 GSM, ream of 500 sheets",4802.56,48,4802,"Stationery, Paper & Printing",H
+2,"A4 copier paper 70 GSM, ream of 500 sheets",4802.56,48,4802,"Stationery, Paper & Printing",H
+3,"A3 copier paper 80 GSM, ream of 500 sheets",4802.56,48,4802,"Stationery, Paper & Printing",H
+4,"Foolscap/legal size paper 75 GSM, ream",4802.56,48,4802,"Stationery, Paper & Printing",H
+5,"Colour copier paper A4 100 GSM, 500 sheets",4802.56,48,4802,"Stationery, Paper & Printing",H
+6,"Plotter paper roll 914 mm x 50 m, 80 GSM",4802.55,48,4802,"Stationery, Paper & Printing",H
+7,Plain white paper roll 60 GSM for printing,4802.55,48,4802,"Stationery, Paper & Printing",H
+8,Newsprint paper reel 45 GSM,4801.00,48,4801,"Stationery, Paper & Printing",H
+9,Self-adhesive sticky notes pad 3x3 inch,4811.41,48,4811,"Stationery, Paper & Printing",M
+10,Masking tape paper 24 mm x 20 m,4811.41,48,4811,"Stationery, Paper & Printing",M
+11,Self-adhesive paper sheets A4 (pack of 100),4811.41,48,4811,"Stationery, Paper & Printing",M
+12,Thermal paper roll 79 mm x 50 m for POS printer,4811.90,48,4811,"Stationery, Paper & Printing",M
+13,Thermal paper roll 57 mm x 30 m for billing machine,4811.90,48,4811,"Stationery, Paper & Printing",M
+14,Office diary hardbound daily 2027,4820.10,48,4820,"Stationery, Paper & Printing",H
+15,Account ledger register 200 pages,4820.10,48,4820,"Stationery, Paper & Printing",H
+16,Attendance register 100 pages,4820.10,48,4820,"Stationery, Paper & Printing",H
+17,Visitor register 100 pages hardbound,4820.10,48,4820,"Stationery, Paper & Printing",H
+18,Stock register 300 pages hardbound,4820.10,48,4820,"Stationery, Paper & Printing",H
+19,"Notebook ruled A4, 172 pages",4820.20,48,4820,"Stationery, Paper & Printing",H
+20,Spiral notebook A5 160 pages,4820.20,48,4820,"Stationery, Paper & Printing",H
+21,Long notebook 200 pages,4820.20,48,4820,"Stationery, Paper & Printing",H
+22,Drawing book A3 40 sheets,4820.20,48,4820,"Stationery, Paper & Printing",H
+23,Lever arch file A4 75 mm,4820.30,48,4820,"Stationery, Paper & Printing",H
+24,Box file foolscap with metal clip,4820.30,48,4820,"Stationery, Paper & Printing",H
+25,Ring binder A4 2D,4820.30,48,4820,"Stationery, Paper & Printing",H
+26,Spring file folder A4,4820.30,48,4820,"Stationery, Paper & Printing",H
+27,Pressboard file with fastener,4820.30,48,4820,"Stationery, Paper & Printing",H
+28,Plastic document folder with button A4,3926.10,39,3926,"Stationery, Paper & Printing",H
+29,Clear sheet protector A4 (pack of 100),3926.10,39,3926,"Stationery, Paper & Printing",H
+30,Plastic desk organizer pen stand,3926.10,39,3926,"Stationery, Paper & Printing",H
+31,Plastic ID card holder,3926.10,39,3926,"Stationery, Paper & Printing",H
+32,White envelope 10x4.5 inch (box of 500),4817.10,48,4817,"Stationery, Paper & Printing",H
+33,Window envelope DL size,4817.10,48,4817,"Stationery, Paper & Printing",H
+34,Laminated brown envelope A4,4817.10,48,4817,"Stationery, Paper & Printing",H
+35,"Printed barcode labels, adhesive roll",4821.10,48,4821,"Stationery, Paper & Printing",H
+36,"Printed asset tag labels, paper",4821.10,48,4821,"Stationery, Paper & Printing",H
+37,"Blank self-adhesive labels A4, 65 per sheet",4821.90,48,4821,"Stationery, Paper & Printing",H
+38,Blank address labels roll,4821.90,48,4821,"Stationery, Paper & Printing",H
+39,Whatman No.1 filter paper 90 mm (pack of 100),4823.20,48,4823,"Stationery, Paper & Printing",H
+40,Qualitative filter paper 11 cm,4823.20,48,4823,"Stationery, Paper & Printing",H
+41,Wall calendar 2027 printed,4910.00,49,4910,"Stationery, Paper & Printing",H
+42,Table calendar 2027 printed,4910.00,49,4910,"Stationery, Paper & Printing",H
+43,Technical manual printed hardbound,4901.99,49,4901,"Stationery, Paper & Printing",H
+44,"Printed textbook, engineering",4901.99,49,4901,"Stationery, Paper & Printing",H
+45,Visiting cards printed (box of 100),4911.99,49,4911,"Stationery, Paper & Printing",H
+46,Printed certificates on art paper,4911.99,49,4911,"Stationery, Paper & Printing",H
+47,Printed leaflets A4,4911.99,49,4911,"Stationery, Paper & Printing",H
+48,Printed product catalogue,4911.10,49,4911,"Stationery, Paper & Printing",H
+49,Printed brochure tri-fold,4911.10,49,4911,"Stationery, Paper & Printing",H
+50,Corrugated carton 5-ply 18x12x10 inch,4819.10,48,4819,"Stationery, Paper & Printing",H
+51,Corrugated box 3-ply for courier,4819.10,48,4819,"Stationery, Paper & Printing",H
+52,Ball point pen blue 0.7 mm (box of 50),9608.10,96,9608,"Stationery, Paper & Printing",H
+53,Gel pen black 0.5 mm,9608.10,96,9608,"Stationery, Paper & Printing",H
+54,Retractable ball pen blue,9608.10,96,9608,"Stationery, Paper & Printing",H
+55,Premium metal ball pen,9608.10,96,9608,"Stationery, Paper & Printing",H
+56,Whiteboard marker black (box of 10),9608.20,96,9608,"Stationery, Paper & Printing",H
+57,Permanent marker black bullet tip,9608.20,96,9608,"Stationery, Paper & Printing",H
+58,Highlighter yellow,9608.20,96,9608,"Stationery, Paper & Printing",H
+59,CD marker pen,9608.20,96,9608,"Stationery, Paper & Printing",H
+60,Paint marker white,9608.20,96,9608,"Stationery, Paper & Printing",H
+61,Fountain pen with converter,9608.30,96,9608,"Stationery, Paper & Printing",H
+62,Ink pen school type,9608.30,96,9608,"Stationery, Paper & Printing",H
+63,Mechanical pencil 0.5 mm,9608.40,96,9608,"Stationery, Paper & Printing",H
+64,Ball pen refill blue (pack of 20),9608.60,96,9608,"Stationery, Paper & Printing",H
+65,Gel pen refill black,9608.60,96,9608,"Stationery, Paper & Printing",H
+66,HB pencil wooden (box of 10),9609.10,96,9609,"Stationery, Paper & Printing",H
+67,Colour pencil set 24 shades,9609.10,96,9609,"Stationery, Paper & Printing",H
+68,Wax crayons 12 shades,9609.10,96,9609,"Stationery, Paper & Printing",H
+69,Drawing pencil 2B,9609.10,96,9609,"Stationery, Paper & Printing",H
+70,Mechanical pencil lead 0.5 mm HB,9609.20,96,9609,"Stationery, Paper & Printing",H
+71,White chalk sticks (box of 100),9609.90,96,9609,"Stationery, Paper & Printing",H
+72,Dustless coloured chalk,9609.90,96,9609,"Stationery, Paper & Printing",H
+73,Oil pastel set 25 shades,9609.90,96,9609,"Stationery, Paper & Printing",H
+74,Whiteboard 4x3 ft non-magnetic,9610.00,96,9610,"Stationery, Paper & Printing",H
+75,Magnetic whiteboard 6x4 ft,9610.00,96,9610,"Stationery, Paper & Printing",H
+76,Green chalkboard 4x3 ft,9610.00,96,9610,"Stationery, Paper & Printing",H
+77,Glass writing board 4x3 ft,9610.00,96,9610,"Stationery, Paper & Printing",H
+78,Self-inking rubber stamp custom,9611.00,96,9611,"Stationery, Paper & Printing",H
+79,Date stamp self-inking,9611.00,96,9611,"Stationery, Paper & Printing",H
+80,Numbering stamp 6-digit,9611.00,96,9611,"Stationery, Paper & Printing",H
+81,Stamp pad ink pad medium,9612.20,96,9612,"Stationery, Paper & Printing",H
+82,Ink pad large blue,9612.20,96,9612,"Stationery, Paper & Printing",H
+83,Stamp pad refill ink 50 ml,3215.90,32,3215,"Stationery, Paper & Printing",H
+84,Whiteboard marker refill ink 30 ml,3215.90,32,3215,"Stationery, Paper & Printing",H
+85,Black offset printing ink 1 kg,3215.11,32,3215,"Stationery, Paper & Printing",H
+86,Heavy-duty stapler 100 sheets,8472.90,84,8472,"Stationery, Paper & Printing",H
+87,Paper punch 2-hole 20 sheet,8472.90,84,8472,"Stationery, Paper & Printing",H
+88,Paper shredder 10 sheet cross-cut,8472.90,84,8472,"Stationery, Paper & Printing",H
+89,Spiral binding machine A4,8472.90,84,8472,"Stationery, Paper & Printing",H
+90,Currency note counting machine,8472.90,84,8472,"Stationery, Paper & Printing",H
+91,Paper cutting machine A3 guillotine,8441.10,84,8441,"Stationery, Paper & Printing",H
+92,Paper trimmer A4 rotary,8441.10,84,8441,"Stationery, Paper & Printing",H
+93,Staple pins 24/6 (box of 1000),8305.20,83,8305,"Stationery, Paper & Printing",H
+94,Staple pins No.10 (box of 1000),8305.20,83,8305,"Stationery, Paper & Printing",H
+95,Heavy-duty staples 23/13,8305.20,83,8305,"Stationery, Paper & Printing",H
+96,Paper clips 28 mm (box of 100),8305.90,83,8305,"Stationery, Paper & Printing",H
+97,Binder clips 25 mm (box of 12),8305.90,83,8305,"Stationery, Paper & Printing",H
+98,Binder clips 51 mm,8305.90,83,8305,"Stationery, Paper & Printing",H
+99,Drawing pins/push pins (box of 100),7317.00,73,7317,"Stationery, Paper & Printing",H
+100,Wire nails 2 inch 1 kg,7317.00,73,7317,"Stationery, Paper & Printing",H
+101,Glue stick 15 g,3506.10,35,3506,"Stationery, Paper & Printing",H
+102,Gum bottle 100 ml,3506.10,35,3506,"Stationery, Paper & Printing",H
+103,Fevicol-type PVA adhesive 200 g,3506.10,35,3506,"Stationery, Paper & Printing",H
+104,BOPP packing tape 48 mm x 65 m,3919.10,39,3919,"Stationery, Paper & Printing",H
+105,Double-sided tape 12 mm,3919.10,39,3919,"Stationery, Paper & Printing",H
+106,Transparent cello tape 24 mm,3919.10,39,3919,"Stationery, Paper & Printing",H
+107,PVC electrical insulation tape 19 mm,3919.10,39,3919,"Stationery, Paper & Printing",H
+108,Floor marking tape yellow 48 mm,3919.10,39,3919,"Stationery, Paper & Printing",H
+109,Barricade warning tape 100 m,3919.10,39,3919,"Stationery, Paper & Printing",H
+110,Office scissors 8 inch,8213.00,82,8213,"Stationery, Paper & Printing",H
+111,Tailoring scissors 10 inch,8213.00,82,8213,"Stationery, Paper & Printing",H
+112,Pencil sharpener metal,8214.10,82,8214,"Stationery, Paper & Printing",H
+113,Letter opener stainless steel,8214.10,82,8214,"Stationery, Paper & Printing",H
+114,Eraser white non-dust,4016.92,40,4016,"Stationery, Paper & Printing",H
+115,Rubber bands 100 g pack,4016.99,40,4016,"Stationery, Paper & Printing",H
+116,Plastic ruler 30 cm,9017.20,90,9017,"Stationery, Paper & Printing",H
+117,Steel ruler 30 cm,9017.20,90,9017,"Stationery, Paper & Printing",H
+118,Set square 45 degree,9017.20,90,9017,"Stationery, Paper & Printing",H
+119,Geometry box,9017.20,90,9017,"Stationery, Paper & Printing",H
+120,Drawing compass,9017.20,90,9017,"Stationery, Paper & Printing",H
+121,Poster colour set 12 shades,3213.10,32,3213,"Stationery, Paper & Printing",H
+122,Water colour box 12 cakes,3213.10,32,3213,"Stationery, Paper & Printing",H
+123,Acrylic colour tubes set,3213.90,32,3213,"Stationery, Paper & Printing",H
+124,Laptop Core i5 16GB RAM 512GB SSD 14-inch,8471.30,84,8471,Computers & Peripherals,H
+125,Laptop Core i7 16GB RAM 1TB SSD 15.6-inch,8471.30,84,8471,Computers & Peripherals,H
+126,Laptop Ryzen 5 8GB RAM 512GB SSD,8471.30,84,8471,Computers & Peripherals,H
+127,Workstation laptop 32GB RAM 1TB SSD,8471.30,84,8471,Computers & Peripherals,H
+128,Tablet 10.9-inch Wi-Fi 128GB,8471.30,84,8471,Computers & Peripherals,H
+129,Rugged laptop Core i5 16GB,8471.30,84,8471,Computers & Peripherals,H
+130,Chromebook 11.6-inch,8471.30,84,8471,Computers & Peripherals,H
+131,All-in-one desktop PC 23.8-inch Core i5,8471.41,84,8471,Computers & Peripherals,H
+132,All-in-one desktop PC 21.5-inch Core i3,8471.41,84,8471,Computers & Peripherals,H
+133,"Desktop computer set (CPU, monitor, keyboard, mouse)",8471.49,84,8471,Computers & Peripherals,H
+134,Desktop PC bundle Core i3 8GB 256GB,8471.49,84,8471,Computers & Peripherals,H
+135,Desktop CPU cabinet Core i5 8GB 512GB,8471.50,84,8471,Computers & Peripherals,H
+136,Mini PC compact 16GB 512GB,8471.50,84,8471,Computers & Peripherals,H
+137,Rack server 2U dual Xeon 128GB,8471.50,84,8471,Computers & Peripherals,H
+138,Tower server Xeon 32GB RAID,8471.50,84,8471,Computers & Peripherals,H
+139,Thin client terminal,8471.50,84,8471,Computers & Peripherals,H
+140,USB wired keyboard,8471.60,84,8471,Computers & Peripherals,H
+141,Wireless keyboard and mouse combo,8471.60,84,8471,Computers & Peripherals,H
+142,Optical mouse USB wired,8471.60,84,8471,Computers & Peripherals,H
+143,Gaming mouse 7200 DPI,8471.60,84,8471,Computers & Peripherals,H
+144,Flatbed scanner A4 1200 dpi,8471.60,84,8471,Computers & Peripherals,H
+145,Document scanner A4 ADF duplex 40 ppm,8471.60,84,8471,Computers & Peripherals,H
+146,Graphics drawing tablet,8471.60,84,8471,Computers & Peripherals,H
+147,External HDD 2TB USB 3.0,8471.70,84,8471,Computers & Peripherals,H
+148,Internal HDD 1TB SATA 7200 rpm,8471.70,84,8471,Computers & Peripherals,H
+149,NAS storage 4-bay,8471.70,84,8471,Computers & Peripherals,H
+150,Server SAS HDD 2.4TB 10K rpm,8471.70,84,8471,Computers & Peripherals,H
+151,LTO-8 tape drive,8471.70,84,8471,Computers & Peripherals,H
+152,USB 3.0 hub 4-port,8471.80,84,8471,Computers & Peripherals,H
+153,USB-C docking station,8471.80,84,8471,Computers & Peripherals,H
+154,KVM switch 4-port,8471.80,84,8471,Computers & Peripherals,H
+155,Barcode scanner 1D handheld USB,8471.90,84,8471,Computers & Peripherals,H
+156,Barcode scanner 2D wireless,8471.90,84,8471,Computers & Peripherals,H
+157,Smart card reader USB,8471.90,84,8471,Computers & Peripherals,H
+158,DDR4 RAM module 8GB 3200 MHz,8473.30,84,8473,Computers & Peripherals,H
+159,DDR5 RAM module 16GB laptop SODIMM,8473.30,84,8473,Computers & Peripherals,H
+160,Motherboard ATX LGA1700,8473.30,84,8473,Computers & Peripherals,H
+161,Graphics card 8GB GDDR6,8473.30,84,8473,Computers & Peripherals,H
+162,Laptop LCD replacement screen 15.6-inch,8473.30,84,8473,Computers & Peripherals,H
+163,CPU cooler heatsink with fan,8473.30,84,8473,Computers & Peripherals,H
+164,Processor Core i5 12th gen retail,8542.31,85,8542,Computers & Peripherals,H
+165,Processor Ryzen 5 5600 retail,8542.31,85,8542,Computers & Peripherals,H
+166,Pen drive 64GB USB 3.0,8523.51,85,8523,Computers & Peripherals,H
+167,Pen drive 128GB USB 3.0,8523.51,85,8523,Computers & Peripherals,H
+168,SD card 32GB class 10,8523.51,85,8523,Computers & Peripherals,H
+169,MicroSD card 128GB class 10,8523.51,85,8523,Computers & Peripherals,H
+170,SSD 512GB SATA 2.5-inch,8523.51,85,8523,Computers & Peripherals,H
+171,NVMe SSD 1TB M.2,8523.51,85,8523,Computers & Peripherals,H
+172,Portable SSD 1TB USB-C,8523.51,85,8523,Computers & Peripherals,H
+173,Enterprise SSD 1.92TB SAS,8523.51,85,8523,Computers & Peripherals,H
+174,DVD-R blank 4.7GB (spindle of 50),8523.41,85,8523,Computers & Peripherals,H
+175,CD-R 700MB (spindle of 50),8523.41,85,8523,Computers & Peripherals,H
+176,Blu-ray BD-R 25GB blank,8523.41,85,8523,Computers & Peripherals,H
+177,Smart card blank PVC with chip,8523.52,85,8523,Computers & Peripherals,H
+178,RFID proximity access card 125 kHz,8523.59,85,8523,Computers & Peripherals,M
+179,NFC tag sticker 13.56 MHz,8523.59,85,8523,Computers & Peripherals,M
+180,Laser printer monochrome A4 duplex,8443.32,84,8443,Computers & Peripherals,H
+181,Colour laser printer A4,8443.32,84,8443,Computers & Peripherals,H
+182,Ink-tank printer A4 colour,8443.32,84,8443,Computers & Peripherals,H
+183,Dot matrix printer 80-column,8443.32,84,8443,Computers & Peripherals,H
+184,Thermal transfer label printer 4-inch,8443.32,84,8443,Computers & Peripherals,H
+185,Thermal receipt printer 80 mm,8443.32,84,8443,Computers & Peripherals,H
+186,PVC ID card printer,8443.32,84,8443,Computers & Peripherals,H
+187,A3 colour laser printer,8443.32,84,8443,Computers & Peripherals,H
+188,Multifunction laser printer A4 print scan copy,8443.31,84,8443,Computers & Peripherals,M
+189,Multifunction inkjet printer A4,8443.31,84,8443,Computers & Peripherals,M
+190,Digital photocopier A3 multifunction 30 ppm,8443.31,84,8443,Computers & Peripherals,M
+191,Colour MFP A3 copier,8443.31,84,8443,Computers & Peripherals,M
+192,Toner cartridge black laser,8443.99,84,8443,Computers & Peripherals,H
+193,Toner cartridge colour set CMYK,8443.99,84,8443,Computers & Peripherals,H
+194,Drum unit for laser printer,8443.99,84,8443,Computers & Peripherals,H
+195,Fuser assembly laser printer,8443.99,84,8443,Computers & Peripherals,H
+196,Inkjet cartridge black,8443.99,84,8443,Computers & Peripherals,H
+197,Printhead for inkjet printer,8443.99,84,8443,Computers & Peripherals,H
+198,LED monitor 21.5-inch FHD,8528.52,85,8528,Computers & Peripherals,H
+199,LED monitor 24-inch IPS,8528.52,85,8528,Computers & Peripherals,H
+200,LED monitor 27-inch QHD,8528.52,85,8528,Computers & Peripherals,H
+201,Touchscreen monitor 15-inch POS,8528.52,85,8528,Computers & Peripherals,H
+202,Interactive flat panel 65-inch,8528.52,85,8528,Computers & Peripherals,H
+203,LED projector 3500 lumens XGA,8528.62,85,8528,Computers & Peripherals,H
+204,Laser projector 5000 lumens WUXGA,8528.62,85,8528,Computers & Peripherals,H
+205,Short-throw projector 3000 lumens,8528.62,85,8528,Computers & Peripherals,H
+206,LED TV 32-inch HD,8528.72,85,8528,Computers & Peripherals,H
+207,LED TV 43-inch 4K smart,8528.72,85,8528,Computers & Peripherals,H
+208,LED TV 55-inch 4K smart,8528.72,85,8528,Computers & Peripherals,H
+209,LED TV 65-inch 4K smart,8528.72,85,8528,Computers & Peripherals,H
+210,Motorised projector screen 100-inch,9010.60,90,9010,Computers & Peripherals,H
+211,Tripod projection screen 84-inch,9010.60,90,9010,Computers & Peripherals,H
+212,Laptop bag 15.6-inch with strap,4202.12,42,4202,Computers & Peripherals,H
+213,Trolley bag hard shell cabin,4202.12,42,4202,Computers & Peripherals,H
+214,Backpack laptop 30 L,4202.92,42,4202,Computers & Peripherals,H
+215,Office tote bag nylon,4202.92,42,4202,Computers & Peripherals,H
+216,Network switch 24-port gigabit managed,8517.62,85,8517,"Networking, Telecom & AV",H
+217,PoE switch 8-port gigabit,8517.62,85,8517,"Networking, Telecom & AV",H
+218,Layer 3 switch 48-port,8517.62,85,8517,"Networking, Telecom & AV",H
+219,WiFi 6 router dual band,8517.62,85,8517,"Networking, Telecom & AV",H
+220,Ceiling mount wireless access point,8517.62,85,8517,"Networking, Telecom & AV",H
+221,Industrial 4G router,8517.62,85,8517,"Networking, Telecom & AV",H
+222,ADSL modem router,8517.62,85,8517,"Networking, Telecom & AV",H
+223,UTM firewall appliance,8517.62,85,8517,"Networking, Telecom & AV",H
+224,SFP+ 10G transceiver module,8517.62,85,8517,"Networking, Telecom & AV",H
+225,Fibre media converter,8517.62,85,8517,"Networking, Telecom & AV",H
+226,Wi-Fi range extender,8517.62,85,8517,"Networking, Telecom & AV",H
+227,4G LTE USB dongle,8517.62,85,8517,"Networking, Telecom & AV",H
+228,Two-way radio walkie-talkie 5W,8517.62,85,8517,"Networking, Telecom & AV",H
+229,VHF handheld radio set,8517.62,85,8517,"Networking, Telecom & AV",H
+230,Smartwatch fitness,8517.62,85,8517,"Networking, Telecom & AV",H
+231,Smartphone 8GB 128GB Android,8517.13,85,8517,"Networking, Telecom & AV",H
+232,Smartphone 6GB 128GB Android,8517.13,85,8517,"Networking, Telecom & AV",H
+233,Smartphone 4GB 64GB Android,8517.13,85,8517,"Networking, Telecom & AV",H
+234,Feature phone dual SIM,8517.14,85,8517,"Networking, Telecom & AV",H
+235,Corded landline telephone,8517.18,85,8517,"Networking, Telecom & AV",H
+236,Cordless DECT phone,8517.18,85,8517,"Networking, Telecom & AV",H
+237,IP desk phone with PoE,8517.18,85,8517,"Networking, Telecom & AV",H
+238,Video door phone,8517.18,85,8517,"Networking, Telecom & AV",H
+239,Intercom handset,8517.18,85,8517,"Networking, Telecom & AV",H
+240,USB headset with microphone,8518.30,85,8518,"Networking, Telecom & AV",H
+241,Bluetooth wireless headset,8518.30,85,8518,"Networking, Telecom & AV",H
+242,Wired earphones 3.5 mm,8518.30,85,8518,"Networking, Telecom & AV",H
+243,Over-ear headphones,8518.30,85,8518,"Networking, Telecom & AV",H
+244,Desktop USB microphone,8518.10,85,8518,"Networking, Telecom & AV",H
+245,Wireless lapel microphone,8518.10,85,8518,"Networking, Telecom & AV",H
+246,Handheld wireless microphone,8518.10,85,8518,"Networking, Telecom & AV",H
+247,Ceiling speaker 6W 100V line,8518.21,85,8518,"Networking, Telecom & AV",H
+248,PC speakers 2.1 system,8518.22,85,8518,"Networking, Telecom & AV",H
+249,Wall mount PA speaker 10W,8518.22,85,8518,"Networking, Telecom & AV",H
+250,Column speaker 40W,8518.22,85,8518,"Networking, Telecom & AV",H
+251,PA amplifier 120W,8518.40,85,8518,"Networking, Telecom & AV",H
+252,Mixer amplifier 240W,8518.40,85,8518,"Networking, Telecom & AV",H
+253,Portable PA system 100W with microphone,8518.50,85,8518,"Networking, Telecom & AV",H
+254,Cat6 patch cord 2 m,8544.42,85,8544,"Networking, Telecom & AV",H
+255,HDMI cable 3 m,8544.42,85,8544,"Networking, Telecom & AV",H
+256,USB-A to USB-C cable 1 m,8544.42,85,8544,"Networking, Telecom & AV",H
+257,VGA cable 1.5 m,8544.42,85,8544,"Networking, Telecom & AV",H
+258,Computer power cord 1.5 m,8544.42,85,8544,"Networking, Telecom & AV",H
+259,DisplayPort cable 2 m,8544.42,85,8544,"Networking, Telecom & AV",H
+260,Cat6 UTP cable 305 m box,8544.49,85,8544,"Networking, Telecom & AV",H
+261,Cat6A FTP cable 305 m,8544.49,85,8544,"Networking, Telecom & AV",H
+262,Cat5e UTP cable 305 m box,8544.49,85,8544,"Networking, Telecom & AV",H
+263,RG6 coaxial cable 100 m,8544.20,85,8544,"Networking, Telecom & AV",H
+264,RG59 coaxial plus power cable 90 m for CCTV,8544.20,85,8544,"Networking, Telecom & AV",H
+265,Fibre optic armoured cable 12-core single-mode,8544.70,85,8544,"Networking, Telecom & AV",H
+266,Fibre patch cord LC-LC OM3 3 m,8544.70,85,8544,"Networking, Telecom & AV",H
+267,Fibre optic cable 24-core outdoor,8544.70,85,8544,"Networking, Telecom & AV",H
+268,Cat6 keystone jack RJ45,8536.69,85,8536,"Networking, Telecom & AV",H
+269,Face plate with RJ45 socket,8536.69,85,8536,"Networking, Telecom & AV",H
+270,Cat6 patch panel 24-port,8536.90,85,8536,"Networking, Telecom & AV",H
+271,Terminal block connector 10 sq mm,8536.90,85,8536,"Networking, Telecom & AV",H
+272,Webcam FHD 1080p USB,8525.89,85,8525,"Networking, Telecom & AV",H
+273,CCTV dome camera 2MP IP,8525.89,85,8525,"Networking, Telecom & AV",H
+274,CCTV bullet camera 4MP IP,8525.89,85,8525,"Networking, Telecom & AV",H
+275,PTZ camera 2MP 20x zoom,8525.89,85,8525,"Networking, Telecom & AV",H
+276,Analog HD dome camera 2MP,8525.89,85,8525,"Networking, Telecom & AV",H
+277,DSLR digital camera body,8525.89,85,8525,"Networking, Telecom & AV",H
+278,Conference room USB camera,8525.89,85,8525,"Networking, Telecom & AV",H
+279,Action camera 4K,8525.89,85,8525,"Networking, Telecom & AV",H
+280,NVR 16-channel,8521.90,85,8521,"Networking, Telecom & AV",H
+281,NVR 32-channel PoE,8521.90,85,8521,"Networking, Telecom & AV",H
+282,DVR 8-channel,8521.90,85,8521,"Networking, Telecom & AV",H
+283,DVR 4-channel,8521.90,85,8521,"Networking, Telecom & AV",H
+284,Addressable smoke detector,8531.10,85,8531,"Networking, Telecom & AV",H
+285,Heat detector fixed temperature,8531.10,85,8531,"Networking, Telecom & AV",H
+286,Manual call point fire alarm,8531.10,85,8531,"Networking, Telecom & AV",H
+287,Burglar alarm control unit,8531.10,85,8531,"Networking, Telecom & AV",H
+288,Fire alarm control panel 4-zone,8531.20,85,8531,"Networking, Telecom & AV",H
+289,Electronic siren hooter 230V,8531.80,85,8531,"Networking, Telecom & AV",H
+290,Wireless doorbell,8531.80,85,8531,"Networking, Telecom & AV",H
+291,Biometric fingerprint attendance machine,8543.70,85,8543,"Networking, Telecom & AV",H
+292,Face recognition attendance terminal,8543.70,85,8543,"Networking, Telecom & AV",H
+293,Access control controller 4-door,8543.70,85,8543,"Networking, Telecom & AV",H
+294,POS billing machine,8470.50,84,8470,"Networking, Telecom & AV",H
+295,Electronic cash register,8470.50,84,8470,"Networking, Telecom & AV",H
+296,Fire-resistant safe 100 L,8303.00,83,8303,"Networking, Telecom & AV",H
+297,Digital locker safe 35 L,8303.00,83,8303,"Networking, Telecom & AV",H
+298,Modular switch 6A,8536.50,85,8536,Electrical & Lighting,H
+299,Modular switch 16A with indicator,8536.50,85,8536,Electrical & Lighting,H
+300,Rotary switch 32A,8536.50,85,8536,Electrical & Lighting,H
+301,Push button switch NO,8536.50,85,8536,Electrical & Lighting,H
+302,Limit switch roller type,8536.50,85,8536,Electrical & Lighting,H
+303,Selector switch 3-position,8536.50,85,8536,Electrical & Lighting,H
+304,Change-over switch 63A,8536.50,85,8536,Electrical & Lighting,H
+305,MCB 32A single pole C curve,8536.20,85,8536,Electrical & Lighting,H
+306,MCB 63A triple pole,8536.20,85,8536,Electrical & Lighting,H
+307,MCCB 100A 3-pole,8536.20,85,8536,Electrical & Lighting,H
+308,MCCB 250A 3-pole,8536.20,85,8536,Electrical & Lighting,H
+309,RCCB 40A 30mA 4-pole,8536.20,85,8536,Electrical & Lighting,H
+310,RCBO 16A 30mA,8536.20,85,8536,Electrical & Lighting,H
+311,Surge protection device 40kA Type 2,8536.30,85,8536,Electrical & Lighting,H
+312,HRC fuse 63A,8536.10,85,8536,Electrical & Lighting,H
+313,Glass cartridge fuse 5A,8536.10,85,8536,Electrical & Lighting,H
+314,Fuse base 32A,8536.10,85,8536,Electrical & Lighting,H
+315,Control relay 24V DC 8-pin,8536.41,85,8536,Electrical & Lighting,H
+316,Automotive relay 12V 40A,8536.41,85,8536,Electrical & Lighting,H
+317,Power contactor 25A 3-pole 230V coil,8536.49,85,8536,Electrical & Lighting,M
+318,Thermal overload relay 12-18A,8536.49,85,8536,Electrical & Lighting,M
+319,Contactor 63A 3-pole,8536.49,85,8536,Electrical & Lighting,M
+320,Plug top 3-pin 6A,8536.69,85,8536,Electrical & Lighting,H
+321,Industrial socket 15A,8536.69,85,8536,Electrical & Lighting,H
+322,Extension board 4-socket 5A with switch,8536.69,85,8536,Electrical & Lighting,H
+323,Industrial plug 3P+N+E 16A IP67,8536.69,85,8536,Electrical & Lighting,H
+324,Power strip with surge protection,8536.69,85,8536,Electrical & Lighting,H
+325,Cable lug copper 50 sq mm,8536.90,85,8536,Electrical & Lighting,H
+326,Cable gland nylon PG21,8536.90,85,8536,Electrical & Lighting,H
+327,Crimp ring terminals assorted,8536.90,85,8536,Electrical & Lighting,H
+328,Lever connector 3-way,8536.90,85,8536,Electrical & Lighting,H
+329,Distribution board 8-way TPN,8537.10,85,8537,Electrical & Lighting,H
+330,MCB DB 4-way SPN,8537.10,85,8537,Electrical & Lighting,H
+331,Motor control centre panel,8537.10,85,8537,Electrical & Lighting,H
+332,APFC panel 100 kVAr,8537.10,85,8537,Electrical & Lighting,H
+333,AMF panel for DG set,8537.10,85,8537,Electrical & Lighting,H
+334,PLC control panel,8537.10,85,8537,Electrical & Lighting,H
+335,House wire FR PVC 1.5 sq mm copper 90 m,8544.49,85,8544,Electrical & Lighting,H
+336,House wire FR PVC 2.5 sq mm copper 90 m,8544.49,85,8544,Electrical & Lighting,H
+337,House wire 4 sq mm copper 90 m,8544.49,85,8544,Electrical & Lighting,H
+338,Flexible 3-core 1.5 sq mm copper cable,8544.49,85,8544,Electrical & Lighting,H
+339,Armoured copper cable 4-core 16 sq mm LT,8544.49,85,8544,Electrical & Lighting,H
+340,Armoured aluminium cable 3.5-core 95 sq mm,8544.49,85,8544,Electrical & Lighting,H
+341,Submersible flat cable 3-core 2.5 sq mm,8544.49,85,8544,Electrical & Lighting,H
+342,Control cable 12-core 1.5 sq mm,8544.49,85,8544,Electrical & Lighting,H
+343,Welding cable 50 sq mm copper,8544.49,85,8544,Electrical & Lighting,H
+344,Solar DC cable 4 sq mm,8544.49,85,8544,Electrical & Lighting,H
+345,11 kV XLPE cable 3x240 sq mm aluminium,8544.60,85,8544,Electrical & Lighting,H
+346,33 kV XLPE cable 3x300 sq mm,8544.60,85,8544,Electrical & Lighting,H
+347,Enamelled copper winding wire 24 SWG,8544.11,85,8544,Electrical & Lighting,H
+348,ACSR Dog conductor,7614.10,76,7614,Electrical & Lighting,H
+349,ACSR Rabbit conductor,7614.10,76,7614,Electrical & Lighting,H
+350,AAAC Panther conductor,7614.10,76,7614,Electrical & Lighting,H
+351,Ceramic pin insulator 11 kV,8546.20,85,8546,Electrical & Lighting,H
+352,Ceramic disc insulator 70 kN,8546.20,85,8546,Electrical & Lighting,H
+353,Polymer insulator 33 kV,8546.90,85,8546,Electrical & Lighting,H
+354,Lightning arrester 11 kV gapless,8535.40,85,8535,Electrical & Lighting,H
+355,HT drop-out fuse cutout 11 kV,8535.10,85,8535,Electrical & Lighting,H
+356,AB switch 11 kV 400A,8535.30,85,8535,Electrical & Lighting,H
+357,LED bulb 9W B22 cool white,8539.50,85,8539,Electrical & Lighting,H
+358,LED bulb 12W E27 warm white,8539.50,85,8539,Electrical & Lighting,H
+359,LED bulb 15W B22,8539.50,85,8539,Electrical & Lighting,H
+360,LED tube light 20W T8 4 ft,8539.50,85,8539,Electrical & Lighting,H
+361,LED tube light 10W 2 ft,8539.50,85,8539,Electrical & Lighting,H
+362,LED spotlight GU10 5W,8539.50,85,8539,Electrical & Lighting,H
+363,LED candle bulb 5W E14,8539.50,85,8539,Electrical & Lighting,H
+364,LED PAR lamp 12W,8539.50,85,8539,Electrical & Lighting,H
+365,CFL lamp 18W,8539.31,85,8539,Electrical & Lighting,H
+366,CFL lamp 23W spiral,8539.31,85,8539,Electrical & Lighting,H
+367,GLS incandescent bulb 60W,8539.22,85,8539,Electrical & Lighting,H
+368,Incandescent bulb 100W,8539.22,85,8539,Electrical & Lighting,H
+369,Halogen lamp 50W GU5.3,8539.21,85,8539,Electrical & Lighting,H
+370,Metal halide lamp 400W,8539.32,85,8539,Electrical & Lighting,H
+371,High pressure sodium vapour lamp 250W,8539.32,85,8539,Electrical & Lighting,H
+372,UV germicidal lamp 30W,8539.49,85,8539,Electrical & Lighting,H
+373,Infrared heat lamp 250W,8539.49,85,8539,Electrical & Lighting,H
+374,LED batten 20W 4 ft,9405.42,94,9405,Electrical & Lighting,M
+375,LED panel light 2x2 ft 36W,9405.42,94,9405,Electrical & Lighting,M
+376,LED round panel 12W recessed,9405.42,94,9405,Electrical & Lighting,M
+377,LED street light 90W,9405.42,94,9405,Electrical & Lighting,M
+378,LED flood light 100W IP65,9405.42,94,9405,Electrical & Lighting,M
+379,LED high bay 150W,9405.42,94,9405,Electrical & Lighting,M
+380,LED downlight 15W,9405.42,94,9405,Electrical & Lighting,M
+381,LED strip light 5 m,9405.42,94,9405,Electrical & Lighting,M
+382,LED garden light 20W,9405.42,94,9405,Electrical & Lighting,M
+383,Emergency exit sign LED,9405.42,94,9405,Electrical & Lighting,M
+384,LED rechargeable table lamp,9405.21,94,9405,Electrical & Lighting,M
+385,Rechargeable LED torch,8513.10,85,8513,Electrical & Lighting,H
+386,Rechargeable emergency lamp,8513.10,85,8513,Electrical & Lighting,H
+387,LED headlamp,8513.10,85,8513,Electrical & Lighting,H
+388,Solar lantern portable,8513.10,85,8513,Electrical & Lighting,H
+389,Servo voltage stabilizer 10 kVA,9032.89,90,9032,Electrical & Lighting,H
+390,Automatic voltage regulator 5 kVA,9032.89,90,9032,Electrical & Lighting,H
+391,AC voltage stabilizer 4 kVA,9032.89,90,9032,Electrical & Lighting,H
+392,Distribution transformer 100 kVA 11/0.433 kV oil-filled,8504.21,85,8504,Electrical & Lighting,H
+393,Distribution transformer 250 kVA 11/0.433 kV,8504.21,85,8504,Electrical & Lighting,H
+394,Power transformer 1250 kVA 11/0.433 kV,8504.22,85,8504,Electrical & Lighting,H
+395,Control transformer 230/24V 100 VA,8504.31,85,8504,Electrical & Lighting,H
+396,Step-down transformer 1 kVA,8504.31,85,8504,Electrical & Lighting,H
+397,Isolation transformer 5 kVA,8504.32,85,8504,Electrical & Lighting,H
+398,Dry-type transformer 500 kVA,8504.33,85,8504,Electrical & Lighting,H
+399,Single-phase energy meter 5-30A,9028.30,90,9028,Electrical & Lighting,H
+400,Three-phase electronic energy meter,9028.30,90,9028,Electrical & Lighting,H
+401,Smart prepaid energy meter,9028.30,90,9028,Electrical & Lighting,H
+402,Water meter 15 mm,9028.20,90,9028,Electrical & Lighting,H
+403,LPG/gas meter domestic,9028.10,90,9028,Electrical & Lighting,H
+404,Tubular battery 12V 150Ah inverter,8507.20,85,8507,"Batteries, Solar & Power",H
+405,SMF VRLA battery 12V 7Ah,8507.20,85,8507,"Batteries, Solar & Power",H
+406,VRLA battery 12V 100Ah,8507.20,85,8507,"Batteries, Solar & Power",H
+407,Inverter battery 12V 200Ah tall tubular,8507.20,85,8507,"Batteries, Solar & Power",H
+408,OPzS battery 2V 1000Ah,8507.20,85,8507,"Batteries, Solar & Power",H
+409,Car battery 12V 65Ah,8507.10,85,8507,"Batteries, Solar & Power",H
+410,Truck battery 12V 180Ah,8507.10,85,8507,"Batteries, Solar & Power",H
+411,Two-wheeler battery 12V 5Ah,8507.10,85,8507,"Batteries, Solar & Power",H
+412,Li-ion 18650 cell 3.7V 2500mAh,8507.60,85,8507,"Batteries, Solar & Power",H
+413,Power bank 20000 mAh,8507.60,85,8507,"Batteries, Solar & Power",H
+414,LiFePO4 battery 12.8V 100Ah,8507.60,85,8507,"Batteries, Solar & Power",H
+415,Laptop battery pack 6-cell,8507.60,85,8507,"Batteries, Solar & Power",H
+416,E-rickshaw lithium battery 48V 30Ah,8507.60,85,8507,"Batteries, Solar & Power",H
+417,Li-ion battery pack 48V 100Ah,8507.60,85,8507,"Batteries, Solar & Power",H
+418,NiMH rechargeable AA 2000mAh (pack of 4),8507.50,85,8507,"Batteries, Solar & Power",H
+419,Alkaline AA battery (pack of 10),8506.10,85,8506,"Batteries, Solar & Power",H
+420,Alkaline AAA battery (pack of 10),8506.10,85,8506,"Batteries, Solar & Power",H
+421,Zinc-carbon AA cell (pack of 4),8506.10,85,8506,"Batteries, Solar & Power",H
+422,9V alkaline battery,8506.10,85,8506,"Batteries, Solar & Power",H
+423,CR2032 lithium coin cell,8506.50,85,8506,"Batteries, Solar & Power",H
+424,CR123A lithium 3V,8506.50,85,8506,"Batteries, Solar & Power",H
+425,Online UPS 1 kVA,8504.40,85,8504,"Batteries, Solar & Power",H
+426,Line interactive UPS 650 VA,8504.40,85,8504,"Batteries, Solar & Power",H
+427,Online UPS 10 kVA three phase,8504.40,85,8504,"Batteries, Solar & Power",H
+428,Laptop charger 65W USB-C,8504.40,85,8504,"Batteries, Solar & Power",H
+429,Mobile charger 20W fast,8504.40,85,8504,"Batteries, Solar & Power",H
+430,SMPS 12V 5A CCTV power supply,8504.40,85,8504,"Batteries, Solar & Power",H
+431,LED driver 36W,8504.40,85,8504,"Batteries, Solar & Power",H
+432,PC SMPS 450W ATX power supply,8504.40,85,8504,"Batteries, Solar & Power",H
+433,Solar hybrid inverter 5 kW,8504.40,85,8504,"Batteries, Solar & Power",H
+434,Solar PCU 3 kVA,8504.40,85,8504,"Batteries, Solar & Power",H
+435,MPPT charge controller 40A,8504.40,85,8504,"Batteries, Solar & Power",H
+436,Solar PV module 540 Wp mono PERC,8541.43,85,8541,"Batteries, Solar & Power",H
+437,Solar PV module 335 Wp poly,8541.43,85,8541,"Batteries, Solar & Power",H
+438,Solar panel 100 Wp 12V,8541.43,85,8541,"Batteries, Solar & Power",H
+439,Bifacial solar module 600 Wp,8541.43,85,8541,"Batteries, Solar & Power",H
+440,Diesel generator 15 kVA silent,8502.11,85,8502,"Batteries, Solar & Power",H
+441,DG set 30 kVA silent,8502.11,85,8502,"Batteries, Solar & Power",H
+442,DG set 62.5 kVA,8502.11,85,8502,"Batteries, Solar & Power",H
+443,DG set 125 kVA,8502.12,85,8502,"Batteries, Solar & Power",H
+444,DG set 250 kVA,8502.12,85,8502,"Batteries, Solar & Power",H
+445,DG set 320 kVA,8502.12,85,8502,"Batteries, Solar & Power",H
+446,DG set 500 kVA,8502.13,85,8502,"Batteries, Solar & Power",H
+447,DG set 1010 kVA,8502.13,85,8502,"Batteries, Solar & Power",H
+448,Petrol generator 3 kVA portable,8502.20,85,8502,"Batteries, Solar & Power",H
+449,Inverter generator 2 kW,8502.20,85,8502,"Batteries, Solar & Power",H
+450,Small wind turbine 1 kW,8502.31,85,8502,"Batteries, Solar & Power",H
+451,Solar street light 40W all-in-one,9405.42,94,9405,"Batteries, Solar & Power",M
+452,Solar street light 60W split type,9405.42,94,9405,"Batteries, Solar & Power",M
+453,Solar water heater 200 LPD evacuated tube,8419.19,84,8419,"Batteries, Solar & Power",H
+454,Ceiling fan 1200 mm,8414.51,84,8414,Appliances & HVAC,H
+455,BLDC ceiling fan 1200 mm 28W,8414.51,84,8414,Appliances & HVAC,H
+456,Table fan 400 mm,8414.51,84,8414,Appliances & HVAC,H
+457,Wall-mounted fan 400 mm,8414.51,84,8414,Appliances & HVAC,H
+458,Pedestal fan 400 mm,8414.51,84,8414,Appliances & HVAC,H
+459,Air circulator fan 450 mm,8414.51,84,8414,Appliances & HVAC,H
+460,Exhaust fan 300 mm,8414.59,84,8414,Appliances & HVAC,H
+461,Axial flow fan 450 mm,8414.59,84,8414,Appliances & HVAC,H
+462,Centrifugal blower 5 HP,8414.59,84,8414,Appliances & HVAC,H
+463,Industrial pedestal fan 750 mm,8414.59,84,8414,Appliances & HVAC,H
+464,Roof turbo ventilator 600 mm,8414.59,84,8414,Appliances & HVAC,H
+465,Hermetic compressor 1.5 TR for AC,8414.30,84,8414,Appliances & HVAC,H
+466,Refrigerator compressor 1/5 HP,8414.30,84,8414,Appliances & HVAC,H
+467,Laboratory fume cupboard,8414.60,84,8414,Appliances & HVAC,H
+468,Kitchen chimney hood 60 cm,8414.60,84,8414,Appliances & HVAC,H
+469,Split AC 1.5 ton 5 star inverter,8415.10,84,8415,Appliances & HVAC,H
+470,Split AC 2 ton 3 star,8415.10,84,8415,Appliances & HVAC,H
+471,Split AC 1 ton 3 star,8415.10,84,8415,Appliances & HVAC,H
+472,Window AC 1.5 ton,8415.10,84,8415,Appliances & HVAC,H
+473,Cassette AC 3 ton,8415.10,84,8415,Appliances & HVAC,H
+474,Ductable AC 5 TR,8415.10,84,8415,Appliances & HVAC,H
+475,Tower AC 2 ton,8415.10,84,8415,Appliances & HVAC,H
+476,Refrigerator 190 L single door,8418.21,84,8418,Appliances & HVAC,H
+477,Refrigerator 260 L double door frost free,8418.21,84,8418,Appliances & HVAC,H
+478,Mini fridge 90 L,8418.21,84,8418,Appliances & HVAC,H
+479,Deep freezer 300 L chest type,8418.30,84,8418,Appliances & HVAC,H
+480,Visi cooler 500 L glass door,8418.50,84,8418,Appliances & HVAC,H
+481,Medical vaccine refrigerator 150 L,8418.50,84,8418,Appliances & HVAC,H
+482,Water dispenser hot and cold,8418.69,84,8418,Appliances & HVAC,H
+483,Stainless steel water cooler 40 L,8418.69,84,8418,Appliances & HVAC,H
+484,Walk-in cold room panel,8418.69,84,8418,Appliances & HVAC,H
+485,Ice cube maker 50 kg/day,8418.69,84,8418,Appliances & HVAC,H
+486,RO water purifier 10 L wall mounted,8421.21,84,8421,Appliances & HVAC,H
+487,Commercial RO plant 500 LPH,8421.21,84,8421,Appliances & HVAC,H
+488,UV water purifier 7 L,8421.21,84,8421,Appliances & HVAC,H
+489,HEPA air purifier 400 sq ft room,8421.39,84,8421,Appliances & HVAC,H
+490,Washing machine front load 7 kg,8450.11,84,8450,Appliances & HVAC,H
+491,Washing machine top load 6.5 kg,8450.11,84,8450,Appliances & HVAC,H
+492,Industrial washing machine 15 kg,8450.20,84,8450,Appliances & HVAC,H
+493,Household vacuum cleaner 1200W,8508.11,85,8508,Appliances & HVAC,H
+494,Industrial wet and dry vacuum cleaner 3000W,8508.19,85,8508,Appliances & HVAC,H
+495,Storage water heater 25 L,8516.10,85,8516,Appliances & HVAC,H
+496,Instant water heater 3 L,8516.10,85,8516,Appliances & HVAC,H
+497,Immersion rod heater 1500W,8516.10,85,8516,Appliances & HVAC,H
+498,Industrial immersion heater 3 kW,8516.10,85,8516,Appliances & HVAC,H
+499,Microwave oven 25 L convection,8516.50,85,8516,Appliances & HVAC,H
+500,Induction cooktop 2000W,8516.60,85,8516,Appliances & HVAC,H
+501,Electric rice cooker 1.8 L,8516.60,85,8516,Appliances & HVAC,H
+502,Electric kettle 1.5 L,8516.79,85,8516,Appliances & HVAC,H
+503,Electric hot plate 1500W,8516.79,85,8516,Appliances & HVAC,H
+504,Pop-up toaster 2-slice,8516.72,85,8516,Appliances & HVAC,H
+505,Fan room heater 2000W,8516.29,85,8516,Appliances & HVAC,H
+506,Oil-filled radiator 11 fin,8516.29,85,8516,Appliances & HVAC,H
+507,Steam iron 1200W,8516.40,85,8516,Appliances & HVAC,H
+508,Mixer grinder 750W,8509.40,85,8509,Appliances & HVAC,H
+509,Commercial wet grinder 5 L,8509.40,85,8509,Appliances & HVAC,H
+510,Tea coffee vending machine 3-option,8476.21,84,8476,Appliances & HVAC,M
+511,Hot and cold beverage dispenser automatic,8476.21,84,8476,Appliances & HVAC,M
+512,LPG gas stove 2-burner,7321.11,73,7321,Appliances & HVAC,H
+513,LPG gas stove 4-burner,7321.11,73,7321,Appliances & HVAC,H
+514,Empty LPG cylinder 14.2 kg,7311.00,73,7311,Appliances & HVAC,H
+515,Industrial gas cylinder 47 L,7311.00,73,7311,Appliances & HVAC,H
+516,Aluminium pressure cooker 5 L,7615.10,76,7615,Appliances & HVAC,H
+517,Aluminium kadhai 10 L,7615.10,76,7615,Appliances & HVAC,H
+518,Analog wall clock 12-inch quartz,9105.19,91,9105,Appliances & HVAC,M
+519,Centrifugal monoblock pump 1 HP,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+520,Submersible pump 2 HP borewell,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+521,Openwell submersible pump 1 HP,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+522,End suction pump 10 HP,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+523,Booster pump 0.5 HP,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+524,Multistage vertical pump 7.5 HP,8413.70,84,8413,"Pumps, Motors, Machinery & Bearings",H
+525,Self-priming regenerative pump 1 HP,8413.81,84,8413,"Pumps, Motors, Machinery & Bearings",H
+526,Dewatering pump 3 HP,8413.81,84,8413,"Pumps, Motors, Machinery & Bearings",H
+527,Hand pump India Mark II,8413.20,84,8413,"Pumps, Motors, Machinery & Bearings",H
+528,Reciprocating plunger pump 5 HP,8413.50,84,8413,"Pumps, Motors, Machinery & Bearings",H
+529,Gear pump 3 HP for oil,8413.60,84,8413,"Pumps, Motors, Machinery & Bearings",H
+530,Rotary lobe pump 5 HP,8413.60,84,8413,"Pumps, Motors, Machinery & Bearings",H
+531,Fuel dispenser pump for diesel,8413.11,84,8413,"Pumps, Motors, Machinery & Bearings",H
+532,Pump impeller bronze 6-inch,8413.91,84,8413,"Pumps, Motors, Machinery & Bearings",H
+533,Pump casing cast iron,8413.91,84,8413,"Pumps, Motors, Machinery & Bearings",H
+534,Fractional HP motor 25W,8501.10,85,8501,"Pumps, Motors, Machinery & Bearings",H
+535,Single-phase induction motor 1 HP,8501.40,85,8501,"Pumps, Motors, Machinery & Bearings",H
+536,Single-phase induction motor 0.5 HP,8501.40,85,8501,"Pumps, Motors, Machinery & Bearings",H
+537,Three-phase induction motor 5 HP 1440 rpm,8501.52,85,8501,"Pumps, Motors, Machinery & Bearings",H
+538,Three-phase induction motor 10 HP,8501.52,85,8501,"Pumps, Motors, Machinery & Bearings",H
+539,Three-phase induction motor 25 HP,8501.52,85,8501,"Pumps, Motors, Machinery & Bearings",H
+540,Three-phase motor 50 HP IE3,8501.52,85,8501,"Pumps, Motors, Machinery & Bearings",H
+541,Three-phase induction motor 150 kW,8501.53,85,8501,"Pumps, Motors, Machinery & Bearings",H
+542,DC motor 5 kW,8501.32,85,8501,"Pumps, Motors, Machinery & Bearings",H
+543,Air compressor 2 HP 100 L,8414.80,84,8414,"Pumps, Motors, Machinery & Bearings",H
+544,Screw air compressor 10 HP,8414.80,84,8414,"Pumps, Motors, Machinery & Bearings",H
+545,Portable air compressor 50 L,8414.80,84,8414,"Pumps, Motors, Machinery & Bearings",H
+546,Rotary vane vacuum pump laboratory,8414.10,84,8414,"Pumps, Motors, Machinery & Bearings",H
+547,Deep groove ball bearing 6205,8482.10,84,8482,"Pumps, Motors, Machinery & Bearings",H
+548,Ball bearing 6306 2RS,8482.10,84,8482,"Pumps, Motors, Machinery & Bearings",H
+549,Ball bearing 6204 ZZ,8482.10,84,8482,"Pumps, Motors, Machinery & Bearings",H
+550,Ball bearing 6310,8482.10,84,8482,"Pumps, Motors, Machinery & Bearings",H
+551,Tapered roller bearing 32008,8482.20,84,8482,"Pumps, Motors, Machinery & Bearings",H
+552,Spherical roller bearing 22212,8482.30,84,8482,"Pumps, Motors, Machinery & Bearings",H
+553,Needle roller bearing NA4905,8482.40,84,8482,"Pumps, Motors, Machinery & Bearings",H
+554,Cylindrical roller bearing NU 310,8482.50,84,8482,"Pumps, Motors, Machinery & Bearings",H
+555,Pressure reducing valve 1 inch,8481.10,84,8481,"Pumps, Motors, Machinery & Bearings",H
+556,Non-return valve 2 inch CI,8481.30,84,8481,"Pumps, Motors, Machinery & Bearings",H
+557,Check valve 1 inch brass,8481.30,84,8481,"Pumps, Motors, Machinery & Bearings",H
+558,Safety relief valve 1 inch 10 bar,8481.40,84,8481,"Pumps, Motors, Machinery & Bearings",H
+559,Gate valve 2 inch CI flanged,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+560,Ball valve 1 inch brass,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+561,Globe valve 1 inch SS,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+562,Butterfly valve 6 inch wafer,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+563,Bib cock tap brass 15 mm,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+564,Float valve 1/2 inch,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+565,Solenoid valve 1/2 inch 24V,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+566,Pillar tap chrome plated,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+567,Fire hydrant landing valve 63 mm,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+568,Overhead shower with arm,8481.80,84,8481,"Pumps, Motors, Machinery & Bearings",H
+569,Fire extinguisher ABC powder 6 kg,8424.10,84,8424,"Pumps, Motors, Machinery & Bearings",H
+570,CO2 fire extinguisher 4.5 kg,8424.10,84,8424,"Pumps, Motors, Machinery & Bearings",H
+571,Water mist fire extinguisher 9 L,8424.10,84,8424,"Pumps, Motors, Machinery & Bearings",H
+572,Fire sprinkler pendant 68 C,8424.89,84,8424,"Pumps, Motors, Machinery & Bearings",H
+573,Garden spray gun,8424.89,84,8424,"Pumps, Motors, Machinery & Bearings",H
+574,Knapsack sprayer 16 L,8424.82,84,8424,"Pumps, Motors, Machinery & Bearings",H
+575,Electric chain hoist 1 ton,8425.11,84,8425,"Pumps, Motors, Machinery & Bearings",H
+576,Electric wire rope hoist 3 ton,8425.11,84,8425,"Pumps, Motors, Machinery & Bearings",H
+577,Manual chain pulley block 2 ton,8425.19,84,8425,"Pumps, Motors, Machinery & Bearings",H
+578,Electric winch 1 ton,8425.31,84,8425,"Pumps, Motors, Machinery & Bearings",H
+579,Hydraulic bottle jack 10 ton,8425.42,84,8425,"Pumps, Motors, Machinery & Bearings",H
+580,Hydraulic trolley jack 2 ton,8425.42,84,8425,"Pumps, Motors, Machinery & Bearings",H
+581,EOT crane 10 ton,8426.11,84,8426,"Pumps, Motors, Machinery & Bearings",H
+582,Electric forklift 2 ton,8427.10,84,8427,"Pumps, Motors, Machinery & Bearings",H
+583,Diesel forklift 3 ton,8427.20,84,8427,"Pumps, Motors, Machinery & Bearings",H
+584,Hand pallet truck 2.5 ton,8427.20,84,8427,"Pumps, Motors, Machinery & Bearings",H
+585,Passenger lift 8-person,8428.10,84,8428,"Pumps, Motors, Machinery & Bearings",H
+586,Goods lift 1000 kg,8428.10,84,8428,"Pumps, Motors, Machinery & Bearings",H
+587,Belt conveyor 10 m,8428.33,84,8428,"Pumps, Motors, Machinery & Bearings",H
+588,Personal weighing scale digital,8423.10,84,8423,"Pumps, Motors, Machinery & Bearings",H
+589,Digital table top scale 30 kg,8423.81,84,8423,"Pumps, Motors, Machinery & Bearings",H
+590,Kitchen scale 5 kg,8423.81,84,8423,"Pumps, Motors, Machinery & Bearings",H
+591,Platform scale 300 kg,8423.82,84,8423,"Pumps, Motors, Machinery & Bearings",H
+592,Platform scale 500 kg,8423.82,84,8423,"Pumps, Motors, Machinery & Bearings",H
+593,Weighbridge 60 ton,8423.89,84,8423,"Pumps, Motors, Machinery & Bearings",H
+594,Hanging crane scale 1 ton,8423.89,84,8423,"Pumps, Motors, Machinery & Bearings",H
+595,MIG welding machine 250A,8515.31,85,8515,"Pumps, Motors, Machinery & Bearings",H
+596,Automatic arc welding machine,8515.31,85,8515,"Pumps, Motors, Machinery & Bearings",H
+597,Arc welding inverter 200A,8515.39,85,8515,"Pumps, Motors, Machinery & Bearings",H
+598,Arc welding machine 400A transformer type,8515.39,85,8515,"Pumps, Motors, Machinery & Bearings",H
+599,TIG welding machine 200A,8515.39,85,8515,"Pumps, Motors, Machinery & Bearings",H
+600,Spot welding machine 25 kVA,8515.21,85,8515,"Pumps, Motors, Machinery & Bearings",H
+601,CNC lathe machine,8458.11,84,8458,"Pumps, Motors, Machinery & Bearings",H
+602,Centre lathe 1500 mm bed,8458.19,84,8458,"Pumps, Motors, Machinery & Bearings",H
+603,CNC vertical machining centre,8459.61,84,8459,"Pumps, Motors, Machinery & Bearings",H
+604,Pillar drilling machine 25 mm,8459.21,84,8459,"Pumps, Motors, Machinery & Bearings",H
+605,3D printer FDM desktop,8485.20,84,8485,"Pumps, Motors, Machinery & Bearings",H
+606,Open-ended spanner set 6-32 mm,8204.11,82,8204,Hand Tools & Hardware,H
+607,Adjustable spanner 12 inch,8204.12,82,8204,Hand Tools & Hardware,H
+608,Socket set 1/2 inch drive 24 pcs,8204.20,82,8204,Hand Tools & Hardware,H
+609,Screwdriver set 6 pcs,8205.40,82,8205,Hand Tools & Hardware,H
+610,Combination pliers 8 inch,8203.20,82,8203,Hand Tools & Hardware,H
+611,Claw hammer 500 g,8205.20,82,8205,Hand Tools & Hardware,H
+612,Hacksaw frame with blade 12 inch,8202.91,82,8202,Hand Tools & Hardware,H
+613,HSS drill bit set 1-13 mm,8207.50,82,8207,Hand Tools & Hardware,H
+614,Electric drill machine 13 mm 650W,8467.21,84,8467,Hand Tools & Hardware,H
+615,Cordless drill driver 18V,8467.21,84,8467,Hand Tools & Hardware,H
+616,Angle grinder 4-inch 850W,8467.29,84,8467,Hand Tools & Hardware,H
+617,Vernier caliper 150 mm,9017.30,90,9017,Hand Tools & Hardware,H
+618,Outside micrometer 0-25 mm,9017.30,90,9017,Hand Tools & Hardware,H
+619,Measuring tape 5 m steel,9017.80,90,9017,Hand Tools & Hardware,H
+620,Padlock 50 mm brass,8301.10,83,8301,Hand Tools & Hardware,H
+621,Door hinge 4 inch SS,8302.10,83,8302,Hand Tools & Hardware,H
+622,Welding electrode E6013 3.15 mm (5 kg),8311.10,83,8311,Hand Tools & Hardware,H
+623,Grinding wheel 6-inch,6804.22,68,6804,Hand Tools & Hardware,H
+624,Cutting disc 4-inch,6804.22,68,6804,Hand Tools & Hardware,H
+625,Sandpaper sheet 120 grit,6805.20,68,6805,Hand Tools & Hardware,H
+626,Hex bolt M10x50 with nut (zinc plated),7318.15,73,7318,"Metals, Fasteners & Steel",H
+627,Hex bolt M12x75 grade 8.8,7318.15,73,7318,"Metals, Fasteners & Steel",H
+628,Hex nut M12 (pack of 100),7318.16,73,7318,"Metals, Fasteners & Steel",H
+629,Self-tapping screw 4x25 mm,7318.14,73,7318,"Metals, Fasteners & Steel",H
+630,Plain washer M10 (pack of 100),7318.22,73,7318,"Metals, Fasteners & Steel",H
+631,TMT bar Fe500D 12 mm,7214.20,72,7214,"Metals, Fasteners & Steel",H
+632,TMT bar Fe550 16 mm,7214.20,72,7214,"Metals, Fasteners & Steel",H
+633,Mild steel angle 50x50x6 mm,7216.50,72,7216,"Metals, Fasteners & Steel",H
+634,Mild steel channel 100x50 mm,7216.31,72,7216,"Metals, Fasteners & Steel",H
+635,MS I-beam ISMB 150,7216.32,72,7216,"Metals, Fasteners & Steel",H
+636,Hot-rolled MS plate 10 mm,7208.51,72,7208,"Metals, Fasteners & Steel",H
+637,GI sheet 0.5 mm galvanised,7210.49,72,7210,"Metals, Fasteners & Steel",H
+638,GI pipe 1 inch medium class,7306.30,73,7306,"Metals, Fasteners & Steel",H
+639,MS ERW pipe 2 inch,7306.30,73,7306,"Metals, Fasteners & Steel",H
+640,Seamless steel pipe 3 inch schedule 40,7304.19,73,7304,"Metals, Fasteners & Steel",M
+641,Wire rope 12 mm 6x36,7312.10,73,7312,"Metals, Fasteners & Steel",H
+642,Welded wire mesh 50x50 mm,7314.20,73,7314,"Metals, Fasteners & Steel",H
+643,MS cable tray 300 mm perforated,7326.90,73,7326,"Metals, Fasteners & Steel",H
+644,Aluminium extrusion section 40x40,7604.21,76,7604,"Metals, Fasteners & Steel",H
+645,Copper rod 12 mm,7407.10,74,7407,"Metals, Fasteners & Steel",H
+646,Copper pipe 1/2 inch refrigeration,7411.10,74,7411,"Metals, Fasteners & Steel",H
+647,OPC cement 53 grade 50 kg bag,2523.29,25,2523,Construction Materials,H
+648,PPC cement 50 kg bag,2523.29,25,2523,Construction Materials,H
+649,River sand 1 cubic metre,2505.10,25,2505,Construction Materials,H
+650,Stone aggregate 20 mm,2517.10,25,2517,Construction Materials,H
+651,Fly ash brick,6810.11,68,6810,Construction Materials,H
+652,AAC block 600x200x200 mm,6810.11,68,6810,Construction Materials,H
+653,Red clay brick 1st class,6904.10,69,6904,Construction Materials,H
+654,Vitrified floor tile 600x600 mm,6907.21,69,6907,Construction Materials,H
+655,Wash basin porcelain,6910.10,69,6910,Construction Materials,H
+656,WC pan Indian type,6910.10,69,6910,Construction Materials,H
+657,Urinal bowl ceramic,6910.10,69,6910,Construction Materials,H
+658,Commercial plywood 18 mm 8x4 ft,4412.33,44,4412,Construction Materials,H
+659,MDF board 18 mm,4411.14,44,4411,Construction Materials,H
+660,Float glass 5 mm clear,7005.29,70,7005,Construction Materials,H
+661,Toughened glass 10 mm,7007.19,70,7007,Construction Materials,H
+662,PVC pipe 4 inch 6 kgf,3917.23,39,3917,Construction Materials,H
+663,HDPE pipe 63 mm PE100,3917.21,39,3917,Construction Materials,H
+664,PVC elbow 4 inch,3917.40,39,3917,Construction Materials,H
+665,Water storage tank 1000 L plastic,3925.10,39,3925,Construction Materials,H
+666,Acrylic emulsion paint interior 20 L,3209.10,32,3209,"Paints, Chemicals & Fuels",H
+667,Synthetic enamel paint 4 L,3208.90,32,3208,"Paints, Chemicals & Fuels",H
+668,Wall putty 20 kg,3214.90,32,3214,"Paints, Chemicals & Fuels",H
+669,Paint thinner 5 L,3814.00,38,3814,"Paints, Chemicals & Fuels",H
+670,Paint brush 3 inch,9603.40,96,9603,"Paints, Chemicals & Fuels",H
+671,Paint roller 9 inch,9603.40,96,9603,"Paints, Chemicals & Fuels",H
+672,Epoxy adhesive 2-part 100 g,3506.91,35,3506,"Paints, Chemicals & Fuels",H
+673,Caustic soda flakes 25 kg,2815.11,28,2815,"Paints, Chemicals & Fuels",H
+674,Hydrochloric acid 30% 35 kg,2806.10,28,2806,"Paints, Chemicals & Fuels",H
+675,Sodium hypochlorite 10% 20 L,2828.90,28,2828,"Paints, Chemicals & Fuels",H
+676,Isopropyl alcohol 99% 20 L,2905.12,29,2905,"Paints, Chemicals & Fuels",H
+677,Acetone AR 500 ml,2914.11,29,2914,"Paints, Chemicals & Fuels",H
+678,Urea fertiliser 50 kg,3102.10,31,3102,"Paints, Chemicals & Fuels",H
+679,DAP fertiliser 50 kg,3105.30,31,3105,"Paints, Chemicals & Fuels",H
+680,Disinfectant liquid phenyl 5 L,3808.94,38,3808,"Paints, Chemicals & Fuels",H
+681,Hand sanitiser 500 ml,3808.94,38,3808,"Paints, Chemicals & Fuels",H
+682,Petrol (motor spirit) bulk,2710.12,27,2710,"Paints, Chemicals & Fuels",H
+683,High speed diesel bulk,2710.19,27,2710,"Paints, Chemicals & Fuels",H
+684,Engine oil 15W-40 20 L,2710.19,27,2710,"Paints, Chemicals & Fuels",H
+685,Hydraulic oil ISO 68 208 L,2710.19,27,2710,"Paints, Chemicals & Fuels",H
+686,Propane LPG bulk,2711.12,27,2711,"Paints, Chemicals & Fuels",H
+687,Bitumen VG-30 160 kg drum,2713.20,27,2713,"Paints, Chemicals & Fuels",H
+688,Bituminous coal,2701.12,27,2701,"Paints, Chemicals & Fuels",H
+689,Polythene bag 12x15 inch,3923.21,39,3923,"Plastics, Rubber, Packaging & Furniture",H
+690,Garbage bag 30x40 inch black,3923.21,39,3923,"Plastics, Rubber, Packaging & Furniture",H
+691,PET bottle 1 L,3923.30,39,3923,"Plastics, Rubber, Packaging & Furniture",H
+692,Stretch film 500 mm 17 micron,3920.10,39,3920,"Plastics, Rubber, Packaging & Furniture",H
+693,Thermocol sheet 25 mm,3921.11,39,3921,"Plastics, Rubber, Packaging & Furniture",H
+694,Car tyre 185/65 R15,4011.10,40,4011,"Plastics, Rubber, Packaging & Furniture",H
+695,Truck tyre 10.00 R20,4011.20,40,4011,"Plastics, Rubber, Packaging & Furniture",H
+696,Motorcycle tyre 90/90-17,4011.40,40,4011,"Plastics, Rubber, Packaging & Furniture",H
+697,Rubber hose with fittings 1 inch,4009.42,40,4009,"Plastics, Rubber, Packaging & Furniture",H
+698,Rubber O-ring assorted kit,4016.93,40,4016,"Plastics, Rubber, Packaging & Furniture",H
+699,MS drum 200 L,7310.10,73,7310,"Plastics, Rubber, Packaging & Furniture",H
+700,Aluminium foil roll 9 micron,7607.19,76,7607,"Plastics, Rubber, Packaging & Furniture",H
+701,Office swivel chair mesh back,9401.39,94,9401,"Plastics, Rubber, Packaging & Furniture",H
+702,High-back executive chair,9401.39,94,9401,"Plastics, Rubber, Packaging & Furniture",H
+703,Visitor chair metal frame,9401.79,94,9401,"Plastics, Rubber, Packaging & Furniture",H
+704,Steel almirah 2-door,9403.10,94,9403,"Plastics, Rubber, Packaging & Furniture",H
+705,Steel filing cabinet 4-drawer,9403.10,94,9403,"Plastics, Rubber, Packaging & Furniture",H
+706,Office table wooden 5x2.5 ft,9403.30,94,9403,"Plastics, Rubber, Packaging & Furniture",H
+707,Foam mattress 6x3 ft,9404.21,94,9404,"Plastics, Rubber, Packaging & Furniture",H
+708,Industrial safety helmet,6506.10,65,6506,"PPE, Housekeeping, Lab & Food",H
+709,Safety gumboots steel toe,6401.10,64,6401,"PPE, Housekeeping, Lab & Food",H
+710,Leather safety shoes steel toe,6403.40,64,6403,"PPE, Housekeeping, Lab & Food",H
+711,Leather hand gloves,4203.29,42,4203,"PPE, Housekeeping, Lab & Food",H
+712,PVC-coated cotton hand gloves,6116.10,61,6116,"PPE, Housekeeping, Lab & Food",H
+713,N95 respirator mask,9020.00,90,9020,"PPE, Housekeeping, Lab & Food",H
+714,Full-face gas mask,9020.00,90,9020,"PPE, Housekeeping, Lab & Food",H
+715,Safety goggles clear,9004.90,90,9004,"PPE, Housekeeping, Lab & Food",H
+716,Surgical face mask 3-ply (box of 50),6307.90,63,6307,"PPE, Housekeeping, Lab & Food",H
+717,Nitrile examination gloves (box of 100),4015.12,40,4015,"PPE, Housekeeping, Lab & Food",H
+718,Toilet soap bar 100 g,3401.11,34,3401,"PPE, Housekeeping, Lab & Food",H
+719,Detergent powder 1 kg,3402.20,34,3402,"PPE, Housekeeping, Lab & Food",H
+720,Dishwash liquid 500 ml,3402.20,34,3402,"PPE, Housekeeping, Lab & Food",H
+721,Soft broom,9603.10,96,9603,"PPE, Housekeeping, Lab & Food",H
+722,Coconut broom,9603.10,96,9603,"PPE, Housekeeping, Lab & Food",H
+723,Floor mop with bucket,9603.90,96,9603,"PPE, Housekeeping, Lab & Food",H
+724,Digital BP monitor,9018.90,90,9018,"PPE, Housekeeping, Lab & Food",H
+725,Stethoscope,9018.90,90,9018,"PPE, Housekeeping, Lab & Food",H
+726,Disposable syringe 5 ml,9018.31,90,9018,"PPE, Housekeeping, Lab & Food",H
+727,Clinical mercury-free thermometer,9025.11,90,9025,"PPE, Housekeeping, Lab & Food",H
+728,Stereo zoom microscope,9011.10,90,9011,"PPE, Housekeeping, Lab & Food",H
+729,Quartz crucible,7017.10,70,7017,"PPE, Housekeeping, Lab & Food",H
+730,Glass beaker 250 ml,7017.90,70,7017,"PPE, Housekeeping, Lab & Food",H
+731,Borosilicate test tubes 20 mm,7017.90,70,7017,"PPE, Housekeeping, Lab & Food",H
+732,Analytical balance 0.1 mg,9016.00,90,9016,"PPE, Housekeeping, Lab & Food",H
+733,Digital multimeter,9030.31,90,9030,"PPE, Housekeeping, Lab & Food",H
+734,Pressure gauge 0-10 bar 100 mm,9026.20,90,9026,"PPE, Housekeeping, Lab & Food",H
+735,Black tea CTC 1 kg pack,0902.30,09,0902,"PPE, Housekeeping, Lab & Food",H
+736,Roasted coffee beans 1 kg,0901.21,09,0901,"PPE, Housekeeping, Lab & Food",H
+737,Refined sugar 50 kg,1701.99,17,1701,"PPE, Housekeeping, Lab & Food",H
+738,Iodised salt 1 kg,2501.00,25,2501,"PPE, Housekeeping, Lab & Food",H
+739,Rice 25 kg bag,1006.30,10,1006,"PPE, Housekeeping, Lab & Food",H
+740,Wheat flour atta 10 kg,1101.00,11,1101,"PPE, Housekeeping, Lab & Food",H
+741,Refined soybean oil 15 L,1507.90,15,1507,"PPE, Housekeeping, Lab & Food",H
+742,Packaged drinking water 20 L,2201.10,22,2201,"PPE, Housekeeping, Lab & Food",H
+743,Passenger car petrol 1500 cc,8703.23,87,8703,"PPE, Housekeeping, Lab & Food",H
+744,Light pickup truck diesel,8704.21,87,8704,"PPE, Housekeeping, Lab & Food",H
+745,Motorcycle 125 cc,8711.20,87,8711,"PPE, Housekeeping, Lab & Food",H
+746,Bicycle adult 26-inch,8712.00,87,8712,"PPE, Housekeeping, Lab & Food",H
+747,Brake pads set for car,8708.30,87,8708,"PPE, Housekeeping, Lab & Food",H
+748,Spark plug (set of 4),8511.10,85,8511,"PPE, Housekeeping, Lab & Food",H
+749,Engine oil filter,8421.23,84,8421,"PPE, Housekeeping, Lab & Food",H
+750,Air filter element for car,8421.31,84,8421,"PPE, Housekeeping, Lab & Food",H

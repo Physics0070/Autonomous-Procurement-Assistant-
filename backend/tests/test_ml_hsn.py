@@ -42,7 +42,7 @@ async def test_the_model_picks_from_the_official_shortlist(index):
     from tests.fakes.llm import ScriptedProvider
 
     model = ScriptedProvider(responses=['{"heading": "3917", "confidence": 0.93, "reason": "plastic pipe"}'])
-    result = await classify_hsn("PVC pipe 2 inch", model, index=index)
+    result = await classify_hsn("PVC pipe 2 inch", model, index=index, examples=False)
     assert (result["heading"], result["method"]) == ("3917", "llm")
     assert "3917" in model.calls[0]["prompt"]           # the official candidates were shown to it
     assert result["description"].startswith("TUBES, PIPES AND HOSES")
@@ -62,7 +62,7 @@ async def test_an_invented_heading_is_rejected_and_text_matching_is_used(index):
     from tests.fakes.llm import ScriptedProvider
 
     model = ScriptedProvider(responses=['{"heading": "9999", "confidence": 0.99}'])
-    result = await classify_hsn("PVC pipe 2 inch", model, index=index)
+    result = await classify_hsn("PVC pipe 2 inch", model, index=index, examples=False)
     assert result["method"] == "text_match" and "9999" in result["note"]
     assert result["heading"] == index.suggest("PVC pipe 2 inch", k=1)[0]["heading"]
 
@@ -71,7 +71,7 @@ async def test_without_a_model_it_falls_back_to_text_matching(index):
     from app.integrations.ai.base import UnconfiguredProvider
     from ml.hsn import classify_hsn
 
-    result = await classify_hsn("PVC pipe 2 inch", UnconfiguredProvider("no key"), index=index)
+    result = await classify_hsn("PVC pipe 2 inch", UnconfiguredProvider("no key"), index=index, examples=False)
     assert result["method"] == "text_match" and "no key" in result["note"]
 
 
@@ -79,4 +79,34 @@ async def test_the_api_suggests_an_hsn_heading(api, org_a):
     response = await api.get("/api/v1/analytics/hsn", params={"item": "PVC pipe 2 inch"}, headers=org_a["headers"])
     assert response.status_code == 200, response.text
     body = response.json()
-    assert body["method"] == "text_match" and len(body["heading"]) == 4  # no key in tests
+    assert body["method"] in {"text_match", "similar_item"} and len(body["heading"]) == 4  # no key in tests
+
+
+# ---- labelled examples: the answer when no model is available ----
+import asyncio  # noqa: E402
+
+from ml.hsn import Examples, HsnIndex, classify_hsn  # noqa: E402
+
+
+def test_without_a_model_the_closest_labelled_item_beats_text_matching(tmp_path):
+    labelled = tmp_path / "labelled.csv"
+    labelled.write_text("id,item,hsn6,chapter,heading,category,confidence\n"
+                        "1,Heavy-duty stapler 100 sheets,8472.00,84,8472,Stationery,H\n"
+                        "2,Copier paper A4 75 GSM,4802.56,48,4802,Stationery,H\n", encoding="utf-8")
+    result = asyncio.run(classify_hsn("Heavy duty stapler 100 sheet", None, index=HsnIndex.load(),
+                                      examples=Examples.load(labelled)))
+    assert (result["heading"], result["method"]) == ("8472", "similar_item")
+    assert "Heavy-duty stapler" in result["note"] or "Same heading" in result["note"]
+
+
+def test_an_item_unlike_any_labelled_one_still_gets_the_text_match(tmp_path):
+    labelled = tmp_path / "labelled.csv"
+    labelled.write_text("id,item,hsn6,chapter,heading,category,confidence\n"
+                        "1,Copier paper A4 75 GSM,4802.56,48,4802,Stationery,H\n", encoding="utf-8")
+    result = asyncio.run(classify_hsn("TMT bar 12mm Fe500", None, index=HsnIndex.load(), examples=Examples.load(labelled)))
+    assert result["method"] == "text_match"
+
+
+def test_examples_can_be_turned_off():
+    result = asyncio.run(classify_hsn("Heavy-duty stapler", None, index=HsnIndex.load(), examples=False))
+    assert result["method"] == "text_match"

@@ -18,7 +18,12 @@ async def awarded(api, sourcing):
     return po
 
 
-async def test_without_a_google_client_it_says_so_instead_of_failing(api, awarded, sourcing):
+async def test_without_a_google_client_it_says_so_instead_of_failing(api, awarded, sourcing, monkeypatch):
+    from app.core.config import settings
+
+    # The developer's real .env may hold a client; this test is about the case where it does not.
+    monkeypatch.setattr(settings, "GOOGLE_CLIENT_ID", "")
+    monkeypatch.setattr(settings, "GOOGLE_CLIENT_SECRET", "")
     response = await api.post(f"/api/v1/purchase-orders/{awarded['id']}/drive", headers=sourcing["headers"])
     assert response.status_code == 503
     assert "GOOGLE_CLIENT_ID" in response.json()["error"]["message"]

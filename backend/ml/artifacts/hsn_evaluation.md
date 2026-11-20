@@ -61,3 +61,20 @@ near-neighbour headings: office chair 9403 (truth 9401), woven cotton fabric 521
 - 85 test items give roughly ±5 percentage points of uncertainty at these accuracy levels.
 - Headings, not full 6/8-digit codes: the 8-digit tariff line depends on specifications a
   quotation line often omits.
+
+## Second check: the team's 750-item labelled set (20 Nov 2026)
+
+`ml/data/india/hsn_labelled.csv` (supplied by the team; every label is a real heading in the official master, and each
+`hsn6` starts with its heading). Label quality beyond that is unverified, and a few labels are arguable (for example an
+interactive flat panel as 8528 rather than 8524).
+
+| Method | Items | Heading top-1 |
+|---|---:|---:|
+| Text matching alone | 750 | 27.6% (right answer inside the 30-candidate shortlist: 79.6%) |
+| Text matching + model | 100 (random, fixed seed) | **94.0%** (all 100 answered by the model) |
+| Same, with the 5 nearest labelled items shown to the model | 100, same items, those items removed from the example pool | 92.0% (two items broken, none fixed), so not used |
+| Closest labelled item alone, no model | 100, same items | 53.0% (60% when the match score is at least 0.4) |
+
+This set is harder than the 85-item benchmark above (text matching 27.6% against 54.1%; weakest categories: Computers 3%,
+Batteries 16%). The 98.8% above is on easier items, so **94% is the better estimate for a broad range of goods**; with 100
+items the uncertainty is about +/- 5 points. The closest labelled item is used only when no model answers.
