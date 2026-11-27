@@ -1,0 +1,96 @@
+{
+ "text": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": null,
+   "phone": "+91 90965 74507",
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0533",
+   "date": "10-09-26",
+   "validity": "Valid for 15 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 3045.0,
+    "gst_percentage": null,
+    "total_price": 33495.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sqmm copper 90 m",
+    "quantity": 54.0,
+    "unit": "Bundle",
+    "unit_price": 1670.0,
+    "gst_percentage": null,
+    "total_price": 90180.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "CEILING FAN 1200 MM (ISI/BIS)",
+    "quantity": 26.0,
+    "unit": "Each",
+    "unit_price": 2380.0,
+    "gst_percentage": null,
+    "total_price": 61880.0,
+    "attributes": {
+     "HSN": "8414.51"
+    }
+   },
+   {
+    "original_name": "LED street light 90W",
+    "quantity": 25.0,
+    "unit": "Nos.",
+    "unit_price": 4005.0,
+    "gst_percentage": null,
+    "total_price": 100125.0,
+    "attributes": {
+     "HSN": "9405.42"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 285680.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 285680.0,
+   "transportation_cost": null,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": "Free delivery at your premises",
+   "delivery_time": "Within 7 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 769,
+     "prompt_tokens": 1733,
+     "total_tokens": 2502
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:28:58.378233+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.94,
+ "source_chars": 1466
+}

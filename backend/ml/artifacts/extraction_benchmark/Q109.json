@@ -1,0 +1,201 @@
+{
+ "text": {
+  "supplier": {
+   "name": "VeltraIndustries",
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": "Office28,dyogNagar,Gurugram-122531,Haryana"
+  },
+  "quotation": {
+   "reference": "SQ/26/0809",
+   "date": "30/09/2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "LineinteractiveUPS650VAHSN:8504.40",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 3298.0,
+    "gst_percentage": null,
+    "total_price": 16490.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "SMFVRLAbattery12V7AhHSN:8507.20",
+    "quantity": 18.0,
+    "unit": "EA",
+    "unit_price": 868.0,
+    "gst_percentage": null,
+    "total_price": 15624.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "Tubularinverterbattery12V150AhorequivalentHSN:8507.20",
+    "quantity": 8.0,
+    "unit": "Nos",
+    "unit_price": 14074.0,
+    "gst_percentage": null,
+    "total_price": 112592.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "OnlineUPS1kVAHSN:8504.40",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 14680.0,
+    "gst_percentage": null,
+    "total_price": 44040.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "AlkalineAAbatterypackof10HSN:8506.10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 310.0,
+    "gst_percentage": null,
+    "total_price": 3410.0,
+    "attributes": {
+     "HSN": "8506.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 192156.0,
+   "tax_amount": 32166.91,
+   "tax_percentage": 18.0,
+   "total_amount": 210871.99,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within3days",
+   "payment_terms": "25%advance,balanceondelivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "queue_time": 0.455436932,
+     "prompt_tokens": 1390,
+     "prompt_time": 0.080966646,
+     "completion_tokens": 927,
+     "completion_time": 0.978139032,
+     "total_tokens": 2317,
+     "total_time": 1.059105678,
+     "completion_tokens_details": {
+      "reasoning_tokens": 458
+     }
+    },
+    "fallback": [
+     "gemini: gemini request timed out after 120s"
+    ]
+   }
+  },
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "extracted_at": "2026-11-27T16:59:14.142500+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Veltra Industries",
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": "Office 26, Udyog Nagar, Gurugram - 122531, Haryana"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "30/09/2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Line interactive UPS 650 VA HSN:8504.40",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 3288.0,
+    "gst_percentage": null,
+    "total_price": 16440.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SMF VRLA battery 12V 7Ah HSN:8507.20",
+    "quantity": 18.0,
+    "unit": "EA",
+    "unit_price": 868.0,
+    "gst_percentage": null,
+    "total_price": 15624.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubular inverter battery 12V 150Ah or equivalent HSN:8507.20",
+    "quantity": 8.0,
+    "unit": "Nos",
+    "unit_price": 14074.0,
+    "gst_percentage": null,
+    "total_price": 112592.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA HSN:8504.40",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 14680.0,
+    "gst_percentage": null,
+    "total_price": 44040.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Alkaline AA battery pack of 10 HSN:8506.10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 310.0,
+    "gst_percentage": null,
+    "total_price": 3410.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 182746.0,
+   "tax_amount": 15462.0,
+   "tax_percentage": 8.0,
+   "total_amount": 198208.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "Notes": "Less: Discount 7% | IGST @ 18% | Total Amount Rs.2,10,871.99/-"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The calculated total amount (198208.00) does not match the stated Total Amount (Rs.2,10,871.99/-) or the breakdown (Less: Discount 7% | IGST @ 18%). The values in the table are used for item totals, but the final commercial figures are taken as printed."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 136.97,
+ "source_chars": 840
+}

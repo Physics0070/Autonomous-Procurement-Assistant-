@@ -1,0 +1,115 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zorvik Industries",
+   "email": null,
+   "phone": null,
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka"
+  },
+  "quotation": {
+   "reference": "EST-0538",
+   "date": "03.09.2026",
+   "validity": "10.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CAR ABTTERY 12V 65AH",
+    "quantity": 29.0,
+    "unit": "EA",
+    "unit_price": 6498.0,
+    "gst_percentage": null,
+    "total_price": 188442.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 33.0,
+    "unit": "Each",
+    "unit_price": 3445.0,
+    "gst_percentage": null,
+    "total_price": 113685.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 15375.0,
+    "gst_percentage": null,
+    "total_price": 46125.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laptop charger 65W USB-C",
+    "quantity": 95.0,
+    "unit": "Pcs",
+    "unit_price": 1539.0,
+    "gst_percentage": null,
+    "total_price": 146205.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubular inverter battery 12V 150Ah",
+    "quantity": 13.0,
+    "unit": "Nos.",
+    "unit_price": 15399.0,
+    "gst_percentage": null,
+    "total_price": 200187.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Diesel generator 15 kVA silent",
+    "quantity": 4.0,
+    "unit": "EA",
+    "unit_price": 280512.0,
+    "gst_percentage": null,
+    "total_price": 1122048.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1816692.0,
+   "tax_amount": 327634.56,
+   "tax_percentage": 18.0,
+   "total_amount": 2147826.56,
+   "transportation_cost": 3500.0,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1834,
+     "completion_tokens": 846,
+     "total_tokens": 2680,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:05:28.768682+00:00",
+  "notes": [
+   "The quantity for Diesel generator 15 kVA silent (4 EA) has a unit price of 280,512.00, resulting in a total of 11,22,048.00. The subtotal calculation (18,16,692.00) includes the item totals but excludes the Freight & Forwarding (3,500.00). The IGST (3,27,634.56) is calculated on a base that is not explicitly defined as the subtotal minus freight, but the total matches the sum of Sub Total + Freight + IGST."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 10.26,
+ "source_chars": 1662
+}

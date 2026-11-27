@@ -1,0 +1,106 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Nestor Mart",
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": "Unit 35, Laxmi Complex, Bengaluru - 560378, Karnataka"
+  },
+  "quotation": {
+   "reference": "PI/0458",
+   "date": "2026-09-05T00:00:00",
+   "validity": "Valid till 20/09/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electric chain hoist 1 ton",
+    "quantity": 11.0,
+    "unit": "Nos",
+    "unit_price": 22122.0,
+    "gst_percentage": null,
+    "total_price": 243342.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Air compressor 2 HP 100 L",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 26412.0,
+    "gst_percentage": null,
+    "total_price": 316944.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Platform scale 300 kg or equivalent",
+    "quantity": 15.0,
+    "unit": "Each",
+    "unit_price": 9463.0,
+    "gst_percentage": null,
+    "total_price": 141945.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "Pcs",
+    "unit_price": 1733.0,
+    "gst_percentage": null,
+    "total_price": 143839.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Centrifugal monoblock pump 1 HP",
+    "quantity": 40.0,
+    "unit": "EA",
+    "unit_price": 6186.0,
+    "gst_percentage": null,
+    "total_price": 247440.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1093510.0,
+   "tax_amount": 192895.16,
+   "tax_percentage": 18.0,
+   "total_amount": 1264534.96,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "buyer_gstin": "27AABCS4821K1Z4",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1783,
+     "completion_tokens": 601,
+     "total_tokens": 2384,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:25:19.688228+00:00",
+  "notes": [
+   "Installation and commissioning not included."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.06,
+ "source_chars": 1664
+}

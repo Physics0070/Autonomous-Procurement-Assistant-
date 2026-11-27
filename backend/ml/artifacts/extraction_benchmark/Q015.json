@@ -1,0 +1,147 @@
+{
+ "text": {
+  "supplier": {
+   "name": "CALVIK MART",
+   "email": "sales@ca1vik.examp1e",
+   "phone": "+919317432802",
+   "gst_number": "24DLEDC1724S2ZN",
+   "address": "Gala No. 43, Industrial Area Phase II, Surat\u00b7395849,Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0144",
+   "date": "250ctober 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cat6UTPcab1e305mbox",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 6770.0,
+    "gst_percentage": null,
+    "total_price": 33850.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OnlineUPS1kVA\uff08ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Each",
+    "unit_price": 15541.0,
+    "gst_percentage": null,
+    "total_price": 186492.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Line interactive UPs 650 VA",
+    "quantity": 31.0,
+    "unit": "Nos.",
+    "unit_price": 3536.0,
+    "gst_percentage": null,
+    "total_price": 109616.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 329958.0,
+   "tax_amount": 59482.44,
+   "tax_percentage": 18.0,
+   "total_amount": 389940.44,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "bank_details": "Nova Commercial Bank A/c:78570899093 IFSC:NOVA0648935",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 708,
+     "prompt_tokens": 1400,
+     "total_tokens": 2108
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:31:58.784832+00:00",
+  "notes": [
+   "Date '250ctober 2026' contains a likely OCR error missing a space.",
+   "Product names contain potential OCR character substitutions (e.g., 'ca1vik', 'cab1e')."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "CALVIK MART",
+   "email": "sales@calvik.example",
+   "phone": "+91 93174 32802",
+   "gst_number": "24DLEDC1724S2ZN",
+   "address": "Gala No. 43, Industrial Area Phase II, Surat - 395849, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0144",
+   "date": "25 October 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cat6 UTP cable 305 m box",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 6770.0,
+    "gst_percentage": null,
+    "total_price": 33850.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA (ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Each",
+    "unit_price": 15541.0,
+    "gst_percentage": null,
+    "total_price": 186492.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 31.0,
+    "unit": "Nos.",
+    "unit_price": 3536.0,
+    "gst_percentage": null,
+    "total_price": 109616.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 329958.0,
+   "tax_amount": 59482.44,
+   "tax_percentage": 18.0,
+   "total_amount": 389940.44,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "bank_details": "Nova Commercial Bank A/c: 78570899093 IFSC: NOVA0648935"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 44.31,
+ "source_chars": 837
+}

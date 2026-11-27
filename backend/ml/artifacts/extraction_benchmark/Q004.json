@@ -1,0 +1,137 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Quorra TradingCo.",
+   "email": null,
+   "phone": null,
+   "gst_number": "27RAAFB550H122",
+   "address": null
+  },
+  "quotation": {
+   "reference": "EST-0239",
+   "date": null,
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "sa LeverarchfleA475",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 61807.02,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 61807.02,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10woking days homPO",
+   "payment_terms": "Payeno%advce.bnce",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 464,
+     "prompt_tokens": 1167,
+     "total_tokens": 1631
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:40:28.466774+00:00",
+  "notes": [
+   "OCR errors detected in text: 'sa LeverarchfleA475' is likely 'Lever arch file A4 75mm', '10woking days homPO' is '10 working days from PO', 'Payeno%advce.bnce' is 'Pay 0% advance balance'.",
+   "GSTIN number corrected from '27RAAFB55 0H122' to '27RAAFB550H122'."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Quorra Trading Co.",
+   "email": "sales@quorra.example",
+   "phone": "+91 92080 54737",
+   "gst_number": "27RAAFB5566H1ZZ",
+   "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra"
+  },
+  "quotation": {
+   "reference": "EST-0239",
+   "date": "08 October 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Aerolite Whiteboard marker black",
+    "quantity": 1193.0,
+    "unit": "Nos",
+    "unit_price": 26.86,
+    "gst_percentage": null,
+    "total_price": 32043.98,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Lever arch file A4 75mm",
+    "quantity": 166.0,
+    "unit": "Nos",
+    "unit_price": 130.0,
+    "gst_percentage": null,
+    "total_price": 21580.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip",
+    "quantity": 192.0,
+    "unit": "Pcs",
+    "unit_price": 30.63,
+    "gst_percentage": null,
+    "total_price": 5880.96,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Notebook ruled A4 172 pages",
+    "quantity": 32.0,
+    "unit": "Each",
+    "unit_price": 71.94,
+    "gst_percentage": null,
+    "total_price": 2302.08,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 61807.02,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 61807.02,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_enquiry_date": "25 September 2026"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 13.75,
+ "source_chars": 334
+}

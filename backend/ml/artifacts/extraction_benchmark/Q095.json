@@ -1,0 +1,161 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Halvor Distributors",
+   "email": null,
+   "phone": "+91 96290 41038",
+   "gst_number": "09EADHK3962G3ZY",
+   "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": "PI/0757",
+   "date": "2026-09-13T00:00:00",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Water dispenser hot and cold",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 11493.0,
+    "gst_percentage": 18.0,
+    "total_price": 114930.0,
+    "attributes": {
+     "HSN": "8418.69",
+     "Lead time": "2 weeks"
+    }
+   },
+   {
+    "original_name": "Washing machine front load 7 kg or equivalent",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 29652.0,
+    "gst_percentage": 18.0,
+    "total_price": 444780.0,
+    "attributes": {
+     "HSN": "8450.11",
+     "Lead time": "2 weeks"
+    }
+   },
+   {
+    "original_name": "Split Ac 1 Ton 3 Star",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 36696.0,
+    "gst_percentage": 18.0,
+    "total_price": 110088.0,
+    "attributes": {
+     "HSN": "8415.10",
+     "Lead time": "7-10 days"
+    }
+   },
+   {
+    "original_name": "RO WATER PURIFIER 10 L WALL MOUNTED",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 13295.0,
+    "gst_percentage": 18.0,
+    "total_price": 132950.0,
+    "attributes": {
+     "HSN": "8421.21",
+     "Lead time": "2 weeks"
+    }
+   },
+   {
+    "original_name": "Refrigerator 190 L single door",
+    "quantity": 2.0,
+    "unit": "Nos.",
+    "unit_price": 16508.0,
+    "gst_percentage": 18.0,
+    "total_price": 33016.0,
+    "attributes": {
+     "HSN": "8418.21",
+     "Lead time": "5 days"
+    }
+   },
+   {
+    "original_name": "Microwave oven 25 L convection",
+    "quantity": 36.0,
+    "unit": "Nos",
+    "unit_price": 9899.0,
+    "gst_percentage": 18.0,
+    "total_price": 356364.0,
+    "attributes": {
+     "HSN": "8516.50",
+     "Lead time": "7-10 days"
+    }
+   },
+   {
+    "original_name": "Split AC 1.5 ton 5 star inverter (ISI/BIS)",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 52778.0,
+    "gst_percentage": 18.0,
+    "total_price": 263890.0,
+    "attributes": {
+     "HSN": "8415.10",
+     "Lead time": "5 days"
+    }
+   },
+   {
+    "original_name": "Window AC 1.5 ton (ISI/BIS)",
+    "quantity": 9.0,
+    "unit": "EA",
+    "unit_price": 34014.0,
+    "gst_percentage": 18.0,
+    "total_price": 306126.0,
+    "attributes": {
+     "HSN": "8415.10",
+     "Lead time": "5 days"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1762144.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1726901.12,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "queue_time": 0.367950864,
+     "prompt_tokens": 2162,
+     "prompt_time": 0.095048474,
+     "completion_tokens": 822,
+     "completion_time": 1.005049838,
+     "total_tokens": 2984,
+     "total_time": 1.100098312,
+     "prompt_tokens_details": {
+      "cached_tokens": 768
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 185
+     }
+    },
+    "fallback": [
+     "gemini: gemini: the provider is unavailable"
+    ]
+   }
+  },
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "extracted_at": "2026-11-27T16:57:17.367821+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 19.47,
+ "source_chars": 2915
+}

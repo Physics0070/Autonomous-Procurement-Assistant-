@@ -1,0 +1,104 @@
+{
+ "quotation_id": "Q015",
+ "rfq_id": "RFQ-2026-003",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Calvik Mart",
+  "gstin": "24DLEDC1724S2ZN",
+  "address": "Gala No. 43, Industrial Area Phase II, Surat - 395849, Gujarat",
+  "phone": "+91 93174 32802",
+  "email": "sales@calvik.example",
+  "contact_person": "Meera Patil"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0144",
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25 October 2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Cat6 UTP cable 305 m box",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 6770.0,
+   "amount": 33850.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "Online UPS 1 kVA (ISI/BIS)",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 12,
+   "unit": "Each",
+   "unit_price": 15541.0,
+   "amount": 186492.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 31,
+   "unit": "Nos.",
+   "unit_price": 3536.0,
+   "amount": 109616.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 329958.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 59482.44,
+  "total": 59482.44
+ },
+ "grand_total": 389940.44,
+ "computed_grand_total": 389940.44,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [
+  "We are an authorised dealer of leading brands."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  2
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery",
+  "validity"
+ ],
+ "source_file": "documents/photos/IMG_20261025_125659.jpg",
+ "supplier_id": "S30",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

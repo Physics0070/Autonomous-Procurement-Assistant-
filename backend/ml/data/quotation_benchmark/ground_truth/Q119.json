@@ -1,0 +1,137 @@
+{
+ "quotation_id": "Q119",
+ "rfq_id": "RFQ-2026-024",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Halvor Distributors",
+  "gstin": "09EADHK3962G3ZY",
+  "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh",
+  "phone": "+91 96290 41038",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": null,
+ "quotation_date": "2026-08-24",
+ "quotation_date_printed": "24.08.2026",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": "2026-09-03",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Laptop Core i5 16GB 512GB SSD 14-inch",
+   "brand": null,
+   "hsn": "8471.30",
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 55291.0,
+   "amount": 276455.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "External HDD 2TB USB 3.0",
+   "brand": null,
+   "hsn": "8471.70",
+   "quantity": 26,
+   "unit": "EA",
+   "unit_price": 5473.0,
+   "amount": 142298.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 5,
+   "description": "Laser printer monochrome A4 duplex",
+   "brand": null,
+   "hsn": "8443.32",
+   "quantity": 15,
+   "unit": "Nos.",
+   "unit_price": 11556.0,
+   "amount": 173340.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 6,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": "8523.51",
+   "quantity": 15,
+   "unit": "EA",
+   "unit_price": 3163.0,
+   "amount": 47445.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 7,
+   "description": "Toner cartridge black laser",
+   "brand": null,
+   "hsn": "8443.99",
+   "quantity": 38,
+   "unit": "EA",
+   "unit_price": 2063.0,
+   "amount": 78394.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 8,
+   "description": "Optical mouse USB wired or equivalent",
+   "brand": null,
+   "hsn": "8471.60",
+   "quantity": 37,
+   "unit": "EA",
+   "unit_price": 218.0,
+   "amount": 8066.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 725998.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 725998.0,
+ "computed_grand_total": 725998.0,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  2,
+  4
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery",
+  "quotation_number"
+ ],
+ "source_file": "documents/pdf/HalvorDistributors_quotation_NA_119.pdf",
+ "supplier_id": "S13",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zephra Enterprises",
+   "email": null,
+   "phone": "+91 97794 40471",
+   "gst_number": null,
+   "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0097",
+   "date": "26-08-26",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 30.0,
+    "unit": "Nos.",
+    "unit_price": 4718.0,
+    "gst_percentage": 18.0,
+    "total_price": 141540.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "Supra Laptop Core i5 16GB 512GB SSD 14-inch or equivalent",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 73829.0,
+    "gst_percentage": 18.0,
+    "total_price": 221487.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "Veltrax USB wired keyboard",
+    "quantity": 108.0,
+    "unit": "Each",
+    "unit_price": 579.0,
+    "gst_percentage": 18.0,
+    "total_price": 62532.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   },
+   {
+    "original_name": "Orbix LED MONITOR 24-INCH IPS (ISI/BIS)",
+    "quantity": 8.0,
+    "unit": "Nos.",
+    "unit_price": 12495.0,
+    "gst_percentage": 18.0,
+    "total_price": 99960.0,
+    "attributes": {
+     "HSN": "8528.52"
+    }
+   },
+   {
+    "original_name": "Optical mouse USB wired (ISI/BIS)",
+    "quantity": 108.0,
+    "unit": "Pcs",
+    "unit_price": 310.0,
+    "gst_percentage": 18.0,
+    "total_price": 33480.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 558999.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 558999.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 897,
+     "prompt_tokens": 1603,
+     "total_tokens": 2500
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:10:05.473885+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.36,
+ "source_chars": 1414
+}

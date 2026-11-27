@@ -1,0 +1,121 @@
+{
+ "quotation_id": "Q024",
+ "rfq_id": "RFQ-2026-005",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Belmont Suppliers",
+  "gstin": "24WAUNJ2506U1ZI",
+  "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat",
+  "phone": "+91 90625 76892",
+  "email": "sales@belmont.example",
+  "contact_person": "Vikram Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QTN0137",
+ "quotation_date": "2026-09-13",
+ "quotation_date_printed": "13/09/2026",
+ "your_reference_date": "2026-09-01",
+ "validity_days": 10,
+ "valid_until": "2026-09-23",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "ELECTRIC DRILL MACHINE 13 MM 650W (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 35,
+   "unit": "Nos.",
+   "unit_price": 3060.0,
+   "amount": 107100.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Open-Ended Spanner Set 6-32 Mm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Set",
+   "unit_price": 1094.0,
+   "amount": 13128.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Arc welding inverter 200A (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 29,
+   "unit": "Each",
+   "unit_price": 9204.0,
+   "amount": 266916.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Angle grinder 4-inch 850W",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 2493.0,
+   "amount": 24930.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Vernier caliper 150 mm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 109,
+   "unit": "Nos",
+   "unit_price": 1287.0,
+   "amount": 140283.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 552357.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2500.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 554857.0,
+ "computed_grand_total": 554857.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4,
+  7
+ ],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/excel/RateQuote_BelmontSuppliers_rev1_24.xlsx",
+ "supplier_id": "S09",
+ "capture": {}
+}

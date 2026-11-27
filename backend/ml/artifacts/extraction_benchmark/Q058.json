@@ -1,0 +1,96 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": null,
+   "phone": null,
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0484",
+   "date": "23-10-26",
+   "validity": "45 days from the date of quotation",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Supra Whiteboard marker black HSN:9608.20",
+    "quantity": 148.0,
+    "unit": "Pkt of 10",
+    "unit_price": 222.0,
+    "gst_percentage": null,
+    "total_price": 32856.0,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "Veltrax Notebook ruled A4 172 pages HSN:4820.20",
+    "quantity": 8.0,
+    "unit": "Pkt of 10",
+    "unit_price": 639.0,
+    "gst_percentage": null,
+    "total_price": 5112.0,
+    "attributes": {
+     "HSN": "4820.20"
+    }
+   },
+   {
+    "original_name": "BOPP packing tape 48 mm x 65 m HSN:3919.10",
+    "quantity": 174.0,
+    "unit": "Rl",
+    "unit_price": 64.49,
+    "gst_percentage": null,
+    "total_price": 11221.26,
+    "attributes": {
+     "HSN": "3919.10"
+    }
+   },
+   {
+    "original_name": "Glue stick 15 g HSN:3506.10",
+    "quantity": 19.0,
+    "unit": "Pkt of 10",
+    "unit_price": 205.0,
+    "gst_percentage": null,
+    "total_price": 3895.0,
+    "attributes": {
+     "HSN": "3506.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 53084.26,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 56584.26,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 796,
+     "prompt_tokens": 1707,
+     "total_tokens": 2503
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:07:18.971462+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 9.53,
+ "source_chars": 1455
+}

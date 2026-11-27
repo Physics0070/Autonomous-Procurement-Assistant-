@@ -1,0 +1,116 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ULMAR TRADING CO.",
+   "email": "sales@ulmar.example",
+   "phone": "+91 98848 87441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0499",
+   "date": "16-10-26",
+   "validity": "30-11-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Aerolite SAFETY GGOGLES CLEAR (ISI/BIS)",
+    "quantity": 24.0,
+    "unit": "Pkt of 10",
+    "unit_price": 756.0,
+    "gst_percentage": null,
+    "total_price": 18144.0,
+    "attributes": {
+     "HSN": "9004.90",
+     "Lead time": "2 weeks"
+    }
+   },
+   {
+    "original_name": "Zenmark Fire extinguisher ABC powder6  kg",
+    "quantity": 8.0,
+    "unit": "Nos.",
+    "unit_price": 1831.0,
+    "gst_percentage": null,
+    "total_price": 14648.0,
+    "attributes": {
+     "HSN": "8424.10",
+     "Lead time": "7-10 days"
+    }
+   },
+   {
+    "original_name": "Zenmark N95 respirator mask",
+    "quantity": 9.0,
+    "unit": "Pkt of 10",
+    "unit_price": 378.0,
+    "gst_percentage": null,
+    "total_price": 3402.0,
+    "attributes": {
+     "HSN": "9020.00",
+     "Lead time": "Ex-stock"
+    }
+   },
+   {
+    "original_name": "Digital BP monitor",
+    "quantity": 115.0,
+    "unit": "Each",
+    "unit_price": 1470.0,
+    "gst_percentage": null,
+    "total_price": 169050.0,
+    "attributes": {
+     "HSN": "9018.90",
+     "Lead time": "7-10 days"
+    }
+   },
+   {
+    "original_name": "Zenmark Leather safety shoes steel toe",
+    "quantity": 65.0,
+    "unit": "Pair",
+    "unit_price": 911.0,
+    "gst_percentage": null,
+    "total_price": 59215.0,
+    "attributes": {
+     "HSN": "6403.40",
+     "Lead time": "2 weeks"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 264459.0,
+   "tax_amount": 47647.62,
+   "tax_percentage": 18.0,
+   "total_amount": 312356.62,
+   "transportation_cost": 250.0,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "customer": "Sahyadri Industrial Services Pvt. Ltd.",
+   "customer_gst": "27AABCS4821K1Z4",
+   "attn": "Vikram Desai",
+   "test_certificate": "provided on request",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 966,
+     "prompt_tokens": 2015,
+     "total_tokens": 2981
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:18:09.804812+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 14.41,
+ "source_chars": 2108
+}

@@ -1,0 +1,144 @@
+{
+ "quotation_id": "Q021",
+ "rfq_id": "RFQ-2026-005",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Kantaro Solutions",
+  "gstin": "24UETUT7371M1ZO",
+  "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat",
+  "phone": "+91 90965 74507",
+  "email": "sales@kantaro.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0691",
+ "quotation_date": "2026-09-15",
+ "quotation_date_printed": "15-09-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-30",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Electric drill machine 13 mm 650W",
+   "brand": null,
+   "hsn": "8467.21",
+   "quantity": 35,
+   "unit": "Pcs",
+   "unit_price": 3399.0,
+   "amount": 118965.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Open-ended spanner set 6-32 mm",
+   "brand": null,
+   "hsn": "8204.11",
+   "quantity": 12,
+   "unit": "Sets",
+   "unit_price": 1267.0,
+   "amount": 15204.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Arc welding inverter 200A (ISI/BIS)",
+   "brand": null,
+   "hsn": "8515.39",
+   "quantity": 29,
+   "unit": "Each",
+   "unit_price": 9501.0,
+   "amount": 275529.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Hss Drill Bit Set 1-13Mm",
+   "brand": null,
+   "hsn": "8207.50",
+   "quantity": 63,
+   "unit": "Set",
+   "unit_price": 840.0,
+   "amount": 52920.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Angle Grinder 4-Inc h850W",
+   "brand": null,
+   "hsn": "8467.29",
+   "quantity": 10,
+   "unit": "Nos",
+   "unit_price": 2552.0,
+   "amount": 25520.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "VERNIER CALIPER 150 MM",
+   "brand": null,
+   "hsn": "9017.30",
+   "quantity": 109,
+   "unit": "Each",
+   "unit_price": 1322.0,
+   "amount": 144098.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Screwdriver set 6 pcs",
+   "brand": null,
+   "hsn": "8205.40",
+   "quantity": 27,
+   "unit": "Sets",
+   "unit_price": 349.0,
+   "amount": 9423.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 641659.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 115498.62,
+  "total": 115498.62
+ },
+ "grand_total": 757157.62,
+ "computed_grand_total": 757157.62,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "As per OEM",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/scans/Scan0021.pdf",
+ "supplier_id": "S03",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": -0.04,
+  "capture_quality": "medium"
+ }
+}

@@ -113,11 +113,12 @@ class ExtractedCommercials(APIModel):
     delivery_days: Optional[int] = None
     delivery_date: Optional[str] = None  # as written; normalized later
     delivery_terms: Optional[str] = None
+    delivery_time: Optional[str] = None  # the lead time as printed: "Immediate", "4-6 weeks"
     payment_terms: Optional[str] = None
     payment_days: Optional[int] = None
     warranty: Optional[str] = None
 
-    @field_validator("delivery_terms", "payment_terms", "warranty", mode="before")
+    @field_validator("delivery_terms", "delivery_time", "payment_terms", "warranty", mode="before")
     @classmethod
     def _clean_str(cls, v):
         return blank_to_none(v)

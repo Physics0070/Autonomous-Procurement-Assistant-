@@ -1,0 +1,89 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ixora Agencies",
+   "email": null,
+   "phone": "+91 94096 36580",
+   "gst_number": "19NEJSF2129J1ZY",
+   "address": "Office 8, Hi-Tech Park, Kolkata - 700121, West Bengal"
+  },
+  "quotation": {
+   "reference": "EST-0979",
+   "date": "06.11.2026",
+   "validity": "16.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "EXHAUST FAN 300MM",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 1550.0,
+    "gst_percentage": null,
+    "total_price": 15500.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sqmm copper 90 m",
+    "quantity": 33.0,
+    "unit": "Coil",
+    "unit_price": 1941.0,
+    "gst_percentage": null,
+    "total_price": 64053.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED tube light 20W T8 4 ft",
+    "quantity": 95.0,
+    "unit": "Each",
+    "unit_price": 264.0,
+    "gst_percentage": null,
+    "total_price": 25080.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 2.5 sq mm copper 90 m",
+    "quantity": 26.0,
+    "unit": "Bundle",
+    "unit_price": 3135.0,
+    "gst_percentage": null,
+    "total_price": 81510.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 186143.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 186393.0,
+   "transportation_cost": 250.0,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 728,
+     "prompt_tokens": 1698,
+     "total_tokens": 2426
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:14:25.269278+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 27.14,
+ "source_chars": 1517
+}

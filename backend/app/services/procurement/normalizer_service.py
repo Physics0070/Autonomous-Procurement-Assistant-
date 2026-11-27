@@ -35,6 +35,23 @@ _INCOTERM_RE = re.compile(
 )
 
 
+_WEEKS_OR_DAYS_RE = re.compile(r"(\d{1,3})(?:\s*(?:-|to|–)\s*(\d{1,3}))?\s*(working\s+days?|days?|weeks?|wks?)", re.IGNORECASE)
+_IMMEDIATE_RE = re.compile(r"\b(immediate(?:ly)?|ex[\s-]?stock|ready\s+stock|from\s+stock|off\s+the\s+shelf)\b", re.IGNORECASE)
+
+
+def delivery_days_from_text(text: Optional[str]) -> Optional[int]:
+    """The longest delivery time a phrase allows, in days: "4-6 weeks" is 42, "Within 7 days" is 7, "Immediate" is 0.
+    None when the phrase states no time. Deterministic, so the model is never asked to convert weeks."""
+    if not text:
+        return None
+    match = _WEEKS_OR_DAYS_RE.search(text)
+    if match:
+        low, high, unit = match.groups()
+        days = int(high or low)
+        return days * 7 if unit.lower().startswith(("week", "wk")) else days
+    return 0 if _IMMEDIATE_RE.search(text) else None
+
+
 def _validity_days(value: Optional[str]) -> Optional[int]:
     if not value:
         return None
@@ -160,6 +177,10 @@ def normalize_quotation(extraction: AIExtractionResult, currency_default: str = 
     parsed_delivery = parse_date(commercials.delivery_date)
     delivery_date = parsed_delivery.date() if parsed_delivery else None
     delivery_days = commercials.delivery_days
+    if delivery_days is None:
+        delivery_days = delivery_days_from_text(commercials.delivery_time)
+    if delivery_days is None:
+        delivery_days = delivery_days_from_text(commercials.delivery_terms)
     if delivery_days is None and delivery_date is not None:
         # A date-only quotation still needs a lead time: comparison scores days.
         delivery_days = max((delivery_date - datetime.now(timezone.utc).date()).days, 0)

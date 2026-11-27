@@ -1,0 +1,120 @@
+{
+ "quotation_id": "Q083",
+ "rfq_id": "RFQ-2026-017",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": "+91 98848 87441",
+  "email": "sales@ulmar.example",
+  "contact_person": "Vikram Desai"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0499",
+ "quotation_date": "2026-10-16",
+ "quotation_date_printed": "16-10-26",
+ "your_reference_date": "2026-10-13",
+ "validity_days": null,
+ "valid_until": "2026-11-30",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SAFETY GGOGLES CLEAR (ISI/BIS)",
+   "brand": "Aerolite",
+   "hsn": "9004.90",
+   "quantity": 24,
+   "unit": "Pkt of 10",
+   "unit_price": 756.0,
+   "amount": 18144.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Fire extinguisher ABC powder6  kg",
+   "brand": "Zenmark",
+   "hsn": "8424.10",
+   "quantity": 8,
+   "unit": "Nos.",
+   "unit_price": 1831.0,
+   "amount": 14648.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "N95 respirator mask",
+   "brand": "Zenmark",
+   "hsn": "9020.00",
+   "quantity": 9,
+   "unit": "Pkt of 10",
+   "unit_price": 378.0,
+   "amount": 3402.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Digital BP monitor",
+   "brand": null,
+   "hsn": "9018.90",
+   "quantity": 115,
+   "unit": "Each",
+   "unit_price": 1470.0,
+   "amount": 169050.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Leather safety shoes steel toe",
+   "brand": "Zenmark",
+   "hsn": "6403.40",
+   "quantity": 65,
+   "unit": "Pair",
+   "unit_price": 911.0,
+   "amount": 59215.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 264459.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 250.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 47647.62,
+  "total": 47647.62
+ },
+ "grand_total": 312356.62,
+ "computed_grand_total": 312356.62,
+ "payment_terms": null,
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": "12 months",
+ "extra_notes": [
+  "Test certificate will be provided on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms"
+ ],
+ "source_file": "documents/excel/RateQuote_UlmarTradingCo_v2_83.xlsx",
+ "supplier_id": "S23",
+ "capture": {}
+}

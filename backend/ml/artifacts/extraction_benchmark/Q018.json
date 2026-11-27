@@ -1,0 +1,108 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Kantaro Solutions",
+   "email": null,
+   "phone": "+91 90965 74507",
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0719",
+   "date": "15-10-26",
+   "validity": "10 days",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 3163.0,
+    "gst_percentage": null,
+    "total_price": 31630.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "MCB 32A single pole C curve",
+    "quantity": 105.0,
+    "unit": "Nos",
+    "unit_price": 213.0,
+    "gst_percentage": null,
+    "total_price": 22365.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "LED bulb 9W B22 cool white",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 72.48,
+    "gst_percentage": null,
+    "total_price": 7537.92,
+    "attributes": {
+     "HSN": "8539.50"
+    }
+   },
+   {
+    "original_name": "Exhaust fan 300 mm",
+    "quantity": 99.0,
+    "unit": "Each",
+    "unit_price": 1383.0,
+    "gst_percentage": null,
+    "total_price": 136917.0,
+    "attributes": {
+     "HSN": "8414.59"
+    }
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "quantity": 55.0,
+    "unit": "Coil",
+    "unit_price": 1637.0,
+    "gst_percentage": null,
+    "total_price": 90035.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 288484.92,
+   "tax_amount": 51927.29,
+   "tax_percentage": 18.0,
+   "total_amount": 340412.21,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 871,
+     "prompt_tokens": 2055,
+     "total_tokens": 2926
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:49:28.917617+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.24,
+ "source_chars": 2209
+}

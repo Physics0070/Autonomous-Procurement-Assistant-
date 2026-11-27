@@ -1,0 +1,91 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": "sales@taksha.example",
+   "phone": "+91 91641 51640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0253",
+   "date": "03.10.2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Orbix Whiteboard marker black",
+    "quantity": 1193.0,
+    "unit": "Pcs",
+    "unit_price": 27.24,
+    "gst_percentage": null,
+    "total_price": 32497.32,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax LEVER ARCH FILE A4 75 MM",
+    "quantity": 166.0,
+    "unit": "Nos.",
+    "unit_price": 138.0,
+    "gst_percentage": null,
+    "total_price": 22908.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip",
+    "quantity": 192.0,
+    "unit": "Nos.",
+    "unit_price": 33.29,
+    "gst_percentage": null,
+    "total_price": 6391.68,
+    "attributes": {}
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages",
+    "quantity": 32.0,
+    "unit": "Pcs",
+    "unit_price": 75.46,
+    "gst_percentage": null,
+    "total_price": 2414.72,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 64211.72,
+   "tax_amount": 9795.01,
+   "tax_percentage": 18.0,
+   "total_amount": 64211.72,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works New Delhi; transport by buyer",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 743,
+     "prompt_tokens": 1529,
+     "total_tokens": 2272
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:40:37.248156+00:00",
+  "notes": [
+   "Total amount matches subtotal in document, suggesting tax is included in the subtotal figure."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.18,
+ "source_chars": 1359
+}

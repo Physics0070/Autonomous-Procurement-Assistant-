@@ -1,0 +1,171 @@
+{
+ "text": {
+  "supplier": {
+   "name": "UlmarTradingCo.",
+   "email": "sales@ulmar.example",
+   "phone": "+919884887441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "GalaNo.9SectorChennai600551TamilNad"
+  },
+  "quotation": {
+   "reference": "P1/0386",
+   "date": "01-09-26",
+   "validity": "08-09-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Steelalmirah2-doorHSN:9403.10",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 9320.0,
+    "gst_percentage": null,
+    "total_price": 111840.0,
+    "attributes": {
+     "HSN": "9403.10"
+    }
+   },
+   {
+    "original_name": "DynexOffice tablewooden5x2.5ft HSN:9403.30",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 4190.0,
+    "gst_percentage": null,
+    "total_price": 46090.0,
+    "attributes": {
+     "HSN": "9403.30"
+    }
+   },
+   {
+    "original_name": "SupraToiletSoapBar100GHSN:3401.11",
+    "quantity": 21.0,
+    "unit": "Nos",
+    "unit_price": 7509.0,
+    "gst_percentage": null,
+    "total_price": 157689.0,
+    "attributes": {
+     "HSN": "3401.11"
+    }
+   },
+   {
+    "original_name": "6Dozen",
+    "quantity": 6.0,
+    "unit": "Dozen",
+    "unit_price": 430.0,
+    "gst_percentage": null,
+    "total_price": 2580.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 318199.0,
+   "tax_amount": 57545.82,
+   "tax_percentage": 18.0,
+   "total_amount": 377244.82,
+   "transportation_cost": 1500.0,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "30days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 845,
+     "prompt_tokens": 1467,
+     "total_tokens": 2312
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:02:03.610527+00:00",
+  "notes": [
+   "OCR output contains merged text and formatting inconsistencies.",
+   "Item 2 (AltronFoammattress) appears to have its quantity/unit merged with the previous line or missing; row structure is ambiguous.",
+   "Item 4 (6Dozen) appears to be a separate line item but lacks a product description."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": "sales@ulmar.example",
+   "phone": "+91 98848 87441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0386",
+   "date": "01-09-26",
+   "validity": "08-09-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Steel almirah 2-door HSN:9403.10",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 9320.0,
+    "gst_percentage": null,
+    "total_price": 111840.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron Foam mattress 6x3ft HSN:9404.21",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 4190.0,
+    "gst_percentage": null,
+    "total_price": 46090.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Office table wooden 5x2.5ft HSN:9403.30",
+    "quantity": 21.0,
+    "unit": "Nos",
+    "unit_price": 7509.0,
+    "gst_percentage": null,
+    "total_price": 157689.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra Toilet Soap Bar 100 G HSN:3401.11",
+    "quantity": 6.0,
+    "unit": "Dozen",
+    "unit_price": 430.0,
+    "gst_percentage": null,
+    "total_price": 2580.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 318199.0,
+   "tax_amount": 57545.82,
+   "tax_percentage": 18.0,
+   "total_amount": 377244.82,
+   "transportation_cost": 1500.0,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer": "M/s Sahyadri Industrial Services Pvt. Ltd."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 55.45,
+ "source_chars": 858
+}

@@ -1,0 +1,122 @@
+{
+ "quotation_id": "Q102",
+ "rfq_id": "RFQ-2026-021",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": "+91 98848 87441",
+  "email": "sales@ulmar.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0076",
+ "quotation_date": "2026-09-25",
+ "quotation_date_printed": "25-09-26",
+ "your_reference_date": "2026-09-19",
+ "validity_days": null,
+ "valid_until": "2026-10-10",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "TOILET SOAP BAR 100 G",
+   "brand": "Veltrax",
+   "hsn": "3401.11",
+   "quantity": 14,
+   "unit": "Dozen",
+   "unit_price": 459.0,
+   "amount": 6426.0,
+   "pack_size": 12
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Detergent powder 1 kg",
+   "brand": "Kanto",
+   "hsn": "3402.20",
+   "quantity": 191,
+   "unit": "Pack",
+   "unit_price": 94.07,
+   "amount": 17967.37,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office swivel chair mesh back or equivalent",
+   "brand": "Orbix",
+   "hsn": "9401.39",
+   "quantity": 20,
+   "unit": "Nos",
+   "unit_price": 3683.0,
+   "amount": 73660.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "FOAM MATTRESS 6X3 FT (ISI/BIS)",
+   "brand": null,
+   "hsn": "9404.21",
+   "quantity": 25,
+   "unit": "Nos",
+   "unit_price": 4015.0,
+   "amount": 100625.0,
+   "pack_size": null,
+   "amount_printed_wrong": true
+  }
+ ],
+ "subtotal": 198678.37,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 35762.11,
+  "total": 35762.11
+ },
+ "grand_total": 234440.48,
+ "computed_grand_total": 234145.48,
+ "payment_terms": "30 days credit",
+ "delivery_text": "7-10 days",
+ "delivery_days_min": 7,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [
+  {
+   "type": "line_amount_mismatch",
+   "line_no": 4,
+   "computed": 100375.0,
+   "printed": 100625.0
+  }
+ ],
+ "requested_lines_not_quoted": [
+  5,
+  6
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/scans/Scan0102.pdf",
+ "supplier_id": "S23",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": -0.78,
+  "capture_quality": "medium"
+ }
+}

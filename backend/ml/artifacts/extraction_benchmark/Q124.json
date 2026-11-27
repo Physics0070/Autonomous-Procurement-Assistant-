@@ -1,0 +1,90 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Quorra Trading Co.",
+   "email": "sales@quorra.example",
+   "phone": "+91 92080 54737",
+   "gst_number": "27RAAFB5566H1ZZ",
+   "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra"
+  },
+  "quotation": {
+   "reference": "EST-0930",
+   "date": "22 September 2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Webcam FHD 1080p SUB",
+    "quantity": 119.0,
+    "unit": "Pcs",
+    "unit_price": 1922.0,
+    "gst_percentage": null,
+    "total_price": 228818.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Network switch 24-port gigabit managed",
+    "quantity": 13.0,
+    "unit": "EA",
+    "unit_price": 17419.0,
+    "gst_percentage": null,
+    "total_price": 226447.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax WiFi 6 router dual band",
+    "quantity": 18.0,
+    "unit": "Nos.",
+    "unit_price": 4462.0,
+    "gst_percentage": null,
+    "total_price": 80316.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron CCTV bullet camera 4MP IP",
+    "quantity": 18.0,
+    "unit": "Each",
+    "unit_price": 3872.0,
+    "gst_percentage": null,
+    "total_price": 69696.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 605277.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 714226.86,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Nashik",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 734,
+     "prompt_tokens": 1798,
+     "total_tokens": 2532
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:05:26.842780+00:00",
+  "notes": [
+   "Tax amount is not explicitly stated as a single total; CGST and SGST are listed separately as 54,474.93 each."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 41.65,
+ "source_chars": 1620
+}

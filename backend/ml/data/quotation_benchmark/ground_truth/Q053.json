@@ -1,0 +1,138 @@
+{
+ "quotation_id": "Q053",
+ "rfq_id": "RFQ-2026-011",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Zorvik Industries",
+  "gstin": "29RSTUC4568U3ZM",
+  "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka",
+  "phone": null,
+  "email": null,
+  "contact_person": "Rohit Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0538",
+ "quotation_date": "2026-09-03",
+ "quotation_date_printed": "03.09.2026",
+ "your_reference_date": "2026-08-28",
+ "validity_days": null,
+ "valid_until": "2026-09-10",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "CAR ABTTERY 12V 65AH",
+   "brand": null,
+   "hsn": null,
+   "quantity": 29,
+   "unit": "EA",
+   "unit_price": 6498.0,
+   "amount": 188442.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 33,
+   "unit": "Each",
+   "unit_price": 3445.0,
+   "amount": 113685.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Nos",
+   "unit_price": 15375.0,
+   "amount": 46125.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Laptop charger 65W USB-C",
+   "brand": null,
+   "hsn": null,
+   "quantity": 95,
+   "unit": "Pcs",
+   "unit_price": 1539.0,
+   "amount": 146205.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Tubular inverter battery 12V 150Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "Nos.",
+   "unit_price": 15399.0,
+   "amount": 200187.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Diesel generator 15 kVA silent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 4,
+   "unit": "EA",
+   "unit_price": 280512.0,
+   "amount": 1122048.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1816692.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 327634.56,
+  "total": 327634.56
+ },
+ "grand_total": 2147826.56,
+ "computed_grand_total": 2147826.56,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "Goods once sold will not be taken back.",
+  "Alternate make available on request.",
+  "Please quote our quotation number in your purchase order.",
+  "Delivery subject to receipt of advance.",
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/ZorvikIndustries_quotation_EST-0538_53.pdf",
+ "supplier_id": "S27",
+ "capture": {
+  "pages": 1
+ }
+}

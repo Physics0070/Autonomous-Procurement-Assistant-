@@ -1,0 +1,115 @@
+{
+ "text": {
+  "supplier": {
+   "name": "BELMONT SUPPLIERS",
+   "email": "sales@belmont.example",
+   "phone": "+91 90625 76892",
+   "gst_number": null,
+   "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0798",
+   "date": "28/09/2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Bopp Packing Tape 48 Mm X 65 M",
+    "quantity": 46.0,
+    "unit": "Rl",
+    "unit_price": 83.77,
+    "gst_percentage": null,
+    "total_price": 3853.42,
+    "attributes": {}
+   },
+   {
+    "original_name": "Staple pins 24/6 box of 1000 (ISI/BIS)",
+    "quantity": 1255.0,
+    "unit": "Bx",
+    "unit_price": 13.29,
+    "gst_percentage": null,
+    "total_price": 16678.95,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office scissors 8 inch",
+    "quantity": 123.0,
+    "unit": "Nos.",
+    "unit_price": 96.58,
+    "gst_percentage": null,
+    "total_price": 11879.34,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip",
+    "quantity": 667.0,
+    "unit": "Nos.",
+    "unit_price": 33.71,
+    "gst_percentage": null,
+    "total_price": 22484.57,
+    "attributes": {}
+   },
+   {
+    "original_name": "Heavy-duty stapler 100 sheets",
+    "quantity": 20.0,
+    "unit": "Nos",
+    "unit_price": 505.0,
+    "gst_percentage": null,
+    "total_price": 10100.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Paper clips 28 mm box of 100 or equivalent",
+    "quantity": 173.0,
+    "unit": "Nos",
+    "unit_price": 22.47,
+    "gst_percentage": null,
+    "total_price": 3887.31,
+    "attributes": {}
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages",
+    "quantity": 101.0,
+    "unit": "EA",
+    "unit_price": 78.93,
+    "gst_percentage": null,
+    "total_price": 7971.93,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 76855.52,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 77740.52,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3 weeks",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 948,
+     "prompt_tokens": 1861,
+     "total_tokens": 2809
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:02:49.917016+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 28.56,
+ "source_chars": 1781
+}

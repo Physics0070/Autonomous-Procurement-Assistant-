@@ -1,0 +1,219 @@
+{
+ "text": {
+  "supplier": {
+   "name": "BELMONTSUPPLIERS",
+   "email": "sales@belmont.example",
+   "phone": "+919062576892",
+   "gst_number": "24WAUNJ2506U1ZI",
+   "address": "Office3.GaneshIndustrial Estate,Ahmedabad-380641,Gujarat"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "25/09/2026",
+   "validity": "7daysfrom thedateofquotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Waterdispenser hotandcold",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 10763.0,
+    "gst_percentage": null,
+    "total_price": 107630.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Washingmachine front load7kg(ISI/BIS)",
+    "quantity": 15.0,
+    "unit": "Pcs",
+    "unit_price": 26314.0,
+    "gst_percentage": null,
+    "total_price": 394710.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ROwater purifier10Lwallmounted",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 12570.0,
+    "gst_percentage": null,
+    "total_price": 125700.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Refrigerator190L single door",
+    "quantity": 2.0,
+    "unit": "Each",
+    "unit_price": 14118.0,
+    "gst_percentage": null,
+    "total_price": 28236.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Microwaveoven25Lconvection",
+    "quantity": 36.0,
+    "unit": "Pcs",
+    "unit_price": 8389.0,
+    "gst_percentage": null,
+    "total_price": 302004.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SplitAC1.5ton5starinverter",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 46139.0,
+    "gst_percentage": null,
+    "total_price": 230695.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WindowAc1.5Ton(ISI/BIS)",
+    "quantity": 9.0,
+    "unit": "Pcs",
+    "unit_price": 35743.0,
+    "gst_percentage": null,
+    "total_price": 321687.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1510662.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1435628.9,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25%advance,balanceon delivery",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms."
+  },
+  "additional_attributes": {
+   "discount": "5%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1046,
+     "prompt_tokens": 1606,
+     "total_tokens": 2652
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:52:54.827869+00:00",
+  "notes": [
+   "OCR output contains merged numbers in amounts (e.g., 10.763.00, 3,94.710.00, 12.570.00, 75.533.10). These have been parsed based on standard currency formatting context."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "BELMONT SUPPLIERS",
+   "email": "sales@belmont.example",
+   "phone": "+91 90625 76892",
+   "gst_number": "24WAUNJ2506U1ZI",
+   "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "25/09/2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Water dispenser hot and cold",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 10763.0,
+    "gst_percentage": null,
+    "total_price": 107630.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Washing machine front load 7 kg (ISI/BIS)",
+    "quantity": 15.0,
+    "unit": "Pcs",
+    "unit_price": 26314.0,
+    "gst_percentage": null,
+    "total_price": 394710.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "RO water purifier 10 L wall mounted",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 12570.0,
+    "gst_percentage": null,
+    "total_price": 125700.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Refrigerator 190 L single door",
+    "quantity": 2.0,
+    "unit": "Each",
+    "unit_price": 14118.0,
+    "gst_percentage": null,
+    "total_price": 28236.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Microwave oven 25 L convection",
+    "quantity": 36.0,
+    "unit": "Pcs",
+    "unit_price": 8389.0,
+    "gst_percentage": null,
+    "total_price": 302004.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Split AC 1.5 ton 5 star inverter",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 46139.0,
+    "gst_percentage": null,
+    "total_price": 230695.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Window Ac 1.5 Ton (ISI/BIS)",
+    "quantity": 9.0,
+    "unit": "Pcs",
+    "unit_price": 35743.0,
+    "gst_percentage": null,
+    "total_price": 321687.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1510662.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1435628.9,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "discount": "5%",
+   "installation_and_commissioning": "not included"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 29.88,
+ "source_chars": 1297
+}

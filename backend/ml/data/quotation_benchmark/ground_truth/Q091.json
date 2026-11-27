@@ -1,0 +1,151 @@
+{
+ "quotation_id": "Q091",
+ "rfq_id": "RFQ-2026-019",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Belmont Suppliers",
+  "gstin": "24WAUNJ2506U1ZI",
+  "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat",
+  "phone": "+91 90625 76892",
+  "email": "sales@belmont.example",
+  "contact_person": "Vikram Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": null,
+ "quotation_date": "2026-09-25",
+ "quotation_date_printed": "25/09/2026",
+ "your_reference_date": null,
+ "validity_days": 7,
+ "valid_until": "2026-10-02",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Water dispenser hot and cold",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Each",
+   "unit_price": 10763.0,
+   "amount": 107630.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Washing machine front load 7 kg (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Pcs",
+   "unit_price": 26314.0,
+   "amount": 394710.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "RO water purifier 10 L wall mounted",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 12570.0,
+   "amount": 125700.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Refrigerator 190 L single door",
+   "brand": null,
+   "hsn": null,
+   "quantity": 2,
+   "unit": "Each",
+   "unit_price": 14118.0,
+   "amount": 28236.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Microwave oven 25 L convection",
+   "brand": null,
+   "hsn": null,
+   "quantity": 36,
+   "unit": "Pcs",
+   "unit_price": 8389.0,
+   "amount": 302004.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "Split AC 1.5 ton 5 star inverter",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Nos.",
+   "unit_price": 46139.0,
+   "amount": 230695.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 8,
+   "description": "Window Ac 1.5 Ton (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 9,
+   "unit": "Pcs",
+   "unit_price": 35743.0,
+   "amount": 321687.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1510662.0,
+ "discount_percent": 5,
+ "discount_amount": 75533.1,
+ "freight": {
+  "terms": "paid",
+  "amount": 500.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 1435628.9,
+ "computed_grand_total": 1435628.9,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Warranty as per manufacturer's terms.",
+  "Installation and commissioning not included."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "quotation_number"
+ ],
+ "source_file": "documents/photos/IMG_20260925_084317.jpg",
+ "supplier_id": "S09",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

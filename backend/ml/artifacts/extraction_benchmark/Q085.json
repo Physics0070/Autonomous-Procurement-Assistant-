@@ -1,0 +1,163 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Brenor Solutions",
+   "email": "sales@brcnor.example",
+   "phone": "+9199886600371",
+   "gst_number": "19JMNFA3312B1ZZ",
+   "address": "Offce7.NchruNagar.Kolkata-700588.West Bengal"
+  },
+  "quotation": {
+   "reference": "QTN0669",
+   "date": "23.10.2026",
+   "validity": "02.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SAFETYGOGGLESCLEAR",
+    "quantity": 235.0,
+    "unit": "EA",
+    "unit_price": 105.0,
+    "gst_percentage": null,
+    "total_price": 24675.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Fire ExtinguisherAbe Powder 6Kg",
+    "quantity": 8.0,
+    "unit": "Nos.",
+    "unit_price": 2482.0,
+    "gst_percentage": null,
+    "total_price": 19856.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Velrax N95respiralormask",
+    "quantity": 87.0,
+    "unit": "EA",
+    "unit_price": 49.08,
+    "gst_percentage": null,
+    "total_price": 4269.96,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Digital BPmonitororequivalent",
+    "quantity": 115.0,
+    "unit": "Pes",
+    "unit_price": 1804.0,
+    "gst_percentage": null,
+    "total_price": 207460.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 256260.96,
+   "tax_amount": 46126.97,
+   "tax_percentage": 18.0,
+   "total_amount": 302387.93,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10workingdaysfromPO",
+   "payment_terms": "50% advance.balance before dispatch",
+   "payment_days": null,
+   "warranty": "aspermanufacturer'sterms"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 739,
+     "prompt_tokens": 1471,
+     "total_tokens": 2210
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:19:34.481645+00:00",
+  "notes": [
+   "OCR errors present in text, specifically in item names and payment terms (S0% interpreted as 50%)"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Brenor Solutions",
+   "email": "sales@brenor.example",
+   "phone": "+91 99886 60037",
+   "gst_number": "19JMNFA3312B1ZZ",
+   "address": "Office 7, Nehru Nagar, Kolkata - 700588, West Bengal"
+  },
+  "quotation": {
+   "reference": "QTN0669",
+   "date": "23.10.2026",
+   "validity": "02.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SAFETY GOGGLES CLEAR",
+    "quantity": 235.0,
+    "unit": "EA",
+    "unit_price": 105.0,
+    "gst_percentage": null,
+    "total_price": 24675.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Fire Extinguisher Abc Powder 6 Kg",
+    "quantity": 8.0,
+    "unit": "Nos",
+    "unit_price": 2482.0,
+    "gst_percentage": null,
+    "total_price": 19856.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax N95 respirator mask",
+    "quantity": 87.0,
+    "unit": "EA",
+    "unit_price": 49.08,
+    "gst_percentage": null,
+    "total_price": 4269.96,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Digital BP monitor or equivalent",
+    "quantity": 115.0,
+    "unit": "Pcs",
+    "unit_price": 1804.0,
+    "gst_percentage": null,
+    "total_price": 207460.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 256260.96,
+   "tax_amount": 46126.97,
+   "tax_percentage": 18.0,
+   "total_amount": 302387.93,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "freight": "Included in the above rates"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 24.95,
+ "source_chars": 952
+}

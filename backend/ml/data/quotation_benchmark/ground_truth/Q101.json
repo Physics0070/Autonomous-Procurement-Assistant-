@@ -1,0 +1,134 @@
+{
+ "quotation_id": "Q101",
+ "rfq_id": "RFQ-2026-021",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Davik Systems",
+  "gstin": "08HALEE1104G1ZP",
+  "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan",
+  "phone": "+91 97803 40496",
+  "email": null,
+  "contact_person": "Sandeep Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0635",
+ "quotation_date": "2026-09-26",
+ "quotation_date_printed": "26-Sep-2026",
+ "your_reference_date": "2026-09-19",
+ "validity_days": null,
+ "valid_until": "2026-10-03",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Toilet soap bar 100 g",
+   "brand": null,
+   "hsn": null,
+   "quantity": 157,
+   "unit": "Nos",
+   "unit_price": 37.09,
+   "amount": 5823.13,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Detergent Powder 1 Kg",
+   "brand": null,
+   "hsn": null,
+   "quantity": 191,
+   "unit": "Pack",
+   "unit_price": 96.46,
+   "amount": 18423.86,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office swivel chair mesh back",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "EA",
+   "unit_price": 4118.0,
+   "amount": 82360.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Foam mattress 6x3 ft",
+   "brand": null,
+   "hsn": null,
+   "quantity": 25,
+   "unit": "Each",
+   "unit_price": 4423.0,
+   "amount": 110575.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Steel filnig cabinet 4-drawer",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "EA",
+   "unit_price": 8822.0,
+   "amount": 44110.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "OFFICE TABLE WOODEN 5X2.5FT",
+   "brand": null,
+   "hsn": null,
+   "quantity": 28,
+   "unit": "Nos",
+   "unit_price": 8165.0,
+   "amount": 228620.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 489911.99,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 489911.99,
+ "computed_grand_total": 489911.99,
+ "payment_terms": null,
+ "delivery_text": "Ex-stock",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "We are an authorised dealer of leading brands."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms"
+ ],
+ "source_file": "documents/pdf/DavikSystems_quotation_SQ-26-0635_101.pdf",
+ "supplier_id": "S12",
+ "capture": {
+  "pages": 1
+ }
+}

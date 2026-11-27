@@ -1,0 +1,112 @@
+{
+ "quotation_id": "Q085",
+ "rfq_id": "RFQ-2026-017",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Brenor Solutions",
+  "gstin": "19JMNFA3312B1ZZ",
+  "address": "Office 7, Nehru Nagar, Kolkata - 700588, West Bengal",
+  "phone": "+91 99886 60037",
+  "email": "sales@brenor.example",
+  "contact_person": "Pooja Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QTN0669",
+ "quotation_date": "2026-10-23",
+ "quotation_date_printed": "23.10.2026",
+ "your_reference_date": "2026-10-13",
+ "validity_days": null,
+ "valid_until": "2026-11-02",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SAFETY GOGGLES CLEAR",
+   "brand": null,
+   "hsn": null,
+   "quantity": 235,
+   "unit": "EA",
+   "unit_price": 105.0,
+   "amount": 24675.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Fire Extinguisher Abc Powder 6 Kg",
+   "brand": "Dynex",
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Nos.",
+   "unit_price": 2482.0,
+   "amount": 19856.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "N95 respirator mask",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 87,
+   "unit": "EA",
+   "unit_price": 49.08,
+   "amount": 4269.96,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Digital BP monitor or equivalent",
+   "brand": "Dynex",
+   "hsn": null,
+   "quantity": 115,
+   "unit": "Pcs",
+   "unit_price": 1804.0,
+   "amount": 207460.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 256260.96,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 46126.97,
+  "total": 46126.97
+ },
+ "grand_total": 302387.93,
+ "computed_grand_total": 302387.93,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "Warranty as per manufacturer's terms."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  5
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20261023_185641.jpg",
+ "supplier_id": "S29",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": "sales@sunrel.example",
+   "phone": "+91 97438 19792",
+   "gst_number": null,
+   "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0476",
+   "date": "03 September 2026",
+   "validity": "Valid till 13 September 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Car battery 12V 65Ah",
+    "quantity": 29.0,
+    "unit": "Nos.",
+    "unit_price": 6702.0,
+    "gst_percentage": 18.0,
+    "total_price": 194358.0,
+    "attributes": {
+     "HSN": "8507.10"
+    }
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 33.0,
+    "unit": "EA",
+    "unit_price": 3311.0,
+    "gst_percentage": 18.0,
+    "total_price": 109263.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "OnlineU PS 1 kVA",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 14265.0,
+    "gst_percentage": 18.0,
+    "total_price": 42795.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Laptop charger 65W USB-C",
+    "quantity": 95.0,
+    "unit": "Nos.",
+    "unit_price": 1452.0,
+    "gst_percentage": 18.0,
+    "total_price": 137940.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "TUBULAR INVERTER BATTERY 12V 150AH",
+    "quantity": 13.0,
+    "unit": "Nos.",
+    "unit_price": 14833.0,
+    "gst_percentage": 18.0,
+    "total_price": 192829.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "DIESEL GENERATOR 15 KVA SILENT",
+    "quantity": 4.0,
+    "unit": "Each",
+    "unit_price": 305665.0,
+    "gst_percentage": 18.0,
+    "total_price": 1222660.0,
+    "attributes": {
+     "HSN": "8502.11"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1899845.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1805352.75,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "discount_percentage": "5%",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1979,
+     "completion_tokens": 868,
+     "total_tokens": 2847,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:05:39.911119+00:00",
+  "notes": [
+   "The subtotal (INR 18,99,845.00) is stated before the 5% discount, but the final total (INR 18,05,352.75) is after the discount and the INR 500.00 transport charge. The GST @ 18% is mentioned as extra, but the final total does not reflect a simple 18% addition to the subtotal minus discount."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 10.06,
+ "source_chars": 1866
+}

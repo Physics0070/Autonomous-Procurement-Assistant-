@@ -1,0 +1,109 @@
+{
+ "quotation_id": "Q074",
+ "rfq_id": "RFQ-2026-015",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Halvor Distributors",
+  "gstin": "09EADHK3962G3ZY",
+  "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh",
+  "phone": "+91 96290 41038",
+  "email": "sales@halvor.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0145",
+ "quotation_date": "2026-11-10",
+ "quotation_date_printed": "10.11.2026",
+ "your_reference_date": "2026-10-27",
+ "validity_days": 30,
+ "valid_until": "2026-12-10",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Exhaust fan 300mm",
+   "brand": null,
+   "hsn": "8414.59",
+   "quantity": 10,
+   "unit": "EA",
+   "unit_price": 1158.0,
+   "amount": 11580.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "House wire FR PVC 1.5 sq mm copper 90 m",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 33,
+   "unit": "Coil",
+   "unit_price": 1429.0,
+   "amount": 47157.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED tube light 20W T8 4 ft (ISI/BIS)",
+   "brand": null,
+   "hsn": "8539.50",
+   "quantity": 95,
+   "unit": "Each",
+   "unit_price": 189.0,
+   "amount": 17955.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "House wire FR PVC 2.5 sq mm copper 90 m (ISI/BIS)",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 26,
+   "unit": "Nos",
+   "unit_price": 2219.0,
+   "amount": 57694.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 134386.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 24819.48,
+  "total": 24819.48
+ },
+ "grand_total": 162705.48,
+ "computed_grand_total": 162705.48,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Warranty as per manufacturer's terms.",
+  "Special discount of 3% on orders above Rs. 1,00,000."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/excel/RateQuote_HalvorDistributors_v2_74.xlsx",
+ "supplier_id": "S13",
+ "capture": {}
+}

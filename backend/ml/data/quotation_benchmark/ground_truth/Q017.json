@@ -1,0 +1,105 @@
+{
+ "quotation_id": "Q017",
+ "rfq_id": "RFQ-2026-004",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Vexel Mart",
+  "gstin": "27TKJAD7029E1ZN",
+  "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0325",
+ "quotation_date": "2026-10-17",
+ "quotation_date_printed": "17-Oct-2026",
+ "your_reference_date": "2026-10-08",
+ "validity_days": null,
+ "valid_until": "2026-11-16",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "MCCB 100A 3-pole",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 3629.0,
+   "amount": 36290.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Mcb 32A Single Pole C Curve",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 105,
+   "unit": "EA",
+   "unit_price": 232.0,
+   "amount": 24360.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED bulb 9W B22 cool white",
+   "brand": null,
+   "hsn": "8539.50",
+   "quantity": 104,
+   "unit": "EA",
+   "unit_price": 86.41,
+   "amount": 8986.64,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 69636.64,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": 6267.3,
+  "sgst": 6267.3,
+  "igst": null,
+  "total": 12534.6
+ },
+ "grand_total": 82171.24,
+ "computed_grand_total": 82171.24,
+ "payment_terms": "30 days credit",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": "12 months",
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Warranty as per manufacturer's terms.",
+  "Special discount of 3% on orders above Rs. 1,00,000."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4,
+  5
+ ],
+ "fields_missing_in_source": [
+  "supplier_phone"
+ ],
+ "source_file": "documents/photos/IMG_20261017_182712.jpg",
+ "supplier_id": "S24",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

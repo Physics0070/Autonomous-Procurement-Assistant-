@@ -1,0 +1,98 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zorvik Industries",
+   "email": "sales@zorvik.example",
+   "phone": "+91 91877 90947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka"
+  },
+  "quotation": {
+   "reference": "EST-0131",
+   "date": "02.11.2026",
+   "validity": "17.12.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "EXHAUST FAN 300MM",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 1429.0,
+    "gst_percentage": 18.0,
+    "total_price": 14290.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sqmm copper 90 m",
+    "quantity": 33.0,
+    "unit": "Bundle",
+    "unit_price": 1565.0,
+    "gst_percentage": 18.0,
+    "total_price": 51645.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Led Tube Light 20W T8 4Ft or equivalent",
+    "quantity": 95.0,
+    "unit": "Each",
+    "unit_price": 246.0,
+    "gst_percentage": 18.0,
+    "total_price": 23370.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 2.5 sqmm copper 90 m (ISI/BIS)",
+    "quantity": 26.0,
+    "unit": "Bundle",
+    "unit_price": 2807.0,
+    "gst_percentage": 18.0,
+    "total_price": 73982.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 163287.0,
+   "tax_amount": 8114.35,
+   "tax_percentage": 18.0,
+   "total_amount": 156172.65,
+   "transportation_cost": 1000.0,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3 weeks",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1684,
+     "completion_tokens": 625,
+     "total_tokens": 2309,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:17:28.894779+00:00",
+  "notes": [
+   "Discount of 5% applied to subtotal.",
+   "GST @ 18% extra as applicable."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.12,
+ "source_chars": 1400
+}

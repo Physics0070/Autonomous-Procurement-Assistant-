@@ -1,0 +1,131 @@
+quotation_id,file,format,rfq_id,supplier,supplier_id,capture_quality,items,fields_missing_in_source,has_inconsistency
+Q001,documents/pdf/JorvanSolutions_quotation_PI-0183_1.pdf,pdf_digital,RFQ-2026-001,Jorvan Solutions,S15,,3,supplier_gstin;supplier_phone,0
+Q002,documents/scans/Scan0002.pdf,pdf_scanned,RFQ-2026-001,Veltra Industries,S02,medium,4,supplier_gstin,0
+Q003,documents/excel/Offer_ZephraEnterprises_final_3.xlsx,excel_xlsx,RFQ-2026-001,Zephra Enterprises,S04,,4,,0
+Q004,documents/photos/IMG_20261008_193934.jpg,photo_jpg,RFQ-2026-001,Quorra Trading Co.,S10,medium,4,validity,0
+Q005,documents/pdf/TakshaAssociates_quotation_SQ-26-0253_5.pdf,pdf_digital,RFQ-2026-001,Taksha Associates,S07,,4,,0
+Q006,documents/excel/Quotation_ZorvikIndustries_rev1_6.xlsx,excel_xlsx,RFQ-2026-002,Zorvik Industries,S27,,5,quotation_number,0
+Q007,documents/pdf/JorvanSolutions_quotation_PI-0774_7.pdf,pdf_digital,RFQ-2026-002,Jorvan Solutions,S15,,5,validity;supplier_gstin,0
+Q008,documents/scans/Scan0008.pdf,pdf_scanned,RFQ-2026-002,Tandor Systems,S22,medium,5,,0
+Q009,documents/scans/Scan0009.pdf,pdf_scanned,RFQ-2026-002,Mirel Engineers,S06,good,4,,0
+Q010,documents/pdf/ArvantaTradingCo_quotation_Q-0600_10.pdf,pdf_digital,RFQ-2026-002,Arvanta Trading Co.,S05,,4,supplier_gstin,0
+Q011,documents/photos/IMG_20261025_082611.jpg,photo_jpg,RFQ-2026-003,Zorvik Industries,S27,good,4,,0
+Q012,documents/excel/Quotation_YaranTechPvtLtd_rev1_12.xlsx,excel_xlsx,RFQ-2026-003,Yaran Tech Pvt. Ltd.,S26,,4,,0
+Q013,documents/pdf/SunrelMart_quotation_PI-0164_13.pdf,pdf_digital,RFQ-2026-003,Sunrel Mart,S11,,4,delivery,1
+Q014,documents/pdf/WynorMart_quotation_SQ-26-0140_14.pdf,pdf_digital,RFQ-2026-003,Wynor Mart,S25,,4,supplier_phone,0
+Q015,documents/photos/IMG_20261025_125659.jpg,photo_jpg,RFQ-2026-003,Calvik Mart,S30,good,3,payment_terms;delivery;validity,0
+Q016,documents/scans/Scan0016.pdf,pdf_scanned,RFQ-2026-004,Rexal Industries,S20,good,5,validity,0
+Q017,documents/photos/IMG_20261017_182712.jpg,photo_jpg,RFQ-2026-004,Vexel Mart,S24,medium,3,supplier_phone,0
+Q018,documents/excel/RateQuote_KantaroSolutions_18.xlsx,excel_xlsx,RFQ-2026-004,Kantaro Solutions,S03,,5,,0
+Q019,documents/photos/IMG_20261015_110649.jpg,photo_jpg,RFQ-2026-004,Tandor Systems,S22,good,4,validity,0
+Q020,documents/pdf/BrenorSolutions_quotation_QTN0459_20.pdf,pdf_digital,RFQ-2026-004,Brenor Solutions,S29,,5,supplier_gstin,0
+Q021,documents/scans/Scan0021.pdf,pdf_scanned,RFQ-2026-005,Kantaro Solutions,S03,medium,7,,0
+Q022,documents/photos/IMG_20260904_172305.jpg,photo_jpg,RFQ-2026-005,Davik Systems,S12,good,6,delivery;quotation_number;supplier_phone,0
+Q023,documents/scans/Scan0023.pdf,pdf_scanned,RFQ-2026-005,Lumina Mart,S16,medium,7,delivery;supplier_gstin,0
+Q024,documents/excel/RateQuote_BelmontSuppliers_rev1_24.xlsx,excel_xlsx,RFQ-2026-005,Belmont Suppliers,S09,,5,delivery,0
+Q025,documents/excel/Quote_JorvanSolutions_final_25.xlsx,excel_xlsx,RFQ-2026-005,Jorvan Solutions,S15,,6,supplier_gstin,0
+Q026,documents/scans/Scan0026.pdf,pdf_scanned,RFQ-2026-006,Nivora Industries,S08,good,5,supplier_gstin,0
+Q027,documents/excel/Quote_IxoraAgencies_rev1_27.xlsx,excel_xlsx,RFQ-2026-006,Ixora Agencies,S14,,5,payment_terms;delivery;supplier_gstin,0
+Q028,documents/photos/IMG_20261006_145540.jpg,photo_jpg,RFQ-2026-006,Halvor Distributors,S13,medium,5,delivery,0
+Q029,documents/scans/Scan0029.pdf,pdf_scanned,RFQ-2026-006,Tandor Systems,S22,medium,5,delivery,0
+Q030,documents/scans/Scan0030.pdf,pdf_scanned,RFQ-2026-006,Taksha Associates,S07,poor,3,,0
+Q031,documents/scans/Scan0031.pdf,pdf_scanned,RFQ-2026-007,Tandor Systems,S22,medium,4,payment_terms;delivery,0
+Q032,documents/photos/IMG_20261003_162750.jpg,photo_jpg,RFQ-2026-007,Sunrel Mart,S11,good,3,delivery;validity,0
+Q033,documents/scans/Scan0033.pdf,pdf_scanned,RFQ-2026-007,Davik Systems,S12,poor,3,payment_terms;delivery,0
+Q034,documents/pdf/ZephraEnterprises_quotation_Q-0240_34.pdf,pdf_digital,RFQ-2026-007,Zephra Enterprises,S04,,3,,0
+Q035,documents/pdf/MirelEngineers_quotation_QT-2026-27-0690_35.pdf,pdf_digital,RFQ-2026-007,Mirel Engineers,S06,,4,supplier_phone,0
+Q036,documents/excel/Quote_MirelEngineers_36.xlsx,excel_xlsx,RFQ-2026-008,Mirel Engineers,S06,,6,,0
+Q037,documents/scans/Scan0037.pdf,pdf_scanned,RFQ-2026-008,Taksha Associates,S07,good,7,delivery;quotation_number,0
+Q038,documents/excel/Offer_BelmontSuppliers_final_38.xlsx,excel_xlsx,RFQ-2026-008,Belmont Suppliers,S09,,6,,0
+Q039,documents/pdf/VexelMart_quotation_NA_39.pdf,pdf_digital,RFQ-2026-008,Vexel Mart,S24,,6,quotation_number,0
+Q040,documents/scans/Scan0040.pdf,pdf_scanned,RFQ-2026-008,Sunrel Mart,S11,good,6,,0
+Q041,documents/pdf/BrenorSolutions_quotation_QTN0438_41.pdf,pdf_digital,RFQ-2026-009,Brenor Solutions,S29,,4,supplier_gstin,0
+Q042,documents/scans/Scan0042.pdf,pdf_scanned,RFQ-2026-009,Nivora Industries,S08,good,4,supplier_gstin;supplier_phone,0
+Q043,documents/excel/Offer_DavikSystems_v2_43.xlsx,excel_xlsx,RFQ-2026-009,Davik Systems,S12,,4,delivery;validity,0
+Q044,documents/photos/IMG_20261020_132848.jpg,photo_jpg,RFQ-2026-009,Lumina Mart,S16,medium,4,supplier_gstin,0
+Q045,documents/photos/IMG_20261029_185652.jpg,photo_jpg,RFQ-2026-009,Kantaro Solutions,S03,poor,4,,0
+Q046,documents/photos/IMG_20260904_150523.jpg,photo_jpg,RFQ-2026-010,Arvanta Trading Co.,S05,medium,5,supplier_gstin,0
+Q047,documents/scans/Scan0047.pdf,pdf_scanned,RFQ-2026-010,Yaran Tech Pvt. Ltd.,S26,good,6,payment_terms;delivery,0
+Q048,documents/photos/IMG_20260901_101303.jpg,photo_jpg,RFQ-2026-010,Ulmar Trading Co.,S23,good,4,,0
+Q049,documents/excel/RateQuote_JorvanSolutions_49.xlsx,excel_xlsx,RFQ-2026-010,Jorvan Solutions,S15,,6,supplier_gstin,0
+Q050,documents/pdf/TakshaAssociates_quotation_SQ-26-0422_50.pdf,pdf_digital,RFQ-2026-010,Taksha Associates,S07,,6,supplier_phone,0
+Q051,documents/photos/IMG_20260901_091730.jpg,photo_jpg,RFQ-2026-011,Ulmar Trading Co.,S23,good,5,delivery;validity,0
+Q052,documents/photos/IMG_20260830_185007.jpg,photo_jpg,RFQ-2026-011,Mirel Engineers,S06,poor,6,supplier_phone,0
+Q053,documents/pdf/ZorvikIndustries_quotation_EST-0538_53.pdf,pdf_digital,RFQ-2026-011,Zorvik Industries,S27,,6,supplier_phone,0
+Q054,documents/pdf/SunrelMart_quotation_PI-0476_54.pdf,pdf_digital,RFQ-2026-011,Sunrel Mart,S11,,6,payment_terms;delivery;supplier_gstin,0
+Q055,documents/scans/Scan0055.pdf,pdf_scanned,RFQ-2026-011,Nivora Industries,S08,good,3,validity;supplier_gstin,1
+Q056,documents/scans/Scan0056.pdf,pdf_scanned,RFQ-2026-012,Vexel Mart,S24,good,5,,0
+Q057,documents/photos/IMG_20261026_163510.jpg,photo_jpg,RFQ-2026-012,Zorvik Industries,S27,poor,3,,0
+Q058,documents/pdf/UlmarTradingCo_quotation_PI-0484_58.pdf,pdf_digital,RFQ-2026-012,Ulmar Trading Co.,S23,,4,delivery;supplier_phone,0
+Q059,documents/pdf/RexalIndustries_quotation_QT-2026-27-0674_59.pdf,pdf_digital,RFQ-2026-012,Rexal Industries,S20,,4,,0
+Q060,documents/photos/IMG_20261025_080241.jpg,photo_jpg,RFQ-2026-012,Nestor Mart,S18,good,4,validity;supplier_gstin,0
+Q061,documents/pdf/JorvanSolutions_quotation_PI-0433_61.pdf,pdf_digital,RFQ-2026-013,Jorvan Solutions,S15,,4,supplier_gstin,1
+Q062,documents/photos/IMG_20260907_133245.jpg,photo_jpg,RFQ-2026-013,Ulmar Trading Co.,S23,good,5,,0
+Q063,documents/photos/IMG_20260901_193458.jpg,photo_jpg,RFQ-2026-013,Kantaro Solutions,S03,good,3,payment_terms;validity;supplier_phone,0
+Q064,documents/pdf/ZephraEnterprises_quotation_Q-0097_64.pdf,pdf_digital,RFQ-2026-013,Zephra Enterprises,S04,,5,supplier_gstin,0
+Q065,documents/excel/Quote_AltisIndustries_v2_65.xlsx,excel_xlsx,RFQ-2026-013,Altis Industries,S28,,5,validity,0
+Q066,documents/pdf/TakshaAssociates_quotation_SQ-26-0892_66.pdf,pdf_digital,RFQ-2026-014,Taksha Associates,S07,,5,delivery,0
+Q067,documents/pdf/BelmontSuppliers_quotation_QTN0082_67.pdf,pdf_digital,RFQ-2026-014,Belmont Suppliers,S09,,6,delivery;validity,0
+Q068,documents/scans/Scan0068.pdf,pdf_scanned,RFQ-2026-014,Kantaro Solutions,S03,medium,7,validity;supplier_gstin,0
+Q069,documents/scans/Scan0069.pdf,pdf_scanned,RFQ-2026-014,Quorra Trading Co.,S10,poor,6,delivery,0
+Q070,documents/scans/Scan0070.pdf,pdf_scanned,RFQ-2026-014,Jorvan Solutions,S15,good,6,delivery;supplier_gstin,0
+Q071,documents/scans/Scan0071.pdf,pdf_scanned,RFQ-2026-015,Rexal Industries,S20,good,4,validity,1
+Q072,documents/pdf/IxoraAgencies_quotation_EST-0979_72.pdf,pdf_digital,RFQ-2026-015,Ixora Agencies,S14,,4,payment_terms,0
+Q073,documents/photos/IMG_20261108_082355.jpg,photo_jpg,RFQ-2026-015,Silvex Solutions,S21,good,4,,0
+Q074,documents/excel/RateQuote_HalvorDistributors_v2_74.xlsx,excel_xlsx,RFQ-2026-015,Halvor Distributors,S13,,4,delivery,0
+Q075,documents/pdf/ZorvikIndustries_quotation_EST-0131_75.pdf,pdf_digital,RFQ-2026-015,Zorvik Industries,S27,,4,,1
+Q076,documents/scans/Scan0076.pdf,pdf_scanned,RFQ-2026-016,Ixora Agencies,S14,good,3,delivery,0
+Q077,documents/photos/IMG_20261019_112122.jpg,photo_jpg,RFQ-2026-016,Pralon Solutions,S19,medium,4,validity,0
+Q078,documents/excel/RateQuote_RexalIndustries_rev1_78.xlsx,excel_xlsx,RFQ-2026-016,Rexal Industries,S20,,3,supplier_phone,0
+Q079,documents/pdf/VexelMart_quotation_PI-0055_79.pdf,pdf_digital,RFQ-2026-016,Vexel Mart,S24,,4,delivery,0
+Q080,documents/pdf/ArvantaTradingCo_quotation_Q-0422_80.pdf,pdf_digital,RFQ-2026-016,Arvanta Trading Co.,S05,,3,delivery;supplier_gstin,0
+Q081,documents/photos/IMG_20261018_123238.jpg,photo_jpg,RFQ-2026-017,Arvanta Trading Co.,S05,medium,3,supplier_gstin,0
+Q082,documents/excel/Quote_QuorraTradingCo_rev1_82.xlsx,excel_xlsx,RFQ-2026-017,Quorra Trading Co.,S10,,5,,0
+Q083,documents/excel/RateQuote_UlmarTradingCo_v2_83.xlsx,excel_xlsx,RFQ-2026-017,Ulmar Trading Co.,S23,,5,payment_terms,0
+Q084,documents/photos/IMG_20261021_195926.jpg,photo_jpg,RFQ-2026-017,Marvik Enterprises,S17,medium,4,,1
+Q085,documents/photos/IMG_20261023_185641.jpg,photo_jpg,RFQ-2026-017,Brenor Solutions,S29,medium,4,,0
+Q086,documents/photos/IMG_20260829_174224.jpg,photo_jpg,RFQ-2026-018,Pralon Solutions,S19,poor,6,payment_terms,0
+Q087,documents/pdf/NivoraIndustries_quotation_EST-0927_87.pdf,pdf_digital,RFQ-2026-018,Nivora Industries,S08,,5,supplier_gstin,0
+Q088,documents/pdf/UlmarTradingCo_quotation_PI-0724_88.pdf,pdf_digital,RFQ-2026-018,Ulmar Trading Co.,S23,,4,validity;supplier_phone,0
+Q089,documents/excel/RateQuote_VeltraIndustries_rev1_89.xlsx,excel_xlsx,RFQ-2026-018,Veltra Industries,S02,,5,supplier_gstin,0
+Q090,documents/scans/Scan0090.pdf,pdf_scanned,RFQ-2026-018,Davik Systems,S12,medium,5,payment_terms,0
+Q091,documents/photos/IMG_20260925_084317.jpg,photo_jpg,RFQ-2026-019,Belmont Suppliers,S09,good,7,quotation_number,0
+Q092,documents/photos/IMG_20260916_163016.jpg,photo_jpg,RFQ-2026-019,Mirel Engineers,S06,medium,8,,0
+Q093,documents/scans/Scan0093.pdf,pdf_scanned,RFQ-2026-019,Veltra Industries,S02,good,8,validity;supplier_gstin,0
+Q094,documents/pdf/UlmarTradingCo_quotation_PI-0766_94.pdf,pdf_digital,RFQ-2026-019,Ulmar Trading Co.,S23,,7,,0
+Q095,documents/excel/Quotation_HalvorDistributors_95.xlsx,excel_xlsx,RFQ-2026-019,Halvor Distributors,S13,,8,validity,0
+Q096,documents/scans/Scan0096.pdf,pdf_scanned,RFQ-2026-020,Marvik Enterprises,S17,medium,7,validity,0
+Q097,documents/pdf/DavikSystems_quotation_SQ-26-0630_97.pdf,pdf_digital,RFQ-2026-020,Davik Systems,S12,,7,payment_terms;validity;supplier_phone,0
+Q098,documents/excel/Offer_NestorMart_rev1_98.xlsx,excel_xlsx,RFQ-2026-020,Nestor Mart,S18,,5,payment_terms;delivery;supplier_gstin;supplier_phone,0
+Q099,documents/photos/IMG_20260907_114249.jpg,photo_jpg,RFQ-2026-020,Taksha Associates,S07,medium,7,payment_terms;validity,0
+Q100,documents/scans/Scan0100.pdf,pdf_scanned,RFQ-2026-020,Mirel Engineers,S06,poor,6,,0
+Q101,documents/pdf/DavikSystems_quotation_SQ-26-0635_101.pdf,pdf_digital,RFQ-2026-021,Davik Systems,S12,,6,payment_terms,0
+Q102,documents/scans/Scan0102.pdf,pdf_scanned,RFQ-2026-021,Ulmar Trading Co.,S23,medium,4,,1
+Q103,documents/photos/IMG_20260924_154329.jpg,photo_jpg,RFQ-2026-021,Rexal Industries,S20,medium,5,,0
+Q104,documents/excel/Offer_LuminaMart_104.xlsx,excel_xlsx,RFQ-2026-021,Lumina Mart,S16,,5,supplier_gstin,1
+Q105,documents/pdf/HalvorDistributors_quotation_PI-0054_105.pdf,pdf_digital,RFQ-2026-021,Halvor Distributors,S13,,5,,0
+Q106,documents/scans/Scan0106.pdf,pdf_scanned,RFQ-2026-022,Arvanta Trading Co.,S05,medium,3,validity;supplier_gstin,0
+Q107,documents/photos/IMG_20260927_102620.jpg,photo_jpg,RFQ-2026-022,Ixora Agencies,S14,medium,5,supplier_phone,0
+Q108,documents/photos/IMG_20260922_184035.jpg,photo_jpg,RFQ-2026-022,Zephra Enterprises,S04,good,4,validity,1
+Q109,documents/scans/Scan0109.pdf,pdf_scanned,RFQ-2026-022,Veltra Industries,S02,good,5,validity;supplier_gstin;supplier_phone,0
+Q110,documents/scans/Scan0110.pdf,pdf_scanned,RFQ-2026-022,Tandor Systems,S22,medium,5,supplier_gstin;supplier_phone,0
+Q111,documents/pdf/DavikSystems_quotation_SQ-26-0582_111.pdf,pdf_digital,RFQ-2026-023,Davik Systems,S12,,7,supplier_gstin,0
+Q112,documents/pdf/IxoraAgencies_quotation_EST-0511_112.pdf,pdf_digital,RFQ-2026-023,Ixora Agencies,S14,,5,,0
+Q113,documents/pdf/YaranTechPvtLtd_quotation_Q-0612_113.pdf,pdf_digital,RFQ-2026-023,Yaran Tech Pvt. Ltd.,S26,,7,,0
+Q114,documents/pdf/TandorSystems_quotation_EST-0858_114.pdf,pdf_digital,RFQ-2026-023,Tandor Systems,S22,,7,validity,0
+Q115,documents/pdf/BelmontSuppliers_quotation_QTN0798_115.pdf,pdf_digital,RFQ-2026-023,Belmont Suppliers,S09,,7,supplier_gstin,1
+Q116,documents/pdf/BelmontSuppliers_quotation_QTN0191_116.pdf,pdf_digital,RFQ-2026-024,Belmont Suppliers,S09,,8,,0
+Q117,documents/pdf/DavikSystems_quotation_NA_117.pdf,pdf_digital,RFQ-2026-024,Davik Systems,S12,,7,validity;quotation_number,0
+Q118,documents/pdf/TandorSystems_quotation_EST-0175_118.pdf,pdf_digital,RFQ-2026-024,Tandor Systems,S22,,7,validity,0
+Q119,documents/pdf/HalvorDistributors_quotation_NA_119.pdf,pdf_digital,RFQ-2026-024,Halvor Distributors,S13,,6,payment_terms;delivery;quotation_number,0
+Q120,documents/pdf/ZephraEnterprises_quotation_Q-0335_120.pdf,pdf_digital,RFQ-2026-024,Zephra Enterprises,S04,,8,payment_terms;delivery;supplier_phone,0
+Q121,documents/pdf/MirelEngineers_quotation_QT-2026-27-0599_121.pdf,pdf_digital,RFQ-2026-025,Mirel Engineers,S06,,5,supplier_phone,0
+Q122,documents/pdf/OrvikIndustries_quotation_QTN0404_122.pdf,pdf_digital,RFQ-2026-025,Orvik Industries,S01,,3,payment_terms;delivery,0
+Q123,documents/pdf/WynorMart_quotation_SQ-26-0652_123.pdf,pdf_digital,RFQ-2026-025,Wynor Mart,S25,,4,,0
+Q124,documents/pdf/QuorraTradingCo_quotation_EST-0930_124.pdf,pdf_digital,RFQ-2026-025,Quorra Trading Co.,S10,,4,,1
+Q125,documents/pdf/ArvantaTradingCo_quotation_Q-0441_125.pdf,pdf_digital,RFQ-2026-025,Arvanta Trading Co.,S05,,4,supplier_gstin;supplier_phone,0
+Q126,documents/pdf/ZorvikIndustries_quotation_EST-0413_126.pdf,pdf_digital,RFQ-2026-026,Zorvik Industries,S27,,5,,0
+Q127,documents/pdf/VexelMart_quotation_PI-0307_127.pdf,pdf_digital,RFQ-2026-026,Vexel Mart,S24,,5,validity;supplier_phone,0
+Q128,documents/pdf/SunrelMart_quotation_PI-0550_128.pdf,pdf_digital,RFQ-2026-026,Sunrel Mart,S11,,4,,0
+Q129,documents/pdf/WynorMart_quotation_SQ-26-0593_129.pdf,pdf_digital,RFQ-2026-026,Wynor Mart,S25,,3,,0
+Q130,documents/pdf/KantaroSolutions_quotation_QTN0533_130.pdf,pdf_digital,RFQ-2026-026,Kantaro Solutions,S03,,4,,0

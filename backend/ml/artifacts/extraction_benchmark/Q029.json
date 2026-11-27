@@ -1,0 +1,181 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TandorSystems",
+   "email": null,
+   "phone": "+919012421158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "GalaNo.27,Hi-TechPark,Jaipur-302548.Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0190",
+   "date": "08October2026",
+   "validity": "18October2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "LEATHERSAFETYSHOESSTEELTOE",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": 1038.0,
+    "gst_percentage": null,
+    "total_price": 69546.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "N95respiratormask",
+    "quantity": 234.0,
+    "unit": "EA",
+    "unit_price": 47.53,
+    "gst_percentage": null,
+    "total_price": 11122.02,
+    "attributes": {}
+   },
+   {
+    "original_name": "Industrial safetyhelmet",
+    "quantity": 158.0,
+    "unit": "Nos",
+    "unit_price": 185.0,
+    "gst_percentage": null,
+    "total_price": 29230.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "FIREEXTINGUISHERABCPOWDER6KG",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 2048.0,
+    "gst_percentage": null,
+    "total_price": 10240.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CO2FIREEXTINGUISHER4.5KG",
+    "quantity": 22.0,
+    "unit": "Each",
+    "unit_price": 6083.0,
+    "gst_percentage": null,
+    "total_price": 133826.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 253964.02,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 253964.02,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-worksJaipur,transport by buyer",
+   "delivery_time": null,
+   "payment_terms": "100%advance",
+   "payment_days": null,
+   "warranty": "AsperOEM"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 852,
+     "prompt_tokens": 1468,
+     "total_tokens": 2320
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:32:44.415685+00:00",
+  "notes": [
+   "OCR output contains merged text and inconsistent spacing.",
+   "Item 2 total price is listed as 11,122.02 but the line item structure is fragmented in OCR.",
+   "Item 5 total price 1,33,826.00 appears to be a sum or misaligned in OCR."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": null,
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0190",
+   "date": "08 October 2026",
+   "validity": "18 October 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "LEATHER SAFETY SHOES STEEL TOE",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": 1038.0,
+    "gst_percentage": null,
+    "total_price": 69546.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "N95 respirator mask",
+    "quantity": 234.0,
+    "unit": "EA",
+    "unit_price": 47.53,
+    "gst_percentage": null,
+    "total_price": 11122.02,
+    "attributes": {}
+   },
+   {
+    "original_name": "Industrial safety helmet",
+    "quantity": 158.0,
+    "unit": "Nos",
+    "unit_price": 185.0,
+    "gst_percentage": null,
+    "total_price": 29230.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "FIRE EXTINGUISHER ABC POWDER 6 KG",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 2048.0,
+    "gst_percentage": null,
+    "total_price": 10240.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CO2 FIRE EXTINGUISHER 4.5 KG",
+    "quantity": 22.0,
+    "unit": "Each",
+    "unit_price": 6083.0,
+    "gst_percentage": null,
+    "total_price": 133826.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 253964.02,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 253964.02,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Jaipur; transport by buyer",
+   "delivery_time": null,
+   "payment_terms": "100% advance",
+   "payment_days": null,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 20.16,
+ "source_chars": 903
+}

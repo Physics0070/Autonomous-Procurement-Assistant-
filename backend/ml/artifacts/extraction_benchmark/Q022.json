@@ -1,0 +1,213 @@
+{
+ "text": {
+  "supplier": {
+   "name": "DavikSystems",
+   "email": null,
+   "phone": null,
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office46HiTechParkaipu02247ajsthan"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "04-Sep-2026",
+   "validity": "45daysfromthe date ofquotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electricdrillmachine13mm650W(ISI/BIS)",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "Open-endedspannerset6-32mmorequivalent",
+    "quantity": 35.0,
+    "unit": "Pcs",
+    "unit_price": 2879.0,
+    "gst_percentage": null,
+    "total_price": 100765.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Arcweldinginverter200A",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1148.0,
+    "gst_percentage": null,
+    "total_price": 13776.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AngleGrinder4-lnch850W",
+    "quantity": 29.0,
+    "unit": "Nos",
+    "unit_price": 8737.0,
+    "gst_percentage": null,
+    "total_price": 253373.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Verniercaliper150mmorequivalent",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 2516.0,
+    "gst_percentage": null,
+    "total_price": 25160.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Screwdriverset6pcs",
+    "quantity": 109.0,
+    "unit": "Each",
+    "unit_price": 1269.0,
+    "gst_percentage": null,
+    "total_price": 138321.0,
+    "attributes": {}
+   },
+   {
+    "original_name": null,
+    "quantity": 27.0,
+    "unit": "Sets",
+    "unit_price": 312.0,
+    "gst_percentage": null,
+    "total_price": 8424.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 539819.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25%advance,balance ondelivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transit_insurance": "to be arranged by the buyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 958,
+     "prompt_tokens": 1442,
+     "total_tokens": 2400
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:51:17.131603+00:00",
+  "notes": [
+   "OCR output is highly fragmented; item alignment is inferred based on numerical patterns.",
+   "Subtotal value in document is missing or obscured by OCR errors.",
+   "Total amount is listed as Net Payable."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": null,
+   "phone": null,
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "04-Sep-2026",
+   "validity": "45 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electric drill machine 13 mm 650W (ISI/BIS)",
+    "quantity": 35.0,
+    "unit": "Pcs",
+    "unit_price": 2879.0,
+    "gst_percentage": null,
+    "total_price": 100765.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Open-ended spanner set 6-32 mm or equivalent",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1148.0,
+    "gst_percentage": null,
+    "total_price": 13776.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Arc welding inverter 200A",
+    "quantity": 29.0,
+    "unit": "Nos",
+    "unit_price": 8737.0,
+    "gst_percentage": null,
+    "total_price": 253373.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Angle Grinder 4-Inch 850W",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 2516.0,
+    "gst_percentage": null,
+    "total_price": 25160.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Vernier caliper 150 mm or equivalent",
+    "quantity": 109.0,
+    "unit": "Each",
+    "unit_price": 1269.0,
+    "gst_percentage": null,
+    "total_price": 138321.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Screwdriver set 6 pcs",
+    "quantity": 27.0,
+    "unit": "Sets",
+    "unit_price": 312.0,
+    "gst_percentage": null,
+    "total_price": 8424.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 539819.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 539819.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transit_insurance": "to be arranged by the buyer"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "Total price values in the document use Indian numbering format (e.g., 1,00,765.00). These have been parsed as standard numbers."
+  ]
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 31.5,
+ "source_chars": 875
+}

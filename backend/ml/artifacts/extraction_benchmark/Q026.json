@@ -1,0 +1,199 @@
+{
+ "text": {
+  "supplier": {
+   "name": "NivoraIndustries",
+   "email": "sales@nivora.example",
+   "phone": "+919108758348",
+   "gst_number": null,
+   "address": "Unit25,LaxmiComplex,Ahmedabad-380874,Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0794",
+   "date": "11.10.2026",
+   "validity": "21.10.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Leather safety shoes steel toe",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": 1080.0,
+    "gst_percentage": null,
+    "total_price": 72360.0,
+    "attributes": {
+     "HSN": "6403.40"
+    }
+   },
+   {
+    "original_name": "N95respiratormask",
+    "quantity": 234.0,
+    "unit": "EA",
+    "unit_price": 50.43,
+    "gst_percentage": null,
+    "total_price": 11800.62,
+    "attributes": {
+     "HSN": "9020.00"
+    }
+   },
+   {
+    "original_name": "Orbix Industrial SafetyHelmet",
+    "quantity": 158.0,
+    "unit": "Nos",
+    "unit_price": 182.0,
+    "gst_percentage": null,
+    "total_price": 28756.0,
+    "attributes": {
+     "HSN": "6506.10"
+    }
+   },
+   {
+    "original_name": "KantoFire extinguisherABCpowder6kg",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 2190.0,
+    "gst_percentage": null,
+    "total_price": 10950.0,
+    "attributes": {
+     "HSN": "8424.10"
+    }
+   },
+   {
+    "original_name": "AltronCO2fire extinguisher4.5kg",
+    "quantity": 22.0,
+    "unit": "Pcs",
+    "unit_price": 6825.0,
+    "gst_percentage": null,
+    "total_price": 150150.0,
+    "attributes": {
+     "HSN": "8424.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 274016.62,
+   "tax_amount": 49322.99,
+   "tax_percentage": 18.0,
+   "total_amount": 323339.61,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3weeks",
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 860,
+     "prompt_tokens": 1532,
+     "total_tokens": 2392
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:53:06.850080+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Nivora Industries",
+   "email": "sales@nivora.example",
+   "phone": "+91 91087 58348",
+   "gst_number": null,
+   "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0794",
+   "date": "11.10.2026",
+   "validity": "21.10.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Leather safety shoes steel toe",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": 1080.0,
+    "gst_percentage": null,
+    "total_price": 72360.0,
+    "attributes": {
+     "HSN": "6403.40"
+    }
+   },
+   {
+    "original_name": "N95 respirator mask",
+    "quantity": 234.0,
+    "unit": "EA",
+    "unit_price": 50.43,
+    "gst_percentage": null,
+    "total_price": 11800.62,
+    "attributes": {
+     "HSN": "9020.00"
+    }
+   },
+   {
+    "original_name": "Orbix Industrial Safety Helmet",
+    "quantity": 158.0,
+    "unit": "Nos",
+    "unit_price": 182.0,
+    "gst_percentage": null,
+    "total_price": 28756.0,
+    "attributes": {
+     "HSN": "6506.10"
+    }
+   },
+   {
+    "original_name": "Kanto Fire extinguisher ABC powder 6 kg",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 2190.0,
+    "gst_percentage": null,
+    "total_price": 10950.0,
+    "attributes": {
+     "HSN": "8424.10"
+    }
+   },
+   {
+    "original_name": "Altron CO2 fire extinguisher 4.5 kg",
+    "quantity": 22.0,
+    "unit": "Pcs",
+    "unit_price": 6825.0,
+    "gst_percentage": null,
+    "total_price": 150150.0,
+    "attributes": {
+     "HSN": "8424.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 274016.62,
+   "tax_amount": 49322.99,
+   "tax_percentage": 18.0,
+   "total_amount": 323339.61,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The subtotal and tax calculation in the document appear inconsistent with the line item totals provided."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 42.45,
+ "source_chars": 1003
+}

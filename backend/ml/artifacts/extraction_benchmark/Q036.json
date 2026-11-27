@@ -1,0 +1,118 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": "sales@mirel.example",
+   "phone": "+91 99461 85385",
+   "gst_number": "08CUPRB4795P3ZH",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302622, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0549",
+   "date": "2026-10-28T00:00:00",
+   "validity": "Offer valid 30 days",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "SPLIT AC 1 TON 3 STAR",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 35546.0,
+    "gst_percentage": null,
+    "total_price": 177730.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "Window AC 1.5 ton or equivalent",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 36366.0,
+    "gst_percentage": null,
+    "total_price": 400026.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "Water dispenser hot and cold (ISI/BIS)",
+    "quantity": 9.0,
+    "unit": "Nos",
+    "unit_price": 10542.0,
+    "gst_percentage": null,
+    "total_price": 94878.0,
+    "attributes": {
+     "HSN": "8418.69"
+    }
+   },
+   {
+    "original_name": "RO WATER PURIFIER 10 L WALL MOUNTED (ISI/BIS)",
+    "quantity": 13.0,
+    "unit": "Nos",
+    "unit_price": 12897.0,
+    "gst_percentage": null,
+    "total_price": 167661.0,
+    "attributes": {
+     "HSN": "8421.21"
+    }
+   },
+   {
+    "original_name": "Storage water heater 25 L or equivalent",
+    "quantity": 38.0,
+    "unit": "EA",
+    "unit_price": 8187.0,
+    "gst_percentage": null,
+    "total_price": 311106.0,
+    "attributes": {
+     "HSN": "8516.10"
+    }
+   },
+   {
+    "original_name": "Split AC 1.5 ton 5 star inverter",
+    "quantity": 4.0,
+    "unit": "EA",
+    "unit_price": 57211.0,
+    "gst_percentage": null,
+    "total_price": 228844.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1380245.0,
+   "tax_amount": 248894.1,
+   "tax_percentage": 18.0,
+   "total_amount": 1631639.1,
+   "transportation_cost": 2500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "7-10 days",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 984,
+     "prompt_tokens": 2026,
+     "total_tokens": 3010
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:43:08.248377+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 12.33,
+ "source_chars": 2047
+}

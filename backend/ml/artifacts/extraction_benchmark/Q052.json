@@ -1,0 +1,148 @@
+{
+ "text": {
+  "supplier": {
+   "name": null,
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": null
+  },
+  "quotation": {
+   "reference": null,
+   "date": null,
+   "validity": null,
+   "currency": null
+  },
+  "items": [],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": null,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "raw_text_fragment": "lirel Engine ESTIMATE Hs.19.39.679.40",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 312,
+     "prompt_tokens": 1034,
+     "total_tokens": 1346
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:33:30.018400+00:00",
+  "notes": [
+   "The document contains insufficient information to extract supplier details, line items, or commercial terms.",
+   "The text 'Hs.19.39.679.40' is ambiguous and does not clearly represent a total amount or reference number."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": "sales@mirel.example",
+   "phone": null,
+   "gst_number": "08CUPRS4795P3ZH",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302022, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/0008/27/08/25",
+   "date": "30/08/2025",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CAR BATTERY 12V 65AH HSN 8507 10",
+    "quantity": 29.0,
+    "unit": "Nos.",
+    "unit_price": 7574.0,
+    "gst_percentage": null,
+    "total_price": 219646.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Line interactive UPS 600 VA HSN 8504 40",
+    "quantity": 33.0,
+    "unit": "EA",
+    "unit_price": 3500.0,
+    "gst_percentage": null,
+    "total_price": 115500.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA HSN 8504 40",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 14956.0,
+    "gst_percentage": null,
+    "total_price": 44868.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laptop Charger 65W Usb-C HSN 8504 40",
+    "quantity": 90.0,
+    "unit": "Pcs",
+    "unit_price": 1566.0,
+    "gst_percentage": null,
+    "total_price": 140940.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubular inverter battery 12V 150Ah HSN 8507 20",
+    "quantity": 13.0,
+    "unit": "Nos",
+    "unit_price": 14308.0,
+    "gst_percentage": null,
+    "total_price": 186004.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Diesel generator 15 kVA silent HSN 8502 11",
+    "quantity": 4.0,
+    "unit": "Nos",
+    "unit_price": 327956.0,
+    "gst_percentage": null,
+    "total_price": 1311824.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 2018782.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1939879.4,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount_percentage": "5%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The subtotal and grand total values in the document appear inconsistent with the line item calculations provided."
+  ]
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 46.05,
+ "source_chars": 63
+}

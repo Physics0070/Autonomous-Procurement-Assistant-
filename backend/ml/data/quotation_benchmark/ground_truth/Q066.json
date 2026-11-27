@@ -1,0 +1,127 @@
+{
+ "quotation_id": "Q066",
+ "rfq_id": "RFQ-2026-014",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Taksha Associates",
+  "gstin": "07KSHUS3956K2ZI",
+  "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi",
+  "phone": "+91 91641 51640",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0892",
+ "quotation_date": "2026-10-31",
+ "quotation_date_printed": "31.10.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-11-15",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 2,
+   "description": "HDMI cable 3 m (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 96,
+   "unit": "Each",
+   "unit_price": 248.0,
+   "amount": 23808.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "WiFi 6 router dual band",
+   "brand": null,
+   "hsn": null,
+   "quantity": 32,
+   "unit": "Nos",
+   "unit_price": 4278.0,
+   "amount": 136896.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Webcam Fhd 1080P Usb",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 87,
+   "unit": "Pcs",
+   "unit_price": 1759.0,
+   "amount": 153033.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Cat6 UTP cable 305 m box",
+   "brand": "Altron",
+   "hsn": null,
+   "quantity": 22,
+   "unit": "Box",
+   "unit_price": 6694.0,
+   "amount": 147268.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "NETWORK SWITCH 24-PORT GIGABIT MANAGED (ISI/BIS)",
+   "brand": "Orbix",
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Pcs",
+   "unit_price": 16491.0,
+   "amount": 230874.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 691879.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 691879.0,
+ "computed_grand_total": 691879.0,
+ "payment_terms": "Net 45 days",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "Prices are subject to change without prior notice.",
+  "Packing and forwarding charges extra at 2%.",
+  "Rates valid for the quantities mentioned only."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  1,
+  7
+ ],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/pdf/TakshaAssociates_quotation_SQ-26-0892_66.pdf",
+ "supplier_id": "S07",
+ "capture": {
+  "pages": 1
+ }
+}

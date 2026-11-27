@@ -1,0 +1,148 @@
+{
+ "quotation_id": "Q113",
+ "rfq_id": "RFQ-2026-023",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Yaran Tech Pvt. Ltd.",
+  "gstin": "09CBAGJ9003V3ZH",
+  "address": "Gala No. 2, Udyog Nagar, Noida - 201986, Uttar Pradesh",
+  "phone": "+91 96381 82063",
+  "email": "sales@yaran.example",
+  "contact_person": "Rohit Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0612",
+ "quotation_date": "2026-10-01",
+ "quotation_date_printed": "01-10-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-11-15",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "BOPP packing tape 48 mm x 65 m",
+   "brand": null,
+   "hsn": null,
+   "quantity": 46,
+   "unit": "Rl",
+   "unit_price": 78.64,
+   "amount": 3617.44,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Staple pins 24/6 box of 1000",
+   "brand": null,
+   "hsn": null,
+   "quantity": 1255,
+   "unit": "Bx",
+   "unit_price": 12.55,
+   "amount": 15750.25,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office Scissors 8 Inch",
+   "brand": null,
+   "hsn": null,
+   "quantity": 123,
+   "unit": "Pcs",
+   "unit_price": 98.92,
+   "amount": 12167.16,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Permanent Marker Black Bullet Tip",
+   "brand": null,
+   "hsn": null,
+   "quantity": 667,
+   "unit": "Nos.",
+   "unit_price": 33.64,
+   "amount": 22437.88,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "HEAVY-DUTY STAPLER 100 SHEETS (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "EA",
+   "unit_price": 506.0,
+   "amount": 10120.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Paper clips 28 mm box of 100",
+   "brand": null,
+   "hsn": null,
+   "quantity": 173,
+   "unit": "Bx",
+   "unit_price": 20.65,
+   "amount": 3572.45,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "NOTEBOOK RULED A4 172 PAGES",
+   "brand": null,
+   "hsn": null,
+   "quantity": 101,
+   "unit": "EA",
+   "unit_price": 70.59,
+   "amount": 7129.59,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 74794.77,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 74794.77,
+ "computed_grand_total": 74794.77,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "7-10 days",
+ "delivery_days_min": 7,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "Cheque/DD in favour of the company name above.",
+  "Packing and forwarding charges extra at 2%.",
+  "Please confirm the order by e-mail.",
+  "Prices are subject to change without prior notice.",
+  "Warranty as per manufacturer's terms."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/YaranTechPvtLtd_quotation_Q-0612_113.pdf",
+ "supplier_id": "S26",
+ "capture": {
+  "pages": 1
+ }
+}

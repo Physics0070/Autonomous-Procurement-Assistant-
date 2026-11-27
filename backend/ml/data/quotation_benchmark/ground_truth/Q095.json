@@ -1,0 +1,158 @@
+{
+ "quotation_id": "Q095",
+ "rfq_id": "RFQ-2026-019",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Halvor Distributors",
+  "gstin": "09EADHK3962G3ZY",
+  "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh",
+  "phone": "+91 96290 41038",
+  "email": null,
+  "contact_person": "Rohit Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0757",
+ "quotation_date": "2026-09-13",
+ "quotation_date_printed": "13.09.2026",
+ "your_reference_date": "2026-09-11",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Water dispenser hot and cold",
+   "brand": null,
+   "hsn": "8418.69",
+   "quantity": 10,
+   "unit": "Pcs",
+   "unit_price": 11493.0,
+   "amount": 114930.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Washing machine front load 7 kg or equivalent",
+   "brand": null,
+   "hsn": "8450.11",
+   "quantity": 15,
+   "unit": "EA",
+   "unit_price": 29652.0,
+   "amount": 444780.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Split Ac 1 Ton 3 Star",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 3,
+   "unit": "Nos",
+   "unit_price": 36696.0,
+   "amount": 110088.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "RO WATER PURIFIER 10 L WALL MOUNTED",
+   "brand": null,
+   "hsn": "8421.21",
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 13295.0,
+   "amount": 132950.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Refrigerator 190 L single door",
+   "brand": null,
+   "hsn": "8418.21",
+   "quantity": 2,
+   "unit": "Nos.",
+   "unit_price": 16508.0,
+   "amount": 33016.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Microwave oven 25 L convection",
+   "brand": null,
+   "hsn": "8516.50",
+   "quantity": 36,
+   "unit": "Nos",
+   "unit_price": 9899.0,
+   "amount": 356364.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Split AC 1.5 ton 5 star inverter (ISI/BIS)",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 52778.0,
+   "amount": 263890.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 8,
+   "requested_line": 8,
+   "description": "Window AC 1.5 ton (ISI/BIS)",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 9,
+   "unit": "EA",
+   "unit_price": 34014.0,
+   "amount": 306126.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1762144.0,
+ "discount_percent": 2,
+ "discount_amount": 35242.88,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 1726901.12,
+ "computed_grand_total": 1726901.12,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": null,
+ "extra_notes": [
+  "Transit insurance to be arranged by the buyer.",
+  "Stock subject to prior sale.",
+  "Test certificate will be provided on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/excel/Quotation_HalvorDistributors_95.xlsx",
+ "supplier_id": "S13",
+ "capture": {}
+}

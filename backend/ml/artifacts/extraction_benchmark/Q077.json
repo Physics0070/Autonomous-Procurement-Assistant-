@@ -1,0 +1,163 @@
+{
+ "text": {
+  "supplier": {
+   "name": "PralonSolutions",
+   "email": "sales@pralon.example",
+   "phone": "+919640601692",
+   "gst_number": "29WPLPC6402H2ZC",
+   "address": "Office21,MarketYard,Bengaluru-560417,Kamataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0973",
+   "date": "19.10.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "OPEN-ENDEDSPANNERSET6-32MMorequivalent",
+    "quantity": 22.0,
+    "unit": "Sets",
+    "unit_price": 1167.0,
+    "gst_percentage": null,
+    "total_price": 25674.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Screwdriverset6pcs",
+    "quantity": 76.0,
+    "unit": "Sets",
+    "unit_price": 342.0,
+    "gst_percentage": null,
+    "total_price": 25992.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ANGLEGRINDER4-INCH85OWorequivalent",
+    "quantity": 33.0,
+    "unit": "Nos.",
+    "unit_price": 2784.0,
+    "gst_percentage": null,
+    "total_price": 91872.0,
+    "attributes": {}
+   },
+   {
+    "original_name": null,
+    "quantity": 6.0,
+    "unit": "Nos",
+    "unit_price": 10436.0,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 62616.0,
+   "tax_amount": 37467.72,
+   "tax_percentage": 18.0,
+   "total_amount": 245621.72,
+   "transportation_cost": 2000.0,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 workingdaysfromPO",
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": "AsperOEM"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 728,
+     "prompt_tokens": 1431,
+     "total_tokens": 2159
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:51:32.214777+00:00",
+  "notes": [
+   "OCR output contains merged text and inconsistent formatting. Item 4 name is missing. Total calculation in document appears inconsistent with line items."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Pralon Solutions",
+   "email": "sales@pralon.example",
+   "phone": "+91 96406 01692",
+   "gst_number": "29WPLPC6402H2ZC",
+   "address": "Office 21, Market Yard, Bengaluru - 560417, Karnataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0973",
+   "date": "19.10.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "OPEN-ENDED SPANNER SET 6-32MM or equivalent",
+    "quantity": 22.0,
+    "unit": "Sets",
+    "unit_price": 1167.0,
+    "gst_percentage": null,
+    "total_price": 25674.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Screwdriver set 6 pcs",
+    "quantity": 76.0,
+    "unit": "Sets",
+    "unit_price": 342.0,
+    "gst_percentage": null,
+    "total_price": 25992.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ANGLE GRINDER 4-INCH 850W or equivalent",
+    "quantity": 33.0,
+    "unit": "Nos.",
+    "unit_price": 2784.0,
+    "gst_percentage": null,
+    "total_price": 91872.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Arc welding inverter 200A",
+    "quantity": 6.0,
+    "unit": "Nos",
+    "unit_price": 10436.0,
+    "gst_percentage": null,
+    "total_price": 62616.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 206154.0,
+   "tax_amount": 37467.72,
+   "tax_percentage": 18.0,
+   "total_amount": 245621.72,
+   "transportation_cost": 2000.0,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "terms_and_conditions_note": "Goods once sold will not be taken back."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 27.12,
+ "source_chars": 817
+}

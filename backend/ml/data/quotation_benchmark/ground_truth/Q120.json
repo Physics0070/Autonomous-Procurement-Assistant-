@@ -1,0 +1,158 @@
+{
+ "quotation_id": "Q120",
+ "rfq_id": "RFQ-2026-024",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Zephra Enterprises",
+  "gstin": "19BGBWT3003N1ZT",
+  "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal",
+  "phone": null,
+  "email": "sales@zephra.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0335",
+ "quotation_date": "2026-08-24",
+ "quotation_date_printed": "24-08-26",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": "2026-08-31",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Laptop Core I5 16Gb 512Gb Ssd 14-Inch",
+   "brand": null,
+   "hsn": "8471.30",
+   "quantity": 5,
+   "unit": "Nos.",
+   "unit_price": 77845.0,
+   "amount": 389225.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Pen drive 64GB USB 3.0",
+   "brand": "Orbix",
+   "hsn": "8523.51",
+   "quantity": 62,
+   "unit": "EA",
+   "unit_price": 674.0,
+   "amount": 41788.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "External HDD 2TB USB 3.0",
+   "brand": null,
+   "hsn": "8471.70",
+   "quantity": 26,
+   "unit": "EA",
+   "unit_price": 8770.0,
+   "amount": 228020.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Desktop CPU cabinet Core i5 8GB 512GB",
+   "brand": "Supra",
+   "hsn": "8471.50",
+   "quantity": 13,
+   "unit": "Nos",
+   "unit_price": 45938.0,
+   "amount": 597194.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Laser printer monochrome A4 duplex",
+   "brand": "Supra",
+   "hsn": "8443.32",
+   "quantity": 15,
+   "unit": "EA",
+   "unit_price": 16941.0,
+   "amount": 254115.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": "8523.51",
+   "quantity": 15,
+   "unit": "EA",
+   "unit_price": 4775.0,
+   "amount": 71625.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "TONER CARTRIDGE BLACK LASER",
+   "brand": "Veltrax",
+   "hsn": "8443.99",
+   "quantity": 38,
+   "unit": "Pcs",
+   "unit_price": 3302.0,
+   "amount": 125476.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 8,
+   "requested_line": 8,
+   "description": "Optical mouse USB wired (ISI/BIS)",
+   "brand": "Kanto",
+   "hsn": "8471.60",
+   "quantity": 37,
+   "unit": "EA",
+   "unit_price": 323.0,
+   "amount": 11951.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1719394.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 262280.44
+ },
+ "grand_total": 1719394.0,
+ "computed_grand_total": 1719394.0,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/ZephraEnterprises_quotation_Q-0335_120.pdf",
+ "supplier_id": "S04",
+ "capture": {
+  "pages": 1
+ }
+}

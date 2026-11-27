@@ -76,17 +76,20 @@ async def second_read(images: list[bytes], *, provider: Optional[AIProvider] = N
         "(The quotation is attached as image(s). Read it from the image.)",
         document_type="image", language=None, ocr_used=False,
     )
-    response = await provider.read_image(prompt, images, system=EXTRACTION_SYSTEM)
-    if not response.ok:
-        logger.info("Second reader unavailable: %s", response.error)
-        return None
-    data, _ = parse_json_response(response.text)
-    if data is None:
-        return None
-    try:
-        return AIExtractionResult.model_validate(_salvage(data))
-    except Exception:
-        return None
+    reading = None
+    for _ in range(2):  # an empty reading of a page that has a table is a model hiccup; one more try usually reads it
+        response = await provider.read_image(prompt, images, system=EXTRACTION_SYSTEM)
+        if not response.ok:
+            logger.info("Second reader unavailable: %s", response.error)
+            return reading
+        data, _ = parse_json_response(response.text)
+        try:
+            reading = AIExtractionResult.model_validate(_salvage(data)) if data is not None else reading
+        except Exception:
+            pass
+        if reading is not None and reading.items:
+            break
+    return reading
 
 
 def _squash(text: Optional[str]) -> str:
@@ -143,12 +146,23 @@ def _drop_extra_digit(mine: Optional[float], theirs: Optional[float]) -> Optiona
     return theirs if 10 * theirs <= mine < 10 * theirs + 10 and float(mine).is_integer() and float(theirs).is_integer() else None
 
 
-def reconcile_readings(text_reading: AIExtractionResult, image: AIExtractionResult) -> tuple[AIExtractionResult, list[str], bool]:
+def reconcile_readings(text_reading: AIExtractionResult, image: AIExtractionResult,
+                       text_from_ocr: bool = False) -> tuple[AIExtractionResult, list[str], bool]:
     """(the reading to keep, what was changed, whether the image reading was adopted whole).
 
     Nothing is changed when the readers agree. Two cases are settled in the image reading's favour because the text
     reading is plainly the damaged one: it found no line items at all, or an amount has one extra trailing digit.
     Everything else the readers disagree on is left for a person (see compare_readings)."""
+    if text_from_ocr and image.items:
+        # Measured on 90 labelled photos, scans and PDFs: reading the page image beat reading the OCR text on 32
+        # documents and lost on 2 (all fields 84.9% to 95.8%). It is kept unless its own checks look worse.
+        from app.services.procurement.validation import validate_extraction
+
+        mine, theirs = validate_extraction(text_reading), validate_extraction(image)
+        if (theirs.error_count, theirs.warning_count) <= (mine.error_count, mine.warning_count):
+            adopted = image.model_copy(deep=True)
+            adopted.notes.append("Read from the page image, which was clearer than the scanned text.")
+            return adopted, ["Read from the page image, which was clearer than the scanned text."], True
     if not text_reading.items and image.items:
         adopted = image.model_copy(deep=True)
         adopted.notes.append("The text reading found no line items; this is the reading from the page image. Check it against the original.")
@@ -192,7 +206,7 @@ class SecondReading:
     issues: list[ValidationIssue] = field(default_factory=list)
 
 
-async def second_reading(data: bytes, text_reading: AIExtractionResult) -> SecondReading:
+async def second_reading(data: bytes, text_reading: AIExtractionResult, text_from_ocr: bool = False) -> SecondReading:
     """Read the pages as images, settle the clear-cut disagreements, and flag the rest. Empty when switched off or unavailable."""
     if not settings.VISION_SECOND_READER:
         return SecondReading()
@@ -200,7 +214,7 @@ async def second_reading(data: bytes, text_reading: AIExtractionResult) -> Secon
     other = await second_read(images) if images else None
     if other is None:
         return SecondReading()
-    keep, notes, adopted = reconcile_readings(text_reading, other)
+    keep, notes, adopted = reconcile_readings(text_reading, other, text_from_ocr)
     return SecondReading(reading=other.model_dump(mode="json", exclude={"raw_response"}), keep=keep,
                          changed=bool(notes), adopted=adopted, notes=notes,
                          issues=[] if adopted else compare_readings(keep, other))

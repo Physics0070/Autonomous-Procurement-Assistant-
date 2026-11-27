@@ -1,0 +1,231 @@
+{
+ "text": {
+  "supplier": {
+   "name": "LUMINAMART",
+   "email": "sales@lumina.example",
+   "phone": "+919823916804",
+   "gst_number": null,
+   "address": "Office39.Hi-Tech Park.NewDelhi-110860.Delhi"
+  },
+  "quotation": {
+   "reference": "PI/0726",
+   "date": "03-Sep-2026",
+   "validity": "Valid till 18-Oct-2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "ELECTRICDRILLMACHINE13MM650W",
+    "quantity": 35.0,
+    "unit": "Nos",
+    "unit_price": 3462.0,
+    "gst_percentage": null,
+    "total_price": 121170.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Open-endedspanner set 6-32mm(ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1296.0,
+    "gst_percentage": null,
+    "total_price": 15552.0,
+    "attributes": {
+     "Make": "Orbix"
+    }
+   },
+   {
+    "original_name": "ArcWelding Inverter200A(ISI/BIS)",
+    "quantity": 29.0,
+    "unit": "Pcs",
+    "unit_price": 10878.0,
+    "gst_percentage": null,
+    "total_price": 315462.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HSSDRILLBITSETI-I3MM",
+    "quantity": 63.0,
+    "unit": "Sets",
+    "unit_price": 979.0,
+    "gst_percentage": null,
+    "total_price": 61677.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ANGLEGRINDER4-INCH850W",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 3066.0,
+    "gst_percentage": null,
+    "total_price": 30660.0,
+    "attributes": {
+     "Make": "Nuvo"
+    }
+   },
+   {
+    "original_name": "Verniercaliper150mm",
+    "quantity": 109.0,
+    "unit": "Nos.",
+    "unit_price": 1464.0,
+    "gst_percentage": null,
+    "total_price": 159576.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SCREWDRIVERSET6PCS",
+    "quantity": 27.0,
+    "unit": "Set",
+    "unit_price": 388.0,
+    "gst_percentage": null,
+    "total_price": 10476.0,
+    "attributes": {
+     "Make": "Supra"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 714573.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 714573.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "24months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1111,
+     "prompt_tokens": 1611,
+     "total_tokens": 2722
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:52:02.130657+00:00",
+  "notes": [
+   "SubTotal and Total values in document contain OCR errors (7.14,573.00 and 7,14,573.00)",
+   "Item 7 total price 10.476.00 appears to be a typo for 10,476.00"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "LUMINA MART",
+   "email": "sales@lumina.example",
+   "phone": "+91 98239 16804",
+   "gst_number": null,
+   "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi"
+  },
+  "quotation": {
+   "reference": "PI/0726",
+   "date": "03-Sep-2026",
+   "validity": "Valid till 18-Oct-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "ELECTRIC DRILL MACHINE 13 MM 650W",
+    "quantity": 35.0,
+    "unit": "Nos",
+    "unit_price": 3462.0,
+    "gst_percentage": null,
+    "total_price": 121170.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Open-ended spanner set 6-32 mm (ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1296.0,
+    "gst_percentage": null,
+    "total_price": 15552.0,
+    "attributes": {
+     "Make": "Orbix"
+    }
+   },
+   {
+    "original_name": "Arc Welding Inverter 200A (ISI/BIS)",
+    "quantity": 29.0,
+    "unit": "Pcs",
+    "unit_price": 10878.0,
+    "gst_percentage": null,
+    "total_price": 315462.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HSS DRILL BIT SET 1-13MM",
+    "quantity": 63.0,
+    "unit": "Sets",
+    "unit_price": 979.0,
+    "gst_percentage": null,
+    "total_price": 61677.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ANGLE GRINDER 4-INCH 850W",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 3066.0,
+    "gst_percentage": null,
+    "total_price": 30660.0,
+    "attributes": {
+     "Make": "Nuvo"
+    }
+   },
+   {
+    "original_name": "Vernier caliper 150mm",
+    "quantity": 109.0,
+    "unit": "Nos.",
+    "unit_price": 1464.0,
+    "gst_percentage": null,
+    "total_price": 159576.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SCREWDRIVER SET 6 PCS",
+    "quantity": 27.0,
+    "unit": "Set",
+    "unit_price": 388.0,
+    "gst_percentage": null,
+    "total_price": 10476.0,
+    "attributes": {
+     "Make": "Supra"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 714573.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 714573.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 48.66,
+ "source_chars": 1195
+}

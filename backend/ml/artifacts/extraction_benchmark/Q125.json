@@ -1,0 +1,89 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": "sales@arvanta.example",
+   "phone": null,
+   "gst_number": null,
+   "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0441",
+   "date": "25.09.2026",
+   "validity": "45 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 12.0,
+    "unit": "Pcs",
+    "unit_price": 12396.0,
+    "gst_percentage": null,
+    "total_price": 148752.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WEBCAM FHD 1080P USB",
+    "quantity": 119.0,
+    "unit": "Each",
+    "unit_price": 1698.0,
+    "gst_percentage": null,
+    "total_price": 202062.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "NETWORK SWITCH 24-PORT GIGABIT MANAGED",
+    "quantity": 13.0,
+    "unit": "Each",
+    "unit_price": 16363.0,
+    "gst_percentage": null,
+    "total_price": 212719.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra CCTV bullet camera 4MP IP",
+    "quantity": 18.0,
+    "unit": "Each",
+    "unit_price": 3593.0,
+    "gst_percentage": null,
+    "total_price": 64674.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 628207.0,
+   "tax_amount": 113122.26,
+   "tax_percentage": 18.0,
+   "total_amount": 741579.26,
+   "transportation_cost": 250.0,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 705,
+     "prompt_tokens": 1677,
+     "total_tokens": 2382
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:06:13.848590+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.93,
+ "source_chars": 1511
+}

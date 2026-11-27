@@ -1,0 +1,108 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": null,
+   "phone": null,
+   "gst_number": "08CUPRB4795P3ZH",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302622, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0599",
+   "date": "29/09/2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Online Ups 1 Kva (ISI/BIS) HSN:8504.40",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 16806.0,
+    "gst_percentage": null,
+    "total_price": 201672.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Webcam Fhd 1080P Usb HSN:8525.89",
+    "quantity": 119.0,
+    "unit": "Each",
+    "unit_price": 2020.0,
+    "gst_percentage": null,
+    "total_price": 240380.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "NETWORK SWITCH 24-PORT GIGABIT MANAGED HSN:8517.62",
+    "quantity": 13.0,
+    "unit": "Each",
+    "unit_price": 19522.0,
+    "gst_percentage": null,
+    "total_price": 253786.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "WiFi 6 router dual band HSN:8517.62",
+    "quantity": 18.0,
+    "unit": "Nos",
+    "unit_price": 4943.0,
+    "gst_percentage": null,
+    "total_price": 88974.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "CCTV bullet camera 4MP IP or equivalent HSN:8525.89",
+    "quantity": 18.0,
+    "unit": "Nos.",
+    "unit_price": 4148.0,
+    "gst_percentage": null,
+    "total_price": 74664.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 859476.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 860976.0,
+   "transportation_cost": 1500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "installation_included": false,
+   "_usage": {
+    "usage": {
+     "completion_tokens": 932,
+     "prompt_tokens": 1828,
+     "total_tokens": 2760
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:04:48.563772+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.94,
+ "source_chars": 1624
+}

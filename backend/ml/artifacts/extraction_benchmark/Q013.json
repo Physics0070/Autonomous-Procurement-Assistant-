@@ -1,0 +1,105 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": null,
+   "phone": "+91 97438 19792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0164",
+   "date": "18 October 2026",
+   "validity": "Valid till 02 November 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cat6 Utp Cable 305 M Box",
+    "quantity": 5.0,
+    "unit": "Box",
+    "unit_price": 8319.0,
+    "gst_percentage": null,
+    "total_price": 41595.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "CCTV dome camera 2MP IP or equivalent",
+    "quantity": 40.0,
+    "unit": "Each",
+    "unit_price": 3417.0,
+    "gst_percentage": null,
+    "total_price": 136680.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "Online Ups 1 Kva",
+    "quantity": 12.0,
+    "unit": "Each",
+    "unit_price": 16119.0,
+    "gst_percentage": null,
+    "total_price": 193428.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 31.0,
+    "unit": "EA",
+    "unit_price": 3659.0,
+    "gst_percentage": null,
+    "total_price": 113429.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 485132.0,
+   "tax_amount": 74003.19,
+   "tax_percentage": 18.0,
+   "total_amount": 485032.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1814,
+     "completion_tokens": 739,
+     "total_tokens": 2553,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T15:45:57.862002+00:00",
+  "notes": [
+   "The Sub Total (INR 4,85,132.00) and TOTAL (INR 4,85,032.00) do not match the sum of item totals (41595.00 + 136680.00 + 193428.00 + 113429.00 = 485132.00). The document states 'Rates are inclusive of GST' but also lists a separate GST amount (INR 74,003.19) and a tax percentage (18%)."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 8.6,
+ "source_chars": 1754
+}

@@ -1,0 +1,155 @@
+{
+ "text": {
+  "supplier": {
+   "name": null,
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": null
+  },
+  "quotation": {
+   "reference": "8026-0046",
+   "date": null,
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "AL15.617.52",
+    "quantity": null,
+    "unit": null,
+    "unit_price": 28551.15,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 187168.67,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "other_codes": "13247",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 366,
+     "prompt_tokens": 1074,
+     "total_tokens": 1440
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:35:28.120440+00:00",
+  "notes": [
+   "OCR output is fragmented; item quantity is missing; total amount is ambiguous due to OCR formatting."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Pralon Solutions",
+   "email": null,
+   "phone": "+91 98456 01480",
+   "gst_number": "29MPLPC0481H1ZC",
+   "address": "Office 21, Market Yard, Bengaluru - 560017, Karnataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0346",
+   "date": "29.08.2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "TMT bar Fe500D 12 mm",
+    "quantity": 72.0,
+    "unit": "KGS",
+    "unit_price": 69.15,
+    "gst_percentage": null,
+    "total_price": 4978.8,
+    "attributes": {}
+   },
+   {
+    "original_name": "Wall putty 20 kg",
+    "quantity": 18.0,
+    "unit": "Nos",
+    "unit_price": 888.0,
+    "gst_percentage": null,
+    "total_price": 15984.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "COMMERCIAL PLYWOOD 18 MM 8X4 FT",
+    "quantity": 30.0,
+    "unit": "Nos",
+    "unit_price": 2262.0,
+    "gst_percentage": null,
+    "total_price": 67860.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "GI pipe 1 inch medium class",
+    "quantity": 116.0,
+    "unit": "Mtr",
+    "unit_price": 264.0,
+    "gst_percentage": null,
+    "total_price": 30624.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AAC block 600x200x200 mm",
+    "quantity": 178.0,
+    "unit": "Nos",
+    "unit_price": 69.24,
+    "gst_percentage": null,
+    "total_price": 12324.72,
+    "attributes": {}
+   },
+   {
+    "original_name": "OPC cement 50 kg bag",
+    "quantity": 62.0,
+    "unit": "Nos",
+    "unit_price": 433.0,
+    "gst_percentage": null,
+    "total_price": 26846.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 158617.52,
+   "tax_amount": 28551.15,
+   "tax_percentage": 18.0,
+   "total_amount": 187168.67,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "buyer": "Ms Sahyadri Industrial Services Pvt. Ltd."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 32.17,
+ "source_chars": 105
+}

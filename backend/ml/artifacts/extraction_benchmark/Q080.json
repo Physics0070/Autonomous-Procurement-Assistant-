@@ -1,0 +1,80 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": null,
+   "phone": "+91 91899 74538",
+   "gst_number": null,
+   "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0422",
+   "date": "29.10.2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Screwdriver set 6 pcs",
+    "quantity": 76.0,
+    "unit": "Set",
+    "unit_price": 363.0,
+    "gst_percentage": null,
+    "total_price": 27588.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Angle Grinder 4-Inch 850W",
+    "quantity": 33.0,
+    "unit": "Nos",
+    "unit_price": 2719.0,
+    "gst_percentage": null,
+    "total_price": 89727.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Arc welding inverter 200A",
+    "quantity": 6.0,
+    "unit": "Pcs",
+    "unit_price": 9426.0,
+    "gst_percentage": null,
+    "total_price": 56556.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 173871.0,
+   "tax_amount": 30670.84,
+   "tax_percentage": 18.0,
+   "total_amount": 201064.42,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "discount": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 601,
+     "prompt_tokens": 1505,
+     "total_tokens": 2106
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:52:22.109193+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 5.13,
+ "source_chars": 1042
+}

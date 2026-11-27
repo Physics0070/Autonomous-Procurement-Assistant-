@@ -1,0 +1,137 @@
+{
+ "quotation_id": "Q054",
+ "rfq_id": "RFQ-2026-011",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Sunrel Mart",
+  "gstin": null,
+  "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat",
+  "phone": "+91 97438 19792",
+  "email": "sales@sunrel.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0476",
+ "quotation_date": "2026-09-03",
+ "quotation_date_printed": "03 September 2026",
+ "your_reference_date": "2026-08-28",
+ "validity_days": null,
+ "valid_until": "2026-09-13",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Car battery 12V 65Ah",
+   "brand": null,
+   "hsn": "8507.10",
+   "quantity": 29,
+   "unit": "Nos.",
+   "unit_price": 6702.0,
+   "amount": 194358.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 33,
+   "unit": "EA",
+   "unit_price": 3311.0,
+   "amount": 109263.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "OnlineU PS 1 kVA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 3,
+   "unit": "EA",
+   "unit_price": 14265.0,
+   "amount": 42795.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Laptop charger 65W USB-C",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 95,
+   "unit": "Nos.",
+   "unit_price": 1452.0,
+   "amount": 137940.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "TUBULAR INVERTER BATTERY 12V 150AH",
+   "brand": null,
+   "hsn": "8507.20",
+   "quantity": 13,
+   "unit": "Nos.",
+   "unit_price": 14833.0,
+   "amount": 192829.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "DIESEL GENERATOR 15 KVA SILENT",
+   "brand": null,
+   "hsn": "8502.11",
+   "quantity": 4,
+   "unit": "Each",
+   "unit_price": 305665.0,
+   "amount": 1222660.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1899845.0,
+ "discount_percent": 5,
+ "discount_amount": 94992.25,
+ "freight": {
+  "terms": "paid",
+  "amount": 500.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 1805352.75,
+ "computed_grand_total": 1805352.75,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Transit insurance to be arranged by the buyer."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/SunrelMart_quotation_PI-0476_54.pdf",
+ "supplier_id": "S11",
+ "capture": {
+  "pages": 1
+ }
+}

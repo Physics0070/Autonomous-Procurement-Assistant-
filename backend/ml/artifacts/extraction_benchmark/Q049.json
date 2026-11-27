@@ -1,0 +1,123 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Jorvan Solutions",
+   "email": null,
+   "phone": "+91 99117 33029",
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0120",
+   "date": "2026-09-06T00:00:00",
+   "validity": "06.10.2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Office swivel chair mesh back",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 4835.0,
+    "gst_percentage": null,
+    "total_price": 48350.0,
+    "attributes": {
+     "S.No.": "1"
+    }
+   },
+   {
+    "original_name": "Aerolite Steel almirah 2-door",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 10819.0,
+    "gst_percentage": null,
+    "total_price": 129828.0,
+    "attributes": {
+     "S.No.": "2"
+    }
+   },
+   {
+    "original_name": "Steel filing cabinet 4-drawer",
+    "quantity": 31.0,
+    "unit": "Each",
+    "unit_price": 10171.0,
+    "gst_percentage": null,
+    "total_price": 315301.0,
+    "attributes": {
+     "S.No.": "3"
+    }
+   },
+   {
+    "original_name": "Orbix Foam mattress 6x3 ft",
+    "quantity": 11.0,
+    "unit": "Nos",
+    "unit_price": 4729.0,
+    "gst_percentage": null,
+    "total_price": 52019.0,
+    "attributes": {
+     "S.No.": "4"
+    }
+   },
+   {
+    "original_name": "Veltrax Office Table Wooden 5X2.5 Ft",
+    "quantity": 21.0,
+    "unit": "Pcs",
+    "unit_price": 8503.0,
+    "gst_percentage": null,
+    "total_price": 178563.0,
+    "attributes": {
+     "S.No.": "5"
+    }
+   },
+   {
+    "original_name": "Zenmark TOILET SOAP BAR 100 G (ISI/BIS)",
+    "quantity": 61.0,
+    "unit": "EA",
+    "unit_price": 42.55,
+    "gst_percentage": null,
+    "total_price": 2595.55,
+    "attributes": {
+     "S.No.": "6"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 726656.55,
+   "tax_amount": 130798.18,
+   "tax_percentage": 18.0,
+   "total_amount": 857454.73,
+   "transportation_cost": null,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Gurugram; transport by buyer",
+   "delivery_time": "Within 7 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "buyer_gstin": "27AABCS4821K1Z4",
+   "enquiry_date": "27.08.2026",
+   "notes_on_make": "Alternate make available on request.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1058,
+     "prompt_tokens": 1929,
+     "total_tokens": 2987
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:02:39.186949+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.11,
+ "source_chars": 1964
+}

@@ -1,0 +1,180 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TandorSystems",
+   "email": "sales@tandor.example",
+   "phone": null,
+   "gst_number": null,
+   "address": "GalaNo.27,Hi-TechPark,Jaipur-302548,Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0604",
+   "date": "26September2026",
+   "validity": "30days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "LineinteractiveUPS650VA",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 3272.0,
+    "gst_percentage": null,
+    "total_price": 16360.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SMFVRLAbattery12V7Ah",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 847.0,
+    "gst_percentage": null,
+    "total_price": 15246.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubularinverterbattery12V150Ah",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 14835.0,
+    "gst_percentage": null,
+    "total_price": 118680.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OnlineUPS1kVA",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 13237.0,
+    "gst_percentage": null,
+    "total_price": 39711.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Alkaline AAbattery packof 10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 279.0,
+    "gst_percentage": null,
+    "total_price": 3069.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 193066.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 193066.0,
+   "transportation_cost": null,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": "Ex-worksJaipur",
+   "delivery_time": "3weeks",
+   "payment_terms": "100%advance",
+   "payment_days": 0,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 797,
+     "prompt_tokens": 1521,
+     "total_tokens": 2318
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:01:49.932582+00:00",
+  "notes": [
+   "OCR text contains merged characters and inconsistent spacing.",
+   "Total amount in document is 1,93,066.00, which matches the subtotal; tax is stated as extra."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": "sales@tandor.example",
+   "phone": null,
+   "gst_number": null,
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0604",
+   "date": "26 September 2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 3272.0,
+    "gst_percentage": null,
+    "total_price": 16360.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SMF VRLA battery 12V 7Ah",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 847.0,
+    "gst_percentage": null,
+    "total_price": 15246.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubular inverter battery 12V 150Ah",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 14835.0,
+    "gst_percentage": null,
+    "total_price": 118680.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 13237.0,
+    "gst_percentage": null,
+    "total_price": 39711.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Alkaline AA battery pack of 10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 279.0,
+    "gst_percentage": null,
+    "total_price": 3069.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 193066.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 193066.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Jaipur; transport by buyer",
+   "delivery_time": "3 weeks",
+   "payment_terms": "100% advance",
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 23.5,
+ "source_chars": 842
+}

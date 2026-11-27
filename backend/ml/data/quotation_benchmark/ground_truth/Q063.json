@@ -1,0 +1,103 @@
+{
+ "quotation_id": "Q063",
+ "rfq_id": "RFQ-2026-013",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Kantaro Solutions",
+  "gstin": "24UETUT7371M1ZO",
+  "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat",
+  "phone": null,
+  "email": "sales@kantaro.example",
+  "contact_person": "Sandeep Gupta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0284",
+ "quotation_date": "2026-09-01",
+ "quotation_date_printed": "01-09-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": "8523.51",
+   "quantity": 30,
+   "unit": "Pcs",
+   "unit_price": 3576.0,
+   "amount": 107280.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "LAPTOP CORE I5 16GB 512GB SSD 14I-NCH",
+   "brand": null,
+   "hsn": "8471.30",
+   "quantity": 3,
+   "unit": "EA",
+   "unit_price": 61047.0,
+   "amount": 183141.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 5,
+   "description": "Optical mouse USB wired (ISI/BIS)",
+   "brand": null,
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Nos",
+   "unit_price": 272.0,
+   "amount": 29376.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 319797.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 57563.46,
+  "total": 57563.46
+ },
+ "grand_total": 377360.46,
+ "computed_grand_total": 377360.46,
+ "payment_terms": null,
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3,
+  4
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "validity",
+  "supplier_phone"
+ ],
+ "source_file": "documents/photos/IMG_20260901_193458.jpg",
+ "supplier_id": "S03",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

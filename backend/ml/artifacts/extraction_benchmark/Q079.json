@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Vexel Mart",
+   "email": "sales@vexel.example",
+   "phone": "+91 97895 72146",
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra"
+  },
+  "quotation": {
+   "reference": "PI/0055",
+   "date": "25-Oct-2026",
+   "validity": "04-Nov-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Open-ended spanner set 6-32 mm or equivalent [HSN 8204.11]",
+    "quantity": 22.0,
+    "unit": "Set",
+    "unit_price": 1228.0,
+    "gst_percentage": null,
+    "total_price": 27016.0,
+    "attributes": {
+     "HSN": "8204.11"
+    }
+   },
+   {
+    "original_name": "Screwdriver set 6 pcs (ISI/BIS) [HSN 8205.40]",
+    "quantity": 76.0,
+    "unit": "Set",
+    "unit_price": 379.0,
+    "gst_percentage": null,
+    "total_price": 28804.0,
+    "attributes": {
+     "HSN": "8205.40"
+    }
+   },
+   {
+    "original_name": "Angle grinder 4-inch 850W [HSN 8467.29]",
+    "quantity": 33.0,
+    "unit": "Nos",
+    "unit_price": 2873.0,
+    "gst_percentage": null,
+    "total_price": 94809.0,
+    "attributes": {
+     "HSN": "8467.29"
+    }
+   },
+   {
+    "original_name": "Arc welding inverter 200A [HSN 8515.39]",
+    "quantity": 6.0,
+    "unit": "Each",
+    "unit_price": 10059.0,
+    "gst_percentage": null,
+    "total_price": 60354.0,
+    "attributes": {
+     "HSN": "8515.39"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 210983.0,
+   "tax_amount": 37976.94,
+   "tax_percentage": 18.0,
+   "total_amount": 248959.94,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 848,
+     "prompt_tokens": 1518,
+     "total_tokens": 2366
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:52:07.406762+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 6.78,
+ "source_chars": 1056
+}

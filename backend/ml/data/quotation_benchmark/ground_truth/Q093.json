@@ -1,0 +1,163 @@
+{
+ "quotation_id": "Q093",
+ "rfq_id": "RFQ-2026-019",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Veltra Industries",
+  "gstin": null,
+  "address": "Office 28, Udyog Nagar, Gurugram - 122531, Haryana",
+  "phone": "+91 92499 55669",
+  "email": "sales@veltra.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0037",
+ "quotation_date": "2026-09-20",
+ "quotation_date_printed": "20/09/2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "WATER DISPENSER HOT AND COLD",
+   "brand": null,
+   "hsn": "8418.69",
+   "quantity": 10,
+   "unit": "Each",
+   "unit_price": 11424.0,
+   "amount": 114240.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Washing machine front load 7 kg",
+   "brand": null,
+   "hsn": "8450.11",
+   "quantity": 15,
+   "unit": "Nos.",
+   "unit_price": 31809.0,
+   "amount": 477135.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Split AC 1 ton 3 star or equivalent",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 3,
+   "unit": "Nos",
+   "unit_price": 34175.0,
+   "amount": 102525.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "RO water purifier 10 L wall mounted",
+   "brand": null,
+   "hsn": "8421.21",
+   "quantity": 10,
+   "unit": "Nos",
+   "unit_price": 13577.0,
+   "amount": 135770.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Refrigerator 190 L single door",
+   "brand": null,
+   "hsn": "8418.21",
+   "quantity": 2,
+   "unit": "Nos.",
+   "unit_price": 15274.0,
+   "amount": 30548.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Microwave oven 25 L convection",
+   "brand": null,
+   "hsn": "8516.50",
+   "quantity": 36,
+   "unit": "EA",
+   "unit_price": 9354.0,
+   "amount": 336744.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Split Ac 1.5 Ton 5 Star Inverter (ISI/BIS)",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 44332.0,
+   "amount": 221660.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 8,
+   "requested_line": 8,
+   "description": "Window AC 1.5 ton",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 9,
+   "unit": "Nos",
+   "unit_price": 36258.0,
+   "amount": 326322.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1744944.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 314179.92,
+  "total": 314179.92
+ },
+ "grand_total": 2059623.92,
+ "computed_grand_total": 2059623.92,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [
+  "Warranty as per manufacturer's terms.",
+  "All disputes subject to local jurisdiction.",
+  "Transit insurance to be arranged by the buyer."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0093.pdf",
+ "supplier_id": "S02",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": -0.15,
+  "capture_quality": "good"
+ }
+}

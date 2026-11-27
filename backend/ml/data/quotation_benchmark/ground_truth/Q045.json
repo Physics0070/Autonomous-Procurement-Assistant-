@@ -1,0 +1,112 @@
+{
+ "quotation_id": "Q045",
+ "rfq_id": "RFQ-2026-009",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Kantaro Solutions",
+  "gstin": "24UETUT7371M1ZO",
+  "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat",
+  "phone": "+91 90965 74507",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QTN0381",
+ "quotation_date": "2026-10-29",
+ "quotation_date_printed": "29-10-26",
+ "your_reference_date": "2026-10-18",
+ "validity_days": null,
+ "valid_until": "2026-11-13",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Submersible pump 2 HP borewell",
+   "brand": null,
+   "hsn": "8413.70",
+   "quantity": 5,
+   "unit": "EA",
+   "unit_price": 27902.0,
+   "amount": 139510.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Gate valve 2 inch CI flanged",
+   "brand": null,
+   "hsn": "8481.80",
+   "quantity": 83,
+   "unit": "Each",
+   "unit_price": 1942.0,
+   "amount": 161186.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Electric chain hoist 1 ton",
+   "brand": null,
+   "hsn": "8425.11",
+   "quantity": 11,
+   "unit": "Each",
+   "unit_price": 28419.0,
+   "amount": 312609.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Deep groove ballb earing 6205",
+   "brand": null,
+   "hsn": "8482.10",
+   "quantity": 207,
+   "unit": "Nos",
+   "unit_price": 185.0,
+   "amount": 38295.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 651600.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 99396.61
+ },
+ "grand_total": 651600.0,
+ "computed_grand_total": 651600.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": null,
+ "extra_notes": [
+  "Delivery subject to receipt of advance.",
+  "Please confirm the order by e-mail.",
+  "Please quote our quotation number in your purchase order."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20261029_185652.jpg",
+ "supplier_id": "S03",
+ "capture": {
+  "quality": "poor",
+  "perspective_tilt": 0.16,
+  "capture_quality": "poor"
+ }
+}

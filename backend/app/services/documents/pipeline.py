@@ -199,7 +199,7 @@ class ProcessingPipeline:
 
         if (processed.ocr_used or pdf_has_images(data)) and not ai_error:
 
-            sr = await second_reading(data, extraction)
+            sr = await second_reading(data, extraction, processed.ocr_used)
             if sr.reading is not None:
                 await self.quotations.store_stage(organization_id, quotation_id, "second_reading", sr.reading)
                 if sr.changed:

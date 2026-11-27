@@ -1,0 +1,108 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Vexel Mart",
+   "email": null,
+   "phone": null,
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra"
+  },
+  "quotation": {
+   "reference": "PI/0307",
+   "date": "03-Sep-2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole [HSN 8536.20]",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 3365.0,
+    "gst_percentage": null,
+    "total_price": 37015.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "MCB 32A single pole C curve [HSN 8536.20]",
+    "quantity": 23.0,
+    "unit": "Pcs",
+    "unit_price": 217.0,
+    "gst_percentage": null,
+    "total_price": 4991.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "HOUSE WIRE FR PVC 1.5 SQ MM COPPER 90 M [HSN 8544.49]",
+    "quantity": 54.0,
+    "unit": "Bundle",
+    "unit_price": 1872.0,
+    "gst_percentage": null,
+    "total_price": 101088.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "Ceiling fan 1020mm [HSN 8414.51]",
+    "quantity": 26.0,
+    "unit": "Nos.",
+    "unit_price": 2689.0,
+    "gst_percentage": null,
+    "total_price": 69914.0,
+    "attributes": {
+     "HSN": "8414.51"
+    }
+   },
+   {
+    "original_name": "LED street light 90W [HSN 9405.42]",
+    "quantity": 25.0,
+    "unit": "Pcs",
+    "unit_price": 4542.0,
+    "gst_percentage": null,
+    "total_price": 113550.0,
+    "attributes": {
+     "HSN": "9405.42"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 326558.0,
+   "tax_amount": 58780.44,
+   "tax_percentage": 18.0,
+   "total_amount": 385338.44,
+   "transportation_cost": null,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 940,
+     "prompt_tokens": 1552,
+     "total_tokens": 2492
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:28:20.343832+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 26.96,
+ "source_chars": 1165
+}

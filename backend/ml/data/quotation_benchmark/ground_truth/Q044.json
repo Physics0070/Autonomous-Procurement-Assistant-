@@ -1,0 +1,114 @@
+{
+ "quotation_id": "Q044",
+ "rfq_id": "RFQ-2026-009",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Lumina Mart",
+  "gstin": null,
+  "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi",
+  "phone": "+91 98239 16804",
+  "email": null,
+  "contact_person": "Anita Reddy"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0940",
+ "quotation_date": "2026-10-20",
+ "quotation_date_printed": "20-Oct-2026",
+ "your_reference_date": "2026-10-18",
+ "validity_days": 7,
+ "valid_until": "2026-10-27",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Submersible pump 2 HP borewell",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 30056.0,
+   "amount": 150280.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Gate valve 2 inch CI flanged",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 83,
+   "unit": "EA",
+   "unit_price": 2412.0,
+   "amount": 200196.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Electric chain hoist 1 ton",
+   "brand": "Orbix",
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Nos.",
+   "unit_price": 30481.0,
+   "amount": 335291.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Deep groove ball bearing 6205",
+   "brand": "Altron",
+   "hsn": null,
+   "quantity": 207,
+   "unit": "Nos",
+   "unit_price": 235.0,
+   "amount": 48645.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 734412.0,
+ "discount_percent": 3,
+ "discount_amount": 22032.36,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 712379.64,
+ "computed_grand_total": 712379.64,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "Cheque/DD in favour of the company name above.",
+  "Alternate make available on request.",
+  "Test certificate will be provided on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/photos/IMG_20261020_132848.jpg",
+ "supplier_id": "S16",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

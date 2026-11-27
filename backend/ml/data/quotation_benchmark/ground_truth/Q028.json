@@ -1,0 +1,126 @@
+{
+ "quotation_id": "Q028",
+ "rfq_id": "RFQ-2026-006",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Halvor Distributors",
+  "gstin": "09EADHK3962G3ZY",
+  "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh",
+  "phone": "+91 96290 41038",
+  "email": "sales@halvor.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0685",
+ "quotation_date": "2026-10-06",
+ "quotation_date_printed": "06.10.2026",
+ "your_reference_date": "2026-10-04",
+ "validity_days": 45,
+ "valid_until": "2026-11-20",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Leather safety shoes steel toe",
+   "brand": null,
+   "hsn": "6403.40",
+   "quantity": 67,
+   "unit": "Prs",
+   "unit_price": 973.0,
+   "amount": 65191.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "N95 respirator mask",
+   "brand": null,
+   "hsn": "9020.00",
+   "quantity": 234,
+   "unit": "Nos.",
+   "unit_price": 40.22,
+   "amount": 9411.48,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "INDUSTRIAL SAFETY HELMET or equivalent",
+   "brand": null,
+   "hsn": "6506.10",
+   "quantity": 158,
+   "unit": "Nos",
+   "unit_price": 160.0,
+   "amount": 25280.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Fire extinguisher ABC powder 6 kg",
+   "brand": null,
+   "hsn": "8424.10",
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 1915.0,
+   "amount": 9575.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "CO2 fire extinguisher 4.5 kg",
+   "brand": null,
+   "hsn": "8424.10",
+   "quantity": 22,
+   "unit": "Pcs",
+   "unit_price": 6172.0,
+   "amount": 135784.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 245241.48,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 245241.48,
+ "computed_grand_total": 245241.48,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [
+  "We are an authorised dealer of leading brands.",
+  "Warranty as per manufacturer's terms.",
+  "Delivery subject to receipt of advance."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/photos/IMG_20261006_145540.jpg",
+ "supplier_id": "S13",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

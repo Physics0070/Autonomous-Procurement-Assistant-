@@ -1,0 +1,246 @@
+{
+ "text": {
+  "supplier": {
+   "name": "KANTAROSOLUTIONS",
+   "email": "sales@kantar0.example",
+   "phone": "+919096574507",
+   "gst_number": null,
+   "address": "Gala No.27,Industrial Area Phasell.Ahmedabad-380585,Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0204",
+   "date": "26-10-26",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CCTVbulletcamera4MPIPorequivalent",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 3643.0,
+    "gst_percentage": null,
+    "total_price": 134791.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "HDMIcable3m",
+    "quantity": 96.0,
+    "unit": "Pcs",
+    "unit_price": 259.0,
+    "gst_percentage": null,
+    "total_price": 24864.0,
+    "attributes": {
+     "HSN": "8544.42"
+    }
+   },
+   {
+    "original_name": "WiFi6routerdualband",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 4896.0,
+    "gst_percentage": null,
+    "total_price": 156672.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "WebcamFHD1080pUSB",
+    "quantity": 87.0,
+    "unit": "Nos.",
+    "unit_price": 1821.0,
+    "gst_percentage": null,
+    "total_price": 158427.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "Cat6UTPcable305mbox",
+    "quantity": 22.0,
+    "unit": "Box",
+    "unit_price": 6725.0,
+    "gst_percentage": null,
+    "total_price": 147950.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "Networkswitch24-portgigabitmanaged(ISi/BiS)",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 16882.0,
+    "gst_percentage": null,
+    "total_price": 236348.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "Online UPS1kVA",
+    "quantity": 2.0,
+    "unit": "Pcs",
+    "unit_price": 14643.0,
+    "gst_percentage": null,
+    "total_price": 29286.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 888338.0,
+   "tax_amount": 159900.84,
+   "tax_percentage": 18.0,
+   "total_amount": 1048238.84,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15days",
+   "payment_terms": "25%advance,balanceondelivery",
+   "payment_days": null,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1110,
+     "prompt_tokens": 1672,
+     "total_tokens": 2782
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:10:51.859882+00:00",
+  "notes": [
+   "OCR output contains merged text and HSN codes appearing in the description column for some items."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": "sales@kantaro.example",
+   "phone": "+91 90965 74507",
+   "gst_number": null,
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0204",
+   "date": "26-10-26",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CCTV bullet camera 4MP IP or equivalent",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 3643.0,
+    "gst_percentage": null,
+    "total_price": 134791.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "HDMI cable 3 m",
+    "quantity": 96.0,
+    "unit": "Pcs",
+    "unit_price": 259.0,
+    "gst_percentage": null,
+    "total_price": 24864.0,
+    "attributes": {
+     "HSN": "8544.42"
+    }
+   },
+   {
+    "original_name": "WiFi 6 router dual band",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 4896.0,
+    "gst_percentage": null,
+    "total_price": 156672.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "Webcam FHD 1080p USB",
+    "quantity": 87.0,
+    "unit": "Nos.",
+    "unit_price": 1821.0,
+    "gst_percentage": null,
+    "total_price": 158427.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "Cat6 UTP cable 305 m box",
+    "quantity": 22.0,
+    "unit": "Box",
+    "unit_price": 6725.0,
+    "gst_percentage": null,
+    "total_price": 147950.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "Network switch 24-port gigabit managed (ISI/BIS)",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 16882.0,
+    "gst_percentage": null,
+    "total_price": 236348.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 2.0,
+    "unit": "Pcs",
+    "unit_price": 14643.0,
+    "gst_percentage": null,
+    "total_price": 29286.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 888338.0,
+   "tax_amount": 159900.84,
+   "tax_percentage": 18.0,
+   "total_amount": 1048238.84,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_gst": "27AABCS4821K1Z4"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 34.52,
+ "source_chars": 1321
+}

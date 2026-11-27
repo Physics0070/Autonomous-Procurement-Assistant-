@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": "sales@rexal.example",
+   "phone": "+91 93588 88619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0674",
+   "date": "23 October 2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Whiteboard Marker Black [HSN 9608.20]",
+    "quantity": 1480.0,
+    "unit": "Each",
+    "unit_price": 24.45,
+    "gst_percentage": null,
+    "total_price": 36186.0,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "BOPP packing tape 48 mm x 65 m [HSN 3919.10]",
+    "quantity": 174.0,
+    "unit": "Roll",
+    "unit_price": 70.37,
+    "gst_percentage": null,
+    "total_price": 12244.38,
+    "attributes": {
+     "HSN": "3919.10"
+    }
+   },
+   {
+    "original_name": "Permanent Marker Black Bullet Tip or equivalent [HSN 9608.20]",
+    "quantity": 372.0,
+    "unit": "Each",
+    "unit_price": 30.25,
+    "gst_percentage": null,
+    "total_price": 11253.0,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "Glue stick 15 g [HSN 3506.10]",
+    "quantity": 190.0,
+    "unit": "Nos.",
+    "unit_price": 24.15,
+    "gst_percentage": null,
+    "total_price": 4588.5,
+    "attributes": {
+     "HSN": "3506.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 64271.88,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 64271.88,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "delivery_condition": "Delivery subject to receipt of advance.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 820,
+     "prompt_tokens": 1446,
+     "total_tokens": 2266
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:07:30.080345+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.57,
+ "source_chars": 1000
+}

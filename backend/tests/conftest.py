@@ -14,7 +14,9 @@ os.environ["MONGODB_DB_NAME"] = "procurement_assistant_test"
 os.environ["GMAIL_SYNC_INTERVAL_MINUTES"] = "0"
 os.environ["AI_PROVIDER"] = "none"
 # `vendor:model` routing in a developer's .env would otherwise reach real APIs.
-for _name in ("LLM_TASK_MODELS", "COUNCIL_MODELS", "COUNCIL_MONITOR_MODEL"):
+# Vendor keys too: some paths (embeddings) pick a vendor from its key alone, and a test run must not spend real quota.
+for _name in ("LLM_TASK_MODELS", "COUNCIL_MODELS", "COUNCIL_MONITOR_MODEL", "GROK_API_KEY", "GROQ_API_KEY",
+              "NVIDIA_API_KEY", "QWEN_API_KEY", "GEMINI_API_KEY", "OPENROUTER_API_KEY"):
     os.environ[_name] = ""
 
 import httpx  # noqa: E402

@@ -106,6 +106,17 @@ app.add_middleware(
 )
 
 
+@app.middleware("http")
+async def refuse_oversized_bodies(request: Request, call_next):
+    """Refuse a body larger than the upload limit before it is parsed or spooled (a 1 MB allowance covers form fields)."""
+    length = request.headers.get("content-length")
+    if length and length.isdigit() and int(length) > (settings.MAX_UPLOAD_SIZE_MB + 1) * 1024 * 1024:
+        return JSONResponse(status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                            content={"error": {"code": "payload_too_large",
+                                               "message": f"Files are limited to {settings.MAX_UPLOAD_SIZE_MB} MB.", "details": {}}})
+    return await call_next(request)
+
+
 @app.exception_handler(AppError)
 async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     return JSONResponse(

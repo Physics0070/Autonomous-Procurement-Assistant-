@@ -1,0 +1,150 @@
+{
+ "quotation_id": "Q023",
+ "rfq_id": "RFQ-2026-005",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Lumina Mart",
+  "gstin": null,
+  "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi",
+  "phone": "+91 98239 16804",
+  "email": "sales@lumina.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0726",
+ "quotation_date": "2026-09-03",
+ "quotation_date_printed": "03-Sep-2026",
+ "your_reference_date": "2026-09-01",
+ "validity_days": null,
+ "valid_until": "2026-10-18",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "ELECTRIC DRILL MACHINE 13 MM 650W",
+   "brand": null,
+   "hsn": null,
+   "quantity": 35,
+   "unit": "Nos",
+   "unit_price": 3462.0,
+   "amount": 121170.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Open-ended spanner set 6-32 mm (ISI/BIS)",
+   "brand": "Orbix",
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Sets",
+   "unit_price": 1296.0,
+   "amount": 15552.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Arc Welding Inverter 200A (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 29,
+   "unit": "Pcs",
+   "unit_price": 10878.0,
+   "amount": 315462.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "HSS DRILL BIT SET 1-13MM",
+   "brand": null,
+   "hsn": null,
+   "quantity": 63,
+   "unit": "Sets",
+   "unit_price": 979.0,
+   "amount": 61677.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "ANGLE GRINDER 4-INCH 850W",
+   "brand": "Nuvo",
+   "hsn": null,
+   "quantity": 10,
+   "unit": "EA",
+   "unit_price": 3066.0,
+   "amount": 30660.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Vernier caliper 150mm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 109,
+   "unit": "Nos.",
+   "unit_price": 1464.0,
+   "amount": 159576.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "SCREWDRIVER SET 6 PCS",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 27,
+   "unit": "Set",
+   "unit_price": 388.0,
+   "amount": 10476.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 714573.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 714573.0,
+ "computed_grand_total": 714573.0,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Packing and forwarding charges extra at 2%.",
+  "Colour/model may vary as per availability."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "delivery",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0023.pdf",
+ "supplier_id": "S16",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": -0.28,
+  "capture_quality": "medium"
+ }
+}

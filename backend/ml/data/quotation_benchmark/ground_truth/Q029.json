@@ -1,0 +1,124 @@
+{
+ "quotation_id": "Q029",
+ "rfq_id": "RFQ-2026-006",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Tandor Systems",
+  "gstin": "08JSCHC9725E3Z2",
+  "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan",
+  "phone": "+91 90124 21158",
+  "email": null,
+  "contact_person": "Rohit Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0190",
+ "quotation_date": "2026-10-08",
+ "quotation_date_printed": "08 October 2026",
+ "your_reference_date": "2026-10-04",
+ "validity_days": null,
+ "valid_until": "2026-10-18",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "LEATHER SAFETY SHOES STEEL TOE",
+   "brand": null,
+   "hsn": null,
+   "quantity": 67,
+   "unit": "Pair",
+   "unit_price": 1038.0,
+   "amount": 69546.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "N95 respirator mask",
+   "brand": null,
+   "hsn": null,
+   "quantity": 234,
+   "unit": "EA",
+   "unit_price": 47.53,
+   "amount": 11122.02,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Industrial safety helmet",
+   "brand": null,
+   "hsn": null,
+   "quantity": 158,
+   "unit": "Nos",
+   "unit_price": 185.0,
+   "amount": 29230.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "FIRE EXTINGUISHER ABC POWDER 6 KG",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Pcs",
+   "unit_price": 2048.0,
+   "amount": 10240.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "CO2 FIRE EXTINGUISHER 4.5 KG",
+   "brand": null,
+   "hsn": null,
+   "quantity": 22,
+   "unit": "Each",
+   "unit_price": 6083.0,
+   "amount": 133826.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 253964.02,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 253964.02,
+ "computed_grand_total": 253964.02,
+ "payment_terms": "100% advance",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/scans/Scan0029.pdf",
+ "supplier_id": "S22",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": 0.89,
+  "capture_quality": "medium"
+ }
+}

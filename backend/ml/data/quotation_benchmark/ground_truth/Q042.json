@@ -1,0 +1,113 @@
+{
+ "quotation_id": "Q042",
+ "rfq_id": "RFQ-2026-009",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Nivora Industries",
+  "gstin": null,
+  "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0616",
+ "quotation_date": "2026-10-29",
+ "quotation_date_printed": "29.10.2026",
+ "your_reference_date": null,
+ "validity_days": 10,
+ "valid_until": "2026-11-08",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Submersible pump 2 HP borewell",
+   "brand": null,
+   "hsn": "8413.70",
+   "quantity": 5,
+   "unit": "Nos.",
+   "unit_price": 22244.0,
+   "amount": 111220.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Gate valve 2 inch CI flanged",
+   "brand": null,
+   "hsn": "8481.80",
+   "quantity": 83,
+   "unit": "Pcs",
+   "unit_price": 1844.0,
+   "amount": 153052.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Electric Chain Hoist 1 Ton",
+   "brand": "Dynex",
+   "hsn": "8425.11",
+   "quantity": 11,
+   "unit": "EA",
+   "unit_price": 22787.0,
+   "amount": 250657.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Deep Groove Ball Bearing 6205",
+   "brand": null,
+   "hsn": "8482.10",
+   "quantity": 207,
+   "unit": "Nos",
+   "unit_price": 192.0,
+   "amount": 39744.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 554673.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 99841.14,
+  "total": 99841.14
+ },
+ "grand_total": 654514.14,
+ "computed_grand_total": 654514.14,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "6 months",
+ "extra_notes": [
+  "Transit insurance to be arranged by the buyer."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/scans/Scan0042.pdf",
+ "supplier_id": "S08",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": 0.46,
+  "capture_quality": "good"
+ }
+}

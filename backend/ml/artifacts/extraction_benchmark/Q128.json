@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": "sales@sunrel.example",
+   "phone": "+91 97438 19792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0550",
+   "date": "07 September 2026",
+   "validity": "Valid for 15 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 11.0,
+    "unit": "Nos",
+    "unit_price": 3911.0,
+    "gst_percentage": null,
+    "total_price": 43021.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "MCB 32A single pole C curve",
+    "quantity": 23.0,
+    "unit": "Pcs",
+    "unit_price": 285.0,
+    "gst_percentage": null,
+    "total_price": 6555.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "House iwre FR PVC 1.5 sq mm copper 90 m or equivalent",
+    "quantity": 54.0,
+    "unit": "Coil",
+    "unit_price": 1871.0,
+    "gst_percentage": null,
+    "total_price": 101034.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "LED street light 90W or equivalent",
+    "quantity": 25.0,
+    "unit": "Nos.",
+    "unit_price": 4925.0,
+    "gst_percentage": null,
+    "total_price": 123125.0,
+    "attributes": {
+     "HSN": "9405.42"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 273735.0,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 273985.0,
+   "transportation_cost": 250.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 783,
+     "prompt_tokens": 1805,
+     "total_tokens": 2588
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:28:48.833506+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.51,
+ "source_chars": 1790
+}

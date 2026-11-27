@@ -1,0 +1,121 @@
+{
+ "quotation_id": "Q065",
+ "rfq_id": "RFQ-2026-013",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Altis Industries",
+  "gstin": "27LACRM8026A2ZN",
+  "address": "Unit 28, Gandhi Chowk, Pune - 411960, Maharashtra",
+  "phone": "+91 97270 20509",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0907",
+ "quotation_date": "2026-09-05",
+ "quotation_date_printed": "05/09/2026",
+ "your_reference_date": "2026-08-24",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch (ISI/BIS)",
+   "brand": null,
+   "hsn": "8523.51",
+   "quantity": 30,
+   "unit": "Pcs",
+   "unit_price": 4724.0,
+   "amount": 141720.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Laptop Core i5 16GB 512GB SSD 14-inch (ISI/BIS)",
+   "brand": null,
+   "hsn": "8471.30",
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 78307.0,
+   "amount": 234921.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "USB wired keyboard",
+   "brand": "Supra",
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Pcs",
+   "unit_price": 576.0,
+   "amount": 62208.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "LED MONITOR 24-INCH IPS (ISI/BIS)",
+   "brand": "Zenmark",
+   "hsn": "8528.52",
+   "quantity": 8,
+   "unit": "Nos.",
+   "unit_price": 13168.0,
+   "amount": 105344.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Optical mouse USB wired",
+   "brand": "Dynex",
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Nos.",
+   "unit_price": 294.0,
+   "amount": 31752.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 575945.0,
+ "discount_percent": 2,
+ "discount_amount": 11518.9,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 564426.1,
+ "computed_grand_total": 564426.1,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": null,
+ "extra_notes": [
+  "Packing and forwarding charges extra at 2%.",
+  "Prices are subject to change without prior notice."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/excel/Quote_AltisIndustries_v2_65.xlsx",
+ "supplier_id": "S28",
+ "capture": {}
+}

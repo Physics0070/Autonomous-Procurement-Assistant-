@@ -1,0 +1,190 @@
+{
+ "text": {
+  "supplier": {
+   "name": "RexalIndustries",
+   "email": null,
+   "phone": "+919358888619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit21,LaxmiComplex,Gurugram-122131,Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0973",
+   "date": "20October2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB100A3-pole[HSN8536.20]",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 3293.0,
+    "gst_percentage": null,
+    "total_price": 32930.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "MCB32AsinglepoleCcurve[HSN8536.20]",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 225.0,
+    "gst_percentage": null,
+    "total_price": 23625.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "LEDBULB9WB22COOLWHITE[HSN8539.50]",
+    "quantity": 104.0,
+    "unit": "Each",
+    "unit_price": 72.49,
+    "gst_percentage": null,
+    "total_price": 7538.96,
+    "attributes": {
+     "HSN": "8539.50"
+    }
+   },
+   {
+    "original_name": "Exhaustfan300mm[HSN8414.59]",
+    "quantity": null,
+    "unit": "SON66",
+    "unit_price": 1354.0,
+    "gst_percentage": null,
+    "total_price": 134046.0,
+    "attributes": {
+     "HSN": "8414.59"
+    }
+   },
+   {
+    "original_name": "HOUSEWIREFRPVC1.5SQMMCOPPER90M[HSN8544.49]",
+    "quantity": 55.0,
+    "unit": "Bundle",
+    "unit_price": 1574.0,
+    "gst_percentage": null,
+    "total_price": 86570.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 284709.96,
+   "tax_amount": 51247.79,
+   "tax_percentage": 18.0,
+   "total_amount": 335957.75,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-stock",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "Againstproformainvoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 957,
+     "prompt_tokens": 1515,
+     "total_tokens": 2472
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:48:25.381657+00:00",
+  "notes": [
+   "Quantity for Exhaustfan300mm is unreadable/ambiguous (OCR read 'SON66')",
+   "OCR spacing issues present throughout document"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": "+91 93588 88619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0973",
+   "date": "20 October 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole [HSN 8536.20]",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 3293.0,
+    "gst_percentage": null,
+    "total_price": 32930.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MCB 32A single pole C curve [HSN 8536.20]",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 225.0,
+    "gst_percentage": null,
+    "total_price": 23625.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED BULB 9W B22 COOL WHITE [HSN 8539.50]",
+    "quantity": 104.0,
+    "unit": "Each",
+    "unit_price": 72.49,
+    "gst_percentage": null,
+    "total_price": 7538.96,
+    "attributes": {}
+   },
+   {
+    "original_name": "Exhaust fan 300 mm [HSN 8414.59]",
+    "quantity": 99.0,
+    "unit": "Nos",
+    "unit_price": 1354.0,
+    "gst_percentage": null,
+    "total_price": 134046.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HOUSE WIRE FR PVC 1.5 SQ MM COPPER 90 M [HSN 8544.49]",
+    "quantity": 55.0,
+    "unit": "Bundle",
+    "unit_price": 1574.0,
+    "gst_percentage": null,
+    "total_price": 86570.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 284709.96,
+   "tax_amount": 51247.79,
+   "tax_percentage": 18.0,
+   "total_amount": 335957.75,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Ex-stock",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 40.14,
+ "source_chars": 956
+}

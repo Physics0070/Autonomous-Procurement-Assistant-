@@ -1,0 +1,203 @@
+{
+ "text": {
+  "supplier": {
+   "name": "YARANTECHPVT.LTD.",
+   "email": "sales@yaran.example",
+   "phone": "+919638182063",
+   "gst_number": "09CBAGJ9003V3ZH",
+   "address": "Gala No.2,Udyog Nagar,Noida-201986,Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0383",
+   "date": "30-08-26",
+   "validity": "Validfor 15days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Office swivel chairmesh back \uff08IsI/BIs)",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 5484.0,
+    "gst_percentage": null,
+    "total_price": 54840.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steelalmirah 2-door",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 12802.0,
+    "gst_percentage": null,
+    "total_price": 153624.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel FilingCabinet4-Drawerorequivalent",
+    "quantity": 31.0,
+    "unit": "EA",
+    "unit_price": 10528.0,
+    "gst_percentage": null,
+    "total_price": 326368.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foammattress 6x3ft",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 4967.0,
+    "gst_percentage": null,
+    "total_price": 54637.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "officetablewooden5x2.5ftorequivalent",
+    "quantity": 21.0,
+    "unit": "Each",
+    "unit_price": 9909.0,
+    "gst_percentage": null,
+    "total_price": 208089.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toiletsoapbar 100g",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 47.71,
+    "gst_percentage": null,
+    "total_price": 2910.31,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 800468.31,
+   "tax_amount": 122105.34,
+   "tax_percentage": 18.0,
+   "total_amount": 800468.31,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs.1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 935,
+     "prompt_tokens": 1577,
+     "total_tokens": 2512
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:01:32.431127+00:00",
+  "notes": [
+   "The subtotal and total amount in the document are identical, which is mathematically inconsistent with the tax amount provided.",
+   "Freight is stated as 'Extra at actuals'."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "YARAN TECH PVT. LTD.",
+   "email": "sales@yaran.example",
+   "phone": "+91 96381 82063",
+   "gst_number": "09CBAGJ9003V3ZH",
+   "address": "Gala No. 2, Udyog Nagar, Noida - 201986, Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0383",
+   "date": "30-08-26",
+   "validity": "Valid for 15 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Office swivel chair mesh back (ISI/BIS)",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 5484.0,
+    "gst_percentage": null,
+    "total_price": 54840.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel almirah 2-door",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 12802.0,
+    "gst_percentage": null,
+    "total_price": 153624.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel Filing Cabinet 4-Drawer or equivalent",
+    "quantity": 31.0,
+    "unit": "EA",
+    "unit_price": 10528.0,
+    "gst_percentage": null,
+    "total_price": 326368.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foam mattress 6x3ft",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 4967.0,
+    "gst_percentage": null,
+    "total_price": 54637.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office table wooden 5x2.5ft or equivalent",
+    "quantity": 21.0,
+    "unit": "Each",
+    "unit_price": 9909.0,
+    "gst_percentage": null,
+    "total_price": 208089.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toilet soap bar 100 g",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 47.71,
+    "gst_percentage": null,
+    "total_price": 2910.31,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 800468.31,
+   "tax_amount": 122105.34,
+   "tax_percentage": 18.0,
+   "total_amount": 800468.31,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The document states 'Includes GST @ 18%' but the subtotal and net payable are identical, suggesting the tax might be inclusive rather than additive."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 49.21,
+ "source_chars": 1133
+}

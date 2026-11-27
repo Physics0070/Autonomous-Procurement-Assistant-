@@ -1,0 +1,125 @@
+{
+ "quotation_id": "Q103",
+ "rfq_id": "RFQ-2026-021",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Rexal Industries",
+  "gstin": "06SAPHA6592E1ZM",
+  "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana",
+  "phone": "+91 93588 88619",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QT/2026-27/0546",
+ "quotation_date": "2026-09-24",
+ "quotation_date_printed": "24 September 2026",
+ "your_reference_date": "2026-09-19",
+ "validity_days": null,
+ "valid_until": "2026-10-01",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "TOILET SOAP BAR 100 G",
+   "brand": null,
+   "hsn": "3401.11",
+   "quantity": 157,
+   "unit": "Each",
+   "unit_price": 38.3,
+   "amount": 6013.1,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Detergent Powder 1 Kg",
+   "brand": null,
+   "hsn": "3402.20",
+   "quantity": 191,
+   "unit": "Pack",
+   "unit_price": 111.0,
+   "amount": 21201.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office swivel chair mesh back",
+   "brand": null,
+   "hsn": "9401.39",
+   "quantity": 20,
+   "unit": "Nos.",
+   "unit_price": 4084.0,
+   "amount": 81680.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Foam mattress 6x3 ft",
+   "brand": null,
+   "hsn": "9404.21",
+   "quantity": 25,
+   "unit": "Nos",
+   "unit_price": 4192.0,
+   "amount": 104800.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Steel filing cabinet 4-drawer",
+   "brand": null,
+   "hsn": "9403.10",
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 8888.0,
+   "amount": 44440.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 258134.1,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 350.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 46527.14,
+  "total": 46527.14
+ },
+ "grand_total": 305011.24,
+ "computed_grand_total": 305011.24,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [
+  "Delivery subject to receipt of advance.",
+  "Packing and forwarding charges extra at 2%."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  6
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20260924_154329.jpg",
+ "supplier_id": "S20",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

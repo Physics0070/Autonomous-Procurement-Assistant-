@@ -10,6 +10,8 @@ services:
         value: production
       - key: MONGODB_DB_NAME
         value: procurement_assistant
+      - key: STORAGE_BACKEND   # Render's free-tier disk is wiped on every deploy; keep originals in MongoDB
+        value: gridfs
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: MONGODB_URI

@@ -1,0 +1,131 @@
+quotation_id,rfq_id,source_file,supplier_name,supplier_gstin,quotation_number,quotation_date,valid_until,payment_terms,delivery_text,delivery_days_max,freight_terms,freight_amount,price_basis,subtotal,gst_total,grand_total
+Q001,RFQ-2026-001,documents/pdf/JorvanSolutions_quotation_PI-0183_1.pdf,Jorvan Solutions,,PI/0183,2026-09-29,2026-10-06,30 days credit,Within 3 days,3,paid,2500.0,excl_GST,55862.67,10505.28,68867.95
+Q002,RFQ-2026-001,documents/scans/Scan0002.pdf,Veltra Industries,,SQ/26/0914,2026-10-06,2026-10-16,"25% advance, balance on delivery",Within 3 days,3,included,,excl_GST,59493.0,10708.74,70201.74
+Q003,RFQ-2026-001,documents/excel/Offer_ZephraEnterprises_final_3.xlsx,Zephra Enterprises,19BGBWT3003N1ZT,Q-0876,2026-09-30,2026-10-30,Against proforma invoice,Ex-stock,0,paid,1000.0,incl_GST,76905.52,11731.35,77905.52
+Q004,RFQ-2026-001,documents/photos/IMG_20261008_193934.jpg,Quorra Trading Co.,27RAAFB5566H1ZZ,EST-0239,2026-10-08,,"50% advance, balance before dispatch",10 working days from PO,10,,,excl_GST,61807.02,,61807.02
+Q005,RFQ-2026-001,documents/pdf/TakshaAssociates_quotation_SQ-26-0253_5.pdf,Taksha Associates,07KSHUS3956K2ZI,SQ/26/0253,2026-10-03,2026-11-02,Net 45 days,Ex-stock,0,buyer_scope,,incl_GST,64211.72,9795.01,64211.72
+Q006,RFQ-2026-002,documents/excel/Quotation_ZorvikIndustries_rev1_6.xlsx,Zorvik Industries,29RSTUC4568U3ZM,,2026-08-22,2026-10-06,"25% advance, balance on delivery",15 days,15,paid,350.0,excl_GST,868062.0,148501.6,973510.5
+Q007,RFQ-2026-002,documents/pdf/JorvanSolutions_quotation_PI-0774_7.pdf,Jorvan Solutions,,PI/0774,2026-08-29,,30 days credit,15 days,15,,,excl_GST,897846.0,161612.28,1059458.28
+Q008,RFQ-2026-002,documents/scans/Scan0008.pdf,Tandor Systems,08JSCHC9725E3Z2,EST-0838,2026-08-26,2026-09-05,100% advance,2-3 weeks,21,paid,250.0,excl_GST,826718.0,148854.24,975822.24
+Q009,RFQ-2026-002,documents/scans/Scan0009.pdf,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0405,2026-08-27,2026-09-26,Net 45 days,Within 7 days,7,,,excl_GST,792529.0,,792529.0
+Q010,RFQ-2026-002,documents/pdf/ArvantaTradingCo_quotation_Q-0600_10.pdf,Arvanta Trading Co.,,Q-0600,2026-08-27,2026-09-26,"25% advance, balance on delivery",Immediate,0,paid,350.0,incl_GST,896108.0,,896458.0
+Q011,RFQ-2026-003,documents/photos/IMG_20261025_082611.jpg,Zorvik Industries,29RSTUC4568U3ZM,EST-0906,2026-10-25,2026-12-09,"25% advance, balance on delivery",Immediate,0,buyer_scope,,excl_GST,444333.0,79979.94,524312.94
+Q012,RFQ-2026-003,documents/excel/Quotation_YaranTechPvtLtd_rev1_12.xlsx,Yaran Tech Pvt. Ltd.,09CBAGJ9003V3ZH,Q-0274,2026-10-19,2026-11-18,"25% advance, balance on delivery",Within 3 days,3,included,,excl_GST,433524.0,,433524.0
+Q013,RFQ-2026-003,documents/pdf/SunrelMart_quotation_PI-0164_13.pdf,Sunrel Mart,24KSTSM3274P2ZF,PI/0164,2026-10-18,2026-11-02,Net 45 days,,,extra_at_actuals,,incl_GST,485132.0,74003.19,485032.0
+Q014,RFQ-2026-003,documents/pdf/WynorMart_quotation_SQ-26-0140_14.pdf,Wynor Mart,29FPMWH0858S3ZD,SQ/26/0140,2026-10-25,2026-11-04,"50% advance, balance before dispatch",4-6 weeks,42,paid,1500.0,excl_GST,367559.0,66430.62,435489.62
+Q015,RFQ-2026-003,documents/photos/IMG_20261025_125659.jpg,Calvik Mart,24DLEDC1724S2ZN,PI/0144,2026-10-25,,,,,paid,500.0,excl_GST,329958.0,59482.44,389940.44
+Q016,RFQ-2026-004,documents/scans/Scan0016.pdf,Rexal Industries,06SAPHA6592E1ZM,QT/2026-27/0973,2026-10-20,,Against proforma invoice,Ex-stock,0,,,excl_GST,284709.96,51247.79,335957.75
+Q017,RFQ-2026-004,documents/photos/IMG_20261017_182712.jpg,Vexel Mart,27TKJAD7029E1ZN,PI/0325,2026-10-17,2026-11-16,30 days credit,4-6 weeks,42,extra_at_actuals,,excl_GST,69636.64,12534.6,82171.24
+Q018,RFQ-2026-004,documents/excel/RateQuote_KantaroSolutions_18.xlsx,Kantaro Solutions,24UETUT7371M1ZO,QTN0719,2026-10-15,2026-10-25,"25% advance, balance on delivery",15 days,15,extra_at_actuals,,excl_GST,288484.92,51927.29,340412.21
+Q019,RFQ-2026-004,documents/photos/IMG_20261015_110649.jpg,Tandor Systems,08JSCHC9725E3Z2,EST-0723,2026-10-15,,100% advance,3 weeks,21,,,excl_GST,146565.04,,146565.04
+Q020,RFQ-2026-004,documents/pdf/BrenorSolutions_quotation_QTN0459_20.pdf,Brenor Solutions,,QTN0459,2026-10-19,2026-12-03,"50% advance, balance before dispatch",Immediate,0,paid,2000.0,excl_GST,312636.6,,314636.6
+Q021,RFQ-2026-005,documents/scans/Scan0021.pdf,Kantaro Solutions,24UETUT7371M1ZO,QTN0691,2026-09-15,2026-10-30,"25% advance, balance on delivery",Immediate,0,,,excl_GST,641659.0,115498.62,757157.62
+Q022,RFQ-2026-005,documents/photos/IMG_20260904_172305.jpg,Davik Systems,08HALEE1104G1ZP,,2026-09-04,2026-10-19,"25% advance, balance on delivery",,,,,excl_GST,539819.0,,539819.0
+Q023,RFQ-2026-005,documents/scans/Scan0023.pdf,Lumina Mart,,PI/0726,2026-09-03,2026-10-18,Against proforma invoice,,,,,excl_GST,714573.0,,714573.0
+Q024,RFQ-2026-005,documents/excel/RateQuote_BelmontSuppliers_rev1_24.xlsx,Belmont Suppliers,24WAUNJ2506U1ZI,QTN0137,2026-09-13,2026-09-23,"25% advance, balance on delivery",,,paid,2500.0,excl_GST,552357.0,,554857.0
+Q025,RFQ-2026-005,documents/excel/Quote_JorvanSolutions_final_25.xlsx,Jorvan Solutions,,PI/0579,2026-09-09,2026-10-09,30 days credit,Immediate,0,buyer_scope,,incl_GST,675717.0,103075.47,675717.0
+Q026,RFQ-2026-006,documents/scans/Scan0026.pdf,Nivora Industries,,EST-0794,2026-10-11,2026-10-21,30 days credit,2-3 weeks,21,,,excl_GST,274016.62,49322.99,323339.61
+Q027,RFQ-2026-006,documents/excel/Quote_IxoraAgencies_rev1_27.xlsx,Ixora Agencies,,EST-0181,2026-10-10,2026-10-17,,,,extra_at_actuals,,excl_GST,271178.0,47835.8,313590.24
+Q028,RFQ-2026-006,documents/photos/IMG_20261006_145540.jpg,Halvor Distributors,09EADHK3962G3ZY,PI/0685,2026-10-06,2026-11-20,Against proforma invoice,,,,,excl_GST,245241.48,,245241.48
+Q029,RFQ-2026-006,documents/scans/Scan0029.pdf,Tandor Systems,08JSCHC9725E3Z2,EST-0190,2026-10-08,2026-10-18,100% advance,,,buyer_scope,,excl_GST,253964.02,,253964.02
+Q030,RFQ-2026-006,documents/scans/Scan0030.pdf,Taksha Associates,07KSHUS3956K2ZI,SQ/26/0759,2026-10-14,2026-11-13,Net 45 days,4-6 weeks,42,included,,excl_GST,231645.0,40862.18,267874.28
+Q031,RFQ-2026-007,documents/scans/Scan0031.pdf,Tandor Systems,08JSCHC9725E3Z2,EST-0819,2026-09-30,2026-10-30,,,,paid,1000.0,excl_GST,224112.0,40520.16,265632.16
+Q032,RFQ-2026-007,documents/photos/IMG_20261003_162750.jpg,Sunrel Mart,24KSTSM3274P2ZF,PI/0034,2026-10-03,,Net 45 days,,,paid,750.0,incl_GST,255210.0,38930.34,255960.0
+Q033,RFQ-2026-007,documents/scans/Scan0033.pdf,Davik Systems,08HALEE1104G1ZP,SQ/26/0601,2026-10-05,2026-11-19,,,,paid,2000.0,excl_GST,156349.0,28502.82,186851.82
+Q034,RFQ-2026-007,documents/pdf/ZephraEnterprises_quotation_Q-0240_34.pdf,Zephra Enterprises,19BGBWT3003N1ZT,Q-0240,2026-09-24,2026-10-04,Against proforma invoice,15 days,15,buyer_scope,,excl_GST,84561.0,14764.35,96788.52
+Q035,RFQ-2026-007,documents/pdf/MirelEngineers_quotation_QT-2026-27-0690_35.pdf,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0690,2026-10-02,2026-10-12,Net 45 days,Ex-stock,0,paid,350.0,incl_GST,299096.0,45624.81,299446.0
+Q036,RFQ-2026-008,documents/excel/Quote_MirelEngineers_36.xlsx,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0549,2026-10-28,2026-11-27,Net 45 days,7-10 days,10,paid,2500.0,excl_GST,1380245.0,248894.1,1631639.1
+Q037,RFQ-2026-008,documents/scans/Scan0037.pdf,Taksha Associates,07KSHUS3956K2ZI,,2026-10-28,2026-11-04,Net 45 days,,,extra_at_actuals,,incl_GST,1537912.0,234596.75,1537912.0
+Q038,RFQ-2026-008,documents/excel/Offer_BelmontSuppliers_final_38.xlsx,Belmont Suppliers,24WAUNJ2506U1ZI,QTN0435,2026-10-27,2026-11-11,"25% advance, balance on delivery",Immediate,0,buyer_scope,,excl_GST,1018320.0,183297.6,1201617.6
+Q039,RFQ-2026-008,documents/pdf/VexelMart_quotation_NA_39.pdf,Vexel Mart,27TKJAD7029E1ZN,,2026-10-25,2026-11-09,30 days credit,Immediate,0,,,excl_GST,1042748.0,,1042748.0
+Q040,RFQ-2026-008,documents/scans/Scan0040.pdf,Sunrel Mart,24KSTSM3274P2ZF,PI/0045,2026-10-23,2026-11-22,Net 45 days,Within 3 days,3,paid,750.0,incl_GST,1595368.0,,1596118.0
+Q041,RFQ-2026-009,documents/pdf/BrenorSolutions_quotation_QTN0438_41.pdf,Brenor Solutions,,QTN0438,2026-10-30,2026-11-09,"50% advance, balance before dispatch",15 days,15,extra_at_actuals,,excl_GST,605942.0,109069.56,715011.56
+Q042,RFQ-2026-009,documents/scans/Scan0042.pdf,Nivora Industries,,EST-0616,2026-10-29,2026-11-08,30 days credit,Immediate,0,extra_at_actuals,,excl_GST,554673.0,99841.14,654514.14
+Q043,RFQ-2026-009,documents/excel/Offer_DavikSystems_v2_43.xlsx,Davik Systems,08HALEE1104G1ZP,SQ/26/0101,2026-10-26,,"25% advance, balance on delivery",,,extra_at_actuals,,excl_GST,479319.0,,479319.0
+Q044,RFQ-2026-009,documents/photos/IMG_20261020_132848.jpg,Lumina Mart,,PI/0940,2026-10-20,2026-10-27,Against proforma invoice,10 working days from PO,10,included,,incl_GST,734412.0,,712379.64
+Q045,RFQ-2026-009,documents/photos/IMG_20261029_185652.jpg,Kantaro Solutions,24UETUT7371M1ZO,QTN0381,2026-10-29,2026-11-13,"25% advance, balance on delivery",Within 7 days,7,extra_at_actuals,,incl_GST,651600.0,99396.61,651600.0
+Q046,RFQ-2026-010,documents/photos/IMG_20260904_150523.jpg,Arvanta Trading Co.,,Q-0537,2026-09-04,2026-09-11,"25% advance, balance on delivery",Immediate,0,,,excl_GST,560086.54,,560086.54
+Q047,RFQ-2026-010,documents/scans/Scan0047.pdf,Yaran Tech Pvt. Ltd.,09CBAGJ9003V3ZH,Q-0383,2026-08-30,2026-09-14,,,,extra_at_actuals,,incl_GST,800468.31,122105.34,800468.31
+Q048,RFQ-2026-010,documents/photos/IMG_20260901_101303.jpg,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0386,2026-09-01,2026-09-08,30 days credit,15 days,15,paid,1500.0,excl_GST,318199.0,57545.82,377244.82
+Q049,RFQ-2026-010,documents/excel/RateQuote_JorvanSolutions_49.xlsx,Jorvan Solutions,,PI/0120,2026-09-06,2026-10-06,30 days credit,Within 7 days,7,buyer_scope,,excl_GST,726656.55,130798.18,857454.73
+Q050,RFQ-2026-010,documents/pdf/TakshaAssociates_quotation_SQ-26-0422_50.pdf,Taksha Associates,07KSHUS3956K2ZI,SQ/26/0422,2026-09-06,2026-10-06,Net 45 days,4-6 weeks,42,included,,excl_GST,693818.29,122389.55,802331.47
+Q051,RFQ-2026-011,documents/photos/IMG_20260901_091730.jpg,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0840,2026-09-01,,30 days credit,,,included,,excl_GST,1417798.0,,1389442.04
+Q052,RFQ-2026-011,documents/photos/IMG_20260830_185007.jpg,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0876,2026-08-30,2026-09-29,Net 45 days,4-6 weeks,42,paid,500.0,excl_GST,2041452.0,,1939879.4
+Q053,RFQ-2026-011,documents/pdf/ZorvikIndustries_quotation_EST-0538_53.pdf,Zorvik Industries,29RSTUC4568U3ZM,EST-0538,2026-09-03,2026-09-10,"25% advance, balance on delivery",10 working days from PO,10,paid,3500.0,excl_GST,1816692.0,327634.56,2147826.56
+Q054,RFQ-2026-011,documents/pdf/SunrelMart_quotation_PI-0476_54.pdf,Sunrel Mart,,PI/0476,2026-09-03,2026-09-13,,,,paid,500.0,excl_GST,1899845.0,,1805352.75
+Q055,RFQ-2026-011,documents/scans/Scan0055.pdf,Nivora Industries,,EST-0323,2026-08-31,,30 days credit,Ex-stock,0,,,excl_GST,1521188.0,254646.87,1668851.71
+Q056,RFQ-2026-012,documents/scans/Scan0056.pdf,Vexel Mart,27TKJAD7029E1ZN,PI/0071,2026-10-21,2026-10-28,30 days credit,3 weeks,21,buyer_scope,,excl_GST,75582.64,,75582.64
+Q057,RFQ-2026-012,documents/photos/IMG_20261026_163510.jpg,Zorvik Industries,29RSTUC4568U3ZM,EST-0898,2026-10-26,2026-11-10,"25% advance, balance on delivery",Within 7 days,7,paid,3500.0,incl_GST,66177.38,10094.85,69677.38
+Q058,RFQ-2026-012,documents/pdf/UlmarTradingCo_quotation_PI-0484_58.pdf,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0484,2026-10-23,2026-12-07,30 days credit,,,paid,3500.0,excl_GST,53084.26,,56584.26
+Q059,RFQ-2026-012,documents/pdf/RexalIndustries_quotation_QT-2026-27-0674_59.pdf,Rexal Industries,06SAPHA6592E1ZM,QT/2026-27/0674,2026-10-23,2026-11-22,Against proforma invoice,10 working days from PO,10,,,excl_GST,64271.88,,64271.88
+Q060,RFQ-2026-012,documents/photos/IMG_20261025_080241.jpg,Nestor Mart,,PI/0741,2026-10-25,,30 days credit,Within 7 days,7,paid,250.0,excl_GST,69198.69,,69448.69
+Q061,RFQ-2026-013,documents/pdf/JorvanSolutions_quotation_PI-0433_61.pdf,Jorvan Solutions,,PI/0433,2026-08-30,2026-09-29,30 days credit,Within 3 days,3,buyer_scope,,excl_GST,443755.0,79875.9,523630.9
+Q062,RFQ-2026-013,documents/photos/IMG_20260907_133245.jpg,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0919,2026-09-07,2026-09-17,30 days credit,4-6 weeks,42,buyer_scope,,excl_GST,374620.0,,374620.0
+Q063,RFQ-2026-013,documents/photos/IMG_20260901_193458.jpg,Kantaro Solutions,24UETUT7371M1ZO,QTN0284,2026-09-01,,,Within 3 days,3,included,,excl_GST,319797.0,57563.46,377360.46
+Q064,RFQ-2026-013,documents/pdf/ZephraEnterprises_quotation_Q-0097_64.pdf,Zephra Enterprises,,Q-0097,2026-08-26,2026-09-02,Against proforma invoice,4-6 weeks,42,,,incl_GST,558999.0,,558999.0
+Q065,RFQ-2026-013,documents/excel/Quote_AltisIndustries_v2_65.xlsx,Altis Industries,27LACRM8026A2ZN,PI/0907,2026-09-05,,"25% advance, balance on delivery",15 days,15,included,,incl_GST,575945.0,,564426.1
+Q066,RFQ-2026-014,documents/pdf/TakshaAssociates_quotation_SQ-26-0892_66.pdf,Taksha Associates,07KSHUS3956K2ZI,SQ/26/0892,2026-10-31,2026-11-15,Net 45 days,,,,,excl_GST,691879.0,,691879.0
+Q067,RFQ-2026-014,documents/pdf/BelmontSuppliers_quotation_QTN0082_67.pdf,Belmont Suppliers,24WAUNJ2506U1ZI,QTN0082,2026-10-30,,"25% advance, balance on delivery",,,paid,2000.0,excl_GST,733191.0,132334.38,867525.38
+Q068,RFQ-2026-014,documents/scans/Scan0068.pdf,Kantaro Solutions,,QTN0204,2026-10-26,,"25% advance, balance on delivery",15 days,15,extra_at_actuals,,excl_GST,888338.0,159900.84,1048238.84
+Q069,RFQ-2026-014,documents/scans/Scan0069.pdf,Quorra Trading Co.,27RAAFB5566H1ZZ,EST-0573,2026-10-25,2026-11-04,"50% advance, balance before dispatch",,,buyer_scope,,incl_GST,862296.0,131536.68,862296.0
+Q070,RFQ-2026-014,documents/scans/Scan0070.pdf,Jorvan Solutions,,PI/0140,2026-10-25,2026-11-09,30 days credit,,,paid,3500.0,excl_GST,775958.0,,779458.0
+Q071,RFQ-2026-015,documents/scans/Scan0071.pdf,Rexal Industries,06SAPHA6592E1ZM,QT/2026-27/0743,2026-11-06,,Against proforma invoice,15 days,15,,,excl_GST,160894.0,28960.92,188399.92
+Q072,RFQ-2026-015,documents/pdf/IxoraAgencies_quotation_EST-0979_72.pdf,Ixora Agencies,19NEJSF2129J1ZY,EST-0979,2026-11-06,2026-11-16,,Within 7 days,7,paid,250.0,incl_GST,186143.0,,186393.0
+Q073,RFQ-2026-015,documents/photos/IMG_20261108_082355.jpg,Silvex Solutions,19KLDWU8778R1ZY,EST-0032,2026-11-08,2026-12-23,100% advance,15 days,15,extra_at_actuals,,excl_GST,167253.0,,167253.0
+Q074,RFQ-2026-015,documents/excel/RateQuote_HalvorDistributors_v2_74.xlsx,Halvor Distributors,09EADHK3962G3ZY,PI/0145,2026-11-10,2026-12-10,Against proforma invoice,,,paid,3500.0,excl_GST,134386.0,24819.48,162705.48
+Q075,RFQ-2026-015,documents/pdf/ZorvikIndustries_quotation_EST-0131_75.pdf,Zorvik Industries,29RSTUC4568U3ZM,EST-0131,2026-11-02,2026-12-17,"25% advance, balance on delivery",3 weeks,21,paid,1000.0,excl_GST,163287.0,,156172.65
+Q076,RFQ-2026-016,documents/scans/Scan0076.pdf,Ixora Agencies,19NEJSF2129J1ZY,EST-0236,2026-10-19,2026-11-03,30 days credit,,,paid,1000.0,incl_GST,164395.0,,165395.0
+Q077,RFQ-2026-016,documents/photos/IMG_20261019_112122.jpg,Pralon Solutions,29WPLPC6402H2ZC,SQ/26/0973,2026-10-19,,Net 45 days,10 working days from PO,10,paid,2000.0,excl_GST,206154.0,37467.72,245621.72
+Q078,RFQ-2026-016,documents/excel/RateQuote_RexalIndustries_rev1_78.xlsx,Rexal Industries,06SAPHA6592E1ZM,QT/2026-27/0612,2026-10-18,2026-10-25,Against proforma invoice,Within 7 days,7,,,excl_GST,132700.0,23886.0,156586.0
+Q079,RFQ-2026-016,documents/pdf/VexelMart_quotation_PI-0055_79.pdf,Vexel Mart,27TKJAD7029E1ZN,PI/0055,2026-10-25,2026-11-04,30 days credit,,,extra_at_actuals,,excl_GST,210983.0,37976.94,248959.94
+Q080,RFQ-2026-016,documents/pdf/ArvantaTradingCo_quotation_Q-0422_80.pdf,Arvanta Trading Co.,,Q-0422,2026-10-29,2026-11-05,"25% advance, balance on delivery",,,included,,excl_GST,173871.0,30670.84,201064.42
+Q081,RFQ-2026-017,documents/photos/IMG_20261018_123238.jpg,Arvanta Trading Co.,,Q-0510,2026-10-18,2026-11-02,"25% advance, balance on delivery",10 working days from PO,10,paid,1000.0,excl_GST,42222.61,,43222.61
+Q082,RFQ-2026-017,documents/excel/Quote_QuorraTradingCo_rev1_82.xlsx,Quorra Trading Co.,27RAAFB5566H1ZZ,EST-0813,2026-10-27,2026-11-03,"50% advance, balance before dispatch",15 days,15,included,,excl_GST,324805.78,58465.04,383270.82
+Q083,RFQ-2026-017,documents/excel/RateQuote_UlmarTradingCo_v2_83.xlsx,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0499,2026-10-16,2026-11-30,,15 days,15,paid,250.0,excl_GST,264459.0,47647.62,312356.62
+Q084,RFQ-2026-017,documents/photos/IMG_20261021_195926.jpg,Marvik Enterprises,06VMBTK0572N1Z6,QT/2026-27/0690,2026-10-21,2026-12-05,"50% advance, balance before dispatch",2-3 weeks,21,paid,750.0,excl_GST,275089.0,,275839.0
+Q085,RFQ-2026-017,documents/photos/IMG_20261023_185641.jpg,Brenor Solutions,19JMNFA3312B1ZZ,QTN0669,2026-10-23,2026-11-02,"50% advance, balance before dispatch",10 working days from PO,10,included,,excl_GST,256260.96,46126.97,302387.93
+Q086,RFQ-2026-018,documents/photos/IMG_20260829_174224.jpg,Pralon Solutions,29WPLPC6402H2ZC,SQ/26/0346,2026-08-29,2026-09-28,,Within 3 days,3,,,excl_GST,158617.52,28551.15,187168.67
+Q087,RFQ-2026-018,documents/pdf/NivoraIndustries_quotation_EST-0927_87.pdf,Nivora Industries,,EST-0927,2026-08-30,2026-09-14,30 days credit,3 weeks,21,paid,750.0,excl_GST,144668.52,26175.33,171593.85
+Q088,RFQ-2026-018,documents/pdf/UlmarTradingCo_quotation_PI-0724_88.pdf,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0724,2026-08-28,,30 days credit,Ex-stock,0,included,,excl_GST,54931.18,9887.61,64818.79
+Q089,RFQ-2026-018,documents/excel/RateQuote_VeltraIndustries_rev1_89.xlsx,Veltra Industries,,SQ/26/0289,2026-08-24,2026-08-31,"25% advance, balance on delivery",3 weeks,21,,,excl_GST,136907.82,24643.41,161551.23
+Q090,RFQ-2026-018,documents/scans/Scan0090.pdf,Davik Systems,08HALEE1104G1ZP,SQ/26/0147,2026-08-24,2026-08-31,,7-10 days,10,paid,500.0,excl_GST,135817.34,,136317.34
+Q091,RFQ-2026-019,documents/photos/IMG_20260925_084317.jpg,Belmont Suppliers,24WAUNJ2506U1ZI,,2026-09-25,2026-10-02,"25% advance, balance on delivery",Immediate,0,paid,500.0,excl_GST,1510662.0,,1435628.9
+Q092,RFQ-2026-019,documents/photos/IMG_20260916_163016.jpg,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0829,2026-09-16,2026-09-26,Net 45 days,Immediate,0,included,,excl_GST,1827877.0,,1827877.0
+Q093,RFQ-2026-019,documents/scans/Scan0093.pdf,Veltra Industries,,SQ/26/0037,2026-09-20,,"25% advance, balance on delivery",4-6 weeks,42,paid,500.0,excl_GST,1744944.0,314179.92,2059623.92
+Q094,RFQ-2026-019,documents/pdf/UlmarTradingCo_quotation_PI-0766_94.pdf,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0766,2026-09-13,2026-10-13,30 days credit,Within 7 days,7,paid,2500.0,excl_GST,1164645.0,210086.1,1377231.1
+Q095,RFQ-2026-019,documents/excel/Quotation_HalvorDistributors_95.xlsx,Halvor Distributors,09EADHK3962G3ZY,PI/0757,2026-09-13,,Against proforma invoice,15 days,15,,,incl_GST,1762144.0,,1726901.12
+Q096,RFQ-2026-020,documents/scans/Scan0096.pdf,Marvik Enterprises,06VMBTK0572N1Z6,QT/2026-27/0039,2026-09-04,,"50% advance, balance before dispatch",4-6 weeks,42,paid,3500.0,excl_GST,1521418.0,274485.24,1799403.24
+Q097,RFQ-2026-020,documents/pdf/DavikSystems_quotation_SQ-26-0630_97.pdf,Davik Systems,08HALEE1104G1ZP,SQ/26/0630,2026-08-28,,,2-3 weeks,21,paid,3500.0,excl_GST,1363037.0,233709.33,1532094.48
+Q098,RFQ-2026-020,documents/excel/Offer_NestorMart_rev1_98.xlsx,Nestor Mart,,PI/0458,2026-09-05,2026-09-20,,,,,,excl_GST,1093510.0,192895.16,1264534.96
+Q099,RFQ-2026-020,documents/photos/IMG_20260907_114249.jpg,Taksha Associates,07KSHUS3956K2ZI,SQ/26/0683,2026-09-07,,,10 working days from PO,10,extra_at_actuals,,incl_GST,1729557.0,263830.73,1729557.0
+Q100,RFQ-2026-020,documents/scans/Scan0100.pdf,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0445,2026-09-06,2026-09-13,Net 45 days,10 working days from PO,10,buyer_scope,,excl_GST,1378211.0,,1378211.0
+Q101,RFQ-2026-021,documents/pdf/DavikSystems_quotation_SQ-26-0635_101.pdf,Davik Systems,08HALEE1104G1ZP,SQ/26/0635,2026-09-26,2026-10-03,,Ex-stock,0,extra_at_actuals,,excl_GST,489911.99,,489911.99
+Q102,RFQ-2026-021,documents/scans/Scan0102.pdf,Ulmar Trading Co.,33HJVWW9679F1ZI,PI/0076,2026-09-25,2026-10-10,30 days credit,7-10 days,10,buyer_scope,,excl_GST,198678.37,35762.11,234440.48
+Q103,RFQ-2026-021,documents/photos/IMG_20260924_154329.jpg,Rexal Industries,06SAPHA6592E1ZM,QT/2026-27/0546,2026-09-24,2026-10-01,Against proforma invoice,Immediate,0,paid,350.0,excl_GST,258134.1,46527.14,305011.24
+Q104,RFQ-2026-021,documents/excel/Offer_LuminaMart_104.xlsx,Lumina Mart,,PI/0189,2026-09-21,2026-11-05,Against proforma invoice,Immediate,0,paid,2500.0,excl_GST,564985.29,,567985.29
+Q105,RFQ-2026-021,documents/pdf/HalvorDistributors_quotation_PI-0054_105.pdf,Halvor Distributors,09EADHK3962G3ZY,PI/0054,2026-09-28,2026-10-08,Against proforma invoice,2-3 weeks,21,included,,excl_GST,366879.34,,366879.34
+Q106,RFQ-2026-022,documents/scans/Scan0106.pdf,Arvanta Trading Co.,,Q-0613,2026-09-24,,"25% advance, balance on delivery",3 weeks,21,buyer_scope,,excl_GST,147869.0,,147869.0
+Q107,RFQ-2026-022,documents/photos/IMG_20260927_102620.jpg,Ixora Agencies,19NEJSF2129J1ZY,EST-0817,2026-09-27,2026-10-04,30 days credit,2-3 weeks,21,included,,excl_GST,187665.0,33779.7,221444.7
+Q108,RFQ-2026-022,documents/photos/IMG_20260922_184035.jpg,Zephra Enterprises,19BGBWT3003N1ZT,Q-0849,2026-09-22,,Against proforma invoice,Within 7 days,7,paid,350.0,excl_GST,83763.0,15140.34,100253.34
+Q109,RFQ-2026-022,documents/scans/Scan0109.pdf,Veltra Industries,,SQ/26/0809,2026-09-30,,"25% advance, balance on delivery",Within 3 days,3,included,,excl_GST,192156.0,32166.91,210871.99
+Q110,RFQ-2026-022,documents/scans/Scan0110.pdf,Tandor Systems,,EST-0604,2026-09-26,2026-10-26,100% advance,3 weeks,21,buyer_scope,,excl_GST,193066.0,,193066.0
+Q111,RFQ-2026-023,documents/pdf/DavikSystems_quotation_SQ-26-0582_111.pdf,Davik Systems,,SQ/26/0582,2026-09-27,2026-10-12,"25% advance, balance on delivery",Immediate,0,paid,250.0,excl_GST,61654.62,11142.83,73047.45
+Q112,RFQ-2026-023,documents/pdf/IxoraAgencies_quotation_EST-0511_112.pdf,Ixora Agencies,19NEJSF2129J1ZY,EST-0511,2026-09-22,2026-10-07,30 days credit,4-6 weeks,42,included,,excl_GST,42418.4,,42418.4
+Q113,RFQ-2026-023,documents/pdf/YaranTechPvtLtd_quotation_Q-0612_113.pdf,Yaran Tech Pvt. Ltd.,09CBAGJ9003V3ZH,Q-0612,2026-10-01,2026-11-15,"25% advance, balance on delivery",7-10 days,10,extra_at_actuals,,excl_GST,74794.77,,74794.77
+Q114,RFQ-2026-023,documents/pdf/TandorSystems_quotation_EST-0858_114.pdf,Tandor Systems,08JSCHC9725E3Z2,EST-0858,2026-09-28,,100% advance,Within 3 days,3,included,,excl_GST,65971.05,,64651.63
+Q115,RFQ-2026-023,documents/pdf/BelmontSuppliers_quotation_QTN0798_115.pdf,Belmont Suppliers,,QTN0798,2026-09-28,2026-10-28,"25% advance, balance on delivery",3 weeks,21,paid,500.0,incl_GST,76855.52,,77740.52
+Q116,RFQ-2026-024,documents/pdf/BelmontSuppliers_quotation_QTN0191_116.pdf,Belmont Suppliers,24WAUNJ2506U1ZI,QTN0191,2026-08-25,2026-09-01,"25% advance, balance on delivery",Within 3 days,3,extra_at_actuals,,excl_GST,1298649.0,233756.82,1532405.82
+Q117,RFQ-2026-024,documents/pdf/DavikSystems_quotation_NA_117.pdf,Davik Systems,08HALEE1104G1ZP,,2026-08-26,,"25% advance, balance on delivery",15 days,15,extra_at_actuals,,excl_GST,1115477.0,194762.28,1276774.97
+Q118,RFQ-2026-024,documents/pdf/TandorSystems_quotation_EST-0175_118.pdf,Tandor Systems,08JSCHC9725E3Z2,EST-0175,2026-08-29,,100% advance,7-10 days,10,,,excl_GST,1351408.0,243253.44,1594661.44
+Q119,RFQ-2026-024,documents/pdf/HalvorDistributors_quotation_NA_119.pdf,Halvor Distributors,09EADHK3962G3ZY,,2026-08-24,2026-09-03,,,,,,excl_GST,725998.0,,725998.0
+Q120,RFQ-2026-024,documents/pdf/ZephraEnterprises_quotation_Q-0335_120.pdf,Zephra Enterprises,19BGBWT3003N1ZT,Q-0335,2026-08-24,2026-08-31,,,,buyer_scope,,incl_GST,1719394.0,262280.44,1719394.0
+Q121,RFQ-2026-025,documents/pdf/MirelEngineers_quotation_QT-2026-27-0599_121.pdf,Mirel Engineers,08CUPRB4795P3ZH,QT/2026-27/0599,2026-09-29,2026-10-06,Net 45 days,2-3 weeks,21,paid,1500.0,excl_GST,859476.0,,860976.0
+Q122,RFQ-2026-025,documents/pdf/OrvikIndustries_quotation_QTN0404_122.pdf,Orvik Industries,07WMNMM9136C2ZF,QTN0404,2026-09-29,2026-10-29,,,,extra_at_actuals,,excl_GST,436748.0,,436748.0
+Q123,RFQ-2026-025,documents/pdf/WynorMart_quotation_SQ-26-0652_123.pdf,Wynor Mart,29FPMWH0858S3ZD,SQ/26/0652,2026-09-26,2026-10-06,"50% advance, balance before dispatch",10 working days from PO,10,included,,excl_GST,480585.0,86505.3,567090.3
+Q124,RFQ-2026-025,documents/pdf/QuorraTradingCo_quotation_EST-0930_124.pdf,Quorra Trading Co.,27RAAFB5566H1ZZ,EST-0930,2026-09-22,2026-09-29,"50% advance, balance before dispatch",Ex-stock,0,buyer_scope,,excl_GST,605277.0,108949.86,714226.86
+Q125,RFQ-2026-025,documents/pdf/ArvantaTradingCo_quotation_Q-0441_125.pdf,Arvanta Trading Co.,,Q-0441,2026-09-25,2026-11-09,"25% advance, balance on delivery",Within 3 days,3,paid,250.0,excl_GST,628207.0,113122.26,741579.26
+Q126,RFQ-2026-026,documents/pdf/ZorvikIndustries_quotation_EST-0413_126.pdf,Zorvik Industries,29RSTUC4568U3ZM,EST-0413,2026-09-15,2026-09-25,"25% advance, balance on delivery",Immediate,0,paid,1500.0,excl_GST,311708.0,56377.44,369585.44
+Q127,RFQ-2026-026,documents/pdf/VexelMart_quotation_PI-0307_127.pdf,Vexel Mart,27TKJAD7029E1ZN,PI/0307,2026-09-03,,30 days credit,3 weeks,21,extra_at_actuals,,excl_GST,326558.0,58780.44,385338.44
+Q128,RFQ-2026-026,documents/pdf/SunrelMart_quotation_PI-0550_128.pdf,Sunrel Mart,24KSTSM3274P2ZF,PI/0550,2026-09-07,2026-09-22,Net 45 days,Immediate,0,paid,250.0,incl_GST,273735.0,,273985.0
+Q129,RFQ-2026-026,documents/pdf/WynorMart_quotation_SQ-26-0593_129.pdf,Wynor Mart,29FPMWH0858S3ZD,SQ/26/0593,2026-09-07,2026-09-14,"50% advance, balance before dispatch",2-3 weeks,21,included,,excl_GST,108808.0,19585.44,128393.44
+Q130,RFQ-2026-026,documents/pdf/KantaroSolutions_quotation_QTN0533_130.pdf,Kantaro Solutions,24UETUT7371M1ZO,QTN0533,2026-09-10,2026-09-25,"25% advance, balance on delivery",Within 7 days,7,included,,excl_GST,285680.0,,285680.0

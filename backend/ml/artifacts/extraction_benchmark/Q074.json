@@ -1,0 +1,103 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Halvor Distributors",
+   "email": "sales@halvor.example",
+   "phone": "+91 96290 41038",
+   "gst_number": "09EADHK3962G3ZY",
+   "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": "PI/0145",
+   "date": "2026-11-10T00:00:00",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Exhaust fan 300mm",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 1158.0,
+    "gst_percentage": null,
+    "total_price": 11580.0,
+    "attributes": {
+     "HSN": "8414.59"
+    }
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "quantity": 33.0,
+    "unit": "Coil",
+    "unit_price": 1429.0,
+    "gst_percentage": null,
+    "total_price": 47157.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "LED tube light 20W T8 4 ft (ISI/BIS)",
+    "quantity": 95.0,
+    "unit": "Each",
+    "unit_price": 189.0,
+    "gst_percentage": null,
+    "total_price": 17955.0,
+    "attributes": {
+     "HSN": "8539.50"
+    }
+   },
+   {
+    "original_name": "House wire FR PVC 2.5 sq mm copper 90 m (ISI/BIS)",
+    "quantity": 26.0,
+    "unit": "Nos",
+    "unit_price": 2219.0,
+    "gst_percentage": null,
+    "total_price": 57694.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 134386.0,
+   "tax_amount": 24819.48,
+   "tax_percentage": 18.0,
+   "total_amount": 162705.48,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "Buyer GSTIN": "27AABCS4821K1Z4",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 2004,
+     "completion_tokens": 624,
+     "total_tokens": 2628,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:17:20.027879+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.24,
+ "source_chars": 2037
+}

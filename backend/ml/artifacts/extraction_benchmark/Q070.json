@@ -1,0 +1,198 @@
+{
+ "text": {
+  "supplier": {
+   "name": "JorvanSolutions",
+   "email": "sales@jorvan.example",
+   "phone": "+919911733029",
+   "gst_number": null,
+   "address": "GalaNo.42,MarketYard,Gurugram-122368,Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0140",
+   "date": "25.10.2026",
+   "validity": "15days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "KantoCCTVbullet camera4MP",
+    "quantity": 37.0,
+    "unit": "Pcs",
+    "unit_price": 4056.0,
+    "gst_percentage": null,
+    "total_price": 150072.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DynexHDMIcable3morequivalent",
+    "quantity": 96.0,
+    "unit": "Nos",
+    "unit_price": 263.0,
+    "gst_percentage": null,
+    "total_price": 25248.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WIFI6ROUTERDUALBAND",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 4766.0,
+    "gst_percentage": null,
+    "total_price": 152512.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ZenmarkCat6UTPcable305mbox",
+    "quantity": 22.0,
+    "unit": "Box",
+    "unit_price": 6785.0,
+    "gst_percentage": null,
+    "total_price": 149270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Network switch 24-port gigabit managed",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 19277.0,
+    "gst_percentage": null,
+    "total_price": 269878.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OnlnieUPS1kVA",
+    "quantity": 2.0,
+    "unit": "EA",
+    "unit_price": 14489.0,
+    "gst_percentage": null,
+    "total_price": 28978.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 775958.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 779458.0,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "installation_and_commissioning": "not included",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 866,
+     "prompt_tokens": 1572,
+     "total_tokens": 2438
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:13:49.774522+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Jorvan Solutions",
+   "email": "sales@jorvan.example",
+   "phone": "+91 99117 33029",
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0140",
+   "date": "25.10.2026",
+   "validity": "15 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Kanto CCTV bullet camera 4MP IP",
+    "quantity": 37.0,
+    "unit": "Pcs",
+    "unit_price": 4056.0,
+    "gst_percentage": null,
+    "total_price": 150072.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex HDMI cable 3 m or equivalent",
+    "quantity": 96.0,
+    "unit": "Nos",
+    "unit_price": 263.0,
+    "gst_percentage": null,
+    "total_price": 25248.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WIFI 6 ROUTER DUAL BAND",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 4766.0,
+    "gst_percentage": null,
+    "total_price": 152512.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Zenmark Cat6 UTP cable 305 m box",
+    "quantity": 22.0,
+    "unit": "Box",
+    "unit_price": 6785.0,
+    "gst_percentage": null,
+    "total_price": 149270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Network switch 24-port gigabit managed",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 19277.0,
+    "gst_percentage": null,
+    "total_price": 269878.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Onlnie UPS 1 kVA",
+    "quantity": 2.0,
+    "unit": "EA",
+    "unit_price": 14489.0,
+    "gst_percentage": null,
+    "total_price": 28978.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 775958.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 779458.0,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "installation_and_commissioning": "not included"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 29.57,
+ "source_chars": 1145
+}

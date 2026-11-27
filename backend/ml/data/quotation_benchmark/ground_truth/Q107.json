@@ -1,0 +1,125 @@
+{
+ "quotation_id": "Q107",
+ "rfq_id": "RFQ-2026-022",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Ixora Agencies",
+  "gstin": "19NEJSF2129J1ZY",
+  "address": "Office 8, Hi-Tech Park, Kolkata - 700121, West Bengal",
+  "phone": null,
+  "email": "sales@ixora.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0817",
+ "quotation_date": "2026-09-27",
+ "quotation_date_printed": "27.09.2026",
+ "your_reference_date": "2026-09-18",
+ "validity_days": 7,
+ "valid_until": "2026-10-04",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "EA",
+   "unit_price": 3239.0,
+   "amount": 16195.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "SMF VRLA battery 12V 7Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 18,
+   "unit": "Pcs",
+   "unit_price": 832.0,
+   "amount": 14976.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Tubular inverter battery 12V 150Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Pcs",
+   "unit_price": 13969.0,
+   "amount": 111752.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Nos",
+   "unit_price": 13847.0,
+   "amount": 41541.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "ALKALINE AA BATTERY PACK OF 10",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Pack",
+   "unit_price": 291.0,
+   "amount": 3201.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 187665.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 33779.7,
+  "total": 33779.7
+ },
+ "grand_total": 221444.7,
+ "computed_grand_total": 221444.7,
+ "payment_terms": "30 days credit",
+ "delivery_text": "2-3 weeks",
+ "delivery_days_min": 14,
+ "delivery_days_max": 21,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Please quote our quotation number in your purchase order.",
+  "Installation and commissioning not included."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_phone"
+ ],
+ "source_file": "documents/photos/IMG_20260927_102620.jpg",
+ "supplier_id": "S14",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

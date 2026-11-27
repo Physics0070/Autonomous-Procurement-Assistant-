@@ -1,0 +1,118 @@
+{
+ "quotation_id": "Q082",
+ "rfq_id": "RFQ-2026-017",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Quorra Trading Co.",
+  "gstin": "27RAAFB5566H1ZZ",
+  "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra",
+  "phone": "+91 92080 54737",
+  "email": "sales@quorra.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0813",
+ "quotation_date": "2026-10-27",
+ "quotation_date_printed": "27 October 2026",
+ "your_reference_date": null,
+ "validity_days": 7,
+ "valid_until": "2026-11-03",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Safety Goggles Clear",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 235,
+   "unit": "Each",
+   "unit_price": 85.21,
+   "amount": 20024.35,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Fire extinguisher ABC podwer 6 kg",
+   "brand": null,
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Nos",
+   "unit_price": 2159.0,
+   "amount": 17272.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "N95 Respirator Mask",
+   "brand": "Primea",
+   "hsn": null,
+   "quantity": 87,
+   "unit": "Each",
+   "unit_price": 46.89,
+   "amount": 4079.43,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Digital BP monitor",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 115,
+   "unit": "Nos",
+   "unit_price": 1792.0,
+   "amount": 206080.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Leather safety shoes steel toe or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 65,
+   "unit": "Pair",
+   "unit_price": 1190.0,
+   "amount": 77350.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 324805.78,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": 29232.52,
+  "sgst": 29232.52,
+  "igst": null,
+  "total": 58465.04
+ },
+ "grand_total": 383270.82,
+ "computed_grand_total": 383270.82,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": null,
+ "extra_notes": [
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/excel/Quote_QuorraTradingCo_rev1_82.xlsx",
+ "supplier_id": "S10",
+ "capture": {}
+}

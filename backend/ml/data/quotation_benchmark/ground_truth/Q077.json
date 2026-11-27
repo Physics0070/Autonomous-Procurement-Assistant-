@@ -1,0 +1,112 @@
+{
+ "quotation_id": "Q077",
+ "rfq_id": "RFQ-2026-016",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Pralon Solutions",
+  "gstin": "29WPLPC6402H2ZC",
+  "address": "Office 21, Market Yard, Bengaluru - 560417, Karnataka",
+  "phone": "+91 96406 01692",
+  "email": "sales@pralon.example",
+  "contact_person": "Rohit Gupta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "SQ/26/0973",
+ "quotation_date": "2026-10-19",
+ "quotation_date_printed": "19.10.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "OPEN-ENDED SPANNER SET 6-32MM or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 22,
+   "unit": "Sets",
+   "unit_price": 1167.0,
+   "amount": 25674.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Screwdriver set 6 pcs",
+   "brand": null,
+   "hsn": null,
+   "quantity": 76,
+   "unit": "Sets",
+   "unit_price": 342.0,
+   "amount": 25992.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "ANGLE GRINDER 4-INCH 850W or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 33,
+   "unit": "Nos.",
+   "unit_price": 2784.0,
+   "amount": 91872.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Arc welding inverter 200A",
+   "brand": null,
+   "hsn": null,
+   "quantity": 6,
+   "unit": "Nos",
+   "unit_price": 10436.0,
+   "amount": 62616.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 206154.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2000.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 37467.72,
+  "total": 37467.72
+ },
+ "grand_total": 245621.72,
+ "computed_grand_total": 245621.72,
+ "payment_terms": "Net 45 days",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "Goods once sold will not be taken back."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/photos/IMG_20261019_112122.jpg",
+ "supplier_id": "S19",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

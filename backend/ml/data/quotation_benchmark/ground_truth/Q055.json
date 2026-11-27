@@ -1,0 +1,111 @@
+{
+ "quotation_id": "Q055",
+ "rfq_id": "RFQ-2026-011",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Nivora Industries",
+  "gstin": null,
+  "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat",
+  "phone": "+91 91087 58348",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0323",
+ "quotation_date": "2026-08-31",
+ "quotation_date_printed": "31.08.2026",
+ "your_reference_date": "2026-08-28",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 4,
+   "description": "Laptop charger 65W USB-C",
+   "brand": "Kanto",
+   "hsn": "8504.40",
+   "quantity": 95,
+   "unit": "Each",
+   "unit_price": 1395.0,
+   "amount": 132525.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 5,
+   "description": "TUBULAR INVERTER BATTERY 12V 150AH",
+   "brand": "Orbix",
+   "hsn": "8507.20",
+   "quantity": 13,
+   "unit": "Pcs",
+   "unit_price": 15003.0,
+   "amount": 195039.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 6,
+   "description": "Diesel generator 15 kVA silent",
+   "brand": "Nuvo",
+   "hsn": "8502.11",
+   "quantity": 4,
+   "unit": "EA",
+   "unit_price": 298406.0,
+   "amount": 1193624.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1521188.0,
+ "discount_percent": 7,
+ "discount_amount": 106483.16,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 254646.87,
+  "total": 254646.87
+ },
+ "grand_total": 1668851.71,
+ "computed_grand_total": 1669351.71,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Ex-stock",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [
+  "Colour/model may vary as per availability."
+ ],
+ "inconsistencies": [
+  {
+   "type": "grand_total_mismatch",
+   "computed": 1669351.71,
+   "printed": 1668851.71
+  }
+ ],
+ "requested_lines_not_quoted": [
+  1,
+  2,
+  3
+ ],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0055.pdf",
+ "supplier_id": "S08",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": -0.35,
+  "capture_quality": "good"
+ }
+}

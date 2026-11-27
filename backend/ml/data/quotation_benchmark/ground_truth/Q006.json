@@ -1,0 +1,120 @@
+{
+ "quotation_id": "Q006",
+ "rfq_id": "RFQ-2026-002",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Zorvik Industries",
+  "gstin": "29RSTUC4568U3ZM",
+  "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka",
+  "phone": "+91 91877 90947",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": null,
+ "quotation_date": "2026-08-22",
+ "quotation_date_printed": "22.08.2026",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": "2026-10-06",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": null,
+   "quantity": 29,
+   "unit": "Each",
+   "unit_price": 3969.0,
+   "amount": 115101.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Document scanner A4 ADF duplex 40 ppm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Pcs",
+   "unit_price": 29847.0,
+   "amount": 447705.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Toner cartridge black laser",
+   "brand": null,
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Pcs",
+   "unit_price": 2274.0,
+   "amount": 31836.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Laser pritner monochrome A4 duplex",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "EA",
+   "unit_price": 14322.0,
+   "amount": 71610.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "LED monitor 24-inch IPS (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 21,
+   "unit": "Pcs",
+   "unit_price": 9610.0,
+   "amount": 201810.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 868062.0,
+ "discount_percent": 5,
+ "discount_amount": 43403.1,
+ "freight": {
+  "terms": "paid",
+  "amount": 350.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 148501.6,
+  "total": 148501.6
+ },
+ "grand_total": 973510.5,
+ "computed_grand_total": 973510.5,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "All disputes subject to local jurisdiction."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "quotation_number"
+ ],
+ "source_file": "documents/excel/Quotation_ZorvikIndustries_rev1_6.xlsx",
+ "supplier_id": "S27",
+ "capture": {}
+}

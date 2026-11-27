@@ -1,0 +1,85 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": null,
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0612",
+   "date": "2026-10-18T00:00:00",
+   "validity": "Valid till 25 October 2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Open-ended spanner set 6-32 mm",
+    "quantity": 22.0,
+    "unit": "Set",
+    "unit_price": 1104.0,
+    "gst_percentage": null,
+    "total_price": 24288.0,
+    "attributes": {
+     "HSN": "8204.11"
+    }
+   },
+   {
+    "original_name": "Screwdriver set 6 pcs (ISI/BIS)",
+    "quantity": 76.0,
+    "unit": "Set",
+    "unit_price": 334.0,
+    "gst_percentage": null,
+    "total_price": 25384.0,
+    "attributes": {
+     "HSN": "8205.40"
+    }
+   },
+   {
+    "original_name": "Angle grinder 4-inch 850 Wor equivalent",
+    "quantity": 33.0,
+    "unit": "Pcs",
+    "unit_price": 2516.0,
+    "gst_percentage": null,
+    "total_price": 83028.0,
+    "attributes": {
+     "HSN": "8467.29"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 132700.0,
+   "tax_amount": 23886.0,
+   "tax_percentage": 18.0,
+   "total_amount": 156586.0,
+   "transportation_cost": null,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 644,
+     "prompt_tokens": 1682,
+     "total_tokens": 2326
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:51:57.211621+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 1.97,
+ "source_chars": 1456
+}

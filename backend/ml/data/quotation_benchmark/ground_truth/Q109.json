@@ -1,0 +1,124 @@
+{
+ "quotation_id": "Q109",
+ "rfq_id": "RFQ-2026-022",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Veltra Industries",
+  "gstin": null,
+  "address": "Office 28, Udyog Nagar, Gurugram - 122531, Haryana",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0809",
+ "quotation_date": "2026-09-30",
+ "quotation_date_printed": "30/09/2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 3298.0,
+   "amount": 16490.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "SMF VRLA battery 12V 7Ah",
+   "brand": null,
+   "hsn": "8507.20",
+   "quantity": 18,
+   "unit": "EA",
+   "unit_price": 868.0,
+   "amount": 15624.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Tubular inverter battery 12V 150Ah or equivalent",
+   "brand": null,
+   "hsn": "8507.20",
+   "quantity": 8,
+   "unit": "Nos",
+   "unit_price": 14074.0,
+   "amount": 112592.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 3,
+   "unit": "Each",
+   "unit_price": 14680.0,
+   "amount": 44040.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Alkaline AA battery pack of 10",
+   "brand": null,
+   "hsn": "8506.10",
+   "quantity": 11,
+   "unit": "Pkt",
+   "unit_price": 310.0,
+   "amount": 3410.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 192156.0,
+ "discount_percent": 7,
+ "discount_amount": 13450.92,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 32166.91,
+  "total": 32166.91
+ },
+ "grand_total": 210871.99,
+ "computed_grand_total": 210871.99,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/scans/Scan0109.pdf",
+ "supplier_id": "S02",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": 0.12,
+  "capture_quality": "good"
+ }
+}

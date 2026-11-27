@@ -1,0 +1,116 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": "sales@davik.example",
+   "phone": "+91 97803 40496",
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "26-Aug-2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "LAPTOP CORE I5 16GB 512GB SSD 14-INCH",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 57349.0,
+    "gst_percentage": null,
+    "total_price": 286745.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Pen drive 64GB USB 3.0 (ISI/BIS)",
+    "quantity": 62.0,
+    "unit": "Pcs",
+    "unit_price": 469.0,
+    "gst_percentage": null,
+    "total_price": 29078.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Desktop CPU cabinet Core i5 8GB 512GB or equivalent",
+    "quantity": 13.0,
+    "unit": "Nos.",
+    "unit_price": 34553.0,
+    "gst_percentage": null,
+    "total_price": 449189.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laser printer monochrome A4 duplex",
+    "quantity": 15.0,
+    "unit": "Nos.",
+    "unit_price": 14095.0,
+    "gst_percentage": null,
+    "total_price": 211425.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SSD 512GB SATA 2.5-INCH or equivalent",
+    "quantity": 15.0,
+    "unit": "Nos.",
+    "unit_price": 3258.0,
+    "gst_percentage": null,
+    "total_price": 48870.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "TONER CARTRIDGE BLACK LASER",
+    "quantity": 38.0,
+    "unit": "Nos.",
+    "unit_price": 2147.0,
+    "gst_percentage": null,
+    "total_price": 81586.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Optical mouse USB wired",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 232.0,
+    "gst_percentage": null,
+    "total_price": 8584.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1115477.0,
+   "tax_amount": 194762.28,
+   "tax_percentage": 18.0,
+   "total_amount": 1276774.97,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount": "3%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 937,
+     "prompt_tokens": 1569,
+     "total_tokens": 2506
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:03:47.461210+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.15,
+ "source_chars": 1230
+}

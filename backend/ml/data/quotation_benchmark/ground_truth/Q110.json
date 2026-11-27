@@ -1,0 +1,123 @@
+{
+ "quotation_id": "Q110",
+ "rfq_id": "RFQ-2026-022",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Tandor Systems",
+  "gstin": null,
+  "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan",
+  "phone": null,
+  "email": "sales@tandor.example",
+  "contact_person": "Rohit Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0604",
+ "quotation_date": "2026-09-26",
+ "quotation_date_printed": "26 September 2026",
+ "your_reference_date": "2026-09-18",
+ "validity_days": 30,
+ "valid_until": "2026-10-26",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Pcs",
+   "unit_price": 3272.0,
+   "amount": 16360.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "SMF VRLA battery 12V 7Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 18,
+   "unit": "Pcs",
+   "unit_price": 847.0,
+   "amount": 15246.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Tubular inverter battery 12V 150Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Pcs",
+   "unit_price": 14835.0,
+   "amount": 118680.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 13237.0,
+   "amount": 39711.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Alkaline AA battery pack of 10",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Pkt",
+   "unit_price": 279.0,
+   "amount": 3069.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 193066.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 193066.0,
+ "computed_grand_total": 193066.0,
+ "payment_terms": "100% advance",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": "6 months",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/scans/Scan0110.pdf",
+ "supplier_id": "S22",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": 0.86,
+  "capture_quality": "medium"
+ }
+}

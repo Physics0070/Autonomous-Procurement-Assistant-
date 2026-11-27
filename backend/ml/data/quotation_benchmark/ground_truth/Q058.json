@@ -1,0 +1,115 @@
+{
+ "quotation_id": "Q058",
+ "rfq_id": "RFQ-2026-012",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": null,
+  "email": null,
+  "contact_person": "Vikram Desai"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0484",
+ "quotation_date": "2026-10-23",
+ "quotation_date_printed": "23-10-26",
+ "your_reference_date": "2026-10-17",
+ "validity_days": 45,
+ "valid_until": "2026-12-07",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Whiteboard marker black",
+   "brand": "Supra",
+   "hsn": "9608.20",
+   "quantity": 148,
+   "unit": "Pkt of 10",
+   "unit_price": 222.0,
+   "amount": 32856.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": "Veltrax",
+   "hsn": "4820.20",
+   "quantity": 8,
+   "unit": "Pkt of 10",
+   "unit_price": 639.0,
+   "amount": 5112.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "BOPP packing tape 48 mm x 65 m",
+   "brand": null,
+   "hsn": "3919.10",
+   "quantity": 174,
+   "unit": "Rl",
+   "unit_price": 64.49,
+   "amount": 11221.26,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Glue stick 15 g",
+   "brand": null,
+   "hsn": "3506.10",
+   "quantity": 19,
+   "unit": "Pkt of 10",
+   "unit_price": 205.0,
+   "amount": 3895.0,
+   "pack_size": 10
+  }
+ ],
+ "subtotal": 53084.26,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 56584.26,
+ "computed_grand_total": 56584.26,
+ "payment_terms": "30 days credit",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Please quote our quotation number in your purchase order.",
+  "Installation and commissioning not included.",
+  "We are an authorised dealer of leading brands."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "delivery",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/UlmarTradingCo_quotation_PI-0484_58.pdf",
+ "supplier_id": "S23",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "quotation_id": "Q062",
+ "rfq_id": "RFQ-2026-013",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": "+91 98848 87441",
+  "email": "sales@ulmar.example",
+  "contact_person": "Vikram Desai"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0919",
+ "quotation_date": "2026-09-07",
+ "quotation_date_printed": "07-09-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-09-17",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": "Zenmark",
+   "hsn": "8523.51",
+   "quantity": 30,
+   "unit": "Nos",
+   "unit_price": 3065.0,
+   "amount": 91950.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Laptop Core i5 16GB 512GB SSD 14-inch",
+   "brand": null,
+   "hsn": "8471.30",
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 52626.0,
+   "amount": 157878.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "USB wired keyboard",
+   "brand": "Aerolite",
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Each",
+   "unit_price": 396.0,
+   "amount": 42768.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "LED monitor 24-inch IPS",
+   "brand": null,
+   "hsn": "8528.52",
+   "quantity": 8,
+   "unit": "Pcs",
+   "unit_price": 7202.0,
+   "amount": 57616.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Optical mouse USB wired",
+   "brand": "Kanto",
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Nos.",
+   "unit_price": 226.0,
+   "amount": 24408.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 374620.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 374620.0,
+ "computed_grand_total": 374620.0,
+ "payment_terms": "30 days credit",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": null,
+ "extra_notes": [
+  "Prices are subject to change without prior notice."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20260907_133245.jpg",
+ "supplier_id": "S23",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

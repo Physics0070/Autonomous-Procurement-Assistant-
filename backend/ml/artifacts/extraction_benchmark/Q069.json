@@ -1,0 +1,193 @@
+{
+ "text": {
+  "supplier": {
+   "name": "QuorraTradingCo.",
+   "email": null,
+   "phone": "919208054737",
+   "gst_number": "ZTRAAFBS56OH12Z",
+   "address": "Ut 10.MtYadNsha-42252.Mha"
+  },
+  "quotation": {
+   "reference": "EST-0573",
+   "date": "25Ocber2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CCTVbhecamea4MPreqe",
+    "quantity": 37.0,
+    "unit": "Each",
+    "unit_price": 4492.0,
+    "gst_percentage": null,
+    "total_price": 106204.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WEach",
+    "quantity": null,
+    "unit": "Each",
+    "unit_price": 281.0,
+    "gst_percentage": null,
+    "total_price": 26976.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "prawFTe puerdaaband",
+    "quantity": 32.0,
+    "unit": "Eah",
+    "unit_price": 5168.0,
+    "gst_percentage": null,
+    "total_price": 165376.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WebcamFHO1OsOpUSa",
+    "quantity": null,
+    "unit": "77a",
+    "unit_price": 2146.0,
+    "gst_percentage": null,
+    "total_price": 18702.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "horksmtch24pog",
+    "quantity": 14.0,
+    "unit": "Eah",
+    "unit_price": 20296.0,
+    "gst_percentage": null,
+    "total_price": 284144.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 862296.0,
+   "tax_amount": 131536.68,
+   "tax_percentage": 18.0,
+   "total_amount": 862296.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 781,
+     "prompt_tokens": 1386,
+     "total_tokens": 2167
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:34:34.769930+00:00",
+  "notes": [
+   "OCR errors present in item names and quantities. Some quantities are missing or ambiguous.",
+   "Grand total and subtotal values appear inconsistent in the source text."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Quorra Trading Co.",
+   "email": null,
+   "phone": "+91 92080 54737",
+   "gst_number": "27RAAFB5566H1ZZ",
+   "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra"
+  },
+  "quotation": {
+   "reference": "EST-0573",
+   "date": "25 October 2026",
+   "validity": "04 November 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "CCTV bullet camera 4MP IP or equivalent",
+    "quantity": 37.0,
+    "unit": "Each",
+    "unit_price": 4492.0,
+    "gst_percentage": null,
+    "total_price": 166204.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HDMI cable 3 m or equivalent",
+    "quantity": 96.0,
+    "unit": "Each",
+    "unit_price": 281.0,
+    "gst_percentage": null,
+    "total_price": 26976.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra WiFi 6 router dual band",
+    "quantity": 32.0,
+    "unit": "Each",
+    "unit_price": 5168.0,
+    "gst_percentage": null,
+    "total_price": 165376.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Webcam FHD 1080p USB",
+    "quantity": 87.0,
+    "unit": "Pcs",
+    "unit_price": 2146.0,
+    "gst_percentage": null,
+    "total_price": 186702.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Network switch 24-port gigabit managed",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 20296.0,
+    "gst_percentage": null,
+    "total_price": 284144.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 2.0,
+    "unit": "EA",
+    "unit_price": 16447.0,
+    "gst_percentage": null,
+    "total_price": 32894.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 862296.0,
+   "tax_amount": 131536.68,
+   "tax_percentage": 18.0,
+   "total_amount": 862296.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Nashik, transport by buyer",
+   "delivery_time": null,
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The document states 'Includes GST @ 18%' but the subtotal and grand total are identical, suggesting the tax might be inclusive rather than added."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 25.9,
+ "source_chars": 596
+}

@@ -1,0 +1,89 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Brenor Solutions",
+   "email": "sales@brenor.example",
+   "phone": "+91 99886 60037",
+   "gst_number": null,
+   "address": "Office 7, Nehru Nagar, Kolkata - 700588, West Bengal"
+  },
+  "quotation": {
+   "reference": "QTN0438",
+   "date": "30.10.2026",
+   "validity": "10 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Supra Submersible pump 2 HP borewell",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 24470.0,
+    "gst_percentage": null,
+    "total_price": 122350.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2\" CI flanged",
+    "quantity": 83.0,
+    "unit": "Nos.",
+    "unit_price": 2085.0,
+    "gst_percentage": null,
+    "total_price": 173055.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Electric chain hoist 1 ton",
+    "quantity": 11.0,
+    "unit": "Nos.",
+    "unit_price": 24467.0,
+    "gst_percentage": null,
+    "total_price": 269137.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Kanto Deep groove ball bearing 6205",
+    "quantity": 207.0,
+    "unit": "EA",
+    "unit_price": 200.0,
+    "gst_percentage": null,
+    "total_price": 41400.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 605942.0,
+   "tax_amount": 109069.56,
+   "tax_percentage": 18.0,
+   "total_amount": 715011.56,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 700,
+     "prompt_tokens": 1512,
+     "total_tokens": 2212
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:46:45.272848+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.55,
+ "source_chars": 1256
+}

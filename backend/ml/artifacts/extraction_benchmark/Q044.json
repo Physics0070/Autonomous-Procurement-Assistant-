@@ -1,0 +1,180 @@
+{
+ "text": {
+  "supplier": {
+   "name": "LUMINA MART",
+   "email": null,
+   "phone": "+919823916804",
+   "gst_number": null,
+   "address": "office 39,Hi-Tech Park,New Delhf-110860,De1hi"
+  },
+  "quotation": {
+   "reference": "P1/0940",
+   "date": null,
+   "validity": "7 days from the date ot quotaPion",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Bubwereible punp2Hp borewel1",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 30056.0,
+    "gst_percentage": null,
+    "total_price": 150280.0,
+    "attributes": {
+     "Make": "Supra"
+    }
+   },
+   {
+    "original_name": "Cate vaive 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "EA",
+    "unit_price": 2412.0,
+    "gst_percentage": null,
+    "total_price": 200196.0,
+    "attributes": {
+     "Make": "Orbix"
+    }
+   },
+   {
+    "original_name": "Electrie chain boiat Iton",
+    "quantity": 11.0,
+    "unit": "Nos.",
+    "unit_price": 30481.0,
+    "gst_percentage": null,
+    "total_price": 335291.0,
+    "attributes": {
+     "Make": "Altron"
+    }
+   },
+   {
+    "original_name": "bepgroove ball bearing 620s",
+    "quantity": 207.0,
+    "unit": "NO#",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 48645.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 734412.0,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 712379.64,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days Eram PO",
+   "payment_terms": "against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount": "3%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 770,
+     "prompt_tokens": 1538,
+     "total_tokens": 2308
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:49:22.704016+00:00",
+  "notes": [
+   "OCR errors present in item names and quantities",
+   "Total amount appears to be net of discount",
+   "GSTIN listed in document belongs to buyer Sahyadri Industrial Services Pvt. Ltd."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "LUMINA MART",
+   "email": null,
+   "phone": "+91 98239 16804",
+   "gst_number": null,
+   "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi"
+  },
+  "quotation": {
+   "reference": "P1/0940",
+   "date": "20-Oct-2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Submersible pump 2 HP borewell",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 30056.0,
+    "gst_percentage": null,
+    "total_price": 150280.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "EA",
+    "unit_price": 2412.0,
+    "gst_percentage": null,
+    "total_price": 200196.0,
+    "attributes": {
+     "Make": "Supra"
+    }
+   },
+   {
+    "original_name": "Electric chain hoist 1 ton",
+    "quantity": 11.0,
+    "unit": "Nos.",
+    "unit_price": 30481.0,
+    "gst_percentage": null,
+    "total_price": 335291.0,
+    "attributes": {
+     "Make": "Orbix"
+    }
+   },
+   {
+    "original_name": "Deep groove ball bearing 6205",
+    "quantity": 207.0,
+    "unit": "Nos",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 48645.0,
+    "attributes": {
+     "Make": "Altron"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 734412.0,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 712379.64,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount": "3%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The total amount is lower than the subtotal due to a 3% discount, which is not explicitly calculated as a tax field."
+  ]
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 55.15,
+ "source_chars": 1170
+}

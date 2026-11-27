@@ -1,0 +1,116 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": "sales@davik.example",
+   "phone": "+91 97803 40496",
+   "gst_number": null,
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0582",
+   "date": "27-Sep-2026",
+   "validity": "15 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "BOPP packing tape 48 mm x 65 m",
+    "quantity": 46.0,
+    "unit": "Rl",
+    "unit_price": 66.79,
+    "gst_percentage": null,
+    "total_price": 3072.34,
+    "attributes": {}
+   },
+   {
+    "original_name": "Staple pins 24/6 box of 1000",
+    "quantity": 1255.0,
+    "unit": "Bx",
+    "unit_price": 10.87,
+    "gst_percentage": null,
+    "total_price": 13641.85,
+    "attributes": {}
+   },
+   {
+    "original_name": "OFFICE SCISSORS 8 INCH",
+    "quantity": 123.0,
+    "unit": "Nos.",
+    "unit_price": 79.05,
+    "gst_percentage": null,
+    "total_price": 9723.15,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip",
+    "quantity": 667.0,
+    "unit": "Nos",
+    "unit_price": 26.43,
+    "gst_percentage": null,
+    "total_price": 17628.81,
+    "attributes": {}
+   },
+   {
+    "original_name": "Heavy-Duty Stapler 100 Sheets",
+    "quantity": 20.0,
+    "unit": "Each",
+    "unit_price": 404.0,
+    "gst_percentage": null,
+    "total_price": 8080.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "PAPER CLIPS 28 MM BOX OF 100",
+    "quantity": 173.0,
+    "unit": "Box",
+    "unit_price": 17.89,
+    "gst_percentage": null,
+    "total_price": 3094.97,
+    "attributes": {}
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages",
+    "quantity": 101.0,
+    "unit": "Nos.",
+    "unit_price": 63.5,
+    "gst_percentage": null,
+    "total_price": 6413.5,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 61654.62,
+   "tax_amount": 11142.83,
+   "tax_percentage": 18.0,
+   "total_amount": 73047.45,
+   "transportation_cost": 250.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "terms_and_conditions": "Rates valid for the quantities mentioned only. Goods once sold will not be taken back.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 982,
+     "prompt_tokens": 1473,
+     "total_tokens": 2455
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:02:06.708142+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.68,
+ "source_chars": 1003
+}

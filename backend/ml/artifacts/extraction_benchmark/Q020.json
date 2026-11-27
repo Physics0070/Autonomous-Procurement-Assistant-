@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Brenor Solutions",
+   "email": null,
+   "phone": "+91 99886 60037",
+   "gst_number": null,
+   "address": "Office 7, Nehru Nagar, Kolkata - 700588, West Bengal"
+  },
+  "quotation": {
+   "reference": "QTN0459",
+   "date": "19.10.2026",
+   "validity": "45 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Mccb 100A 3-Pole",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 3577.0,
+    "gst_percentage": null,
+    "total_price": 35770.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MCB 32A single pole C curve (ISI/BIS)",
+    "quantity": 105.0,
+    "unit": "Nos",
+    "unit_price": 252.0,
+    "gst_percentage": null,
+    "total_price": 26460.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Kanto LED bulb 9W B22 cool white",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 81.15,
+    "gst_percentage": null,
+    "total_price": 8439.6,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax EXHAUST FAN 300 MM",
+    "quantity": 99.0,
+    "unit": "Nos",
+    "unit_price": 1508.0,
+    "gst_percentage": null,
+    "total_price": 149292.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House Wire Fr Pvc 1.5 Sq Mm Copper 90 M or equivalent",
+    "quantity": 55.0,
+    "unit": "Bundle",
+    "unit_price": 1685.0,
+    "gst_percentage": null,
+    "total_price": 92675.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 312636.6,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 314636.6,
+   "transportation_cost": 2000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 780,
+     "prompt_tokens": 1499,
+     "total_tokens": 2279
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:50:03.427747+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.95,
+ "source_chars": 1099
+}

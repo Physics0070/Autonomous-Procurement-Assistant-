@@ -64,6 +64,11 @@ async def get_quotation(
     return QuotationDetail.model_validate(_list_shape(row))
 
 
+def _header_safe(name: str) -> str:
+    """A filename that cannot break out of the Content-Disposition header (quotes, newlines, non-ASCII)."""
+    return "".join(c if c.isascii() and c.isprintable() and c not in '"\\' else "_" for c in name)[:120] or "document"
+
+
 @router.get("/{quotation_id}/file")
 async def download_original(
     quotation_id: str,
@@ -77,14 +82,18 @@ async def download_original(
     key = source.get("storage_key")
     if not key:
         raise NotFoundError("No original file is stored for this quotation.")
+    media_type = source.get("mime_type") or "application/octet-stream"
+    filename = source.get("original_filename") or "document"
     path = store.local_path(key)
-    if not path or not store.exists(key):
-        raise NotFoundError("The original file is no longer available in storage.")
-    return FileResponse(
-        path,
-        media_type=source.get("mime_type") or "application/octet-stream",
-        filename=source.get("original_filename") or "document",
-    )
+    if path:
+        if not store.exists(key):
+            raise NotFoundError("The original file is no longer available in storage.")
+        return FileResponse(path, media_type=media_type, filename=filename)
+    try:
+        data = await store.load(key)
+    except NotFoundError:
+        raise NotFoundError("The original file is no longer available in storage.") from None
+    return Response(data, media_type=media_type, headers={"Content-Disposition": f'attachment; filename="{_header_safe(filename)}"'})
 
 
 @router.post("/{quotation_id}/reprocess", response_model=QuotationDetail)

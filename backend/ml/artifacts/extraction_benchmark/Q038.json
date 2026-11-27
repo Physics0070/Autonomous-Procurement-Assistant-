@@ -1,0 +1,120 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Belmont Suppliers",
+   "email": "sales@belmont.example",
+   "phone": "+91 90625 76892",
+   "gst_number": "24WAUNJ2506U1ZI",
+   "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0435",
+   "date": "27/10/2026",
+   "validity": "11/11/2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Refrigerator 190 L single door",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 13830.0,
+    "gst_percentage": null,
+    "total_price": 41490.0,
+    "attributes": {
+     "Lead time": "2 weeks"
+    }
+   },
+   {
+    "original_name": "Split AC 1 ton 3 star or equivalent",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 33932.0,
+    "gst_percentage": null,
+    "total_price": 169660.0,
+    "attributes": {
+     "Lead time": "5 days"
+    }
+   },
+   {
+    "original_name": "Window AC 1.5 ton",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 34235.0,
+    "gst_percentage": null,
+    "total_price": 376585.0,
+    "attributes": {
+     "Lead time": "Ex-stock"
+    }
+   },
+   {
+    "original_name": "Water dispenser hot and cold",
+    "quantity": 9.0,
+    "unit": "Nos.",
+    "unit_price": 11755.0,
+    "gst_percentage": null,
+    "total_price": 105795.0,
+    "attributes": {
+     "Lead time": "Ex-stock"
+    }
+   },
+   {
+    "original_name": "RO water purifier 10 L wall mounted or equivalent",
+    "quantity": 13.0,
+    "unit": "EA",
+    "unit_price": 11242.0,
+    "gst_percentage": null,
+    "total_price": 146146.0,
+    "attributes": {
+     "Lead time": "7-10 days"
+    }
+   },
+   {
+    "original_name": "Split AC 1.5 ton 5 star inverter or equivalent",
+    "quantity": 4.0,
+    "unit": "Each",
+    "unit_price": 44661.0,
+    "gst_percentage": null,
+    "total_price": 178644.0,
+    "attributes": {
+     "Lead time": "7-10 days"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1018320.0,
+   "tax_amount": 183297.6,
+   "tax_percentage": 18.0,
+   "total_amount": 1201617.6,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Ahmedabad; transport by buyer",
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_gstin": "27AABCS4821K1Z4",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 983,
+     "prompt_tokens": 2093,
+     "total_tokens": 3076
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:43:46.781092+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.59,
+ "source_chars": 2519
+}

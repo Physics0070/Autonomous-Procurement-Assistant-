@@ -1,0 +1,125 @@
+{
+ "text": {
+  "supplier": {
+   "name": "BELMONT SUPPLIERS",
+   "email": null,
+   "phone": "+91 90625 76892",
+   "gst_number": "24WAUNJ2506U1ZI",
+   "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0191",
+   "date": "25/08/2026",
+   "validity": "Valid till 01/09/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Laptop Core i5 16GB 512GB SSD 14-inch",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 56333.0,
+    "gst_percentage": null,
+    "total_price": 281665.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Pen drive 64GB USB 3.0",
+    "quantity": 62.0,
+    "unit": "EA",
+    "unit_price": 517.0,
+    "gst_percentage": null,
+    "total_price": 32054.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "External Hdd 2Tb Usb .30",
+    "quantity": 26.0,
+    "unit": "EA",
+    "unit_price": 5968.0,
+    "gst_percentage": null,
+    "total_price": 155168.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Desktop CPU cabinet Core i5 8GB 512GB",
+    "quantity": 13.0,
+    "unit": "Each",
+    "unit_price": 35512.0,
+    "gst_percentage": null,
+    "total_price": 461656.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laser printer monochrome A4 duplex",
+    "quantity": 15.0,
+    "unit": "Pcs",
+    "unit_price": 14974.0,
+    "gst_percentage": null,
+    "total_price": 224610.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 15.0,
+    "unit": "Each",
+    "unit_price": 3548.0,
+    "gst_percentage": null,
+    "total_price": 53220.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toner cartridge black laser or equivalent",
+    "quantity": 38.0,
+    "unit": "EA",
+    "unit_price": 2142.0,
+    "gst_percentage": null,
+    "total_price": 81396.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Optical Mouse Usb Wired",
+    "quantity": 37.0,
+    "unit": "Nos",
+    "unit_price": 240.0,
+    "gst_percentage": null,
+    "total_price": 8880.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1298649.0,
+   "tax_amount": 233756.82,
+   "tax_percentage": 18.0,
+   "total_amount": 1532405.82,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight_terms": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1082,
+     "prompt_tokens": 2054,
+     "total_tokens": 3136
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:03:26.518748+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 12.89,
+ "source_chars": 2117
+}

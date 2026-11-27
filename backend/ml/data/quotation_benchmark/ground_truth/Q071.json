@@ -1,0 +1,118 @@
+{
+ "quotation_id": "Q071",
+ "rfq_id": "RFQ-2026-015",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Rexal Industries",
+  "gstin": "06SAPHA6592E1ZM",
+  "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana",
+  "phone": "+91 93588 88619",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QT/2026-27/0743",
+ "quotation_date": "2026-11-06",
+ "quotation_date_printed": "06 November 2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Exhaust fan 300 mm",
+   "brand": null,
+   "hsn": "8414.59",
+   "quantity": 10,
+   "unit": "Pcs",
+   "unit_price": 1455.0,
+   "amount": 14550.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "House wire FR PVC 1.5 sqmm copper 90 m",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 33,
+   "unit": "Bundle",
+   "unit_price": 1614.0,
+   "amount": 53262.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED tube light 20W T8 4 ft",
+   "brand": null,
+   "hsn": "8539.50",
+   "quantity": 95,
+   "unit": "Nos.",
+   "unit_price": 228.0,
+   "amount": 21660.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "House wire FR PVC 2.5 sq mm copper 90 m",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 26,
+   "unit": "Bundle",
+   "unit_price": 2747.0,
+   "amount": 71422.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 160894.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 28960.92,
+  "total": 28960.92
+ },
+ "grand_total": 188399.92,
+ "computed_grand_total": 189854.92,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": null,
+ "extra_notes": [
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [
+  {
+   "type": "grand_total_mismatch",
+   "computed": 189854.92,
+   "printed": 188399.92
+  }
+ ],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/scans/Scan0071.pdf",
+ "supplier_id": "S20",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": -0.55,
+  "capture_quality": "good"
+ }
+}

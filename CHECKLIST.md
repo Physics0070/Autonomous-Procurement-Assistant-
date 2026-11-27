@@ -128,3 +128,21 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | V23 | Fixes from validation | ✅ | GSTIN check digit; incomplete lines need review; PDFs with page images also read as images; OCR 38 s to 16 s per photo; forecast keeps the linear trend unless beaten by 25% |
 | F1 | Forecast rebuilt: Croston default, error as total miss over total demand, a likely range, a "how sure" label, current month left out; screen shows range and label | ✅ | on 4 real SCMS series at 12 cut-offs: error 30 / 55 / 31 / 21% against 38 / 58 / 35 / 26% for the linear trend; range holds 75 to 78% of actual months; earlier forecast figures were scored against months SCMS never recorded and are withdrawn; `tests/test_ml_forecast.py` + 300 seasonal/lumpy stress cases (found and fixed a second short-series crash) |
 | D1 | README rewritten to the standard layout (about, stack, getting started, usage, structure, roadmap, contributing, license); the previous README is `docs/TECHNICAL_REFERENCE.md`; screenshots in `docs/images/` | ✅ | no open-source license chosen yet |
+
+## Extraction benchmark and hardening (27 Nov 2026)
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| E1 | 130-quotation benchmark (`quotation_dataset.zip`, code-generated, full answer key) wired into `ml/extraction_benchmark.py`; split by request: 90 tune / 40 locked | ✅ | `docs/EXTRACTION_BENCHMARK.md`; locked split read once, never used for choices |
+| E2 | Photos and scans read from the page image; clearer field definitions; dates like "25-Oct-26"; delivery phrases; empty image reading retried once | ✅ | tune 84.9% -> 98.2% of fields; **locked 97.7%** (digital 99.8, Excel 100, photo 98.9, scanned 89.6); `tests/test_benchmark_fixes.py` |
+| E3 | Arithmetic tolerance 2% -> ₹2 / 0.01%; a total that does not add up needs review; GST-included totals accepted | ✅ | supplier arithmetic mistakes sent for review 0/11 -> 11/11; correct quotations flagged 20/119 (17 carry a discount, not extracted) |
+| H1 | Uploads: oversized body refused before parsing (413); file read at most one byte past the limit | ✅ | `tests/test_upload_limits.py` |
+| H2 | Originals in MongoDB GridFS (`STORAGE_BACKEND=gridfs`, set in `render.yaml`) | ✅ | `tests/test_gridfs_storage.py`; other organization gets 404 |
+| H3 | Cap on concurrent model calls (`AI_MAX_CONCURRENT_CALLS`, default 4) | ✅ | `tests/test_ai_concurrency.py`; free-tier exhaustion had dropped extraction 98% -> 93% |
+| H4 | Approving a paused agent run needs admin or procurement manager | ✅ | was open to any member; `tests/test_injection_boundaries.py` |
+| H5 | Prompt-injection boundaries tested (no side-effect tools, unknown tools refused, scope-widening arguments dropped) | ✅ | same file, 10 tests |
+| H6 | Test runs never reach real AI APIs (vendor keys blanked); a test that relied on a real key fixed | ✅ | full suite 8,461 passed, 60 skipped, 5 min (was 23 min with live calls) |
+| H7 | `docs/RELEASE_READINESS.md`: done, deferred with reasons, known limits | ✅ | label: demo-ready, not production-ready |
+| H8 | Deferred: boosting/Optuna sweep, per-field provenance, per-user AI limits, monitoring | ⏸️ | reasons in `docs/RELEASE_READINESS.md` |
+| H9 | Gmail and Drive with a real mailbox | ✅ partly | team signed in (Google OAuth connected 19 Nov); **Drive verified**: PO-2026-0001.pdf filed to the team's Drive; **Gmail**: connection and sync run without errors, but the last sync scanned 0 messages, so importing a quotation from an e-mail is still to be shown (send one quotation with an attachment to the connected inbox and sync) |
+| H11 | `.gitignore` rule `storage/` was hiding `backend/app/services/storage/` (the storage code was never on GitHub; a fresh clone could not start); anchored to `/storage/` | ✅ | `git check-ignore` now clean; package shows as new files |
+| H10 | Commit and push | ✅ | approved by the user; Word files, root PDFs, CSVs and the zip left out |

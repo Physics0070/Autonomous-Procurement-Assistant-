@@ -1,0 +1,124 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": "sales@davik.example",
+   "phone": null,
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0630",
+   "date": "28-Aug-2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electric chain hoist 1 ton or equivalent",
+    "quantity": 11.0,
+    "unit": "Nos.",
+    "unit_price": 18903.0,
+    "gst_percentage": null,
+    "total_price": 207933.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Air compressor 2 HP 100 L",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 25731.0,
+    "gst_percentage": null,
+    "total_price": 308772.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Platform scale 300 kg",
+    "quantity": 15.0,
+    "unit": "Nos",
+    "unit_price": 8103.0,
+    "gst_percentage": null,
+    "total_price": 121545.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Three-phase induction motor 5 HP 1440 rpm",
+    "quantity": 14.0,
+    "unit": "Nos",
+    "unit_price": 16904.0,
+    "gst_percentage": null,
+    "total_price": 236656.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MIG welding machine 250A",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 38373.0,
+    "gst_percentage": null,
+    "total_price": 115119.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2\" CI flanged or equivalent",
+    "quantity": 83.0,
+    "unit": "Nos",
+    "unit_price": 1684.0,
+    "gst_percentage": null,
+    "total_price": 139772.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CENTRIFUGAL MONOBLOCK PUMP 1 HP",
+    "quantity": 40.0,
+    "unit": "Pcs",
+    "unit_price": 5831.0,
+    "gst_percentage": null,
+    "total_price": 233240.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1363037.0,
+   "tax_amount": 233709.33,
+   "tax_percentage": 18.0,
+   "total_amount": 1532094.48,
+   "transportation_cost": 3500.0,
+   "delivery_days": 14,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "prepared_for": "Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1546,
+     "completion_tokens": 844,
+     "total_tokens": 2390,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:25:08.247468+00:00",
+  "notes": [
+   "The subtotal calculation provided in the document (Rs.13,63,037.00/-) does not match the sum of the listed item totals (1363037.0). The discount (5%) is applied to the subtotal, and transport charges are added before IGST is calculated to reach the final total."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 10.13,
+ "source_chars": 1063
+}

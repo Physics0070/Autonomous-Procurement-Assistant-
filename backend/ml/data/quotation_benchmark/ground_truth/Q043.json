@@ -1,0 +1,110 @@
+{
+ "quotation_id": "Q043",
+ "rfq_id": "RFQ-2026-009",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Davik Systems",
+  "gstin": "08HALEE1104G1ZP",
+  "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan",
+  "phone": "+91 97803 40496",
+  "email": null,
+  "contact_person": "Sandeep Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0101",
+ "quotation_date": "2026-10-26",
+ "quotation_date_printed": "26-Oct-2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SUBMERSIBLE PUMP 2 HP BOREWELL",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 20822.0,
+   "amount": 104110.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Gate valve 2 inch C Iflanged",
+   "brand": null,
+   "hsn": null,
+   "quantity": 83,
+   "unit": "Each",
+   "unit_price": 1721.0,
+   "amount": 142843.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Electric chain hoist 1 ton",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Pcs",
+   "unit_price": 18038.0,
+   "amount": 198418.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Deep groove ball bearing 6205",
+   "brand": null,
+   "hsn": null,
+   "quantity": 207,
+   "unit": "Each",
+   "unit_price": 164.0,
+   "amount": 33948.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 479319.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 479319.0,
+ "computed_grand_total": 479319.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Installation and commissioning not included.",
+  "Special discount of 3% on orders above Rs. 1,00,000."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "delivery",
+  "validity"
+ ],
+ "source_file": "documents/excel/Offer_DavikSystems_v2_43.xlsx",
+ "supplier_id": "S12",
+ "capture": {}
+}

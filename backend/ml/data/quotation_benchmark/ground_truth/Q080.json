@@ -1,0 +1,99 @@
+{
+ "quotation_id": "Q080",
+ "rfq_id": "RFQ-2026-016",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": "+91 91899 74538",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0422",
+ "quotation_date": "2026-10-29",
+ "quotation_date_printed": "29.10.2026",
+ "your_reference_date": null,
+ "validity_days": 7,
+ "valid_until": "2026-11-05",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 2,
+   "description": "Screwdriver set 6 pcs",
+   "brand": null,
+   "hsn": null,
+   "quantity": 76,
+   "unit": "Set",
+   "unit_price": 363.0,
+   "amount": 27588.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "Angle Grinder 4-Inch 850W",
+   "brand": null,
+   "hsn": null,
+   "quantity": 33,
+   "unit": "Nos",
+   "unit_price": 2719.0,
+   "amount": 89727.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Arc welding inverter 200A",
+   "brand": null,
+   "hsn": null,
+   "quantity": 6,
+   "unit": "Pcs",
+   "unit_price": 9426.0,
+   "amount": 56556.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 173871.0,
+ "discount_percent": 2,
+ "discount_amount": 3477.42,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 30670.84,
+  "total": 30670.84
+ },
+ "grand_total": 201064.42,
+ "computed_grand_total": 201064.42,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "12 months",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  1
+ ],
+ "fields_missing_in_source": [
+  "delivery",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/ArvantaTradingCo_quotation_Q-0422_80.pdf",
+ "supplier_id": "S05",
+ "capture": {
+  "pages": 1
+ }
+}

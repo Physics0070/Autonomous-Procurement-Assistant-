@@ -1,0 +1,180 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TandorSystems",
+   "email": null,
+   "phone": "+919012421158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "GaiaNo.27,Hi-TechPark,Jaipur-302548,Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0838",
+   "date": "26August2026",
+   "validity": "05September2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Ssd512GbSata2.5-Inch(IS/BIS)",
+    "quantity": 29.0,
+    "unit": "EA",
+    "unit_price": 3741.0,
+    "gst_percentage": null,
+    "total_price": 108489.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Document scannerA4ADFduplex40ppm",
+    "quantity": 15.0,
+    "unit": "Nos.",
+    "unit_price": 26923.0,
+    "gst_percentage": null,
+    "total_price": 403845.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tonercartridge blacklaser",
+    "quantity": 14.0,
+    "unit": "Nos",
+    "unit_price": 2337.0,
+    "gst_percentage": null,
+    "total_price": 32718.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LaserPrinterMonochromeA4Duplex",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 14854.0,
+    "gst_percentage": null,
+    "total_price": 74270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LedMonitor24-InchIpsorequivalent",
+    "quantity": 21.0,
+    "unit": "Each",
+    "unit_price": 9876.0,
+    "gst_percentage": null,
+    "total_price": 207396.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 826718.0,
+   "tax_amount": 148854.24,
+   "tax_percentage": 18.0,
+   "total_amount": 975822.24,
+   "transportation_cost": 250.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "100%advance",
+   "payment_days": 0,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_enquiry_reference": "Yourenquirydated20August2026",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 840,
+     "prompt_tokens": 1491,
+     "total_tokens": 2331
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:41:14.023991+00:00",
+  "notes": [
+   "OCR output contained merged text and formatting issues; values were parsed based on logical column alignment."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": null,
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0838",
+   "date": "26 August 2026",
+   "validity": "05 September 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Ssd 512Gb Sata 2.5-Inch (ISI/BIS)",
+    "quantity": 29.0,
+    "unit": "EA",
+    "unit_price": 3741.0,
+    "gst_percentage": null,
+    "total_price": 108489.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Document scanner A4 ADF duplex 40 ppm",
+    "quantity": 15.0,
+    "unit": "Nos.",
+    "unit_price": 26923.0,
+    "gst_percentage": null,
+    "total_price": 403845.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toner cartridge black laser",
+    "quantity": 14.0,
+    "unit": "Nos.",
+    "unit_price": 2337.0,
+    "gst_percentage": null,
+    "total_price": 32718.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laser Printer Monochrome A4 Duplex",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 14854.0,
+    "gst_percentage": null,
+    "total_price": 74270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Led Monitor 24-Inch Ips or equivalent",
+    "quantity": 21.0,
+    "unit": "Each",
+    "unit_price": 9876.0,
+    "gst_percentage": null,
+    "total_price": 207396.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 826718.0,
+   "tax_amount": 148854.24,
+   "tax_percentage": 18.0,
+   "total_amount": 975822.24,
+   "transportation_cost": 250.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "100% advance",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 56.41,
+ "source_chars": 897
+}

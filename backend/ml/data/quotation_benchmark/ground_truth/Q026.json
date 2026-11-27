@@ -1,0 +1,122 @@
+{
+ "quotation_id": "Q026",
+ "rfq_id": "RFQ-2026-006",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Nivora Industries",
+  "gstin": null,
+  "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat",
+  "phone": "+91 91087 58348",
+  "email": "sales@nivora.example",
+  "contact_person": "Imran Nair"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0794",
+ "quotation_date": "2026-10-11",
+ "quotation_date_printed": "11.10.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-21",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Leather safety shoes steel toe",
+   "brand": null,
+   "hsn": "6403.40",
+   "quantity": 67,
+   "unit": "Pair",
+   "unit_price": 1080.0,
+   "amount": 72360.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "N95 respirator mask",
+   "brand": null,
+   "hsn": "9020.00",
+   "quantity": 234,
+   "unit": "EA",
+   "unit_price": 50.43,
+   "amount": 11800.62,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Industrial Safety Helmet",
+   "brand": "Orbix",
+   "hsn": "6506.10",
+   "quantity": 158,
+   "unit": "Nos",
+   "unit_price": 182.0,
+   "amount": 28756.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Fire extinguisher ABC powder 6 kg",
+   "brand": "Kanto",
+   "hsn": "8424.10",
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 2190.0,
+   "amount": 10950.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "CO2 fire extinguisher 4.5 kg",
+   "brand": "Altron",
+   "hsn": "8424.10",
+   "quantity": 22,
+   "unit": "Pcs",
+   "unit_price": 6825.0,
+   "amount": 150150.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 274016.62,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 49322.99,
+  "total": 49322.99
+ },
+ "grand_total": 323339.61,
+ "computed_grand_total": 323339.61,
+ "payment_terms": "30 days credit",
+ "delivery_text": "2-3 weeks",
+ "delivery_days_min": 14,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0026.pdf",
+ "supplier_id": "S08",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": -0.28,
+  "capture_quality": "good"
+ }
+}

@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Optional
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import Field
 
 from app.api.deps import DB, CurrentUser, comparison_repo, quotation_repo, request_repo, supplier_repo
@@ -17,13 +17,15 @@ from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.automation import PurchaseOrderRepository
 from app.repositories.quotations import ComparisonRepository, PriceHistoryRepository, QuotationRepository
 from app.repositories.suppliers import SupplierRepository
-from app.schemas.common import APIModel
+from app.schemas.common import APIModel, UserRole
 from app.services.agents.assistant import AssistantTools, run_assistant
 from app.services.agents.runs import RunRecorder
 from app.services.agents.specialists import AgentContext
 from app.services.agents.supervisor import resume_supervisor, run_supervisor
 from app.services.automation.communications import now
 from app.services.agents.sourcing import run_sourcing
+
+APPROVER_ROLES = {UserRole.ADMIN.value, UserRole.PROCUREMENT_MANAGER.value}
 
 router = APIRouter(prefix="/agents", tags=["agents"])
 
@@ -89,12 +91,15 @@ async def resume_run(
     runs: AgentRunRepository = Depends(run_repo),
     provider: AIProvider = Depends(ai_provider),
 ) -> dict:
-    """Continue a run that paused for approval (or cancel it)."""
+    """Continue a run that paused for approval (or cancel it). Approving needs the same roles as approving a purchase
+    order or an e-mail directly; anyone in the organization may cancel."""
+    approved = (payload or ResumeIn()).approved
+    if approved and context.role not in APPROVER_ROLES:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only an admin or procurement manager can approve.")
     run = await runs.get_or_404(context.organization_id, run_id)
     request = await requests.get_or_404(context.organization_id, str((run.get("input") or {}).get("procurement_request_id")))
     recorder = RunRecorder.attach(runs, {**run, "organization_id": context.organization_id})
-    return await resume_supervisor(_context(database, context, recorder, provider), run, request,
-                                   approved=(payload or ResumeIn()).approved)
+    return await resume_supervisor(_context(database, context, recorder, provider), run, request, approved=approved)
 
 
 @router.get("/runs")

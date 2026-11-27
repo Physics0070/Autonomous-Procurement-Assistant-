@@ -1,0 +1,98 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ZORVIK INDUSTRIES",
+   "email": null,
+   "phone": "+91 91877 90947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "22.08.2026",
+   "validity": "06.10.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 29.0,
+    "unit": "Each",
+    "unit_price": 3969.0,
+    "gst_percentage": null,
+    "total_price": 115101.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Document scanner A4 ADF duplex 40 ppm",
+    "quantity": 15.0,
+    "unit": "Pcs",
+    "unit_price": 29847.0,
+    "gst_percentage": null,
+    "total_price": 447705.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toner cartridge black laser",
+    "quantity": 14.0,
+    "unit": "Pcs",
+    "unit_price": 2274.0,
+    "gst_percentage": null,
+    "total_price": 31836.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laser pritner monochrome A4 duplex",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 14322.0,
+    "gst_percentage": null,
+    "total_price": 71610.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED monitor 24-inch IPS (ISI/BIS)",
+    "quantity": 21.0,
+    "unit": "Pcs",
+    "unit_price": 9610.0,
+    "gst_percentage": null,
+    "total_price": 201810.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 868062.0,
+   "tax_amount": 148501.6,
+   "tax_percentage": 18.0,
+   "total_amount": 973510.5,
+   "transportation_cost": 350.0,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "discount": "-43403.1",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 783,
+     "prompt_tokens": 1887,
+     "total_tokens": 2670
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:40:42.170578+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.45,
+ "source_chars": 1882
+}

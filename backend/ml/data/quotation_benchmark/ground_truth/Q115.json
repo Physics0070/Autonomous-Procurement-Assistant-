@@ -1,0 +1,150 @@
+{
+ "quotation_id": "Q115",
+ "rfq_id": "RFQ-2026-023",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Belmont Suppliers",
+  "gstin": null,
+  "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat",
+  "phone": "+91 90625 76892",
+  "email": "sales@belmont.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0798",
+ "quotation_date": "2026-09-28",
+ "quotation_date_printed": "28/09/2026",
+ "your_reference_date": "2026-09-17",
+ "validity_days": 30,
+ "valid_until": "2026-10-28",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Bopp Packing Tape 48 Mm X 65 M",
+   "brand": null,
+   "hsn": null,
+   "quantity": 46,
+   "unit": "Rl",
+   "unit_price": 83.77,
+   "amount": 3853.42,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Staple pins 24/6 box of 1000 (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 1255,
+   "unit": "Bx",
+   "unit_price": 13.29,
+   "amount": 16678.95,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office scissors 8 inch",
+   "brand": null,
+   "hsn": null,
+   "quantity": 123,
+   "unit": "Nos.",
+   "unit_price": 96.58,
+   "amount": 11879.34,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Permanent marker black bullet tip",
+   "brand": null,
+   "hsn": null,
+   "quantity": 667,
+   "unit": "Nos.",
+   "unit_price": 33.71,
+   "amount": 22484.57,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Heavy-duty stapler 100 sheets",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "Nos",
+   "unit_price": 505.0,
+   "amount": 10100.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Paper clips 28 mm box of 100 or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 173,
+   "unit": "Nos",
+   "unit_price": 22.47,
+   "amount": 3887.31,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": null,
+   "hsn": null,
+   "quantity": 101,
+   "unit": "EA",
+   "unit_price": 78.93,
+   "amount": 7971.93,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 76855.52,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 500.0
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 77740.52,
+ "computed_grand_total": 77355.52,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [
+  {
+   "type": "grand_total_mismatch",
+   "computed": 77355.52,
+   "printed": 77740.52
+  }
+ ],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/BelmontSuppliers_quotation_QTN0798_115.pdf",
+ "supplier_id": "S09",
+ "capture": {
+  "pages": 1
+ }
+}

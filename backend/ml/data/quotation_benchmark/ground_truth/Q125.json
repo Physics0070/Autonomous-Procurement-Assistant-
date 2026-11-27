@@ -1,0 +1,118 @@
+{
+ "quotation_id": "Q125",
+ "rfq_id": "RFQ-2026-025",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": null,
+  "email": "sales@arvanta.example",
+  "contact_person": "Meera Desai"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0441",
+ "quotation_date": "2026-09-25",
+ "quotation_date_printed": "25.09.2026",
+ "your_reference_date": null,
+ "validity_days": 45,
+ "valid_until": "2026-11-09",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Pcs",
+   "unit_price": 12396.0,
+   "amount": 148752.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "WEBCAM FHD 1080P USB",
+   "brand": null,
+   "hsn": null,
+   "quantity": 119,
+   "unit": "Each",
+   "unit_price": 1698.0,
+   "amount": 202062.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "NETWORK SWITCH 24-PORT GIGABIT MANAGED",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "Each",
+   "unit_price": 16363.0,
+   "amount": 212719.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "CCTV bullet camera 4MP IP",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 18,
+   "unit": "Each",
+   "unit_price": 3593.0,
+   "amount": 64674.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 628207.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 250.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 113122.26,
+  "total": 113122.26
+ },
+ "grand_total": 741579.26,
+ "computed_grand_total": 741579.26,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": null,
+ "extra_notes": [
+  "Rates valid for the quantities mentioned only.",
+  "Installation and commissioning not included.",
+  "Alternate make available on request.",
+  "Prices are subject to change without prior notice.",
+  "Test certificate will be provided on request.",
+  "Packing and forwarding charges extra at 2%."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/ArvantaTradingCo_quotation_Q-0441_125.pdf",
+ "supplier_id": "S05",
+ "capture": {
+  "pages": 1
+ }
+}

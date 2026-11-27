@@ -1,0 +1,1225 @@
+[
+ {
+  "id": "RFQ-2026-001",
+  "title": "Office stationery requirement",
+  "date": "2026-09-25",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Whiteboard marker black",
+    "hsn": "9608.20",
+    "unit": "piece",
+    "quantity": 1193
+   },
+   {
+    "line": 2,
+    "description": "Lever arch file A4 75 mm",
+    "hsn": "4820.30",
+    "unit": "piece",
+    "quantity": 166
+   },
+   {
+    "line": 3,
+    "description": "Permanent marker black bullet tip",
+    "hsn": "9608.20",
+    "unit": "piece",
+    "quantity": 192
+   },
+   {
+    "line": 4,
+    "description": "Notebook ruled A4 172 pages",
+    "hsn": "4820.20",
+    "unit": "piece",
+    "quantity": 32
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-002",
+  "title": "IT hardware requirement",
+  "date": "2026-08-20",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "SSD 512GB SATA 2.5-inch",
+    "hsn": "8523.51",
+    "unit": "piece",
+    "quantity": 29
+   },
+   {
+    "line": 2,
+    "description": "Document scanner A4 ADF duplex 40 ppm",
+    "hsn": "8471.60",
+    "unit": "piece",
+    "quantity": 15
+   },
+   {
+    "line": 3,
+    "description": "Toner cartridge black laser",
+    "hsn": "8443.99",
+    "unit": "piece",
+    "quantity": 14
+   },
+   {
+    "line": 4,
+    "description": "Laser printer monochrome A4 duplex",
+    "hsn": "8443.32",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 5,
+    "description": "LED monitor 24-inch IPS",
+    "hsn": "8528.52",
+    "unit": "piece",
+    "quantity": 21
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-003",
+  "title": "Networking and CCTV requirement",
+  "date": "2026-10-11",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Cat6 UTP cable 305 m box",
+    "hsn": "8544.49",
+    "unit": "box",
+    "quantity": 5
+   },
+   {
+    "line": 2,
+    "description": "CCTV dome camera 2MP IP",
+    "hsn": "8525.89",
+    "unit": "piece",
+    "quantity": 40
+   },
+   {
+    "line": 3,
+    "description": "Online UPS 1 kVA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 12
+   },
+   {
+    "line": 4,
+    "description": "Line interactive UPS 650 VA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 31
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-004",
+  "title": "Electrical and lighting requirement",
+  "date": "2026-10-08",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "MCCB 100A 3-pole",
+    "hsn": "8536.20",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 2,
+    "description": "MCB 32A single pole C curve",
+    "hsn": "8536.20",
+    "unit": "piece",
+    "quantity": 105
+   },
+   {
+    "line": 3,
+    "description": "LED bulb 9W B22 cool white",
+    "hsn": "8539.50",
+    "unit": "piece",
+    "quantity": 104
+   },
+   {
+    "line": 4,
+    "description": "Exhaust fan 300 mm",
+    "hsn": "8414.59",
+    "unit": "piece",
+    "quantity": 99
+   },
+   {
+    "line": 5,
+    "description": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "hsn": "8544.49",
+    "unit": "coil",
+    "quantity": 55
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-005",
+  "title": "Tools and instruments requirement",
+  "date": "2026-09-01",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Electric drill machine 13 mm 650W",
+    "hsn": "8467.21",
+    "unit": "piece",
+    "quantity": 35
+   },
+   {
+    "line": 2,
+    "description": "Open-ended spanner set 6-32 mm",
+    "hsn": "8204.11",
+    "unit": "set",
+    "quantity": 12
+   },
+   {
+    "line": 3,
+    "description": "Arc welding inverter 200A",
+    "hsn": "8515.39",
+    "unit": "piece",
+    "quantity": 29
+   },
+   {
+    "line": 4,
+    "description": "HSS drill bit set 1-13 mm",
+    "hsn": "8207.50",
+    "unit": "set",
+    "quantity": 63
+   },
+   {
+    "line": 5,
+    "description": "Angle grinder 4-inch 850W",
+    "hsn": "8467.29",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 6,
+    "description": "Vernier caliper 150 mm",
+    "hsn": "9017.30",
+    "unit": "piece",
+    "quantity": 109
+   },
+   {
+    "line": 7,
+    "description": "Screwdriver set 6 pcs",
+    "hsn": "8205.40",
+    "unit": "set",
+    "quantity": 27
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-006",
+  "title": "Safety and PPE requirement",
+  "date": "2026-10-04",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Leather safety shoes steel toe",
+    "hsn": "6403.40",
+    "unit": "pair",
+    "quantity": 67
+   },
+   {
+    "line": 2,
+    "description": "N95 respirator mask",
+    "hsn": "9020.00",
+    "unit": "piece",
+    "quantity": 234
+   },
+   {
+    "line": 3,
+    "description": "Industrial safety helmet",
+    "hsn": "6506.10",
+    "unit": "piece",
+    "quantity": 158
+   },
+   {
+    "line": 4,
+    "description": "Fire extinguisher ABC powder 6 kg",
+    "hsn": "8424.10",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 5,
+    "description": "CO2 fire extinguisher 4.5 kg",
+    "hsn": "8424.10",
+    "unit": "piece",
+    "quantity": 22
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-007",
+  "title": "Construction material requirement",
+  "date": "2026-09-21",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "PVC pipe 4 inch 6 kgf",
+    "hsn": "3917.23",
+    "unit": "metre",
+    "quantity": 47
+   },
+   {
+    "line": 2,
+    "description": "Acrylic emulsion paint interior 20 L",
+    "hsn": "3209.10",
+    "unit": "drum",
+    "quantity": 20
+   },
+   {
+    "line": 3,
+    "description": "Wall putty 20 kg",
+    "hsn": "3214.90",
+    "unit": "bag",
+    "quantity": 61
+   },
+   {
+    "line": 4,
+    "description": "GI pipe 1 inch medium class",
+    "hsn": "7306.30",
+    "unit": "metre",
+    "quantity": 44
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-008",
+  "title": "HVAC and appliances requirement",
+  "date": "2026-10-14",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Refrigerator 190 L single door",
+    "hsn": "8418.21",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 2,
+    "description": "Split AC 1 ton 3 star",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 3,
+    "description": "Window AC 1.5 ton",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 11
+   },
+   {
+    "line": 4,
+    "description": "Water dispenser hot and cold",
+    "hsn": "8418.69",
+    "unit": "piece",
+    "quantity": 9
+   },
+   {
+    "line": 5,
+    "description": "RO water purifier 10 L wall mounted",
+    "hsn": "8421.21",
+    "unit": "piece",
+    "quantity": 13
+   },
+   {
+    "line": 6,
+    "description": "Storage water heater 25 L",
+    "hsn": "8516.10",
+    "unit": "piece",
+    "quantity": 38
+   },
+   {
+    "line": 7,
+    "description": "Split AC 1.5 ton 5 star inverter",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 4
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-009",
+  "title": "Pumps and machinery requirement",
+  "date": "2026-10-18",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Submersible pump 2 HP borewell",
+    "hsn": "8413.70",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 2,
+    "description": "Gate valve 2 inch CI flanged",
+    "hsn": "8481.80",
+    "unit": "piece",
+    "quantity": 83
+   },
+   {
+    "line": 3,
+    "description": "Electric chain hoist 1 ton",
+    "hsn": "8425.11",
+    "unit": "piece",
+    "quantity": 11
+   },
+   {
+    "line": 4,
+    "description": "Deep groove ball bearing 6205",
+    "hsn": "8482.10",
+    "unit": "piece",
+    "quantity": 207
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-010",
+  "title": "Furniture and housekeeping requirement",
+  "date": "2026-08-27",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Office swivel chair mesh back",
+    "hsn": "9401.39",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 2,
+    "description": "Steel almirah 2-door",
+    "hsn": "9403.10",
+    "unit": "piece",
+    "quantity": 12
+   },
+   {
+    "line": 3,
+    "description": "Steel filing cabinet 4-drawer",
+    "hsn": "9403.10",
+    "unit": "piece",
+    "quantity": 31
+   },
+   {
+    "line": 4,
+    "description": "Foam mattress 6x3 ft",
+    "hsn": "9404.21",
+    "unit": "piece",
+    "quantity": 11
+   },
+   {
+    "line": 5,
+    "description": "Office table wooden 5x2.5 ft",
+    "hsn": "9403.30",
+    "unit": "piece",
+    "quantity": 21
+   },
+   {
+    "line": 6,
+    "description": "Toilet soap bar 100 g",
+    "hsn": "3401.11",
+    "unit": "piece",
+    "quantity": 61
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-011",
+  "title": "Batteries and power requirement",
+  "date": "2026-08-28",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Car battery 12V 65Ah",
+    "hsn": "8507.10",
+    "unit": "piece",
+    "quantity": 29
+   },
+   {
+    "line": 2,
+    "description": "Line interactive UPS 650 VA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 33
+   },
+   {
+    "line": 3,
+    "description": "Online UPS 1 kVA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 4,
+    "description": "Laptop charger 65W USB-C",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 95
+   },
+   {
+    "line": 5,
+    "description": "Tubular inverter battery 12V 150Ah",
+    "hsn": "8507.20",
+    "unit": "piece",
+    "quantity": 13
+   },
+   {
+    "line": 6,
+    "description": "Diesel generator 15 kVA silent",
+    "hsn": "8502.11",
+    "unit": "piece",
+    "quantity": 4
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-012",
+  "title": "Office stationery requirement",
+  "date": "2026-10-17",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Whiteboard marker black",
+    "hsn": "9608.20",
+    "unit": "piece",
+    "quantity": 1480
+   },
+   {
+    "line": 2,
+    "description": "Notebook ruled A4 172 pages",
+    "hsn": "4820.20",
+    "unit": "piece",
+    "quantity": 71
+   },
+   {
+    "line": 3,
+    "description": "BOPP packing tape 48 mm x 65 m",
+    "hsn": "3919.10",
+    "unit": "roll",
+    "quantity": 174
+   },
+   {
+    "line": 4,
+    "description": "Permanent marker black bullet tip",
+    "hsn": "9608.20",
+    "unit": "piece",
+    "quantity": 372
+   },
+   {
+    "line": 5,
+    "description": "Glue stick 15 g",
+    "hsn": "3506.10",
+    "unit": "piece",
+    "quantity": 190
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-013",
+  "title": "IT hardware requirement",
+  "date": "2026-08-24",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "SSD 512GB SATA 2.5-inch",
+    "hsn": "8523.51",
+    "unit": "piece",
+    "quantity": 30
+   },
+   {
+    "line": 2,
+    "description": "Laptop Core i5 16GB 512GB SSD 14-inch",
+    "hsn": "8471.30",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 3,
+    "description": "USB wired keyboard",
+    "hsn": "8471.60",
+    "unit": "piece",
+    "quantity": 108
+   },
+   {
+    "line": 4,
+    "description": "LED monitor 24-inch IPS",
+    "hsn": "8528.52",
+    "unit": "piece",
+    "quantity": 8
+   },
+   {
+    "line": 5,
+    "description": "Optical mouse USB wired",
+    "hsn": "8471.60",
+    "unit": "piece",
+    "quantity": 108
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-014",
+  "title": "Networking and CCTV requirement",
+  "date": "2026-10-23",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "CCTV bullet camera 4MP IP",
+    "hsn": "8525.89",
+    "unit": "piece",
+    "quantity": 37
+   },
+   {
+    "line": 2,
+    "description": "HDMI cable 3 m",
+    "hsn": "8544.42",
+    "unit": "piece",
+    "quantity": 96
+   },
+   {
+    "line": 3,
+    "description": "WiFi 6 router dual band",
+    "hsn": "8517.62",
+    "unit": "piece",
+    "quantity": 32
+   },
+   {
+    "line": 4,
+    "description": "Webcam FHD 1080p USB",
+    "hsn": "8525.89",
+    "unit": "piece",
+    "quantity": 87
+   },
+   {
+    "line": 5,
+    "description": "Cat6 UTP cable 305 m box",
+    "hsn": "8544.49",
+    "unit": "box",
+    "quantity": 22
+   },
+   {
+    "line": 6,
+    "description": "Network switch 24-port gigabit managed",
+    "hsn": "8517.62",
+    "unit": "piece",
+    "quantity": 14
+   },
+   {
+    "line": 7,
+    "description": "Online UPS 1 kVA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 2
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-015",
+  "title": "Electrical and lighting requirement",
+  "date": "2026-10-27",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Exhaust fan 300 mm",
+    "hsn": "8414.59",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 2,
+    "description": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "hsn": "8544.49",
+    "unit": "coil",
+    "quantity": 33
+   },
+   {
+    "line": 3,
+    "description": "LED tube light 20W T8 4 ft",
+    "hsn": "8539.50",
+    "unit": "piece",
+    "quantity": 95
+   },
+   {
+    "line": 4,
+    "description": "House wire FR PVC 2.5 sq mm copper 90 m",
+    "hsn": "8544.49",
+    "unit": "coil",
+    "quantity": 26
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-016",
+  "title": "Tools and instruments requirement",
+  "date": "2026-10-15",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Open-ended spanner set 6-32 mm",
+    "hsn": "8204.11",
+    "unit": "set",
+    "quantity": 22
+   },
+   {
+    "line": 2,
+    "description": "Screwdriver set 6 pcs",
+    "hsn": "8205.40",
+    "unit": "set",
+    "quantity": 76
+   },
+   {
+    "line": 3,
+    "description": "Angle grinder 4-inch 850W",
+    "hsn": "8467.29",
+    "unit": "piece",
+    "quantity": 33
+   },
+   {
+    "line": 4,
+    "description": "Arc welding inverter 200A",
+    "hsn": "8515.39",
+    "unit": "piece",
+    "quantity": 6
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-017",
+  "title": "Safety and PPE requirement",
+  "date": "2026-10-13",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Safety goggles clear",
+    "hsn": "9004.90",
+    "unit": "piece",
+    "quantity": 235
+   },
+   {
+    "line": 2,
+    "description": "Fire extinguisher ABC powder 6 kg",
+    "hsn": "8424.10",
+    "unit": "piece",
+    "quantity": 8
+   },
+   {
+    "line": 3,
+    "description": "N95 respirator mask",
+    "hsn": "9020.00",
+    "unit": "piece",
+    "quantity": 87
+   },
+   {
+    "line": 4,
+    "description": "Digital BP monitor",
+    "hsn": "9018.90",
+    "unit": "piece",
+    "quantity": 115
+   },
+   {
+    "line": 5,
+    "description": "Leather safety shoes steel toe",
+    "hsn": "6403.40",
+    "unit": "pair",
+    "quantity": 65
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-018",
+  "title": "Construction material requirement",
+  "date": "2026-08-22",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "TMT bar Fe500D 12 mm",
+    "hsn": "7214.20",
+    "unit": "kg",
+    "quantity": 72
+   },
+   {
+    "line": 2,
+    "description": "Wall putty 20 kg",
+    "hsn": "3214.90",
+    "unit": "bag",
+    "quantity": 18
+   },
+   {
+    "line": 3,
+    "description": "Commercial plywood 18 mm 8x4 ft",
+    "hsn": "4412.33",
+    "unit": "sheet",
+    "quantity": 30
+   },
+   {
+    "line": 4,
+    "description": "GI pipe 1 inch medium class",
+    "hsn": "7306.30",
+    "unit": "metre",
+    "quantity": 116
+   },
+   {
+    "line": 5,
+    "description": "AAC block 600x200x200 mm",
+    "hsn": "6810.11",
+    "unit": "piece",
+    "quantity": 178
+   },
+   {
+    "line": 6,
+    "description": "PPC cement 50 kg bag",
+    "hsn": "2523.29",
+    "unit": "bag",
+    "quantity": 62
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-019",
+  "title": "HVAC and appliances requirement",
+  "date": "2026-09-11",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Water dispenser hot and cold",
+    "hsn": "8418.69",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 2,
+    "description": "Washing machine front load 7 kg",
+    "hsn": "8450.11",
+    "unit": "piece",
+    "quantity": 15
+   },
+   {
+    "line": 3,
+    "description": "Split AC 1 ton 3 star",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 4,
+    "description": "RO water purifier 10 L wall mounted",
+    "hsn": "8421.21",
+    "unit": "piece",
+    "quantity": 10
+   },
+   {
+    "line": 5,
+    "description": "Refrigerator 190 L single door",
+    "hsn": "8418.21",
+    "unit": "piece",
+    "quantity": 2
+   },
+   {
+    "line": 6,
+    "description": "Microwave oven 25 L convection",
+    "hsn": "8516.50",
+    "unit": "piece",
+    "quantity": 36
+   },
+   {
+    "line": 7,
+    "description": "Split AC 1.5 ton 5 star inverter",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 8,
+    "description": "Window AC 1.5 ton",
+    "hsn": "8415.10",
+    "unit": "piece",
+    "quantity": 9
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-020",
+  "title": "Pumps and machinery requirement",
+  "date": "2026-08-25",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Electric chain hoist 1 ton",
+    "hsn": "8425.11",
+    "unit": "piece",
+    "quantity": 11
+   },
+   {
+    "line": 2,
+    "description": "Air compressor 2 HP 100 L",
+    "hsn": "8414.80",
+    "unit": "piece",
+    "quantity": 12
+   },
+   {
+    "line": 3,
+    "description": "Platform scale 300 kg",
+    "hsn": "8423.82",
+    "unit": "piece",
+    "quantity": 15
+   },
+   {
+    "line": 4,
+    "description": "Three-phase induction motor 5 HP 1440 rpm",
+    "hsn": "8501.52",
+    "unit": "piece",
+    "quantity": 14
+   },
+   {
+    "line": 5,
+    "description": "MIG welding machine 250A",
+    "hsn": "8515.31",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 6,
+    "description": "Gate valve 2 inch CI flanged",
+    "hsn": "8481.80",
+    "unit": "piece",
+    "quantity": 83
+   },
+   {
+    "line": 7,
+    "description": "Centrifugal monoblock pump 1 HP",
+    "hsn": "8413.70",
+    "unit": "piece",
+    "quantity": 40
+   },
+   {
+    "line": 8,
+    "description": "Submersible pump 2 HP borewell",
+    "hsn": "8413.70",
+    "unit": "piece",
+    "quantity": 14
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-021",
+  "title": "Furniture and housekeeping requirement",
+  "date": "2026-09-19",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Toilet soap bar 100 g",
+    "hsn": "3401.11",
+    "unit": "piece",
+    "quantity": 157
+   },
+   {
+    "line": 2,
+    "description": "Detergent powder 1 kg",
+    "hsn": "3402.20",
+    "unit": "pack",
+    "quantity": 191
+   },
+   {
+    "line": 3,
+    "description": "Office swivel chair mesh back",
+    "hsn": "9401.39",
+    "unit": "piece",
+    "quantity": 20
+   },
+   {
+    "line": 4,
+    "description": "Foam mattress 6x3 ft",
+    "hsn": "9404.21",
+    "unit": "piece",
+    "quantity": 25
+   },
+   {
+    "line": 5,
+    "description": "Steel filing cabinet 4-drawer",
+    "hsn": "9403.10",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 6,
+    "description": "Office table wooden 5x2.5 ft",
+    "hsn": "9403.30",
+    "unit": "piece",
+    "quantity": 28
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-022",
+  "title": "Batteries and power requirement",
+  "date": "2026-09-18",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Line interactive UPS 650 VA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 2,
+    "description": "SMF VRLA battery 12V 7Ah",
+    "hsn": "8507.20",
+    "unit": "piece",
+    "quantity": 18
+   },
+   {
+    "line": 3,
+    "description": "Tubular inverter battery 12V 150Ah",
+    "hsn": "8507.20",
+    "unit": "piece",
+    "quantity": 8
+   },
+   {
+    "line": 4,
+    "description": "Online UPS 1 kVA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 3
+   },
+   {
+    "line": 5,
+    "description": "Alkaline AA battery pack of 10",
+    "hsn": "8506.10",
+    "unit": "pack",
+    "quantity": 11
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-023",
+  "title": "Office stationery requirement",
+  "date": "2026-09-17",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "BOPP packing tape 48 mm x 65 m",
+    "hsn": "3919.10",
+    "unit": "roll",
+    "quantity": 46
+   },
+   {
+    "line": 2,
+    "description": "Staple pins 24/6 box of 1000",
+    "hsn": "8305.20",
+    "unit": "box",
+    "quantity": 1255
+   },
+   {
+    "line": 3,
+    "description": "Office scissors 8 inch",
+    "hsn": "8213.00",
+    "unit": "piece",
+    "quantity": 123
+   },
+   {
+    "line": 4,
+    "description": "Permanent marker black bullet tip",
+    "hsn": "9608.20",
+    "unit": "piece",
+    "quantity": 667
+   },
+   {
+    "line": 5,
+    "description": "Heavy-duty stapler 100 sheets",
+    "hsn": "8472.90",
+    "unit": "piece",
+    "quantity": 20
+   },
+   {
+    "line": 6,
+    "description": "Paper clips 28 mm box of 100",
+    "hsn": "8305.90",
+    "unit": "box",
+    "quantity": 173
+   },
+   {
+    "line": 7,
+    "description": "Notebook ruled A4 172 pages",
+    "hsn": "4820.20",
+    "unit": "piece",
+    "quantity": 101
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-024",
+  "title": "IT hardware requirement",
+  "date": "2026-08-20",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Laptop Core i5 16GB 512GB SSD 14-inch",
+    "hsn": "8471.30",
+    "unit": "piece",
+    "quantity": 5
+   },
+   {
+    "line": 2,
+    "description": "Pen drive 64GB USB 3.0",
+    "hsn": "8523.51",
+    "unit": "piece",
+    "quantity": 62
+   },
+   {
+    "line": 3,
+    "description": "External HDD 2TB USB 3.0",
+    "hsn": "8471.70",
+    "unit": "piece",
+    "quantity": 26
+   },
+   {
+    "line": 4,
+    "description": "Desktop CPU cabinet Core i5 8GB 512GB",
+    "hsn": "8471.50",
+    "unit": "piece",
+    "quantity": 13
+   },
+   {
+    "line": 5,
+    "description": "Laser printer monochrome A4 duplex",
+    "hsn": "8443.32",
+    "unit": "piece",
+    "quantity": 15
+   },
+   {
+    "line": 6,
+    "description": "SSD 512GB SATA 2.5-inch",
+    "hsn": "8523.51",
+    "unit": "piece",
+    "quantity": 15
+   },
+   {
+    "line": 7,
+    "description": "Toner cartridge black laser",
+    "hsn": "8443.99",
+    "unit": "piece",
+    "quantity": 38
+   },
+   {
+    "line": 8,
+    "description": "Optical mouse USB wired",
+    "hsn": "8471.60",
+    "unit": "piece",
+    "quantity": 37
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-025",
+  "title": "Networking and CCTV requirement",
+  "date": "2026-09-17",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "Online UPS 1 kVA",
+    "hsn": "8504.40",
+    "unit": "piece",
+    "quantity": 12
+   },
+   {
+    "line": 2,
+    "description": "Webcam FHD 1080p USB",
+    "hsn": "8525.89",
+    "unit": "piece",
+    "quantity": 119
+   },
+   {
+    "line": 3,
+    "description": "Network switch 24-port gigabit managed",
+    "hsn": "8517.62",
+    "unit": "piece",
+    "quantity": 13
+   },
+   {
+    "line": 4,
+    "description": "WiFi 6 router dual band",
+    "hsn": "8517.62",
+    "unit": "piece",
+    "quantity": 18
+   },
+   {
+    "line": 5,
+    "description": "CCTV bullet camera 4MP IP",
+    "hsn": "8525.89",
+    "unit": "piece",
+    "quantity": 18
+   }
+  ]
+ },
+ {
+  "id": "RFQ-2026-026",
+  "title": "Electrical and lighting requirement",
+  "date": "2026-09-01",
+  "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+  "items": [
+   {
+    "line": 1,
+    "description": "MCCB 100A 3-pole",
+    "hsn": "8536.20",
+    "unit": "piece",
+    "quantity": 11
+   },
+   {
+    "line": 2,
+    "description": "MCB 32A single pole C curve",
+    "hsn": "8536.20",
+    "unit": "piece",
+    "quantity": 23
+   },
+   {
+    "line": 3,
+    "description": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "hsn": "8544.49",
+    "unit": "coil",
+    "quantity": 54
+   },
+   {
+    "line": 4,
+    "description": "Ceiling fan 1200 mm",
+    "hsn": "8414.51",
+    "unit": "piece",
+    "quantity": 26
+   },
+   {
+    "line": 5,
+    "description": "LED street light 90W",
+    "hsn": "9405.42",
+    "unit": "piece",
+    "quantity": 25
+   }
+  ]
+ }
+]

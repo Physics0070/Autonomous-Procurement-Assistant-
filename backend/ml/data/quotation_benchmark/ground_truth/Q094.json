@@ -1,0 +1,147 @@
+{
+ "quotation_id": "Q094",
+ "rfq_id": "RFQ-2026-019",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": "+91 98848 87441",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0766",
+ "quotation_date": "2026-09-13",
+ "quotation_date_printed": "13-09-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-13",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Water Dispenser Hot And Cold",
+   "brand": "Supra",
+   "hsn": "8418.69",
+   "quantity": 10,
+   "unit": "EA",
+   "unit_price": 9591.0,
+   "amount": 95910.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Washing machine front load 7 kg",
+   "brand": null,
+   "hsn": "8450.11",
+   "quantity": 15,
+   "unit": "Nos",
+   "unit_price": 23300.0,
+   "amount": 349500.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Split AC 1 ton 3 star",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 3,
+   "unit": "EA",
+   "unit_price": 30017.0,
+   "amount": 90051.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "RO WATER PURIFIER 10 L WALL MOUNTED",
+   "brand": "Supra",
+   "hsn": "8421.21",
+   "quantity": 10,
+   "unit": "Nos",
+   "unit_price": 9874.0,
+   "amount": 98740.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Refrigerator 190 L single door",
+   "brand": "Primea",
+   "hsn": "8418.21",
+   "quantity": 2,
+   "unit": "EA",
+   "unit_price": 13545.0,
+   "amount": 27090.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Microwave oven 25 L convection",
+   "brand": "Aerolite",
+   "hsn": "8516.50",
+   "quantity": 36,
+   "unit": "Each",
+   "unit_price": 8809.0,
+   "amount": 317124.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Split AC 1.5 ton 5 star inverter",
+   "brand": "Altron",
+   "hsn": "8415.10",
+   "quantity": 5,
+   "unit": "EA",
+   "unit_price": 37246.0,
+   "amount": 186230.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1164645.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 210086.1,
+  "total": 210086.1
+ },
+ "grand_total": 1377231.1,
+ "computed_grand_total": 1377231.1,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": "12 months",
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Packing and forwarding charges extra at 2%."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  8
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/UlmarTradingCo_quotation_PI-0766_94.pdf",
+ "supplier_id": "S23",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,179 @@
+{
+ "text": {
+  "supplier": {
+   "name": "VeltraIndustries",
+   "email": null,
+   "phone": "+919249955669",
+   "gst_number": null,
+   "address": "Office28,UdyogNagar,Gurugram-122531,Haryana"
+  },
+  "quotation": {
+   "reference": "SQ/26/0914",
+   "date": "06/10/2026",
+   "validity": "16/10/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "WhiteboardmarkerblackHSN:9608.20",
+    "quantity": 100.0,
+    "unit": "Dozen",
+    "unit_price": 308.0,
+    "gst_percentage": null,
+    "total_price": 30800.0,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "Lever arch fileA475mmHSN:4820.30",
+    "quantity": 166.0,
+    "unit": "Each",
+    "unit_price": 123.0,
+    "gst_percentage": null,
+    "total_price": 20418.0,
+    "attributes": {
+     "HSN": "4820.30"
+    }
+   },
+   {
+    "original_name": "PERMANENTMARKERBLACKBULLETTIPHSN:9608.20",
+    "quantity": 16.0,
+    "unit": "Dozen",
+    "unit_price": 358.0,
+    "gst_percentage": null,
+    "total_price": 5728.0,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": null,
+    "quantity": 3.0,
+    "unit": "Dozen",
+    "unit_price": 849.0,
+    "gst_percentage": null,
+    "total_price": 2547.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 59493.0,
+   "tax_amount": 10708.74,
+   "tax_percentage": 18.0,
+   "total_amount": 70201.74,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within3days",
+   "payment_terms": "25%advance,balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transport_charges": "included",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 816,
+     "prompt_tokens": 1454,
+     "total_tokens": 2270
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:39:23.779369+00:00",
+  "notes": [
+   "OCR output for item 1 total price was 30.800.00, interpreted as 30800.00",
+   "Item 4 has no description in the source text"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Veltra Industries",
+   "email": null,
+   "phone": "+91 92499 55669",
+   "gst_number": null,
+   "address": "Office 28, Udyog Nagar, Gurugram - 122531, Haryana"
+  },
+  "quotation": {
+   "reference": "SQ/26/0914",
+   "date": "06/10/2026",
+   "validity": "16/10/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Whiteboard marker black HSN:9608.20",
+    "quantity": 100.0,
+    "unit": "Dozen",
+    "unit_price": 308.0,
+    "gst_percentage": null,
+    "total_price": 30800.0,
+    "attributes": {
+     "#": "1"
+    }
+   },
+   {
+    "original_name": "Lever arch file A4 75 mm HSN:4820.30",
+    "quantity": 166.0,
+    "unit": "Each",
+    "unit_price": 123.0,
+    "gst_percentage": null,
+    "total_price": 20418.0,
+    "attributes": {
+     "#": "2"
+    }
+   },
+   {
+    "original_name": "PERMANENT MARKER BLACK BULLET TIP HSN:9608.20",
+    "quantity": 16.0,
+    "unit": "Dozen",
+    "unit_price": 358.0,
+    "gst_percentage": null,
+    "total_price": 5728.0,
+    "attributes": {
+     "#": "3"
+    }
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages or equivalent HSN:4820.20",
+    "quantity": 3.0,
+    "unit": "Dozen",
+    "unit_price": 849.0,
+    "gst_percentage": null,
+    "total_price": 2547.0,
+    "attributes": {
+     "#": "4"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 59493.0,
+   "tax_amount": 10708.74,
+   "tax_percentage": 18.0,
+   "total_amount": 70201.74,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transport_charges": "included"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 46.63,
+ "source_chars": 893
+}

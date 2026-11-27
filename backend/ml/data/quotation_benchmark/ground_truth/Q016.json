@@ -1,0 +1,126 @@
+{
+ "quotation_id": "Q016",
+ "rfq_id": "RFQ-2026-004",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Rexal Industries",
+  "gstin": "06SAPHA6592E1ZM",
+  "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana",
+  "phone": "+91 93588 88619",
+  "email": null,
+  "contact_person": "Sandeep Nair"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QT/2026-27/0973",
+ "quotation_date": "2026-10-20",
+ "quotation_date_printed": "20 October 2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "MCCB 100A 3-pole",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 10,
+   "unit": "Each",
+   "unit_price": 3293.0,
+   "amount": 32930.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "MCB 32A single pole C curve",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 105,
+   "unit": "EA",
+   "unit_price": 225.0,
+   "amount": 23625.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED BULB 9W B22 COOL WHITE",
+   "brand": null,
+   "hsn": "8539.50",
+   "quantity": 104,
+   "unit": "Each",
+   "unit_price": 72.49,
+   "amount": 7538.96,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Exhaust fan 300 mm",
+   "brand": null,
+   "hsn": "8414.59",
+   "quantity": 99,
+   "unit": "Nos",
+   "unit_price": 1354.0,
+   "amount": 134046.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "HOUSE WIRE FR PVC 1.5 SQ MM COPPER 90 M",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 55,
+   "unit": "Bundle",
+   "unit_price": 1574.0,
+   "amount": 86570.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 284709.96,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 51247.79,
+  "total": 51247.79
+ },
+ "grand_total": 335957.75,
+ "computed_grand_total": 335957.75,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Ex-stock",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Please confirm the order by e-mail.",
+  "Please quote our quotation number in your purchase order."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/scans/Scan0016.pdf",
+ "supplier_id": "S20",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": 0.07,
+  "capture_quality": "good"
+ }
+}

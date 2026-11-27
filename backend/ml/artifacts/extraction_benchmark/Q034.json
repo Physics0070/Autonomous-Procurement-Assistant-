@@ -1,0 +1,86 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zephra Enterprises",
+   "email": null,
+   "phone": "+91 97794 40471",
+   "gst_number": "19BGBWT3003N1ZT",
+   "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0240",
+   "date": "24-09-26",
+   "validity": "10 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "PVC pipe 4 inch 6 kgf",
+    "quantity": 47.0,
+    "unit": "Meter",
+    "unit_price": 310.0,
+    "gst_percentage": null,
+    "total_price": 14570.0,
+    "attributes": {
+     "HSN": "3917.23"
+    }
+   },
+   {
+    "original_name": "Wall putty 20 kg",
+    "quantity": 61.0,
+    "unit": "Bag",
+    "unit_price": 931.0,
+    "gst_percentage": null,
+    "total_price": 56791.0,
+    "attributes": {
+     "HSN": "3214.90"
+    }
+   },
+   {
+    "original_name": "GI pipe 1\" medium class",
+    "quantity": 44.0,
+    "unit": "RMT",
+    "unit_price": 300.0,
+    "gst_percentage": null,
+    "total_price": 13200.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 84561.0,
+   "tax_amount": 14764.35,
+   "tax_percentage": 18.0,
+   "total_amount": 96788.52,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Kolkata; transport by buyer",
+   "delivery_time": "15 days",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "discount": "3%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 663,
+     "prompt_tokens": 1464,
+     "total_tokens": 2127
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:00:14.558632+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.65,
+ "source_chars": 1078
+}

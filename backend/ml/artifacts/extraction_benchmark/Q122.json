@@ -1,0 +1,81 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Orvik Industries",
+   "email": "sales@orvik.example",
+   "phone": "+91 94591 51022",
+   "gst_number": "07WMNMM9136C2ZF",
+   "address": "Unit 23, Station Road, New Delhi - 110168, Delhi"
+  },
+  "quotation": {
+   "reference": "QTN0404",
+   "date": "29/09/2026",
+   "validity": "29/10/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "ONLINE UPS 1 KVA",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 14148.0,
+    "gst_percentage": null,
+    "total_price": 169776.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WEBCAM FHD 1080P USB",
+    "quantity": 119.0,
+    "unit": "Each",
+    "unit_price": 1654.0,
+    "gst_percentage": null,
+    "total_price": 196826.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CCTV bullet camera 4MP IP",
+    "quantity": 18.0,
+    "unit": "EA",
+    "unit_price": 3897.0,
+    "gst_percentage": null,
+    "total_price": 70146.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 436748.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 436748.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "transit_insurance": "to be arranged by the buyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 620,
+     "prompt_tokens": 1433,
+     "total_tokens": 2053
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:04:59.482510+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 5.57,
+ "source_chars": 1061
+}

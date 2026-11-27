@@ -1,0 +1,222 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TakshaAssociates",
+   "email": "sales@taksha.cxample",
+   "phone": "+919164151640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35.Ganesh IndustrialEstate,NewDelhi-110267.Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0683",
+   "date": "07.09.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Orbix Electricchain hoist1 ton(ISV/B1S)",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 22689.0,
+    "gst_percentage": null,
+    "total_price": 249579.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo AirCompressor2Hp100 Lorequivalent",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 33342.0,
+    "gst_percentage": null,
+    "total_price": 400104.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "VeltraxPlatform scale300kg",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 10586.0,
+    "gst_percentage": null,
+    "total_price": 158790.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AltronThree-phase inductionmotor5HP1440 rpm or equivalent",
+    "quantity": 14.0,
+    "unit": "Pes",
+    "unit_price": 21955.0,
+    "gst_percentage": null,
+    "total_price": 307370.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SupraMIGWELDINGMACHINE250A",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 44893.0,
+    "gst_percentage": null,
+    "total_price": 134679.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DynexCentrifugalmonoblockpump 1HP(ISI/BIS)",
+    "quantity": 40.0,
+    "unit": "Pes",
+    "unit_price": 7691.0,
+    "gst_percentage": null,
+    "total_price": 307640.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gatevalve2inch C1 flanged",
+    "quantity": 83.0,
+    "unit": "Pes",
+    "unit_price": 2065.0,
+    "gst_percentage": null,
+    "total_price": 171395.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1729557.0,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10workingdaysfromPo",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1089,
+     "prompt_tokens": 1773,
+     "total_tokens": 2862
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:25:52.953167+00:00",
+  "notes": [
+   "OCR text contains merged numbers and punctuation errors (e.g., 2.49,579.00, 4,00.104.00). Values were parsed by removing internal punctuation where appropriate to identify the intended numeric value.",
+   "The document states 'Includes GST@18%' but also 'Rates are inclusive of GST'. The tax amount 2,63,830.73 is listed but the subtotal is not explicitly stated."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": "sales@taksha.example",
+   "phone": "+91 91641 51640",
+   "gst_number": "07KSHUS3956K2Z1",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0683",
+   "date": "07.09.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Orbix Electric chain hoist 1 ton (ISI/BIS)",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 22689.0,
+    "gst_percentage": null,
+    "total_price": 249579.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Air Compressor 2 Hp 100 L or equivalent",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 33342.0,
+    "gst_percentage": null,
+    "total_price": 400104.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax Platform scale 300 kg",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 10586.0,
+    "gst_percentage": null,
+    "total_price": 158790.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron Three-phase induction motor 5 HP 1440 rpm or equivalent",
+    "quantity": 14.0,
+    "unit": "Pcs",
+    "unit_price": 21955.0,
+    "gst_percentage": null,
+    "total_price": 307370.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra MIG WELDING MACHINE 250A",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 44893.0,
+    "gst_percentage": null,
+    "total_price": 134679.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "Pcs",
+    "unit_price": 2065.0,
+    "gst_percentage": null,
+    "total_price": 171395.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Centrifugal monoblock pump 1 HP (ISI/BIS)",
+    "quantity": 40.0,
+    "unit": "Pcs",
+    "unit_price": 7691.0,
+    "gst_percentage": null,
+    "total_price": 307640.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1729557.0,
+   "tax_amount": 263830.73,
+   "tax_percentage": 18.0,
+   "total_amount": 1729557.0,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "rates_inclusive_of_gst": "Yes"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The subtotal and total amount in the document appear to be identical, which is mathematically inconsistent with the provided tax amount."
+  ]
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 49.35,
+ "source_chars": 1284
+}

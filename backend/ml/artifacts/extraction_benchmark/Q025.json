@@ -1,0 +1,109 @@
+{
+ "text": {
+  "supplier": {
+   "name": "JORVAN SOLUTIONS",
+   "email": "sales@jorvan.example",
+   "phone": "+91 99117 33029",
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0579",
+   "date": "09.09.2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "ELECTRIC DRILL MACHINE 13 MM 650W (ISI/BIS)",
+    "quantity": 35.0,
+    "unit": "Pcs",
+    "unit_price": 4527.0,
+    "gst_percentage": null,
+    "total_price": 158445.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Open-ended spanner set 6-32mm",
+    "quantity": 12.0,
+    "unit": "Set",
+    "unit_price": 1609.0,
+    "gst_percentage": null,
+    "total_price": 19308.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Arc welding inverter 200A",
+    "quantity": 29.0,
+    "unit": "Pcs",
+    "unit_price": 13041.0,
+    "gst_percentage": null,
+    "total_price": 378189.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HSS drill bit set 1-13 mm",
+    "quantity": 63.0,
+    "unit": "Set",
+    "unit_price": 1216.0,
+    "gst_percentage": null,
+    "total_price": 76608.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Angle grinder 4-inch 850W or equivalent",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 3180.0,
+    "gst_percentage": null,
+    "total_price": 31800.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Screwdriver se t6 pcs",
+    "quantity": 27.0,
+    "unit": "Set",
+    "unit_price": 421.0,
+    "gst_percentage": null,
+    "total_price": 11367.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 675717.0,
+   "tax_amount": 103075.47,
+   "tax_percentage": 18.0,
+   "total_amount": 675717.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Gurugram; transport by buyer",
+   "delivery_time": "Immediate",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transit_insurance": "to be arranged by the buyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 891,
+     "prompt_tokens": 1896,
+     "total_tokens": 2787
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:52:27.789411+00:00",
+  "notes": [
+   "Net Payable amount in document matches Sub Total, despite GST being listed separately."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.04,
+ "source_chars": 1969
+}

@@ -1,0 +1,151 @@
+{
+ "quotation_id": "Q096",
+ "rfq_id": "RFQ-2026-020",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Marvik Enterprises",
+  "gstin": "06VMBTK0572N1Z6",
+  "address": "Unit 32, Udyog Nagar, Gurugram - 122962, Haryana",
+  "phone": "+91 99038 23267",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QT/2026-27/0039",
+ "quotation_date": "2026-09-04",
+ "quotation_date_printed": "04 September 2026",
+ "your_reference_date": "2026-08-25",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Electric chain hoist 1 ton",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "EA",
+   "unit_price": 18709.0,
+   "amount": 205799.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "AIR COMPRESSOR 2 HP 100 L (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Nos",
+   "unit_price": 25187.0,
+   "amount": 302244.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Three-phase induction motor 5 HP 1440 rpm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Each",
+   "unit_price": 17265.0,
+   "amount": 241710.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Mig Welding Machine 250A or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Nos.",
+   "unit_price": 37930.0,
+   "amount": 113790.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Gate valve 2 nich CI flanged or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 83,
+   "unit": "Each",
+   "unit_price": 1669.0,
+   "amount": 138527.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "Centrifugal Monoblock Pump 1 Hp",
+   "brand": null,
+   "hsn": null,
+   "quantity": 40,
+   "unit": "Nos",
+   "unit_price": 6053.0,
+   "amount": 242120.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 8,
+   "description": "Submersible pump 2 HP borewell",
+   "brand": null,
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Nos.",
+   "unit_price": 19802.0,
+   "amount": 277228.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1521418.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 274485.24,
+  "total": 274485.24
+ },
+ "grand_total": 1799403.24,
+ "computed_grand_total": 1799403.24,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": null,
+ "extra_notes": [
+  "Cheque/DD in favour of the company name above.",
+  "All disputes subject to local jurisdiction."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/scans/Scan0096.pdf",
+ "supplier_id": "S17",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": -0.08,
+  "capture_quality": "medium"
+ }
+}

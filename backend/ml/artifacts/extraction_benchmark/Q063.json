@@ -1,0 +1,153 @@
+{
+ "text": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": "sales@kantaro.example",
+   "phone": null,
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "GalaNo.27.Industrial AreaPhasellAhmedabad-380585,Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0284",
+   "date": "01-09-26",
+   "validity": null,
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "SSD512GBSATA2.5-inch",
+    "quantity": 30.0,
+    "unit": "Pcs",
+    "unit_price": 3576.0,
+    "gst_percentage": null,
+    "total_price": 107280.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "LAPTOPCORE1516GB512GBSSD14I-NCH",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 61047.0,
+    "gst_percentage": null,
+    "total_price": 183141.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "OpticalmouseUSBwired(ISI/BIS)",
+    "quantity": 108.0,
+    "unit": "Nos",
+    "unit_price": 272.0,
+    "gst_percentage": null,
+    "total_price": 29376.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 319797.0,
+   "tax_amount": 57563.46,
+   "tax_percentage": 18.0,
+   "total_amount": 377360.46,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": "Freedelivery at yourpremises",
+   "delivery_time": "Within3days",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1yearmanufacturerwarranty"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 657,
+     "prompt_tokens": 1429,
+     "total_tokens": 2086
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:09:49.953402+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": "sales@kantaro.example",
+   "phone": null,
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0284",
+   "date": "01-09-26",
+   "validity": null,
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 30.0,
+    "unit": "Pcs",
+    "unit_price": 3576.0,
+    "gst_percentage": null,
+    "total_price": 107280.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "LAPTOP CORE I5 16GB 512GB SSD 14I-NCH",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 61047.0,
+    "gst_percentage": null,
+    "total_price": 183141.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "Optical mouse USB wired (ISI/BIS)",
+    "quantity": 108.0,
+    "unit": "Nos",
+    "unit_price": 272.0,
+    "gst_percentage": null,
+    "total_price": 29376.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 319797.0,
+   "tax_amount": 57563.46,
+   "tax_percentage": 18.0,
+   "total_amount": 377360.46,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": "Free delivery at your premises",
+   "delivery_time": "Within 3 days",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 29.17,
+ "source_chars": 898
+}

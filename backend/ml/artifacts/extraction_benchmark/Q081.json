@@ -1,0 +1,148 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": null,
+   "phone": "+919189974538",
+   "gst_number": null,
+   "address": "Oice34MGRoadIndre-452852MahyaPrdsh"
+  },
+  "quotation": {
+   "reference": "Q-0510",
+   "date": "18.10.2026",
+   "validity": "02.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "FireextinguisherABCpowder6kg",
+    "quantity": 2.0,
+    "unit": "Each",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "NuVoN95RESPiRATORMASK",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 89.67,
+    "gst_percentage": null,
+    "total_price": 21072.45,
+    "attributes": {}
+   },
+   {
+    "original_name": null,
+    "quantity": 87.0,
+    "unit": "Nos.",
+    "unit_price": 2147.0,
+    "gst_percentage": null,
+    "total_price": 17176.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 42222.61,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 43222.61,
+   "transportation_cost": 1000.0,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10workingdays fromPO",
+   "payment_terms": "25%advance,baiance on delvery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 620,
+     "prompt_tokens": 1356,
+     "total_tokens": 1976
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:17:50.241571+00:00",
+  "notes": [
+   "OCR output is highly fragmented; item names and quantities are misaligned in the source text.",
+   "The total amount calculation in the source document appears inconsistent with the line items provided."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": null,
+   "phone": "+91 91899 74538",
+   "gst_number": null,
+   "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0510",
+   "date": "18.10.2026",
+   "validity": "02.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Supra Safety goggles clear (ISI/BIS)",
+    "quantity": 235.0,
+    "unit": "Each",
+    "unit_price": 89.67,
+    "gst_percentage": null,
+    "total_price": 21072.45,
+    "attributes": {}
+   },
+   {
+    "original_name": "Fire extinguisher ABC powder 6 kg",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 2147.0,
+    "gst_percentage": null,
+    "total_price": 17176.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo N95 RESPIRATOR MASK",
+    "quantity": 87.0,
+    "unit": "Nos.",
+    "unit_price": 45.68,
+    "gst_percentage": null,
+    "total_price": 3974.16,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 42222.61,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 43222.61,
+   "transportation_cost": 1000.0,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "buyer_gst": "27AABCS4821K1Z4"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 20.97,
+ "source_chars": 692
+}

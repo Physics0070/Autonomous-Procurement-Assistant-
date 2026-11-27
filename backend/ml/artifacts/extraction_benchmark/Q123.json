@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Wynor Mart",
+   "email": "sales@wynor.example",
+   "phone": "+91 97380 83873",
+   "gst_number": "29FPMWH0858S3ZD",
+   "address": "Gala No. 11, Sector 5, Bengaluru - 560284, Karnataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0652",
+   "date": "26-Sep-2026",
+   "validity": "06-Oct-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 12.0,
+    "unit": "Pcs",
+    "unit_price": 12749.0,
+    "gst_percentage": null,
+    "total_price": 152988.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Webcam FHD 1080p USB",
+    "quantity": 119.0,
+    "unit": "EA",
+    "unit_price": 1623.0,
+    "gst_percentage": null,
+    "total_price": 193137.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "WIFI 6 ROUTER DUAL BAND",
+    "quantity": 18.0,
+    "unit": "EA",
+    "unit_price": 4067.0,
+    "gst_percentage": null,
+    "total_price": 73206.0,
+    "attributes": {
+     "HSN": "8517.62"
+    }
+   },
+   {
+    "original_name": "CCTV bullet camera 4MP IP",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 3403.0,
+    "gst_percentage": null,
+    "total_price": 61254.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 480585.0,
+   "tax_amount": 86505.3,
+   "tax_percentage": 18.0,
+   "total_amount": 567090.3,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "transport_charges": "included",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 793,
+     "prompt_tokens": 1551,
+     "total_tokens": 2344
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:05:13.074028+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.07,
+ "source_chars": 1251
+}

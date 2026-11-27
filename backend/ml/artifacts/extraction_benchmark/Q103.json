@@ -1,0 +1,184 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": "+919358888619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21.LaxmiComplex.Gurugram-122131,Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0546",
+   "date": "24September2026",
+   "validity": "01October2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "TOILETSOAPBAR 100G[HSN3401.11]",
+    "quantity": 157.0,
+    "unit": "Each",
+    "unit_price": 111.0,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "Detergent Powder1Kg[HSN3402.20]",
+    "quantity": 191.0,
+    "unit": "Pack",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office swivel chair meshback[HSN9401.39]",
+    "quantity": 20.0,
+    "unit": "Nos.",
+    "unit_price": 4084.0,
+    "gst_percentage": null,
+    "total_price": 104800.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel fling cabinet4-drawer[HSN9403.10]",
+    "quantity": 25.0,
+    "unit": "Nos",
+    "unit_price": 4192.0,
+    "gst_percentage": null,
+    "total_price": 8888.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foam mattress 6x3ft[HSN9404.21]",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 44440.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 258134.1,
+   "tax_amount": 46527.14,
+   "tax_percentage": 18.0,
+   "total_amount": 305011.24,
+   "transportation_cost": 350.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "1yearmanufacturerwarranty"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "extra at 2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 875,
+     "prompt_tokens": 1488,
+     "total_tokens": 2363
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:27:44.885294+00:00",
+  "notes": [
+   "OCR output is highly fragmented; item table alignment is ambiguous and values may not map correctly to specific rows.",
+   "Total price for Detergent Powder is missing or merged with other values.",
+   "Unit price for Detergent Powder and Foam mattress is missing."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": "+91 93588 88619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0546",
+   "date": "24 September 2026",
+   "validity": "01 October 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "TOILET SOAP BAR 100 G [HSN 3401.11]",
+    "quantity": 157.0,
+    "unit": "Each",
+    "unit_price": 38.3,
+    "gst_percentage": null,
+    "total_price": 6013.1,
+    "attributes": {}
+   },
+   {
+    "original_name": "Detergent Powder 1 Kg [HSN 3402.20]",
+    "quantity": 191.0,
+    "unit": "Pack",
+    "unit_price": 111.0,
+    "gst_percentage": null,
+    "total_price": 21201.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office swivel chair mesh back [HSN 9401.39]",
+    "quantity": 20.0,
+    "unit": "Nos.",
+    "unit_price": 4084.0,
+    "gst_percentage": null,
+    "total_price": 81680.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foam mattress 6x3 ft [HSN 9404.21]",
+    "quantity": 25.0,
+    "unit": "Nos.",
+    "unit_price": 4192.0,
+    "gst_percentage": null,
+    "total_price": 104800.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel filing cabinet 4-drawer [HSN 9403.10]",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 8888.0,
+    "gst_percentage": null,
+    "total_price": 44440.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 258134.1,
+   "tax_amount": 46527.14,
+   "tax_percentage": 18.0,
+   "total_amount": 305011.24,
+   "transportation_cost": 350.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "extra at 2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 25.1,
+ "source_chars": 1001
+}

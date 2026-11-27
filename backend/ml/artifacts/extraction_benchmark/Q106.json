@@ -1,0 +1,145 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ArvantaTradingCo.",
+   "email": null,
+   "phone": "+919189974538",
+   "gst_number": null,
+   "address": "Office34,MGRoadIndore-452852,MadhyaPradesh"
+  },
+  "quotation": {
+   "reference": "Q-0613",
+   "date": "24.09.2026",
+   "validity": null,
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "ltem",
+    "quantity": 8.0,
+    "unit": "Nos",
+    "unit_price": 13299.0,
+    "gst_percentage": null,
+    "total_price": 106392.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubularinverterbattery12V150Ah",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 12766.0,
+    "gst_percentage": null,
+    "total_price": 38298.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OnlineUPS1kVA",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 289.0,
+    "gst_percentage": null,
+    "total_price": 3179.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DynexAlkalineAAbatterypackof10",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 147869.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 147869.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Indore:transport by buyer",
+   "delivery_time": "3weeks",
+   "payment_terms": "25%advance,balance ondelivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "queue_time": 0.286981308,
+     "prompt_tokens": 1303,
+     "prompt_time": 0.12331625,
+     "completion_tokens": 741,
+     "completion_time": 0.792568279,
+     "total_tokens": 2044,
+     "total_time": 0.915884529,
+     "completion_tokens_details": {
+      "reasoning_tokens": 391
+     }
+    }
+   }
+  },
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "extracted_at": "2026-11-27T16:57:57.965716+00:00",
+  "notes": [
+   "OCR error: 'ltem' likely 'Item'; last line lacks quantity and unit price"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": null,
+   "phone": "+91 91989 745358",
+   "gst_number": "27AABCS4821K24",
+   "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0613",
+   "date": "24.09.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Tubular Inverter battery 12V 150Ah",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 289.0,
+    "gst_percentage": null,
+    "total_price": 1.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1.0,
+   "tax_amount": 1.0,
+   "tax_percentage": 18.0,
+   "total_amount": 1.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "notes": "The table structure is ambiguous; quantity/rate determination based on whole number/decimal rule was applied. The column headers in the image are not clearly labeled for all columns."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The image quality makes precise extraction of all numerical values and column headers difficult. The quantity/rate determination rule was applied based on the values present in the table."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 24.48,
+ "source_chars": 708
+}

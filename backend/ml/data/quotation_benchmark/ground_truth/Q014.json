@@ -1,0 +1,111 @@
+{
+ "quotation_id": "Q014",
+ "rfq_id": "RFQ-2026-003",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Wynor Mart",
+  "gstin": "29FPMWH0858S3ZD",
+  "address": "Gala No. 11, Sector 5, Bengaluru - 560284, Karnataka",
+  "phone": null,
+  "email": "sales@wynor.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0140",
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25-Oct-2026",
+ "your_reference_date": "2026-10-11",
+ "validity_days": null,
+ "valid_until": "2026-11-04",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Cat6 Utp Cable 305 M Box",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 5,
+   "unit": "Box",
+   "unit_price": 5589.0,
+   "amount": 27945.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "CCTV dome camera 2MP IP",
+   "brand": null,
+   "hsn": "8525.89",
+   "quantity": 40,
+   "unit": "Pcs",
+   "unit_price": 2489.0,
+   "amount": 99560.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Online UPS 1 kVA (ISI/BIS)",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 12,
+   "unit": "Each",
+   "unit_price": 12921.0,
+   "amount": 155052.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Line interactive UPS 650 VA (ISI/BIS)",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 31,
+   "unit": "EA",
+   "unit_price": 2742.0,
+   "amount": 85002.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 367559.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 1500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 66430.62,
+  "total": 66430.62
+ },
+ "grand_total": 435489.62,
+ "computed_grand_total": 435489.62,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": "24 months",
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Installation and commissioning not included."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/WynorMart_quotation_SQ-26-0140_14.pdf",
+ "supplier_id": "S25",
+ "capture": {
+  "pages": 1
+ }
+}

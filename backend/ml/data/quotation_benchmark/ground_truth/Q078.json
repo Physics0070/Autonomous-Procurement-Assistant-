@@ -1,0 +1,96 @@
+{
+ "quotation_id": "Q078",
+ "rfq_id": "RFQ-2026-016",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Rexal Industries",
+  "gstin": "06SAPHA6592E1ZM",
+  "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QT/2026-27/0612",
+ "quotation_date": "2026-10-18",
+ "quotation_date_printed": "18 October 2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-25",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Open-ended spanner set 6-32 mm",
+   "brand": null,
+   "hsn": "8204.11",
+   "quantity": 22,
+   "unit": "Set",
+   "unit_price": 1104.0,
+   "amount": 24288.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Screwdriver set 6 pcs (ISI/BIS)",
+   "brand": null,
+   "hsn": "8205.40",
+   "quantity": 76,
+   "unit": "Set",
+   "unit_price": 334.0,
+   "amount": 25384.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Angle grinder 4-inch 850 Wor equivalent",
+   "brand": null,
+   "hsn": "8467.29",
+   "quantity": 33,
+   "unit": "Pcs",
+   "unit_price": 2516.0,
+   "amount": 83028.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 132700.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 23886.0,
+  "total": 23886.0
+ },
+ "grand_total": 156586.0,
+ "computed_grand_total": 156586.0,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "supplier_phone"
+ ],
+ "source_file": "documents/excel/RateQuote_RexalIndustries_rev1_78.xlsx",
+ "supplier_id": "S20",
+ "capture": {}
+}

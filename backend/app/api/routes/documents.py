@@ -10,6 +10,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, UploadFile, status
 
 from app.api.deps import CurrentUser, quotation_repo, storage
+from app.core.config import settings
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import ProcessingStatus, SourceType
 from app.schemas.quotation import QuotationUploadResponse
@@ -30,7 +31,8 @@ async def upload_document(
     quotations: QuotationRepository = Depends(quotation_repo),
     store: StorageBackend = Depends(storage),
 ) -> QuotationUploadResponse:
-    data = await file.read()
+    # Read at most one byte past the limit: an oversized file is refused without ever being held in memory whole.
+    data = await file.read(settings.MAX_UPLOAD_SIZE_MB * 1024 * 1024 + 1)
     quotation = await ingest_document(
         IngestionPayload(
             data=data,

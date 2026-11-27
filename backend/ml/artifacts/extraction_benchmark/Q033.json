@@ -1,0 +1,146 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": "saesdak.eamgi",
+   "phone": "+919780340496",
+   "gst_number": "OSHALEETI04G1ZP",
+   "address": "Cfice46,H-TechPak.Jaipur-302247,Raja"
+  },
+  "quotation": {
+   "reference": "50:280601",
+   "date": "05-Oc1-2026",
+   "validity": "45 days hom he date ofqaotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "PVCpipe4inch6kgl",
+    "quantity": 47.0,
+    "unit": "RMT",
+    "unit_price": 267.0,
+    "gst_percentage": null,
+    "total_price": 12549.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Acryflicemusionpaintinerior20 L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 6673.0,
+    "gst_percentage": null,
+    "total_price": 133460.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "GIPIPE1INCHMEDIUMCUASS",
+    "quantity": 44.0,
+    "unit": "Meter",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 10340.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 156349.0,
+   "tax_amount": 28502.82,
+   "tax_percentage": 18.0,
+   "total_amount": 186851.82,
+   "transportation_cost": 2000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 665,
+     "prompt_tokens": 1387,
+     "total_tokens": 2052
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:33:06.375594+00:00",
+  "notes": [
+   "OCR errors present in supplier address, email, date, and item descriptions.",
+   "Total amount in document appears to have a typo 'HE1,86,85182' which was interpreted as 186851.82."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": "sales@davik.example",
+   "phone": "+91 97803 40496",
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0601",
+   "date": "05-Oct-2026",
+   "validity": "45 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "PVC pipe 4 inch 6 kgf",
+    "quantity": 47.0,
+    "unit": "RMT",
+    "unit_price": 267.0,
+    "gst_percentage": null,
+    "total_price": 12549.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Acrylic emulsion paint interior 20 L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 6673.0,
+    "gst_percentage": null,
+    "total_price": 133460.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "GI PIPE 1 INCH MEDIUM CLASS",
+    "quantity": 44.0,
+    "unit": "Meter",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 10340.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 156349.0,
+   "tax_amount": 28502.82,
+   "tax_percentage": 18.0,
+   "total_amount": 186851.82,
+   "transportation_cost": 2000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "prepared_for": "Sahyadri Industrial Services Pvt. Ltd."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 16.36,
+ "source_chars": 713
+}

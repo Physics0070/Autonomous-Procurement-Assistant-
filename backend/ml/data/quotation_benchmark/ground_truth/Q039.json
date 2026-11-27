@@ -1,0 +1,140 @@
+{
+ "quotation_id": "Q039",
+ "rfq_id": "RFQ-2026-008",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Vexel Mart",
+  "gstin": "27TKJAD7029E1ZN",
+  "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra",
+  "phone": "+91 97895 72146",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": null,
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25-Oct-2026",
+ "your_reference_date": "2026-10-14",
+ "validity_days": null,
+ "valid_until": "2026-11-09",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Refrigerator 190 L single door",
+   "brand": null,
+   "hsn": "8418.21",
+   "quantity": 3,
+   "unit": "Nos.",
+   "unit_price": 15602.0,
+   "amount": 46806.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Split AC 1 ton 3 star",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 5,
+   "unit": "Pcs",
+   "unit_price": 38088.0,
+   "amount": 190440.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Water dispenser hot and cold",
+   "brand": null,
+   "hsn": "8418.69",
+   "quantity": 9,
+   "unit": "Nos.",
+   "unit_price": 12618.0,
+   "amount": 113562.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "RO water purifier 10 L wall mounted",
+   "brand": null,
+   "hsn": "8421.21",
+   "quantity": 13,
+   "unit": "Pcs",
+   "unit_price": 13948.0,
+   "amount": 181324.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "STORAGE WATER HEATER 25 L or equivalent",
+   "brand": null,
+   "hsn": "8516.10",
+   "quantity": 38,
+   "unit": "Nos",
+   "unit_price": 8264.0,
+   "amount": 314032.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "Split AC 1.5 ton 5 star inverter",
+   "brand": null,
+   "hsn": "8415.10",
+   "quantity": 4,
+   "unit": "Each",
+   "unit_price": 49146.0,
+   "amount": 196584.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1042748.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 1042748.0,
+ "computed_grand_total": 1042748.0,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Rates valid for the quantities mentioned only.",
+  "Cheque/DD in favour of the company name above.",
+  "Test certificate will be provided on request.",
+  "Special discount of 3% on orders above Rs. 1,00,000."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "quotation_number"
+ ],
+ "source_file": "documents/pdf/VexelMart_quotation_NA_39.pdf",
+ "supplier_id": "S24",
+ "capture": {
+  "pages": 1
+ }
+}

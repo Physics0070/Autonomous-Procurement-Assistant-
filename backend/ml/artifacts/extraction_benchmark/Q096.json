@@ -1,0 +1,218 @@
+{
+ "text": {
+  "supplier": {
+   "name": "MARVIKENTERPRISES",
+   "email": null,
+   "phone": "+919903823267",
+   "gst_number": "06VMBTK0572N1Z6",
+   "address": "Unit 32.UdyogNagar,Gurugram-122962.Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0039",
+   "date": "04September2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electricchain hoistIton",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 18709.0,
+    "gst_percentage": null,
+    "total_price": 205799.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AIRCOMPRESSOR2HP100L(ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 25187.0,
+    "gst_percentage": null,
+    "total_price": 302244.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Three-phase inductionmotor5HP1440rpm",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 17265.0,
+    "gst_percentage": null,
+    "total_price": 241710.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MigWeldingMachine 250A or cquivalent",
+    "quantity": 3.0,
+    "unit": "Nos.",
+    "unit_price": 37930.0,
+    "gst_percentage": null,
+    "total_price": 113790.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2nich CIflanged or cquivalent",
+    "quantity": 83.0,
+    "unit": "Each",
+    "unit_price": 1669.0,
+    "gst_percentage": null,
+    "total_price": 138527.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CentrifugalMonoblockPump1 Hp",
+    "quantity": 40.0,
+    "unit": "Nos",
+    "unit_price": 6053.0,
+    "gst_percentage": null,
+    "total_price": 242120.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Submersiblepump2HPborewell",
+    "quantity": 14.0,
+    "unit": "Nos.",
+    "unit_price": 19802.0,
+    "gst_percentage": null,
+    "total_price": 277228.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1521418.0,
+   "tax_amount": 274485.24,
+   "tax_percentage": 18.0,
+   "total_amount": 1799403.24,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6wceks",
+   "payment_terms": "50% advance,balance beforedispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1043,
+     "prompt_tokens": 1655,
+     "total_tokens": 2698
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:36:30.790706+00:00",
+  "notes": [
+   "OCR errors detected in quantity for item 1 (IIEA interpreted as 11 EA)",
+   "OCR errors detected in numeric formatting (e.g., 18.709.00 interpreted as 18709.00)"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "MARVIK ENTERPRISES",
+   "email": null,
+   "phone": "+91 99038 23267",
+   "gst_number": "06VMBTK0572N1Z6",
+   "address": "Unit 32, Udyog Nagar, Gurugram - 122962, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0039",
+   "date": "04 September 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electric chain hoist 1 ton",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 18709.0,
+    "gst_percentage": null,
+    "total_price": 205799.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AIR COMPRESSOR 2 HP 100 L (ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Nos",
+    "unit_price": 25187.0,
+    "gst_percentage": null,
+    "total_price": 302244.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Three-phase induction motor 5 HP 1440 rpm",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 17265.0,
+    "gst_percentage": null,
+    "total_price": 241710.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Mig Welding Machine 250A or equivalent",
+    "quantity": 3.0,
+    "unit": "Nos.",
+    "unit_price": 37930.0,
+    "gst_percentage": null,
+    "total_price": 113790.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2 nich CI flanged or equivalent",
+    "quantity": 83.0,
+    "unit": "Each",
+    "unit_price": 1669.0,
+    "gst_percentage": null,
+    "total_price": 138527.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Centrifugal Monoblock Pump 1 Hp",
+    "quantity": 40.0,
+    "unit": "Nos",
+    "unit_price": 6053.0,
+    "gst_percentage": null,
+    "total_price": 242120.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Submersible pump 2 HP borewell",
+    "quantity": 14.0,
+    "unit": "Nos.",
+    "unit_price": 19802.0,
+    "gst_percentage": null,
+    "total_price": 277228.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1521418.0,
+   "tax_amount": 274485.24,
+   "tax_percentage": 18.0,
+   "total_amount": 1799403.24,
+   "transportation_cost": 3500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "bank_details": "Nova Commercial Bank A/c: 76217338169 IFSC: NOVA0677538"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 39.94,
+ "source_chars": 1295
+}

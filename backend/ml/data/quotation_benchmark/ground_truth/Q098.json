@@ -1,0 +1,127 @@
+{
+ "quotation_id": "Q098",
+ "rfq_id": "RFQ-2026-020",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Nestor Mart",
+  "gstin": null,
+  "address": "Unit 35, Laxmi Complex, Bengaluru - 560378, Karnataka",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0458",
+ "quotation_date": "2026-09-05",
+ "quotation_date_printed": "05/09/2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-09-20",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Electric chain hoist 1 ton",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Nos",
+   "unit_price": 22122.0,
+   "amount": 243342.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Air compressor 2 HP 100 L",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Nos",
+   "unit_price": 26412.0,
+   "amount": 316944.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Platform scale 300 kg or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Each",
+   "unit_price": 9463.0,
+   "amount": 141945.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 6,
+   "description": "Gate valve 2 inch CI flanged",
+   "brand": null,
+   "hsn": null,
+   "quantity": 83,
+   "unit": "Pcs",
+   "unit_price": 1733.0,
+   "amount": 143839.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 7,
+   "description": "Centrifugal monoblock pump 1 HP",
+   "brand": null,
+   "hsn": null,
+   "quantity": 40,
+   "unit": "EA",
+   "unit_price": 6186.0,
+   "amount": 247440.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1093510.0,
+ "discount_percent": 2,
+ "discount_amount": 21870.2,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 192895.16,
+  "total": 192895.16
+ },
+ "grand_total": 1264534.96,
+ "computed_grand_total": 1264534.96,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "6 months",
+ "extra_notes": [
+  "Installation and commissioning not included."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4,
+  5,
+  8
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery",
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/excel/Offer_NestorMart_rev1_98.xlsx",
+ "supplier_id": "S18",
+ "capture": {}
+}

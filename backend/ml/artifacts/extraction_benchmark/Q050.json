@@ -1,0 +1,109 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": "sales@taksha.example",
+   "phone": null,
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0422",
+   "date": "06.09.2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Nuvo OFFICE SWIVEL CHAIR MESH BACK",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 4300.0,
+    "gst_percentage": null,
+    "total_price": 43000.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel almirah 2-door",
+    "quantity": 12.0,
+    "unit": "Each",
+    "unit_price": 10257.0,
+    "gst_percentage": null,
+    "total_price": 123084.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix Steel filing cabinet 4-drawer or equivalent",
+    "quantity": 31.0,
+    "unit": "Pcs",
+    "unit_price": 9691.0,
+    "gst_percentage": null,
+    "total_price": 300421.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foam Mattress 6X3 Ft",
+    "quantity": 11.0,
+    "unit": "Nos.",
+    "unit_price": 4287.0,
+    "gst_percentage": null,
+    "total_price": 47157.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Office table wooden 5x2.5ft",
+    "quantity": 21.0,
+    "unit": "Pcs",
+    "unit_price": 8463.0,
+    "gst_percentage": null,
+    "total_price": 177723.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix Toilet soap bar 100 g",
+    "quantity": 61.0,
+    "unit": "Pcs",
+    "unit_price": 39.89,
+    "gst_percentage": null,
+    "total_price": 2433.29,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 693818.29,
+   "tax_amount": 122389.55,
+   "tax_percentage": 18.0,
+   "total_amount": 802331.47,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "discount": "2%",
+   "discount_amount": 13876.37,
+   "disclaimer": "Colour/model may vary as per availability.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 904,
+     "prompt_tokens": 1598,
+     "total_tokens": 2502
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:02:47.982007+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 79.09,
+ "source_chars": 1314
+}

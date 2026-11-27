@@ -1,0 +1,261 @@
+{
+ "text": {
+  "supplier": {
+   "name": "VeltraIndustries",
+   "email": "sales@veltra.example",
+   "phone": "+919249955669",
+   "gst_number": null,
+   "address": "Office28,UdyogNagar,Gurugram-122531\uff0cHaryana"
+  },
+  "quotation": {
+   "reference": "Est.No:SQ/26/0037",
+   "date": "Dt:20/09/2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "WATERDISPENSERHOTANDCOLDHSN:8418.69",
+    "quantity": 10.0,
+    "unit": "Each",
+    "unit_price": 11424.0,
+    "gst_percentage": null,
+    "total_price": 114240.0,
+    "attributes": {
+     "HSN": "8418.69"
+    }
+   },
+   {
+    "original_name": "Washingmachinefrontload7kgHSN:8450.11",
+    "quantity": 15.0,
+    "unit": "Nos",
+    "unit_price": 31809.0,
+    "gst_percentage": null,
+    "total_price": 477135.0,
+    "attributes": {
+     "HSN": "8450.11"
+    }
+   },
+   {
+    "original_name": "SplitAC1ton3starorequivalentHSN:8415.10",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 34175.0,
+    "gst_percentage": null,
+    "total_price": 102525.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "ROwaterpurifier10LwallmountedHSN:8421.21",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 13577.0,
+    "gst_percentage": null,
+    "total_price": 135770.0,
+    "attributes": {
+     "HSN": "8421.21"
+    }
+   },
+   {
+    "original_name": "Refrigerator190LsingledoorHSN:8418.21",
+    "quantity": 2.0,
+    "unit": "Nos",
+    "unit_price": 15274.0,
+    "gst_percentage": null,
+    "total_price": 30548.0,
+    "attributes": {
+     "HSN": "8418.21"
+    }
+   },
+   {
+    "original_name": "Microwaveoven25LconvectionHSN:8516.50",
+    "quantity": 36.0,
+    "unit": "EA",
+    "unit_price": 9354.0,
+    "gst_percentage": null,
+    "total_price": 336744.0,
+    "attributes": {
+     "HSN": "8516.50"
+    }
+   },
+   {
+    "original_name": "SplitAc1.5Ton5StarInverter\uff08ISI/BIS)HSN:8415.10",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 44332.0,
+    "gst_percentage": null,
+    "total_price": 221660.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "WindowAC1.5tonHSN:8415.10",
+    "quantity": 9.0,
+    "unit": "Nos",
+    "unit_price": 36258.0,
+    "gst_percentage": null,
+    "total_price": 326322.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1744944.0,
+   "tax_amount": 314179.92,
+   "tax_percentage": 18.0,
+   "total_amount": 2059623.92,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6weeks",
+   "payment_terms": "25%advance,balanceondelivery",
+   "payment_days": null,
+   "warranty": "1yearmanufacturerwarranty"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "queue_time": 0.367011846,
+     "prompt_tokens": 1561,
+     "prompt_time": 0.089042656,
+     "completion_tokens": 1419,
+     "completion_time": 1.49344378,
+     "total_tokens": 2980,
+     "total_time": 1.582486436,
+     "completion_tokens_details": {
+      "reasoning_tokens": 742
+     }
+    },
+    "fallback": [
+     "gemini: gemini request timed out after 120s"
+    ]
+   }
+  },
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "extracted_at": "2026-11-27T16:54:33.797737+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Veltra Industries",
+   "email": null,
+   "phone": "+91 92499 55669",
+   "gst_number": null,
+   "address": "Office 28, Udyog Nagar, Gurugram - 122531, Haryana"
+  },
+  "quotation": {
+   "reference": "SQ/26/0037",
+   "date": "20/09/2020",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Water DISPENSER HOT AND COLD HSN:8418.69",
+    "quantity": 1.0,
+    "unit": "Each",
+    "unit_price": 1144.0,
+    "gst_percentage": null,
+    "total_price": 1144.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Washing machine front load 7 kg HSN:8450.11",
+    "quantity": 15.0,
+    "unit": "Nos",
+    "unit_price": 31809.0,
+    "gst_percentage": null,
+    "total_price": 477135.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Split AC 1 ton 3 star or equivalent HSN:8415.10",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 34175.0,
+    "gst_percentage": null,
+    "total_price": 102525.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "RO water purifier 10 L wall mounted HSN:8421.21",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 13577.0,
+    "gst_percentage": null,
+    "total_price": 135770.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Refrigerator 190 L single door HSN:8418.21",
+    "quantity": 2.0,
+    "unit": "Nos",
+    "unit_price": 15274.0,
+    "gst_percentage": null,
+    "total_price": 30548.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Microwave oven 25 L convection HSN:8516.50",
+    "quantity": 36.0,
+    "unit": "EA",
+    "unit_price": 9354.0,
+    "gst_percentage": null,
+    "total_price": 336744.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Split AC 1.5 Ton 5 Star Inverter (IS/BIS) HSN:8415.10",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 44332.0,
+    "gst_percentage": null,
+    "total_price": 221660.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Window AC 1.5 ton HSN:8415.10",
+    "quantity": 9.0,
+    "unit": "Nos",
+    "unit_price": 36258.0,
+    "gst_percentage": null,
+    "total_price": 326322.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1144.0,
+   "tax_amount": 1747.0,
+   "tax_percentage": 18.0,
+   "total_amount": 1444.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "1. Payment: 25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "3. Warranty: 1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "grand_total": "Rs.20,59,623.92/-"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The subtotal listed in the document (Rs.17,47,199/-) does not match the sum of the item total prices (1144 + 477135 + 102525 + 135770 + 30548 + 336744 + 221660 + 326322 = 1,631,843). The final Grand Total (Rs.20,59,623.92/-) is also inconsistent with the item totals and the listed subtotal/tax figures. The tax percentage is listed as IGST @ 18%."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 158.96,
+ "source_chars": 1254
+}

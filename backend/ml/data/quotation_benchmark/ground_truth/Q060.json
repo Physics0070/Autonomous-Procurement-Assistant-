@@ -1,0 +1,116 @@
+{
+ "quotation_id": "Q060",
+ "rfq_id": "RFQ-2026-012",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Nestor Mart",
+  "gstin": null,
+  "address": "Unit 35, Laxmi Complex, Bengaluru - 560378, Karnataka",
+  "phone": "+91 90561 68186",
+  "email": "sales@nestor.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0741",
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25/10/2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Whiteboard marker black or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 1480,
+   "unit": "Nos",
+   "unit_price": 27.15,
+   "amount": 40182.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": null,
+   "hsn": null,
+   "quantity": 71,
+   "unit": "Nos.",
+   "unit_price": 65.73,
+   "amount": 4666.83,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "BOPP packing tape 48 mmx65 m (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 174,
+   "unit": "Rl",
+   "unit_price": 74.35,
+   "amount": 12936.9,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Permanent marker black bullet tip",
+   "brand": null,
+   "hsn": null,
+   "quantity": 372,
+   "unit": "Nos",
+   "unit_price": 30.68,
+   "amount": 11412.96,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 69198.69,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 250.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 69448.69,
+ "computed_grand_total": 69448.69,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": null,
+ "extra_notes": [
+  "Stock subject to prior sale.",
+  "Cheque/DD in favour of the company name above."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  5
+ ],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/photos/IMG_20261025_080241.jpg",
+ "supplier_id": "S18",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

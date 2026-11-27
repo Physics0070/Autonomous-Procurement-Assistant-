@@ -1,0 +1,102 @@
+{
+ "quotation_id": "Q057",
+ "rfq_id": "RFQ-2026-012",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Zorvik Industries",
+  "gstin": "29RSTUC4568U3ZM",
+  "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka",
+  "phone": "+91 91877 90947",
+  "email": null,
+  "contact_person": "Rohit Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0898",
+ "quotation_date": "2026-10-26",
+ "quotation_date_printed": "26.10.2026",
+ "your_reference_date": "2026-10-17",
+ "validity_days": 15,
+ "valid_until": "2026-11-10",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "WHITEBOARD MARKER BLACK",
+   "brand": null,
+   "hsn": null,
+   "quantity": 124,
+   "unit": "Dozen",
+   "unit_price": 346.0,
+   "amount": 42904.0,
+   "pack_size": 12
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "BOPP packing tape 48 mm x 65 m (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 174,
+   "unit": "Nos",
+   "unit_price": 95.87,
+   "amount": 16681.38,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 5,
+   "description": "Glue stick 15 g",
+   "brand": null,
+   "hsn": null,
+   "quantity": 16,
+   "unit": "Dozen",
+   "unit_price": 412.0,
+   "amount": 6592.0,
+   "pack_size": 12
+  }
+ ],
+ "subtotal": 66177.38,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 10094.85
+ },
+ "grand_total": 69677.38,
+ "computed_grand_total": 69677.38,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": "6 months",
+ "extra_notes": [
+  "Please confirm the order by e-mail.",
+  "Goods once sold will not be taken back."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  2,
+  4
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20261026_163510.jpg",
+ "supplier_id": "S27",
+ "capture": {
+  "quality": "poor",
+  "perspective_tilt": 0.16,
+  "capture_quality": "poor"
+ }
+}

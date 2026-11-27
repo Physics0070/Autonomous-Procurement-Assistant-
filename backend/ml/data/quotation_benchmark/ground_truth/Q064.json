@@ -1,0 +1,127 @@
+{
+ "quotation_id": "Q064",
+ "rfq_id": "RFQ-2026-013",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Zephra Enterprises",
+  "gstin": null,
+  "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal",
+  "phone": "+91 97794 40471",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0097",
+ "quotation_date": "2026-08-26",
+ "quotation_date_printed": "26-08-26",
+ "your_reference_date": null,
+ "validity_days": 7,
+ "valid_until": "2026-09-02",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": "8523.51",
+   "quantity": 30,
+   "unit": "Nos.",
+   "unit_price": 4718.0,
+   "amount": 141540.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Laptop Core i5 16GB 512GB SSD 14-inch or equivalent",
+   "brand": "Supra",
+   "hsn": "8471.30",
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 73829.0,
+   "amount": 221487.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "USB wired keyboard",
+   "brand": "Veltrax",
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Each",
+   "unit_price": 579.0,
+   "amount": 62532.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "LED MONITOR 24-INCH IPS (ISI/BIS)",
+   "brand": "Orbix",
+   "hsn": "8528.52",
+   "quantity": 8,
+   "unit": "Nos.",
+   "unit_price": 12495.0,
+   "amount": 99960.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Optical mouse USB wired (ISI/BIS)",
+   "brand": null,
+   "hsn": "8471.60",
+   "quantity": 108,
+   "unit": "Pcs",
+   "unit_price": 310.0,
+   "amount": 33480.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 558999.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 558999.0,
+ "computed_grand_total": 558999.0,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": null,
+ "extra_notes": [
+  "Stock subject to prior sale.",
+  "Rates valid for the quantities mentioned only.",
+  "Please confirm the order by e-mail.",
+  "Warranty as per manufacturer's terms.",
+  "Packing and forwarding charges extra at 2%.",
+  "Please quote our quotation number in your purchase order."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/ZephraEnterprises_quotation_Q-0097_64.pdf",
+ "supplier_id": "S04",
+ "capture": {
+  "pages": 1
+ }
+}

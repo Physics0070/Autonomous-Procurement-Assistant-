@@ -1,0 +1,106 @@
+{
+ "quotation_id": "Q122",
+ "rfq_id": "RFQ-2026-025",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Orvik Industries",
+  "gstin": "07WMNMM9136C2ZF",
+  "address": "Unit 23, Station Road, New Delhi - 110168, Delhi",
+  "phone": "+91 94591 51022",
+  "email": "sales@orvik.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "QTN0404",
+ "quotation_date": "2026-09-29",
+ "quotation_date_printed": "29/09/2026",
+ "your_reference_date": "2026-09-17",
+ "validity_days": null,
+ "valid_until": "2026-10-29",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "ONLINE UPS 1 KVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "EA",
+   "unit_price": 14148.0,
+   "amount": 169776.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "WEBCAM FHD 1080P USB",
+   "brand": null,
+   "hsn": null,
+   "quantity": 119,
+   "unit": "Each",
+   "unit_price": 1654.0,
+   "amount": 196826.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 5,
+   "description": "CCTV bullet camera 4MP IP",
+   "brand": null,
+   "hsn": null,
+   "quantity": 18,
+   "unit": "EA",
+   "unit_price": 3897.0,
+   "amount": 70146.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 436748.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 436748.0,
+ "computed_grand_total": 436748.0,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Alternate make available on request.",
+  "Transit insurance to be arranged by the buyer.",
+  "Please confirm the order by e-mail.",
+  "Stock subject to prior sale."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3,
+  4
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery"
+ ],
+ "source_file": "documents/pdf/OrvikIndustries_quotation_QTN0404_122.pdf",
+ "supplier_id": "S01",
+ "capture": {
+  "pages": 1
+ }
+}

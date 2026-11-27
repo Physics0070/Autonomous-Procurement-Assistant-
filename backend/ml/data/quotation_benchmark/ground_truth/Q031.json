@@ -1,0 +1,114 @@
+{
+ "quotation_id": "Q031",
+ "rfq_id": "RFQ-2026-007",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Tandor Systems",
+  "gstin": "08JSCHC9725E3Z2",
+  "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan",
+  "phone": "+91 90124 21158",
+  "email": null,
+  "contact_person": "Rohit Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0819",
+ "quotation_date": "2026-09-30",
+ "quotation_date_printed": "30 September 2026",
+ "your_reference_date": null,
+ "validity_days": 30,
+ "valid_until": "2026-10-30",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Pvc Pipe 4 Inch 6 Kgf",
+   "brand": null,
+   "hsn": null,
+   "quantity": 47,
+   "unit": "Meter",
+   "unit_price": 297.0,
+   "amount": 13959.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Acrylic emulsion paint interior 20 L",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "Drum",
+   "unit_price": 7252.0,
+   "amount": 145040.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Wall putty 20 kg",
+   "brand": null,
+   "hsn": null,
+   "quantity": 61,
+   "unit": "Nos",
+   "unit_price": 877.0,
+   "amount": 53497.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "GI pipe 1 inch medium class",
+   "brand": null,
+   "hsn": null,
+   "quantity": 44,
+   "unit": "Meter",
+   "unit_price": 264.0,
+   "amount": 11616.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 224112.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 1000.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 40520.16,
+  "total": 40520.16
+ },
+ "grand_total": 265632.16,
+ "computed_grand_total": 265632.16,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [
+  "Installation and commissioning not included.",
+  "Packing and forwarding charges extra at 2%."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery"
+ ],
+ "source_file": "documents/scans/Scan0031.pdf",
+ "supplier_id": "S22",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": 1.25,
+  "capture_quality": "medium"
+ }
+}

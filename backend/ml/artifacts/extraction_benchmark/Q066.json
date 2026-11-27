@@ -1,0 +1,98 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": null,
+   "phone": "+91 91641 51640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0892",
+   "date": "31.10.2026",
+   "validity": "15.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "HDMI cable 3 m (ISI/BIS)",
+    "quantity": 96.0,
+    "unit": "Each",
+    "unit_price": 248.0,
+    "gst_percentage": null,
+    "total_price": 23808.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WiFi 6 router dual band",
+    "quantity": 32.0,
+    "unit": "Nos",
+    "unit_price": 4278.0,
+    "gst_percentage": null,
+    "total_price": 136896.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra Webcam Fhd 1080P Usb",
+    "quantity": 87.0,
+    "unit": "Pcs",
+    "unit_price": 1759.0,
+    "gst_percentage": null,
+    "total_price": 153033.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron Cat6 UTP cable 305 m box",
+    "quantity": 22.0,
+    "unit": "Box",
+    "unit_price": 6694.0,
+    "gst_percentage": null,
+    "total_price": 147268.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix NETWORK SWITCH 24-PORT GIGABIT MANAGED (ISI/BIS)",
+    "quantity": 14.0,
+    "unit": "Pcs",
+    "unit_price": 16491.0,
+    "gst_percentage": null,
+    "total_price": 230874.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 691879.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 691879.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 811,
+     "prompt_tokens": 1527,
+     "total_tokens": 2338
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:10:19.168310+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.77,
+ "source_chars": 1219
+}

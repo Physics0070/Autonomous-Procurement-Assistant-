@@ -1,0 +1,118 @@
+{
+ "quotation_id": "Q108",
+ "rfq_id": "RFQ-2026-022",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Zephra Enterprises",
+  "gstin": "19BGBWT3003N1ZT",
+  "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal",
+  "phone": "+91 97794 40471",
+  "email": "sales@zephra.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0849",
+ "quotation_date": "2026-09-22",
+ "quotation_date_printed": "22-09-26",
+ "your_reference_date": "2026-09-18",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Line Interactive Usp 650 Va",
+   "brand": "Zenmark",
+   "hsn": "8504.40",
+   "quantity": 5,
+   "unit": "Pcs",
+   "unit_price": 3270.0,
+   "amount": 16350.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "SMF VRLA battery 12V 7Ah",
+   "brand": null,
+   "hsn": "8507.20",
+   "quantity": 18,
+   "unit": "Pcs",
+   "unit_price": 928.0,
+   "amount": 16704.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "ONLINE UPS 1 KVA (ISI/BIS)",
+   "brand": "Aerolite",
+   "hsn": "8504.40",
+   "quantity": 3,
+   "unit": "Each",
+   "unit_price": 15847.0,
+   "amount": 47541.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Alkaline AA battery pack of 10",
+   "brand": null,
+   "hsn": "8506.10",
+   "quantity": 11,
+   "unit": "Pkt",
+   "unit_price": 288.0,
+   "amount": 3168.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 83763.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 350.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 15140.34,
+  "total": 15140.34
+ },
+ "grand_total": 100253.34,
+ "computed_grand_total": 99253.34,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Within 7 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 7,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [
+  {
+   "type": "grand_total_mismatch",
+   "computed": 99253.34,
+   "printed": 100253.34
+  }
+ ],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/photos/IMG_20260922_184035.jpg",
+ "supplier_id": "S04",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": "sales@mirel.example",
+   "phone": null,
+   "gst_number": "08CUPRB4795P3ZH",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302622, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0690",
+   "date": "02/10/2026",
+   "validity": "10 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "PVC PIPE 4 INCH 6 KGF HSN:3917.23",
+    "quantity": 47.0,
+    "unit": "Meter",
+    "unit_price": 351.0,
+    "gst_percentage": null,
+    "total_price": 16497.0,
+    "attributes": {
+     "HSN": "3917.23"
+    }
+   },
+   {
+    "original_name": "Acrylic emulsion paint interior 20 L HSN:3209.10",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 10000.0,
+    "gst_percentage": null,
+    "total_price": 200000.0,
+    "attributes": {
+     "HSN": "3209.10"
+    }
+   },
+   {
+    "original_name": "Wall putty 20 kg or equivalent HSN:3214.90",
+    "quantity": 61.0,
+    "unit": "Bags",
+    "unit_price": 1111.0,
+    "gst_percentage": null,
+    "total_price": 67771.0,
+    "attributes": {
+     "HSN": "3214.90"
+    }
+   },
+   {
+    "original_name": "Gi Pipe 1 Inch Medium Class HSN:7306.30",
+    "quantity": 44.0,
+    "unit": "Meter",
+    "unit_price": 337.0,
+    "gst_percentage": null,
+    "total_price": 14828.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 299096.0,
+   "tax_amount": 45624.81,
+   "tax_percentage": 18.0,
+   "total_amount": 299446.0,
+   "transportation_cost": 350.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Ex-stock",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 813,
+     "prompt_tokens": 1712,
+     "total_tokens": 2525
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:00:18.825811+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.71,
+ "source_chars": 1501
+}

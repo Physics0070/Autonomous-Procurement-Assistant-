@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zephra Enterprises",
+   "email": "sales@zephra.example",
+   "phone": "+91 97794 40471",
+   "gst_number": "19BGBWT3003N1ZT",
+   "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0876",
+   "date": "2026-09-30T00:00:00",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Veltrax Whiteboard marker black or equivalent",
+    "quantity": 1193.0,
+    "unit": "EA",
+    "unit_price": 33.76,
+    "gst_percentage": null,
+    "total_price": 40275.68,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "Orbix Lever arch file A4 75 mm",
+    "quantity": 166.0,
+    "unit": "Nos",
+    "unit_price": 155.0,
+    "gst_percentage": null,
+    "total_price": 25730.0,
+    "attributes": {
+     "HSN": "4820.30"
+    }
+   },
+   {
+    "original_name": "Permanent marker black bullet tip or equivalent",
+    "quantity": 192.0,
+    "unit": "Nos.",
+    "unit_price": 40.83,
+    "gst_percentage": null,
+    "total_price": 7839.36,
+    "attributes": {
+     "HSN": "9608.20"
+    }
+   },
+   {
+    "original_name": "Zenmark Notebook Ruled A4 172 Pages",
+    "quantity": 32.0,
+    "unit": "Each",
+    "unit_price": 95.64,
+    "gst_percentage": null,
+    "total_price": 3060.48,
+    "attributes": {
+     "HSN": "4820.20"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 76905.52,
+   "tax_amount": 11731.35,
+   "tax_percentage": 18.0,
+   "total_amount": 77905.52,
+   "transportation_cost": 1000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Ex-stock",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "customer": "Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 796,
+     "prompt_tokens": 1931,
+     "total_tokens": 2727
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:39:34.784521+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 45.52,
+ "source_chars": 2024
+}

@@ -1,0 +1,165 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TandorSystems",
+   "email": null,
+   "phone": "+919012421158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "GalaNo.27.Hi-TechPark,Jaipur-302548,Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0819",
+   "date": "30September2026",
+   "validity": "30days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "PvcPipe4Inch6Kgf",
+    "quantity": 47.0,
+    "unit": "Meter",
+    "unit_price": 297.0,
+    "gst_percentage": null,
+    "total_price": 13959.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Acrylicemulsionpaintinterior20L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 7252.0,
+    "gst_percentage": null,
+    "total_price": 145040.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Wall putty20kg",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 877.0,
+    "gst_percentage": null,
+    "total_price": 53497.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Glpipe1inchmediumclass",
+    "quantity": 44.0,
+    "unit": "Meter",
+    "unit_price": 264.0,
+    "gst_percentage": null,
+    "total_price": 11616.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 224112.0,
+   "tax_amount": 40520.16,
+   "tax_percentage": 18.0,
+   "total_amount": 265632.16,
+   "transportation_cost": 1000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1yearmanufacturerwarranty"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 759,
+     "prompt_tokens": 1425,
+     "total_tokens": 2184
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:56:44.487638+00:00",
+  "notes": [
+   "OCR error in total price for item 3: 53.497.00 interpreted as 53497.00",
+   "OCR error in IGST amount: 40.520.16 interpreted as 40520.16"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": null,
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0819",
+   "date": "30 September 2026",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Pvc Pipe 4 Inch 6 Kgf",
+    "quantity": 47.0,
+    "unit": "Meter",
+    "unit_price": 297.0,
+    "gst_percentage": null,
+    "total_price": 13959.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Acrylic emulsion paint interior 20 L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 7252.0,
+    "gst_percentage": null,
+    "total_price": 145040.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Wall putty 20 kg",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 877.0,
+    "gst_percentage": null,
+    "total_price": 53497.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "GI pipe 1 inch medium class",
+    "quantity": 44.0,
+    "unit": "Meter",
+    "unit_price": 264.0,
+    "gst_percentage": null,
+    "total_price": 11616.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 224112.0,
+   "tax_amount": 40520.16,
+   "tax_percentage": 18.0,
+   "total_amount": 265632.16,
+   "transportation_cost": 1000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "extra at 2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 36.42,
+ "source_chars": 851
+}

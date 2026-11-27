@@ -1,0 +1,117 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": null,
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0858",
+   "date": "28 September 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "BOPP packing tape 48 mm x 65 m",
+    "quantity": 46.0,
+    "unit": "Nos",
+    "unit_price": 81.77,
+    "gst_percentage": null,
+    "total_price": 3761.42,
+    "attributes": {}
+   },
+   {
+    "original_name": "Staple pins 24/6 box of 1000",
+    "quantity": 1255.0,
+    "unit": "Box",
+    "unit_price": 11.87,
+    "gst_percentage": null,
+    "total_price": 14896.85,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office scissors 8\"",
+    "quantity": 123.0,
+    "unit": "Pcs",
+    "unit_price": 84.26,
+    "gst_percentage": null,
+    "total_price": 10363.98,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip",
+    "quantity": 667.0,
+    "unit": "Pcs",
+    "unit_price": 26.99,
+    "gst_percentage": null,
+    "total_price": 18002.33,
+    "attributes": {}
+   },
+   {
+    "original_name": "Heavy-duty stapler 100 sheets",
+    "quantity": 20.0,
+    "unit": "Nos",
+    "unit_price": 424.0,
+    "gst_percentage": null,
+    "total_price": 8480.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Paper clips 28 mm box of 100 (ISI/BIS)",
+    "quantity": 173.0,
+    "unit": "Bx",
+    "unit_price": 20.31,
+    "gst_percentage": null,
+    "total_price": 3513.63,
+    "attributes": {}
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages",
+    "quantity": 101.0,
+    "unit": "Nos",
+    "unit_price": 68.84,
+    "gst_percentage": null,
+    "total_price": 6952.84,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 65971.05,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 64651.63,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "100% advance",
+   "payment_days": 0,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "discount": "2%",
+   "discount_amount": 1319.42,
+   "_usage": {
+    "usage": {
+     "completion_tokens": 979,
+     "prompt_tokens": 1861,
+     "total_tokens": 2840
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:02:39.256324+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.6,
+ "source_chars": 1755
+}

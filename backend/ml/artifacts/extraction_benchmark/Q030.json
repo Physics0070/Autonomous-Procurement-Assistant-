@@ -1,0 +1,150 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TakshaAssociates",
+   "email": null,
+   "phone": "+919164151640",
+   "gst_number": "O7KSHUS39S6K2ZI",
+   "address": "Unit35.Ganh Indril Esae.NeDehi-0267.Dehi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0759",
+   "date": "14.10.2026",
+   "validity": "13112026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Veltrax Leather safety shoesseeltoe",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 72963.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Pimea FireestinguisherABCpowder6 kg (ISL/BiS\uff09",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 10270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ZenmnkC02firecstinguisher 4.5kg",
+    "quantity": 22.0,
+    "unit": "Nos",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 231645.0,
+   "tax_amount": 40862.18,
+   "tax_percentage": 18.0,
+   "total_amount": 267874.28,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6wieks",
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount": "2%",
+   "discount_amount": 4632.9,
+   "insurance": "Transit insurance to be arangod hy thebeyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 743,
+     "prompt_tokens": 1656,
+     "total_tokens": 2399
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:56:12.856025+00:00",
+  "notes": [
+   "OCR errors in unit prices (e.g., 1.0s9.00, 2.0S400, 6.746.00) make them unreliable for extraction.",
+   "Total price for item 3 is unreadable due to OCR errors (Rs1,48.412.0y).",
+   "Total amount 267,874.28 extracted as written despite potential OCR formatting issues."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": null,
+   "phone": "+91 91641 51640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": "SQ/26/0759",
+   "date": "14.10.2026",
+   "validity": "13.11.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Veltrax Leather safety shoes steel toe",
+    "quantity": 67.0,
+    "unit": "Pair",
+    "unit_price": 1089.0,
+    "gst_percentage": null,
+    "total_price": 72963.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Fire extinguisher ABC powder 6 kg (ISI/BIS)",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 2054.0,
+    "gst_percentage": null,
+    "total_price": 10270.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Zenmark CO2 fire extinguisher 4.5 kg",
+    "quantity": 22.0,
+    "unit": "Nos",
+    "unit_price": 6746.0,
+    "gst_percentage": null,
+    "total_price": 148412.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 231645.0,
+   "tax_amount": 40862.18,
+   "tax_percentage": 18.0,
+   "total_amount": 267874.28,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "discount": "2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 35.98,
+ "source_chars": 965
+}

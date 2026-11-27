@@ -1,0 +1,122 @@
+{
+ "quotation_id": "Q056",
+ "rfq_id": "RFQ-2026-012",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Vexel Mart",
+  "gstin": "27TKJAD7029E1ZN",
+  "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra",
+  "phone": "+91 97895 72146",
+  "email": "sales@vexel.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0071",
+ "quotation_date": "2026-10-21",
+ "quotation_date_printed": "21-Oct-2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-28",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "WHITEBOARD MARKER BLACK",
+   "brand": null,
+   "hsn": "9608.20",
+   "quantity": 124,
+   "unit": "Dozen",
+   "unit_price": 313.0,
+   "amount": 38812.0,
+   "pack_size": 12
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": null,
+   "hsn": "4820.20",
+   "quantity": 8,
+   "unit": "Pkt of 10",
+   "unit_price": 729.0,
+   "amount": 5832.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "BOPP packing tape 48mm x 65 m",
+   "brand": null,
+   "hsn": "3919.10",
+   "quantity": 174,
+   "unit": "Nos",
+   "unit_price": 79.86,
+   "amount": 13895.64,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Permanent marker black bullet tip",
+   "brand": null,
+   "hsn": "9608.20",
+   "quantity": 31,
+   "unit": "Dozen",
+   "unit_price": 381.0,
+   "amount": 11811.0,
+   "pack_size": 12
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Glue stick 15 g",
+   "brand": null,
+   "hsn": "3506.10",
+   "quantity": 16,
+   "unit": "Dozen",
+   "unit_price": 327.0,
+   "amount": 5232.0,
+   "pack_size": 12
+  }
+ ],
+ "subtotal": 75582.64,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 75582.64,
+ "computed_grand_total": 75582.64,
+ "payment_terms": "30 days credit",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [
+  "We are an authorised dealer of leading brands."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/scans/Scan0056.pdf",
+ "supplier_id": "S24",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": 0.57,
+  "capture_quality": "good"
+ }
+}

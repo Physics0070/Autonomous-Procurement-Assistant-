@@ -1,0 +1,87 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Wynor Mart",
+   "email": "sales@wynor.example",
+   "phone": "+91 97380 83873",
+   "gst_number": "29FPMWH0858S3ZD",
+   "address": "Gala No. 11, Sector 5, Bengaluru - 560284, Karnataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0593",
+   "date": "07-Sep-2026",
+   "validity": "14-Sep-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 2783.0,
+    "gst_percentage": null,
+    "total_price": 30613.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "MCB 32A single pole C curve",
+    "quantity": 23.0,
+    "unit": "EA",
+    "unit_price": 195.0,
+    "gst_percentage": null,
+    "total_price": 4485.0,
+    "attributes": {
+     "HSN": "8536.20"
+    }
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sq mm copper 90 m or equivalent",
+    "quantity": 54.0,
+    "unit": "Coil",
+    "unit_price": 1365.0,
+    "gst_percentage": null,
+    "total_price": 73710.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 108808.0,
+   "tax_amount": 19585.44,
+   "tax_percentage": 18.0,
+   "total_amount": 128393.44,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Free delivery at your premises",
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000",
+   "transit_insurance": "to be arranged by the buyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 726,
+     "prompt_tokens": 1543,
+     "total_tokens": 2269
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:28:53.746323+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.05,
+ "source_chars": 1280
+}

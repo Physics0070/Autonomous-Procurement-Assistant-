@@ -1,0 +1,103 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Wynor Mart",
+   "email": "sales@wynor.example",
+   "phone": null,
+   "gst_number": "29FPMWH0858S3ZD",
+   "address": "Gala No. 11, Sector 5, Bengaluru - 560284, Karnataka"
+  },
+  "quotation": {
+   "reference": "SQ/26/0140",
+   "date": "25-Oct-2026",
+   "validity": "04-Nov-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cat6 Utp Cable 305 M Box",
+    "quantity": 5.0,
+    "unit": "Box",
+    "unit_price": 5589.0,
+    "gst_percentage": null,
+    "total_price": 27945.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "CCTV dome camera 2MP IP",
+    "quantity": 40.0,
+    "unit": "Pcs",
+    "unit_price": 2489.0,
+    "gst_percentage": null,
+    "total_price": 99560.0,
+    "attributes": {
+     "HSN": "8525.89"
+    }
+   },
+   {
+    "original_name": "Online UPS 1 kVA (ISI/BIS)",
+    "quantity": 12.0,
+    "unit": "Each",
+    "unit_price": 12921.0,
+    "gst_percentage": null,
+    "total_price": 155052.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA (ISI/BIS)",
+    "quantity": 31.0,
+    "unit": "EA",
+    "unit_price": 2742.0,
+    "gst_percentage": null,
+    "total_price": 85002.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 367559.0,
+   "tax_amount": 66430.62,
+   "tax_percentage": 18.0,
+   "total_amount": 435489.62,
+   "transportation_cost": 1500.0,
+   "delivery_days": 4,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1546,
+     "completion_tokens": 621,
+     "total_tokens": 2167,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T15:46:07.744969+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 6.96,
+ "source_chars": 1186
+}

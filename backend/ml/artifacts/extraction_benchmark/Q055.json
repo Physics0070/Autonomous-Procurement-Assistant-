@@ -1,0 +1,160 @@
+{
+ "text": {
+  "supplier": {
+   "name": "NivoraIndustries",
+   "email": null,
+   "phone": "+919108758348",
+   "gst_number": null,
+   "address": "Unit25,LaxmiComplex,Ahmedabad-380874,Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0323",
+   "date": "31.08.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "KantoLaptop charger65WUSB-C",
+    "quantity": 95.0,
+    "unit": "Each",
+    "unit_price": 1395.0,
+    "gst_percentage": null,
+    "total_price": 132525.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "OrbixTUBULARINVERTERBATTERY12V150AH",
+    "quantity": 13.0,
+    "unit": "Pcs",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 195039.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "NuvoDieselgenerator15kVA silent",
+    "quantity": 4.0,
+    "unit": "EA",
+    "unit_price": 298406.0,
+    "gst_percentage": null,
+    "total_price": 1193624.0,
+    "attributes": {
+     "HSN": "8502.11"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1521188.0,
+   "tax_amount": 254646.87,
+   "tax_percentage": 18.0,
+   "total_amount": 1668851.71,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-stock",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": "Iyearmanufacturerwarranty"
+  },
+  "additional_attributes": {
+   "discount": "7%",
+   "discount_amount": 106483.16,
+   "_usage": {
+    "usage": {
+     "completion_tokens": 737,
+     "prompt_tokens": 1485,
+     "total_tokens": 2222
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:06:19.814796+00:00",
+  "notes": [
+   "Unit price for item 2 (Orbix TUBULAR INVERTER BATTERY) is unreadable/ambiguous in OCR output as '15.003.00'",
+   "OCR text contains merged characters and missing spaces throughout"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Nivora Industries",
+   "email": null,
+   "phone": "+91 91087 58348",
+   "gst_number": null,
+   "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0323",
+   "date": "31.08.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Kanto Laptop charger 65W USB-C",
+    "quantity": 95.0,
+    "unit": "Each",
+    "unit_price": 1395.0,
+    "gst_percentage": null,
+    "total_price": 132525.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Orbix TUBULAR INVERTER BATTERY 12V 150AH",
+    "quantity": 13.0,
+    "unit": "Pcs",
+    "unit_price": 15003.0,
+    "gst_percentage": null,
+    "total_price": 195039.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "Nuvo Diesel generator 15 kVA silent",
+    "quantity": 4.0,
+    "unit": "EA",
+    "unit_price": 298406.0,
+    "gst_percentage": null,
+    "total_price": 1193624.0,
+    "attributes": {
+     "HSN": "8502.11"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1521188.0,
+   "tax_amount": 254646.87,
+   "tax_percentage": 18.0,
+   "total_amount": 1668851.71,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-stock",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "discount": "7%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 36.06,
+ "source_chars": 935
+}

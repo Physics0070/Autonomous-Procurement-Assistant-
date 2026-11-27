@@ -1,0 +1,111 @@
+{
+ "quotation_id": "Q059",
+ "rfq_id": "RFQ-2026-012",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Rexal Industries",
+  "gstin": "06SAPHA6592E1ZM",
+  "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana",
+  "phone": "+91 93588 88619",
+  "email": "sales@rexal.example",
+  "contact_person": "Sandeep Nair"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QT/2026-27/0674",
+ "quotation_date": "2026-10-23",
+ "quotation_date_printed": "23 October 2026",
+ "your_reference_date": null,
+ "validity_days": 30,
+ "valid_until": "2026-11-22",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Whiteboard Marker Black",
+   "brand": null,
+   "hsn": "9608.20",
+   "quantity": 1480,
+   "unit": "Each",
+   "unit_price": 24.45,
+   "amount": 36186.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "BOPP packing tape 48 mm x 65 m",
+   "brand": null,
+   "hsn": "3919.10",
+   "quantity": 174,
+   "unit": "Roll",
+   "unit_price": 70.37,
+   "amount": 12244.38,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Permanent Marker Black Bullet Tip or equivalent",
+   "brand": null,
+   "hsn": "9608.20",
+   "quantity": 372,
+   "unit": "Each",
+   "unit_price": 30.25,
+   "amount": 11253.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Glue stick 15 g",
+   "brand": null,
+   "hsn": "3506.10",
+   "quantity": 190,
+   "unit": "Nos.",
+   "unit_price": 24.15,
+   "amount": 4588.5,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 64271.88,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 64271.88,
+ "computed_grand_total": 64271.88,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": "12 months",
+ "extra_notes": [
+  "Delivery subject to receipt of advance.",
+  "We are an authorised dealer of leading brands."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  2
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/RexalIndustries_quotation_QT-2026-27-0674_59.pdf",
+ "supplier_id": "S20",
+ "capture": {
+  "pages": 1
+ }
+}

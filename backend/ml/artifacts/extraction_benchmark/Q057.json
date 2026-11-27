@@ -1,0 +1,136 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ikIndustries",
+   "email": null,
+   "phone": "91677#0547",
+   "gst_number": "RSTUCAMAAL3ZMA",
+   "address": "411626.M"
+  },
+  "quotation": {
+   "reference": "EST-0898",
+   "date": "26.10.2026",
+   "validity": null,
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "124Do28",
+    "quantity": 174.0,
+    "unit": "N",
+    "unit_price": 346.0,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {
+     "rate_column_header": "Rate"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 412.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 69677.38,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "enquiry_date": "17.10.2026",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 492,
+     "prompt_tokens": 1218,
+     "total_tokens": 1710
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:07:04.997951+00:00",
+  "notes": [
+   "OCR output is highly fragmented and contains merged characters and numbers.",
+   "Item quantity and unit are inferred from '174N'.",
+   "Total amount is ambiguous due to multiple values present in the OCR text (66,177.38 vs 69,677.38).",
+   "Transportation charges and subtotal values are unclear due to OCR errors."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Zorvik Industries",
+   "email": null,
+   "phone": "9191877 90947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "7, Gandhi Chowk, Bengaluru - 560041, Karnataka"
+  },
+  "quotation": {
+   "reference": "EST-0898",
+   "date": "26.10.2026",
+   "validity": "15 days",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "WHITEBOARD MARKER BLACK",
+    "quantity": 124.0,
+    "unit": "Dozen",
+    "unit_price": 346.0,
+    "gst_percentage": null,
+    "total_price": 42904.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "BOPP packing tape 48 mm x 65 m (IG/BIS)",
+    "quantity": 174.0,
+    "unit": "Nos",
+    "unit_price": 95.87,
+    "gst_percentage": null,
+    "total_price": 16681.38,
+    "attributes": {}
+   },
+   {
+    "original_name": "Glue stick 15 g",
+    "quantity": 16.0,
+    "unit": "Dozen",
+    "unit_price": 412.0,
+    "gst_percentage": null,
+    "total_price": 6592.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 66177.38,
+   "tax_amount": 10094.85,
+   "tax_percentage": 18.0,
+   "total_amount": 69677.38,
+   "transportation_cost": 3500.0,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": "20% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "buyer": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "buyer_gst": "27AABCS4821K1Z4",
+   "contact_person": "Rohit Khan"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 19.15,
+ "source_chars": 333
+}

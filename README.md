@@ -30,15 +30,17 @@ Nothing is e-mailed by the app and nothing is ordered without a person approving
 
 ![A quotation next to its original, with doubtful cells highlighted](docs/images/quotation-review.jpg)
 
-**Headline numbers** (re-measured with confidence intervals in [docs/VALIDATION_REPORT.md](docs/VALIDATION_REPORT.md)):
+**Headline numbers** (re-measured with confidence intervals in [docs/VALIDATION_REPORT.md](docs/VALIDATION_REPORT.md); what is and is not ready is in [docs/RELEASE_READINESS.md](docs/RELEASE_READINESS.md)):
 
 | Measure | Result |
 |---|---|
 | Late-delivery risk, ROC-AUC on 2,545 later USAID shipments | 0.832 [0.815 to 0.850], against 0.761 for the supplier's own record |
 | Extraction, fields correct on 16 real quotations | 96.6 to 96.9% (typed documents about 98%; handwriting 56 to 67% on 2 documents) |
+| Extraction on 40 held-back benchmark quotations (code-generated, read once) | 97.7% of fields (scanned PDFs 89.6%); details in [docs/EXTRACTION_BENCHMARK.md](docs/EXTRACTION_BENCHMARK.md) |
+| Supplier arithmetic mistakes sent for review | 11 of 11 in the benchmark |
 | HSN code, heading accuracy with the model | 91% on general goods, 98.8% on the easy benchmark |
 | Price errors caught (team-supplied labelled file) | precision 0.75, recall 1.00 |
-| Automated tests | 8,420 passing (8,000+ generated stress cases) |
+| Automated tests | 8,461 passing (8,000+ generated stress cases) |
 
 **Team:** Vishwajeet Surve, Soham Joshi, Soham Mote and Atharva Sonje, Department of Computer Engineering, Vishwakarma Institute of Technology, Pune. Guide: Prashant L. Mandale.
 

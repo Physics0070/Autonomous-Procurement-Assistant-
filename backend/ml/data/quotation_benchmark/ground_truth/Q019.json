@@ -1,0 +1,114 @@
+{
+ "quotation_id": "Q019",
+ "rfq_id": "RFQ-2026-004",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Tandor Systems",
+  "gstin": "08JSCHC9725E3Z2",
+  "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan",
+  "phone": "+91 90124 21158",
+  "email": "sales@tandor.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0723",
+ "quotation_date": "2026-10-15",
+ "quotation_date_printed": "15 October 2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "MCCB 100A 3-pole",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Pcs",
+   "unit_price": 3159.0,
+   "amount": 31590.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "MCB 32A single pole C curve",
+   "brand": null,
+   "hsn": null,
+   "quantity": 105,
+   "unit": "EA",
+   "unit_price": 215.0,
+   "amount": 22575.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED bulb 9W B22 cool white",
+   "brand": null,
+   "hsn": null,
+   "quantity": 104,
+   "unit": "EA",
+   "unit_price": 87.26,
+   "amount": 9075.04,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "House wire FR PVC 1.5 sq mm copper 90 m",
+   "brand": null,
+   "hsn": null,
+   "quantity": 55,
+   "unit": "Bundle",
+   "unit_price": 1515.0,
+   "amount": 83325.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 146565.04,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 146565.04,
+ "computed_grand_total": 146565.04,
+ "payment_terms": "100% advance",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "Cheque/DD in favour of the company name above."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/photos/IMG_20261015_110649.jpg",
+ "supplier_id": "S22",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

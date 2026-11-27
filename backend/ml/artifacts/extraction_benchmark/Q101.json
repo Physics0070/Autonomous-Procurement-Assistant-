@@ -1,0 +1,107 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": null,
+   "phone": "+91 97803 40496",
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0635",
+   "date": "26-Sep-2026",
+   "validity": "03-Oct-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Toilet soap bar 100 g",
+    "quantity": 157.0,
+    "unit": "Nos",
+    "unit_price": 37.09,
+    "gst_percentage": null,
+    "total_price": 5823.13,
+    "attributes": {}
+   },
+   {
+    "original_name": "Detergent Powder 1 Kg",
+    "quantity": 191.0,
+    "unit": "Pack",
+    "unit_price": 96.46,
+    "gst_percentage": null,
+    "total_price": 18423.86,
+    "attributes": {}
+   },
+   {
+    "original_name": "Office swivel chair mesh back",
+    "quantity": 20.0,
+    "unit": "EA",
+    "unit_price": 4118.0,
+    "gst_percentage": null,
+    "total_price": 82360.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Foam mattress 6x3 ft",
+    "quantity": 25.0,
+    "unit": "Each",
+    "unit_price": 4423.0,
+    "gst_percentage": null,
+    "total_price": 110575.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Steel filnig cabinet 4-drawer",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 8822.0,
+    "gst_percentage": null,
+    "total_price": 44110.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OFFICE TABLE WOODEN 5X2.5FT",
+    "quantity": 28.0,
+    "unit": "Nos",
+    "unit_price": 8165.0,
+    "gst_percentage": null,
+    "total_price": 228620.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 489911.99,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 489911.99,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Ex-stock",
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 859,
+     "prompt_tokens": 1437,
+     "total_tokens": 2296
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:26:49.665274+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 3.17,
+ "source_chars": 915
+}

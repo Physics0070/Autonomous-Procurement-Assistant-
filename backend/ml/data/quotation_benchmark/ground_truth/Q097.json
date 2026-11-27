@@ -1,0 +1,151 @@
+{
+ "quotation_id": "Q097",
+ "rfq_id": "RFQ-2026-020",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Davik Systems",
+  "gstin": "08HALEE1104G1ZP",
+  "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan",
+  "phone": null,
+  "email": "sales@davik.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "SQ/26/0630",
+ "quotation_date": "2026-08-28",
+ "quotation_date_printed": "28-Aug-2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Electric chain hoist 1 ton or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Nos.",
+   "unit_price": 18903.0,
+   "amount": 207933.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Air compressor 2 HP 100 L",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "EA",
+   "unit_price": 25731.0,
+   "amount": 308772.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Platform scale 300 kg",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Nos",
+   "unit_price": 8103.0,
+   "amount": 121545.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Three-phase induction motor 5 HP 1440 rpm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Nos",
+   "unit_price": 16904.0,
+   "amount": 236656.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "MIG welding machine 250A",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 38373.0,
+   "amount": 115119.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Gate valve 2\" CI flanged or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 83,
+   "unit": "Nos",
+   "unit_price": 1684.0,
+   "amount": 139772.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "CENTRIFUGAL MONOBLOCK PUMP 1 HP",
+   "brand": null,
+   "hsn": null,
+   "quantity": 40,
+   "unit": "Pcs",
+   "unit_price": 5831.0,
+   "amount": 233240.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1363037.0,
+ "discount_percent": 5,
+ "discount_amount": 68151.85,
+ "freight": {
+  "terms": "paid",
+  "amount": 3500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 233709.33,
+  "total": 233709.33
+ },
+ "grand_total": 1532094.48,
+ "computed_grand_total": 1532094.48,
+ "payment_terms": null,
+ "delivery_text": "2-3 weeks",
+ "delivery_days_min": 14,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [
+  "Please confirm the order by e-mail.",
+  "Prices are subject to change without prior notice."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  8
+ ],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "validity",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/DavikSystems_quotation_SQ-26-0630_97.pdf",
+ "supplier_id": "S12",
+ "capture": {
+  "pages": 1
+ }
+}

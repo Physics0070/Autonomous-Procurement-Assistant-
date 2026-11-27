@@ -1,0 +1,159 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": null,
+   "phone": "+919743819792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office5,LaxmiComplex,Surat-395172,Gujarat"
+  },
+  "quotation": {
+   "reference": "PIV0034",
+   "date": "03October2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Acrylicemulsionpaintinterior20L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 8894.0,
+    "gst_percentage": null,
+    "total_price": 177880.0,
+    "attributes": {
+     "HSN": "3209.10"
+    }
+   },
+   {
+    "original_name": "Wallputty20kg",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 1034.0,
+    "gst_percentage": null,
+    "total_price": 63074.0,
+    "attributes": {
+     "HSN": "3214.90"
+    }
+   },
+   {
+    "original_name": "Glpipe1inchmediumclass",
+    "quantity": 44.0,
+    "unit": "RMT",
+    "unit_price": 324.0,
+    "gst_percentage": null,
+    "total_price": 14256.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 255210.0,
+   "tax_amount": 38930.34,
+   "tax_percentage": 18.0,
+   "total_amount": 255960.0,
+   "transportation_cost": 750.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "kind_attn": "PurchaseDept./Contact:VikramNair",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 688,
+     "prompt_tokens": 1428,
+     "total_tokens": 2116
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:57:23.927112+00:00",
+  "notes": [
+   "OCR text contains merged characters and missing spaces throughout.",
+   "Grand Total amount in words and numeric value appear inconsistent in source."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": null,
+   "phone": "+91 97438 19792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0034",
+   "date": "03 October 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Acrylic emulsion paint interior 20 L",
+    "quantity": 20.0,
+    "unit": "Drum",
+    "unit_price": 8894.0,
+    "gst_percentage": null,
+    "total_price": 177880.0,
+    "attributes": {
+     "HSN": "3209.10"
+    }
+   },
+   {
+    "original_name": "Wall putty 20 kg",
+    "quantity": 61.0,
+    "unit": "Nos",
+    "unit_price": 1034.0,
+    "gst_percentage": null,
+    "total_price": 63074.0,
+    "attributes": {
+     "HSN": "3214.90"
+    }
+   },
+   {
+    "original_name": "GI pipe 1 inch medium class",
+    "quantity": 44.0,
+    "unit": "RMT",
+    "unit_price": 324.0,
+    "gst_percentage": null,
+    "total_price": 14256.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 255210.0,
+   "tax_amount": 38930.34,
+   "tax_percentage": 18.0,
+   "total_amount": 255960.0,
+   "transportation_cost": 750.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "amount_in_words": "Rupees Two Lakh Fifty Five Thousand Nine Hundred Sixty Only"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 35.61,
+ "source_chars": 929
+}

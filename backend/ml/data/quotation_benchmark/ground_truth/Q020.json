@@ -1,0 +1,120 @@
+{
+ "quotation_id": "Q020",
+ "rfq_id": "RFQ-2026-004",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Brenor Solutions",
+  "gstin": null,
+  "address": "Office 7, Nehru Nagar, Kolkata - 700588, West Bengal",
+  "phone": "+91 99886 60037",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0459",
+ "quotation_date": "2026-10-19",
+ "quotation_date_printed": "19.10.2026",
+ "your_reference_date": null,
+ "validity_days": 45,
+ "valid_until": "2026-12-03",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Mccb 100A 3-Pole",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 3577.0,
+   "amount": 35770.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "MCB 32A single pole C curve (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 105,
+   "unit": "Nos",
+   "unit_price": 252.0,
+   "amount": 26460.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "LED bulb 9W B22 cool white",
+   "brand": "Kanto",
+   "hsn": null,
+   "quantity": 104,
+   "unit": "EA",
+   "unit_price": 81.15,
+   "amount": 8439.6,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "EXHAUST FAN 300 MM",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 99,
+   "unit": "Nos",
+   "unit_price": 1508.0,
+   "amount": 149292.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "House Wire Fr Pvc 1.5 Sq Mm Copper 90 M or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 55,
+   "unit": "Bundle",
+   "unit_price": 1685.0,
+   "amount": 92675.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 312636.6,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2000.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 314636.6,
+ "computed_grand_total": 314636.6,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/BrenorSolutions_quotation_QTN0459_20.pdf",
+ "supplier_id": "S29",
+ "capture": {
+  "pages": 1
+ }
+}

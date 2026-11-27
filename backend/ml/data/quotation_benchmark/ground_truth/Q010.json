@@ -1,0 +1,110 @@
+{
+ "quotation_id": "Q010",
+ "rfq_id": "RFQ-2026-002",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": "+91 91899 74538",
+  "email": "sales@arvanta.example",
+  "contact_person": "Meera Desai"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0600",
+ "quotation_date": "2026-08-27",
+ "quotation_date_printed": "27.08.2026",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": "2026-09-26",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": "Kanto",
+   "hsn": null,
+   "quantity": 29,
+   "unit": "Nos",
+   "unit_price": 4184.0,
+   "amount": 121336.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Document scanner A4 ADF duplex 40 ppm",
+   "brand": "Primea",
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Pcs",
+   "unit_price": 34830.0,
+   "amount": 522450.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Toner cartridge black laser",
+   "brand": "Altron",
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Nos",
+   "unit_price": 3188.0,
+   "amount": 44632.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Led Monitor 24-Inch Ips",
+   "brand": null,
+   "hsn": null,
+   "quantity": 21,
+   "unit": "Nos",
+   "unit_price": 9890.0,
+   "amount": 207690.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 896108.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 350.0
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 896458.0,
+ "computed_grand_total": 896458.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "12 months",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/pdf/ArvantaTradingCo_quotation_Q-0600_10.pdf",
+ "supplier_id": "S05",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -15,6 +15,7 @@ def vendors(monkeypatch):
     monkeypatch.setattr(settings, "GEMINI_MODEL", "gemini-default")
     monkeypatch.setattr(settings, "GROK_API_KEY", "x-test")
     monkeypatch.setattr(settings, "QWEN_API_KEY", "q-test")
+    monkeypatch.setattr(settings, "GROQ_API_KEY", "gq-test")
     monkeypatch.setattr(settings, "LLM_TASK_MODELS", "negotiation=qwen:qwen-plus, critic=council")
     monkeypatch.setattr(settings, "COUNCIL_MODELS", "grok:grok-4-fast, qwen:qwen-plus, gemini:gemini-2.5-flash")
     monkeypatch.setattr(settings, "COUNCIL_MONITOR_MODEL", "gemini:gemini-2.5-pro")

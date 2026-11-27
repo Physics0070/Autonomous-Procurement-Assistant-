@@ -1,0 +1,142 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zephra Enterprises",
+   "email": "sales@zephra.example",
+   "phone": null,
+   "gst_number": "19BGBWT3003N1ZT",
+   "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0335",
+   "date": "24-08-26",
+   "validity": "31-08-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Laptop Core I5 16Gb 512Gb Ssd 14-Inch",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 77845.0,
+    "gst_percentage": null,
+    "total_price": 389225.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "Orbix Pen drive 64GB USB 3.0",
+    "quantity": 62.0,
+    "unit": "EA",
+    "unit_price": 674.0,
+    "gst_percentage": null,
+    "total_price": 41788.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "External HDD 2TB USB 3.0",
+    "quantity": 26.0,
+    "unit": "EA",
+    "unit_price": 8770.0,
+    "gst_percentage": null,
+    "total_price": 228020.0,
+    "attributes": {
+     "HSN": "8471.70"
+    }
+   },
+   {
+    "original_name": "Supra Desktop CPU cabinet Core i5 8GB 512GB",
+    "quantity": 13.0,
+    "unit": "Nos",
+    "unit_price": 45938.0,
+    "gst_percentage": null,
+    "total_price": 597194.0,
+    "attributes": {
+     "HSN": "8471.50"
+    }
+   },
+   {
+    "original_name": "Supra Laser printer monochrome A4 duplex",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 16941.0,
+    "gst_percentage": null,
+    "total_price": 254115.0,
+    "attributes": {
+     "HSN": "8443.32"
+    }
+   },
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 4775.0,
+    "gst_percentage": null,
+    "total_price": 71625.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "Veltrax TONER CARTRIDGE BLACK LASER",
+    "quantity": 38.0,
+    "unit": "Pcs",
+    "unit_price": 3302.0,
+    "gst_percentage": null,
+    "total_price": 125476.0,
+    "attributes": {
+     "HSN": "8443.99"
+    }
+   },
+   {
+    "original_name": "Kanto Optical mouse USB wired (ISI/BIS)",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 323.0,
+    "gst_percentage": null,
+    "total_price": 11951.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1719394.0,
+   "tax_amount": 262280.44,
+   "tax_percentage": 18.0,
+   "total_amount": 1719394.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Kolkata; transport by buyer",
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1198,
+     "prompt_tokens": 1751,
+     "total_tokens": 2949
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:04:23.131456+00:00",
+  "notes": [
+   "The document states 'Sub Total' and 'TOTAL' as the same value, while also listing a tax amount separately. It is unclear if the total includes tax or if the tax is additional."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 17.39,
+ "source_chars": 1473
+}

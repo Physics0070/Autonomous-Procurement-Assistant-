@@ -1,0 +1,137 @@
+{
+ "text": {
+  "supplier": {
+   "name": "UlmarTradingCo.",
+   "email": "sales@ulmar.example",
+   "phone": "+919884887441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "GalaNo9ecor5Cnna0055TaiNad, Plot14MIDCBhosarPue-411026Maharashta"
+  },
+  "quotation": {
+   "reference": "P/0840",
+   "date": "01-09-26",
+   "validity": null,
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "VeltraxCarbattery12V65AhHSN:8507.10",
+    "quantity": 33.0,
+    "unit": "Each",
+    "unit_price": 2978.0,
+    "gst_percentage": null,
+    "total_price": 98274.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LineinteractiveUPS650VAHSN:8504.40",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 13032.0,
+    "gst_percentage": null,
+    "total_price": 39096.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "KantoOnline Ups1KvaHSN:8504.40",
+    "quantity": 13.0,
+    "unit": "Nos.",
+    "unit_price": 11470.0,
+    "gst_percentage": null,
+    "total_price": 149110.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "KantoTubularinverterbattery12V150AhHSN\uff1a8507.20",
+    "quantity": 4.0,
+    "unit": "Pcs",
+    "unit_price": 238706.0,
+    "gst_percentage": null,
+    "total_price": 954824.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ZenmarkDieselgenerator15kVAsilentHSN\uff1a8502.11",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 1417798.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1389442.04,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount": "-28,355.96",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 901,
+     "prompt_tokens": 1510,
+     "total_tokens": 2411
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:04:29.871886+00:00",
+  "notes": [
+   "OCR errors present in address and item descriptions.",
+   "The first line item in the source text appears to be missing a name/description.",
+   "Total price for ZenmarkDieselgenerator is listed but quantity and unit price are missing.",
+   "Subtotal value is not explicitly stated as a single sum."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": null,
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": null
+  },
+  "quotation": {
+   "reference": null,
+   "date": null,
+   "validity": null,
+   "currency": null
+  },
+  "items": [],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": null,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 66.44,
+ "source_chars": 960
+}

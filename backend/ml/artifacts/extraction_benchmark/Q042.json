@@ -1,0 +1,182 @@
+{
+ "text": {
+  "supplier": {
+   "name": "NivoraIndustries",
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": "Unit25,LaxmiComplex,Ahmedabad-380874,Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0616",
+   "date": "29.10.2026",
+   "validity": "10days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Submersible pump 2HPborewell",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 22244.0,
+    "gst_percentage": null,
+    "total_price": 111220.0,
+    "attributes": {
+     "HSN": "8413.70"
+    }
+   },
+   {
+    "original_name": "Gatevalve2inch CIflanged",
+    "quantity": 83.0,
+    "unit": "Pcs",
+    "unit_price": 1844.0,
+    "gst_percentage": null,
+    "total_price": 153052.0,
+    "attributes": {
+     "HSN": "8481.80"
+    }
+   },
+   {
+    "original_name": "DynexElectricChainHoist 1Ton",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 22787.0,
+    "gst_percentage": null,
+    "total_price": 250657.0,
+    "attributes": {
+     "HSN": "8425.11"
+    }
+   },
+   {
+    "original_name": "Deep Gr00veBall Bearing 6205",
+    "quantity": 207.0,
+    "unit": "Nos",
+    "unit_price": 192.0,
+    "gst_percentage": null,
+    "total_price": 39744.0,
+    "attributes": {
+     "HSN": "8482.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 554673.0,
+   "tax_amount": 99841.14,
+   "tax_percentage": 18.0,
+   "total_amount": 654514.14,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "freight": "Extraatactuals",
+   "transit_insurance": "tobearrangedbythebuyer",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 812,
+     "prompt_tokens": 1475,
+     "total_tokens": 2287
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:47:29.302938+00:00",
+  "notes": [
+   "Total price for item 3 (2,50.657.00) contains a likely OCR typo in the thousands separator, treated as 250657.00."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Nivora Industries",
+   "email": null,
+   "phone": null,
+   "gst_number": null,
+   "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0616",
+   "date": "29.10.2026",
+   "validity": "10 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Submersible pump 2 HP borewell",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 22244.0,
+    "gst_percentage": null,
+    "total_price": 111220.0,
+    "attributes": {
+     "HSN": "8413.70"
+    }
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "Pcs",
+    "unit_price": 1844.0,
+    "gst_percentage": null,
+    "total_price": 153052.0,
+    "attributes": {
+     "HSN": "8481.80"
+    }
+   },
+   {
+    "original_name": "Dynex Electric Chain Hoist 1 Ton",
+    "quantity": 11.0,
+    "unit": "EA",
+    "unit_price": 22787.0,
+    "gst_percentage": null,
+    "total_price": 250657.0,
+    "attributes": {
+     "HSN": "8425.11"
+    }
+   },
+   {
+    "original_name": "Deep Groove Ball Bearing 6205",
+    "quantity": 207.0,
+    "unit": "Nos",
+    "unit_price": 192.0,
+    "gst_percentage": null,
+    "total_price": 39744.0,
+    "attributes": {
+     "HSN": "8482.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 554673.0,
+   "tax_amount": 99841.14,
+   "tax_percentage": 18.0,
+   "total_amount": 654514.14,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "transit_insurance": "to be arranged by the buyer"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 41.81,
+ "source_chars": 941
+}

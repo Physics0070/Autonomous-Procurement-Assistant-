@@ -1,0 +1,176 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TandorSystems",
+   "email": "sales@tandor.example",
+   "phone": "+919012421158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "GalaNo.27HiTechPark,Jaipur-302548,Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0723",
+   "date": "15October2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB100A3-pole",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "MCB32AsinglepoleCcurve",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 3159.0,
+    "gst_percentage": null,
+    "total_price": 31590.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LEDbulb9WB22coolwhite",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 215.0,
+    "gst_percentage": null,
+    "total_price": 22575.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HousewireFRPVC1.5sqmmcopper90m",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 87.26,
+    "gst_percentage": null,
+    "total_price": 9075.04,
+    "attributes": {}
+   },
+   {
+    "original_name": "55Bundle",
+    "quantity": 55.0,
+    "unit": "Bundle",
+    "unit_price": 1515.0,
+    "gst_percentage": null,
+    "total_price": 83325.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 146565.04,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 146565.04,
+   "transportation_cost": null,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3weeks",
+   "payment_terms": "100%advance",
+   "payment_days": 0,
+   "warranty": "AsperOEM"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 840,
+     "prompt_tokens": 1399,
+     "total_tokens": 2239
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:49:56.477227+00:00",
+  "notes": [
+   "OCR error: MCCB100A3-pole row has no quantity or price data.",
+   "OCR error: Rate for MCB32AsinglepoleCcurve appears as 3.159.00, interpreted as 3159.00.",
+   "OCR error: Item 55Bundle appears to be missing a name, '55' interpreted as quantity."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": "sales@tandor.example",
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0723",
+   "date": "15 October 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 3159.0,
+    "gst_percentage": null,
+    "total_price": 31590.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MCB 32A single pole C curve",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 215.0,
+    "gst_percentage": null,
+    "total_price": 22575.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED bulb 9W B22 cool white",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 87.26,
+    "gst_percentage": null,
+    "total_price": 9075.04,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sq mm copper 90 m",
+    "quantity": 55.0,
+    "unit": "Bundle",
+    "unit_price": 1515.0,
+    "gst_percentage": null,
+    "total_price": 83325.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 146565.04,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 146565.04,
+   "transportation_cost": null,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3 weeks",
+   "payment_terms": "100% advance",
+   "payment_days": 0,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "buyer_gst": "27AABCS4821K1Z4"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 27.09,
+ "source_chars": 748
+}

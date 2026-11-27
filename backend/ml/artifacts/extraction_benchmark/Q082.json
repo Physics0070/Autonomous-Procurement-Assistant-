@@ -1,0 +1,110 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Quorra Trading Co.",
+   "email": "sales@quorra.example",
+   "phone": "+91 92080 54737",
+   "gst_number": "27RAAFB5566H1ZZ",
+   "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra"
+  },
+  "quotation": {
+   "reference": "EST-0813",
+   "date": "27 October 2026",
+   "validity": "7 days from the date of quotation",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Supra Safety Goggles Clear",
+    "quantity": 235.0,
+    "unit": "Each",
+    "unit_price": 85.21,
+    "gst_percentage": null,
+    "total_price": 20024.35,
+    "attributes": {
+     "Sr No": "1"
+    }
+   },
+   {
+    "original_name": "Fire extinguisher ABC podwer 6 kg",
+    "quantity": 8.0,
+    "unit": "Nos",
+    "unit_price": 2159.0,
+    "gst_percentage": null,
+    "total_price": 17272.0,
+    "attributes": {
+     "Sr No": "2"
+    }
+   },
+   {
+    "original_name": "Primea N95 Respirator Mask",
+    "quantity": 87.0,
+    "unit": "Each",
+    "unit_price": 46.89,
+    "gst_percentage": null,
+    "total_price": 4079.43,
+    "attributes": {
+     "Sr No": "3"
+    }
+   },
+   {
+    "original_name": "Veltrax Digital BP monitor",
+    "quantity": 115.0,
+    "unit": "Nos",
+    "unit_price": 1792.0,
+    "gst_percentage": null,
+    "total_price": 206080.0,
+    "attributes": {
+     "Sr No": "4"
+    }
+   },
+   {
+    "original_name": "Leather safety shoes steel toe or equivalent",
+    "quantity": 65.0,
+    "unit": "Pair",
+    "unit_price": 1190.0,
+    "gst_percentage": null,
+    "total_price": 77350.0,
+    "attributes": {
+     "Sr No": "5"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 324805.78,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 383270.82,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Included in the above rates",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 849,
+     "prompt_tokens": 1927,
+     "total_tokens": 2776
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:18:02.659523+00:00",
+  "notes": [
+   "Tax amount is not explicitly stated as a single total; CGST and SGST are listed separately."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 8.35,
+ "source_chars": 1935
+}

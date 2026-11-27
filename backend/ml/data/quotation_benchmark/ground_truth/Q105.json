@@ -1,0 +1,123 @@
+{
+ "quotation_id": "Q105",
+ "rfq_id": "RFQ-2026-021",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Halvor Distributors",
+  "gstin": "09EADHK3962G3ZY",
+  "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh",
+  "phone": "+91 96290 41038",
+  "email": null,
+  "contact_person": "Rohit Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0054",
+ "quotation_date": "2026-09-28",
+ "quotation_date_printed": "28.09.2026",
+ "your_reference_date": null,
+ "validity_days": 10,
+ "valid_until": "2026-10-08",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Toilet soap bar 100 g",
+   "brand": null,
+   "hsn": "3401.11",
+   "quantity": 157,
+   "unit": "Nos.",
+   "unit_price": 37.67,
+   "amount": 5914.19,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Detergent powder 1 kg (ISI/BIS)",
+   "brand": null,
+   "hsn": "3402.20",
+   "quantity": 191,
+   "unit": "Pack",
+   "unit_price": 97.65,
+   "amount": 18651.15,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office swivel chair mesh back",
+   "brand": null,
+   "hsn": "9401.39",
+   "quantity": 20,
+   "unit": "Nos.",
+   "unit_price": 4036.0,
+   "amount": 80720.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Steel filing cabinet 4-drawer",
+   "brand": null,
+   "hsn": "9403.10",
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 8818.0,
+   "amount": 44090.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Office table wooden 5x2.5 ft",
+   "brand": null,
+   "hsn": "9403.30",
+   "quantity": 28,
+   "unit": "Nos",
+   "unit_price": 7768.0,
+   "amount": 217504.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 366879.34,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 366879.34,
+ "computed_grand_total": 366879.34,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "2-3 weeks",
+ "delivery_days_min": 14,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [
+  "Delivery subject to receipt of advance.",
+  "Prices are subject to change without prior notice."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/HalvorDistributors_quotation_PI-0054_105.pdf",
+ "supplier_id": "S13",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "quotation_id": "Q104",
+ "rfq_id": "RFQ-2026-021",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Lumina Mart",
+  "gstin": null,
+  "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi",
+  "phone": "+91 98239 16804",
+  "email": "sales@lumina.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0189",
+ "quotation_date": "2026-09-21",
+ "quotation_date_printed": "21-Sep-2026",
+ "your_reference_date": "2026-09-19",
+ "validity_days": 45,
+ "valid_until": "2026-11-05",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Toilet soap bar 100 g (ISI/BIS)",
+   "brand": "Zenmark",
+   "hsn": null,
+   "quantity": 157,
+   "unit": "Nos",
+   "unit_price": 42.97,
+   "amount": 6746.29,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 3,
+   "description": "Office swivel chair mesh back (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "Nos.",
+   "unit_price": 5343.0,
+   "amount": 106860.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Foam mattress 6x3ft",
+   "brand": null,
+   "hsn": null,
+   "quantity": 25,
+   "unit": "Pcs",
+   "unit_price": 5204.0,
+   "amount": 130100.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Steel filing cabinet 4-drawer",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Each",
+   "unit_price": 10759.0,
+   "amount": 53795.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Office table wooden5 x2.5 ft",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 28,
+   "unit": "Pcs",
+   "unit_price": 9553.0,
+   "amount": 267484.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 564985.29,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2500.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 567985.29,
+ "computed_grand_total": 567485.29,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "24 months",
+ "extra_notes": [
+  "Please quote our quotation number in your purchase order.",
+  "Alternate make available on request."
+ ],
+ "inconsistencies": [
+  {
+   "type": "grand_total_mismatch",
+   "computed": 567485.29,
+   "printed": 567985.29
+  }
+ ],
+ "requested_lines_not_quoted": [
+  2
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/excel/Offer_LuminaMart_104.xlsx",
+ "supplier_id": "S16",
+ "capture": {}
+}

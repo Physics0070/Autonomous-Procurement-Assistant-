@@ -1,0 +1,121 @@
+{
+ "quotation_id": "Q112",
+ "rfq_id": "RFQ-2026-023",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Ixora Agencies",
+  "gstin": "19NEJSF2129J1ZY",
+  "address": "Office 8, Hi-Tech Park, Kolkata - 700121, West Bengal",
+  "phone": "+91 94096 36580",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0511",
+ "quotation_date": "2026-09-22",
+ "quotation_date_printed": "22.09.2026",
+ "your_reference_date": null,
+ "validity_days": 15,
+ "valid_until": "2026-10-07",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "BOPP packing tape 48mm x 65 m",
+   "brand": null,
+   "hsn": null,
+   "quantity": 46,
+   "unit": "Nos",
+   "unit_price": 79.98,
+   "amount": 3679.08,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Staple pins 24/6 box of 1000",
+   "brand": null,
+   "hsn": null,
+   "quantity": 1255,
+   "unit": "Bx",
+   "unit_price": 11.52,
+   "amount": 14457.6,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office scissors 8\"",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "Pkt of 10",
+   "unit_price": 846.0,
+   "amount": 10998.0,
+   "pack_size": 10
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Heavy-duty stapler 100 sheets",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "EA",
+   "unit_price": 477.0,
+   "amount": 9540.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Paper clips 28 mm box of 100",
+   "brand": null,
+   "hsn": null,
+   "quantity": 173,
+   "unit": "Box",
+   "unit_price": 21.64,
+   "amount": 3743.72,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 42418.4,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 42418.4,
+ "computed_grand_total": 42418.4,
+ "payment_terms": "30 days credit",
+ "delivery_text": "4-6 weeks",
+ "delivery_days_min": 28,
+ "delivery_days_max": 42,
+ "warranty": "As per OEM",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4,
+  7
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/IxoraAgencies_quotation_EST-0511_112.pdf",
+ "supplier_id": "S14",
+ "capture": {
+  "pages": 1
+ }
+}

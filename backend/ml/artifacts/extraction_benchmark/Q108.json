@@ -1,0 +1,177 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ZephraEnterprises",
+   "email": "sales@zephra.example",
+   "phone": "+919779440471",
+   "gst_number": "19BGBWT3003N1ZT",
+   "address": "ShopNo.20.Lal BahadurMarg,Kolkata-700546.West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0849",
+   "date": "22-09-26",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "ZenmarkLineInteractiveUsp 650Va",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 3270.0,
+    "gst_percentage": null,
+    "total_price": 16350.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "SMFVRLAbattery12V7Ah",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 928.0,
+    "gst_percentage": null,
+    "total_price": 16704.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "Aerolite ONLINEUPS1KVA (ISI/BIS)",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 15847.0,
+    "gst_percentage": null,
+    "total_price": 47541.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "AIkalineAA battery pack of 10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 288.0,
+    "gst_percentage": null,
+    "total_price": 3168.0,
+    "attributes": {
+     "HSN": "8506.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 83763.0,
+   "tax_amount": 15140.34,
+   "tax_percentage": 18.0,
+   "total_amount": null,
+   "transportation_cost": 350.0,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within7days",
+   "payment_terms": "Againstproformainvoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 778,
+     "prompt_tokens": 1479,
+     "total_tokens": 2257
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:58:53.610204+00:00",
+  "notes": [
+   "Total amount is missing from the document despite the label being present."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Zephra Enterprises",
+   "email": "sales@zephra.example",
+   "phone": "+91 97794 40471",
+   "gst_number": "19BGBWT3003N1ZT",
+   "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal"
+  },
+  "quotation": {
+   "reference": "Q-0849",
+   "date": "22-09-26",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Zenmark Line Interactive Usp 650 Va",
+    "quantity": 5.0,
+    "unit": "Pcs",
+    "unit_price": 3270.0,
+    "gst_percentage": null,
+    "total_price": 16350.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "SMF VRLA battery 12V 7Ah",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 928.0,
+    "gst_percentage": null,
+    "total_price": 16704.0,
+    "attributes": {
+     "HSN": "8507.20"
+    }
+   },
+   {
+    "original_name": "Aerolite ONLINE UPS 1 KVA (ISI/BIS)",
+    "quantity": 3.0,
+    "unit": "Each",
+    "unit_price": 15847.0,
+    "gst_percentage": null,
+    "total_price": 47541.0,
+    "attributes": {
+     "HSN": "8504.40"
+    }
+   },
+   {
+    "original_name": "Alkaline AA battery pack of 10",
+    "quantity": 11.0,
+    "unit": "Pkt",
+    "unit_price": 288.0,
+    "gst_percentage": null,
+    "total_price": 3168.0,
+    "attributes": {
+     "HSN": "8506.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 83763.0,
+   "tax_amount": 15140.34,
+   "tax_percentage": 18.0,
+   "total_amount": 100253.34,
+   "transportation_cost": 350.0,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 17.96,
+ "source_chars": 928
+}

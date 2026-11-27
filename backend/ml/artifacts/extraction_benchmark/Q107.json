@@ -1,0 +1,182 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ixora Agencies",
+   "email": "sales@ixora.example",
+   "phone": null,
+   "gst_number": "19NEJSF2129J1ZY",
+   "address": "Plot14MDCBhosarPu-411026Mharaha"
+  },
+  "quotation": {
+   "reference": "EST-0817",
+   "date": "27.09.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Line interactive UPS650VA",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "SMFVRLAbaltery12V7Ah",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubularinverterbattery12V150Ah",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "ALKALINEAA BATTERYPACKOF10",
+    "quantity": 11.0,
+    "unit": "Pack",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "OnlineUPS1kVA",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 187665.0,
+   "tax_amount": 33779.7,
+   "tax_percentage": 18.0,
+   "total_amount": 221444.7,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3weeks",
+   "payment_terms": "30 days credt",
+   "payment_days": 30,
+   "warranty": "24months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 730,
+     "prompt_tokens": 1424,
+     "total_tokens": 2154
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:58:28.623150+00:00",
+  "notes": [
+   "OCR output is highly fragmented; item quantities and prices are misaligned and partially unreadable.",
+   "The table structure is corrupted, making it impossible to reliably map unit prices to specific items."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Ixora Agencies",
+   "email": "sales@ixora.example",
+   "phone": null,
+   "gst_number": "19NEJSF2129J1ZY",
+   "address": "Office 8, Hi-Tech Park, Kolkata - 700121, West Bengal"
+  },
+  "quotation": {
+   "reference": "EST-0817",
+   "date": "27.09.2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 3239.0,
+    "gst_percentage": null,
+    "total_price": 16195.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SMF VRLA battery 12V 7Ah",
+    "quantity": 18.0,
+    "unit": "Pcs",
+    "unit_price": 832.0,
+    "gst_percentage": null,
+    "total_price": 14976.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Tubular inverter battery 12V 150Ah",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 13969.0,
+    "gst_percentage": null,
+    "total_price": 111752.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online UPS 1 kVA",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 13847.0,
+    "gst_percentage": null,
+    "total_price": 41541.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "ALKALINE AA BATTERY PACK OF 10",
+    "quantity": 11.0,
+    "unit": "Pack",
+    "unit_price": 291.0,
+    "gst_percentage": null,
+    "total_price": 3201.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 187665.0,
+   "tax_amount": 33779.7,
+   "tax_percentage": 18.0,
+   "total_amount": 221444.7,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Free delivery at your premises",
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "installation_and_commissioning": "not included"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 18.75,
+ "source_chars": 791
+}

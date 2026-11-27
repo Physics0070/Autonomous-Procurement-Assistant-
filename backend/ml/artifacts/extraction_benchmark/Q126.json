@@ -1,0 +1,98 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Zorvik Industries",
+   "email": "sales@zorvik.example",
+   "phone": "+91 91877 90947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka"
+  },
+  "quotation": {
+   "reference": "EST-0413",
+   "date": "15.09.2026",
+   "validity": "25.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole",
+    "quantity": 11.0,
+    "unit": "Nos",
+    "unit_price": 3257.0,
+    "gst_percentage": null,
+    "total_price": 35827.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MCB 32A single pole C curve",
+    "quantity": 23.0,
+    "unit": "EA",
+    "unit_price": 222.0,
+    "gst_percentage": null,
+    "total_price": 5106.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sqmm copper 90 m",
+    "quantity": 54.0,
+    "unit": "Coil",
+    "unit_price": 1896.0,
+    "gst_percentage": null,
+    "total_price": 102384.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Ceiling fan 1200mm",
+    "quantity": 26.0,
+    "unit": "Each",
+    "unit_price": 2541.0,
+    "gst_percentage": null,
+    "total_price": 66066.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED street light 90W",
+    "quantity": 25.0,
+    "unit": "Each",
+    "unit_price": 4093.0,
+    "gst_percentage": null,
+    "total_price": 102325.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 311708.0,
+   "tax_amount": 56377.44,
+   "tax_percentage": 18.0,
+   "total_amount": 369585.44,
+   "transportation_cost": 1500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "enquiry_reference": "Your enquiry dated 01.09.2026",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 818,
+     "prompt_tokens": 1722,
+     "total_tokens": 2540
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:28:13.747658+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.99,
+ "source_chars": 1456
+}

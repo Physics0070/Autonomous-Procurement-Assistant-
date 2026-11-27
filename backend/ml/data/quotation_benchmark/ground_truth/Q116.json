@@ -1,0 +1,158 @@
+{
+ "quotation_id": "Q116",
+ "rfq_id": "RFQ-2026-024",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Belmont Suppliers",
+  "gstin": "24WAUNJ2506U1ZI",
+  "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat",
+  "phone": "+91 90625 76892",
+  "email": null,
+  "contact_person": "Vikram Sharma"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0191",
+ "quotation_date": "2026-08-25",
+ "quotation_date_printed": "25/08/2026",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": "2026-09-01",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Laptop Core i5 16GB 512GB SSD 14-inch",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Nos",
+   "unit_price": 56333.0,
+   "amount": 281665.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Pen drive 64GB USB 3.0",
+   "brand": null,
+   "hsn": null,
+   "quantity": 62,
+   "unit": "EA",
+   "unit_price": 517.0,
+   "amount": 32054.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "External Hdd 2Tb Usb .30",
+   "brand": null,
+   "hsn": null,
+   "quantity": 26,
+   "unit": "EA",
+   "unit_price": 5968.0,
+   "amount": 155168.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Desktop CPU cabinet Core i5 8GB 512GB",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "Each",
+   "unit_price": 35512.0,
+   "amount": 461656.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Laser printer monochrome A4 duplex",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Pcs",
+   "unit_price": 14974.0,
+   "amount": 224610.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "SSD 512GB SATA 2.5-inch",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Each",
+   "unit_price": 3548.0,
+   "amount": 53220.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Toner cartridge black laser or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 38,
+   "unit": "EA",
+   "unit_price": 2142.0,
+   "amount": 81396.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 8,
+   "requested_line": 8,
+   "description": "Optical Mouse Usb Wired",
+   "brand": null,
+   "hsn": null,
+   "quantity": 37,
+   "unit": "Nos",
+   "unit_price": 240.0,
+   "amount": 8880.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1298649.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 233756.82,
+  "total": 233756.82
+ },
+ "grand_total": 1532405.82,
+ "computed_grand_total": 1532405.82,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": null,
+ "extra_notes": [
+  "Transit insurance to be arranged by the buyer.",
+  "Alternate make available on request.",
+  "Rates valid for the quantities mentioned only."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/BelmontSuppliers_quotation_QTN0191_116.pdf",
+ "supplier_id": "S09",
+ "capture": {
+  "pages": 1
+ }
+}

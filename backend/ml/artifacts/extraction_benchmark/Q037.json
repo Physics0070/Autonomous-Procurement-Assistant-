@@ -1,0 +1,220 @@
+{
+ "text": {
+  "supplier": {
+   "name": "TakshaAssociates",
+   "email": "sales@taksha.example",
+   "phone": "+919164151640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit35,GaneshIndustrialEstate,NewDelhi-110267,Delhi"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "28.10.2026",
+   "validity": "7daysfromthedateofquotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Refrigerator190L single door",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 16267.0,
+    "gst_percentage": 18.0,
+    "total_price": 48801.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SplitAC1 ton3star",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 34453.0,
+    "gst_percentage": 18.0,
+    "total_price": 172265.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WindowAC1.5ton",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 40572.0,
+    "gst_percentage": 18.0,
+    "total_price": 446292.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DynexWater dispenserhot and cold",
+    "quantity": 9.0,
+    "unit": "Nos",
+    "unit_price": 12673.0,
+    "gst_percentage": 18.0,
+    "total_price": 114057.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "SupraRO awterpurifier10Lwallmounted",
+    "quantity": 13.0,
+    "unit": "Each",
+    "unit_price": 14973.0,
+    "gst_percentage": 18.0,
+    "total_price": 194649.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Storagewater heater25L(ISI/BIS)",
+    "quantity": 38.0,
+    "unit": "Each",
+    "unit_price": 8402.0,
+    "gst_percentage": 18.0,
+    "total_price": 319276.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "NuvoSplitAC1.5ton5 star inverter",
+    "quantity": 4.0,
+    "unit": "Nos",
+    "unit_price": 60643.0,
+    "gst_percentage": 18.0,
+    "total_price": 242572.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1537912.0,
+   "tax_amount": 234596.75,
+   "tax_percentage": 18.0,
+   "total_amount": 1537912.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1055,
+     "prompt_tokens": 1597,
+     "total_tokens": 2652
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:43:31.972313+00:00",
+  "notes": [
+   "The document states 'SubTotal INR 15,37,912.00' and 'Net Payable INR 15,37,912.00' despite the line items summing to a higher amount, suggesting the subtotal might already be inclusive of tax or there is a calculation discrepancy in the source."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Taksha Associates",
+   "email": "sales@taksha.example",
+   "phone": "+91 91641 51640",
+   "gst_number": "07KSHUS3956K2ZI",
+   "address": "Unit 35, Ganesh Industrial Estate, New Delhi - 110267, Delhi"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "28.10.2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Refrigerator 190 L single door",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 16267.0,
+    "gst_percentage": null,
+    "total_price": 48801.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Split AC 1 ton 3 star",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 34453.0,
+    "gst_percentage": null,
+    "total_price": 172265.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Window AC 1.5 ton",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 40572.0,
+    "gst_percentage": null,
+    "total_price": 446292.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Water dispenser hot and cold",
+    "quantity": 9.0,
+    "unit": "Nos",
+    "unit_price": 12673.0,
+    "gst_percentage": null,
+    "total_price": 114057.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra RO awter purifier 10 L wall mounted",
+    "quantity": 13.0,
+    "unit": "Each",
+    "unit_price": 14973.0,
+    "gst_percentage": null,
+    "total_price": 194649.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Dynex Storage water heater 25 L (ISI/BIS)",
+    "quantity": 38.0,
+    "unit": "Each",
+    "unit_price": 8402.0,
+    "gst_percentage": null,
+    "total_price": 319276.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Split AC 1.5 ton 5 star inverter",
+    "quantity": 4.0,
+    "unit": "Nos",
+    "unit_price": 60643.0,
+    "gst_percentage": null,
+    "total_price": 242572.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1537912.0,
+   "tax_amount": 234596.75,
+   "tax_percentage": 18.0,
+   "total_amount": 1537912.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The document states 'Sub Total' as 15,37,912.00 and 'Net Payable' as 15,37,912.00, which appears mathematically inconsistent with the listed tax amount."
+  ]
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 19.03,
+ "source_chars": 1193
+}

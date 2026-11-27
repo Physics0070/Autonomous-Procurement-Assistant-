@@ -1,0 +1,79 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Jorvan Solutions",
+   "email": "sales@jorvan.example",
+   "phone": null,
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0183",
+   "date": "29.09.2026",
+   "validity": "06.10.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Primea Whiteboard marker black",
+    "quantity": 1193.0,
+    "unit": "Pcs",
+    "unit_price": 26.11,
+    "gst_percentage": null,
+    "total_price": 31149.23,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron LEVER ARCH FILE A4 75 MM",
+    "quantity": 166.0,
+    "unit": "Pcs",
+    "unit_price": 134.0,
+    "gst_percentage": null,
+    "total_price": 22244.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Nuvo Notebook ruled A4 172 pages",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 77.17,
+    "gst_percentage": null,
+    "total_price": 2469.44,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 55862.67,
+   "tax_amount": 10505.28,
+   "tax_percentage": 18.0,
+   "total_amount": 68867.95,
+   "transportation_cost": 2500.0,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 596,
+     "prompt_tokens": 1365,
+     "total_tokens": 1961
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:38:32.383433+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 13.91,
+ "source_chars": 863
+}

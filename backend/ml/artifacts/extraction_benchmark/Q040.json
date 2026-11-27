@@ -1,0 +1,222 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": "sales@sunrel.example",
+   "phone": "+919743819792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office5,axmiComplex,Surat-395172,Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0045",
+   "date": "23October2026",
+   "validity": "Offervalid30days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SplitAC1ton3starorequivalent",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 42859.0,
+    "gst_percentage": null,
+    "total_price": 214295.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "WindowAC1.5ton",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 44466.0,
+    "gst_percentage": null,
+    "total_price": 489126.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "WaterDispenserHotAndCold",
+    "quantity": 9.0,
+    "unit": "Pcs",
+    "unit_price": 13642.0,
+    "gst_percentage": null,
+    "total_price": 122778.0,
+    "attributes": {
+     "HSN": "8418.69"
+    }
+   },
+   {
+    "original_name": "ROwaterpurifier10Lwallmounted",
+    "quantity": 13.0,
+    "unit": "Nos",
+    "unit_price": 15337.0,
+    "gst_percentage": null,
+    "total_price": 199381.0,
+    "attributes": {
+     "HSN": "8421.21"
+    }
+   },
+   {
+    "original_name": "Storagewaterheater25L(ISl/BIS)",
+    "quantity": 38.0,
+    "unit": "EA",
+    "unit_price": 9464.0,
+    "gst_percentage": null,
+    "total_price": 359632.0,
+    "attributes": {
+     "HSN": "8516.10"
+    }
+   },
+   {
+    "original_name": "SplitAC1.5ton5starinverter",
+    "quantity": 4.0,
+    "unit": "Pcs",
+    "unit_price": 52539.0,
+    "gst_percentage": null,
+    "total_price": 210156.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1595368.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1596118.0,
+   "transportation_cost": 750.0,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within3days",
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 992,
+     "prompt_tokens": 1634,
+     "total_tokens": 2626
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:46:27.976170+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "SUNREL MART",
+   "email": "sales@sunrel.example",
+   "phone": "+91 97438 19792",
+   "gst_number": "24KSTSM3274P2ZF",
+   "address": "Office 5, Laxmi Complex, Surat - 395172, Gujarat"
+  },
+  "quotation": {
+   "reference": "PI/0045",
+   "date": "23 October 2026",
+   "validity": "Offer valid 30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Split AC 1 ton 3 star or equivalent",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 42859.0,
+    "gst_percentage": null,
+    "total_price": 214295.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "Window AC 1.5 ton",
+    "quantity": 11.0,
+    "unit": "Pcs",
+    "unit_price": 44466.0,
+    "gst_percentage": null,
+    "total_price": 489126.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   },
+   {
+    "original_name": "Water Dispenser Hot And Cold",
+    "quantity": 9.0,
+    "unit": "Pcs",
+    "unit_price": 13642.0,
+    "gst_percentage": null,
+    "total_price": 122778.0,
+    "attributes": {
+     "HSN": "8418.69"
+    }
+   },
+   {
+    "original_name": "RO water purifier 10 L wall mounted",
+    "quantity": 13.0,
+    "unit": "Nos",
+    "unit_price": 15337.0,
+    "gst_percentage": null,
+    "total_price": 199381.0,
+    "attributes": {
+     "HSN": "8421.21"
+    }
+   },
+   {
+    "original_name": "Storage water heater 25 L (ISI/BIS)",
+    "quantity": 38.0,
+    "unit": "EA",
+    "unit_price": 9464.0,
+    "gst_percentage": null,
+    "total_price": 359632.0,
+    "attributes": {
+     "HSN": "8516.10"
+    }
+   },
+   {
+    "original_name": "Split AC 1.5 ton 5 star inverter",
+    "quantity": 4.0,
+    "unit": "Pcs",
+    "unit_price": 52539.0,
+    "gst_percentage": null,
+    "total_price": 210156.0,
+    "attributes": {
+     "HSN": "8415.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 1595368.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1596118.0,
+   "transportation_cost": 750.0,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 3 days",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding": "extra at 2%"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 54.74,
+ "source_chars": 1266
+}

@@ -1,0 +1,89 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Jorvan Solutions",
+   "email": "sales@jorvan.example",
+   "phone": "+91 99117 33029",
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0433",
+   "date": "30.08.2026",
+   "validity": "29.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Dynex Ssd 512Gb Sata 2.5-Inch",
+    "quantity": 30.0,
+    "unit": "Pcs",
+    "unit_price": 4015.0,
+    "gst_percentage": null,
+    "total_price": 120550.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laptop Core I5 16Gb 512Gb Ssd 14-Inch",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 63139.0,
+    "gst_percentage": null,
+    "total_price": 189417.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Aerolite USB wired keyboard",
+    "quantity": 108.0,
+    "unit": "EA",
+    "unit_price": 485.0,
+    "gst_percentage": null,
+    "total_price": 52380.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix LED monitor 24-inch IPS",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 10176.0,
+    "gst_percentage": null,
+    "total_price": 81408.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 443755.0,
+   "tax_amount": 79875.9,
+   "tax_percentage": 18.0,
+   "total_amount": 523630.9,
+   "transportation_cost": null,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Gurugram; transport by buyer",
+   "delivery_time": "Within 3 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "packing_and_forwarding_charges": "2%",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 739,
+     "prompt_tokens": 1528,
+     "total_tokens": 2267
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:09:04.001878+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.34,
+ "source_chars": 1288
+}

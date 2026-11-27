@@ -1,0 +1,104 @@
+{
+ "quotation_id": "Q081",
+ "rfq_id": "RFQ-2026-017",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": "+91 91899 74538",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0510",
+ "quotation_date": "2026-10-18",
+ "quotation_date_printed": "18.10.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-11-02",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Safety goggles clear (ISI/BIS)",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 235,
+   "unit": "Each",
+   "unit_price": 89.67,
+   "amount": 21072.45,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Fire extinguisher ABC powder 6 kg",
+   "brand": null,
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Pcs",
+   "unit_price": 2147.0,
+   "amount": 17176.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "N95 RESPIRATOR MASK",
+   "brand": "Nuvo",
+   "hsn": null,
+   "quantity": 87,
+   "unit": "Nos.",
+   "unit_price": 45.68,
+   "amount": 3974.16,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 42222.61,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 1000.0
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 43222.61,
+ "computed_grand_total": 43222.61,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "10 working days from PO",
+ "delivery_days_min": 10,
+ "delivery_days_max": 10,
+ "warranty": null,
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Installation and commissioning not included."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4,
+  5
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/photos/IMG_20261018_123238.jpg",
+ "supplier_id": "S05",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

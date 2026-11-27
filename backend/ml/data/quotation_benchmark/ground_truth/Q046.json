@@ -1,0 +1,127 @@
+{
+ "quotation_id": "Q046",
+ "rfq_id": "RFQ-2026-010",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": "+91 91899 74538",
+  "email": "sales@arvanta.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0537",
+ "quotation_date": "2026-09-04",
+ "quotation_date_printed": "04.09.2026",
+ "your_reference_date": "2026-08-27",
+ "validity_days": null,
+ "valid_until": "2026-09-11",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Office Swivel Chair Mesh Back",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 10,
+   "unit": "Nos.",
+   "unit_price": 4432.0,
+   "amount": 44320.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Steel Almirah 2-Door",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Each",
+   "unit_price": 11843.0,
+   "amount": 142116.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Steel filing cabinet 4-drawer",
+   "brand": null,
+   "hsn": null,
+   "quantity": 31,
+   "unit": "Each",
+   "unit_price": 10301.0,
+   "amount": 319331.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "FOAM MATTRESS 6X3FT",
+   "brand": "Veltrax",
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Pcs",
+   "unit_price": 4710.0,
+   "amount": 51810.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Toilet Soap Bar 100 G",
+   "brand": null,
+   "hsn": null,
+   "quantity": 61,
+   "unit": "Nos.",
+   "unit_price": 41.14,
+   "amount": 2509.54,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 560086.54,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 560086.54,
+ "computed_grand_total": 560086.54,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Colour/model may vary as per availability.",
+  "Test certificate will be provided on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  5
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/photos/IMG_20260904_150523.jpg",
+ "supplier_id": "S05",
+ "capture": {
+  "quality": "medium",
+  "perspective_tilt": 0.09,
+  "capture_quality": "medium"
+ }
+}

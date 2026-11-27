@@ -16,7 +16,7 @@ dist/
 *.local
 
 # Uploaded originals
-storage/
+/storage/
 
 # Editors / OS
 .vscode/

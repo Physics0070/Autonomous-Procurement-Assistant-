@@ -81,6 +81,18 @@ class OpenAICompatibleProvider(AIProvider):
     # -- transport ------------------------------------------------------
     @asynccontextmanager
     async def _client(self) -> AsyncIterator[httpx.AsyncClient]:
+        # Every outbound model call passes here, so one cap bounds them all. Measured: with no cap, parallel work
+        # spent the free-tier quota and extraction fell from 98% to 93% as calls dropped to weaker fallback models.
+        loop_id = id(asyncio.get_running_loop())
+        gate = _GATES.get(loop_id)
+        if gate is None:
+            gate = _GATES[loop_id] = asyncio.Semaphore(max(1, settings.AI_MAX_CONCURRENT_CALLS))
+        async with gate:
+            async with self._pooled_client() as client:
+                yield client
+
+    @asynccontextmanager
+    async def _pooled_client(self) -> AsyncIterator[httpx.AsyncClient]:
         if self._http is not None:
             yield self._http
             return
@@ -297,6 +309,7 @@ class OpenAICompatibleProvider(AIProvider):
 
 
 _POOLS: dict[tuple[int, str], httpx.AsyncClient] = {}
+_GATES: dict[int, asyncio.Semaphore] = {}  # per event loop: at most AI_MAX_CONCURRENT_CALLS calls in flight
 MAX_RETRY_AFTER_SECONDS = 30.0
 RETRY_BACKOFF_SECONDS = 2.0
 

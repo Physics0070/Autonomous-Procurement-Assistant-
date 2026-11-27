@@ -1,0 +1,149 @@
+{
+ "quotation_id": "Q114",
+ "rfq_id": "RFQ-2026-023",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Tandor Systems",
+  "gstin": "08JSCHC9725E3Z2",
+  "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan",
+  "phone": "+91 90124 21158",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0858",
+ "quotation_date": "2026-09-28",
+ "quotation_date_printed": "28 September 2026",
+ "your_reference_date": "2026-09-17",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "BOPP packing tape 48 mm x 65 m",
+   "brand": null,
+   "hsn": null,
+   "quantity": 46,
+   "unit": "Nos",
+   "unit_price": 81.77,
+   "amount": 3761.42,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Staple pins 24/6 box of 1000",
+   "brand": null,
+   "hsn": null,
+   "quantity": 1255,
+   "unit": "Box",
+   "unit_price": 11.87,
+   "amount": 14896.85,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Office scissors 8\"",
+   "brand": null,
+   "hsn": null,
+   "quantity": 123,
+   "unit": "Pcs",
+   "unit_price": 84.26,
+   "amount": 10363.98,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Permanent marker black bullet tip",
+   "brand": null,
+   "hsn": null,
+   "quantity": 667,
+   "unit": "Pcs",
+   "unit_price": 26.99,
+   "amount": 18002.33,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Heavy-duty stapler 100 sheets",
+   "brand": null,
+   "hsn": null,
+   "quantity": 20,
+   "unit": "Nos",
+   "unit_price": 424.0,
+   "amount": 8480.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Paper clips 28 mm box of 100 (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 173,
+   "unit": "Bx",
+   "unit_price": 20.31,
+   "amount": 3513.63,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": null,
+   "hsn": null,
+   "quantity": 101,
+   "unit": "Nos",
+   "unit_price": 68.84,
+   "amount": 6952.84,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 65971.05,
+ "discount_percent": 2,
+ "discount_amount": 1319.42,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 64651.63,
+ "computed_grand_total": 64651.63,
+ "payment_terms": "100% advance",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": "12 months",
+ "extra_notes": [
+  "Special discount of 3% on orders above Rs. 1,00,000.",
+  "Installation and commissioning not included.",
+  "Please confirm the order by e-mail.",
+  "Delivery subject to receipt of advance."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity"
+ ],
+ "source_file": "documents/pdf/TandorSystems_quotation_EST-0858_114.pdf",
+ "supplier_id": "S22",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "quotation_id": "Q001",
+ "rfq_id": "RFQ-2026-001",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Jorvan Solutions",
+  "gstin": null,
+  "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana",
+  "phone": null,
+  "email": "sales@jorvan.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0183",
+ "quotation_date": "2026-09-29",
+ "quotation_date_printed": "29.09.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-10-06",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Whiteboard marker black",
+   "brand": "Primea",
+   "hsn": null,
+   "quantity": 1193,
+   "unit": "Pcs",
+   "unit_price": 26.11,
+   "amount": 31149.23,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "LEVER ARCH FILE A4 75 MM",
+   "brand": "Altron",
+   "hsn": null,
+   "quantity": 166,
+   "unit": "Pcs",
+   "unit_price": 134.0,
+   "amount": 22244.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Notebook ruled A4 172 pages",
+   "brand": "Nuvo",
+   "hsn": null,
+   "quantity": 32,
+   "unit": "EA",
+   "unit_price": 77.17,
+   "amount": 2469.44,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 55862.67,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 2500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 10505.28,
+  "total": 10505.28
+ },
+ "grand_total": 68867.95,
+ "computed_grand_total": 68867.95,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/JorvanSolutions_quotation_PI-0183_1.pdf",
+ "supplier_id": "S15",
+ "capture": {
+  "pages": 1
+ }
+}

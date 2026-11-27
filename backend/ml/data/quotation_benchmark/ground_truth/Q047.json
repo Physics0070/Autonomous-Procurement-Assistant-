@@ -1,0 +1,138 @@
+{
+ "quotation_id": "Q047",
+ "rfq_id": "RFQ-2026-010",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Yaran Tech Pvt. Ltd.",
+  "gstin": "09CBAGJ9003V3ZH",
+  "address": "Gala No. 2, Udyog Nagar, Noida - 201986, Uttar Pradesh",
+  "phone": "+91 96381 82063",
+  "email": "sales@yaran.example",
+  "contact_person": "Rohit Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0383",
+ "quotation_date": "2026-08-30",
+ "quotation_date_printed": "30-08-26",
+ "your_reference_date": null,
+ "validity_days": 15,
+ "valid_until": "2026-09-14",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Office swivel chair mesh back (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 10,
+   "unit": "EA",
+   "unit_price": 5484.0,
+   "amount": 54840.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Steel almirah 2-door",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "EA",
+   "unit_price": 12802.0,
+   "amount": 153624.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Steel Filing Cabinet 4-Drawer or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 31,
+   "unit": "EA",
+   "unit_price": 10528.0,
+   "amount": 326368.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Foam mattress 6x3ft",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Each",
+   "unit_price": 4967.0,
+   "amount": 54637.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Office table wooden 5x2.5ft or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 21,
+   "unit": "Each",
+   "unit_price": 9909.0,
+   "amount": 208089.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Toilet soap bar 100 g",
+   "brand": null,
+   "hsn": null,
+   "quantity": 61,
+   "unit": "Nos",
+   "unit_price": 47.71,
+   "amount": 2910.31,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 800468.31,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 122105.34
+ },
+ "grand_total": 800468.31,
+ "computed_grand_total": 800468.31,
+ "payment_terms": null,
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [
+  "Special discount of 3% on orders above Rs. 1,00,000.",
+  "Cheque/DD in favour of the company name above."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "payment_terms",
+  "delivery"
+ ],
+ "source_file": "documents/scans/Scan0047.pdf",
+ "supplier_id": "S26",
+ "capture": {
+  "dpi": 150,
+  "rotation_deg": -0.04,
+  "capture_quality": "good"
+ }
+}

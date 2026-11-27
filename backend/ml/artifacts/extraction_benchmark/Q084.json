@@ -1,0 +1,164 @@
+{
+ "text": {
+  "supplier": {
+   "name": "MARVIK ENTERPRISES",
+   "email": "saleamarvik.example",
+   "phone": "+9199038232671",
+   "gst_number": "06VMBTK0572N1Z6",
+   "address": "Unit 32,udyog Nagar, Gurugram122962,Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0690",
+   "date": null,
+   "validity": "05 December 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Safety goggles clear",
+    "quantity": 20.0,
+    "unit": "Dozen",
+    "unit_price": 943.0,
+    "gst_percentage": null,
+    "total_price": 19110.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "N95 respirator mask or eguivalent",
+    "quantity": 8.0,
+    "unit": "Dozen",
+    "unit_price": 478.0,
+    "gst_percentage": null,
+    "total_price": 3824.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DIGITAL BP MONITOR",
+    "quantity": 115.0,
+    "unit": "NO#",
+    "unit_price": 1641.0,
+    "gst_percentage": null,
+    "total_price": 188715.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Leather safety shoes ateel toe",
+    "quantity": 65.0,
+    "unit": "Pair",
+    "unit_price": 976.0,
+    "gst_percentage": null,
+    "total_price": 63440.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 275089.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 275839.0,
+   "transportation_cost": 750.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3weeks",
+   "payment_terms": "5os advance,balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "payment_terms_raw": "5os advance,balance before dispatch",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 752,
+     "prompt_tokens": 1486,
+     "total_tokens": 2238
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:18:50.185514+00:00",
+  "notes": [
+   "Payment terms '5os' is likely a typo for '50%'",
+   "Email address 'saleamarvik.example' appears to be missing a domain extension",
+   "Date field is present in document but empty"
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "MARVIK ENTERPRISES",
+   "email": "sales@marvik.example",
+   "phone": "+91 99038 23267",
+   "gst_number": "06VMBTK0572N1Z6",
+   "address": "Unit 32, Udyog Nagar, Gurugram - 122962, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0690",
+   "date": "21 October 2026",
+   "validity": "Valid till 05 December 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Safety goggles clear",
+    "quantity": 20.0,
+    "unit": "Dozen",
+    "unit_price": 943.0,
+    "gst_percentage": null,
+    "total_price": 19110.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "N95 respirator mask or equivalent",
+    "quantity": 8.0,
+    "unit": "Dozen",
+    "unit_price": 478.0,
+    "gst_percentage": null,
+    "total_price": 3824.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "DIGITAL BP MONITOR",
+    "quantity": 115.0,
+    "unit": "Nos",
+    "unit_price": 1641.0,
+    "gst_percentage": null,
+    "total_price": 188715.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Leather safety shoes steel toe",
+    "quantity": 65.0,
+    "unit": "Pair",
+    "unit_price": 976.0,
+    "gst_percentage": null,
+    "total_price": 63440.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 275089.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 275839.0,
+   "transportation_cost": 750.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "2-3 weeks",
+   "payment_terms": "50% advance, balance before dispatch",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 53.42,
+ "source_chars": 1105
+}

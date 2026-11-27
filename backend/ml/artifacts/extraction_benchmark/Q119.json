@@ -1,0 +1,118 @@
+{
+ "text": {
+  "supplier": {
+   "name": "HALVOR DISTRIBUTORS",
+   "email": null,
+   "phone": "+91 96290 41038",
+   "gst_number": "09EADHK3962G3ZY",
+   "address": "Office 22, Industrial Area Phase II, Noida - 201114, Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": null,
+   "date": "24.08.2026",
+   "validity": "Valid till 03.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Laptop Core i5 16GB 512GB SSD 14-inch",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 55291.0,
+    "gst_percentage": null,
+    "total_price": 276455.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "External HDD 2TB USB 3.0",
+    "quantity": 26.0,
+    "unit": "EA",
+    "unit_price": 5473.0,
+    "gst_percentage": null,
+    "total_price": 142298.0,
+    "attributes": {
+     "HSN": "8471.70"
+    }
+   },
+   {
+    "original_name": "Laser printer monochrome A4 duplex",
+    "quantity": 15.0,
+    "unit": "Nos.",
+    "unit_price": 11556.0,
+    "gst_percentage": null,
+    "total_price": 173340.0,
+    "attributes": {
+     "HSN": "8443.32"
+    }
+   },
+   {
+    "original_name": "SSD 512GB SATA 2.5-inch",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 3163.0,
+    "gst_percentage": null,
+    "total_price": 47445.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "Toner cartridge black laser",
+    "quantity": 38.0,
+    "unit": "EA",
+    "unit_price": 2063.0,
+    "gst_percentage": null,
+    "total_price": 78394.0,
+    "attributes": {
+     "HSN": "8443.99"
+    }
+   },
+   {
+    "original_name": "Optical mouse USB wired or equivalent",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 218.0,
+    "gst_percentage": null,
+    "total_price": 8066.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 725998.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 725998.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 960,
+     "prompt_tokens": 1904,
+     "total_tokens": 2864
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:04:12.216936+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.95,
+ "source_chars": 1738
+}

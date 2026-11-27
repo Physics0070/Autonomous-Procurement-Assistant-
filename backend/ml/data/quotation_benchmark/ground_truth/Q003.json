@@ -1,0 +1,104 @@
+{
+ "quotation_id": "Q003",
+ "rfq_id": "RFQ-2026-001",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Zephra Enterprises",
+  "gstin": "19BGBWT3003N1ZT",
+  "address": "Shop No. 20, Lal Bahadur Marg, Kolkata - 700546, West Bengal",
+  "phone": "+91 97794 40471",
+  "email": "sales@zephra.example",
+  "contact_person": "Meera Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0876",
+ "quotation_date": "2026-09-30",
+ "quotation_date_printed": "30-09-26",
+ "your_reference_date": "2026-09-25",
+ "validity_days": 30,
+ "valid_until": "2026-10-30",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Whiteboard marker black or equivalent",
+   "brand": "Veltrax",
+   "hsn": "9608.20",
+   "quantity": 1193,
+   "unit": "EA",
+   "unit_price": 33.76,
+   "amount": 40275.68,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Lever arch file A4 75 mm",
+   "brand": "Orbix",
+   "hsn": "4820.30",
+   "quantity": 166,
+   "unit": "Nos",
+   "unit_price": 155.0,
+   "amount": 25730.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Permanent marker black bullet tip or equivalent",
+   "brand": null,
+   "hsn": "9608.20",
+   "quantity": 192,
+   "unit": "Nos.",
+   "unit_price": 40.83,
+   "amount": 7839.36,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Notebook Ruled A4 172 Pages",
+   "brand": "Zenmark",
+   "hsn": "4820.20",
+   "quantity": 32,
+   "unit": "Each",
+   "unit_price": 95.64,
+   "amount": 3060.48,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 76905.52,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 1000.0
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 11731.35
+ },
+ "grand_total": 77905.52,
+ "computed_grand_total": 77905.52,
+ "payment_terms": "Against proforma invoice",
+ "delivery_text": "Ex-stock",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": "1 year manufacturer warranty",
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/excel/Offer_ZephraEnterprises_final_3.xlsx",
+ "supplier_id": "S04",
+ "capture": {}
+}

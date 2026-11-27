@@ -1,0 +1,165 @@
+{
+ "text": {
+  "supplier": {
+   "name": "SilvexSolutions",
+   "email": null,
+   "phone": "+919615677520",
+   "gst_number": "19KLDWU8778R1ZY",
+   "address": "Oic6tonoadka046Wsngl"
+  },
+  "quotation": {
+   "reference": "EST-0032",
+   "date": "08November2026",
+   "validity": "23December2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Exhaustfan300mm",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 1387.0,
+    "gst_percentage": null,
+    "total_price": 13870.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "OrbixHousewireFRPVC1.5sqmmcopper90m",
+    "quantity": 33.0,
+    "unit": "Coil",
+    "unit_price": 1782.0,
+    "gst_percentage": null,
+    "total_price": 58806.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LEDtubelight20WT84ft",
+    "quantity": 95.0,
+    "unit": "Nos.",
+    "unit_price": 215.0,
+    "gst_percentage": null,
+    "total_price": 20425.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AeroliteHousewireFRPVC2.5sq mmcopper90m",
+    "quantity": 26.0,
+    "unit": "Coll",
+    "unit_price": 2852.0,
+    "gst_percentage": null,
+    "total_price": 74152.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 167253.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 167253.0,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "100%advance",
+   "payment_days": 0,
+   "warranty": "6months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 728,
+     "prompt_tokens": 1398,
+     "total_tokens": 2126
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:35:04.872688+00:00",
+  "notes": [
+   "OCR errors present in address and item names.",
+   "Total amount appears to be inclusive of tax based on subtotal matching total, despite GST being listed as extra."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Silvex Solutions",
+   "email": null,
+   "phone": "+91 96156 77520",
+   "gst_number": "19KLDWU8778R1ZY",
+   "address": "Office 6, Station Road, Kolkata - 700846, West Bengal"
+  },
+  "quotation": {
+   "reference": "EST-0032",
+   "date": "08 November 2026",
+   "validity": "23 December 2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Exhaust fan 300mm",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 1387.0,
+    "gst_percentage": null,
+    "total_price": 13870.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix House wire FR PVC 1.5 sq mm copper 90 m",
+    "quantity": 33.0,
+    "unit": "Coil",
+    "unit_price": 1782.0,
+    "gst_percentage": null,
+    "total_price": 58806.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED tube ligh 120W T8 4 ft",
+    "quantity": 95.0,
+    "unit": "Nos.",
+    "unit_price": 215.0,
+    "gst_percentage": null,
+    "total_price": 20425.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Aerolite House wire FR PVC 2.5 sq mm copper 90 m",
+    "quantity": 26.0,
+    "unit": "Coil",
+    "unit_price": 2852.0,
+    "gst_percentage": null,
+    "total_price": 74152.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 167253.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 167253.0,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "100% advance",
+   "payment_days": null,
+   "warranty": "6 months"
+  },
+  "additional_attributes": {
+   "freight": "Extra at actuals",
+   "transit_insurance": "to be arranged by the buyer"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 21.29,
+ "source_chars": 794
+}

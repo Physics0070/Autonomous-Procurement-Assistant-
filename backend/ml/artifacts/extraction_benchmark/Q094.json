@@ -1,0 +1,125 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": null,
+   "phone": "+91 98848 87441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0766",
+   "date": "13-09-26",
+   "validity": "13-10-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Supra Water Dispenser Hot And Cold HSN:8418.69",
+    "quantity": 10.0,
+    "unit": "EA",
+    "unit_price": 9591.0,
+    "gst_percentage": null,
+    "total_price": 95910.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Washing machine front load 7 kg HSN:8450.11",
+    "quantity": 15.0,
+    "unit": "Nos",
+    "unit_price": 23300.0,
+    "gst_percentage": null,
+    "total_price": 349500.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Split AC 1 ton 3 star HSN:8415.10",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 30017.0,
+    "gst_percentage": null,
+    "total_price": 90051.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Supra RO WATER PURIFIER 10 L WALL MOUNTED HSN:8421.21",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 9874.0,
+    "gst_percentage": null,
+    "total_price": 98740.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Refrigerator 190 L single door HSN:8418.21",
+    "quantity": 2.0,
+    "unit": "EA",
+    "unit_price": 13545.0,
+    "gst_percentage": null,
+    "total_price": 27090.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Aerolite Microwave oven 25 L convection HSN:8516.50",
+    "quantity": 36.0,
+    "unit": "Each",
+    "unit_price": 8809.0,
+    "gst_percentage": null,
+    "total_price": 317124.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron Split AC 1.5 ton 5 star inverter HSN:8415.10",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 37246.0,
+    "gst_percentage": null,
+    "total_price": 186230.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1164645.0,
+   "tax_amount": 210086.1,
+   "tax_percentage": 18.0,
+   "total_amount": 1377231.1,
+   "transportation_cost": 2500.0,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_gstin": "27AABCS4821K1Z4",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 2032,
+     "completion_tokens": 888,
+     "total_tokens": 2920,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:56:59.528255+00:00",
+  "notes": [
+   "Packing and forwarding charges extra at 2%"
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 9.96,
+ "source_chars": 1912
+}

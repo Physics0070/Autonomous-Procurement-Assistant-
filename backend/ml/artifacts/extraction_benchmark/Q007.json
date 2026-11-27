@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Jorvan Solutions",
+   "email": null,
+   "phone": "+91 99117 33029",
+   "gst_number": null,
+   "address": "Gala No. 42, Market Yard, Gurugram - 122368, Haryana"
+  },
+  "quotation": {
+   "reference": "PI/0774",
+   "date": "29.08.2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "SSD 521GB SATA 2.5-INCH",
+    "quantity": 29.0,
+    "unit": "Pcs",
+    "unit_price": 4130.0,
+    "gst_percentage": null,
+    "total_price": 119770.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Kanto Document scanner A4 ADF duplex 40 ppm",
+    "quantity": 15.0,
+    "unit": "Each",
+    "unit_price": 29860.0,
+    "gst_percentage": null,
+    "total_price": 447900.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix Toner cartridge black laser",
+    "quantity": 14.0,
+    "unit": "Nos.",
+    "unit_price": 2823.0,
+    "gst_percentage": null,
+    "total_price": 39522.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Veltrax Laser printer monochrome A4 duplex",
+    "quantity": 5.0,
+    "unit": "Nos",
+    "unit_price": 14749.0,
+    "gst_percentage": null,
+    "total_price": 73745.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED monitor 24-inch IPS",
+    "quantity": 21.0,
+    "unit": "Nos",
+    "unit_price": 10329.0,
+    "gst_percentage": null,
+    "total_price": 216909.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 897846.0,
+   "tax_amount": 161612.28,
+   "tax_percentage": 18.0,
+   "total_amount": 1059458.28,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 777,
+     "prompt_tokens": 1480,
+     "total_tokens": 2257
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:40:46.281555+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.68,
+ "source_chars": 1041
+}

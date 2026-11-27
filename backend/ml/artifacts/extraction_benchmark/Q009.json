@@ -1,0 +1,173 @@
+{
+ "text": {
+  "supplier": {
+   "name": "MirelEngineers",
+   "email": null,
+   "phone": "+919946185385",
+   "gst_number": "08CUPRB4795P3ZH",
+   "address": "Unit19,GaneshIndustrialEstate,Jaipur-302622,Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0405",
+   "date": "27/08/2026",
+   "validity": "30days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "DocumentscannerA4ADFduplex40ppmHSN:8471.60",
+    "quantity": 15.0,
+    "unit": "Each",
+    "unit_price": 31381.0,
+    "gst_percentage": null,
+    "total_price": 470715.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   },
+   {
+    "original_name": "TonercartridgeblacklaserHSN:8443.99",
+    "quantity": 14.0,
+    "unit": "EA",
+    "unit_price": 2534.0,
+    "gst_percentage": null,
+    "total_price": 35476.0,
+    "attributes": {
+     "HSN": "8443.99"
+    }
+   },
+   {
+    "original_name": "LASERPRINTERMONOCHROMEA4DUPLEXorequivalentHSN:8443.32",
+    "quantity": null,
+    "unit": null,
+    "unit_price": 15780.0,
+    "gst_percentage": null,
+    "total_price": 78900.0,
+    "attributes": {
+     "HSN": "8443.32"
+    }
+   },
+   {
+    "original_name": "LEDmonitor24-inchIPSHSN:8528.52",
+    "quantity": 21.0,
+    "unit": "Each",
+    "unit_price": 9878.0,
+    "gst_percentage": null,
+    "total_price": 207438.0,
+    "attributes": {
+     "HSN": "8528.52"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 792529.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 792529.0,
+   "transportation_cost": null,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within7days",
+   "payment_terms": "Net45days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "enquiry_reference": "20/08/2026",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 857,
+     "prompt_tokens": 1492,
+     "total_tokens": 2349
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:42:28.352372+00:00",
+  "notes": [
+   "Item 3 quantity is missing in the source document.",
+   "Total amount does not include the 18% GST mentioned in T&C."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": null,
+   "phone": "+91 99461 85385",
+   "gst_number": "08CUPR84795P2F",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302622, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/07405",
+   "date": "27/08/2026",
+   "validity": "27/08/2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Document scanner A4 ADF duplex 40 ppm HSN:8471.60",
+    "quantity": 1.0,
+    "unit": "Each",
+    "unit_price": 31381.0,
+    "gst_percentage": null,
+    "total_price": 470715.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toner cartridge black laser HSN:8443.99",
+    "quantity": 2.0,
+    "unit": "EA",
+    "unit_price": 2534.0,
+    "gst_percentage": null,
+    "total_price": 35476.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LASER PRINTER MONOCHROME A4 DUPLEX or equivalent HSN:8443.32",
+    "quantity": 3.0,
+    "unit": "Nos",
+    "unit_price": 15780.0,
+    "gst_percentage": null,
+    "total_price": 47340.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED monitor 24-inch IPS HSN:8528.52",
+    "quantity": 4.0,
+    "unit": "Each",
+    "unit_price": 9878.0,
+    "gst_percentage": null,
+    "total_price": 39512.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 595003.0,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 7.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "30 days",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "notes": "T&C section mentions: 1. Payment: Net 45 days (contradicts 30 days in commercials), 2. Offer valid 30 days, 3. Delivery: Within 7 days, 4. GST @ 18% extra as applicable, 5. Installation and commissioning not included, 6. We are an authorised dealer of leading brands, 7. Transit insurance to be arranged by the buyer."
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 81.48,
+ "source_chars": 963
+}

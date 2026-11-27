@@ -1,0 +1,134 @@
+{
+ "quotation_id": "Q038",
+ "rfq_id": "RFQ-2026-008",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Belmont Suppliers",
+  "gstin": "24WAUNJ2506U1ZI",
+  "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat",
+  "phone": "+91 90625 76892",
+  "email": "sales@belmont.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0435",
+ "quotation_date": "2026-10-27",
+ "quotation_date_printed": "27/10/2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-11-11",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Refrigerator 190 L single door",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Pcs",
+   "unit_price": 13830.0,
+   "amount": 41490.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Split AC 1 ton 3 star or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Nos.",
+   "unit_price": 33932.0,
+   "amount": 169660.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Window AC 1.5 ton",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "EA",
+   "unit_price": 34235.0,
+   "amount": 376585.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Water dispenser hot and cold",
+   "brand": null,
+   "hsn": null,
+   "quantity": 9,
+   "unit": "Nos.",
+   "unit_price": 11755.0,
+   "amount": 105795.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "RO water purifier 10 L wall mounted or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "EA",
+   "unit_price": 11242.0,
+   "amount": 146146.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "Split AC 1.5 ton 5 star inverter or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 4,
+   "unit": "Each",
+   "unit_price": 44661.0,
+   "amount": 178644.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1018320.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 183297.6,
+  "total": 183297.6
+ },
+ "grand_total": 1201617.6,
+ "computed_grand_total": 1201617.6,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Goods once sold will not be taken back.",
+  "Installation and commissioning not included.",
+  "Colour/model may vary as per availability."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  6
+ ],
+ "fields_missing_in_source": [],
+ "source_file": "documents/excel/Offer_BelmontSuppliers_final_38.xlsx",
+ "supplier_id": "S09",
+ "capture": {}
+}

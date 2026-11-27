@@ -1,0 +1,100 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ixora Agencies",
+   "email": null,
+   "phone": "+91 94096 36580",
+   "gst_number": null,
+   "address": "Office 8, Hi-Tech Park, Kolkata - 700121, West Bengal"
+  },
+  "quotation": {
+   "reference": "EST-0181",
+   "date": "2026-10-10T00:00:00",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Leather safety shoes steel toe",
+    "quantity": 67.0,
+    "unit": "Prs",
+    "unit_price": 1112.0,
+    "gst_percentage": null,
+    "total_price": 74504.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "N95 respirator mask",
+    "quantity": 24.0,
+    "unit": "Pkt of 10",
+    "unit_price": 453.0,
+    "gst_percentage": null,
+    "total_price": 10872.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Industrial safety helmet",
+    "quantity": 158.0,
+    "unit": "Each",
+    "unit_price": 193.0,
+    "gst_percentage": null,
+    "total_price": 30494.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Fire extinguisher ABC powder 6 kg",
+    "quantity": 5.0,
+    "unit": "Nos.",
+    "unit_price": 2312.0,
+    "gst_percentage": null,
+    "total_price": 11560.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CO2 FIRE EXTINGUISHER 4.5 KG (ISI/BIS)",
+    "quantity": 22.0,
+    "unit": "EA",
+    "unit_price": 6534.0,
+    "gst_percentage": null,
+    "total_price": 143748.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 271178.0,
+   "tax_amount": 47835.8,
+   "tax_percentage": 18.0,
+   "total_amount": 313590.24,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": "1 year manufacturer warranty"
+  },
+  "additional_attributes": {
+   "discount": "2%",
+   "freight_terms": "Extra at actuals",
+   "installation_status": "Installation and commissioning not included",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 777,
+     "prompt_tokens": 1906,
+     "total_tokens": 2683
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:53:16.361580+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.13,
+ "source_chars": 2090
+}

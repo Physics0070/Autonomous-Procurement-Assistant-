@@ -1,0 +1,182 @@
+{
+ "text": {
+  "supplier": {
+   "name": "VexelMart",
+   "email": "sales@vexel.example",
+   "phone": "+919789572146",
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit20,GaneshIndustrialEstate,Mumbai-400111,Maharashtra"
+  },
+  "quotation": {
+   "reference": "P1/0071",
+   "date": "21-0ct-2026",
+   "validity": "28-Oct-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "WHITEBOARDMARKERBLACK[HSN9608.20]",
+    "quantity": 124.0,
+    "unit": "Dozen",
+    "unit_price": 313.0,
+    "gst_percentage": null,
+    "total_price": 38812.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "NotebookruledA4172pages[HSN4820.20]",
+    "quantity": 8.0,
+    "unit": "Pktof10",
+    "unit_price": 729.0,
+    "gst_percentage": null,
+    "total_price": 5832.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "BOPPpackingtape48mmx65m[HSN3919.10]",
+    "quantity": 174.0,
+    "unit": "Nos",
+    "unit_price": 79.86,
+    "gst_percentage": null,
+    "total_price": 13895.64,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanentmarkerblackbullettip[HSN9608.20]",
+    "quantity": 31.0,
+    "unit": "Dozen",
+    "unit_price": 381.0,
+    "gst_percentage": null,
+    "total_price": 11811.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gluestick15g[HSN3506.10]",
+    "quantity": 16.0,
+    "unit": "Dozen",
+    "unit_price": 327.0,
+    "gst_percentage": null,
+    "total_price": 5232.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 75582.64,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 75582.64,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-worksMumbai;transportbybuyer",
+   "delivery_time": "3weeks",
+   "payment_terms": "30dayscredit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "prepared_for": "Sahyadri IndustrialServicesPvt.Ltd.",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 838,
+     "prompt_tokens": 1475,
+     "total_tokens": 2313
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:06:47.866349+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Vexel Mart",
+   "email": "sales@vexel.example",
+   "phone": "+91 97895 72146",
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra"
+  },
+  "quotation": {
+   "reference": "PI/0071",
+   "date": "21-Oct-2026",
+   "validity": "28-Oct-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "WHITEBOARD MARKER BLACK [HSN 9608.20]",
+    "quantity": 124.0,
+    "unit": "Dozen",
+    "unit_price": 313.0,
+    "gst_percentage": null,
+    "total_price": 38812.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Notebook ruled A4 172 pages [HSN 4820.20]",
+    "quantity": 8.0,
+    "unit": "Pkt of 10",
+    "unit_price": 729.0,
+    "gst_percentage": null,
+    "total_price": 5832.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "BOPP packing tape 48mm x 65 m [HSN 3919.10]",
+    "quantity": 174.0,
+    "unit": "Nos",
+    "unit_price": 79.86,
+    "gst_percentage": null,
+    "total_price": 13895.64,
+    "attributes": {}
+   },
+   {
+    "original_name": "Permanent marker black bullet tip [HSN 9608.20]",
+    "quantity": 31.0,
+    "unit": "Dozen",
+    "unit_price": 381.0,
+    "gst_percentage": null,
+    "total_price": 11811.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Glue stick 15 g [HSN 3506.10]",
+    "quantity": 16.0,
+    "unit": "Dozen",
+    "unit_price": 327.0,
+    "gst_percentage": null,
+    "total_price": 5232.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 75582.64,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 75582.64,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Mumbai; transport by buyer",
+   "delivery_time": "3 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "buyer_gst": "27AABCS4821K1Z4"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 27.83,
+ "source_chars": 905
+}

@@ -1,0 +1,104 @@
+{
+ "quotation_id": "Q106",
+ "rfq_id": "RFQ-2026-022",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Arvanta Trading Co.",
+  "gstin": null,
+  "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh",
+  "phone": "+91 91899 74538",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "Q-0613",
+ "quotation_date": "2026-09-24",
+ "quotation_date_printed": "24.09.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 3,
+   "description": "Tubular inverter battery 12V 150Ah",
+   "brand": null,
+   "hsn": null,
+   "quantity": 8,
+   "unit": "Nos",
+   "unit_price": 13299.0,
+   "amount": 106392.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 4,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 3,
+   "unit": "Nos",
+   "unit_price": 12766.0,
+   "amount": 38298.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 5,
+   "description": "Alkaline AA battery pack of 10",
+   "brand": "Dynex",
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Pkt",
+   "unit_price": 289.0,
+   "amount": 3179.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 147869.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 147869.0,
+ "computed_grand_total": 147869.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [
+  "Goods once sold will not be taken back."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  1,
+  2
+ ],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0106.pdf",
+ "supplier_id": "S05",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": 1.67,
+  "capture_quality": "medium"
+ }
+}

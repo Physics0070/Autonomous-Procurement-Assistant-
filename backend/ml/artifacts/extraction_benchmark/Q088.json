@@ -1,0 +1,106 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": null,
+   "phone": null,
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0724",
+   "date": "28-08-26",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Aerolite TMT bar Fe500D 12mm HSN:7214.20",
+    "quantity": 72.0,
+    "unit": "Kg",
+    "unit_price": 59.47,
+    "gst_percentage": 18.0,
+    "total_price": 4281.84,
+    "attributes": {
+     "HSN": "7214.20"
+    }
+   },
+   {
+    "original_name": "Wall putty 20 kg (ISI/BIS) HSN:3214.90",
+    "quantity": 18.0,
+    "unit": "Bags",
+    "unit_price": 781.0,
+    "gst_percentage": 18.0,
+    "total_price": 14058.0,
+    "attributes": {
+     "HSN": "3214.90"
+    }
+   },
+   {
+    "original_name": "Dynex GI pipe 1\" medium class or equivalent HSN:7306.30",
+    "quantity": 116.0,
+    "unit": "Meter",
+    "unit_price": 231.0,
+    "gst_percentage": 18.0,
+    "total_price": 26796.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   },
+   {
+    "original_name": "Veltrax AAC block 600x200x200 mm HSN:6810.11",
+    "quantity": 178.0,
+    "unit": "Pcs",
+    "unit_price": 55.03,
+    "gst_percentage": 18.0,
+    "total_price": 9795.34,
+    "attributes": {
+     "HSN": "6810.11"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 54931.18,
+   "tax_amount": 9887.61,
+   "tax_percentage": 18.0,
+   "total_amount": 64818.79,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-stock",
+   "delivery_time": "Ex-stock",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1731,
+     "completion_tokens": 701,
+     "total_tokens": 2432,
+     "prompt_tokens_details": {
+      "cached_tokens": 896
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:20:39.317066+00:00",
+  "notes": [
+   "The document mentions 'Freight: Free delivery at your premises', which implies transportation cost is not separately charged."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 15.44,
+ "source_chars": 1262
+}

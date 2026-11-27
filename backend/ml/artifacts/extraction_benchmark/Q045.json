@@ -1,0 +1,151 @@
+{
+ "text": {
+  "supplier": {
+   "name": "KANTAROSOLUTIONS",
+   "email": null,
+   "phone": "+91909574507",
+   "gst_number": "24UETUT737IM:ZO",
+   "address": "Gala Ns Z2.Ins"
+  },
+  "quotation": {
+   "reference": "OTN0381",
+   "date": "29-10-26",
+   "validity": "9-1I-CIPA",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "o14.OC",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {
+     "M130": "842518 0481.80"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": null,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 151600.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_enquiry_reference": "Yourenquiry dted 18-10-26",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 486,
+     "prompt_tokens": 1156,
+     "total_tokens": 1642
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:49:55.838425+00:00",
+  "notes": [
+   "OCR output is highly degraded; item details are unreadable or merged.",
+   "Total amount 151.600.00 interpreted as 151600.00 based on standard formatting.",
+   "Validity date '9-1I-CIPA' is likely an OCR error."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": null,
+   "phone": "+91 90965 74507",
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0381",
+   "date": "29-10-26",
+   "validity": "Valid till 13-11-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Submersible pump 2 HP borewell",
+    "quantity": 5.0,
+    "unit": "EA",
+    "unit_price": 27902.0,
+    "gst_percentage": null,
+    "total_price": 139510.0,
+    "attributes": {
+     "HSN": "8413.70"
+    }
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged",
+    "quantity": 83.0,
+    "unit": "Each",
+    "unit_price": 1942.0,
+    "gst_percentage": null,
+    "total_price": 161186.0,
+    "attributes": {
+     "HSN": "8481.80"
+    }
+   },
+   {
+    "original_name": "Electric chain hoist 1 ton",
+    "quantity": 11.0,
+    "unit": "Each",
+    "unit_price": 28419.0,
+    "gst_percentage": null,
+    "total_price": 312609.0,
+    "attributes": {
+     "HSN": "8425.11"
+    }
+   },
+   {
+    "original_name": "Deep groove ball bearing 6205",
+    "quantity": 207.0,
+    "unit": "Nos",
+    "unit_price": 185.0,
+    "gst_percentage": null,
+    "total_price": 38295.0,
+    "attributes": {
+     "HSN": "8482.10"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 651600.0,
+   "tax_amount": 99399.61,
+   "tax_percentage": 18.0,
+   "total_amount": 651600.0,
+   "transportation_cost": null,
+   "delivery_days": 7,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Within 7 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "amount_in_words": "Rupees Six Lakh Fifty One Thousand Six Hundred Only"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": [
+   "The total amount listed in the document (6,51,600.00) appears to be the same as the subtotal, which is mathematically inconsistent with the provided tax amount."
+  ]
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 45.77,
+ "source_chars": 250
+}

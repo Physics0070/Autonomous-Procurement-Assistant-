@@ -1,0 +1,97 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Yaran Tech Pvt. Ltd.",
+   "email": null,
+   "phone": "+91 96381 82063",
+   "gst_number": "09CBAGJ9003V3ZH",
+   "address": "Gala No. 2, Udyog Nagar, Noida - 201986, Uttar Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0274",
+   "date": "2026-10-19T00:00:00",
+   "validity": "30 days",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cat6 Utp Cable 305 M Box",
+    "quantity": 5.0,
+    "unit": "Box",
+    "unit_price": 6524.0,
+    "gst_percentage": 18.0,
+    "total_price": 32620.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CCTV dome camera 2MP IP",
+    "quantity": 40.0,
+    "unit": "Each",
+    "unit_price": 2906.0,
+    "gst_percentage": 18.0,
+    "total_price": 116240.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Onlien UPS 1 kVA",
+    "quantity": 12.0,
+    "unit": "Nos.",
+    "unit_price": 14670.0,
+    "gst_percentage": 18.0,
+    "total_price": 176040.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Line interactive UPS 650 VA",
+    "quantity": 31.0,
+    "unit": "Each",
+    "unit_price": 3504.0,
+    "gst_percentage": 18.0,
+    "total_price": 108624.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 433524.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 433524.0,
+   "transportation_cost": 0.0,
+   "delivery_days": 3,
+   "delivery_date": null,
+   "delivery_terms": "ex-works",
+   "delivery_time": "Within 3 days",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "buyer_address": "Plot 14, MIDC Bhosari, Pune - 411026, Maharashtra",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1837,
+     "completion_tokens": 627,
+     "total_tokens": 2464,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T15:45:48.608330+00:00",
+  "notes": [
+   "The total amount (433524) appears to be the subtotal before tax, as the tax is listed as 18% extra, but no final total including tax is provided. The document states 'TOTAL 433524' which matches the subtotal."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 7.34,
+ "source_chars": 1931
+}

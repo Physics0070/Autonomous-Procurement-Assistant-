@@ -1,0 +1,169 @@
+{
+ "text": {
+  "supplier": {
+   "name": "UlmarTradingCo.",
+   "email": "sales@uimar.example",
+   "phone": "+919884887441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "GalaNo.9,Sector5,Chennai-600551,TamilNadu"
+  },
+  "quotation": {
+   "reference": "P1/0076",
+   "date": "25-09-26",
+   "validity": "10-10-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "VeltraXTOILETSOAPBAR100G HSN:3401.11",
+    "quantity": 14.0,
+    "unit": "Dozen",
+    "unit_price": 459.0,
+    "gst_percentage": null,
+    "total_price": 6426.0,
+    "attributes": {
+     "HSN": "3401.11"
+    }
+   },
+   {
+    "original_name": "KantoDetergent powder1kg HSN:3402.20",
+    "quantity": 191.0,
+    "unit": "Pack",
+    "unit_price": 94.07,
+    "gst_percentage": null,
+    "total_price": 17967.37,
+    "attributes": {
+     "HSN": "3402.20"
+    }
+   },
+   {
+    "original_name": "Orbix Office swivel chairmeshbackorequivalent HSN:9401.39",
+    "quantity": 20.0,
+    "unit": "Nos",
+    "unit_price": 3683.0,
+    "gst_percentage": null,
+    "total_price": 73660.0,
+    "attributes": {
+     "HSN": "9401.39"
+    }
+   },
+   {
+    "original_name": "FOAMMATTRESS6X3FT(ISI/BIS)HSN:9404.21",
+    "quantity": 25.0,
+    "unit": "Nos",
+    "unit_price": 4015.0,
+    "gst_percentage": null,
+    "total_price": 100625.0,
+    "attributes": {
+     "HSN": "9404.21"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 198678.37,
+   "tax_amount": 35762.11,
+   "tax_percentage": 18.0,
+   "total_amount": 234440.48,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Chennal;transport bybuyer",
+   "delivery_time": "7-10days",
+   "payment_terms": "30days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 879,
+     "prompt_tokens": 1516,
+     "total_tokens": 2395
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:27:17.369032+00:00",
+  "notes": [
+   "OCR output contains inconsistent decimal formatting (e.g., 6.426.00, 17.967.37, 35.762.11) which were parsed as standard numeric values."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": "sales@ulmar.example",
+   "phone": "+91 98848 87441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0076",
+   "date": "25-09-26",
+   "validity": "10-10-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Veltrax TOILET SOAP BAR 100 G HSN:3401.11",
+    "quantity": 14.0,
+    "unit": "Dozen",
+    "unit_price": 459.0,
+    "gst_percentage": null,
+    "total_price": 6426.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Kanto Detergent powder 1 kg HSN:3402.20",
+    "quantity": 191.0,
+    "unit": "Pack",
+    "unit_price": 94.07,
+    "gst_percentage": null,
+    "total_price": 17967.37,
+    "attributes": {}
+   },
+   {
+    "original_name": "Orbix Office swivel chair mesh back or equivalent HSN:9401.39",
+    "quantity": 20.0,
+    "unit": "Nos",
+    "unit_price": 3683.0,
+    "gst_percentage": null,
+    "total_price": 73660.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "FOAM MATTRESS 6X3 FT (ISI/BIS) HSN:9404.21",
+    "quantity": 25.0,
+    "unit": "Nos",
+    "unit_price": 4015.0,
+    "gst_percentage": null,
+    "total_price": 100625.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 198678.37,
+   "tax_amount": 35762.11,
+   "tax_percentage": 18.0,
+   "total_amount": 234440.48,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Chennai; transport by buyer",
+   "delivery_time": "7-10 days",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 32.97,
+ "source_chars": 958
+}

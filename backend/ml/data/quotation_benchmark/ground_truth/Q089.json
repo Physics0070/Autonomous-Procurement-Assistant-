@@ -1,0 +1,124 @@
+{
+ "quotation_id": "Q089",
+ "rfq_id": "RFQ-2026-018",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Veltra Industries",
+  "gstin": null,
+  "address": "Office 28, Udyog Nagar, Gurugram - 122531, Haryana",
+  "phone": "+91 92499 55669",
+  "email": "sales@veltra.example",
+  "contact_person": "Kavita Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "SQ/26/0289",
+ "quotation_date": "2026-08-24",
+ "quotation_date_printed": "24/08/2026",
+ "your_reference_date": "2026-08-22",
+ "validity_days": 7,
+ "valid_until": "2026-08-31",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "TMT bar Fe500D 12 mm (ISI/BIS)",
+   "brand": null,
+   "hsn": "7214.20",
+   "quantity": 72,
+   "unit": "Kg",
+   "unit_price": 74.0,
+   "amount": 5328.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Wall putty 20 kg",
+   "brand": null,
+   "hsn": "3214.90",
+   "quantity": 18,
+   "unit": "Bag",
+   "unit_price": 818.0,
+   "amount": 14724.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Commercial plywood 18 mm 8x4 ft",
+   "brand": null,
+   "hsn": "4412.33",
+   "quantity": 30,
+   "unit": "Sht",
+   "unit_price": 2644.0,
+   "amount": 79320.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "AAC BLOCK 600X200X200 MM",
+   "brand": null,
+   "hsn": "6810.11",
+   "quantity": 178,
+   "unit": "Nos.",
+   "unit_price": 63.19,
+   "amount": 11247.82,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "PPC cement 50 kg bag",
+   "brand": null,
+   "hsn": "2523.29",
+   "quantity": 62,
+   "unit": "Nos",
+   "unit_price": 424.0,
+   "amount": 26288.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 136907.82,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": null,
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 24643.41,
+  "total": 24643.41
+ },
+ "grand_total": 161551.23,
+ "computed_grand_total": 161551.23,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": null,
+ "extra_notes": [
+  "Packing and forwarding charges extra at 2%.",
+  "Please confirm the order by e-mail.",
+  "All disputes subject to local jurisdiction."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  4
+ ],
+ "fields_missing_in_source": [
+  "supplier_gstin"
+ ],
+ "source_file": "documents/excel/RateQuote_VeltraIndustries_rev1_89.xlsx",
+ "supplier_id": "S02",
+ "capture": {}
+}

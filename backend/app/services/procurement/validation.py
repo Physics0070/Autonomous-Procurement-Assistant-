@@ -14,9 +14,12 @@ from app.core.gstin import has_valid_check_digit, is_valid_gstin
 from app.schemas.extraction import AIExtractionResult, ValidationIssue, ValidationReport
 from app.schemas.common import Severity
 
-# Money comparisons need a tolerance: quotations round differently at each line.
-ABS_TOLERANCE = 1.0
-REL_TOLERANCE = 0.02  # 2%
+# Money comparisons need a tolerance: quotations round differently at each line. Printed figures differ from the
+# arithmetic by rounding only (a rupee or two), so the tolerance is tight. It was 2%, which let a supplier's ₹1,000
+# mistake on a ₹1 lakh quotation through unflagged (measured on the labelled benchmark: 5 of 11 such errors missed).
+ABS_TOLERANCE = 2.0
+REL_TOLERANCE = 0.0001  # 0.01%: ₹10 on ₹1 lakh
+ARITHMETIC_CODES = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch"}
 
 MAX_PLAUSIBLE_QUANTITY = 1_000_000
 MAX_PLAUSIBLE_UNIT_PRICE = 10_000_000
@@ -27,7 +30,9 @@ _DATE_FORMATS = (
     "%Y-%m-%d", "%Y/%m/%d",
     "%d/%m/%y", "%d-%m-%y",
     "%d %b %Y", "%d %B %Y", "%b %d, %Y", "%B %d, %Y",
+    "%d-%b-%Y", "%d-%b-%y", "%d %b %y", "%d/%b/%Y", "%d.%m.%y", "%d-%B-%Y",
 )
+_MONTH_DATE_RE = re.compile(r"\b(\d{1,2})(?:st|nd|rd|th)?[\s\-./]+([A-Za-z]{3,9})[\s\-./,]+(\d{2,4})\b")
 
 
 def parse_date(value: Optional[str]) -> Optional[datetime]:
@@ -39,6 +44,14 @@ def parse_date(value: Optional[str]) -> Optional[datetime]:
             return datetime.strptime(cleaned, fmt)
         except ValueError:
             continue
+    named = _MONTH_DATE_RE.search(cleaned)  # "Dated 25th October 2026", "25-Oct-26"
+    if named:
+        day, month, year = named.groups()
+        for fmt in ("%d %b %Y", "%d %B %Y", "%d %b %y", "%d %B %y"):
+            try:
+                return datetime.strptime(f"{day} {month[:3] if len(month) > 3 and fmt.endswith('%b %Y') else month} {year}", fmt)
+            except ValueError:
+                continue
     match = re.search(r"\d{1,4}[/\-.]\d{1,2}[/\-.]\d{2,4}", cleaned)
     if match:
         for fmt in _DATE_FORMATS:
@@ -259,7 +272,9 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
             freight = 0.0
         if tax is not None:
             expected_total = base + tax + freight
-            if not _close_enough(expected_total, commercials.total_amount):
+            # Prices that include GST, and "GST extra" quotations that never add it, print a total equal to the subtotal.
+            tax_not_added = _close_enough(base + freight, commercials.total_amount)
+            if not _close_enough(expected_total, commercials.total_amount) and not tax_not_added:
                 add(
                     "commercials.total_amount",
                     "total_mismatch",
@@ -300,7 +315,9 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
     return ValidationReport(
         issues=issues,
         # Any hard error, or a meaningful pile of warnings, needs a human.
-        requires_review=errors > 0 or warnings >= 3 or any(i.code == "incomplete_item" for i in issues),
+        # A total that does not add up must be looked at before it can reach a purchase order.
+        requires_review=errors > 0 or warnings >= 3
+        or any(i.code == "incomplete_item" or i.code in ARITHMETIC_CODES for i in issues),
         checked_at=datetime.now(timezone.utc).isoformat(),
         error_count=errors,
         warning_count=warnings,

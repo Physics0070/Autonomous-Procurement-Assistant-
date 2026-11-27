@@ -1,0 +1,110 @@
+{
+ "quotation_id": "Q011",
+ "rfq_id": "RFQ-2026-003",
+ "source_format": "photo_jpg",
+ "supplier": {
+  "name": "Zorvik Industries",
+  "gstin": "29RSTUC4568U3ZM",
+  "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka",
+  "phone": "+91 91877 90947",
+  "email": "sales@zorvik.example",
+  "contact_person": "Rohit Khan"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "EST-0906",
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25.10.2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": "2026-12-09",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Cat6 UTP cable 305 m box",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Bx",
+   "unit_price": 6965.0,
+   "amount": 34825.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Cctv Dome Camera 2Mp Ip",
+   "brand": null,
+   "hsn": null,
+   "quantity": 40,
+   "unit": "Pcs",
+   "unit_price": 2952.0,
+   "amount": 118080.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Online Ups 1 Kva",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "EA",
+   "unit_price": 14872.0,
+   "amount": 178464.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "LINE INTERACTIVE UPS 650 VA (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 31,
+   "unit": "Nos.",
+   "unit_price": 3644.0,
+   "amount": 112964.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 444333.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 79979.94,
+  "total": 79979.94
+ },
+ "grand_total": 524312.94,
+ "computed_grand_total": 524312.94,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Stock subject to prior sale."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/photos/IMG_20261025_082611.jpg",
+ "supplier_id": "S27",
+ "capture": {
+  "quality": "good",
+  "perspective_tilt": 0.04,
+  "capture_quality": "good"
+ }
+}

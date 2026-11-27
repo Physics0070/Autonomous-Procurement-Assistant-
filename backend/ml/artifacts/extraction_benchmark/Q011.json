@@ -1,0 +1,165 @@
+{
+ "text": {
+  "supplier": {
+   "name": "ZorvikIndustries",
+   "email": "sales@zorvik.example",
+   "phone": "+919187790947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office7,GandhiChowkBengaluu560541Kaataka"
+  },
+  "quotation": {
+   "reference": "EST-0906",
+   "date": "25.10.2026",
+   "validity": "09.12.2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Cat6UTPcable305mbox",
+    "quantity": 5.0,
+    "unit": "Bx",
+    "unit_price": 6965.0,
+    "gst_percentage": null,
+    "total_price": 34825.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "CctvDomeCamera 2Mplp",
+    "quantity": 40.0,
+    "unit": "Pcs",
+    "unit_price": 2952.0,
+    "gst_percentage": null,
+    "total_price": 118080.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "3  Online Ups1Kva",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 14872.0,
+    "gst_percentage": null,
+    "total_price": 178464.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "4  LINEINTERACTIVEUPS650VA(ISI/BIS)",
+    "quantity": 31.0,
+    "unit": "Nos.",
+    "unit_price": 3644.0,
+    "gst_percentage": null,
+    "total_price": 112964.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 444333.0,
+   "tax_amount": 79979.94,
+   "tax_percentage": 18.0,
+   "total_amount": 524312.94,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-worksBengaluru;transport bybuyer",
+   "delivery_time": "Immediate",
+   "payment_terms": "25%advance,balance ondelivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 753,
+     "prompt_tokens": 1435,
+     "total_tokens": 2188
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:30:50.228974+00:00",
+  "notes": [
+   "OCR errors present in item names and addresses.",
+   "Item 3 and 4 names appear to have merged with line numbers.",
+   "Currency not explicitly stated, though values suggest INR."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Zorvik Industries",
+   "email": "sales@zorvik.example",
+   "phone": "+91 91877 90947",
+   "gst_number": "29RSTUC4568U3ZM",
+   "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka"
+  },
+  "quotation": {
+   "reference": "EST-0906",
+   "date": "25.10.2026",
+   "validity": "09.12.2026",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Cat6 UTP cable 305 m box",
+    "quantity": 5.0,
+    "unit": "Bx",
+    "unit_price": 6965.0,
+    "gst_percentage": null,
+    "total_price": 34825.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Cctv Dome Camera 2Mp Ip",
+    "quantity": 40.0,
+    "unit": "Pcs",
+    "unit_price": 2952.0,
+    "gst_percentage": null,
+    "total_price": 118080.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online Ups 1 Kva",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 14872.0,
+    "gst_percentage": null,
+    "total_price": 178464.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LINE INTERACTIVE UPS 650 VA (ISI/BIS)",
+    "quantity": 31.0,
+    "unit": "Nos.",
+    "unit_price": 3644.0,
+    "gst_percentage": null,
+    "total_price": 112964.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 444333.0,
+   "tax_amount": 79979.94,
+   "tax_percentage": 18.0,
+   "total_amount": 524312.94,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Bengaluru; transport by buyer",
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "stock_condition": "subject to prior sale"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 69.45,
+ "source_chars": 799
+}

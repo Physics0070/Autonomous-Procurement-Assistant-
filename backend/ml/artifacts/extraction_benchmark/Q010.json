@@ -1,0 +1,95 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Arvanta Trading Co.",
+   "email": "sales@arvanta.example",
+   "phone": "+91 91899 74538",
+   "gst_number": null,
+   "address": "Office 34, MG Road, Indore - 452852, Madhya Pradesh"
+  },
+  "quotation": {
+   "reference": "Q-0600",
+   "date": "27.08.2026",
+   "validity": "26.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Kanto SSD 512GB SATA 2.5-inch",
+    "quantity": 29.0,
+    "unit": "Nos",
+    "unit_price": 4184.0,
+    "gst_percentage": 18.0,
+    "total_price": 121336.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Primea Document scanner A4 ADF duplex 40 ppm",
+    "quantity": 15.0,
+    "unit": "Pcs",
+    "unit_price": 34830.0,
+    "gst_percentage": 18.0,
+    "total_price": 522450.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Altron Toner cartridge black laser",
+    "quantity": 14.0,
+    "unit": "Nos",
+    "unit_price": 3188.0,
+    "gst_percentage": 18.0,
+    "total_price": 44632.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Led Monitor 24-Inch Ips",
+    "quantity": 21.0,
+    "unit": "Nos",
+    "unit_price": 9890.0,
+    "gst_percentage": 18.0,
+    "total_price": 207690.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 896108.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 896458.0,
+   "transportation_cost": 350.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "M/s Sahyadri Industrial Services Pvt. Ltd.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1730,
+     "completion_tokens": 573,
+     "total_tokens": 2303,
+     "prompt_tokens_details": {
+      "cached_tokens": 896
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T15:43:18.008774+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 13.31,
+ "source_chars": 1309
+}

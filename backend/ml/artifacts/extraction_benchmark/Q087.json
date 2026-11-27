@@ -1,0 +1,116 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Nivora Industries",
+   "email": null,
+   "phone": "+91 91087 58348",
+   "gst_number": null,
+   "address": "Unit 25, Laxmi Complex, Ahmedabad - 380874, Gujarat"
+  },
+  "quotation": {
+   "reference": "EST-0927",
+   "date": "30.08.2026",
+   "validity": "14.09.2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Zenmark TMT bar Fe500D 12mm or equivalent",
+    "quantity": 72.0,
+    "unit": "KGS",
+    "unit_price": 71.72,
+    "gst_percentage": null,
+    "total_price": 5163.84,
+    "attributes": {
+     "HSN": "7214.20"
+    }
+   },
+   {
+    "original_name": "Zenmark COMMERCIAL PLYWOOD 18MM 8X4FT",
+    "quantity": 30.0,
+    "unit": "Nos",
+    "unit_price": 2468.0,
+    "gst_percentage": null,
+    "total_price": 74040.0,
+    "attributes": {
+     "HSN": "4412.33"
+    }
+   },
+   {
+    "original_name": "Zenmark GI pipe 1 inch medium class",
+    "quantity": 116.0,
+    "unit": "Meter",
+    "unit_price": 255.0,
+    "gst_percentage": null,
+    "total_price": 29580.0,
+    "attributes": {
+     "HSN": "7306.30"
+    }
+   },
+   {
+    "original_name": "Dynex AAC block 600x200x200 mm or equivalent",
+    "quantity": 178.0,
+    "unit": "Nos",
+    "unit_price": 65.06,
+    "gst_percentage": null,
+    "total_price": 11580.68,
+    "attributes": {
+     "HSN": "6810.11"
+    }
+   },
+   {
+    "original_name": "PPC cement 50 kg bag",
+    "quantity": 62.0,
+    "unit": "Nos",
+    "unit_price": 392.0,
+    "gst_percentage": null,
+    "total_price": 24304.0,
+    "attributes": {
+     "HSN": "2523.29"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 144668.52,
+   "tax_amount": 26175.33,
+   "tax_percentage": 18.0,
+   "total_amount": 171593.85,
+   "transportation_cost": 750.0,
+   "delivery_days": 21,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "3 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "discount_condition": "Special discount of 3% on orders above Rs. 1,00,000.",
+   "_usage": {
+    "usage": {
+     "prompt_tokens": 1582,
+     "completion_tokens": 760,
+     "total_tokens": 2342,
+     "prompt_tokens_details": {
+      "cached_tokens": 992
+     },
+     "completion_tokens_details": {
+      "reasoning_tokens": 0
+     }
+    }
+   }
+  },
+  "provider": "nvidia",
+  "model": "nvidia/nemotron-3.5-bolt-e4b",
+  "extracted_at": "2026-11-27T16:20:21.987870+00:00",
+  "notes": [
+   "The quantity/rate determination followed rule 5: whole number with unit (KGS, Nos, Meter) is quantity; decimal (71.72, 2468.00, etc.) is rate."
+  ]
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 8.42,
+ "source_chars": 1192
+}

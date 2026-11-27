@@ -1,0 +1,192 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": null,
+   "phone": null,
+   "gst_number": "04CUPRO479SP32H",
+   "address": "Unt 19.Gl E.Jap3222"
+  },
+  "quotation": {
+   "reference": "OT/2026-270445",
+   "date": "06092026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "ohmhogt1onHSN2s.11",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "M000g068022100LHSN414.80",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "15Ns",
+    "quantity": 15.0,
+    "unit": "Ns",
+    "unit_price": 9097.0,
+    "gst_percentage": null,
+    "total_price": 148455.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "NaserdctoneorS114GpHGN5o15",
+    "quantity": 15.0,
+    "unit": "N",
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": 18665.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WELDINGMACHNEESOATGNINSIS31",
+    "quantity": 1.0,
+    "unit": "EA",
+    "unit_price": 4754.0,
+    "gst_percentage": null,
+    "total_price": 140274.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1378211.0,
+   "tax_amount": null,
+   "tax_percentage": null,
+   "total_amount": 1378211.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": null,
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 787,
+     "prompt_tokens": 1585,
+     "total_tokens": 2372
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:26:39.943278+00:00",
+  "notes": [
+   "OCR quality is very poor; many product names and numeric values are garbled or merged.",
+   "Line items 1 and 2 have unreadable quantities and unit prices.",
+   "Total amounts for line items 3, 4, and 5 were extracted based on visual proximity to the unit price columns."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Mirel Engineers",
+   "email": null,
+   "phone": "+91 99461 85385",
+   "gst_number": "08CUPRB4795P3ZH",
+   "address": "Unit 19, Ganesh Industrial Estate, Jaipur - 302622, Rajasthan"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0445",
+   "date": "06/09/2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electric chain hoist 1 ton HSN:8425.11",
+    "quantity": 11.0,
+    "unit": "Nos",
+    "unit_price": 22196.0,
+    "gst_percentage": null,
+    "total_price": 244156.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Air compressor 2 HP 100 L HSN:8414.80",
+    "quantity": 12.0,
+    "unit": "EA",
+    "unit_price": 33811.0,
+    "gst_percentage": null,
+    "total_price": 405732.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Platform scale 300 kg HSN:8423.82",
+    "quantity": 15.0,
+    "unit": "Nos",
+    "unit_price": 9897.0,
+    "gst_percentage": null,
+    "total_price": 148455.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Three phase induction motor 5 HP 1440 rpm HSN:8501.52",
+    "quantity": 14.0,
+    "unit": "Nos",
+    "unit_price": 18665.0,
+    "gst_percentage": null,
+    "total_price": 261310.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "MIG WELDING MACHINE 250A HSN:8515.31",
+    "quantity": 3.0,
+    "unit": "EA",
+    "unit_price": 46758.0,
+    "gst_percentage": null,
+    "total_price": 140274.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Gate valve 2 inch CI flanged HSN:8481.80",
+    "quantity": 83.0,
+    "unit": "Nos",
+    "unit_price": 2148.0,
+    "gst_percentage": null,
+    "total_price": 178284.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1378211.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 1378211.0,
+   "transportation_cost": null,
+   "delivery_days": 10,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Jaipur, transport by buyer",
+   "delivery_time": "10 working days from PO",
+   "payment_terms": "Net 45 days",
+   "payment_days": 45,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transit_insurance": "to be arranged by the buyer"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 28.86,
+ "source_chars": 592
+}

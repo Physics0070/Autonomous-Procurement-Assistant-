@@ -1,0 +1,106 @@
+{
+ "text": {
+  "supplier": {
+   "name": "BELMONT SUPPLIERS",
+   "email": null,
+   "phone": "+91 90625 76892",
+   "gst_number": "24WAUNJ2506U1ZI",
+   "address": "Office 3, Ganesh Industrial Estate, Ahmedabad - 380641, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0082",
+   "date": "30/10/2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Cctv Bullet Camera 4Mp Ip",
+    "quantity": 37.0,
+    "unit": "EA",
+    "unit_price": 4095.0,
+    "gst_percentage": null,
+    "total_price": 151515.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "HDMI cable 3 m",
+    "quantity": 96.0,
+    "unit": "Nos.",
+    "unit_price": 251.0,
+    "gst_percentage": null,
+    "total_price": 24096.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "WiFi 6 router dual band",
+    "quantity": 32.0,
+    "unit": "EA",
+    "unit_price": 4499.0,
+    "gst_percentage": null,
+    "total_price": 143968.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Cat6 UTP cable 305 m box",
+    "quantity": 22.0,
+    "unit": "Bx",
+    "unit_price": 6442.0,
+    "gst_percentage": null,
+    "total_price": 141724.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Network switch 24-port gigabit managed",
+    "quantity": 14.0,
+    "unit": "Each",
+    "unit_price": 17582.0,
+    "gst_percentage": null,
+    "total_price": 246148.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Online Ups 1 Kva",
+    "quantity": 2.0,
+    "unit": "Nos.",
+    "unit_price": 12870.0,
+    "gst_percentage": null,
+    "total_price": 25740.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 733191.0,
+   "tax_amount": 132334.38,
+   "tax_percentage": 18.0,
+   "total_amount": 867525.38,
+   "transportation_cost": 2000.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": null,
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 856,
+     "prompt_tokens": 1790,
+     "total_tokens": 2646
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:10:23.435985+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 2.81,
+ "source_chars": 1535
+}

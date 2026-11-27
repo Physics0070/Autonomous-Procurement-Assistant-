@@ -46,7 +46,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     # --- Storage ---
-    STORAGE_BACKEND: str = "local"  # local | s3 | minio (future)
+    STORAGE_BACKEND: str = "local"  # local (development) | gridfs (in MongoDB; survives redeploys)
     STORAGE_LOCAL_PATH: str = "../storage"
     MAX_UPLOAD_SIZE_MB: int = 25
 
@@ -104,6 +104,7 @@ class Settings(BaseSettings):
     COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
     COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
     AI_REQUEST_TIMEOUT_SECONDS: int = 120
+    AI_MAX_CONCURRENT_CALLS: int = 4  # model calls in flight per process; free tiers throttle bursts
     FALLBACK_COOLDOWN_SECONDS: int = 30  # a vendor that just failed is tried last for this long
     COUNCIL_MEMBER_TIMEOUT_SECONDS: int = 45  # a slow free-tier member is dropped instead of stalling the council
 

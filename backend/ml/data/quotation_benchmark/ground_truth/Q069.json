@@ -1,0 +1,139 @@
+{
+ "quotation_id": "Q069",
+ "rfq_id": "RFQ-2026-014",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Quorra Trading Co.",
+  "gstin": "27RAAFB5566H1ZZ",
+  "address": "Unit 10, Market Yard, Nashik - 422652, Maharashtra",
+  "phone": "+91 92080 54737",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0573",
+ "quotation_date": "2026-10-25",
+ "quotation_date_printed": "25 October 2026",
+ "your_reference_date": "2026-10-23",
+ "validity_days": null,
+ "valid_until": "2026-11-04",
+ "currency": "INR",
+ "price_basis": "incl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "CCTV bullet camera 4MP IP or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 37,
+   "unit": "Each",
+   "unit_price": 4492.0,
+   "amount": 166204.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "HDMI cable 3 m or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 96,
+   "unit": "Each",
+   "unit_price": 281.0,
+   "amount": 26976.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "WiFi 6 router dual band",
+   "brand": "Supra",
+   "hsn": null,
+   "quantity": 32,
+   "unit": "Each",
+   "unit_price": 5168.0,
+   "amount": 165376.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Webcam FHD 1080p USB",
+   "brand": null,
+   "hsn": null,
+   "quantity": 87,
+   "unit": "Pcs",
+   "unit_price": 2146.0,
+   "amount": 186702.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "Network switch 24-port gigabit managed",
+   "brand": null,
+   "hsn": null,
+   "quantity": 14,
+   "unit": "Each",
+   "unit_price": 20296.0,
+   "amount": 284144.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 2,
+   "unit": "EA",
+   "unit_price": 16447.0,
+   "amount": 32894.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 862296.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "buyer_scope",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_included",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": 131536.68
+ },
+ "grand_total": 862296.0,
+ "computed_grand_total": 862296.0,
+ "payment_terms": "50% advance, balance before dispatch",
+ "delivery_text": null,
+ "delivery_days_min": null,
+ "delivery_days_max": null,
+ "warranty": null,
+ "extra_notes": [
+  "Packing and forwarding charges extra at 2%.",
+  "Please confirm the order by e-mail."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  5
+ ],
+ "fields_missing_in_source": [
+  "delivery"
+ ],
+ "source_file": "documents/scans/Scan0069.pdf",
+ "supplier_id": "S10",
+ "capture": {
+  "dpi": 100,
+  "rotation_deg": 0.33,
+  "capture_quality": "poor"
+ }
+}

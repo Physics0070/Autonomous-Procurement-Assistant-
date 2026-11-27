@@ -1,0 +1,241 @@
+{
+ "text": {
+  "supplier": {
+   "name": "KANTAROSOLUTIONS",
+   "email": "sales@kantaro.example",
+   "phone": "+919096574507",
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No.27,Industrial Area Phasell,Ahmedabad-380585,Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0691",
+   "date": "15-09-26",
+   "validity": "Valid till30-10-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Electricdrillmachine13mm650W",
+    "quantity": 35.0,
+    "unit": "Pcs",
+    "unit_price": 3399.0,
+    "gst_percentage": null,
+    "total_price": 118965.0,
+    "attributes": {
+     "HSN": "8467.21"
+    }
+   },
+   {
+    "original_name": "Open-endedspannerset6-32mm",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1267.0,
+    "gst_percentage": null,
+    "total_price": 15204.0,
+    "attributes": {
+     "HSN": "8204.11"
+    }
+   },
+   {
+    "original_name": "Arcweldinginverter200A(IS/BIS)",
+    "quantity": 29.0,
+    "unit": "Each",
+    "unit_price": 9501.0,
+    "gst_percentage": null,
+    "total_price": 275529.0,
+    "attributes": {
+     "HSN": "8515.39"
+    }
+   },
+   {
+    "original_name": "HssDrillBitSet1-13Mm",
+    "quantity": 63.0,
+    "unit": "Set",
+    "unit_price": 840.0,
+    "gst_percentage": null,
+    "total_price": 52920.0,
+    "attributes": {
+     "HSN": "8207.50"
+    }
+   },
+   {
+    "original_name": "AngleGrinder4-Inch850W",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 2552.0,
+    "gst_percentage": null,
+    "total_price": 25520.0,
+    "attributes": {
+     "HSN": "8467.29"
+    }
+   },
+   {
+    "original_name": "VERNIERCALIPER150MM",
+    "quantity": 109.0,
+    "unit": "Each",
+    "unit_price": 1322.0,
+    "gst_percentage": null,
+    "total_price": 144098.0,
+    "attributes": {
+     "HSN": "9017.30"
+    }
+   },
+   {
+    "original_name": "Screwdriverset6pcs",
+    "quantity": 27.0,
+    "unit": "Sets",
+    "unit_price": 349.0,
+    "gst_percentage": null,
+    "total_price": 9423.0,
+    "attributes": {
+     "HSN": "8205.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 641659.0,
+   "tax_amount": 115498.62,
+   "tax_percentage": 18.0,
+   "total_amount": 757157.62,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25%advance,balanceondelivery",
+   "payment_days": null,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1095,
+     "prompt_tokens": 1642,
+     "total_tokens": 2737
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:50:41.328372+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "KANTARO SOLUTIONS",
+   "email": "sales@kantaro.example",
+   "phone": "+91 90965 74507",
+   "gst_number": "24UETUT7371M1ZO",
+   "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat"
+  },
+  "quotation": {
+   "reference": "QTN0691",
+   "date": "15-09-26",
+   "validity": "Valid till 30-10-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Electric drill machine 13 mm 650W",
+    "quantity": 35.0,
+    "unit": "Pcs",
+    "unit_price": 3399.0,
+    "gst_percentage": null,
+    "total_price": 118965.0,
+    "attributes": {
+     "HSN": "8467.21"
+    }
+   },
+   {
+    "original_name": "Open-ended spanner set 6-32 mm",
+    "quantity": 12.0,
+    "unit": "Sets",
+    "unit_price": 1267.0,
+    "gst_percentage": null,
+    "total_price": 15204.0,
+    "attributes": {
+     "HSN": "8204.11"
+    }
+   },
+   {
+    "original_name": "Arc welding inverter 200A (ISI/BIS)",
+    "quantity": 29.0,
+    "unit": "Each",
+    "unit_price": 9501.0,
+    "gst_percentage": null,
+    "total_price": 275529.0,
+    "attributes": {
+     "HSN": "8515.39"
+    }
+   },
+   {
+    "original_name": "Hss Drill Bit Set 1-13Mm",
+    "quantity": 63.0,
+    "unit": "Set",
+    "unit_price": 840.0,
+    "gst_percentage": null,
+    "total_price": 52920.0,
+    "attributes": {
+     "HSN": "8207.50"
+    }
+   },
+   {
+    "original_name": "Angle Grinder 4-Inc h850W",
+    "quantity": 10.0,
+    "unit": "Nos",
+    "unit_price": 2552.0,
+    "gst_percentage": null,
+    "total_price": 25520.0,
+    "attributes": {
+     "HSN": "8467.29"
+    }
+   },
+   {
+    "original_name": "VERNIER CALIPER 150 MM",
+    "quantity": 109.0,
+    "unit": "Each",
+    "unit_price": 1322.0,
+    "gst_percentage": null,
+    "total_price": 144098.0,
+    "attributes": {
+     "HSN": "9017.30"
+    }
+   },
+   {
+    "original_name": "Screwdriver set 6 pcs",
+    "quantity": 27.0,
+    "unit": "Sets",
+    "unit_price": 349.0,
+    "gst_percentage": null,
+    "total_price": 9423.0,
+    "attributes": {
+     "HSN": "8205.40"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 641659.0,
+   "tax_amount": 115498.62,
+   "tax_percentage": 18.0,
+   "total_amount": 757157.62,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "25% advance, balance on delivery",
+   "payment_days": null,
+   "warranty": "As per OEM"
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 45.47,
+ "source_chars": 1184
+}

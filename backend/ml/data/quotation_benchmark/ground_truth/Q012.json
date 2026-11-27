@@ -1,0 +1,104 @@
+{
+ "quotation_id": "Q012",
+ "rfq_id": "RFQ-2026-003",
+ "source_format": "excel_xlsx",
+ "supplier": {
+  "name": "Yaran Tech Pvt. Ltd.",
+  "gstin": "09CBAGJ9003V3ZH",
+  "address": "Gala No. 2, Udyog Nagar, Noida - 201986, Uttar Pradesh",
+  "phone": "+91 96381 82063",
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "Q-0274",
+ "quotation_date": "2026-10-19",
+ "quotation_date_printed": "19-10-26",
+ "your_reference_date": null,
+ "validity_days": 30,
+ "valid_until": "2026-11-18",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "Cat6 Utp Cable 305 M Box",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Box",
+   "unit_price": 6524.0,
+   "amount": 32620.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "CCTV dome camera 2MP IP",
+   "brand": null,
+   "hsn": null,
+   "quantity": 40,
+   "unit": "Each",
+   "unit_price": 2906.0,
+   "amount": 116240.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "Onlien UPS 1 kVA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 12,
+   "unit": "Nos.",
+   "unit_price": 14670.0,
+   "amount": 176040.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Line interactive UPS 650 VA",
+   "brand": null,
+   "hsn": null,
+   "quantity": 31,
+   "unit": "Each",
+   "unit_price": 3504.0,
+   "amount": 108624.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 433524.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "gst_extra_not_computed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": null,
+  "total": null
+ },
+ "grand_total": 433524.0,
+ "computed_grand_total": 433524.0,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Within 3 days",
+ "delivery_days_min": 0,
+ "delivery_days_max": 3,
+ "warranty": null,
+ "extra_notes": [],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/excel/Quotation_YaranTechPvtLtd_rev1_12.xlsx",
+ "supplier_id": "S26",
+ "capture": {}
+}

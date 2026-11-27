@@ -1,0 +1,192 @@
+{
+ "text": {
+  "supplier": {
+   "name": "DavikSystems",
+   "email": null,
+   "phone": "+919780340496",
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office46,HiTechParkJapur-302247,Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0147",
+   "date": "24-Aug-2026",
+   "validity": "7daysfromthedateofquotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Item",
+    "quantity": null,
+    "unit": null,
+    "unit_price": null,
+    "gst_percentage": null,
+    "total_price": null,
+    "attributes": {}
+   },
+   {
+    "original_name": "TMTbarFe500D12mm(ISI/BIS)",
+    "quantity": 72.0,
+    "unit": "KGS",
+    "unit_price": 60.82,
+    "gst_percentage": null,
+    "total_price": 4379.04,
+    "attributes": {}
+   },
+   {
+    "original_name": "Commercialplywood18mm8x4ft",
+    "quantity": 30.0,
+    "unit": "Sheet",
+    "unit_price": 2355.0,
+    "gst_percentage": null,
+    "total_price": 70650.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Glpipe1mediumclass",
+    "quantity": 116.0,
+    "unit": "Meter",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 27260.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AACblock600x200x200mm",
+    "quantity": 178.0,
+    "unit": "Each",
+    "unit_price": 56.35,
+    "gst_percentage": null,
+    "total_price": 10030.3,
+    "attributes": {}
+   },
+   {
+    "original_name": "PPCcement50kgbag",
+    "quantity": 62.0,
+    "unit": "Bag",
+    "unit_price": 379.0,
+    "gst_percentage": null,
+    "total_price": 23498.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 135817.34,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 136317.34,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "7-10 days",
+   "payment_terms": "Delivery subject toreceipt of advance.",
+   "payment_days": null,
+   "warranty": "12months"
+  },
+  "additional_attributes": {
+   "special_discount": "3%on orders aboveRs.1,00.000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 910,
+     "prompt_tokens": 1446,
+     "total_tokens": 2356
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:21:10.708336+00:00",
+  "notes": [
+   "The first row 'Item' appears to be a header fragment and contains no valid data.",
+   "OCR output merged several words and numbers; values were parsed based on structural context."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Davik Systems",
+   "email": null,
+   "phone": "+91 97803 40496",
+   "gst_number": "08HALEE1104G1ZP",
+   "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan"
+  },
+  "quotation": {
+   "reference": "SQ/26/0147",
+   "date": "24-Aug-2026",
+   "validity": "7 days from the date of quotation",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "TMT bar Fe500D 12 mm (ISI/BIS)",
+    "quantity": 72.0,
+    "unit": "KGS",
+    "unit_price": 60.82,
+    "gst_percentage": null,
+    "total_price": 4379.04,
+    "attributes": {}
+   },
+   {
+    "original_name": "Commercial plywood 18 mm 8x4 ft",
+    "quantity": 30.0,
+    "unit": "Sheet",
+    "unit_price": 2355.0,
+    "gst_percentage": null,
+    "total_price": 70650.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "GI pipe 1\" medium class",
+    "quantity": 116.0,
+    "unit": "Meter",
+    "unit_price": 235.0,
+    "gst_percentage": null,
+    "total_price": 27260.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "AAC block 600x200x200 mm",
+    "quantity": 178.0,
+    "unit": "Each",
+    "unit_price": 56.35,
+    "gst_percentage": null,
+    "total_price": 10030.3,
+    "attributes": {}
+   },
+   {
+    "original_name": "PPC cement 50 kg bag",
+    "quantity": 62.0,
+    "unit": "Bag",
+    "unit_price": 379.0,
+    "gst_percentage": null,
+    "total_price": 23498.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 135817.34,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 136317.34,
+   "transportation_cost": 500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "7-10 days",
+   "payment_terms": "Delivery subject to receipt of advance.",
+   "payment_days": null,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 65.8,
+ "source_chars": 856
+}

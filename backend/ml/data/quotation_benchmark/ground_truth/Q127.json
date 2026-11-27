@@ -1,0 +1,128 @@
+{
+ "quotation_id": "Q127",
+ "rfq_id": "RFQ-2026-026",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Vexel Mart",
+  "gstin": "27TKJAD7029E1ZN",
+  "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "PI/0307",
+ "quotation_date": "2026-09-03",
+ "quotation_date_printed": "03-Sep-2026",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "MCCB 100A 3-pole",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 11,
+   "unit": "Pcs",
+   "unit_price": 3365.0,
+   "amount": 37015.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "MCB 32A single pole C curve",
+   "brand": null,
+   "hsn": "8536.20",
+   "quantity": 23,
+   "unit": "Pcs",
+   "unit_price": 217.0,
+   "amount": 4991.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "HOUSE WIRE FR PVC 1.5 SQ MM COPPER 90 M",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 54,
+   "unit": "Bundle",
+   "unit_price": 1872.0,
+   "amount": 101088.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Ceiling fan 1020mm",
+   "brand": null,
+   "hsn": "8414.51",
+   "quantity": 26,
+   "unit": "Nos.",
+   "unit_price": 2689.0,
+   "amount": 69914.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "LED street light 90W",
+   "brand": null,
+   "hsn": "9405.42",
+   "quantity": 25,
+   "unit": "Pcs",
+   "unit_price": 4542.0,
+   "amount": 113550.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 326558.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": 29390.22,
+  "sgst": 29390.22,
+  "igst": null,
+  "total": 58780.44
+ },
+ "grand_total": 385338.44,
+ "computed_grand_total": 385338.44,
+ "payment_terms": "30 days credit",
+ "delivery_text": "3 weeks",
+ "delivery_days_min": 21,
+ "delivery_days_max": 21,
+ "warranty": "As per OEM",
+ "extra_notes": [
+  "Alternate make available on request.",
+  "Special discount of 3% on orders above Rs. 1,00,000.",
+  "Stock subject to prior sale.",
+  "Please quote our quotation number in your purchase order.",
+  "Installation and commissioning not included.",
+  "Delivery subject to receipt of advance."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/VexelMart_quotation_PI-0307_127.pdf",
+ "supplier_id": "S24",
+ "capture": {
+  "pages": 1
+ }
+}

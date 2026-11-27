@@ -1,0 +1,109 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Lumina Mart",
+   "email": "sales@lumina.example",
+   "phone": "+91 98239 16804",
+   "gst_number": null,
+   "address": "Office 39, Hi-Tech Park, New Delhi - 110860, Delhi"
+  },
+  "quotation": {
+   "reference": "PI/0189",
+   "date": "21-Sep-2026",
+   "validity": "45 days from the date of quotation",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "Zenmark Toilet soap bar 100 g (ISI/BIS)",
+    "quantity": 157.0,
+    "unit": "Nos",
+    "unit_price": 42.97,
+    "gst_percentage": null,
+    "total_price": 6746.29,
+    "attributes": {
+     "Sr No": "1"
+    }
+   },
+   {
+    "original_name": "Office swivel chair mesh back (ISI/BIS)",
+    "quantity": 20.0,
+    "unit": "Nos.",
+    "unit_price": 5343.0,
+    "gst_percentage": null,
+    "total_price": 106860.0,
+    "attributes": {
+     "Sr No": "2"
+    }
+   },
+   {
+    "original_name": "Foam mattress 6x3ft",
+    "quantity": 25.0,
+    "unit": "Pcs",
+    "unit_price": 5204.0,
+    "gst_percentage": null,
+    "total_price": 130100.0,
+    "attributes": {
+     "Sr No": "3"
+    }
+   },
+   {
+    "original_name": "Steel filing cabinet 4-drawer",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 10759.0,
+    "gst_percentage": null,
+    "total_price": 53795.0,
+    "attributes": {
+     "Sr No": "4"
+    }
+   },
+   {
+    "original_name": "Veltrax Office table wooden5 x2.5 ft",
+    "quantity": 28.0,
+    "unit": "Pcs",
+    "unit_price": 9553.0,
+    "gst_percentage": null,
+    "total_price": 267484.0,
+    "attributes": {
+     "Sr No": "5"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 564985.29,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 567985.29,
+   "transportation_cost": 2500.0,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "Immediate",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": "24 months"
+  },
+  "additional_attributes": {
+   "buyer_name": "Sahyadri Industrial Services Pvt. Ltd.",
+   "buyer_gstin": "27AABCS4821K1Z4",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 858,
+     "prompt_tokens": 1895,
+     "total_tokens": 2753
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:27:55.296016+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 10.84,
+ "source_chars": 2071
+}

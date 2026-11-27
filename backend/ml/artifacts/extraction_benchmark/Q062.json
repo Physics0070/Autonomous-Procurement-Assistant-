@@ -1,0 +1,190 @@
+{
+ "text": {
+  "supplier": {
+   "name": "UlmarTradingCo.",
+   "email": "sales@ulmar.example",
+   "phone": "+919884887441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "GalaNo.9,Sector5,Chennai-600551,TamilNadu"
+  },
+  "quotation": {
+   "reference": "PI/0919",
+   "date": "07-09-26",
+   "validity": "17-09-26",
+   "currency": null
+  },
+  "items": [
+   {
+    "original_name": "ZenmarkSSD512GBSATA2.5-inchHSN:8523.51",
+    "quantity": null,
+    "unit": "SON00",
+    "unit_price": 3065.0,
+    "gst_percentage": null,
+    "total_price": 91950.0,
+    "attributes": {
+     "HSN": "8523.51"
+    }
+   },
+   {
+    "original_name": "LaptopCore i516GB512GBSSD14-inch HSN:8471.30",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 52626.0,
+    "gst_percentage": null,
+    "total_price": 157878.0,
+    "attributes": {
+     "HSN": "8471.30"
+    }
+   },
+   {
+    "original_name": "108Each",
+    "quantity": 108.0,
+    "unit": "Each",
+    "unit_price": 396.0,
+    "gst_percentage": null,
+    "total_price": 42768.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LEDmonitor24-inchIPSHSN:8528.52",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 7202.0,
+    "gst_percentage": null,
+    "total_price": 57616.0,
+    "attributes": {
+     "HSN": "8528.52"
+    }
+   },
+   {
+    "original_name": "KantoOptical mouseUSB wiredHSN:8471.60",
+    "quantity": 108.0,
+    "unit": "Nos.",
+    "unit_price": 226.0,
+    "gst_percentage": null,
+    "total_price": 24408.0,
+    "attributes": {
+     "HSN": "8471.60"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 374620.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 374620.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-worksChennai; transport bybuyer",
+   "delivery_time": "4-6weeks",
+   "payment_terms": "30days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 955,
+     "prompt_tokens": 1484,
+     "total_tokens": 2439
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:09:27.022934+00:00",
+  "notes": [
+   "Quantity for ZenmarkSSD512GBSATA2.5-inchHSN:8523.51 is unreadable (OCR output 'SON00').",
+   "The item '108Each' appears to be missing a description in the source text."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Ulmar Trading Co.",
+   "email": "sales@ulmar.example",
+   "phone": "+91 98848 87441",
+   "gst_number": "33HJVWW9679F1ZI",
+   "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu"
+  },
+  "quotation": {
+   "reference": "PI/0919",
+   "date": "07-09-26",
+   "validity": "17-09-26",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Zenmark SSD 512GB SATA 2.5-inch HSN:8523.51",
+    "quantity": 30.0,
+    "unit": "Nos",
+    "unit_price": 3065.0,
+    "gst_percentage": null,
+    "total_price": 91950.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laptop Core i5 16GB 512GB SSD 14-inch HSN:8471.30",
+    "quantity": 3.0,
+    "unit": "Pcs",
+    "unit_price": 52626.0,
+    "gst_percentage": null,
+    "total_price": 157878.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Aerolite USB wired keyboard HSN:8471.60",
+    "quantity": 108.0,
+    "unit": "Each",
+    "unit_price": 396.0,
+    "gst_percentage": null,
+    "total_price": 42768.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED monitor 24-inch IPS HSN:8528.52",
+    "quantity": 8.0,
+    "unit": "Pcs",
+    "unit_price": 7202.0,
+    "gst_percentage": null,
+    "total_price": 57616.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Kanto Optical mouse USB wired HSN:8471.60",
+    "quantity": 108.0,
+    "unit": "Nos.",
+    "unit_price": 226.0,
+    "gst_percentage": null,
+    "total_price": 24408.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 374620.0,
+   "tax_amount": null,
+   "tax_percentage": 18.0,
+   "total_amount": 374620.0,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": "Ex-works Chennai",
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "transport": "by buyer"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 20.4,
+ "source_chars": 878
+}

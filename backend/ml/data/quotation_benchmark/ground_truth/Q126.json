@@ -1,0 +1,123 @@
+{
+ "quotation_id": "Q126",
+ "rfq_id": "RFQ-2026-026",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Zorvik Industries",
+  "gstin": "29RSTUC4568U3ZM",
+  "address": "Office 7, Gandhi Chowk, Bengaluru - 560541, Karnataka",
+  "phone": "+91 91877 90947",
+  "email": "sales@zorvik.example",
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "EST-0413",
+ "quotation_date": "2026-09-15",
+ "quotation_date_printed": "15.09.2026",
+ "your_reference_date": "2026-09-01",
+ "validity_days": null,
+ "valid_until": "2026-09-25",
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "MCCB 100A 3-pole",
+   "brand": null,
+   "hsn": null,
+   "quantity": 11,
+   "unit": "Nos",
+   "unit_price": 3257.0,
+   "amount": 35827.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "MCB 32A single pole C curve",
+   "brand": null,
+   "hsn": null,
+   "quantity": 23,
+   "unit": "EA",
+   "unit_price": 222.0,
+   "amount": 5106.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "House wire FR PVC 1.5 sqmm copper 90 m",
+   "brand": null,
+   "hsn": null,
+   "quantity": 54,
+   "unit": "Coil",
+   "unit_price": 1896.0,
+   "amount": 102384.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Ceiling fan 1200mm",
+   "brand": null,
+   "hsn": null,
+   "quantity": 26,
+   "unit": "Each",
+   "unit_price": 2541.0,
+   "amount": 66066.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "LED street light 90W",
+   "brand": null,
+   "hsn": null,
+   "quantity": 25,
+   "unit": "Each",
+   "unit_price": 4093.0,
+   "amount": 102325.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 311708.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "paid",
+  "amount": 1500.0
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 56377.44,
+  "total": 56377.44
+ },
+ "grand_total": 369585.44,
+ "computed_grand_total": 369585.44,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "Immediate",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Warranty as per manufacturer's terms.",
+  "We are an authorised dealer of leading brands.",
+  "Alternate make available on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [],
+ "source_file": "documents/pdf/ZorvikIndustries_quotation_EST-0413_126.pdf",
+ "supplier_id": "S27",
+ "capture": {
+  "pages": 1
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "quotation_id": "Q088",
+ "rfq_id": "RFQ-2026-018",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Ulmar Trading Co.",
+  "gstin": "33HJVWW9679F1ZI",
+  "address": "Gala No. 9, Sector 5, Chennai - 600551, Tamil Nadu",
+  "phone": null,
+  "email": null,
+  "contact_person": null
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": "PI/0724",
+ "quotation_date": "2026-08-28",
+ "quotation_date_printed": "28-08-26",
+ "your_reference_date": null,
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "TMT bar Fe500D 12mm",
+   "brand": "Aerolite",
+   "hsn": "7214.20",
+   "quantity": 72,
+   "unit": "Kg",
+   "unit_price": 59.47,
+   "amount": 4281.84,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Wall putty 20 kg (ISI/BIS)",
+   "brand": null,
+   "hsn": "3214.90",
+   "quantity": 18,
+   "unit": "Bags",
+   "unit_price": 781.0,
+   "amount": 14058.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "GI pipe 1\" medium class or equivalent",
+   "brand": "Dynex",
+   "hsn": "7306.30",
+   "quantity": 116,
+   "unit": "Meter",
+   "unit_price": 231.0,
+   "amount": 26796.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "AAC block 600x200x200 mm",
+   "brand": "Veltrax",
+   "hsn": "6810.11",
+   "quantity": 178,
+   "unit": "Pcs",
+   "unit_price": 55.03,
+   "amount": 9795.34,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 54931.18,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "included",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 9887.61,
+  "total": 9887.61
+ },
+ "grand_total": 64818.79,
+ "computed_grand_total": 64818.79,
+ "payment_terms": "30 days credit",
+ "delivery_text": "Ex-stock",
+ "delivery_days_min": 0,
+ "delivery_days_max": 0,
+ "warranty": null,
+ "extra_notes": [
+  "Alternate make available on request."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3,
+  6
+ ],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_phone"
+ ],
+ "source_file": "documents/pdf/UlmarTradingCo_quotation_PI-0724_88.pdf",
+ "supplier_id": "S23",
+ "capture": {
+  "pages": 1
+ }
+}

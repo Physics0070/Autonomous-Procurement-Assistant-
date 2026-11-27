@@ -1,0 +1,116 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Tandor Systems",
+   "email": "sales@tandor.example",
+   "phone": "+91 90124 21158",
+   "gst_number": "08JSCHC9725E3Z2",
+   "address": "Gala No. 27, Hi-Tech Park, Jaipur - 302548, Rajasthan"
+  },
+  "quotation": {
+   "reference": "EST-0175",
+   "date": "29 August 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Laptop Core i5 16GB 512GB SSD 14-inch or equivalent",
+    "quantity": 5.0,
+    "unit": "Each",
+    "unit_price": 67358.0,
+    "gst_percentage": null,
+    "total_price": 336790.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Pen drive 64GB USB 3.0 (ISI/BIS)",
+    "quantity": 62.0,
+    "unit": "Pcs",
+    "unit_price": 580.0,
+    "gst_percentage": null,
+    "total_price": 35960.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "External HDD 2TB USB 3.0",
+    "quantity": 26.0,
+    "unit": "Pcs",
+    "unit_price": 6188.0,
+    "gst_percentage": null,
+    "total_price": 160888.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Desktop CPU cabinet Core i5 8GB 512GB",
+    "quantity": 13.0,
+    "unit": "EA",
+    "unit_price": 34953.0,
+    "gst_percentage": null,
+    "total_price": 454389.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Laser printer monochrome A4 duplex",
+    "quantity": 15.0,
+    "unit": "EA",
+    "unit_price": 14458.0,
+    "gst_percentage": null,
+    "total_price": 216870.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Ssd 512Gb Sata 2.5-Inch",
+    "quantity": 15.0,
+    "unit": "Each",
+    "unit_price": 3695.0,
+    "gst_percentage": null,
+    "total_price": 55425.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Toner cartridge black laser",
+    "quantity": 38.0,
+    "unit": "Each",
+    "unit_price": 2397.0,
+    "gst_percentage": null,
+    "total_price": 91086.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 1351408.0,
+   "tax_amount": 243253.44,
+   "tax_percentage": 18.0,
+   "total_amount": 1594661.44,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "7-10 days",
+   "payment_terms": "100% advance",
+   "payment_days": null,
+   "warranty": "as per manufacturer's terms"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 1018,
+     "prompt_tokens": 1911,
+     "total_tokens": 2929
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T17:03:59.611010+00:00",
+  "notes": []
+ },
+ "image": null,
+ "ocr": false,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 4.56,
+ "source_chars": 1736
+}

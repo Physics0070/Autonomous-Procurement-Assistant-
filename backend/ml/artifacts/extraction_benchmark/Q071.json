@@ -1,0 +1,167 @@
+{
+ "text": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": "+919358888619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit21,LaxmiComplex,Gurugram-122131\uff0cHaryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0743",
+   "date": "06November2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Exhaustfan300mm[HSN8414.59]",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 1455.0,
+    "gst_percentage": null,
+    "total_price": 14550.0,
+    "attributes": {
+     "HSN": "8414.59"
+    }
+   },
+   {
+    "original_name": "HousewireFRPVC1.5sqmmcopper90m[HSN8544.49]",
+    "quantity": 33.0,
+    "unit": "Bundle",
+    "unit_price": 1614.0,
+    "gst_percentage": null,
+    "total_price": 53262.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   },
+   {
+    "original_name": "LEDtubelight20WT84ft[HSN8539.50]",
+    "quantity": 95.0,
+    "unit": "Nos.",
+    "unit_price": 228.0,
+    "gst_percentage": null,
+    "total_price": 21660.0,
+    "attributes": {
+     "HSN": "8539.50"
+    }
+   },
+   {
+    "original_name": "HousewireFRPVC2.5sq mmcopper90m[HSN8544.49]",
+    "quantity": 26.0,
+    "unit": "Bundle",
+    "unit_price": 2747.0,
+    "gst_percentage": null,
+    "total_price": 71422.0,
+    "attributes": {
+     "HSN": "8544.49"
+    }
+   }
+  ],
+  "commercials": {
+   "subtotal": 160894.0,
+   "tax_amount": 28960.92,
+   "tax_percentage": 18.0,
+   "total_amount": 188399.92,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15days",
+   "payment_terms": "Againstproformainvoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {
+   "_usage": {
+    "usage": {
+     "completion_tokens": 802,
+     "prompt_tokens": 1422,
+     "total_tokens": 2224
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T16:14:12.548020+00:00",
+  "notes": []
+ },
+ "image": {
+  "supplier": {
+   "name": "Rexal Industries",
+   "email": null,
+   "phone": "+91 93588 88619",
+   "gst_number": "06SAPHA6592E1ZM",
+   "address": "Unit 21, Laxmi Complex, Gurugram - 122131, Haryana"
+  },
+  "quotation": {
+   "reference": "QT/2026-27/0743",
+   "date": "06 November 2026",
+   "validity": null,
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "Exhaust fan 300 mm [HSN 8414.59]",
+    "quantity": 10.0,
+    "unit": "Pcs",
+    "unit_price": 1455.0,
+    "gst_percentage": null,
+    "total_price": 14550.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 1.5 sqmm copper 90 m [HSN 8544.49]",
+    "quantity": 33.0,
+    "unit": "Bundle",
+    "unit_price": 1614.0,
+    "gst_percentage": null,
+    "total_price": 53262.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED tube light 20W T8 4 ft [HSN 8539.50]",
+    "quantity": 95.0,
+    "unit": "Nos.",
+    "unit_price": 228.0,
+    "gst_percentage": null,
+    "total_price": 21660.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "House wire FR PVC 2.5 sq mm copper 90 m [HSN 8544.49]",
+    "quantity": 26.0,
+    "unit": "Bundle",
+    "unit_price": 2747.0,
+    "gst_percentage": null,
+    "total_price": 71422.0,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 160894.0,
+   "tax_amount": 28960.92,
+   "tax_percentage": 18.0,
+   "total_amount": 188399.92,
+   "transportation_cost": null,
+   "delivery_days": 15,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "15 days",
+   "payment_terms": "Against proforma invoice",
+   "payment_days": null,
+   "warranty": null
+  },
+  "additional_attributes": {},
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": true,
+ "ai_error": null,
+ "seconds": 25.94,
+ "source_chars": 770
+}

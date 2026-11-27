@@ -1,0 +1,152 @@
+{
+ "quotation_id": "Q117",
+ "rfq_id": "RFQ-2026-024",
+ "source_format": "pdf_digital",
+ "supplier": {
+  "name": "Davik Systems",
+  "gstin": "08HALEE1104G1ZP",
+  "address": "Office 46, Hi-Tech Park, Jaipur - 302247, Rajasthan",
+  "phone": "+91 97803 40496",
+  "email": "sales@davik.example",
+  "contact_person": "Sandeep Mehta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": null
+ },
+ "quotation_number": null,
+ "quotation_date": "2026-08-26",
+ "quotation_date_printed": "26-Aug-2026",
+ "your_reference_date": "2026-08-20",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "LAPTOP CORE I5 16GB 512GB SSD 14-INCH",
+   "brand": null,
+   "hsn": null,
+   "quantity": 5,
+   "unit": "Nos.",
+   "unit_price": 57349.0,
+   "amount": 286745.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "Pen drive 64GB USB 3.0 (ISI/BIS)",
+   "brand": null,
+   "hsn": null,
+   "quantity": 62,
+   "unit": "Pcs",
+   "unit_price": 469.0,
+   "amount": 29078.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 4,
+   "description": "Desktop CPU cabinet Core i5 8GB 512GB or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 13,
+   "unit": "Nos.",
+   "unit_price": 34553.0,
+   "amount": 449189.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 5,
+   "description": "Laser printer monochrome A4 duplex",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Nos.",
+   "unit_price": 14095.0,
+   "amount": 211425.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 6,
+   "description": "SSD 512GB SATA 2.5-INCH or equivalent",
+   "brand": null,
+   "hsn": null,
+   "quantity": 15,
+   "unit": "Nos.",
+   "unit_price": 3258.0,
+   "amount": 48870.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 7,
+   "description": "TONER CARTRIDGE BLACK LASER",
+   "brand": null,
+   "hsn": null,
+   "quantity": 38,
+   "unit": "Nos.",
+   "unit_price": 2147.0,
+   "amount": 81586.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 8,
+   "description": "Optical mouse USB wired",
+   "brand": null,
+   "hsn": null,
+   "quantity": 37,
+   "unit": "EA",
+   "unit_price": 232.0,
+   "amount": 8584.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 1115477.0,
+ "discount_percent": 3,
+ "discount_amount": 33464.31,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 194762.28,
+  "total": 194762.28
+ },
+ "grand_total": 1276774.97,
+ "computed_grand_total": 1276774.97,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": null,
+ "extra_notes": [
+  "All disputes subject to local jurisdiction.",
+  "Please confirm the order by e-mail.",
+  "Goods once sold will not be taken back.",
+  "Prices are subject to change without prior notice."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [
+  3
+ ],
+ "fields_missing_in_source": [
+  "validity",
+  "quotation_number"
+ ],
+ "source_file": "documents/pdf/DavikSystems_quotation_NA_117.pdf",
+ "supplier_id": "S12",
+ "capture": {
+  "pages": 1
+ }
+}

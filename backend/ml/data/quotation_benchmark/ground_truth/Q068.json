@@ -1,0 +1,151 @@
+{
+ "quotation_id": "Q068",
+ "rfq_id": "RFQ-2026-014",
+ "source_format": "pdf_scanned",
+ "supplier": {
+  "name": "Kantaro Solutions",
+  "gstin": null,
+  "address": "Gala No. 27, Industrial Area Phase II, Ahmedabad - 380585, Gujarat",
+  "phone": "+91 90965 74507",
+  "email": "sales@kantaro.example",
+  "contact_person": "Sandeep Gupta"
+ },
+ "buyer": {
+  "name": "Sahyadri Industrial Services Pvt. Ltd.",
+  "gstin": "27AABCS4821K1Z4"
+ },
+ "quotation_number": "QTN0204",
+ "quotation_date": "2026-10-26",
+ "quotation_date_printed": "26-10-26",
+ "your_reference_date": "2026-10-23",
+ "validity_days": null,
+ "valid_until": null,
+ "currency": "INR",
+ "price_basis": "excl_GST",
+ "items": [
+  {
+   "line_no": 1,
+   "requested_line": 1,
+   "description": "CCTV bullet camera 4MP IP or equivalent",
+   "brand": null,
+   "hsn": "8525.89",
+   "quantity": 37,
+   "unit": "EA",
+   "unit_price": 3643.0,
+   "amount": 134791.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 2,
+   "requested_line": 2,
+   "description": "HDMI cable 3 m",
+   "brand": null,
+   "hsn": "8544.42",
+   "quantity": 96,
+   "unit": "Pcs",
+   "unit_price": 259.0,
+   "amount": 24864.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 3,
+   "requested_line": 3,
+   "description": "WiFi 6 router dual band",
+   "brand": null,
+   "hsn": "8517.62",
+   "quantity": 32,
+   "unit": "EA",
+   "unit_price": 4896.0,
+   "amount": 156672.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 4,
+   "requested_line": 4,
+   "description": "Webcam FHD 1080p USB",
+   "brand": null,
+   "hsn": "8525.89",
+   "quantity": 87,
+   "unit": "Nos.",
+   "unit_price": 1821.0,
+   "amount": 158427.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 5,
+   "requested_line": 5,
+   "description": "Cat6 UTP cable 305 m box",
+   "brand": null,
+   "hsn": "8544.49",
+   "quantity": 22,
+   "unit": "Box",
+   "unit_price": 6725.0,
+   "amount": 147950.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 6,
+   "requested_line": 6,
+   "description": "Network switch 24-port gigabit managed (ISI/BIS)",
+   "brand": null,
+   "hsn": "8517.62",
+   "quantity": 14,
+   "unit": "Each",
+   "unit_price": 16882.0,
+   "amount": 236348.0,
+   "pack_size": null
+  },
+  {
+   "line_no": 7,
+   "requested_line": 7,
+   "description": "Online UPS 1 kVA",
+   "brand": null,
+   "hsn": "8504.40",
+   "quantity": 2,
+   "unit": "Pcs",
+   "unit_price": 14643.0,
+   "amount": 29286.0,
+   "pack_size": null
+  }
+ ],
+ "subtotal": 888338.0,
+ "discount_percent": null,
+ "discount_amount": null,
+ "freight": {
+  "terms": "extra_at_actuals",
+  "amount": null
+ },
+ "tax": {
+  "mode": "printed",
+  "rate_percent": 18,
+  "cgst": null,
+  "sgst": null,
+  "igst": 159900.84,
+  "total": 159900.84
+ },
+ "grand_total": 1048238.84,
+ "computed_grand_total": 1048238.84,
+ "payment_terms": "25% advance, balance on delivery",
+ "delivery_text": "15 days",
+ "delivery_days_min": 15,
+ "delivery_days_max": 15,
+ "warranty": "6 months",
+ "extra_notes": [
+  "Transit insurance to be arranged by the buyer.",
+  "Stock subject to prior sale.",
+  "All disputes subject to local jurisdiction."
+ ],
+ "inconsistencies": [],
+ "requested_lines_not_quoted": [],
+ "fields_missing_in_source": [
+  "validity",
+  "supplier_gstin"
+ ],
+ "source_file": "documents/scans/Scan0068.pdf",
+ "supplier_id": "S03",
+ "capture": {
+  "dpi": 130,
+  "rotation_deg": 1.45,
+  "capture_quality": "medium"
+ }
+}

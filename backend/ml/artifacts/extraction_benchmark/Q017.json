@@ -1,0 +1,147 @@
+{
+ "text": {
+  "supplier": {
+   "name": "VexelMart",
+   "email": null,
+   "phone": null,
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit20.Ganesh Industrial Estate,Mumbai -400111,Maharashtra"
+  },
+  "quotation": {
+   "reference": "PV0325",
+   "date": "17-Oct-2026",
+   "validity": "16-Nov-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": null,
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 3629.0,
+    "gst_percentage": null,
+    "total_price": 36290.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Mcb32A Single Pole C Curve [HSN8536.20]",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 232.0,
+    "gst_percentage": null,
+    "total_price": 24360.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LEDbulb9WB22cool white[HSN8539.50]",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 86.41,
+    "gst_percentage": null,
+    "total_price": 8986.64,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 69636.64,
+   "tax_amount": 12534.6,
+   "tax_percentage": null,
+   "total_amount": 82171.24,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "12months"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs.1,00,000",
+   "_usage": {
+    "usage": {
+     "completion_tokens": 672,
+     "prompt_tokens": 1400,
+     "total_tokens": 2072
+    }
+   }
+  },
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "extracted_at": "2026-11-27T15:48:56.294509+00:00",
+  "notes": [
+   "The first item in the list lacks a description in the source text.",
+   "Tax amount calculated as sum of CGST and SGST (6267.30 + 6267.30)."
+  ]
+ },
+ "image": {
+  "supplier": {
+   "name": "Vexel Mart",
+   "email": null,
+   "phone": null,
+   "gst_number": "27TKJAD7029E1ZN",
+   "address": "Unit 20, Ganesh Industrial Estate, Mumbai - 400111, Maharashtra"
+  },
+  "quotation": {
+   "reference": "PI/0325",
+   "date": "17-Oct-2026",
+   "validity": "16-Nov-2026",
+   "currency": "INR"
+  },
+  "items": [
+   {
+    "original_name": "MCCB 100A 3-pole [HSN 8536.20]",
+    "quantity": 10.0,
+    "unit": "Nos.",
+    "unit_price": 3629.0,
+    "gst_percentage": null,
+    "total_price": 36290.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "Mcb 32A Single Pole C Curve [HSN 8536.20]",
+    "quantity": 105.0,
+    "unit": "EA",
+    "unit_price": 232.0,
+    "gst_percentage": null,
+    "total_price": 24360.0,
+    "attributes": {}
+   },
+   {
+    "original_name": "LED bulb 9W B22 cool white [HSN 8539.50]",
+    "quantity": 104.0,
+    "unit": "EA",
+    "unit_price": 86.41,
+    "gst_percentage": null,
+    "total_price": 8986.64,
+    "attributes": {}
+   }
+  ],
+  "commercials": {
+   "subtotal": 69636.64,
+   "tax_amount": 12534.6,
+   "tax_percentage": 18.0,
+   "total_amount": 82171.24,
+   "transportation_cost": null,
+   "delivery_days": null,
+   "delivery_date": null,
+   "delivery_terms": null,
+   "delivery_time": "4-6 weeks",
+   "payment_terms": "30 days credit",
+   "payment_days": 30,
+   "warranty": "12 months"
+  },
+  "additional_attributes": {
+   "special_discount": "3% on orders above Rs. 1,00,000"
+  },
+  "provider": null,
+  "model": null,
+  "extracted_at": null,
+  "notes": []
+ },
+ "ocr": true,
+ "has_images": false,
+ "ai_error": null,
+ "seconds": 52.41,
+ "source_chars": 824
+}
