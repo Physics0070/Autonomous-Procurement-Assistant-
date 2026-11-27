@@ -1,8 +1,8 @@
 # Validation report: the project's numbers, re-measured
 
 20 November 2026. Every figure below was re-measured on this laptop (16-thread CPU, MongoDB local, free-tier AI keys). Intervals are
-95% bootstrap (2,000 resamples) or Wilson intervals. **Team-supplied** data (the HSN list, the 4,000 orders and the price files) is described by the team as real vendor data; I have not
-verified its source independently, and it is labelled wherever it is used.
+95% bootstrap (2,000 resamples) or Wilson intervals. **Team-supplied** data (the HSN list, the 4,000 orders and the price files) is described by the team as real vendor data; its source has not
+been verified independently, and it is labelled wherever it is used.
 
 ## 1. The numbers to quote
 
@@ -15,7 +15,7 @@ verified its source independently, and it is labelled wherever it is used.
 | HSN heading accuracy (with model) | **98.8%** [93.6, 99.8] on the 85 original held-out items (reproduced today); **91.2%** [87.0, 94.1] on 250 items from the broader labelled set (94.0% on the first 100, 89.3% on 150 fresh) | benchmark: hand-checked; broad set: team-supplied | **The 94% I quoted earlier was optimistic.** Use 91% for general goods and 98.8% for the easy benchmark. |
 | HSN text matching alone | 27.6% top-1 on 750 items (shortlist of 30 contains the answer 79.6%) | team-supplied | Holds. |
 | HSN with no model | 53% (closest labelled item) | team-supplied | Holds. |
-| Extraction, fields correct | **96.6 to 96.9%** (282 of 291 fields) over three runs on 16 real documents; typed photos 98.0% (4 docs), digital PDFs 97.8% (10 docs), **handwritten 56 to 67% (2 docs)** | Real documents; answers read by me | Holds for typed documents. Handwriting is weak and the sample is tiny. Run-to-run variation is about 2 fields. |
+| Extraction, fields correct | **96.6 to 96.9%** (282 of 291 fields) over three runs on 16 real documents; typed photos 98.0% (4 docs), digital PDFs 97.8% (10 docs), **handwritten 56 to 67% (2 docs)** | Real documents; answers read off the originals during development, not an independent label set | Holds for typed documents. Handwriting is weak and the sample is tiny. Run-to-run variation is about 2 fields. |
 | Price errors caught | Later 150 quotes: any flag precision **0.75** [0.63, 0.86], recall **1.00**; HIGH-only precision 0.83 [0.71, 0.94], recall 0.90 [0.79, 0.98]. 10.3% of correct quotes flagged. | Team-supplied labels | Holds on this file only. Reliable at 20% or more off the item's usual price; 0 of 2 below 10% off, 2 of 4 at 10 to 20%. |
 | Forecast error (total miss over total demand, 3-month totals, 12 cut-off months) | **ARV 30%, HRDT 55%, all-shipments order value 31%, shipment count 21%**, against 38 / 58 / 35 / 26% for the plain linear trend. The range shown covers 75 to 78% of the actual months (aimed at 80%). | Real SCMS, months before Aug 2015 | **Better than before, still rough.** Presented as a range with a "how sure" label. The label is only a crude guide. The earlier "HRDT 66.9 to 53.6" and "about 55% error" figures are withdrawn: they were scored partly against four months in which SCMS stopped recording shipments. |
 | GSTIN check digit | 4 of 4 GSTINs from real quotations and the published sample pass; every one-character corruption fails (300 generated cases) | Real | Holds. |
@@ -48,7 +48,7 @@ Installing Tesseract (not installed here) would cut the photo time further; the 
   keeps the order; scores stay within 0 to 1), 200 search cases, 200 forecast cases.
 * **Known, tested limits:** a missing line item under 3% of the subtotal is within the 2% rounding tolerance and goes unflagged; 60
   cases skip for that reason or because the quotation had a single line.
-* **Real-document tests:** 16 documents read by me, including a quotation whose text layer disagrees with what the page shows.
+* **Real-document tests:** 16 documents, with the correct answers read off the originals during development (not an independent label set), including a quotation whose text layer disagrees with what the page shows.
 
 ## 4. Faults found while validating (all fixed and pushed)
 

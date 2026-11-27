@@ -61,6 +61,12 @@ def build_purchase_order(request: dict, quotation: dict, supplier: Optional[dict
 
     supplier_block = {**(data.get("supplier") or {}), **{k: v for k, v in (supplier or {}).items() if v}}
     subtotal = round(sum(line["line_total"] for line in lines), 2)
+    # A quotation-level discount is a share of the quoted subtotal; the PO's quantities may differ, so the same share
+    # is taken off here, before GST (a discount shown on the invoice reduces the taxable value).
+    quoted_base = pricing.get("subtotal") or pricing.get("computed_subtotal")
+    share = (pricing.get("discount_amount") or 0) / quoted_base if quoted_base else 0.0
+    discount = round(subtotal * share, 2)
+    taxable = {rate: amount * (1 - share) for rate, amount in taxable.items()}
     taxes = tax_split(taxable, buyer.get("gst_number"), supplier_block.get("gst_number"))
     freight = pricing.get("transportation_cost") or 0
     return {
@@ -73,8 +79,8 @@ def build_purchase_order(request: dict, quotation: dict, supplier: Optional[dict
         "warnings": warnings,
         "pricing": {
             "currency": pricing.get("currency") or request.get("currency") or "INR",
-            "subtotal": subtotal, "taxes": taxes, "freight": freight,
-            "total": round(subtotal + sum(t["amount"] for t in taxes) + freight, 2),
+            "subtotal": subtotal, "discount": discount, "taxes": taxes, "freight": freight,
+            "total": round(subtotal - discount + sum(t["amount"] for t in taxes) + freight, 2),
         },
         "terms": {
             "delivery_days": (data.get("delivery") or {}).get("delivery_days"),
@@ -130,6 +136,8 @@ def render_po_pdf(po: dict) -> bytes:
         text.append(f"{n:<3}{line['description'][:39]:<40}{line['quantity']:>10g}{line['unit_price']:>14,.2f}"
                     f"{line['tax_percentage']:>6g}{line['line_total']:>16,.2f}")
     text += ["", f"Subtotal: {cur} {po['pricing']['subtotal']:,.2f}"]
+    if po["pricing"].get("discount"):
+        text += [f"Less discount: {cur} {po['pricing']['discount']:,.2f}"]
     text += [f"{t['name']} {t['rate']:g}%: {cur} {t['amount']:,.2f}" for t in po["pricing"]["taxes"]]
     text += [f"Freight: {cur} {po['pricing']['freight']:,.2f}", f"TOTAL: {cur} {po['pricing']['total']:,.2f}", "",
              f"Delivery: {po['terms'].get('delivery_days') or '-'} days   Payment: {po['terms'].get('payment_terms') or '-'}"]

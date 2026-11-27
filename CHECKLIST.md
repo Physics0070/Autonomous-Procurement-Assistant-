@@ -122,7 +122,7 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | N4 | Price-error detector rebuilt on the labelled price files (`ml/anomaly.py`, `ml/price_errors_eval.py`) | ✅ | decision is now a z-score on log price (2.7 / 5), the Isolation Forest only corroborates; judges from 8 past prices instead of 20. Later 150 quotes, untouched: precision 0.75, recall 1.00 (HIGH only 0.83 / 0.90); before, on all 300: 0.47 / 0.96 with 81 of 224 correct quotes flagged. Real SCMS prices flagged: 1.6% (was 11.1%). labels supplied by the team; source not independently verified |
 | R1 | First run on the team's real quotations (23 distinct files: typed PDFs, phone photos, handwritten slips, Excel, ride screenshots) | ✅ | found: `.xls` unreadable (missing `xlrd`), handwriting read badly (`/-` read as a digit: 12,154 became 121,541; a slip read as 0 items), transport counted twice in a total check (false alarm), columns with swapped headings |
 | R2 | Fixes from R1 | ✅ | `xlrd` added; image reading adopted when the text reading finds no items; an amount with one extra trailing digit is corrected from the image (both readings kept); freight that is also a line is not added twice; prompt rule for swapped quantity/rate columns |
-| R3 | Accuracy on 7 real documents I read the answers off (203 fields: quantity, rate, line total, grand total) | ✅ | text reading 191/203 (94.1%) -> after the second reader 196/203 (96.6%). Handwritten slips remain weak (Tanpure quote 2 of 6 fields). One quotation (SP Stationers) has Our Rate / Qty headings swapped and a row with no units: still read the wrong way round on that row. Small sample, answers read by me, not an independent label set |
+| R3 | Accuracy on 7 real documents with answers read off the originals (203 fields: quantity, rate, line total, grand total) | ✅ | text reading 191/203 (94.1%) -> after the second reader 196/203 (96.6%). Handwritten slips remain weak (Tanpure quote 2 of 6 fields). One quotation (SP Stationers) has Our Rate / Qty headings swapped and a row with no units: still read the wrong way round on that row. Small sample, answers read by me, not an independent label set |
 | V21 | Rigorous validation of every headline number (`docs/VALIDATION_REPORT.md`; `ml/validate_numbers.py`, `scripts/measure_latency.py`) | ✅ | intervals, difficult cases, latency; HSN revised to 91% broad / 98.8% easy; forecast withdrawn as weak (about 55% error); risk model weak within shipment types (RDC 0.56) |
 | V22 | 7,900 generated stress tests (`tests/test_stress_*.py`) | ✅ | 8,117 pass, 60 skipped; found a forecast crash on short series, fixed |
 | V23 | Fixes from validation | ✅ | GSTIN check digit; incomplete lines need review; PDFs with page images also read as images; OCR 38 s to 16 s per photo; forecast keeps the linear trend unless beaten by 25% |
@@ -146,3 +146,17 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | H9 | Gmail and Drive with a real mailbox | ✅ partly | team signed in (Google OAuth connected 19 Nov); **Drive verified**: PO-2026-0001.pdf filed to the team's Drive; **Gmail**: connection and sync run without errors, but the last sync scanned 0 messages, so importing a quotation from an e-mail is still to be shown (send one quotation with an attachment to the connected inbox and sync) |
 | H11 | `.gitignore` rule `storage/` was hiding `backend/app/services/storage/` (the storage code was never on GitHub; a fresh clone could not start); anchored to `/storage/` | ✅ | `git check-ignore` now clean; package shows as new files |
 | H10 | Commit and push | ✅ | approved by the user; Word files, root PDFs, CSVs and the zip left out |
+
+## Gap closure (28 Nov 2026)
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| G1 | Discounts: line and quotation discounts extracted, reconciled, used in comparison and purchase orders (before GST) | ✅ | `tests/test_discounts.py` 7; benchmark re-read on the tune split running |
+| G2 | Gmail end to end with a real e-mailed quotation | ⏳ | waiting for the team to send one |
+| G3 | Sign-in and AI request limits | ✅ | `tests/test_rate_limits.py` 4 |
+| G4 | Backup and restore incl. GridFS (`scripts/backup_db.py`) | ✅ | dev database restore identical by hash (13 collections, 21,359 documents); `tests/test_backup_restore.py` |
+| G5 | Scanned-PDF improvement | ⏸️ | skipped: no unused labelled scans to measure on |
+| G6 | Upload content checks (scripts, launch actions, payload attachments, macros, zip bombs) | ✅ | `tests/test_upload_safety.py` 15; all 38 real quotations pass |
+| G7 | Regression: backend, TypeScript, production build | ✅ | 8,484 passed + the 4 Gmail tests fixed and re-run (29 passed); tsc clean; vite build ok |
+| G8 | README benchmarks | ⏳ | after the discount re-read |
+| G9 | AI planning commentary removed from public docs | ✅ | readiness, validation report, checklist |
+| G10 | Readiness doc updated | 🔄 | final numbers after the re-read |

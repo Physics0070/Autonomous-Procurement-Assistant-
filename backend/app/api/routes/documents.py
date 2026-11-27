@@ -10,6 +10,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, UploadFile, status
 
 from app.api.deps import CurrentUser, quotation_repo, storage
+from app.core.rate_limit import AILimited
 from app.core.config import settings
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import ProcessingStatus, SourceType
@@ -22,7 +23,7 @@ from app.workers.processing import get_processing_queue
 router = APIRouter(prefix="/documents", tags=["documents"])
 
 
-@router.post("/upload", response_model=QuotationUploadResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/upload", response_model=QuotationUploadResponse, status_code=status.HTTP_201_CREATED, dependencies=[AILimited])
 async def upload_document(
     context: CurrentUser,
     file: UploadFile = File(...),

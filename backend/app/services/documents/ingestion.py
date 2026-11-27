@@ -21,6 +21,7 @@ from app.core.errors import ConflictError, ValidationError
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import ProcessingStatus, SourceType
 from app.services.documents.detection import detect_document_type, is_allowed_upload
+from app.services.documents.safety import check_upload_safety
 from app.services.storage.base import StorageBackend
 
 logger = logging.getLogger(__name__)
@@ -69,6 +70,7 @@ async def ingest_document(
             "Supported formats: PDF, Excel (.xlsx/.xls), CSV, PNG, JPG, plain text."
         )
 
+    check_upload_safety(payload.data, payload.filename)
     document_type = detect_document_type(payload.data, payload.filename, payload.mime_type)
 
     # The original file is stored outside MongoDB; only the key is persisted.

@@ -88,6 +88,9 @@ function Detail({ po }: { po: PurchaseOrder }) {
 
         <dl className="ml-auto max-w-xs space-y-1 text-sm">
           <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>{formatCurrency(po.pricing.subtotal, cur)}</dd></div>
+          {!!po.pricing.discount && (
+            <div className="flex justify-between"><dt className="text-muted-foreground">Less discount</dt><dd>−{formatCurrency(po.pricing.discount, cur)}</dd></div>
+          )}
           {po.pricing.taxes.map((t) => (
             <div key={t.name} className="flex justify-between"><dt className="text-muted-foreground">{t.name} {t.rate}%</dt><dd>{formatCurrency(t.amount, cur)}</dd></div>
           ))}

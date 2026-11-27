@@ -275,6 +275,7 @@ export interface NormalizedQuotation {
   pricing: {
     currency: string
     subtotal: number | null
+    discount_amount?: number | null
     tax_amount: number | null
     tax_percentage: number | null
     transportation_cost: number | null

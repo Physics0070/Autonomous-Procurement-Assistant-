@@ -21,6 +21,31 @@ ABS_TOLERANCE = 2.0
 REL_TOLERANCE = 0.0001  # 0.01%: ₹10 on ₹1 lakh
 ARITHMETIC_CODES = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch"}
 
+
+# Discounts, applied the same way everywhere (validation, normalisation, purchase orders). A printed amount wins over a
+# printed percentage; nothing is ever inferred from the difference between two totals.
+def line_net_total(quantity: Optional[float], unit_price: Optional[float], discount_percentage: Optional[float] = None,
+                   discount_amount: Optional[float] = None) -> Optional[float]:
+    """quantity x unit price, less the line's own discount."""
+    if quantity is None or unit_price is None:
+        return None
+    gross = quantity * unit_price
+    if discount_amount is not None:
+        return gross - discount_amount
+    if discount_percentage is not None:
+        return gross * (1 - discount_percentage / 100.0)
+    return gross
+
+
+def quotation_discount(base: Optional[float], discount_amount: Optional[float],
+                       discount_percentage: Optional[float]) -> float:
+    """The quotation-level discount taken off the subtotal before tax (0 when none is printed)."""
+    if discount_amount is not None:
+        return abs(discount_amount)
+    if discount_percentage is not None and base is not None:
+        return base * discount_percentage / 100.0
+    return 0.0
+
 MAX_PLAUSIBLE_QUANTITY = 1_000_000
 MAX_PLAUSIBLE_UNIT_PRICE = 10_000_000
 MAX_PLAUSIBLE_TOTAL = 1_000_000_000
@@ -195,13 +220,14 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
 
         # Cross-check quantity x unit price against the stated line total.
         if item.quantity is not None and item.unit_price is not None:
-            expected = item.quantity * item.unit_price
+            expected = line_net_total(item.quantity, item.unit_price, item.discount_percentage, item.discount_amount)
             if item.total_price is not None and not _close_enough(expected, item.total_price):
+                less = " less the line discount" if item.discount_percentage is not None or item.discount_amount is not None else ""
                 add(
                     f"{prefix}.total_price",
                     "line_total_mismatch",
-                    f"Line total does not equal quantity x unit price "
-                    f"({item.quantity} x {item.unit_price} = {expected:,.2f}).",
+                    f"Line total does not equal quantity x unit price{less} "
+                    f"({item.quantity} x {item.unit_price}{less} = {expected:,.2f}).",
                     observed=item.total_price,
                     expected=round(expected, 2),
                     item_index=index,
@@ -259,9 +285,10 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
     # subtotal + tax + freight should reconcile with the stated total.
     base = commercials.subtotal
     if base is not None and commercials.total_amount is not None:
+        discount = quotation_discount(base, commercials.discount_amount, commercials.discount_percentage)
         tax = commercials.tax_amount
         if tax is None and commercials.tax_percentage is not None:
-            tax = base * commercials.tax_percentage / 100.0
+            tax = (base - discount) * commercials.tax_percentage / 100.0
         freight = commercials.transportation_cost or 0.0
         # Freight that is also a line ("TRANSPORTATION 600") is already inside the subtotal.
         if freight and any(
@@ -271,15 +298,18 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
         ):
             freight = 0.0
         if tax is not None:
-            expected_total = base + tax + freight
+            # Some quotations print the subtotal before the discount, some after it ("taxable value"); both are accepted.
+            nets = [base - discount, base] if discount else [base]
+            expected_total = nets[0] + tax + freight
             # Prices that include GST, and "GST extra" quotations that never add it, print a total equal to the subtotal.
-            tax_not_added = _close_enough(base + freight, commercials.total_amount)
-            if not _close_enough(expected_total, commercials.total_amount) and not tax_not_added:
+            reconciles = any(_close_enough(net + extra, commercials.total_amount) for net in nets for extra in (tax + freight, freight))
+            if not reconciles:
+                less = f" - {discount:,.2f}" if discount else ""
                 add(
                     "commercials.total_amount",
                     "total_mismatch",
-                    f"Total does not reconcile with subtotal + tax + transportation "
-                    f"({base:,.2f} + {tax:,.2f} + {freight:,.2f} = {expected_total:,.2f}).",
+                    f"Total does not reconcile with subtotal{' - discount' if discount else ''} + tax + transportation "
+                    f"({base:,.2f}{less} + {tax:,.2f} + {freight:,.2f} = {expected_total:,.2f}).",
                     observed=commercials.total_amount,
                     expected=round(expected_total, 2),
                 )

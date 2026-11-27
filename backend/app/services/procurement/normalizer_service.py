@@ -25,7 +25,7 @@ from app.services.procurement.normalization import (
     normalize_tokens,
     normalize_unit,
 )
-from app.services.procurement.validation import parse_date
+from app.services.procurement.validation import line_net_total, parse_date, quotation_discount
 
 _VALIDITY_DAYS_RE = re.compile(r"(\d{1,3})\s*(?:days?|दिन)", re.IGNORECASE)
 _ADVANCE_RE = re.compile(r"(\d{1,3})\s*%\s*(?:advance|adv)", re.IGNORECASE)
@@ -87,11 +87,12 @@ def normalize_quotation(extraction: AIExtractionResult, currency_default: str = 
     for index, item in enumerate(extraction.items):
         canonical_unit = normalize_unit(item.unit)
         base_quantity, base_unit = convert_quantity(item.quantity, item.unit)
-        computed_total = (
-            round(item.quantity * item.unit_price, 4)
-            if item.quantity is not None and item.unit_price is not None
-            else None
-        )
+        net = line_net_total(item.quantity, item.unit_price, item.discount_percentage, item.discount_amount)
+        computed_total = round(net, 4) if net is not None else None
+        discounted = item.unit_price is not None and (item.discount_percentage is not None or item.discount_amount is not None)
+        # The price actually paid per unit; the printed one is kept beside it.
+        unit_price = (round(net / item.quantity, 4) if discounted and net is not None and item.quantity
+                      else item.unit_price)
 
         line_total = item.total_price if item.total_price is not None else computed_total
         if line_total is not None:
@@ -109,7 +110,9 @@ def normalize_quotation(extraction: AIExtractionResult, currency_default: str = 
                 unit=item.unit,
                 normalized_unit=canonical_unit or base_unit,
                 normalized_quantity=base_quantity,
-                unit_price=item.unit_price,
+                unit_price=unit_price,
+                list_price=item.unit_price if discounted else None,
+                discount_percentage=item.discount_percentage,
                 tax_percentage=item.gst_percentage,
                 total_price=item.total_price,
                 computed_total=computed_total,
@@ -136,22 +139,25 @@ def normalize_quotation(extraction: AIExtractionResult, currency_default: str = 
     # ------------------------------------------------------------------
     commercials = extraction.commercials
     currency = (extraction.quotation.currency or currency_default).upper()
-    tax_amount = commercials.tax_amount
-    if tax_amount is None and commercials.tax_percentage is not None and commercials.subtotal is not None:
-        # Derived, and marked as such - the stored extraction keeps its null.
-        tax_amount = round(commercials.subtotal * commercials.tax_percentage / 100.0, 2)
-
     subtotal = commercials.subtotal
     if subtotal is None and subtotal_complete and computed_subtotal > 0:
         subtotal = round(computed_subtotal, 2)
+    discount = quotation_discount(subtotal, commercials.discount_amount, commercials.discount_percentage)
+
+    tax_amount = commercials.tax_amount
+    if tax_amount is None and commercials.tax_percentage is not None and subtotal is not None:
+        # Derived, and marked as such - the stored extraction keeps its null. GST is charged after the discount.
+        tax_amount = round((subtotal - discount) * commercials.tax_percentage / 100.0, 2)
 
     landed_total = commercials.total_amount
     if landed_total is None and subtotal is not None:
-        landed_total = round(subtotal + (tax_amount or 0.0) + (commercials.transportation_cost or 0.0), 2)
+        landed_total = round(subtotal - discount + (tax_amount or 0.0) + (commercials.transportation_cost or 0.0), 2)
 
     normalized.pricing = NormalizedPricing(
         currency=currency,
         subtotal=commercials.subtotal,
+        discount_amount=round(discount, 2) if discount else None,
+        discount_percentage=commercials.discount_percentage,
         tax_amount=commercials.tax_amount,
         tax_percentage=commercials.tax_percentage,
         transportation_cost=commercials.transportation_cost,

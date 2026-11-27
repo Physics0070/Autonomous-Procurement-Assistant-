@@ -10,6 +10,7 @@ from pydantic import EmailStr, Field
 from app.api.deps import (
     DB, CurrentUser, RequestContext, comparison_repo, quotation_repo, request_repo, require_roles, supplier_repo,
 )
+from app.core.rate_limit import AILimited
 from app.core.config import settings
 from app.core.crypto import decrypt_secret
 from app.core.errors import ConfigurationError, ConflictError, ValidationError
@@ -95,7 +96,7 @@ async def get_communication(communication_id: str, context: CurrentUser,
     return await repo.get_or_404(context.organization_id, communication_id)
 
 
-@router.post("/procurement-requests/{request_id}/rfqs", status_code=201)
+@router.post("/procurement-requests/{request_id}/rfqs", status_code=201, dependencies=[AILimited])
 async def create_rfqs(
     request_id: str, payload: RFQIn, context: CurrentUser,
     requests: ProcurementRequestRepository = Depends(request_repo),
@@ -109,7 +110,7 @@ async def create_rfqs(
     return [await _create(repo, context, d) for d in drafts]
 
 
-@router.post("/comparisons/procurement-requests/{request_id}/negotiations", status_code=201)
+@router.post("/comparisons/procurement-requests/{request_id}/negotiations", status_code=201, dependencies=[AILimited])
 async def create_negotiation(
     request_id: str, payload: NegotiationIn, context: CurrentUser,
     requests: ProcurementRequestRepository = Depends(request_repo),

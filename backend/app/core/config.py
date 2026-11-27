@@ -104,7 +104,12 @@ class Settings(BaseSettings):
     COUNCIL_MODELS: str = ""          # comma-separated, at least two, ideally from different vendors
     COUNCIL_MONITOR_MODEL: str = ""   # the model that reads the members' answers and decides
     AI_REQUEST_TIMEOUT_SECONDS: int = 120
-    AI_MAX_CONCURRENT_CALLS: int = 4  # model calls in flight per process; free tiers throttle bursts
+    AI_MAX_CONCURRENT_CALLS: int = 4
+    AI_USER_REQUESTS_PER_MINUTE: int = 10   # AI-backed requests one user may start per minute
+    AI_ORG_REQUESTS_PER_HOUR: int = 200     # and one organization per hour
+    LOGIN_MAX_FAILURES: int = 10            # failed sign-ins per e-mail within the window
+    LOGIN_MAX_ATTEMPTS_PER_IP: int = 50     # sign-in attempts per address within the window
+    LOGIN_WINDOW_MINUTES: int = 15  # model calls in flight per process; free tiers throttle bursts
     FALLBACK_COOLDOWN_SECONDS: int = 30  # a vendor that just failed is tried last for this long
     COUNCIL_MEMBER_TIMEOUT_SECONDS: int = 45  # a slow free-tier member is dropped instead of stalling the council
 

@@ -343,6 +343,7 @@ export function QuotationDetailPage() {
                 {(
                   [
                     ["Subtotal", effective.pricing.subtotal],
+                    ["Less discount", effective.pricing.discount_amount == null ? null : -effective.pricing.discount_amount],
                     ["GST", effective.pricing.tax_amount],
                     ["Delivery charge", effective.pricing.transportation_cost],
                   ] as const

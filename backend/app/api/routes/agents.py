@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import Field
 
 from app.api.deps import DB, CurrentUser, comparison_repo, quotation_repo, request_repo, supplier_repo
+from app.core.rate_limit import AILimited
 from app.api.routes.automation import ai_provider, communication_repo
 from app.core.errors import ConfigurationError
 from app.integrations.ai.base import AIProvider, ChatMessage, ToolCall
@@ -34,7 +35,7 @@ def run_repo(database: DB) -> AgentRunRepository:
     return AgentRunRepository(database)
 
 
-@router.post("/sourcing/{request_id}", status_code=201)
+@router.post("/sourcing/{request_id}", status_code=201, dependencies=[AILimited])
 async def start_sourcing(
     request_id: str, context: CurrentUser,
     requests: ProcurementRequestRepository = Depends(request_repo),
@@ -70,7 +71,7 @@ def _context(database, context: CurrentUser, recorder: RunRecorder, provider: AI
     )
 
 
-@router.post("/supervisor/{request_id}", status_code=201)
+@router.post("/supervisor/{request_id}", status_code=201, dependencies=[AILimited])
 async def start_supervisor(
     request_id: str, context: CurrentUser, database: DB,
     requests: ProcurementRequestRepository = Depends(request_repo),
@@ -84,7 +85,7 @@ async def start_supervisor(
     return await run_supervisor(_context(database, context, recorder, provider), request)
 
 
-@router.post("/runs/{run_id}/resume")
+@router.post("/runs/{run_id}/resume", dependencies=[AILimited])
 async def resume_run(
     run_id: str, context: CurrentUser, database: DB, payload: Optional[ResumeIn] = None,
     requests: ProcurementRequestRepository = Depends(request_repo),
@@ -138,7 +139,7 @@ def _to_chat(m: dict) -> ChatMessage:
                                    for c in m.get("tool_calls") or []])
 
 
-@assistant_router.post("/messages")
+@assistant_router.post("/messages", dependencies=[AILimited])
 async def send_message(
     payload: AssistantMessageIn, context: CurrentUser, database: DB,
     conversations: ConversationRepository = Depends(conversation_repo),

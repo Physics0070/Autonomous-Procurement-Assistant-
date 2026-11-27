@@ -109,6 +109,8 @@ def build_comparison(
         if landed is None:
             landed = pricing.get("total_amount")
         subtotal = pricing.get("subtotal")
+        if subtotal is not None and pricing.get("discount_amount"):
+            subtotal = round(subtotal - pricing["discount_amount"], 2)
 
         # Whether this total actually includes tax. A quotation saying "GST
         # extra as applicable" produces a tax-exclusive total that would look

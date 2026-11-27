@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Request, status
 
 from app.api.deps import CurrentUser, org_repo, user_repo
 from app.core.config import settings
 from app.core.errors import AuthError, ConflictError
+from app.core.rate_limit import check_login, record_login_failure, record_login_success
 from app.core.security import create_access_token, hash_password, verify_password
 from app.repositories.users import OrganizationRepository, UserRepository
 from app.schemas.auth import (
@@ -61,13 +62,17 @@ async def register(
 @router.post("/login", response_model=TokenResponse)
 async def login(
     payload: LoginRequest,
+    request: Request,
     users: UserRepository = Depends(user_repo),
     organizations: OrganizationRepository = Depends(org_repo),
 ) -> TokenResponse:
+    check_login(request, payload.email)
     user = await users.get_by_email_with_hash(payload.email)
     # Same error for unknown email and wrong password: do not leak which.
     if user is None or not verify_password(payload.password, user.get("hashed_password", "")):
+        record_login_failure(payload.email)
         raise AuthError("Incorrect email or password.")
+    record_login_success(payload.email)
 
     organization = await organizations.get(str(user["organization_id"]))
     if organization is None:

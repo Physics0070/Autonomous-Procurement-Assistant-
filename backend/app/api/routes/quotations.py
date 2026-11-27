@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, Query, Response, status
 from fastapi.responses import FileResponse
 
 from app.api.deps import CurrentUser, quotation_repo, storage
+from app.core.rate_limit import AILimited
 from app.core.errors import NotFoundError, ValidationError
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import Paginated, ProcessingStatus
@@ -96,7 +97,7 @@ async def download_original(
     return Response(data, media_type=media_type, headers={"Content-Disposition": f'attachment; filename="{_header_safe(filename)}"'})
 
 
-@router.post("/{quotation_id}/reprocess", response_model=QuotationDetail)
+@router.post("/{quotation_id}/reprocess", response_model=QuotationDetail, dependencies=[AILimited])
 async def reprocess(
     quotation_id: str,
     context: CurrentUser,

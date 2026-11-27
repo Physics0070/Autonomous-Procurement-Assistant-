@@ -83,7 +83,9 @@ class ExtractedItem(APIModel):
     unit: Optional[str] = None
     unit_price: Optional[float] = None
     gst_percentage: Optional[float] = None
-    total_price: Optional[float] = None
+    discount_percentage: Optional[float] = None  # a line discount as printed ("Disc 5%")
+    discount_amount: Optional[float] = None      # a line discount printed as an amount
+    total_price: Optional[float] = None          # the line amount as printed (after any line discount)
     attributes: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("original_name", "unit", mode="before")
@@ -91,7 +93,8 @@ class ExtractedItem(APIModel):
     def _clean_str(cls, v):
         return blank_to_none(v)
 
-    @field_validator("quantity", "unit_price", "gst_percentage", "total_price", mode="before")
+    @field_validator("quantity", "unit_price", "gst_percentage", "discount_percentage", "discount_amount", "total_price",
+                     mode="before")
     @classmethod
     def _clean_number(cls, v):
         return coerce_number(v)
@@ -106,6 +109,8 @@ class ExtractedItem(APIModel):
 
 class ExtractedCommercials(APIModel):
     subtotal: Optional[float] = None
+    discount_amount: Optional[float] = None      # a quotation-level discount as printed ("Less discount 5%: 43,403.10")
+    discount_percentage: Optional[float] = None
     tax_amount: Optional[float] = None
     tax_percentage: Optional[float] = None
     total_amount: Optional[float] = None
@@ -125,6 +130,8 @@ class ExtractedCommercials(APIModel):
 
     @field_validator(
         "subtotal",
+        "discount_amount",
+        "discount_percentage",
         "tax_amount",
         "tax_percentage",
         "total_amount",

@@ -45,7 +45,9 @@ class NormalizedItem(APIModel):
     normalized_unit: Optional[str] = None      # canonical unit symbol
     normalized_quantity: Optional[float] = None  # quantity in the canonical unit
 
-    unit_price: Optional[float] = None
+    unit_price: Optional[float] = None         # the price actually paid per unit (after any line discount)
+    list_price: Optional[float] = None         # the printed price, kept only when a line discount applies
+    discount_percentage: Optional[float] = None
     tax_percentage: Optional[float] = None
     total_price: Optional[float] = None
     computed_total: Optional[float] = None     # qty * unit_price, for cross-checking
@@ -57,6 +59,8 @@ class NormalizedItem(APIModel):
 class NormalizedPricing(APIModel):
     currency: str = "INR"
     subtotal: Optional[float] = None
+    discount_amount: Optional[float] = None    # quotation-level, before tax (printed, or from the printed percentage)
+    discount_percentage: Optional[float] = None
     tax_amount: Optional[float] = None
     tax_percentage: Optional[float] = None
     transportation_cost: Optional[float] = None

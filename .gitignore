@@ -30,3 +30,6 @@ ff_180 format.docx
 graphify-out/
 backend/ml/artifacts/orgs/
 .claude/
+
+# Database backups (scripts/backup_db.py); keep copies off this machine
+/backups/

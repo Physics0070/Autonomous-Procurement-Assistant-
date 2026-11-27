@@ -65,7 +65,7 @@ export interface PurchaseOrder {
   buyer: { name: string | null; gst_number?: string | null; address?: string | null }
   lines: Array<{ description: string; quantity: number; unit: string | null; unit_price: number; tax_percentage: number; line_total: number }>
   warnings: string[]
-  pricing: { currency: string; subtotal: number; taxes: Array<{ name: string; rate: number; amount: number }>; freight: number; total: number }
+  pricing: { currency: string; subtotal: number; discount?: number; taxes: Array<{ name: string; rate: number; amount: number }>; freight: number; total: number }
   terms: { delivery_days: number | null; delivery_date: string | null; payment_terms: string | null }
   drive_file?: { id: string; name: string; link: string } | null
   expected_delivery_date?: string | null

@@ -13,6 +13,9 @@ import uuid
 os.environ["MONGODB_DB_NAME"] = "procurement_assistant_test"
 os.environ["GMAIL_SYNC_INTERVAL_MINUTES"] = "0"
 os.environ["AI_PROVIDER"] = "none"
+# Request limits stay out of the way of ordinary tests; tests/test_rate_limits.py sets them low.
+for _name in ("AI_USER_REQUESTS_PER_MINUTE", "AI_ORG_REQUESTS_PER_HOUR", "LOGIN_MAX_FAILURES", "LOGIN_MAX_ATTEMPTS_PER_IP"):
+    os.environ[_name] = "1000000"
 # `vendor:model` routing in a developer's .env would otherwise reach real APIs.
 # Vendor keys too: some paths (embeddings) pick a vendor from its key alone, and a test run must not spend real quota.
 for _name in ("LLM_TASK_MODELS", "COUNCIL_MODELS", "COUNCIL_MONITOR_MODEL", "GROK_API_KEY", "GROQ_API_KEY",

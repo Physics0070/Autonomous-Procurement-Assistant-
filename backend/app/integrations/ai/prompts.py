@@ -54,12 +54,16 @@ EXTRACTION_SCHEMA = {
             "unit": "string or null (verbatim, e.g. Nos, PCS, BOTTLE)",
             "unit_price": "number or null",
             "gst_percentage": "number or null",
-            "total_price": "number or null",
+            "discount_percentage": "number or null (a discount printed on this line, e.g. Disc 5%)",
+            "discount_amount": "number or null (a discount on this line printed as an amount)",
+            "total_price": "number or null (the line amount as printed)",
             "attributes": {"any_extra_column_name": "value"},
         }
     ],
     "commercials": {
         "subtotal": "number or null",
+        "discount_amount": "number or null (a discount on the whole quotation printed as an amount, e.g. Less discount)",
+        "discount_percentage": "number or null (the percentage of that discount, if printed)",
         "tax_amount": "number or null",
         "tax_percentage": "number or null",
         "total_amount": "number or null",

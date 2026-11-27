@@ -9,6 +9,7 @@ import pandas as pd
 from fastapi import APIRouter, Depends, Query
 
 from app.api.deps import CurrentUser, RequestContext, quotation_repo, require_roles
+from app.core.rate_limit import AILimited
 from app.api.routes.automation import ai_provider, po_repo
 from app.integrations.ai.base import AIProvider
 from app.integrations.ai.factory import for_task
@@ -55,7 +56,7 @@ async def forecast(context: CurrentUser, horizon: int = 3, pos: PurchaseOrderRep
     return await cache.cached(f"forecast:{horizon}", context.organization_id, [pos.collection], compute)
 
 
-@router.get("/hsn")
+@router.get("/hsn", dependencies=[AILimited])
 async def suggest_hsn(context: CurrentUser, item: str = Query(min_length=2, max_length=300),
                       provider: AIProvider = Depends(ai_provider)) -> dict:
     """The HSN heading for a quotation line: the model's checked choice, or the best text match."""
