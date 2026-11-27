@@ -91,3 +91,27 @@ def test_a_suppliers_thousand_rupee_slip_is_sent_for_review():
 def test_a_price_that_includes_gst_is_not_a_mismatch():
     from app.services.procurement.validation import validate_extraction
     assert not validate_extraction(_priced(100000.0)).requires_review  # "GST included": total equals the subtotal
+
+
+def test_a_reading_from_a_backup_model_is_sent_for_review():
+    from app.services.procurement.validation import validate_extraction
+    clean = _priced(118000.0)
+    assert not validate_extraction(clean).requires_review
+    clean.additional_attributes["_usage"] = {"fallback": ["gemini: the provider's rate limit was reached"]}
+    report = validate_extraction(clean)
+    assert report.requires_review and any(i.code == "backup_model" for i in report.issues)
+
+
+def test_the_image_reader_records_when_a_backup_model_answered():
+    import asyncio, json
+    from types import SimpleNamespace
+    from app.services.documents.second_reader import second_read
+
+    class Backup(_Flaky):
+        async def read_image(self, prompt, images, system=None):
+            self.calls += 1
+            return SimpleNamespace(ok=True, text=self.replies.pop(0), error=None, meta={"fallback": ["gemini: quota"]})
+
+    good = json.dumps({"supplier": {"name": "Veltra"}, "items": [{"original_name": "Marker", "quantity": 2, "unit_price": 10, "total_price": 20}]})
+    reading = asyncio.run(second_read([b"img"], provider=Backup([good])))
+    assert reading.additional_attributes["_usage"]["fallback"] == ["gemini: quota"]

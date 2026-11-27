@@ -60,14 +60,37 @@ tolerance is ₹2 or 0.01%, and a total that does not add up always sends the qu
 | | Sent for review |
 |---|---:|
 | Quotations with a supplier's arithmetic mistake | **11 of 11** (was 0) |
-| Correct quotations | 20 of 119; 17 of these carry a discount, which is not extracted as a field, so the total cannot be reconciled and a person should look |
+| Correct quotations | 20 of 119; 17 of these carry a discount, which was not yet extracted, so the total could not be reconciled |
+
+## Discounts (added after the locked run)
+
+Line and quotation discounts are now extracted as printed and reconciled in code. Because this changes extraction, it
+can only be measured on the tune split; the locked split has already been used and is not read again for it.
+
+The re-read of the 90 tune quotations ran after Gemini's free daily quota was spent, so every reading came from the
+backup models (Groq, NVIDIA). On that run:
+
+| | Result |
+|---|---:|
+| Quotation discounts read to the rupee | 11 of 13 |
+| Discounted quotations still sent for review | 4 of 13 (13 of 13 before) |
+| Supplier arithmetic mistakes sent for review | 8 of 8 |
+| Correct quotations sent for review | 15 of 82 |
+| All fields | **89.0%** (98.2% with Gemini, before the discount fields) |
+
+The 89.0% mixes two changes, the backup models and the new fields, so it is not a result for either alone. The
+per-document errors were mostly misread digits (87 read as 85, 1,56,672 as 1,56,720), typical of the weaker models. A
+re-read with Gemini, once its quota resets, will separate the two; until then the tune figure with discounts is
+**not measured**.
+
+Because of this run, a reading produced by a backup model is now always sent for review.
 
 ## Limits
 
 * Code-generated documents; no claim about real suppliers' documents beyond the 16 real ones.
 * Scanned PDFs are the weakest format on the locked split (89.6% on 8 documents).
-* Under free-tier rate limits, reading falls back to weaker models and accuracy drops (93% instead of 98% when tests ran
-  alongside). A cap on concurrent model calls (`AI_MAX_CONCURRENT_CALLS`, default 4) now limits bursts; it was added
-  after these runs, so its effect is not measured here.
+* Under free-tier limits, reading falls back to weaker models and accuracy drops (93% when tests ran alongside; 89.0%
+  with the main model's daily quota spent). Such readings are sent for review, and a cap on concurrent model calls
+  (`AI_MAX_CONCURRENT_CALLS`) limits bursts; neither restores the accuracy itself.
 * Handwriting is not in this benchmark.
 * Time per document: median 19 s, slowest 159 s (a rate-limited read).

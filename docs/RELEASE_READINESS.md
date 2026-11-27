@@ -1,7 +1,7 @@
 # Release readiness
 
-Status on 27 November 2026. Honest label: **demo-ready, not production-ready.** There are no outside users yet, a
-quotation has not yet been imported from a real e-mail, and the AI runs on free tiers.
+Status on 28 November 2026. Assessment: **demo-ready; pilot-ready once the two open checks below pass; not
+production-ready.** See the last section for the reasons.
 
 This file covers what was hardened, what was deferred and why, and the known limits. The extraction benchmark has its
 own file, [EXTRACTION_BENCHMARK.md](EXTRACTION_BENCHMARK.md); the re-measured model numbers are in
@@ -22,6 +22,7 @@ own file, [EXTRACTION_BENCHMARK.md](EXTRACTION_BENCHMARK.md); the re-measured mo
 | Sign-in and AI limits | None | Sign-in locked after 10 failures per e-mail in 15 minutes (50 attempts per address); AI-backed routes limited to 10 requests per user per minute and 200 per organization per hour; in-process counts | `tests/test_rate_limits.py` |
 | Upload content | Only the file type was checked | PDFs with scripts or launch actions refused; attached files refused unless they are metadata (Content Credentials, XML/JSON invoice data); macro-enabled or zip-bomb spreadsheets refused; all 38 of the team's real quotations pass | `tests/test_upload_safety.py` |
 | Backups | None | `scripts/backup_db.py` backs up every collection (GridFS files included) and restores only into an empty database; restore of the development database (13 collections, 21,359 documents) identical by content hash | `tests/test_backup_restore.py` |
+| Backup AI models | When the main model's free quota ran out, readings came from backup models without any sign (the tune split fell to 89.0% of fields on such a run) | A reading produced by a backup model is recorded as such and always sent for review | `tests/test_benchmark_fixes.py` |
 | Tests | The suite could reach real APIs (embeddings choose Gemini from its key alone), and one test passed only because a real key was in `.env` | Vendor keys blanked for every test run; fixture given a fake key | `tests/test_vendors.py` |
 
 ## Not done, and why
@@ -31,6 +32,7 @@ own file, [EXTRACTION_BENCHMARK.md](EXTRACTION_BENCHMARK.md); the re-measured mo
 | Model comparison for late-delivery risk (CatBoost, LightGBM, XGBoost, Optuna) to reach 0.85 | Deferred. 0.832 [0.815, 0.850] is time-split and calibrated. The weakness is inside shipment types (RDC 0.562), which is a data limitation; searching until a chosen score appears would overfit the test period. |
 | Per-field provenance (page, bounding box, method, correction history) | Deferred. The grounding check (every figure must appear in the document), the image second reader with flagged cells, and the original file shown beside the result cover the main risk. A schema-wide change is a separate piece of work. |
 | Gmail and Drive end to end | The team signed in with Google. **Drive is verified** (a purchase order PDF was filed to their Drive). Gmail connects and syncs without errors, but the last sync found no messages, so importing a quotation from a real e-mail is **still to be shown**. |
+| Scanned-PDF accuracy | Not attempted: every labelled scan has either been used for tuning or already read in the locked split, so an improvement could not be measured honestly. New labelled scans are needed. |
 | Token budgets per organization | Deferred; request counts per user and organization are limited instead. |
 | Monitoring stack, frontend polish, separate docs for each area | Deferred; no users to justify them yet. |
 
@@ -45,6 +47,23 @@ own file, [EXTRACTION_BENCHMARK.md](EXTRACTION_BENCHMARK.md); the re-measured mo
 * **Security:** request limits are kept in one process's memory (several server instances would each count separately);
   JWT secret must be set per deployment; uploads get content checks, not an antivirus scan.
 
+## Files from untrusted senders
+
+Every file, uploaded or collected from Gmail, passes the same path:
+
+1. Size is checked before the file is held in memory (25 MB).
+2. The type is decided from the file's content, not its name.
+3. Active content is refused before anything is stored: PDF scripts and launch actions, attached executables, archives
+   or Office files, macro-enabled spreadsheets, and spreadsheets that unpack to an unreasonable size.
+4. Files are only ever read as data (PyMuPDF renders, openpyxl and xlrd read cell values, Pillow decodes images); no
+   macro, script or attachment is run.
+5. Extracted figures are held as "needs checking" until a person accepts them when anything does not add up, and no
+   purchase order or e-mail leaves without an approver.
+
+There is no antivirus scan. Where the app accepts files from people outside the organization, run it on a host with
+ClamAV (about 1 GB of memory, more than the free hosting tier offers) and scan the stored originals, or limit Gmail
+collection to known suppliers with `GMAIL_SYNC_QUERY` (a Gmail search, e.g. `has:attachment from:(sales@a.in OR quotes@b.in)`).
+
 ## How to check
 
 From `backend/`, MongoDB running:
@@ -55,8 +74,13 @@ python -m ml.extraction_benchmark --split all      # rescore cached readings (no
 python -m ml.validate_numbers                      # risk, price-error and forecast numbers with intervals
 ```
 
-## Before calling it production-ready
+## Assessment
 
-1. One quotation e-mailed to the connected inbox and imported by a sync, written down.
-2. 15 to 20 real supplier quotations hand-labelled and scored as an independent check.
-3. A scheduled daily backup copied off the machine.
+| Level | Verdict | Why |
+|---|---|---|
+| Demo-ready | **Yes** | Every main flow works end to end on the sample and real quotations; backend suite 8,490 passed, 60 skipped, 0 failed (28 Nov); frontend type-check clean and production build succeeds. |
+| Pilot-ready (one friendly small business, supervised) | **After two checks** | (1) one quotation e-mailed to the connected inbox and imported by a sync; (2) a re-read of the tune split with the main model to confirm the discount fields did not lower accuracy. |
+| Production-ready | **No** | Free AI tiers whose quota runs out within a day of heavy use; real-document accuracy rests on 16 quotations not labelled independently; request limits and storage are single-instance; no scheduled off-site backups; no antivirus. |
+
+Before production: a paid or higher-quota AI plan, 15 to 20 real quotations labelled by the team and scored, a daily
+backup scheduled and copied off the machine, and limits moved to a shared store if more than one server runs.

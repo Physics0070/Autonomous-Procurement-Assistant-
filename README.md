@@ -35,12 +35,12 @@ Nothing is e-mailed by the app and nothing is ordered without a person approving
 | Measure | Result |
 |---|---|
 | Late-delivery risk, ROC-AUC on 2,545 later USAID shipments | 0.832 [0.815 to 0.850], against 0.761 for the supplier's own record |
-| Extraction, fields correct on 16 real quotations | 96.6 to 96.9% (typed documents about 98%; handwriting 56 to 67% on 2 documents) |
-| Extraction on 40 held-back benchmark quotations (code-generated, read once) | 97.7% of fields (scanned PDFs 89.6%); details in [docs/EXTRACTION_BENCHMARK.md](docs/EXTRACTION_BENCHMARK.md) |
-| Supplier arithmetic mistakes sent for review | 11 of 11 in the benchmark |
+| Extraction on **real supplier quotations** (16 documents; answers read off the originals during development, not an independent label set) | 96.6 to 96.9% of fields (typed documents about 98%; handwriting 56 to 67% on 2 documents) |
+| Extraction on **code-generated benchmark quotations** (40 held back and read once, not real suppliers' documents) | 97.7% of fields (digital PDF 99.8%, Excel 100%, photo 98.9%, scanned PDF 89.6%); method in [docs/EXTRACTION_BENCHMARK.md](docs/EXTRACTION_BENCHMARK.md) |
+| Supplier arithmetic mistakes sent for review (code-generated benchmark) | 11 of 11 |
 | HSN code, heading accuracy with the model | 91% on general goods, 98.8% on the easy benchmark |
 | Price errors caught (team-supplied labelled file) | precision 0.75, recall 1.00 |
-| Automated tests | 8,461 passing (8,000+ generated stress cases) |
+| Automated tests | 8,490 passing, 60 skipped (8,000+ generated stress cases) |
 
 **Team:** Vishwajeet Surve, Soham Joshi, Soham Mote and Atharva Sonje, Department of Computer Engineering, Vishwakarma Institute of Technology, Pune. Guide: Prashant L. Mandale.
 

@@ -108,6 +108,8 @@ class FallbackProvider(AIProvider):
                                                max_output_tokens=max_output_tokens)
             if result.ok:
                 COOLING.pop(_key(provider), None)
+                if skipped:
+                    result.meta = {**result.meta, "fallback": skipped}
                 return result
             if "cannot read images" not in (result.error or ""):
                 self._failed(provider)

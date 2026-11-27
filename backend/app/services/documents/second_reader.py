@@ -85,6 +85,8 @@ async def second_read(images: list[bytes], *, provider: Optional[AIProvider] = N
         data, _ = parse_json_response(response.text)
         try:
             reading = AIExtractionResult.model_validate(_salvage(data)) if data is not None else reading
+            if reading is not None and getattr(response, "meta", None):
+                reading.additional_attributes["_usage"] = response.meta
         except Exception:
             pass
         if reading is not None and reading.items:

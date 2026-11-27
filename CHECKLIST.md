@@ -150,13 +150,14 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 ## Gap closure (28 Nov 2026)
 | # | Task | Status | Evidence / notes |
 |---|---|---|---|
-| G1 | Discounts: line and quotation discounts extracted, reconciled, used in comparison and purchase orders (before GST) | ✅ | `tests/test_discounts.py` 7; benchmark re-read on the tune split running |
+| G1 | Discounts: line and quotation discounts extracted, reconciled, used in comparison and purchase orders (before GST) | ✅ | `tests/test_discounts.py` 7; tune re-read (backup models, Gemini quota spent): discounts 11/13 read, discounted quotes flagged 13/13 -> 4/13; accuracy with Gemini still to re-measure |
+| G1b | Readings from a backup AI model always sent for review | ✅ | found on the same run: backup models 89.0% vs 98.2%, silently; `tests/test_benchmark_fixes.py` |
 | G2 | Gmail end to end with a real e-mailed quotation | ⏳ | waiting for the team to send one |
 | G3 | Sign-in and AI request limits | ✅ | `tests/test_rate_limits.py` 4 |
 | G4 | Backup and restore incl. GridFS (`scripts/backup_db.py`) | ✅ | dev database restore identical by hash (13 collections, 21,359 documents); `tests/test_backup_restore.py` |
 | G5 | Scanned-PDF improvement | ⏸️ | skipped: no unused labelled scans to measure on |
 | G6 | Upload content checks (scripts, launch actions, payload attachments, macros, zip bombs) | ✅ | `tests/test_upload_safety.py` 15; all 38 real quotations pass |
-| G7 | Regression: backend, TypeScript, production build | ✅ | 8,484 passed + the 4 Gmail tests fixed and re-run (29 passed); tsc clean; vite build ok |
-| G8 | README benchmarks | ⏳ | after the discount re-read |
+| G7 | Regression: backend, TypeScript, production build | ✅ | backend 8,490 passed, 60 skipped, 0 failed; tsc clean; vite build ok |
+| G8 | README: real (16) and code-generated (40 held back) extraction numbers separated | ✅ | README headline table |
 | G9 | AI planning commentary removed from public docs | ✅ | readiness, validation report, checklist |
-| G10 | Readiness doc updated | 🔄 | final numbers after the re-read |
+| G10 | Readiness doc: results, untrusted-file handling, assessment | ✅ | demo-ready; pilot-ready after the Gmail import and a Gemini re-read; not production-ready |

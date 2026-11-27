@@ -19,7 +19,8 @@ from app.schemas.common import Severity
 # mistake on a ₹1 lakh quotation through unflagged (measured on the labelled benchmark: 5 of 11 such errors missed).
 ABS_TOLERANCE = 2.0
 REL_TOLERANCE = 0.0001  # 0.01%: ₹10 on ₹1 lakh
-ARITHMETIC_CODES = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch"}
+# Issues that always need a person: figures that do not add up, and readings from a backup model.
+REVIEW_CODES = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch", "backup_model"}
 
 
 # Discounts, applied the same way everywhere (validation, normalisation, purchase orders). A printed amount wins over a
@@ -119,6 +120,13 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
                 item_index=item_index,
             )
         )
+
+    # With the first-choice model's free quota spent, the backup models read the 90 tuning quotations at 89.0% of fields
+    # (98.2% with the first-choice model; that run also had the discount fields added, so the two causes are not yet
+    # separated). Misread digits were the typical error, so a reading from a backup model is checked by a person.
+    if (extraction.additional_attributes.get("_usage") or {}).get("fallback"):
+        add("extraction", "backup_model",
+            "Read by a backup AI model because the main one was unavailable; backup models misread more figures.")
 
     # ------------------------------------------------------------------
     # Supplier identity
@@ -347,7 +355,7 @@ def validate_extraction(extraction: AIExtractionResult, source_text: Optional[st
         # Any hard error, or a meaningful pile of warnings, needs a human.
         # A total that does not add up must be looked at before it can reach a purchase order.
         requires_review=errors > 0 or warnings >= 3
-        or any(i.code == "incomplete_item" or i.code in ARITHMETIC_CODES for i in issues),
+        or any(i.code == "incomplete_item" or i.code in REVIEW_CODES for i in issues),
         checked_at=datetime.now(timezone.utc).isoformat(),
         error_count=errors,
         warning_count=warnings,
