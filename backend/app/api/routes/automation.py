@@ -28,6 +28,7 @@ from app.repositories.suppliers import SupplierRepository
 from app.schemas.common import APIModel, UserRole
 from app.services.automation import communications as comms
 from app.services.automation import purchase_orders as pos
+from app.services.procurement.reliability import refresh_reliability
 
 router = APIRouter(tags=["automation"])
 Manager = Depends(require_roles(UserRole.ADMIN, UserRole.PROCUREMENT_MANAGER))
@@ -65,8 +66,21 @@ class AwardIn(APIModel):
     quotation_id: str
 
 
-class DeliveryIn(APIModel):
+class ReceiptLineIn(APIModel):
+    received_quantity: float = Field(ge=0)
+    rejected_quantity: float = Field(default=0, ge=0)
+
+
+class ReceiptIn(APIModel):
+    lines: list[ReceiptLineIn] = Field(min_length=1)
+    invoice_amount: Optional[float] = Field(default=None, ge=0)
+
+
+class POActionIn(APIModel):
     delivered_at: Optional[datetime] = None
+    receipt: Optional[ReceiptIn] = None                           # deliver: what arrived, recorded in one step
+    cancelled_by: Optional[Literal["supplier", "buyer"]] = None  # cancel: only "supplier" counts against it
+    cancel_reason: Optional[str] = Field(default=None, max_length=500)
 
 
 async def _comparison_rows(comparisons: ComparisonRepository, org_id: str, request_id: str) -> list[dict]:
@@ -151,7 +165,10 @@ async def edit_communication(communication_id: str, payload: CommunicationEdit, 
 async def _communication_action(action: str, communication_id: str, context: RequestContext,
                                 repo: CommunicationRepository) -> dict:
     doc = await repo.get_or_404(context.organization_id, communication_id)
-    return await repo.raw_update(context.organization_id, communication_id, comms.transition(doc, action, context.user_id))
+    updated = await repo.raw_update(context.organization_id, communication_id, comms.transition(doc, action, context.user_id))
+    if action == "mark_sent" and doc.get("kind") == "rfq" and doc.get("supplier_id"):
+        await refresh_reliability(repo.db, context.organization_id, [str(doc["supplier_id"])])  # reply clock starts
+    return updated
 
 
 @router.post("/communications/{communication_id}/approve")
@@ -260,13 +277,18 @@ async def file_purchase_order_to_drive(
 @router.post("/purchase-orders/{po_id}/{action}")
 async def purchase_order_action(
     po_id: str, action: Literal["approve", "issue", "deliver", "close", "cancel"],
-    context: RequestContext = Manager, payload: Optional[DeliveryIn] = None,
+    context: RequestContext = Manager, payload: Optional[POActionIn] = None,
     repo: PurchaseOrderRepository = Depends(po_repo),
     communications: CommunicationRepository = Depends(communication_repo),
 ) -> dict:
+    payload = payload or POActionIn()
     po = await repo.get_or_404(context.organization_id, po_id)
-    update = pos.transition(po, action, context.user_id, (payload or DeliveryIn()).delivered_at)
+    update = pos.transition(po, action, context.user_id, payload.delivered_at, payload.cancelled_by, payload.cancel_reason)
     updated = await repo.raw_update(context.organization_id, po_id, update)
+    if action == "deliver" and payload.receipt is not None:
+        updated = await _save_receipt(repo, context, updated, payload.receipt)
+    if action in ("deliver", "close", "cancel") and po.get("supplier_id"):
+        await refresh_reliability(repo.db, context.organization_id, [str(po["supplier_id"])])
     if action == "approve":
         # The approved PO goes out as a draft email with the PDF attached by the sender.
         await _create(communications, context, {
@@ -279,6 +301,21 @@ async def purchase_order_action(
                     f"Kindly acknowledge and confirm the delivery date.\n\nRegards,\n{po['buyer'].get('name') or ''}",
             "generated_by": "template", "guardrail_findings": [],
         })
+    return updated
+
+
+async def _save_receipt(repo: PurchaseOrderRepository, context: RequestContext, po: dict, receipt: ReceiptIn) -> dict:
+    update = pos.record_receipt(po, [line.model_dump() for line in receipt.lines], receipt.invoice_amount, context.user_id)
+    return await repo.raw_update(context.organization_id, po["id"], update)
+
+
+@router.put("/purchase-orders/{po_id}/receipt")
+async def record_purchase_order_receipt(po_id: str, payload: ReceiptIn, context: RequestContext = Manager,
+                                        repo: PurchaseOrderRepository = Depends(po_repo)) -> dict:
+    """Record or correct what arrived for a delivered order (received and rejected per line, invoice amount)."""
+    updated = await _save_receipt(repo, context, await repo.get_or_404(context.organization_id, po_id), payload)
+    if updated.get("supplier_id"):
+        await refresh_reliability(repo.db, context.organization_id, [str(updated["supplier_id"])])
     return updated
 
 

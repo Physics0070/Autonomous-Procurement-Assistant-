@@ -27,7 +27,7 @@ from app.services.procurement.anomaly import detect_price_anomaly
 from app.services.procurement.matching import match_items
 from app.services.procurement.normalization import normalize_text
 from app.services.procurement.normalizer_service import normalize_quotation
-from app.services.procurement.reliability import compute_reliability
+from app.services.procurement.reliability import compute_reliability, refresh_reliability
 from app.services.procurement.validation import validate_extraction
 from app.services.agents.runs import RunRecorder
 from app.services.storage.base import StorageBackend
@@ -395,19 +395,12 @@ class ProcessingPipeline:
                 "gst_number": normalized.supplier.gst_number,
                 "address": normalized.supplier.address,
                 "metadata": {"created_from": "quotation_extraction"},
-                "reliability": {"score": 0.5, "method": "rule_based", "sample_size": 0},
+                "reliability": compute_reliability(),
             },
         )
 
     async def _refresh_reliability(self, organization_id: str, supplier_id: str) -> None:
-        supplier = await self.suppliers.get(organization_id, supplier_id)
-        if supplier is None:
-            return
-        quotations = await self.quotations.list_filtered(
-            organization_id, supplier_id=supplier_id, limit=100
-        )
-        reliability = compute_reliability(supplier, quotations=quotations)
-        await self.suppliers.set_reliability(organization_id, supplier_id, reliability)
+        await refresh_reliability(self.suppliers.db, organization_id, [supplier_id])
 
     @staticmethod
     def _confidence(processed, extraction, validation, normalized) -> dict[str, Any]:

@@ -17,13 +17,7 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Alert, EmptyState, ErrorState, LoadingState, Spinner, ValueOrMissing } from "@/components/ui/feedback"
 import { useCreateSupplier, useSuppliers } from "@/hooks/queries"
-import { formatDate, percent } from "@/lib/utils"
-
-function reliabilityWord(score: number) {
-  if (score >= 0.7) return { label: "Good", tone: "success" as const }
-  if (score >= 0.45) return { label: "Average", tone: "warning" as const }
-  return { label: "Low", tone: "destructive" as const }
-}
+import { formatDate, percent, scoreBadge } from "@/lib/utils"
 
 function CreateSupplierDialog() {
   const [open, setOpen] = React.useState(false)
@@ -157,7 +151,7 @@ export function SuppliersPage() {
                   <TableHead>Contact</TableHead>
                   <TableHead>GST</TableHead>
                   <TableHead className="text-right">Quotations</TableHead>
-                  <TableHead>Reliability</TableHead>
+                  <TableHead>Performance</TableHead>
                   <TableHead>Added</TableHead>
                 </TableRow>
               </TableHeader>
@@ -185,9 +179,14 @@ export function SuppliersPage() {
                     </TableCell>
                     <TableCell className="tabular text-right">{supplier.quotation_count}</TableCell>
                     <TableCell>
-                      <Badge variant={reliabilityWord(supplier.reliability.score).tone}>
-                        {reliabilityWord(supplier.reliability.score).label}
+                      <Badge variant={scoreBadge(supplier.reliability.band, supplier.reliability.score).variant}>
+                        {scoreBadge(supplier.reliability.band, supplier.reliability.score).label}
                       </Badge>
+                      {supplier.reliability.reasons.length > 0 && (
+                        <ul className="mt-1 space-y-0.5 text-sm text-muted-foreground">
+                          {supplier.reliability.reasons.map((reason) => <li key={reason}>{reason}</li>)}
+                        </ul>
+                      )}
                       {supplier.reliability.ml && (
                         <p className="mt-1 text-sm text-muted-foreground">
                           About {percent(supplier.reliability.ml.late_probability)} chance of being late

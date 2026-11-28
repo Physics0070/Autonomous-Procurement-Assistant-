@@ -16,7 +16,7 @@ from app.schemas.common import Paginated
 from app.schemas.supplier import SupplierCreate, SupplierOut, SupplierUpdate
 from app.services.analytics import cache
 from app.services.analytics.reliability_ml import ORDER_FIELDS, load_model, orders_frame, predict, predict_all
-from app.services.procurement.reliability import compute_reliability
+from app.services.procurement.reliability import compute_reliability, refresh_reliability
 
 router = APIRouter(prefix="/suppliers", tags=["suppliers"])
 
@@ -79,7 +79,7 @@ async def create_supplier(
             raise ConflictError(f"A supplier with GST {payload.gst_number} already exists.")
 
     data = payload.model_dump()
-    data["reliability"] = compute_reliability(data, quotations=[])
+    data["reliability"] = compute_reliability()
     created = await suppliers.create(context.organization_id, data)
     return SupplierOut.model_validate(created)
 
@@ -94,8 +94,8 @@ async def get_supplier(
 ) -> SupplierOut:
     supplier = await suppliers.get_or_404(context.organization_id, supplier_id)
     related = await quotations.list_filtered(context.organization_id, supplier_id=supplier_id, limit=100)
-    # Recompute on read so the score reflects the latest quotation history.
-    supplier["reliability"] = compute_reliability(supplier, quotations=related)
+    # Recompute on read so the scorecard reflects the latest orders and quote requests.
+    supplier["reliability"] = (await refresh_reliability(database, context.organization_id, [supplier_id]))[supplier_id]
     supplier["reliability"]["ml"] = predict(load_model(context.organization_id), supplier_id,
                                             await _delivered_orders(context.organization_id, database))
     supplier["quotation_count"] = len(related)

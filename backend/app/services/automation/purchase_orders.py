@@ -91,7 +91,8 @@ def build_purchase_order(request: dict, quotation: dict, supplier: Optional[dict
     }
 
 
-def transition(po: dict, action: str, user_id: str, delivered_at: Optional[datetime] = None) -> dict[str, Any]:
+def transition(po: dict, action: str, user_id: str, delivered_at: Optional[datetime] = None,
+               cancelled_by: Optional[str] = None, cancel_reason: Optional[str] = None) -> dict[str, Any]:
     allowed, target = TRANSITIONS[action]
     if po["status"] not in allowed:
         raise ConflictError(f"Cannot {action} a purchase order that is {po['status']}.")
@@ -107,6 +108,9 @@ def transition(po: dict, action: str, user_id: str, delivered_at: Optional[datet
             fields["expected_delivery_date"] = now() + timedelta(days=terms["delivery_days"])
     if action == "deliver":
         fields.update(record_delivery(po.get("expected_delivery_date"), delivered_at or now()))
+    if action == "cancel":
+        # Only a cancellation the supplier caused counts against it in the scorecard.
+        fields.update({"cancelled_at": now(), "cancelled_by": cancelled_by, "cancel_reason": cancel_reason})
     return {"$set": fields, "$push": {"history": history_entry(action, user_id)}}
 
 
@@ -118,6 +122,23 @@ def record_delivery(expected: Optional[datetime], delivered_at: datetime) -> dic
         return {"delivered_at": delivered_at, "on_time": None, "delay_days": None}
     delay = (delivered_at.date() - expected.date()).days
     return {"delivered_at": delivered_at, "on_time": delay <= 0, "delay_days": max(delay, 0)}
+
+
+def record_receipt(po: dict, lines: list[dict], invoice_amount: Optional[float], user_id: str) -> dict[str, Any]:
+    """What arrived, per PO line, and what was invoiced: the inputs of the in-full, quality and commercial factors."""
+    if po["status"] not in ("delivered", "closed"):
+        raise ConflictError("A receipt can only be recorded for a delivered purchase order.")
+    if len(lines) != len(po.get("lines") or []):
+        raise ConflictError(f"Give received and rejected quantities for all {len(po.get('lines') or [])} lines of the order.")
+    for n, line in enumerate(lines, 1):
+        if line["rejected_quantity"] > line["received_quantity"]:
+            raise ConflictError(f"Line {n}: more rejected than received.")
+    receipt = {
+        "lines": [{"received_quantity": line["received_quantity"], "rejected_quantity": line["rejected_quantity"]} for line in lines],
+        "in_full": all(r["received_quantity"] >= o["quantity"] for r, o in zip(lines, po["lines"])),
+        "invoice_amount": invoice_amount, "recorded_by": user_id, "recorded_at": now(),
+    }
+    return {"$set": {"receipt": receipt}, "$push": {"history": history_entry("receipt_recorded", user_id)}}
 
 
 def render_po_pdf(po: dict) -> bytes:

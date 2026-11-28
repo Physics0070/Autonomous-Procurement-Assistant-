@@ -34,12 +34,15 @@ class SupplierUpdate(APIModel):
 
 
 class SupplierReliability(APIModel):
-    """Rule-based reliability. Explicitly NOT an ML prediction."""
+    """Performance scorecard from the organization's own orders. Explicitly NOT an ML prediction."""
 
-    score: float = 0.5
-    method: str = "rule_based"
+    score: Optional[float] = None  # None until the supplier has enough completed orders
+    status: str = "new"            # new | rated
+    band: str = "new"              # good | ok | attention | new
+    method: str = "scorecard"
     sample_size: int = 0
     factors: dict[str, Any] = Field(default_factory=dict)
+    reasons: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
     # Late-delivery risk from the ML model, when the supplier has delivered POs.
     ml: Optional[dict[str, Any]] = None

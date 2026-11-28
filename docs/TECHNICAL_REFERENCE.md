@@ -244,11 +244,15 @@ quantity or unit price rather than a plausible guess.
 **OCR runs only where needed.** PDF pages are checked for a usable text layer first;
 only pages below `PDF_TEXT_MIN_CHARS_PER_PAGE` get rendered and OCR'd.
 
-**Reliability is rule-based, and says so.** There is not enough history for an ML
-model of an organisation's own suppliers until it has delivery history, so the headline
-score stays a transparent rule set with `method: "rule_based"`. Once a supplier has
-delivered purchase orders, a calibrated ML late-delivery risk is shown **beside** it —
-labelled with its model version, what it was trained on, and how many deliveries it saw.
+**Reliability is a performance scorecard, and says so.** `app/services/procurement/reliability.py` scores a
+supplier only from the organisation's own records (`method: "scorecard"`): on-time in-full delivery 30%, quality
+(rejected quantity, 5 points per 1%) 30%, fulfilment (supplier cancellations after issue) 15%, commercial (invoice
+within the PO total + ₹2 / 0.5%) 15%, and responsiveness (quote request to quotation: 2 days full, 14 days or no reply
+zero) 10%. Receipts are recorded when an order is marked delivered (`POST /purchase-orders/{id}/deliver` with
+`receipt`) or afterwards (`PUT /purchase-orders/{id}/receipt`); a cancellation records `cancelled_by`. Missing factors
+are left out and their weight shared; only the latest 20 orders count; fewer than 3 completed orders means
+`status: "new"` and no score. The calibrated ML late-delivery risk is shown **beside** it, labelled with its model
+version, training data and number of deliveries.
 
 ---
 

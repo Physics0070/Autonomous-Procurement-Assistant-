@@ -75,6 +75,14 @@ async def lifespan(app: FastAPI):
         await recover_pending_jobs()
     except Exception as exc:
         logger.warning("Could not recover pending jobs: %s", exc)
+    try:
+        # Suppliers scored by an earlier method get the current scorecard once.
+        from app.core.database import get_database
+        from app.services.procurement.reliability import refresh_stale_reliability
+
+        await refresh_stale_reliability(get_database())
+    except Exception as exc:
+        logger.warning("Could not refresh supplier scorecards: %s", exc)
 
     yield
 

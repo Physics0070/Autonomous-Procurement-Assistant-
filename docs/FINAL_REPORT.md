@@ -236,7 +236,7 @@ Four of 16 documents were flagged for review. Known failures: handwriting; one q
 
 ### 7.6 Supplier scoring (rules, not machine learning)
 
-Five scores between 0 and 1, combined with default weights: price 0.40, delivery 0.20, payment terms 0.15, supplier reliability 0.15, other terms 0.10. For price and delivery the smallest value scores 1 and the largest 0; payment terms use the mirror rule. Missing data receives a fixed low score and a visible note. Weights can be changed and are normalised. The ML risk prediction is shown beside the rule-based reliability score.
+Five scores between 0 and 1, combined with default weights: price 0.40, delivery 0.20, payment terms 0.15, supplier reliability 0.15, other terms 0.10. For price and delivery the smallest value scores 1 and the largest 0; payment terms use the mirror rule. Missing data receives a fixed low score and a visible note. Weights can be changed and are normalised. The supplier reliability score is a performance scorecard from the organisation's own orders: on-time in-full delivery 30%, quality (quantity rejected at inspection) 30%, fulfilment (orders the supplier cancelled) 15%, commercial (invoice within the order total) 15%, responsiveness (days to reply to a quote request) 10%. A factor with no records is left out and its weight shared, and a supplier with fewer than 3 completed orders is shown as a new supplier with a neutral 0.5 in the ranking. The ML late-delivery risk is shown beside it.
 
 ### 7.7 Other components
 

@@ -31,7 +31,7 @@ async def test_supplier_reliability_gets_an_ml_prediction_from_delivered_pos(api
     ml = supplier["reliability"]["ml"]
     assert ml["method"] == "ml_model" and 0 <= ml["late_probability"] <= 1 and ml["history_count"] >= 1
     assert "SCMS" in ml["trained_on"] and ml["test_metrics"]["roc_auc"] > 0.5
-    assert supplier["reliability"]["method"] == "rule_based"  # fallback kept alongside
+    assert supplier["reliability"]["method"] == "scorecard" and supplier["reliability"]["status"] == "rated"  # kept alongside
     listed = (await api.get("/api/v1/suppliers", headers=h)).json()["items"]
     assert {s["name"]: s["reliability"]["ml"] is not None for s in listed} == {"Shree Steel": True, "Apex Metals": False}
 

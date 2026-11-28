@@ -64,11 +64,17 @@ export interface Paginated<T> {
 
 // --- Suppliers -------------------------------------------------------------
 
+export type ScoreBand = "good" | "ok" | "attention" | "new"
+
+/** Performance scorecard from the organization's own orders. `score` is null until enough orders are completed. */
 export interface SupplierReliability {
-  score: number
+  score: number | null
+  status: "new" | "rated"
+  band: ScoreBand
   method: string
   sample_size: number
-  factors: Record<string, any>
+  factors: Record<string, { label: string; score: number; weight: number; n: number; reason: string }>
+  reasons: string[]
   notes: string[]
   /** Late-delivery risk from the ML model; present once the supplier has delivered POs. */
   ml?: {
@@ -408,6 +414,9 @@ export interface SupplierScore {
   delivery_days: number | null
   payment_days: number | null
   reliability_score: number | null
+  reliability_status: "rated" | "new" | "unlinked"
+  reliability_band: ScoreBand | null
+  reliability_reasons: string[]
   coverage: number
   matched_items: number
   requested_items: number

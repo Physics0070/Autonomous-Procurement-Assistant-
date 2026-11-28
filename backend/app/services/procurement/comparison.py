@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 # Penalty applied to a criterion when the underlying data is missing. Not zero:
 # a missing value should hurt, but not eliminate an otherwise strong supplier.
 MISSING_DATA_SCORE = 0.35
+NEW_SUPPLIER_SCORE = 0.5
 
 
 def _normalize_weights(weights: dict[str, float]) -> dict[str, float]:
@@ -101,9 +102,8 @@ def build_comparison(
 
         supplier_id = quotation.get("supplier_id")
         supplier_doc = suppliers_by_id.get(str(supplier_id)) if supplier_id else None
-        reliability = None
-        if supplier_doc:
-            reliability = (supplier_doc.get("reliability") or {}).get("score")
+        scorecard = (supplier_doc or {}).get("reliability") or {}
+        reliability = scorecard.get("score")
 
         landed = pricing.get("landed_total")
         if landed is None:
@@ -140,6 +140,10 @@ def build_comparison(
                 "delivery_days": delivery.get("delivery_days"),
                 "payment_days": payment_days,
                 "reliability": reliability,
+                "reliability_status": ("unlinked" if not supplier_doc else
+                                       "rated" if reliability is not None else "new"),
+                "reliability_band": scorecard.get("band"),
+                "reliability_reasons": scorecard.get("reasons") or [],
                 "matched": match_result.get("matched_count", 0) + match_result.get("review_count", 0),
                 "coverage": match_result.get("coverage"),
                 "validation": validation,
@@ -168,7 +172,6 @@ def build_comparison(
         )
     delivery_values = [float(r["delivery_days"]) for r in rows if r["delivery_days"] is not None]
     payment_values = [float(r["payment_days"]) for r in rows if r["payment_days"] is not None]
-    reliability_values = [float(r["reliability"]) for r in rows if r["reliability"] is not None]
 
     # ------------------------------------------------------------------
     # Score each supplier
@@ -256,14 +259,19 @@ def build_comparison(
             )
         )
 
-        # --- Reliability: rule-based supplier score ---
+        # --- Reliability: the supplier's performance scorecard ---
         reliability_deductions: list[str] = []
-        if row["reliability"] is None:
+        if row["reliability_status"] == "unlinked":
             missing.append("supplier_reliability")
-            reliability_deductions.append("Supplier is not linked to a supplier record, so no reliability score.")
-        # Reliability is already an absolute 0..1 score; use it directly rather
-        # than normalising it away against the other suppliers.
-        reliability_score = float(row["reliability"]) if row["reliability"] is not None else MISSING_DATA_SCORE
+            reliability_deductions.append("Supplier is not linked to a supplier record, so no performance score.")
+            reliability_score = MISSING_DATA_SCORE
+        elif row["reliability_status"] == "new":
+            # Too few completed orders to judge: neutral, neither rewarded nor punished for being new.
+            reliability_deductions.append("New supplier: too few completed orders for a performance score yet.")
+            reliability_score = NEW_SUPPLIER_SCORE
+        else:
+            # Already an absolute 0..1 score; used directly rather than normalised against the other suppliers.
+            reliability_score = float(row["reliability"])
         criteria.append(
             CriterionScore(
                 criterion="reliability",
@@ -272,7 +280,7 @@ def build_comparison(
                 weighted_score=round(reliability_score * weights["reliability"], 4),
                 raw_value=round(reliability_score, 4),
                 unit="score",
-                data_available=row["reliability"] is not None,
+                data_available=row["reliability_status"] == "rated",
                 deductions=reliability_deductions,
             )
         )
@@ -350,6 +358,9 @@ def build_comparison(
                 delivery_days=row["delivery_days"],
                 payment_days=row["payment_days"],
                 reliability_score=row["reliability"],
+                reliability_status=row["reliability_status"],
+                reliability_band=row["reliability_band"],
+                reliability_reasons=row["reliability_reasons"],
                 coverage=round(float(coverage), 4) if coverage is not None else 0.0,
                 matched_items=row["matched"],
                 requested_items=requested_count,

@@ -161,3 +161,17 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | G8 | README: real (16) and code-generated (40 held back) extraction numbers separated | ✅ | README headline table |
 | G9 | AI planning commentary removed from public docs | ✅ | readiness, validation report, checklist |
 | G10 | Readiness doc: results, untrusted-file handling, assessment | ✅ | demo-ready; pilot-ready after the Gmail import and a Gemini re-read; not production-ready |
+
+## Supplier scorecard (28 Nov 2026)
+
+| # | Task | Status | Evidence / notes |
+|---|---|---|---|
+| S1 | Old reliability score replaced: profile completeness and our own extraction results no longer count against a supplier | ✅ | `app/services/procurement/reliability.py`; all 145 development suppliers rescored at startup |
+| S2 | Scorecard: on-time in full 30, quality 30, fulfilment 15, commercial 15, responsiveness 10 | ✅ | `tests/test_supplier_scorecard.py` 10 (hand-worked cases) |
+| S3 | Receipt at delivery: received and rejected per line, invoice amount; editable afterwards | ✅ | Purchase orders page; `PUT /purchase-orders/{id}/receipt` |
+| S4 | Cancellation records who cancelled; only the supplier's count | ✅ | cancel asks "Supplier could not deliver" / "We cancelled" |
+| S5 | New supplier (fewer than 3 completed orders): no score, neutral 0.5 in ranking, "New supplier" badge | ✅ | comparison and supplier list |
+| S6 | Reasons shown with every score | ✅ | supplier list; comparison badge tooltip |
+| S8 | Regression: backend 8,500 passed, 60 skipped, 0 failed; tsc clean; vite build ok | ✅ | 28 Nov |
+| S7 | Real-world check of the scorecard | ⏳ | needs delivered orders from a pilot; no public dataset has delivery and inspection records |
+

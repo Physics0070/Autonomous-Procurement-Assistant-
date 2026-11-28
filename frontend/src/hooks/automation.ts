@@ -54,6 +54,18 @@ export interface Communication {
 
 export type POStatus = "draft" | "approved" | "issued" | "delivered" | "closed" | "cancelled"
 
+/** What arrived for a delivered order: per PO line, plus the amount invoiced. Feeds the supplier scorecard. */
+export interface Receipt {
+  lines: Array<{ received_quantity: number; rejected_quantity: number }>
+  invoice_amount: number | null
+}
+
+export interface POActionBody {
+  delivered_at?: string
+  receipt?: Receipt
+  cancelled_by?: "supplier" | "buyer"
+}
+
 export interface PurchaseOrder {
   id: string
   po_number: string
@@ -72,6 +84,8 @@ export interface PurchaseOrder {
   delivered_at?: string | null
   on_time?: boolean | null
   delay_days?: number | null
+  receipt?: (Receipt & { in_full: boolean; recorded_at: string }) | null
+  cancelled_by?: "supplier" | "buyer" | null
   history: HistoryEntry[]
   created_at: string
 }
@@ -249,8 +263,13 @@ export function usePurchaseOrderActions() {
       ...done,
     }),
     act: useMutation({
-      mutationFn: ({ id, action, deliveredAt }: { id: string; action: string; deliveredAt?: string }) =>
-        api.post<PurchaseOrder>(`/purchase-orders/${id}/${action}`, deliveredAt ? { delivered_at: deliveredAt } : undefined),
+      mutationFn: ({ id, action, body }: { id: string; action: string; body?: POActionBody }) =>
+        api.post<PurchaseOrder>(`/purchase-orders/${id}/${action}`, body),
+      ...done,
+    }),
+    receipt: useMutation({
+      mutationFn: ({ id, receipt }: { id: string; receipt: Receipt }) =>
+        api.put<PurchaseOrder>(`/purchase-orders/${id}/receipt`, receipt),
       ...done,
     }),
   }

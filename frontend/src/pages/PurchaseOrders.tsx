@@ -8,7 +8,9 @@ import { Alert, EmptyState, ErrorState, LoadingState, Spinner } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { useFileToDrive, usePurchaseOrderActions, usePurchaseOrders, type PurchaseOrder } from "@/hooks/automation"
+import {
+  useFileToDrive, usePurchaseOrderActions, usePurchaseOrders, type POActionBody, type PurchaseOrder, type Receipt,
+} from "@/hooks/automation"
 import { downloadFile } from "@/lib/api"
 import { cn, formatCurrency, formatDate, formatNumber } from "@/lib/utils"
 
@@ -35,13 +37,90 @@ const NEXT: Partial<Record<PurchaseOrder["status"], { action: string; label: str
   delivered: { action: "close", label: "Close" },
 }
 
+/** Received / rejected per line and the invoiced amount, recorded at delivery (or afterwards). */
+function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
+  po: PurchaseOrder; onSubmit: (receipt: Receipt) => void; submitLabel: string; busy: boolean; children?: React.ReactNode
+}) {
+  const [received, setReceived] = React.useState(() => po.lines.map((l) => String(l.quantity)))
+  const [rejected, setRejected] = React.useState(() => po.lines.map(() => "0"))
+  const [invoice, setInvoice] = React.useState("")
+  const edit = (setter: typeof setReceived, i: number) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setter((rows) => rows.map((v, j) => (j === i ? e.target.value : v)))
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit({
+      lines: po.lines.map((_, i) => ({ received_quantity: Number(received[i] || 0), rejected_quantity: Number(rejected[i] || 0) })),
+      invoice_amount: invoice.trim() === "" ? null : Number(invoice),
+    })
+  }
+  return (
+    <form onSubmit={submit} className="space-y-3 rounded-md border p-3">
+      <p className="text-sm text-muted-foreground">What arrived. This feeds the supplier's performance score.</p>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Item</TableHead>
+            <TableHead className="text-right">Ordered</TableHead>
+            <TableHead className="text-right">Received</TableHead>
+            <TableHead className="text-right">Rejected</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {po.lines.map((line, i) => (
+            <TableRow key={i}>
+              <TableCell>{line.description}</TableCell>
+              <TableCell className="text-right">{formatNumber(line.quantity, 2)} {line.unit}</TableCell>
+              <TableCell className="text-right">
+                <Input aria-label={`Received, ${line.description}`} type="number" min={0} step="any" required
+                       value={received[i]} onChange={edit(setReceived, i)} className="ml-auto w-24 text-right" />
+              </TableCell>
+              <TableCell className="text-right">
+                <Input aria-label={`Rejected at inspection, ${line.description}`} type="number" min={0} step="any"
+                       value={rejected[i]} onChange={edit(setRejected, i)} className="ml-auto w-24 text-right" />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <div className="flex flex-wrap items-end gap-2">
+        {children}
+        <div className="space-y-1">
+          <Label htmlFor={`invoice-${po.id}`}>Invoice amount (optional)</Label>
+          <Input id={`invoice-${po.id}`} type="number" min={0} step="any" value={invoice}
+                 onChange={(e) => setInvoice(e.target.value)} className="w-40" placeholder={String(po.pricing.total)} />
+        </div>
+        <Button type="submit" disabled={busy}>{busy ? <Spinner /> : <PackageCheck className="h-4 w-4" />}{submitLabel}</Button>
+      </div>
+    </form>
+  )
+}
+
+function ReceiptSummary({ po }: { po: PurchaseOrder }) {
+  const r = po.receipt
+  if (!r) return null
+  const rejected = r.lines.reduce((sum, l) => sum + l.rejected_quantity, 0)
+  return (
+    <p className="text-sm">
+      <span className="text-muted-foreground">Received:</span>{" "}
+      <Badge variant={r.in_full ? "success" : "warning"}>{r.in_full ? "In full" : "Short delivery"}</Badge>{" "}
+      {rejected > 0 && <Badge variant="destructive">{formatNumber(rejected, 2)} rejected</Badge>}{" "}
+      {r.invoice_amount != null && (
+        <span className="text-muted-foreground">Invoiced {formatCurrency(r.invoice_amount, po.pricing.currency)}</span>
+      )}
+    </p>
+  )
+}
+
 function Detail({ po }: { po: PurchaseOrder }) {
-  const { act } = usePurchaseOrderActions()
+  const { act, receipt } = usePurchaseOrderActions()
   const drive = useFileToDrive()
   const [deliveredOn, setDeliveredOn] = React.useState(() => new Date().toISOString().slice(0, 10))
+  const [confirmCancel, setConfirmCancel] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
-  const run = (action: string, deliveredAt?: string) =>
-    act.mutateAsync({ id: po.id, action, deliveredAt }).then(() => setError(null)).catch((e) => setError(friendly(e)))
+  const run = (action: string, body?: POActionBody) =>
+    act.mutateAsync({ id: po.id, action, body }).then(() => setError(null)).catch((e) => setError(friendly(e)))
+  const saveReceipt = (r: Receipt) =>
+    receipt.mutateAsync({ id: po.id, receipt: r }).then(() => setError(null)).catch((e) => setError(friendly(e)))
   const next = NEXT[po.status]
   const cur = po.pricing.currency
 
@@ -114,24 +193,30 @@ function Detail({ po }: { po: PurchaseOrder }) {
               )}
             </p>
           )}
+          <ReceiptSummary po={po} />
+          {po.status === "cancelled" && po.cancelled_by && (
+            <p><span className="text-muted-foreground">Cancelled by:</span> {po.cancelled_by === "supplier" ? "the supplier" : "us"}</p>
+          )}
         </div>
+
+        {po.status === "issued" && (
+          <ReceiptFields po={po} busy={act.isPending} submitLabel="Mark as delivered"
+                         onSubmit={(r) => run("deliver", { delivered_at: new Date(`${deliveredOn}T12:00:00`).toISOString(), receipt: r })}>
+            <div className="space-y-1">
+              <Label htmlFor={`delivered-${po.id}`}>Delivered on</Label>
+              <Input id={`delivered-${po.id}`} type="date" value={deliveredOn} onChange={(e) => setDeliveredOn(e.target.value)} className="w-40" />
+            </div>
+          </ReceiptFields>
+        )}
+        {["delivered", "closed"].includes(po.status) && !po.receipt && (
+          <ReceiptFields po={po} busy={receipt.isPending} submitLabel="Save what arrived" onSubmit={saveReceipt} />
+        )}
 
         <div className="flex flex-wrap items-end gap-2">
           {next && (
             <Button onClick={() => run(next.action)} disabled={act.isPending}>
               {act.isPending && <Spinner />}{next.label}
             </Button>
-          )}
-          {po.status === "issued" && (
-            <>
-              <div className="space-y-1">
-                <Label htmlFor="delivered">Delivered on</Label>
-                <Input id="delivered" type="date" value={deliveredOn} onChange={(e) => setDeliveredOn(e.target.value)} className="w-40" />
-              </div>
-              <Button onClick={() => run("deliver", new Date(`${deliveredOn}T12:00:00`).toISOString())} disabled={act.isPending}>
-                <PackageCheck className="h-4 w-4" />Mark as delivered
-              </Button>
-            </>
           )}
           <Button variant="outline" onClick={() => downloadFile(`/purchase-orders/${po.id}/pdf`, `${po.po_number}.pdf`).catch((e) => setError(friendly(e)))}>
             <Download className="h-4 w-4" />Download PDF
@@ -147,8 +232,20 @@ function Detail({ po }: { po: PurchaseOrder }) {
               {drive.isPending ? <Spinner /> : <CloudUpload className="h-4 w-4" />}Save to Drive
             </Button>
           )}
-          {["draft", "approved", "issued"].includes(po.status) && (
-            <Button variant="ghost" className="text-destructive" onClick={() => run("cancel")} disabled={act.isPending}>Cancel</Button>
+          {["draft", "approved"].includes(po.status) && (
+            <Button variant="ghost" className="text-destructive" onClick={() => run("cancel", { cancelled_by: "buyer" })} disabled={act.isPending}>Cancel</Button>
+          )}
+          {po.status === "issued" && !confirmCancel && (
+            <Button variant="ghost" className="text-destructive" onClick={() => setConfirmCancel(true)}>Cancel</Button>
+          )}
+          {po.status === "issued" && confirmCancel && (
+            <div className="flex flex-wrap items-center gap-2 text-sm" role="group" aria-label="Who cancelled this order?">
+              <span className="text-muted-foreground">Who cancelled?</span>
+              <Button variant="outline" className="text-destructive" disabled={act.isPending}
+                      onClick={() => run("cancel", { cancelled_by: "supplier" })}>Supplier could not deliver</Button>
+              <Button variant="outline" disabled={act.isPending} onClick={() => run("cancel", { cancelled_by: "buyer" })}>We cancelled</Button>
+              <Button variant="ghost" onClick={() => setConfirmCancel(false)}>Keep order</Button>
+            </div>
           )}
         </div>
       </CardContent>

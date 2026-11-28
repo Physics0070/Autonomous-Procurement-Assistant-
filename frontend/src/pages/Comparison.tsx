@@ -20,17 +20,17 @@ import { Alert, EmptyState, ErrorState, LoadingState, Spinner, ValueOrMissing } 
 import { useComparison, useComputeComparison, useRequests } from "@/hooks/queries"
 import { useCommunicationActions, usePurchaseOrderActions, useRunSupervisor } from "@/hooks/automation"
 import { AgentRuns } from "@/components/AgentRuns"
-import { cn, formatCurrency } from "@/lib/utils"
+import { cn, formatCurrency, scoreBadge } from "@/lib/utils"
 import type { SupplierScore } from "@/types"
 
 const TRY_AGAIN = "We could not do this right now. Please try again in a minute."
 
-function rating(supplier: SupplierScore): { label: string; variant: "success" | "warning" | "destructive" | "muted" } {
-  const score = supplier.reliability_score
-  if (score == null) return { label: "Not rated", variant: "muted" }
-  if (score >= 0.75) return { label: "Good", variant: "success" }
-  if (score >= 0.45) return { label: "OK", variant: "warning" }
-  return { label: "Risky", variant: "destructive" }
+function rating(supplier: SupplierScore) {
+  const badge = scoreBadge(supplier.reliability_band, supplier.reliability_score)
+  const why = supplier.reliability_status === "unlinked"
+    ? "Not linked to a supplier record"
+    : supplier.reliability_reasons.join(" · ") || "No completed orders yet"
+  return { ...badge, why }
 }
 
 const price = (s: SupplierScore) => s.landed_cost ?? s.total_cost
@@ -52,7 +52,7 @@ function reasonsFor(top: SupplierScore, all: SupplierScore[]): string[] {
   if (all.length > 1 && top.payment_days != null && top.payment_days > 0 && top.payment_days === Math.max(...pay)) {
     out.push("Most time to pay")
   }
-  if (top.reliability_score != null && top.reliability_score >= 0.75) out.push("Reliable supplier")
+  if (top.reliability_band === "good") out.push("Reliable supplier")
   if (top.requested_items > 0 && top.matched_items === top.requested_items) out.push("Quotes every item you need")
   return out.slice(0, 3)
 }
@@ -272,7 +272,10 @@ export function ComparisonPage() {
                           {pay ?? <ValueOrMissing value={null} missingLabel="Not given" />}
                         </TableCell>
                         <TableCell>
-                          <Badge variant={rate.variant}>{rate.label}</Badge>
+                          <span title={rate.why}>
+                            <Badge variant={rate.variant}>{rate.label}</Badge>
+                          </span>
+                          <span className="sr-only">{rate.why}</span>
                         </TableCell>
                         <TableCell className="text-right">
                           <div className="flex justify-end gap-1">

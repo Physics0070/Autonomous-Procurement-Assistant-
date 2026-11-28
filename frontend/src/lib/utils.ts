@@ -82,3 +82,16 @@ export function initials(name: string | null | undefined): string {
     .map((part) => part[0]?.toUpperCase() ?? "")
     .join("")
 }
+
+/** Badge for a supplier's performance scorecard band. */
+export function scoreBadge(band: string | null | undefined, score: number | null | undefined): {
+  label: string
+  variant: "success" | "warning" | "destructive" | "muted"
+} {
+  const points = score != null ? ` ${Math.round(score * 100)}` : ""
+  if (band === "good") return { label: `Good${points}`, variant: "success" }
+  if (band === "ok") return { label: `OK${points}`, variant: "warning" }
+  if (band === "attention") return { label: `Needs attention${points}`, variant: "destructive" }
+  if (band === "new") return { label: "New supplier", variant: "muted" }
+  return { label: "Not rated", variant: "muted" }
+}

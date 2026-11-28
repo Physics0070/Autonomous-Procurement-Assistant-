@@ -41,6 +41,9 @@ class SupplierScore(APIModel):
     delivery_days: Optional[int] = None
     payment_days: Optional[int] = None
     reliability_score: Optional[float] = None
+    reliability_status: str = "unlinked"  # rated | new | unlinked
+    reliability_band: Optional[str] = None  # good | ok | attention | new
+    reliability_reasons: List[str] = Field(default_factory=list)
 
     coverage: float = 0.0            # fraction of requested items quoted
     matched_items: int = 0
