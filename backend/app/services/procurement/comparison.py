@@ -10,10 +10,12 @@ the table", which is the question a buyer is actually asking.
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import logging
 import math
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Optional
 
 from app.core.config import settings
@@ -27,8 +29,9 @@ logger = logging.getLogger(__name__)
 MISSING_DATA_SCORE = 0.35
 NEW_SUPPLIER_SCORE = 0.5
 CRITERIA = ("price", "delivery", "payment", "reliability", "other")
-# Arithmetic the supplier wrote on the document. Counted as the supplier's own error only once a person has reviewed
-# the quotation and left the figure unchanged; until then it may just as well be a misreading by OCR or the model.
+# Arithmetic the supplier wrote on the document. Counted as the supplier's own error only once a person has explicitly
+# confirmed that finding, field by field, against the document; until then it may just as well be a misreading by OCR
+# or the model.
 DOCUMENT_ARITHMETIC = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch"}
 TAX_TOLERANCE = (2.0, 0.005)
 
@@ -122,23 +125,60 @@ def tax_basis(data: dict[str, Any], text: Optional[str] = None) -> tuple[str, Op
     return "unknown", printed, None
 
 
+def _aware(value: Any) -> Optional[datetime]:
+    if isinstance(value, str):
+        try:
+            value = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if isinstance(value, datetime):
+        return value if value.tzinfo else value.replace(tzinfo=timezone.utc)
+    return None
+
+
+def _touches(path: str, field: str) -> bool:
+    return bool(path) and (path == field or path.startswith(field + ".") or field.startswith(path + "."))
+
+
 def _issue_origin(quotation: dict[str, Any], validation: dict[str, Any]) -> tuple[list[str], int]:
     """(supplier arithmetic errors confirmed on the document, count of unverified issues).
 
-    Confirmed: an arithmetic mismatch on a quotation a person has reviewed and corrected, where the figure in
-    question was left as read. Everything else may be a reading error by OCR or the model and is never scored.
+    Confirmed: an arithmetic finding a person explicitly confirmed for that field and code (`confirmed_issues`),
+    with no correction of that field since. A correction of some other field confirms nothing. Everything else may
+    be a reading error by OCR or the model and is never scored.
     """
-    corrected = [c.get("path", "") for c in quotation.get("user_corrections") or []]
-    reviewed = bool(corrected)
+    confirmations = {(c.get("field"), c.get("code")): _aware(c.get("confirmed_at"))
+                     for c in quotation.get("confirmed_issues") or []}
+    corrections = [(c.get("path") or "", _aware(c.get("corrected_at"))) for c in quotation.get("user_corrections") or []]
     confirmed, unverified = [], 0
     for issue in validation.get("issues") or []:
+        key = (issue.get("field"), issue.get("code"))
         field = (issue.get("field") or "").replace("commercials.", "pricing.")
-        touched = any(path == field or path.startswith(field + ".") or field.startswith(path) for path in corrected)
-        if reviewed and issue.get("code") in DOCUMENT_ARITHMETIC and not touched:
+        valid = issue.get("code") in DOCUMENT_ARITHMETIC and key in confirmations
+        if valid:
+            at = confirmations[key]
+            # A later correction of the same figure means it was a misreading after all (or the time is unknown).
+            valid = not any(_touches(path, field) and (when is None or at is None or when > at) for path, when in corrections)
+        if valid:
             confirmed.append(issue.get("message") or issue.get("code"))
         else:
             unverified += 1
     return confirmed, unverified
+
+
+def comparison_fingerprint(request: dict[str, Any], quotations: list[dict[str, Any]]) -> str:
+    """A digest of everything the comparison is computed from: the requested items and every quotation on the
+    request (its data, matching, status, findings and confirmations). Any change, or a quotation added or removed,
+    changes it, so an award can tell that a stored comparison no longer describes the quotations."""
+    material = {
+        "request": {"items": request.get("items"), "currency": request.get("currency")},
+        "quotations": sorted(([
+            str(q.get("id")), q.get("processing_status"), str(q.get("supplier_id") or ""),
+            q.get("effective_data") or q.get("normalized_data"), q.get("match_result"), q.get("validation"),
+            q.get("confirmed_issues"), (q.get("raw_content") or {}).get("raw_text"),
+        ] for q in quotations), key=lambda item: item[0]),
+    }
+    return hashlib.sha256(json.dumps(material, sort_keys=True, default=str).encode()).hexdigest()
 
 
 NO_SPREAD_SCORE = 0.5  # a relative score needs at least two different values; otherwise it says nothing
@@ -283,11 +323,15 @@ def build_comparison(
     foreign = {id(r) for r in other_currency}
     in_currency = [r for r in rows if id(r) not in foreign and r["comparable_price"] is not None]
     known = [r for r in in_currency if r["tax_basis"] != "unknown"]
-    # GST-inclusive totals are compared with GST-inclusive totals. When no quotation shows its basis, they are
-    # compared as quoted (like with like); when some do, the ones that do not are left out of the price comparison.
-    priced = known if known else in_currency
-    if in_currency and not known:
-        result.warnings.append("No quotation shows whether its total includes GST; prices are compared as quoted.")
+    # GST-inclusive totals are compared with GST-inclusive totals; a total whose basis is unknown is never ranked
+    # against them. When no quotation shows its basis, raw totals could mix GST-inclusive and GST-extra figures, so
+    # none is ranked on price and every one needs review: the quoted totals are shown, not scored.
+    priced = known
+    gst_unranked = bool(in_currency) and not known
+    unranked_ids = {id(r) for r in in_currency} if gst_unranked else set()
+    if gst_unranked:
+        result.warnings.append("No quotation shows whether its total includes GST, so the quoted totals are not ranked "
+                               "on price. Confirm the GST treatment of each before awarding.")
     landed_values = [r["comparable_price"] for r in priced]
     priced_ids = {id(r) for r in priced}
     delivery_values = [float(r["delivery_days"]) for r in rows if r["delivery_days"] is not None]
@@ -313,6 +357,12 @@ def build_comparison(
         elif row["comparable_price"] is None:
             missing.append("tax" if row["tax_basis"] == "exclusive" else "total_cost")
             price_deductions.append(row["tax_note"] or "No total cost could be determined from this quotation.")
+        elif id(row) in unranked_ids:
+            missing.append("tax")
+            price_deductions.append(f"Quoted total {row['comparable_price']:,.2f} is shown but not ranked: no quotation "
+                                    "here shows whether its total includes GST. Scored neutral.")
+            review_reasons.append("Confirm whether the quoted total includes GST before awarding; no quotation here "
+                                  "shows it, so prices could not be compared.")
         elif not in_scale:
             missing.append("tax")
             price_deductions.append("Not compared on price: the figures do not show whether this total includes GST, "
@@ -321,7 +371,7 @@ def build_comparison(
         if row["tax_note"] and in_scale:
             price_deductions.append(row["tax_note"])
         price_value = row["comparable_price"] if in_scale else None
-        price_score = _lower_is_better(price_value, landed_values)
+        price_score = NO_SPREAD_SCORE if id(row) in unranked_ids else _lower_is_better(price_value, landed_values)
         if price_value is not None and _no_spread(landed_values):
             price_deductions.append(_no_spread(landed_values))
         criteria.append(

@@ -1,64 +1,97 @@
-# Handoff — 20 Sep 2026
+# Handoff — 28 Nov 2026
 
-## 1. Goal
-Autonomous Procurement Assistant (VIT SY-K10, `Synopsis.pdf`) through **Phase 6**. Spec:
-`docs/superpowers/specs/2026-09-17-phases-3-6-design.md`. Progress table: `CHECKLIST.md`.
+## 1. Project
+Autonomous Procurement Assistant, VIT Pune SY-K10 (Vishwajeet Surve, Soham Joshi, Soham Mote, Atharva Sonje; guide
+Prashant L. Mandale). Repo `Physics0070/Autonomous-Procurement-Assistant-`, single branch `main`, last commit
+`89e7d86`, pushed. Progress table: `CHECKLIST.md`. Readiness verdict: `docs/RELEASE_READINESS.md`.
 
-## 2. State — everything built and verified
-- **Backend:** Phases 1–6, the multi-agent upgrade, Drive filing and delivery dates. `pytest -q` from `backend/` → **172 passed**, ~4 min.
-- **End-to-end:** `scripts/test_e2e.py` against the live API → **156/156**. `pytest` → **172 passed**.
-- **Multi-agent:** a Supervisor Agent routes 5 specialists (comparison, recommendation, risk,
-  negotiation, purchase order) with `Command` handoffs; runs pause for approval and resume from
-  state stored in `agent_runs`; a Monitor Agent starts sourcing when quotations arrive and chases
-  overdue deliveries; the Negotiation Agent researches before drafting and a Critic reviews it;
-  the Extraction Agent re-reads a document once when validation finds errors.
-  Bounds: the supervisor may only pick actions the policy allows, `AGENT_MAX_STEPS` caps a run,
-  and nothing is ever sent.
-- **Frontend:** new pages Communications, Purchase orders, Assistant, Analytics, Integrations,
-  Settings; comparison has Transport column, Award / Negotiate per row, Run agents (supervisor);
-  request page has Draft RFQs; agent-run timelines on request, comparison and quotation pages;
-  ML risk badge on Suppliers. `tsc -b` + `vite build` clean; every page checked in the browser.
-- **ML:** random forest late-delivery model (test ROC-AUC 0.83, PR-AUC 0.33 vs 0.25 baseline,
-  accuracy 77.4% vs 86.0% always-on-time). Isolation Forest anomalies (with a Tukey-fence fix
-  for out-of-range prices). Forecasts. Reports in `backend/ml/artifacts/`.
-- **Demo data:** `python -m scripts.load_scms_demo` → org "SCMS demo — USAID public data",
-  `scms.demo@procurement-demo.com`, password from `SCMS_DEMO_PASSWORD` (73 suppliers, 10,324 POs).
-- **Git:** single branch `main`, pushed to github.com/Physics0070/Autonomous-Procurement-Assistant-
+Stack: FastAPI + MongoDB (Motor) backend, React/TypeScript/Vite frontend. AI extraction chain
+`gemini-3.1-flash-lite → groq gpt-oss-20b → nvidia nemotron` through `FallbackProvider` (free tiers).
 
-## 3. What still needs credentials (placeholders in place)
-Every one of these returns a clear message naming the missing setting instead of failing:
-- No `OPENROUTER_API_KEY` → heuristic extraction, template drafts, assistant 503, supervisor routes by policy.
-- No Google OAuth client → Gmail and Drive endpoints return 503 naming `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`.
-- Google connected without Drive permission → 409 asking for a reconnect (the consent screen now
-  requests `drive.file` too, so a fresh connection covers both).
+## 2. Current state (verified 28 Nov)
+| Check | Result |
+|---|---|
+| Backend `pytest -q` (from `backend/`, run alone) | **8,537 passed, 60 skipped, 0 failed** (~12 min) |
+| Frontend `npx tsc --noEmit -p .` / `npx vite build` | clean / builds |
+| Last change after the full run | scorecard `VERSION = 3`; the two scorecard test files pass (47) |
 
-## 4. Agent design notes
-- LangGraph's MongoDB checkpointer needs pymongo ≥ 4.12 but Motor pins < 4.10, so runs persist
-  their own state in `agent_runs` instead. Do not install `langgraph-checkpoint-mongodb`.
-- Tests drive the agents with `tests/fakes/llm.py`. Several agents call `generate()` in one run,
-  so answer by *which agent is asking* (`ScriptedProvider(responder=...)`), not by queue order.
+Assessment: **demo-ready yes; pilot-ready after two checks (below); production-ready no.**
 
-## 5. Fixed this session (worth knowing)
-- `Settings` read `.env` relative to the working directory → now anchored to `backend/`.
-- The app refuses the placeholder `JWT_SECRET_KEY` outside `ENVIRONMENT=development`.
-- Repository lists cap at 500 → analytics use `PurchaseOrderRepository.find_all`.
-- Supplier list scored the forest once per supplier (7.6 s) → batch `predict_many` (~2 s on 10k POs).
-- "Original" file link had no auth header (401) → `downloadFile()` helper fetches with the token.
-- `scrollIntoView` returns a Promise in current Chrome → effects must use a block body.
-- docker-compose / root `.env.example` still targeted Gemini → OpenRouter + Google vars.
+## 3. What was done in this session (commits, oldest first)
+| Commit | What |
+|---|---|
+| `fdf7989` | Extraction benchmark (130 code-generated quotations, 90 tune / 40 locked), review flags for supplier arithmetic, upload/storage/AI-quota hardening |
+| `8a64b1e` | Discounts end to end, sign-in and AI request limits, upload content checks, GridFS storage, backup and restore script |
+| `96514de` | Readings from backup AI models always flagged for review; README separates real (16) and generated numbers; readiness assessment |
+| `bced692` | Supplier performance scorecard replaced the old reliability score (profile completeness and our own reading errors no longer count against a supplier); receipt at delivery; who cancelled |
+| `ebb602d` | Scoring audit (13 findings): receipt-based OTIF, quantity-weighted rejections, accepted quantity, provisional/coverage, weights that add up, email-time responsiveness, invoice classes, receipt line validation, no cross-currency pricing, GST basis from reconciling figures, reading errors never scored, high-anomaly review gate with confirmed award, weight validation |
+| `89e7d86` | Follow-up (test first, 18 of 20 failing before): per-round RFQ timing, zero invoices, neutral score for single/tied quotations, GST wording ("inclusive of GST", "GST extra"), PO: GST out of inclusive rates, percentage vs fixed discounts, changed-quantity warning, paisa reconciliation, invalid values blocked. Report: `docs/SCORING_FIX_VERIFICATION.md` |
 
-## 6. Needs the team
-1. `OPENROUTER_API_KEY` in `backend/.env` (live extraction, AI drafts, assistant).
-2. Google OAuth client ID/secret; redirect URI `http://localhost:8000/api/v1/channels/gmail/callback`;
-   add the Gmail account as a test user.
-3. Nothing else — `main` is pushed and up to date.
+## 4. Supplier scorecard (how "risky" is decided now)
+`backend/app/services/procurement/reliability.py`, rule-based, from the organization's own records only:
+on-time in full 30% · quality 30% · fulfilment 15% · commercial 15% · responsiveness 10%.
+* Fewer than 3 assessed orders → **New supplier** (no score; neutral 0.5 in the ranking).
+* Under 5 orders or 60% of the weight backed by records → **provisional**; moves the ranking only part way from neutral.
+* Badges: Good ≥ 75 · OK 50–74 · Needs attention < 50. Each factor's scaled weight and points are shown and add up.
+* Delivery date is automatic; **received/rejected quantities, invoice amount/type and who cancelled must be recorded
+  by a person** on the Purchase orders page. Until that happens most suppliers stay New or provisional — expected.
+* The ML late-delivery model is separate, shown beside it.
 
-## 7. Gotchas (don't repeat)
-- Tesseract needs admin — RapidOCR locally, Docker installs Tesseract.
-- Python in bash heredocs: `\n` escapes get mangled — use the Write/Edit tools for code with escapes.
-- `pydantic-settings` `List[str]` from `.env` fails — keep as comma-separated `str`.
-- `email-validator` rejects `.test` domains — use `.com`.
-- Vite binds IPv6 — use `localhost:5173`.
-- Browser pane screenshots fail when hidden — use `get_page_text`.
-- MongoDB: `C:/mongo-bin/mongod-x64-win32-7.0.14.exe --dbpath C:/mongo-data/db --port 27017 --bind_ip 127.0.0.1`.
-- Servers: `.claude/launch.json` (`backend`, `frontend`).
+## 5. Numbers (from `docs/FINAL_REPORT.md`, `docs/EXTRACTION_BENCHMARK.md`)
+| Component | Result |
+|---|---|
+| Late-delivery risk (random forest, SCMS, time split) | ROC-AUC 0.832 [0.815, 0.850]; baseline 0.761; Brier 0.0985; RDC shipments only 0.562 |
+| Price-error detector (later 150 quotes) | precision 0.75 / recall 1.00; HIGH only 0.83 / 0.90; 10.3% false flags |
+| Demand forecast (Croston, SCMS) | error 21–55% by series; range covered 75–78% |
+| HSN suggestion | 98.8% (85 held out), 91.2% (250 items) |
+| Extraction, 16 real quotations | 96.6–96.9% of fields; handwriting 56–67% |
+| Extraction, 40 locked generated quotations | 97.7% (scanned PDF 89.6%) |
+| Same, on backup models after Gemini quota ran out | 89.0% (tune split; cause not fully separated from the new discount fields) |
+
+Datasets: USAID SCMS (10,324 shipments), GST HSN master (21,935), HSN benchmark (114) and labelled set (750), team
+order file (4,000), team price file (468 + 300 labelled), 16 real quotations (private), 130 generated quotations.
+Team-supplied files are not independently verified. Rejected this session as unsuitable: tender DB mirror, ICAI
+vendor payments (fictional), Kaggle "vendor performance" (fictional liquor retail), DataCo (label leakage), old WPI
+2004 series. Optional later: WPI 2011-12 series for a price-rise check; SROIE receipts as a second real-document test.
+
+## 6. Open items
+**Needed before a pilot**
+1. **Gmail import end to end** — waiting on the team: send one quotation PDF as an attachment from another address
+   to the connected inbox, then sync. Drive filing is already verified.
+2. **Gemini re-read of the 90 tune quotations** with the discount fields, after the daily free quota resets:
+   back up `backend/ml/artifacts/extraction_benchmark/` first, run
+   `python -m ml.extraction_benchmark --split tune --fresh --pace 8` alone. Never re-read the locked split.
+
+**Recommended next**
+3. **Review flag is too strict:** 61 of 74 dev quotations (82%) need review, mostly "line missing a line total"
+   when quantity and rate are present. Accepting computable lines would cut it to ~27%. Not done — awaiting go-ahead.
+   Also drop item "lines" with no quantity, rate or amount (headings/notes).
+4. Reprocess the 74 dev quotations with the current pipeline (costs AI quota; corrections are kept).
+5. Label 15–20 real quotations (team, ~2 h; files in `D:\SOHAM ALL\EDC Finance\EAD ALL`, 22 distinct). The same folder
+   has 4 comparative sheets and 2 real POs: compare the app's pick and PO with the team's — best real-world check.
+6. Show `discount_type` on the PO page; recompute saved comparisons (they keep old labels until recomputed).
+
+**Before production:** paid/higher AI quota, scheduled off-machine backups (`scripts/backup_db.py`), shared store for
+rate limits if more than one server, antivirus or sender filter (`GMAIL_SYNC_QUERY`), real scorecard validation from
+pilot deliveries.
+
+## 7. Running it
+* MongoDB on 27018 (dies sometimes): `/c/mongo-bin/mongod-x64-win32-7.0.14.exe --dbpath C:/mongo-data/db --port 27018 --bind_ip 127.0.0.1`
+* Backend and frontend: `.claude/launch.json` (`backend` on 8000, `frontend` on 5173). Restart the backend after
+  backend changes (no reload); startup rescores suppliers on an older scorecard version.
+* Backup/restore check: `python scripts/backup_db.py backup|restore|verify` (restore only into an empty database).
+
+## 8. Gotchas
+* **Never run two pytest processes at once** — they share `procurement_assistant_test` and drop it per test (gives
+  false `KeyError` setup errors).
+* Free AI quota: run one benchmark or batch at a time; readings from backup models are flagged for review.
+* `conftest.py` blanks vendor keys and lifts rate limits; tests never call real APIs.
+* Shell heredocs mangle nested quotes; put patch scripts in the scratchpad and run them with Python.
+
+## 9. Standing rules from the team
+* Never commit or push without being asked; never print or commit secrets (`backend/.env` is untracked).
+* Never commit Word documents, root PDFs, CSVs or `quotation_dataset.zip`.
+* The demo login stays local, never in the repo. Ask before downloading models or datasets.
+* No synthetic data to inflate metrics; report real and generated numbers separately; no fabricated results.
+* Do not add agents, LLM providers or microservices; do not build ProcureSim; never send real emails or POs in tests.
+* Keep `CHECKLIST.md` updated after each task.

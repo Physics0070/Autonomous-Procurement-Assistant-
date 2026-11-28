@@ -141,12 +141,14 @@ class OrgScopedRepository(BaseRepository):
         return serialize(doc)
 
     async def raw_update(
-        self, organization_id: str, entity_id: str, update: dict[str, Any]
+        self, organization_id: str, entity_id: str, update: dict[str, Any],
+        expected: Optional[dict[str, Any]] = None,
     ) -> Optional[dict[str, Any]]:
-        """Apply a raw update document (for $set/$push combinations)."""
+        """Apply a raw update document (for $set/$push combinations). With `expected`, only while the document still
+        matches it (compare-and-set); None when it no longer does."""
         update.setdefault("$set", {})["updated_at"] = utcnow()
         doc = await self.collection.find_one_and_update(
-            self._scope(organization_id, {"_id": to_object_id(entity_id)}),
+            self._scope(organization_id, {"_id": to_object_id(entity_id), **(expected or {})}),
             update,
             return_document=True,
         )

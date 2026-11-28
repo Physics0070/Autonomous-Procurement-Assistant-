@@ -9,11 +9,12 @@ from fastapi.responses import FileResponse
 
 from app.api.deps import CurrentUser, quotation_repo, storage
 from app.core.rate_limit import AILimited
-from app.core.errors import NotFoundError, ValidationError
+from app.core.errors import ConflictError, NotFoundError, ValidationError
 from app.repositories.quotations import QuotationRepository
 from app.schemas.common import Paginated, ProcessingStatus
 from app.schemas.quotation import (
     CorrectionRequest,
+    IssueConfirmationRequest,
     QuotationDetail,
     QuotationLinkRequest,
     QuotationListItem,
@@ -193,6 +194,30 @@ async def apply_corrections(
     )
     updated = await quotations.get_or_404(context.organization_id, quotation_id)
     return QuotationDetail.model_validate(_list_shape(updated))
+
+
+@router.post("/{quotation_id}/issue-confirmations")
+async def confirm_supplier_issue(
+    quotation_id: str,
+    payload: IssueConfirmationRequest,
+    context: CurrentUser,
+    quotations: QuotationRepository = Depends(quotation_repo),
+) -> dict:
+    """Confirm, for one field, that an arithmetic finding is on the document itself (the supplier's own error, not a
+    misreading). Only that finding is attributed to the supplier; a later correction of the field withdraws it."""
+    from app.services.procurement.comparison import DOCUMENT_ARITHMETIC
+
+    row = await quotations.get_or_404(context.organization_id, quotation_id)
+    issues = (row.get("validation") or {}).get("issues") or []
+    if payload.code not in DOCUMENT_ARITHMETIC or not any(
+            i.get("field") == payload.field and i.get("code") == payload.code for i in issues):
+        raise ConflictError("This quotation has no such arithmetic finding to confirm.")
+    confirmations = [c for c in row.get("confirmed_issues") or []
+                     if (c.get("field"), c.get("code")) != (payload.field, payload.code)]
+    confirmations.append({"field": payload.field, "code": payload.code, "confirmed_by": context.user_id,
+                          "confirmed_at": datetime.now(timezone.utc), "note": payload.note})
+    updated = await quotations.raw_update(context.organization_id, quotation_id, {"$set": {"confirmed_issues": confirmations}})
+    return {"id": quotation_id, "confirmed_issues": updated.get("confirmed_issues") or []}
 
 
 # ---------------------------------------------------------------------------

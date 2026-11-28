@@ -89,5 +89,12 @@ async def ensure_indexes(db: AsyncIOMotorDatabase) -> None:
     await db.communications.create_index([("organization_id", 1), ("created_at", -1)])
     await db.purchase_orders.create_index([("organization_id", 1), ("created_at", -1)])
     await db.purchase_orders.create_index([("organization_id", 1), ("po_number", 1)], unique=True)
+    # At most one live purchase order per procurement request (split awards are not supported). Set on award,
+    # removed on cancellation, so the database itself refuses a second concurrent award.
+    await db.purchase_orders.create_index(
+        [("organization_id", 1), ("award_key", 1)], unique=True,
+        partialFilterExpression={"award_key": {"$type": "string"}}, name="uniq_live_award",
+    )
+    await db.purchase_orders.create_index([("organization_id", 1), ("procurement_request_id", 1)])
     await db.counters.create_index([("organization_id", 1), ("name", 1)], unique=True)
     logger.info("MongoDB indexes ensured")

@@ -46,6 +46,22 @@ class UserCorrection(APIModel):
     note: Optional[str] = None
 
 
+class IssueConfirmation(APIModel):
+    """A person checked the document and confirmed that this arithmetic finding is the supplier's own error."""
+
+    field: str
+    code: str
+    confirmed_by: Optional[str] = None
+    confirmed_at: Optional[datetime] = None
+    note: Optional[str] = None
+
+
+class IssueConfirmationRequest(APIModel):
+    field: str = Field(min_length=1, max_length=200)
+    code: str = Field(min_length=1, max_length=60)
+    note: Optional[str] = Field(default=None, max_length=500)
+
+
 class QuotationListItem(APIModel):
     id: PyObjectId
     organization_id: PyObjectId
@@ -75,6 +91,7 @@ class QuotationDetail(QuotationListItem):
     match_result: Optional[MatchResult] = None
     confidence: ConfidenceSummary = Field(default_factory=ConfidenceSummary)
     user_corrections: List[UserCorrection] = Field(default_factory=list)
+    confirmed_issues: List[IssueConfirmation] = Field(default_factory=list)
     processing_history: List[ProcessingEvent] = Field(default_factory=list)
     error: Optional[str] = None
 

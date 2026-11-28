@@ -103,3 +103,86 @@ Two existing tests were changed, because they asserted the old, defective behavi
 * **Frontend:** the PO page does not yet show `discount_type`, and no screen was checked in a browser this round (the
   browser session is signed out).
 * **Unchanged by design:** ML models, agents and frontend architecture.
+
+
+---
+
+# Edge-case audit (second round, 28 November 2026)
+
+Scope: the six remaining issues only (award safety, OTIF evidence coverage, quality inspection, supplier-error
+attribution, all-unknown GST basis, atomic delivery). The earlier fixes above were not rewritten.
+
+**Method:** `backend/tests/test_edge_case_audit.py` (24 tests) was written and run against the unchanged code first:
+**18 failed, 6 passed**. Then the corrections were made and the file rerun: **24 passed**.
+
+The 6 that already passed were guards for behaviour that was already right or not yet reachable:
+`test_missing_receipts_are_neither_successes_nor_failures` and `test_inspected_with_zero_rejected_is_real_quality_evidence`
+(already correct), `test_receipts_not_yet_inspected_give_no_quality_evidence` and
+`test_correcting_the_field_after_confirming_withdraws_the_confirmation` (passed for the wrong reason: the old code had
+no inspection flag or confirmation, so the receipt was treated as broken and the issue as unconfirmed),
+`test_a_cancelled_award_frees_the_request_for_a_new_award` (trivially, since duplicates were allowed) and
+`test_delivery_and_receipt_are_saved_together` (the valid path worked; only the failure path was unsafe).
+
+Old behaviour seen in the failing run: an award with no stored comparison, for a quotation left out of the
+comparison, or after a price changed, created a PO (201); a second award on the same request created a second PO;
+8 concurrent awards created 8 POs; 4 concurrent deliveries all returned 200 and wrote 4 "deliver" history entries; a
+delivery with a duplicate receipt line left the PO "delivered" with no receipt (the 409 came after the status had
+been written); a correction to `supplier.name` made every untouched arithmetic mismatch a "confirmed supplier
+error"; with no GST basis known, raw totals were ranked on price (1.0 vs 0.0) and one was recommended.
+
+## Results
+
+| Run | Result |
+|---|---|
+| `tests/test_edge_case_audit.py` before any fix | 18 failed, 6 passed |
+| Same file after the fixes | 24 passed |
+| Related suites (analytics, analytics cache, communications, delivery dates, discounts, Drive, monitor agent, purchase orders, scoring follow-up, sourcing graph, supervisor, scorecard, edge-case audit), run alone | first run after the fixes: 13 failed, 117 passed (tests asserting the old behaviour, listed below); after updating those: **130 passed** |
+| Full backend suite | **not run this round** (stopped at the team's request before it finished); last full run was before these changes: 8,537 passed, 60 skipped |
+| Frontend `tsc --noEmit -p .` | no errors |
+| Frontend `vite build` | built |
+
+## Findings
+
+| # | Issue | Correction | Regression test(s) | Result |
+|---|---|---|---|---|
+| E1 | Award with no comparison, for a quotation not in it, or from a stale one | Award refuses (409): no stored comparison; quotation not among its rows; stored `input_fingerprint` differs from the current one (SHA-256 of the request's items and currency and of every quotation on the request: data, matching, status, findings, confirmations, text). Comparisons saved before this change have no fingerprint and must be recomputed once | `test_award_without_a_comparison_is_refused`, `test_award_of_a_quotation_left_out_of_the_comparison_is_refused`, `test_award_from_a_stale_comparison_is_refused_until_recomputed`, `test_a_quotation_arriving_after_the_comparison_makes_it_stale` | passed |
+| E2 | Duplicate POs for one request; no atomic or idempotent protection | One live PO per request (split awards are not supported). An awarded PO carries `award_key` = request id under a unique partial index (`uniq_live_award`), so the database lets exactly one concurrent insert through; cancelling removes the key so the request can be awarded again. Repeating the same award returns the existing PO (200); another quotation gets 409 naming the PO. The supervisor agent's PO step uses the same guard | `test_a_second_award_for_the_same_request_is_refused`, `test_repeating_the_same_award_returns_the_existing_order`, `test_concurrent_awards_create_exactly_one_order` (8 parallel, 1 PO), `test_a_cancelled_award_frees_the_request_for_a_new_award`, `test_the_agent_path_cannot_create_a_second_order` | passed |
+| E3 | OTIF not partial when only some delivered orders had receipts; coverage overstated | Each factor has an `evidence` share and `coverage` = sum of weight x evidence. OTIF evidence = (receipted + 1/2 on-time-only) / delivered. Orders without a receipt are left out of the score, neither success nor failure, and the reason says so; partial whenever evidence < 1 | `test_partly_receipted_otif_is_partial_and_coverage_counts_the_gap` (evidence 0.75, coverage 0.525), `test_missing_receipts_are_neither_successes_nor_failures`, `test_fully_receipted_otif_is_not_partial` | passed |
+| E4 | A defaulted rejected quantity of 0 counted as an inspection | API: `rejected_quantity` optional; left out = not inspected. Stored per line: `inspected`, `rejected_quantity` and `accepted_quantity` (both null when not inspected); receipt-level `inspected`. Quality uses inspected lines only; evidence = inspected orders / delivered. Receipts stored before the flag count as inspected only when they record a rejection (a stored 0 may be the old default). In-full on an uninspected line uses the quantity received. Purchase orders page: "Rejected" starts blank ("not inspected"); a "Not yet inspected" badge | `test_receipts_not_yet_inspected_give_no_quality_evidence`, `test_inspected_with_zero_rejected_is_real_quality_evidence`, `test_legacy_receipts_with_a_defaulted_zero_are_not_inspection_evidence`, `test_api_receipt_without_a_rejected_quantity_is_recorded_as_not_inspected` | passed |
+| E5 | Any user correction confirmed every unrelated arithmetic mismatch | A supplier error needs an explicit, field-specific confirmation: `POST /quotations/{id}/issue-confirmations` with `{field, code}` (409 unless that arithmetic finding is on the quotation), stored in `confirmed_issues`. A later correction of the same field withdraws it. Quotation review screen: an "It is on the document (supplier's error)" button per arithmetic finding | `test_an_unrelated_correction_does_not_confirm_arithmetic_errors`, `test_only_the_explicitly_confirmed_field_is_the_suppliers_error`, `test_correcting_the_field_after_confirming_withdraws_the_confirmation`, `test_confirming_a_supplier_error_through_the_api` | passed |
+| E6 | With every GST basis unknown, raw totals were ranked as comparable prices | No price ranking: each such quotation scores neutral 0.5 on price, `data_available` false, with a deduction showing its quoted total; each `requires_review` ("Confirm whether the quoted total includes GST..."); no recommendation; a result warning says the totals are not ranked. Quoted totals stay visible (`landed_cost`) | `test_when_no_quotation_shows_its_gst_basis_raw_totals_are_not_ranked` | passed |
+| E7 | Delivery state written before the receipt was validated; concurrent actions all applied | The receipt is validated before any write and saved in the same update as the delivery (`combine()`: one `$set`, both history entries). Every PO action and receipt save is a compare-and-set on the status that was read (`raw_update(..., expected={"status": ...})`): of concurrent actions only the first applies, the others get 409 | `test_an_invalid_receipt_leaves_the_order_undelivered` (duplicate line, missing line, rejected > received: status stays issued, no receipt, no delivery date, no history entry), `test_delivery_and_receipt_are_saved_together`, `test_concurrent_deliveries_are_recorded_once` (4 parallel: 200, 409, 409, 409) | passed |
+
+`reliability.VERSION` is now 4, so stored scorecards are recomputed once at startup.
+
+## Existing tests changed because they asserted the old behaviour
+
+* Several orders on one request: `test_analytics.py::delivered_po`, `test_supplier_scorecard.py::_issued_po` and
+  `test_purchase_orders.py::test_unmatched_items_are_warned_and_numbers_are_sequential` awarded repeatedly on the
+  fixture's single request. They now open a new round per order (`tests/rounds.py`: same items and quotations, a new
+  request, its comparison run). Their assertions are unchanged.
+* `test_delivery_dates.py::test_issuing_a_po_uses_the_quoted_delivery_date` changed a quotation after the fixture's
+  comparison and then awarded; that is now a stale comparison, so the test recomputes it first.
+* `test_supplier_scorecard.py::po()` built receipts with `rejected_quantity` 0 and no flag, which now reads as "not
+  inspected"; the helper marks its lines `inspected: True`, which is what those tests meant.
+* `test_receipted_orders_decide_otif_and_unreceipted_ones_are_not_counted_as_in_full` asserted `partial is False`
+  with 2 of 5 orders unreceipted; it now asserts partial with evidence 0.8.
+* `test_broken_receipts_count_as_missing_never_as_good`: a legacy receipt line with rejected 0 now gives
+  `(2, 2, None)` (not inspected) instead of `(2, 2, 0)`.
+* `test_ocr_validation_errors_do_not_cost_the_supplier_points` used a correction of `delivery.delivery_days` to
+  confirm a line-total error; it now asserts that this confirms nothing, and that an explicit confirmation does.
+
+## Remaining limitations (this round)
+
+* **Split awards are not supported.** A request has one live PO; ordering from two suppliers needs two requests.
+* **A delivered or closed PO keeps the request's award.** Re-ordering the same items is a new request.
+* **Staleness does not cover supplier scorecards or weights.** A supplier's score changing after the comparison does
+  not make it stale.
+* **Comparisons saved before this change have no fingerprint** and refuse award until recomputed once.
+* **PO numbers can skip** when two awards race: the loser has already taken a number from the counter.
+* **POs created before this change carry no `award_key`.** The award route still refuses a second award on such a
+  request (it looks for any non-cancelled PO), but two awards racing on it are protected by that check only, not by
+  the index.
+* **Receipts recorded before this change** with rejected 0 count as not inspected; re-saving the receipt with 0
+  entered records the inspection.
+* **The frontend changes were type-checked and built, not exercised in a browser** this round.

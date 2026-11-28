@@ -237,6 +237,14 @@ export interface AIExtraction {
   notes: string[]
 }
 
+export interface IssueConfirmation {
+  field: string
+  code: string
+  confirmed_by?: string | null
+  confirmed_at?: string | null
+  note?: string | null
+}
+
 export interface ValidationIssue {
   field: string
   severity: "info" | "warning" | "error"
@@ -394,6 +402,8 @@ export interface QuotationDetail extends QuotationListItem {
     overall: number | null
   }
   user_corrections: UserCorrection[]
+  /** Arithmetic findings a person confirmed on the document as the supplier's own error, field by field. */
+  confirmed_issues?: IssueConfirmation[]
   processing_history: ProcessingEvent[]
   error: string | null
 }

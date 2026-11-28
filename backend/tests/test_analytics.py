@@ -2,6 +2,7 @@
 from datetime import datetime, timedelta, timezone
 
 from app.services.procurement.anomaly import detect_price_anomaly
+from tests.rounds import new_round
 
 
 def test_isolation_forest_is_used_from_20_prices():
@@ -14,6 +15,7 @@ def test_isolation_forest_is_used_from_20_prices():
 
 async def delivered_po(api, s, days_late):
     h = s["headers"]
+    s = await new_round(api, s)  # one live order per request: each delivery is its own procurement round
     po = (await api.post(f"/api/v1/comparisons/procurement-requests/{s['request']['id']}/award", headers=h,
                          json={"quotation_id": s["q_shree"]["id"]})).json()
     for action in ("approve", "issue"):

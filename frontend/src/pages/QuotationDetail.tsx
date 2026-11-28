@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Alert, ErrorState, LoadingState, Spinner, ValueOrMissing } from "@/components/ui/feedback"
 import {
   useApplyCorrections,
+  useConfirmIssue,
   useLinkQuotation,
   useQuotation,
   useReprocess,
@@ -171,6 +172,7 @@ export function QuotationDetailPage() {
   const { data, isLoading, error, refetch } = useQuotation(quotationId)
   const { data: requests } = useRequests()
   const applyCorrections = useApplyCorrections(quotationId ?? "")
+  const confirmIssue = useConfirmIssue(quotationId ?? "")
   const reprocess = useReprocess(quotationId ?? "")
   const link = useLinkQuotation(quotationId ?? "")
 
@@ -211,11 +213,15 @@ export function QuotationDetailPage() {
     flags[issue.field] = flags[issue.field] ? `${flags[issue.field]} ${issue.message}` : issue.message
   })
 
-  // One plain list of things the buyer should look at.
-  const things: string[] = []
-  validation?.issues.forEach((issue) => things.push(issue.message))
+  // One plain list of things the buyer should look at. Arithmetic findings can be confirmed against the document as
+  // the supplier's own error, one at a time; nothing else (not even a correction elsewhere) confirms them.
+  const arithmetic = new Set(["line_total_mismatch", "subtotal_mismatch", "total_mismatch"])
+  const confirmedKeys = new Set((data.confirmed_issues ?? []).map((c) => `${c.field}|${c.code}`))
+  const things: Array<{ message: string; field?: string; code?: string }> = []
+  validation?.issues.forEach((issue) =>
+    things.push(arithmetic.has(issue.code) ? { message: issue.message, field: issue.field, code: issue.code } : { message: issue.message }))
   if (effective && effective.missing_fields.length > 0) {
-    things.push(`We could not find: ${effective.missing_fields.map(plainField).join(", ")}.`)
+    things.push({ message: `We could not find: ${effective.missing_fields.map(plainField).join(", ")}.` })
   }
 
   const busy = ["QUEUED", "UPLOADED", "EXTRACTING", "AI_EXTRACTING", "NORMALIZING"].includes(
@@ -268,8 +274,19 @@ export function QuotationDetailPage() {
           title={`Needs checking: ${things.length} ${things.length === 1 ? "thing" : "things"} to look at`}
         >
           <ul className="list-inside list-disc space-y-1">
-            {things.map((message, index) => (
-              <li key={index}>{message}</li>
+            {things.map((thing, index) => (
+              <li key={index}>
+                {thing.message}
+                {thing.field && thing.code && (confirmedKeys.has(`${thing.field}|${thing.code}`) ? (
+                  <span className="ml-2 text-xs text-muted-foreground">Confirmed as the supplier's own error.</span>
+                ) : (
+                  <Button variant="outline" size="sm" className="ml-2 h-6 px-2 text-xs"
+                          disabled={confirmIssue.isPending}
+                          onClick={() => confirmIssue.mutate({ field: thing.field!, code: thing.code! })}>
+                    It is on the document (supplier's error)
+                  </Button>
+                ))}
+              </li>
             ))}
           </ul>
         </Alert>

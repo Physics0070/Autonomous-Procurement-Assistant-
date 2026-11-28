@@ -194,3 +194,11 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | A13 | Unknown or invalid weight overrides accepted | ✅ fixed | 422 for unknown keys, negative, non-numeric, all zero |
 | A14 | Tests | ✅ | `tests/test_supplier_scorecard.py` 27 (every expected number derived in the test); backend 8,517 passed, 60 skipped, 0 failed; tsc clean; vite build ok |
 
+| E1 | Award with no comparison, a quotation not in it, or a stale one | ✅ fixed | 409 in each case; comparison stores an input fingerprint; `test_edge_case_audit.py` (4 tests) |
+| E2 | Duplicate POs per request; no atomic/idempotent award | ✅ fixed | one live PO per request via unique `award_key` index; same award repeated returns it (200); 8 parallel awards → 1 PO; agent path guarded |
+| E3 | OTIF not partial with some receipts missing; coverage overstated | ✅ fixed | per-factor `evidence`; coverage = Σ weight × evidence; missing receipts neither success nor failure |
+| E4 | Defaulted rejected 0 counted as an inspection | ✅ fixed | `rejected_quantity` optional, `inspected` flag per line; legacy 0 not evidence; PO page "Rejected" starts blank |
+| E5 | Any correction confirmed unrelated arithmetic errors | ✅ fixed | explicit `POST /quotations/{id}/issue-confirmations` per field; later correction withdraws; button on review screen |
+| E6 | All GST bases unknown → raw totals ranked | ✅ fixed | price neutral, not ranked, every row needs review, no recommendation |
+| E7 | Delivery written before receipt validated; concurrent actions | ✅ fixed | receipt validated first, saved in one update; compare-and-set on status; 4 parallel delivers → 1 applied |
+| E8 | Tests | ✅ | edge-case file 18 failed / 6 passed before, 24 passed after; related suites 130 passed; full backend suite not run this round (stopped on request); tsc clean; vite build ok. Report: `docs/SCORING_FIX_VERIFICATION.md` |

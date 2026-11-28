@@ -55,6 +55,9 @@ async def test_issuing_a_po_uses_the_quoted_delivery_date(api, db, sourcing):
     promised = (datetime.now(timezone.utc) + timedelta(days=21)).date()
     await QuotationRepository(db).store_stage(
         org_id, sourcing["q_shree"]["id"], "effective_data.delivery.delivery_date", promised.isoformat())
+    # The quotation changed after the fixture's comparison, so it is recomputed before the award.
+    await api.post(f"/api/v1/comparisons/procurement-requests/{sourcing['request']['id']}", headers=h,
+                   json={"include_ai_explanation": False})
 
     po = (await api.post(f"/api/v1/comparisons/procurement-requests/{sourcing['request']['id']}/award",
                          headers=h, json={"quotation_id": sourcing["q_shree"]["id"]})).json()

@@ -56,8 +56,9 @@ export type POStatus = "draft" | "approved" | "issued" | "delivered" | "closed" 
 
 /** What arrived for a delivered order: per PO line, plus the amount invoiced. Feeds the supplier scorecard. */
 export interface Receipt {
-  /** One entry per PO line, by its index; accepted = received - rejected. */
-  lines: Array<{ line: number; received_quantity: number; rejected_quantity: number; accepted_quantity?: number }>
+  /** One entry per PO line, by its index; accepted = received - rejected. rejected_quantity null = not inspected yet. */
+  lines: Array<{ line: number; received_quantity: number; rejected_quantity: number | null; inspected?: boolean;
+    accepted_quantity?: number | null }>
   invoice_amount: number | null
   /** final is compared with the order total; partial invoices and credit notes are recorded but not scored. */
   invoice_type?: "final" | "partial" | "credit_note"

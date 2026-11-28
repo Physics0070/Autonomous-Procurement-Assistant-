@@ -311,10 +311,19 @@ async def purchase_order_agent(ctx: AgentContext, request: dict, row: dict) -> d
         if not po["lines"]:
             step["summary"] = "No requested item is matched and priced in that quotation; no PO created."
             return {"purchase_order_id": None, "warnings": po["warnings"]}
+        existing = await ctx.purchase_orders.live_award(ctx.org_id, request["id"])
+        if existing:
+            step["summary"] = f"The request already has {existing.get('po_number')}; no second PO created."
+            return {"purchase_order_id": existing["id"], "po_number": existing.get("po_number"),
+                    "total": (existing.get("pricing") or {}).get("total"), "warnings": [], "already_awarded": True}
         po["po_number"] = await ctx.purchase_orders.next_po_number(ctx.org_id, date.today().year)
         po["created_by"] = ctx.user_id
         po["history"] = [_history_entry("created", ctx.user_id, agent_run_id=ctx.recorder.id)]
-        created = await ctx.purchase_orders.create(ctx.org_id, po)
+        created, existing = await ctx.purchase_orders.create_award(ctx.org_id, po)
+        if existing:
+            step["summary"] = f"The request already has {existing.get('po_number')}; no second PO created."
+            return {"purchase_order_id": existing["id"], "po_number": existing.get("po_number"),
+                    "total": (existing.get("pricing") or {}).get("total"), "warnings": [], "already_awarded": True}
         await ctx.requests.update(ctx.org_id, request["id"], {"status": "awarded"})
         step["summary"] = (f"{po['po_number']} for {row.get('supplier_name')}: {len(po['lines'])} line(s), "
                            f"{po['pricing']['currency']} {po['pricing']['total']:,.2f}, awaiting approval")

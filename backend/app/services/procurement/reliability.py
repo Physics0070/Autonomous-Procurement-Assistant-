@@ -5,9 +5,12 @@ Rule-based and explainable, not a machine-learning prediction (the late-delivery
 we read the supplier's documents.
 
   on-time in full   30%  delivered POs with a receipt: delivered by the expected date AND accepted >= ordered on
-                         every line (accepted = received - rejected). With no receipts, on-time alone is used and the
-                         factor is marked partial: in-full is then unknown, never assumed.
-  quality           30%  quantity-weighted rejection rate, total rejected / total received, over receipts
+                         every line (accepted = received - rejected; a line not yet inspected counts what arrived).
+                         Orders without a receipt are neither successes nor failures: they are left out of the score
+                         and lower the factor's evidence. With no receipts at all, on-time alone is used (partial).
+  quality           30%  quantity-weighted rejection rate, total rejected / total received, over inspected receipt
+                         lines only. A line is inspected when the receipt says so; a receipt stored before that flag
+                         existed counts as inspected only if it records a rejection (its zero may be the old default)
   fulfilment        15%  issued POs delivered, against those the supplier cancelled (our cancellations are ignored)
   commercial        15%  final invoices on comparable orders: correct, overbilled or underbilled against the PO total
                          (or an approved revised amount); partial invoices and credit notes are not scored
@@ -15,8 +18,9 @@ we read the supplier's documents.
                          uploads without a trustworthy received time are not timed
 
 Evidence and confidence: a missing factor is left out and the weights of the rest are scaled up to sum to 1; the
-scaled weights are reported (`applied_weight`), and the factor contributions add up exactly to the score. How much of
-the full weight is backed by records is `coverage` (a partial factor counts half). Fewer than MIN_ASSESSED_ORDERS
+scaled weights are reported (`applied_weight`), and the factor contributions add up exactly to the score. Each factor
+has an `evidence` share (1.0 when every relevant order is backed by records; `partial` when less), and `coverage`, how
+much of the full weight is backed by records, is the sum of weight x evidence. Fewer than MIN_ASSESSED_ORDERS
 assessed orders: "new", no score. Below FULL_COVERAGE or MIN_CONFIDENT_ORDERS: "provisional".
 """
 from __future__ import annotations
@@ -30,7 +34,7 @@ WEIGHTS = {"on_time_in_full": 0.30, "quality": 0.30, "fulfilment": 0.15, "commer
 LABELS = {"on_time_in_full": "On-time, in-full delivery", "quality": "Product quality", "fulfilment": "Order fulfilment",
           "commercial": "Commercial reliability", "responsiveness": "Responsiveness"}
 METHOD = "scorecard"
-VERSION = 3  # 3: per-round RFQ timing, zero invoices not scored
+VERSION = 4  # 3: per-round RFQ timing, zero invoices not scored; 4: evidence shares, inspection flag
 MIN_ASSESSED_ORDERS = 3          # delivered + cancelled by the supplier, before any score is shown
 MIN_CONFIDENT_ORDERS = 5         # below this the score is provisional
 FULL_COVERAGE = 0.6              # share of the full weight that must be backed by records for a non-provisional score
@@ -70,8 +74,18 @@ def _quantity(value: Any) -> Optional[float]:
     return number if math.isfinite(number) and number >= 0 else None
 
 
-def receipt_lines(po: dict) -> Optional[list[tuple[float, float, float]]]:
+def line_inspected(line: dict) -> bool:
+    """Whether quality was actually inspected on this receipt line. Receipts stored before the flag existed always
+    carry a rejected quantity, defaulted to 0 when nobody inspected; only a recorded rejection proves an inspection."""
+    if "inspected" in line:
+        return bool(line["inspected"])
+    rejected = _quantity(line.get("rejected_quantity"))
+    return rejected is not None and rejected > 0
+
+
+def receipt_lines(po: dict) -> Optional[list[tuple[float, float, Optional[float]]]]:
     """(ordered, received, rejected) for every PO line, or None when no complete, valid receipt is recorded.
+    `rejected` is None on a line whose quality has not been inspected.
 
     Lines are matched by their `line` index (older receipts, without one, by position when the counts agree). Any
     gap, duplicate, negative or non-numeric quantity, or more rejected than received makes the receipt unusable:
@@ -88,54 +102,65 @@ def receipt_lines(po: dict) -> Optional[list[tuple[float, float, float]]]:
         recorded = [by_index[i] for i in range(len(po_lines))]
     out = []
     for line, r in zip(po_lines, recorded):
-        ordered, received, rejected = (_quantity(line.get("quantity")), _quantity(r.get("received_quantity")),
-                                       _quantity(r.get("rejected_quantity", 0)))
-        if ordered is None or received is None or rejected is None or rejected > received:
+        ordered, received = _quantity(line.get("quantity")), _quantity(r.get("received_quantity"))
+        inspected = line_inspected(r)
+        rejected = _quantity(r.get("rejected_quantity")) if inspected else None
+        if ordered is None or received is None or (inspected and (rejected is None or rejected > received)):
             return None
         out.append((ordered, received, rejected))
     return out
 
 
-def delivered_in_full(lines: list[tuple[float, float, float]]) -> bool:
-    """Accepted (received - rejected) covers what was ordered on every line."""
-    return all(received - rejected >= ordered for ordered, received, rejected in lines)
+def delivered_in_full(lines: list[tuple[float, float, Optional[float]]]) -> bool:
+    """Accepted (received - rejected) covers what was ordered on every line; a line not yet inspected counts what
+    arrived (a later inspection corrects the receipt)."""
+    return all(received - (rejected or 0) >= ordered for ordered, received, rejected in lines)
 
 
-def _factor(score: float, n: int, reason: str, partial: bool = False) -> dict[str, Any]:
-    return {"score": round(min(max(score, 0.0), 1.0), 4), "n": n, "reason": reason, "partial": partial}
+def _factor(score: float, n: int, reason: str, evidence: float = 1.0) -> dict[str, Any]:
+    evidence = round(min(max(evidence, 0.0), 1.0), 4)
+    return {"score": round(min(max(score, 0.0), 1.0), 4), "n": n, "reason": reason, "evidence": evidence,
+            "partial": evidence < 1.0}
 
 
 def _on_time_in_full(delivered: list[dict]) -> Optional[dict]:
+    """Scored only on orders with both a delivery date check and a valid receipt. Evidence: such an order counts 1,
+    an order with only the date check counts 1/2, an order with neither 0, out of every delivered order."""
     timed = [po for po in delivered if po.get("on_time") is not None]
     if not timed:
         return None
     receipted = [(po, receipt_lines(po)) for po in timed]
     receipted = [(po, lines) for po, lines in receipted if lines is not None]
+    unreceipted = len(timed) - len(receipted)
+    evidence = (len(receipted) + 0.5 * unreceipted) / len(delivered)
     if receipted:
         good = sum(1 for po, lines in receipted if po["on_time"] and delivered_in_full(lines))
         reason = f"On time and in full for {good} of {len(receipted)} orders with quantities recorded"
-        if len(receipted) < len(timed):
-            reason += f" ({len(timed) - len(receipted)} more delivered without quantities, not counted)"
-        return _factor(good / len(receipted), len(receipted), reason)
+        if unreceipted:
+            reason += f" ({unreceipted} more delivered without quantities: not counted as either)"
+        return _factor(good / len(receipted), len(receipted), reason, evidence)
     on_time = sum(1 for po in timed if po["on_time"])
     return _factor(on_time / len(timed), len(timed), f"On time for {on_time} of {len(timed)} orders; "
-                   "quantities received not recorded, so in-full is unknown", partial=True)
+                   "quantities received not recorded, so in-full is unknown", evidence)
 
 
 def _quality(delivered: list[dict]) -> Optional[dict]:
+    """Over inspected lines only. Evidence: the share of delivered orders with an inspection recorded."""
     received = rejected = 0.0
     inspected = 0
     for po in delivered:
-        lines = receipt_lines(po)
-        if lines and sum(rec for _, rec, _ in lines) > 0:
+        lines = [(rec, rej) for _, rec, rej in receipt_lines(po) or [] if rej is not None]
+        if lines and sum(rec for rec, _ in lines) > 0:
             inspected += 1
-            received += sum(rec for _, rec, _ in lines)
-            rejected += sum(rej for _, _, rej in lines)
+            received += sum(rec for rec, _ in lines)
+            rejected += sum(rej for _, rej in lines)
     if not inspected:
         return None
     rate = rejected / received
-    return _factor(1 - REJECTION_PENALTY * rate, inspected,
-                   f"{rate:.1%} of quantity rejected at inspection ({rejected:g} of {received:g}, {inspected} orders)")
+    reason = f"{rate:.1%} of quantity rejected at inspection ({rejected:g} of {received:g}, {inspected} orders)"
+    if inspected < len(delivered):
+        reason += f"; {len(delivered) - inspected} delivered orders have no inspection recorded, not counted"
+    return _factor(1 - REJECTION_PENALTY * rate, inspected, reason, inspected / len(delivered))
 
 
 def _supplier_cancelled(po: dict) -> bool:
@@ -271,7 +296,7 @@ def compute_reliability(orders: Optional[list[dict]] = None, rfqs: Optional[list
     delivered_count = len(delivered)
     cancelled_count = sum(1 for po in recent if _supplier_cancelled(po))
     assessed = delivered_count + cancelled_count
-    coverage = round(sum(WEIGHTS[n] * (0.5 if f["partial"] else 1.0) for n, f in factors.items()), 4)
+    coverage = round(sum(WEIGHTS[n] * f["evidence"] for n, f in factors.items()), 4)
     total_weight = sum(WEIGHTS[n] for n in factors)
     for name, factor in factors.items():
         factor["label"], factor["weight"] = LABELS[name], WEIGHTS[name]

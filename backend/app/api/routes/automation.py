@@ -28,6 +28,7 @@ from app.repositories.suppliers import SupplierRepository
 from app.schemas.common import APIModel, UserRole
 from app.services.automation import communications as comms
 from app.services.automation import purchase_orders as pos
+from app.services.procurement.comparison import comparison_fingerprint
 from app.services.procurement.reliability import refresh_reliability
 
 router = APIRouter(tags=["automation"])
@@ -71,7 +72,8 @@ class AwardIn(APIModel):
 class ReceiptLineIn(APIModel):
     line: int = Field(ge=0, description="Index of the PO line this quantity is for")
     received_quantity: float = Field(ge=0, allow_inf_nan=False)
-    rejected_quantity: float = Field(default=0, ge=0, allow_inf_nan=False)
+    # Leave out until quality has been inspected; 0 means inspected and nothing rejected.
+    rejected_quantity: Optional[float] = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 class ReceiptIn(APIModel):
@@ -211,22 +213,46 @@ async def export_communication(communication_id: str, context: CurrentUser,
 # ---------------------------------------------------------------------------
 
 
+def _already_awarded(existing: dict, quotation_id: str, response: Response) -> dict:
+    """The same award repeated (a retry, a double click) returns the order already made; another one is refused."""
+    if str(existing.get("quotation_id")) == quotation_id:
+        response.status_code = 200
+        return existing
+    raise ConflictError(f"This request already has purchase order {existing.get('po_number')} "
+                        f"({existing.get('status')}). Cancel it before awarding another quotation; split awards are "
+                        "not supported.", {"purchase_order_id": existing.get("id")})
+
+
 @router.post("/comparisons/procurement-requests/{request_id}/award", status_code=201)
 async def award(
-    request_id: str, payload: AwardIn, context: RequestContext = Manager,
+    request_id: str, payload: AwardIn, response: Response, context: RequestContext = Manager,
     requests: ProcurementRequestRepository = Depends(request_repo),
     quotations: QuotationRepository = Depends(quotation_repo),
     suppliers: SupplierRepository = Depends(supplier_repo),
     repo: PurchaseOrderRepository = Depends(po_repo),
     comparisons: ComparisonRepository = Depends(comparison_repo),
 ) -> dict:
+    """Award one quotation of the current comparison. Refused with no comparison, for a quotation the comparison
+    did not include, when the request or any of its quotations changed since it was computed, and when the request
+    already has a live purchase order (repeating the same award returns that order)."""
     org_id = context.organization_id
     request = await requests.get_or_404(org_id, request_id)
     quotation = await quotations.get_or_404(org_id, payload.quotation_id)
     if str(quotation.get("procurement_request_id")) != request_id:
         raise ValidationError("That quotation belongs to a different request.")
+    existing = await repo.live_award(org_id, request_id)
+    if existing:
+        return _already_awarded(existing, payload.quotation_id, response)
     stored = await comparisons.latest_for_request(org_id, request_id)
-    row = next((s for s in (stored or {}).get("suppliers") or [] if s.get("quotation_id") == payload.quotation_id), {})
+    if not stored or not stored.get("suppliers"):
+        raise ConflictError("Run the comparison for this request before awarding.")
+    row = next((s for s in stored["suppliers"] if str(s.get("quotation_id")) == payload.quotation_id), None)
+    if row is None:
+        raise ConflictError("That quotation is not part of the current comparison. Recompute the comparison with it "
+                            "included before awarding.")
+    if stored.get("input_fingerprint") != comparison_fingerprint(request, await quotations.for_request(org_id, request_id)):
+        raise ConflictError("The request or its quotations have changed since the comparison was computed. Recompute "
+                            "the comparison and check the ranking before awarding.")
     review_reasons = row.get("review_reasons") or []
     if review_reasons and not payload.confirm_review:
         raise ConflictError("This quotation needs review before award: " + " ".join(review_reasons),
@@ -240,7 +266,9 @@ async def award(
     po["history"] = [comms.history_entry("created", context.user_id)]
     if review_reasons:
         po["history"].append(comms.history_entry("review_confirmed", context.user_id, reasons=review_reasons))
-    created = await repo.create(org_id, po)
+    created, existing = await repo.create_award(org_id, po)
+    if existing:  # another award got there first
+        return _already_awarded(existing, payload.quotation_id, response)
     await requests.update(org_id, request_id, {"status": "awarded"})
     return created
 
@@ -300,9 +328,13 @@ async def purchase_order_action(
     payload = payload or POActionIn()
     po = await repo.get_or_404(context.organization_id, po_id)
     update = pos.transition(po, action, context.user_id, payload.delivered_at, payload.cancelled_by, payload.cancel_reason)
-    updated = await repo.raw_update(context.organization_id, po_id, update)
     if action == "deliver" and payload.receipt is not None:
-        updated = await _save_receipt(repo, context, updated, payload.receipt)
+        # The receipt is validated before anything is written, then saved in the same update as the delivery.
+        update = pos.combine(update, _receipt_update({**po, "status": "delivered"}, context, payload.receipt))
+    # Compare-and-set on the status read above: of two concurrent actions on one order, only the first applies.
+    updated = await repo.raw_update(context.organization_id, po_id, update, expected={"status": po["status"]})
+    if updated is None:
+        raise ConflictError("This purchase order was changed by someone else just now. Reload it and try again.")
     if action in ("deliver", "close", "cancel") and po.get("supplier_id"):
         await refresh_reliability(repo.db, context.organization_id, [str(po["supplier_id"])])
     if action == "approve":
@@ -320,10 +352,17 @@ async def purchase_order_action(
     return updated
 
 
-async def _save_receipt(repo: PurchaseOrderRepository, context: RequestContext, po: dict, receipt: ReceiptIn) -> dict:
+def _receipt_update(po: dict, context: RequestContext, receipt: ReceiptIn) -> dict:
     invoice = receipt.model_dump(include={"invoice_amount", "invoice_type", "approved_amount"})
-    update = pos.record_receipt(po, [line.model_dump() for line in receipt.lines], invoice, context.user_id)
-    return await repo.raw_update(context.organization_id, po["id"], update)
+    return pos.record_receipt(po, [line.model_dump() for line in receipt.lines], invoice, context.user_id)
+
+
+async def _save_receipt(repo: PurchaseOrderRepository, context: RequestContext, po: dict, receipt: ReceiptIn) -> dict:
+    updated = await repo.raw_update(context.organization_id, po["id"], _receipt_update(po, context, receipt),
+                                    expected={"status": po["status"]})
+    if updated is None:
+        raise ConflictError("This purchase order was changed by someone else just now. Reload it and try again.")
+    return updated
 
 
 @router.put("/purchase-orders/{po_id}/receipt")

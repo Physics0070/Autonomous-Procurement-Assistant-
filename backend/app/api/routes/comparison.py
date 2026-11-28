@@ -16,7 +16,7 @@ from app.repositories.quotations import ComparisonRepository, QuotationRepositor
 from app.repositories.procurement_requests import ProcurementRequestRepository
 from app.repositories.suppliers import SupplierRepository
 from app.schemas.comparison import ComparisonRequest, ComparisonResult
-from app.services.procurement.comparison import build_comparison
+from app.services.procurement.comparison import build_comparison, comparison_fingerprint
 from app.services.procurement.explanation import explain_comparison
 
 router = APIRouter(prefix="/comparisons", tags=["comparison"])
@@ -52,6 +52,8 @@ async def compute_comparison(
     payload = payload or ComparisonRequest()
     request = await requests.get_or_404(context.organization_id, request_id)
     rows = await quotations.for_request(context.organization_id, request_id)
+    # Over every quotation on the request, so a later arrival (or any change) makes this comparison stale for award.
+    fingerprint = comparison_fingerprint(request, rows)
 
     if payload.quotation_ids:
         wanted = set(payload.quotation_ids)
@@ -71,7 +73,8 @@ async def compute_comparison(
         result.ai_explanation = await explain_comparison(result)
 
     stored = await comparisons.upsert_for_request(
-        context.organization_id, request_id, result.model_dump(mode="json", exclude={"id", "organization_id"})
+        context.organization_id, request_id,
+        {**result.model_dump(mode="json", exclude={"id", "organization_id"}), "input_fingerprint": fingerprint},
     )
     result.id = str(stored.get("id"))
     result.organization_id = context.organization_id

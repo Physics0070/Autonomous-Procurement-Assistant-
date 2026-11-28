@@ -210,6 +210,8 @@ def transition(po: dict, action: str, user_id: str, delivered_at: Optional[datet
     if action == "cancel":
         # Only a cancellation the supplier caused counts against it in the scorecard.
         fields.update({"cancelled_at": now(), "cancelled_by": cancelled_by, "cancel_reason": cancel_reason})
+        # A cancelled order no longer holds the request's award, so the request can be awarded again.
+        return {"$set": fields, "$unset": {"award_key": ""}, "$push": {"history": history_entry(action, user_id)}}
     return {"$set": fields, "$push": {"history": history_entry(action, user_id)}}
 
 
@@ -239,16 +241,33 @@ def record_receipt(po: dict, lines: list[dict], invoice: dict[str, Any], user_id
         raise ConflictError(f"Give received and rejected quantities for each of the {len(po_lines)} lines of the "
                             f"order exactly once (lines 0 to {len(po_lines) - 1}).")
     for line in lines:
-        if line["rejected_quantity"] > line["received_quantity"]:
+        rejected = line.get("rejected_quantity")
+        if rejected is not None and rejected > line["received_quantity"]:
             raise ConflictError(f"Line {line['line'] + 1}: more rejected than received.")
-    stored = [{"line": line["line"], "received_quantity": line["received_quantity"],
-               "rejected_quantity": line["rejected_quantity"],
-               "accepted_quantity": line["received_quantity"] - line["rejected_quantity"]}
-              for line in sorted(lines, key=lambda line: line["line"])]
+    # No rejected quantity means quality has not been inspected yet: recorded as such, never as zero rejected.
+    stored = []
+    for line in sorted(lines, key=lambda line: line["line"]):
+        rejected = line.get("rejected_quantity")
+        stored.append({"line": line["line"], "received_quantity": line["received_quantity"],
+                       "rejected_quantity": rejected, "inspected": rejected is not None,
+                       "accepted_quantity": line["received_quantity"] - rejected if rejected is not None else None})
     triples = [(float(po_line["quantity"]), r["received_quantity"], r["rejected_quantity"]) for po_line, r in zip(po_lines, stored)]
-    receipt = {"lines": stored, "in_full": delivered_in_full(triples), **invoice,
+    receipt = {"lines": stored, "in_full": delivered_in_full(triples),
+               "inspected": all(r["inspected"] for r in stored), **invoice,
                "recorded_by": user_id, "recorded_at": now()}
     return {"$set": {"receipt": receipt}, "$push": {"history": history_entry("receipt_recorded", user_id)}}
+
+
+def combine(first: dict[str, Any], second: dict[str, Any]) -> dict[str, Any]:
+    """One update document from two, so a delivery and its receipt are written together or not at all."""
+    out: dict[str, Any] = {"$set": {**first.get("$set", {}), **second.get("$set", {})}}
+    history = [*(u["$push"]["history"] for u in (first, second) if "history" in u.get("$push", {}))]
+    if history:
+        out["$push"] = {"history": {"$each": history}}
+    for op in ("$unset",):
+        if first.get(op) or second.get(op):
+            out[op] = {**first.get(op, {}), **second.get(op, {})}
+    return out
 
 
 def render_po_pdf(po: dict) -> bytes:

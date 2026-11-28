@@ -9,6 +9,7 @@ import pytest
 
 from app.services.procurement.comparison import build_comparison, tax_basis, validate_weights
 from app.services.procurement.reliability import compute_reliability, invoice_check, receipt_lines
+from tests.rounds import new_round
 
 NOW = datetime(2026, 11, 1, tzinfo=timezone.utc)
 
@@ -23,7 +24,7 @@ def po(status="delivered", on_time=True, received=None, rejected=None, invoice=N
     doc.update(extra)
     if received is not None:
         rejected = rejected or (0,) * len(received)
-        doc["receipt"] = {"lines": [{"line": i, "received_quantity": r, "rejected_quantity": j}
+        doc["receipt"] = {"lines": [{"line": i, "received_quantity": r, "rejected_quantity": j, "inspected": True}
                                     for i, (r, j) in enumerate(zip(received, rejected))],
                           "invoice_amount": invoice, **receipt}
     return doc
@@ -68,8 +69,10 @@ def test_on_time_orders_without_receipts_are_never_in_full():
 def test_receipted_orders_decide_otif_and_unreceipted_ones_are_not_counted_as_in_full():
     card = compute_reliability([full(), full(), po(received=(100, 40)), po(), po()], now=NOW)
     otif = card["factors"]["on_time_in_full"]
-    assert otif["score"] == round(2 / 3, 4) and otif["n"] == 3 and otif["partial"] is False
-    assert "2 more delivered without quantities, not counted" in otif["reason"]
+    assert otif["score"] == round(2 / 3, 4) and otif["n"] == 3
+    # Two of five delivered orders have no receipt: partial, evidence (3 + 0.5 x 2) / 5 = 0.8.
+    assert otif["partial"] is True and otif["evidence"] == 0.8
+    assert "2 more delivered without quantities: not counted as either" in otif["reason"]
 
 
 def test_partial_delivery_and_rejections_use_accepted_quantity():
@@ -108,7 +111,9 @@ def test_broken_receipts_count_as_missing_never_as_good():
     for broken in (gap, dup, over, neg, nan):
         assert receipt_lines(broken) is None
     legacy = {"lines": [{"quantity": 2}], "receipt": {"lines": [{"received_quantity": 2, "rejected_quantity": 0}]}}
-    assert receipt_lines(legacy) == [(2, 2, 0)]  # older receipts without line numbers, matched by position
+    # Older receipts without line numbers are matched by position. Their rejected 0 may be the old default, so the
+    # line is not taken as inspected (rejected None).
+    assert receipt_lines(legacy) == [(2, 2, None)]
 
 
 def test_three_supplier_cancellations_are_not_three_completed_orders():
@@ -201,7 +206,7 @@ REQUEST = {"id": "req1", "title": "Paper", "currency": "INR", "items": [{"item_i
 
 
 def quote(qid, *, subtotal=1000.0, total=None, tax_pct=None, tax_amount=None, currency="INR", delivery=7, payment=30,
-          anomaly=None, validation=None, corrections=None, freight=None):
+          anomaly=None, validation=None, corrections=None, freight=None, confirmations=None):
     item = {"line_id": "L1", "quantity": 10, "unit_price": subtotal / 10, "total_price": subtotal}
     if anomaly:
         item["attributes"] = {"_price_anomaly": {"status": anomaly}}
@@ -212,7 +217,8 @@ def quote(qid, *, subtotal=1000.0, total=None, tax_pct=None, tax_amount=None, cu
             "effective_data": {"items": [item], "pricing": pricing, "delivery": {"delivery_days": delivery},
                                "payment_terms": {"payment_days": payment}},
             "match_result": {"matched_count": 1, "coverage": 1.0},
-            "validation": validation or {}, "user_corrections": corrections or []}
+            "validation": validation or {}, "user_corrections": corrections or [],
+            "confirmed_issues": confirmations or []}
 
 
 def rows(result):
@@ -269,9 +275,14 @@ def test_ocr_validation_errors_do_not_cost_the_supplier_points():
     assert flagged.overall_score == clean.overall_score
     assert flagged.unverified_issues == 1 and not flagged.confirmed_supplier_errors
     assert any("may be reading errors" in w for w in flagged.warnings)
-    # After a person reviewed the quotation and left that line as read, it is the supplier's own error: shown, not scored.
+    # Correcting some other field confirms nothing about this line.
+    unrelated = rows(build_comparison(REQUEST, [quote("a", total=1180, tax_pct=18, validation={"issues": [issue]},
+                                                      corrections=[{"path": "delivery.delivery_days"}])]))["a"]
+    assert unrelated.confirmed_supplier_errors == [] and unrelated.unverified_issues == 1
+    # Once a person explicitly confirms this finding on the document, it is the supplier's own error: shown, not scored.
     reviewed = rows(build_comparison(REQUEST, [quote("a", total=1180, tax_pct=18, validation={"issues": [issue]},
-                                                     corrections=[{"path": "delivery.delivery_days"}])]))["a"]
+                                                     confirmations=[{"field": "items.0", "code": "line_total_mismatch",
+                                                                     "confirmed_at": NOW}])]))["a"]
     assert reviewed.confirmed_supplier_errors == ["Line total does not match."]
     assert reviewed.overall_score == clean.overall_score
 
@@ -290,6 +301,7 @@ def test_weight_overrides_are_validated():
 
 async def _issued_po(api, s, quotation="q_shree"):
     h = s["headers"]
+    s = await new_round(api, s)  # one live order per request: each order is its own procurement round
     created = await api.post(f"/api/v1/comparisons/procurement-requests/{s['request']['id']}/award", headers=h,
                              json={"quotation_id": s[quotation]["id"]})
     assert created.status_code == 201, created.text

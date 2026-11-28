@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, timezone
 import pytest
 
 from app.services.automation.purchase_orders import record_delivery, tax_split
+from tests.rounds import new_round
 
 
 async def award(api, s, quotation="q_shree"):
@@ -43,7 +44,8 @@ async def test_award_builds_the_po_from_matched_items(api, sourcing):
 
 async def test_unmatched_items_are_warned_and_numbers_are_sequential(api, sourcing):
     await award(api, sourcing)
-    po = (await award(api, sourcing, "q_apex")).json()
+    # A second award on the same request is refused (tests/test_edge_case_audit.py); the next order is a new round.
+    po = (await award(api, await new_round(api, sourcing), "q_apex")).json()
     assert po["po_number"].endswith("-0002")
     assert [l["description"] for l in po["lines"]] == ["MS plate 10mm"]
     assert "Hex bolt M12" in po["warnings"][0]

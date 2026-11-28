@@ -42,7 +42,8 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
   po: PurchaseOrder; onSubmit: (receipt: Receipt) => void; submitLabel: string; busy: boolean; children?: React.ReactNode
 }) {
   const [received, setReceived] = React.useState(() => po.lines.map((l) => String(l.quantity)))
-  const [rejected, setRejected] = React.useState(() => po.lines.map(() => "0"))
+  // Blank = quality not inspected yet (recorded as such); 0 = inspected, nothing rejected.
+  const [rejected, setRejected] = React.useState(() => po.lines.map(() => ""))
   const [invoice, setInvoice] = React.useState("")
   const [invoiceType, setInvoiceType] = React.useState<NonNullable<Receipt["invoice_type"]>>("final")
   const [approved, setApproved] = React.useState("")
@@ -51,7 +52,10 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
     onSubmit({
-      lines: po.lines.map((_, i) => ({ line: i, received_quantity: Number(received[i] || 0), rejected_quantity: Number(rejected[i] || 0) })),
+      lines: po.lines.map((_, i) => ({
+        line: i, received_quantity: Number(received[i] || 0),
+        rejected_quantity: rejected[i].trim() === "" ? null : Number(rejected[i]),
+      })),
       invoice_amount: invoice.trim() === "" ? null : Number(invoice),
       invoice_type: invoiceType,
       approved_amount: approved.trim() === "" ? null : Number(approved),
@@ -59,14 +63,17 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
   }
   return (
     <form onSubmit={submit} className="space-y-3 rounded-md border p-3">
-      <p className="text-sm text-muted-foreground">What arrived. This feeds the supplier's performance score.</p>
+      <p className="text-sm text-muted-foreground">
+        What arrived. This feeds the supplier's performance score. Leave "Rejected" blank until the goods have been
+        inspected; enter 0 once inspected with nothing rejected.
+      </p>
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Item</TableHead>
             <TableHead className="text-right">Ordered</TableHead>
             <TableHead className="text-right">Received</TableHead>
-            <TableHead className="text-right">Rejected</TableHead>
+            <TableHead className="text-right">Rejected at inspection</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -80,7 +87,8 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
               </TableCell>
               <TableCell className="text-right">
                 <Input aria-label={`Rejected at inspection, ${line.description}`} type="number" min={0} step="any"
-                       value={rejected[i]} onChange={edit(setRejected, i)} className="ml-auto w-24 text-right" />
+                       placeholder="not inspected" value={rejected[i]} onChange={edit(setRejected, i)}
+                       className="ml-auto w-28 text-right" />
               </TableCell>
             </TableRow>
           ))}
@@ -116,13 +124,15 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
 function ReceiptSummary({ po }: { po: PurchaseOrder }) {
   const r = po.receipt
   if (!r) return null
-  const rejected = r.lines.reduce((sum, l) => sum + l.rejected_quantity, 0)
+  const rejected = r.lines.reduce((sum, l) => sum + (l.rejected_quantity ?? 0), 0)
+  const uninspected = r.lines.some((l) => l.inspected === false)
   const kind = { final: "", partial: " (partial invoice)", credit_note: " (credit note)" }[r.invoice_type ?? "final"]
   return (
     <p className="text-sm">
       <span className="text-muted-foreground">Received:</span>{" "}
       <Badge variant={r.in_full ? "success" : "warning"}>{r.in_full ? "Accepted in full" : "Not accepted in full"}</Badge>{" "}
       {rejected > 0 && <Badge variant="destructive">{formatNumber(rejected, 2)} rejected</Badge>}{" "}
+      {uninspected && <Badge variant="warning">Not yet inspected</Badge>}{" "}
       {r.invoice_amount != null && (
         <span className="text-muted-foreground">Invoiced {formatCurrency(r.invoice_amount, po.pricing.currency)}{kind}</span>
       )}

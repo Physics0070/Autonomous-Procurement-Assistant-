@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { api } from "@/lib/api"
 import { IN_PROGRESS_STATUSES } from "@/components/ui/badge"
 import type {
+  IssueConfirmation,
   Capabilities,
   ComparisonResult,
   DashboardSummary,
@@ -189,6 +190,19 @@ export function useApplyCorrections(quotationId: string) {
       queryClient.invalidateQueries({ queryKey: ["quotations"] })
       queryClient.invalidateQueries({ queryKey: ["comparison"] })
       queryClient.invalidateQueries({ queryKey: keys.dashboard })
+    },
+  })
+}
+
+/** Confirm, for one field, that an arithmetic finding is on the document itself (the supplier's own error). */
+export function useConfirmIssue(quotationId: string) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (payload: { field: string; code: string }) =>
+      api.post<{ id: string; confirmed_issues: IssueConfirmation[] }>(`/quotations/${quotationId}/issue-confirmations`, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: keys.quotation(quotationId) })
+      queryClient.invalidateQueries({ queryKey: ["comparison"] })
     },
   })
 }
