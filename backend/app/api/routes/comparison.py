@@ -52,15 +52,14 @@ async def compute_comparison(
     payload = payload or ComparisonRequest()
     request = await requests.get_or_404(context.organization_id, request_id)
     rows = await quotations.for_request(context.organization_id, request_id)
+    supplier_rows = await suppliers.list(context.organization_id, limit=500)
+    suppliers_by_id = {str(s["id"]): s for s in supplier_rows}
     # Over every quotation on the request, so a later arrival (or any change) makes this comparison stale for award.
-    fingerprint = comparison_fingerprint(request, rows)
+    fingerprint = comparison_fingerprint(request, rows, suppliers_by_id)
 
     if payload.quotation_ids:
         wanted = set(payload.quotation_ids)
         rows = [r for r in rows if str(r.get("id")) in wanted]
-
-    supplier_rows = await suppliers.list(context.organization_id, limit=500)
-    suppliers_by_id = {str(s["id"]): s for s in supplier_rows}
 
     result = build_comparison(
         request,

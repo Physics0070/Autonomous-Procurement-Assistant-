@@ -165,13 +165,16 @@ The complete picture (all numbers, models, APIs and limits) is in the [final rep
 - [x] Late-delivery risk, price-error detection, forecast with range, HSN suggestion
 - [x] Assistant with search over your own quotations and e-mails
 - [x] Dark amber interface and the original file beside the extracted numbers
-- [x] 8,000+ automated tests and a published validation report
+- [x] 8,000+ automated tests and a published validation report (latest complete run: 8,574 passed, 60 skipped)
+- [x] Evidence-based supplier scorecard: receipt-based on-time in full, line-level inspection, invoice checks
+- [x] Safe award: fresh comparison required, one live purchase order per request, GST basis reviewed
 - [ ] Faster photo reading: install Tesseract and clean images before OCR
 - [ ] Reliable handwriting: make the page-image reading the main one for low-confidence scans
 - [ ] Per-user rate limits and an AI spend cap, then a public deployment
 - [ ] WhatsApp Business collection
 - [ ] Check every page on a phone and in every state
-- [ ] Verify Gmail end to end with a real mailbox
+- [ ] Verify Gmail end to end with a real mailbox (not yet done: needs one quotation sent as an attachment from
+      another address to the connected inbox; Drive filing is verified)
 
 ## Contributing
 Contributions are welcome.

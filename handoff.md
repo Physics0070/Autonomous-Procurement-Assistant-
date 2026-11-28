@@ -11,7 +11,7 @@ Stack: FastAPI + MongoDB (Motor) backend, React/TypeScript/Vite frontend. AI ext
 ## 2. Current state (verified 28 Nov)
 | Check | Result |
 |---|---|
-| Backend `pytest -q` (from `backend/`, run alone) | **8,537 passed, 60 skipped, 0 failed** (~12 min) |
+| Backend `pytest -q` (from `backend/`, run alone) | **8,574 passed, 60 skipped, 0 failed** (6 min 44 s, after the edge-case and final quality rounds) |
 | Frontend `npx tsc --noEmit -p .` / `npx vite build` | clean / builds |
 | Last change after the full run | scorecard `VERSION = 3`; the two scorecard test files pass (47) |
 

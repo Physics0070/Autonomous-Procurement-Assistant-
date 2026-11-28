@@ -137,7 +137,7 @@ error"; with no GST basis known, raw totals were ranked on price (1.0 vs 0.0) an
 | `tests/test_edge_case_audit.py` before any fix | 18 failed, 6 passed |
 | Same file after the fixes | 24 passed |
 | Related suites (analytics, analytics cache, communications, delivery dates, discounts, Drive, monitor agent, purchase orders, scoring follow-up, sourcing graph, supervisor, scorecard, edge-case audit), run alone | first run after the fixes: 13 failed, 117 passed (tests asserting the old behaviour, listed below); after updating those: **130 passed** |
-| Full backend suite | **not run this round** (stopped at the team's request before it finished); last full run was before these changes: 8,537 passed, 60 skipped |
+| Full backend suite | not run in this round (stopped on request); the complete run in the third round below covers it: 8,574 passed, 60 skipped, 0 failed |
 | Frontend `tsc --noEmit -p .` | no errors |
 | Frontend `vite build` | built |
 
@@ -186,3 +186,53 @@ error"; with no GST basis known, raw totals were ranked on price (1.0 vs 0.0) an
 * **Receipts recorded before this change** with rejected 0 count as not inspected; re-saving the receipt with 0
   entered records the inspection.
 * **The frontend changes were type-checked and built, not exercised in a browser** this round.
+
+
+---
+
+# Final quality review (third round, 28 November 2026)
+
+Scope: mixed GST basis, line-level inspection coverage, comparison freshness, round-specific RFQ matching, and a
+release check. Earlier fixes were kept as they were.
+
+**Method:** each issue was first confirmed in the code (unknown basis beside known ones only warned; an order counted
+as inspected if any line was, and kg, litres and pieces were summed; the fingerprint had no scorecards, weights or
+version; one untimed upload cleared silence for every round of its request). `backend/tests/test_final_quality_review.py`
+(13 tests) was then run against the unchanged code: **12 failed, 1 passed** (the passing one is the control: an
+unchanged comparison still awards). After the corrections: **13 passed**.
+
+## Results
+
+| Run | Result |
+|---|---|
+| `tests/test_final_quality_review.py` before any fix | 12 failed, 1 passed |
+| Same file after the fixes | 13 passed |
+| Related suites (as in the second round, plus this file), run alone | 143 passed |
+| **Complete backend suite**, run alone (no other pytest process on the test database) | **8,574 passed, 60 skipped, 0 failed** (6 min 44 s) |
+| Frontend `tsc --noEmit -p .` | no errors (exit 0) |
+| Frontend `vite build` | built |
+
+This complete run covers the second round too: its "not run this round" entry above is superseded by this result.
+No existing test had to change in this round.
+
+## Findings
+
+| # | Issue | Correction | Regression test(s) | Result |
+|---|---|---|---|---|
+| F1 | A quotation with unknown GST basis beside known ones was only warned about, and could be recommended or awarded | It now `requires_review` ("Confirm whether this quoted total includes GST before awarding..."), so it is never the recommendation and an award needs `confirm_review` (recorded in PO history) | `test_unknown_gst_basis_beside_known_ones_needs_review_and_is_not_recommended` (inclusive, exclusive, unknown), `test_unknown_gst_quotation_cannot_be_awarded_without_confirmation` (409, then 201 with confirmation) | passed |
+| F2 | Inspection counted per order; quantities in different units summed | Evidence is line-level: inspected lines / all lines of delivered orders (`lines_inspected`, `lines_total`). Aggregation (`method`): `value_weighted` (rejected value / received value at PO unit prices) when every inspected line has a price; `quantity_weighted` when prices are missing but one unit; `line_average` (mean line rate) when units differ and prices are missing. Documented in `_quality` | `test_one_inspected_line_does_not_make_the_order_inspected` (evidence 6/9), `test_rejections_in_different_units_are_weighted_by_value_not_summed` (0.6667, not 0.99), `test_without_prices_mixed_units_fall_back_to_the_mean_line_rate` (0.5), `test_one_unit_without_prices_stays_quantity_weighted` | passed |
+| F3 | Fingerprint ignored supplier scorecards, active weights and the scoring version | `comparison_fingerprint()` now also covers `COMPARISON_VERSION` (2), the configured default weights, and each quoting supplier's scorecard (method, version, score, status, coverage, band). A change to any of them makes award refuse until the comparison is recomputed | `test_a_changed_supplier_scorecard_makes_the_comparison_stale`, `test_changed_default_weights_make_the_comparison_stale`, `test_a_new_scoring_algorithm_version_makes_the_comparison_stale`, `test_unchanged_inputs_still_award` | passed |
+| F4 | One untimed upload suppressed the no-reply penalty for every round of its request | A manual upload is placed at its upload time and closes only the round open then (not timed, not silence); later rounds are judged on their own, and an upload before any send answers nothing | `test_an_untimed_upload_answers_only_its_own_round`, `test_mixed_sends_replies_reminders_and_uploads` (two requests, reminder, email replies, upload, silence: (0.75 + 0 + 1.0) / 3), `test_an_upload_before_any_send_answers_nothing` | passed |
+
+`reliability.VERSION` is now 5, so stored scorecards are recomputed once at startup; comparisons stored before this
+change no longer match the fingerprint and must be recomputed before award.
+
+## Remaining limitations (this round)
+
+* **Value weighting uses the PO unit price** (taxable, after any GST back-out). Lines without a price in a mixed-unit
+  order fall back to the mean line rate, which treats a small line like a large one.
+* **An upload's time is an upper bound** on when the supplier answered: the round it closes is not timed at all.
+* **Weight overrides chosen for one comparison run are part of its result, not its inputs;** only the configured
+  defaults are in the fingerprint.
+* **Gmail end to end is still not verified** with a real mailbox (waiting on the team to send one quotation as an
+  attachment from another address). Drive filing is verified.

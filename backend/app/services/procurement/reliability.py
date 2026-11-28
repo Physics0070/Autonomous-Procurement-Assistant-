@@ -8,14 +8,16 @@ we read the supplier's documents.
                          every line (accepted = received - rejected; a line not yet inspected counts what arrived).
                          Orders without a receipt are neither successes nor failures: they are left out of the score
                          and lower the factor's evidence. With no receipts at all, on-time alone is used (partial).
-  quality           30%  quantity-weighted rejection rate, total rejected / total received, over inspected receipt
-                         lines only. A line is inspected when the receipt says so; a receipt stored before that flag
-                         existed counts as inspected only if it records a rejection (its zero may be the old default)
+  quality           30%  rejection rate over inspected receipt lines only (see _quality for how lines in different
+                         units are combined); evidence is the share of delivered order lines inspected. A line is
+                         inspected when the receipt says so; a receipt stored before that flag existed counts as
+                         inspected only if it records a rejection (its zero may be the old default)
   fulfilment        15%  issued POs delivered, against those the supplier cancelled (our cancellations are ignored)
   commercial        15%  final invoices on comparable orders: correct, overbilled or underbilled against the PO total
                          (or an approved revised amount); partial invoices and credit notes are not scored
-  responsiveness    10%  days from the first quote request to the supplier's emailed quotation (the email's own time);
-                         uploads without a trustworthy received time are not timed
+  responsiveness    10%  days from the first quote request of each round to the supplier's emailed quotation (the
+                         email's own time). A manual upload answers only the round open when it was uploaded: that
+                         round is not timed and not silence; every other round is judged on its own
 
 Evidence and confidence: a missing factor is left out and the weights of the rest are scaled up to sum to 1; the
 scaled weights are reported (`applied_weight`), and the factor contributions add up exactly to the score. Each factor
@@ -34,7 +36,7 @@ WEIGHTS = {"on_time_in_full": 0.30, "quality": 0.30, "fulfilment": 0.15, "commer
 LABELS = {"on_time_in_full": "On-time, in-full delivery", "quality": "Product quality", "fulfilment": "Order fulfilment",
           "commercial": "Commercial reliability", "responsiveness": "Responsiveness"}
 METHOD = "scorecard"
-VERSION = 4  # 3: per-round RFQ timing, zero invoices not scored; 4: evidence shares, inspection flag
+VERSION = 5  # 3: per-round RFQ timing; 4: evidence shares, inspection flag; 5: line-level quality, untimed per round
 MIN_ASSESSED_ORDERS = 3          # delivered + cancelled by the supplier, before any score is shown
 MIN_CONFIDENT_ORDERS = 5         # below this the score is provisional
 FULL_COVERAGE = 0.6              # share of the full weight that must be backed by records for a non-provisional score
@@ -145,22 +147,50 @@ def _on_time_in_full(delivered: list[dict]) -> Optional[dict]:
 
 
 def _quality(delivered: list[dict]) -> Optional[dict]:
-    """Over inspected lines only. Evidence: the share of delivered orders with an inspection recorded."""
-    received = rejected = 0.0
-    inspected = 0
+    """Rejection rate over inspected receipt lines only, with line-level evidence.
+
+    Quantities in different units (kg, litres, pieces) are never added together. Aggregation (`method`):
+      value_weighted     every inspected line has a PO unit price: rejected value / received value (price x quantity)
+      quantity_weighted  prices missing, but every inspected line is in one unit (or none is stated): rejected /
+                         received quantity
+      line_average       prices missing and units differ: the mean of the per-line rejection rates, since no common
+                         measure exists
+    Evidence: inspected lines / all lines of the delivered orders (an order without a valid receipt counts all its
+    lines as not inspected), so one inspected line never stands for a whole order.
+    """
+    lines: list[tuple[float, float, str, Optional[float]]] = []  # received, rejected, unit, unit price
+    total_lines = inspected_lines = orders = 0
     for po in delivered:
-        lines = [(rec, rej) for _, rec, rej in receipt_lines(po) or [] if rej is not None]
-        if lines and sum(rec for rec, _ in lines) > 0:
-            inspected += 1
-            received += sum(rec for rec, _ in lines)
-            rejected += sum(rej for _, rej in lines)
-    if not inspected:
+        po_lines = po.get("lines") or []
+        total_lines += len(po_lines)
+        mine = [(line, received, rejected) for line, (_, received, rejected) in zip(po_lines, receipt_lines(po) or [])
+                if rejected is not None]
+        inspected_lines += len(mine)
+        mine = [(line, received, rejected) for line, received, rejected in mine if received > 0]
+        if mine:
+            orders += 1
+            lines += [(received, rejected, str(line.get("unit") or "").strip().lower(), _quantity(line.get("unit_price")))
+                      for line, received, rejected in mine]
+    if not lines:
         return None
-    rate = rejected / received
-    reason = f"{rate:.1%} of quantity rejected at inspection ({rejected:g} of {received:g}, {inspected} orders)"
-    if inspected < len(delivered):
-        reason += f"; {len(delivered) - inspected} delivered orders have no inspection recorded, not counted"
-    return _factor(1 - REJECTION_PENALTY * rate, inspected, reason, inspected / len(delivered))
+    if all(price for *_, price in lines):
+        method = "value_weighted"
+        rate = sum(rej * price for _, rej, _, price in lines) / sum(rec * price for rec, _, _, price in lines)
+        reason = f"{rate:.1%} of received value rejected at inspection ({orders} orders)"
+    elif len({unit for _, _, unit, _ in lines}) <= 1:
+        method = "quantity_weighted"
+        received, rejected = sum(rec for rec, *_ in lines), sum(rej for _, rej, *_ in lines)
+        rate = rejected / received
+        reason = f"{rate:.1%} of quantity rejected at inspection ({rejected:g} of {received:g}, {orders} orders)"
+    else:
+        method = "line_average"
+        rate = sum(rej / rec for rec, rej, *_ in lines) / len(lines)
+        reason = (f"{rate:.1%} rejected on average across {len(lines)} inspected lines (units differ and no prices "
+                  f"are recorded, so quantities are not added; {orders} orders)")
+    if inspected_lines < total_lines:
+        reason += f"; {inspected_lines} of {total_lines} order lines inspected, the rest not counted"
+    factor = _factor(1 - REJECTION_PENALTY * rate, orders, reason, inspected_lines / total_lines if total_lines else 1.0)
+    return {**factor, "method": method, "lines_inspected": inspected_lines, "lines_total": total_lines}
 
 
 def _supplier_cancelled(po: dict) -> bool:
@@ -229,19 +259,22 @@ def reply_time(quotation: dict) -> Optional[datetime]:
     return _when(metadata.get("received_at")) if metadata.get("channel") == "gmail" else None
 
 
-def _rounds(sends: list[datetime], replies: list[datetime]) -> list[tuple[datetime, Optional[datetime]]]:
-    """Pair each quote-request round with its reply. A send while an earlier one is still unanswered is a reminder
-    and keeps the first send's clock; a send after a reply opens a new round; a reply with no open round (a second
-    quotation, or mail before any request) is not counted again."""
-    events = sorted([(t, 0) for t in sends] + [(t, 1) for t in replies])  # on a tie the send comes first
+def _rounds(sends: list[datetime], replies: list[datetime], uploads: tuple | list = ()
+            ) -> list[tuple[datetime, Optional[datetime], bool]]:
+    """Pair each quote-request round with its reply: (sent, answered, answered_by_untimed_upload).
+
+    A send while an earlier one is still unanswered is a reminder and keeps the first send's clock; a send after a
+    reply opens a new round; a reply with no open round (a second quotation, or mail before any request) is not
+    counted again. A manual upload (no email time) closes the round open when it was uploaded, and only that round."""
+    events = sorted([(t, 0) for t in sends] + [(t, 1) for t in replies] + [(t, 2) for t in uploads])  # sends first on a tie
     rounds: list[list] = []
     for when, kind in events:
         open_round = rounds and rounds[-1][1] is None
         if kind == 0 and not open_round:
-            rounds.append([when, None])
-        elif kind == 1 and open_round:
-            rounds[-1][1] = when
-    return [(sent, answered) for sent, answered in rounds]
+            rounds.append([when, None, False])
+        elif kind in (1, 2) and open_round:
+            rounds[-1][1], rounds[-1][2] = when, kind == 2
+    return [(sent, answered, untimed) for sent, answered, untimed in rounds]
 
 
 def _responsiveness(rfqs: list[dict], quotations: list[dict], now: datetime) -> Optional[dict]:
@@ -251,23 +284,24 @@ def _responsiveness(rfqs: list[dict], quotations: list[dict], now: datetime) -> 
         if request and sent:
             sends.setdefault(request, []).append(sent)
     timed: dict[str, list[datetime]] = {}
-    untimed_requests: set[str] = set()
+    uploads: dict[str, list[datetime]] = {}
     for q in quotations:
         request, when = str(q.get("procurement_request_id") or ""), reply_time(q)
-        if when is None:
-            untimed_requests.add(request)
-        else:
+        if when is not None:
             timed.setdefault(request, []).append(when)
+        elif _when(q.get("created_at")) is not None:
+            # No reply time, but it was in hand by its upload time: it answers the round open then, no other.
+            uploads.setdefault(request, []).append(_when(q.get("created_at")))
     scores, days, silent, untimed = [], [], 0, 0
     for request, request_sends in sends.items():
-        for sent, answered in _rounds(request_sends, timed.get(request, [])):
-            if answered is not None:
+        for sent, answered, by_upload in _rounds(request_sends, timed.get(request, []), uploads.get(request, [])):
+            if by_upload:
+                untimed += 1  # answered by an upload with no known reply time: not timed, not silence
+            elif answered is not None:
                 waited = (answered - sent).total_seconds() / 86400
                 days.append(waited)
                 scores.append(1 - (min(max(waited, REPLY_FULL_DAYS), REPLY_ZERO_DAYS) - REPLY_FULL_DAYS)
                               / (REPLY_ZERO_DAYS - REPLY_FULL_DAYS))
-            elif request in untimed_requests:
-                untimed += 1  # answered by an upload with no known reply time: not timed, not silence
             elif (now - sent).total_seconds() / 86400 >= REPLY_ZERO_DAYS:
                 silent += 1
                 scores.append(0.0)

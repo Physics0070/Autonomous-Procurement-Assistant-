@@ -201,4 +201,9 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | E5 | Any correction confirmed unrelated arithmetic errors | ✅ fixed | explicit `POST /quotations/{id}/issue-confirmations` per field; later correction withdraws; button on review screen |
 | E6 | All GST bases unknown → raw totals ranked | ✅ fixed | price neutral, not ranked, every row needs review, no recommendation |
 | E7 | Delivery written before receipt validated; concurrent actions | ✅ fixed | receipt validated first, saved in one update; compare-and-set on status; 4 parallel delivers → 1 applied |
-| E8 | Tests | ✅ | edge-case file 18 failed / 6 passed before, 24 passed after; related suites 130 passed; full backend suite not run this round (stopped on request); tsc clean; vite build ok. Report: `docs/SCORING_FIX_VERIFICATION.md` |
+| E8 | Tests | ✅ | edge-case file 18 failed / 6 passed before, 24 passed after; related suites 130 passed; full backend suite not run this round (stopped on request; covered by F5); tsc clean; vite build ok. Report: `docs/SCORING_FIX_VERIFICATION.md` |
+| F1 | Unknown GST basis beside known ones could be recommended/awarded | ✅ fixed | now needs review; award needs confirmation; 3-quotation test |
+| F2 | Inspection per order; kg, litres and pieces summed | ✅ fixed | line-level evidence; value-weighted (or quantity / line-average) rejection rate with `method` |
+| F3 | Fingerprint ignored scorecards, weights, scoring version | ✅ fixed | `COMPARISON_VERSION`, default weights and supplier scorecards in the fingerprint |
+| F4 | One untimed upload cleared silence for every round | ✅ fixed | upload closes only the round open at its upload time |
+| F5 | Release check | ✅ | new file 12 failed / 1 passed before, 13 passed after; related 143 passed; **complete backend suite alone: 8,574 passed, 60 skipped, 0 failed**; tsc clean; vite build ok; Gmail end to end still ⚠️ waiting on team |

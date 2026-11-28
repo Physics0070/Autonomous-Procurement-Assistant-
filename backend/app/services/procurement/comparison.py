@@ -34,6 +34,8 @@ CRITERIA = ("price", "delivery", "payment", "reliability", "other")
 # or the model.
 DOCUMENT_ARITHMETIC = {"line_total_mismatch", "subtotal_mismatch", "total_mismatch"}
 TAX_TOLERANCE = (2.0, 0.005)
+# Raised whenever the scoring rules change, so a comparison computed under older rules is stale for award.
+COMPARISON_VERSION = 2  # 2: unknown GST basis beside known ones needs review; fingerprint covers scorecards and weights
 
 
 def validate_weights(weights: Optional[dict[str, Any]]) -> dict[str, float]:
@@ -166,11 +168,26 @@ def _issue_origin(quotation: dict[str, Any], validation: dict[str, Any]) -> tupl
     return confirmed, unverified
 
 
-def comparison_fingerprint(request: dict[str, Any], quotations: list[dict[str, Any]]) -> str:
-    """A digest of everything the comparison is computed from: the requested items and every quotation on the
-    request (its data, matching, status, findings and confirmations). Any change, or a quotation added or removed,
-    changes it, so an award can tell that a stored comparison no longer describes the quotations."""
+SCORECARD_FIELDS = ("method", "version", "score", "status", "coverage", "band")
+
+
+def comparison_fingerprint(request: dict[str, Any], quotations: list[dict[str, Any]],
+                           suppliers_by_id: Optional[dict[str, dict[str, Any]]] = None) -> str:
+    """A digest of everything the comparison is computed from: the scoring rules' version, the configured default
+    weights, the requested items, every quotation on the request (its data, matching, status, findings and
+    confirmations) and the performance scorecard of each quoting supplier. Any change, or a quotation added or
+    removed, changes it, so an award can tell that a stored comparison no longer describes its inputs."""
+    suppliers_by_id = suppliers_by_id or {}
+    scorecards = {}
+    for q in quotations:
+        sid = str(q.get("supplier_id") or "")
+        if sid:
+            card = (suppliers_by_id.get(sid) or {}).get("reliability") if sid in suppliers_by_id else None
+            scorecards[sid] = None if sid not in suppliers_by_id else {k: (card or {}).get(k) for k in SCORECARD_FIELDS}
     material = {
+        "version": COMPARISON_VERSION,
+        "default_weights": settings.scoring_weights(),
+        "scorecards": scorecards,
         "request": {"items": request.get("items"), "currency": request.get("currency")},
         "quotations": sorted(([
             str(q.get("id")), q.get("processing_status"), str(q.get("supplier_id") or ""),
@@ -368,6 +385,8 @@ def build_comparison(
             price_deductions.append("Not compared on price: the figures do not show whether this total includes GST, "
                                     "while other quotations here do.")
             warnings.append("Confirm whether this total includes GST before comparing it on price.")
+            review_reasons.append("Confirm whether this quoted total includes GST before awarding; the other "
+                                  "quotations here show theirs, so it could not be compared with them on price.")
         if row["tax_note"] and in_scale:
             price_deductions.append(row["tax_note"])
         price_value = row["comparable_price"] if in_scale else None

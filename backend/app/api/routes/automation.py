@@ -250,9 +250,12 @@ async def award(
     if row is None:
         raise ConflictError("That quotation is not part of the current comparison. Recompute the comparison with it "
                             "included before awarding.")
-    if stored.get("input_fingerprint") != comparison_fingerprint(request, await quotations.for_request(org_id, request_id)):
-        raise ConflictError("The request or its quotations have changed since the comparison was computed. Recompute "
-                            "the comparison and check the ranking before awarding.")
+    suppliers_by_id = {str(s["id"]): s for s in await suppliers.list(org_id, limit=500)}
+    current = comparison_fingerprint(request, await quotations.for_request(org_id, request_id), suppliers_by_id)
+    if stored.get("input_fingerprint") != current:
+        raise ConflictError("The request, its quotations, a supplier's performance score or the scoring rules have "
+                            "changed since the comparison was computed. Recompute the comparison and check the "
+                            "ranking before awarding.")
     review_reasons = row.get("review_reasons") or []
     if review_reasons and not payload.confirm_review:
         raise ConflictError("This quotation needs review before award: " + " ".join(review_reasons),
