@@ -97,7 +97,8 @@ async def _choose(ctx: AgentContext, goal: str, state: SupervisorState, options:
 
 
 def _top_row(facts: dict) -> dict:
-    return facts["rows"][0]
+    """The best-ranked quotation that does not need review first (same rule as the comparison's recommendation)."""
+    return next((r for r in facts["rows"] if not r.get("requires_review")), facts["rows"][0])
 
 
 async def run_supervisor(ctx: AgentContext, request: dict, *, state: Optional[SupervisorState] = None) -> dict:

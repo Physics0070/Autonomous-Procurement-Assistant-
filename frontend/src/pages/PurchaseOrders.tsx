@@ -44,13 +44,17 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
   const [received, setReceived] = React.useState(() => po.lines.map((l) => String(l.quantity)))
   const [rejected, setRejected] = React.useState(() => po.lines.map(() => "0"))
   const [invoice, setInvoice] = React.useState("")
+  const [invoiceType, setInvoiceType] = React.useState<NonNullable<Receipt["invoice_type"]>>("final")
+  const [approved, setApproved] = React.useState("")
   const edit = (setter: typeof setReceived, i: number) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setter((rows) => rows.map((v, j) => (j === i ? e.target.value : v)))
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
     onSubmit({
-      lines: po.lines.map((_, i) => ({ received_quantity: Number(received[i] || 0), rejected_quantity: Number(rejected[i] || 0) })),
+      lines: po.lines.map((_, i) => ({ line: i, received_quantity: Number(received[i] || 0), rejected_quantity: Number(rejected[i] || 0) })),
       invoice_amount: invoice.trim() === "" ? null : Number(invoice),
+      invoice_type: invoiceType,
+      approved_amount: approved.trim() === "" ? null : Number(approved),
     })
   }
   return (
@@ -89,6 +93,20 @@ function ReceiptFields({ po, onSubmit, submitLabel, busy, children }: {
           <Input id={`invoice-${po.id}`} type="number" min={0} step="any" value={invoice}
                  onChange={(e) => setInvoice(e.target.value)} className="w-40" placeholder={String(po.pricing.total)} />
         </div>
+        <div className="space-y-1">
+          <Label htmlFor={`invoice-type-${po.id}`}>Invoice type</Label>
+          <select id={`invoice-type-${po.id}`} value={invoiceType} onChange={(e) => setInvoiceType(e.target.value as typeof invoiceType)}
+                  className="h-9 rounded-md border bg-background px-2 text-sm">
+            <option value="final">Final invoice</option>
+            <option value="partial">Partial invoice</option>
+            <option value="credit_note">Credit note</option>
+          </select>
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor={`approved-${po.id}`}>Agreed revised total (if the price was changed)</Label>
+          <Input id={`approved-${po.id}`} type="number" min={0} step="any" value={approved}
+                 onChange={(e) => setApproved(e.target.value)} className="w-40" />
+        </div>
         <Button type="submit" disabled={busy}>{busy ? <Spinner /> : <PackageCheck className="h-4 w-4" />}{submitLabel}</Button>
       </div>
     </form>
@@ -99,13 +117,14 @@ function ReceiptSummary({ po }: { po: PurchaseOrder }) {
   const r = po.receipt
   if (!r) return null
   const rejected = r.lines.reduce((sum, l) => sum + l.rejected_quantity, 0)
+  const kind = { final: "", partial: " (partial invoice)", credit_note: " (credit note)" }[r.invoice_type ?? "final"]
   return (
     <p className="text-sm">
       <span className="text-muted-foreground">Received:</span>{" "}
-      <Badge variant={r.in_full ? "success" : "warning"}>{r.in_full ? "In full" : "Short delivery"}</Badge>{" "}
+      <Badge variant={r.in_full ? "success" : "warning"}>{r.in_full ? "Accepted in full" : "Not accepted in full"}</Badge>{" "}
       {rejected > 0 && <Badge variant="destructive">{formatNumber(rejected, 2)} rejected</Badge>}{" "}
       {r.invoice_amount != null && (
-        <span className="text-muted-foreground">Invoiced {formatCurrency(r.invoice_amount, po.pricing.currency)}</span>
+        <span className="text-muted-foreground">Invoiced {formatCurrency(r.invoice_amount, po.pricing.currency)}{kind}</span>
       )}
     </p>
   )

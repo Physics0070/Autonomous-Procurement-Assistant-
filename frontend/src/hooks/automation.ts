@@ -56,8 +56,13 @@ export type POStatus = "draft" | "approved" | "issued" | "delivered" | "closed" 
 
 /** What arrived for a delivered order: per PO line, plus the amount invoiced. Feeds the supplier scorecard. */
 export interface Receipt {
-  lines: Array<{ received_quantity: number; rejected_quantity: number }>
+  /** One entry per PO line, by its index; accepted = received - rejected. */
+  lines: Array<{ line: number; received_quantity: number; rejected_quantity: number; accepted_quantity?: number }>
   invoice_amount: number | null
+  /** final is compared with the order total; partial invoices and credit notes are recorded but not scored. */
+  invoice_type?: "final" | "partial" | "credit_note"
+  /** An approved price change: a final invoice is compared with this instead of the PO total. */
+  approved_amount?: number | null
 }
 
 export interface POActionBody {
@@ -258,8 +263,9 @@ export function usePurchaseOrderActions() {
   const done = { onSuccess: () => invalidate("purchase-orders", "communications", "requests", "request", "suppliers", "analytics") }
   return {
     award: useMutation({
-      mutationFn: ({ requestId, quotationId }: { requestId: string; quotationId: string }) =>
-        api.post<PurchaseOrder>(`/comparisons/procurement-requests/${requestId}/award`, { quotation_id: quotationId }),
+      mutationFn: ({ requestId, quotationId, confirmReview = false }: { requestId: string; quotationId: string; confirmReview?: boolean }) =>
+        api.post<PurchaseOrder>(`/comparisons/procurement-requests/${requestId}/award`,
+                                { quotation_id: quotationId, confirm_review: confirmReview }),
       ...done,
     }),
     act: useMutation({

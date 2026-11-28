@@ -36,11 +36,15 @@ class SupplierUpdate(APIModel):
 class SupplierReliability(APIModel):
     """Performance scorecard from the organization's own orders. Explicitly NOT an ML prediction."""
 
-    score: Optional[float] = None  # None until the supplier has enough completed orders
-    status: str = "new"            # new | rated
+    score: Optional[float] = None  # None until the supplier has enough assessed orders
+    status: str = "new"            # new | provisional | rated
     band: str = "new"              # good | ok | attention | new
+    confidence: str = "none"       # none | low | high
+    coverage: float = 0.0          # share of the full scorecard weight backed by records
     method: str = "scorecard"
-    sample_size: int = 0
+    sample_size: int = 0           # orders assessed: delivered + cancelled by the supplier
+    delivered_orders: int = 0
+    supplier_cancellations: int = 0
     factors: dict[str, Any] = Field(default_factory=dict)
     reasons: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)

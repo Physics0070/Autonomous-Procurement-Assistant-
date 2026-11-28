@@ -124,20 +124,31 @@ def record_delivery(expected: Optional[datetime], delivered_at: datetime) -> dic
     return {"delivered_at": delivered_at, "on_time": delay <= 0, "delay_days": max(delay, 0)}
 
 
-def record_receipt(po: dict, lines: list[dict], invoice_amount: Optional[float], user_id: str) -> dict[str, Any]:
-    """What arrived, per PO line, and what was invoiced: the inputs of the in-full, quality and commercial factors."""
+def record_receipt(po: dict, lines: list[dict], invoice: dict[str, Any], user_id: str) -> dict[str, Any]:
+    """What arrived per PO line (by its index) and what was invoiced: the in-full, quality and commercial evidence.
+
+    Every PO line must appear exactly once; accepted = received - rejected, and in-full means accepted covers the
+    ordered quantity on every line. Quantities are already finite and non-negative (checked by the API model).
+    """
+    from app.services.procurement.reliability import delivered_in_full
+
     if po["status"] not in ("delivered", "closed"):
         raise ConflictError("A receipt can only be recorded for a delivered purchase order.")
-    if len(lines) != len(po.get("lines") or []):
-        raise ConflictError(f"Give received and rejected quantities for all {len(po.get('lines') or [])} lines of the order.")
-    for n, line in enumerate(lines, 1):
+    po_lines = po.get("lines") or []
+    indexes = [line["line"] for line in lines]
+    if sorted(indexes) != list(range(len(po_lines))):
+        raise ConflictError(f"Give received and rejected quantities for each of the {len(po_lines)} lines of the "
+                            f"order exactly once (lines 0 to {len(po_lines) - 1}).")
+    for line in lines:
         if line["rejected_quantity"] > line["received_quantity"]:
-            raise ConflictError(f"Line {n}: more rejected than received.")
-    receipt = {
-        "lines": [{"received_quantity": line["received_quantity"], "rejected_quantity": line["rejected_quantity"]} for line in lines],
-        "in_full": all(r["received_quantity"] >= o["quantity"] for r, o in zip(lines, po["lines"])),
-        "invoice_amount": invoice_amount, "recorded_by": user_id, "recorded_at": now(),
-    }
+            raise ConflictError(f"Line {line['line'] + 1}: more rejected than received.")
+    stored = [{"line": line["line"], "received_quantity": line["received_quantity"],
+               "rejected_quantity": line["rejected_quantity"],
+               "accepted_quantity": line["received_quantity"] - line["rejected_quantity"]}
+              for line in sorted(lines, key=lambda line: line["line"])]
+    triples = [(float(po_line["quantity"]), r["received_quantity"], r["rejected_quantity"]) for po_line, r in zip(po_lines, stored)]
+    receipt = {"lines": stored, "in_full": delivered_in_full(triples), **invoice,
+               "recorded_by": user_id, "recorded_at": now()}
     return {"$set": {"receipt": receipt}, "$push": {"history": history_entry("receipt_recorded", user_id)}}
 
 

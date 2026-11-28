@@ -64,16 +64,23 @@ class CommunicationEdit(APIModel):
 
 class AwardIn(APIModel):
     quotation_id: str
+    # The comparison flagged this quotation for review (another currency, a price far out of range); award anyway.
+    confirm_review: bool = False
 
 
 class ReceiptLineIn(APIModel):
-    received_quantity: float = Field(ge=0)
-    rejected_quantity: float = Field(default=0, ge=0)
+    line: int = Field(ge=0, description="Index of the PO line this quantity is for")
+    received_quantity: float = Field(ge=0, allow_inf_nan=False)
+    rejected_quantity: float = Field(default=0, ge=0, allow_inf_nan=False)
 
 
 class ReceiptIn(APIModel):
     lines: list[ReceiptLineIn] = Field(min_length=1)
-    invoice_amount: Optional[float] = Field(default=None, ge=0)
+    invoice_amount: Optional[float] = Field(default=None, ge=0, allow_inf_nan=False)
+    # final: compared with the order total; partial and credit_note are recorded but not scored.
+    invoice_type: Literal["final", "partial", "credit_note"] = "final"
+    # An approved price change: the final invoice is compared with this instead of the PO total.
+    approved_amount: Optional[float] = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 class POActionIn(APIModel):
@@ -211,12 +218,19 @@ async def award(
     quotations: QuotationRepository = Depends(quotation_repo),
     suppliers: SupplierRepository = Depends(supplier_repo),
     repo: PurchaseOrderRepository = Depends(po_repo),
+    comparisons: ComparisonRepository = Depends(comparison_repo),
 ) -> dict:
     org_id = context.organization_id
     request = await requests.get_or_404(org_id, request_id)
     quotation = await quotations.get_or_404(org_id, payload.quotation_id)
     if str(quotation.get("procurement_request_id")) != request_id:
         raise ValidationError("That quotation belongs to a different request.")
+    stored = await comparisons.latest_for_request(org_id, request_id)
+    row = next((s for s in (stored or {}).get("suppliers") or [] if s.get("quotation_id") == payload.quotation_id), {})
+    review_reasons = row.get("review_reasons") or []
+    if review_reasons and not payload.confirm_review:
+        raise ConflictError("This quotation needs review before award: " + " ".join(review_reasons),
+                            {"review_reasons": review_reasons})
     supplier = await suppliers.get(org_id, quotation["supplier_id"]) if quotation.get("supplier_id") else None
     po = pos.build_purchase_order(request, quotation, supplier, context.organization)
     if not po["lines"]:
@@ -224,6 +238,8 @@ async def award(
     po["po_number"] = await repo.next_po_number(org_id, datetime.now().year)
     po["created_by"] = context.user_id
     po["history"] = [comms.history_entry("created", context.user_id)]
+    if review_reasons:
+        po["history"].append(comms.history_entry("review_confirmed", context.user_id, reasons=review_reasons))
     created = await repo.create(org_id, po)
     await requests.update(org_id, request_id, {"status": "awarded"})
     return created
@@ -305,7 +321,8 @@ async def purchase_order_action(
 
 
 async def _save_receipt(repo: PurchaseOrderRepository, context: RequestContext, po: dict, receipt: ReceiptIn) -> dict:
-    update = pos.record_receipt(po, [line.model_dump() for line in receipt.lines], receipt.invoice_amount, context.user_id)
+    invoice = receipt.model_dump(include={"invoice_amount", "invoice_type", "approved_amount"})
+    update = pos.record_receipt(po, [line.model_dump() for line in receipt.lines], invoice, context.user_id)
     return await repo.raw_update(context.organization_id, po["id"], update)
 
 

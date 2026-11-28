@@ -175,3 +175,22 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | S8 | Regression: backend 8,500 passed, 60 skipped, 0 failed; tsc clean; vite build ok | ✅ | 28 Nov |
 | S7 | Real-world check of the scorecard | ⏳ | needs delivered orders from a pilot; no public dataset has delivery and inspection records |
 
+## Scoring audit fixes (28 Nov 2026)
+
+| # | Finding | Status | Evidence / notes |
+|---|---|---|---|
+| A1 | OTIF counted orders without receipts as in full | ✅ fixed | only receipted orders decide OTIF; without receipts on-time is used and marked partial |
+| A2 | Quality averaged per-line rejection rates | ✅ fixed | total rejected / total received; unequal-line test |
+| A3 | In-full ignored rejected quantity | ✅ fixed | accepted = received − rejected, stored per line and used everywhere |
+| A4 | Thin evidence produced firm ratings; cancellations called completed orders | ✅ fixed | coverage, confidence, `provisional`; "3 orders assessed: 0 delivered, 3 cancelled by the supplier" |
+| A5 | Displayed weights did not reproduce the score | ✅ fixed | `applied_weight` and `contribution` per factor; contributions sum to the score; shown on Suppliers |
+| A6 | Response time taken from processing time; repeat sends double-counted | ✅ fixed | email Date header; first send per request; uploads not timed |
+| A7 | Invoices not classified | ✅ fixed | correct / overbilled / underbilled; partial, credit note, short delivery not scored; approved revised total |
+| A8 | Receipt lines matched by position, quantities loosely checked | ✅ fixed | line index required once each; negative/NaN/Infinity rejected (422), rejected > received (409) |
+| A9 | Different currencies priced on one scale | ✅ fixed | other-currency quotations not priced, need review, not recommended |
+| A10 | A GST rate was taken to mean the total included GST | ✅ fixed | inclusive / exclusive / unknown from reconciling figures; GST added to exclusive totals |
+| A11 | Extraction findings lowered the supplier's score | ✅ fixed | not scored; confirmed supplier errors shown separately after human review |
+| A12 | High price anomaly could be the recommendation | ✅ fixed | `requires_review`; recommendation skips it; award needs confirmation, recorded in PO history |
+| A13 | Unknown or invalid weight overrides accepted | ✅ fixed | 422 for unknown keys, negative, non-numeric, all zero |
+| A14 | Tests | ✅ | `tests/test_supplier_scorecard.py` 27 (every expected number derived in the test); backend 8,517 passed, 60 skipped, 0 failed; tsc clean; vite build ok |
+

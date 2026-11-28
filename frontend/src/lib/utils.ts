@@ -84,11 +84,11 @@ export function initials(name: string | null | undefined): string {
 }
 
 /** Badge for a supplier's performance scorecard band. */
-export function scoreBadge(band: string | null | undefined, score: number | null | undefined): {
+export function scoreBadge(band: string | null | undefined, score: number | null | undefined, status?: string | null): {
   label: string
   variant: "success" | "warning" | "destructive" | "muted"
 } {
-  const points = score != null ? ` ${Math.round(score * 100)}` : ""
+  const points = score != null ? ` ${Math.round(score * 100)}${status === "provisional" ? " (provisional)" : ""}` : ""
   if (band === "good") return { label: `Good${points}`, variant: "success" }
   if (band === "ok") return { label: `OK${points}`, variant: "warning" }
   if (band === "attention") return { label: `Needs attention${points}`, variant: "destructive" }

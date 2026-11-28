@@ -18,6 +18,31 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Alert, EmptyState, ErrorState, LoadingState, Spinner, ValueOrMissing } from "@/components/ui/feedback"
 import { useCreateSupplier, useSuppliers } from "@/hooks/queries"
 import { formatDate, percent, scoreBadge } from "@/lib/utils"
+import type { SupplierReliability } from "@/types"
+
+/** The score and, for each recorded factor, its value x its scaled weight = its points. The points add up to the score. */
+function ScoreBreakdown({ reliability }: { reliability: SupplierReliability }) {
+  const badge = scoreBadge(reliability.band, reliability.score, reliability.status)
+  const factors = Object.values(reliability.factors ?? {})
+  return (
+    <div className="space-y-1">
+      <Badge variant={badge.variant}>{badge.label}</Badge>
+      {factors.length > 0 && (
+        <ul className="space-y-0.5 text-sm text-muted-foreground">
+          {factors.map((f) => (
+            <li key={f.label}>
+              {f.reason}
+              {reliability.score != null && f.applied_weight != null && f.contribution != null && (
+                <span className="tabular"> · {Math.round(f.score * 100)} × {Math.round(f.applied_weight * 100)}% = {(f.contribution * 100).toFixed(1)}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+      {(reliability.notes ?? []).map((note) => <p key={note} className="text-sm text-muted-foreground">{note}</p>)}
+    </div>
+  )
+}
 
 function CreateSupplierDialog() {
   const [open, setOpen] = React.useState(false)
@@ -179,14 +204,7 @@ export function SuppliersPage() {
                     </TableCell>
                     <TableCell className="tabular text-right">{supplier.quotation_count}</TableCell>
                     <TableCell>
-                      <Badge variant={scoreBadge(supplier.reliability.band, supplier.reliability.score).variant}>
-                        {scoreBadge(supplier.reliability.band, supplier.reliability.score).label}
-                      </Badge>
-                      {supplier.reliability.reasons.length > 0 && (
-                        <ul className="mt-1 space-y-0.5 text-sm text-muted-foreground">
-                          {supplier.reliability.reasons.map((reason) => <li key={reason}>{reason}</li>)}
-                        </ul>
-                      )}
+                      <ScoreBreakdown reliability={supplier.reliability} />
                       {supplier.reliability.ml && (
                         <p className="mt-1 text-sm text-muted-foreground">
                           About {percent(supplier.reliability.ml.late_probability)} chance of being late

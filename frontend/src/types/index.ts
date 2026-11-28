@@ -69,11 +69,22 @@ export type ScoreBand = "good" | "ok" | "attention" | "new"
 /** Performance scorecard from the organization's own orders. `score` is null until enough orders are completed. */
 export interface SupplierReliability {
   score: number | null
-  status: "new" | "rated"
+  status: "new" | "provisional" | "rated"
   band: ScoreBand
+  /** none: no score; low: provisional (little evidence); high: enough recorded orders and factors. */
+  confidence?: "none" | "low" | "high"
+  /** Share of the full scorecard weight backed by records (a partial factor counts half). */
+  coverage?: number
   method: string
+  /** Orders assessed: delivered plus cancelled by the supplier. */
   sample_size: number
-  factors: Record<string, { label: string; score: number; weight: number; n: number; reason: string }>
+  delivered_orders?: number
+  supplier_cancellations?: number
+  /** applied_weight is the weight after scaling for missing factors; contributions add up to `score`. */
+  factors: Record<string, {
+    label: string; score: number; weight: number; applied_weight?: number; contribution?: number
+    n: number; reason: string; partial?: boolean
+  }>
   reasons: string[]
   notes: string[]
   /** Late-delivery risk from the ML model; present once the supplier has delivered POs. */
@@ -414,9 +425,18 @@ export interface SupplierScore {
   delivery_days: number | null
   payment_days: number | null
   reliability_score: number | null
-  reliability_status: "rated" | "new" | "unlinked"
+  reliability_status: "rated" | "provisional" | "new" | "unlinked"
   reliability_band: ScoreBand | null
   reliability_reasons: string[]
+  /** Whether the quoted total includes GST, decided only from figures that reconcile. */
+  tax_basis: "inclusive" | "exclusive" | "unknown"
+  /** GST-inclusive total used on the price scale. */
+  comparable_price: number | null
+  /** Must be checked before award (another currency, a price far outside its usual range). */
+  requires_review: boolean
+  review_reasons: string[]
+  confirmed_supplier_errors: string[]
+  unverified_issues: number
   coverage: number
   matched_items: number
   requested_items: number

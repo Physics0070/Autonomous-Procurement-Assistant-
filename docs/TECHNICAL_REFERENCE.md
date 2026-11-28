@@ -244,15 +244,35 @@ quantity or unit price rather than a plausible guess.
 **OCR runs only where needed.** PDF pages are checked for a usable text layer first;
 only pages below `PDF_TEXT_MIN_CHARS_PER_PAGE` get rendered and OCR'd.
 
-**Reliability is a performance scorecard, and says so.** `app/services/procurement/reliability.py` scores a
-supplier only from the organisation's own records (`method: "scorecard"`): on-time in-full delivery 30%, quality
-(rejected quantity, 5 points per 1%) 30%, fulfilment (supplier cancellations after issue) 15%, commercial (invoice
-within the PO total + ₹2 / 0.5%) 15%, and responsiveness (quote request to quotation: 2 days full, 14 days or no reply
-zero) 10%. Receipts are recorded when an order is marked delivered (`POST /purchase-orders/{id}/deliver` with
-`receipt`) or afterwards (`PUT /purchase-orders/{id}/receipt`); a cancellation records `cancelled_by`. Missing factors
-are left out and their weight shared; only the latest 20 orders count; fewer than 3 completed orders means
-`status: "new"` and no score. The calibrated ML late-delivery risk is shown **beside** it, labelled with its model
-version, training data and number of deliveries.
+**Reliability is a performance scorecard, and says so.** `app/services/procurement/reliability.py`
+(`method: "scorecard"`, `version: 2`). What is calculated automatically and what needs a person to record it:
+
+| Factor | Weight | Calculated from | Needs recording |
+|---|---|---|---|
+| On-time, in full | 30% | expected vs delivered date; accepted (received − rejected) ≥ ordered on every line | delivery date (automatic when marked delivered); quantities on the receipt |
+| Quality | 30% | total rejected / total received, quantity-weighted; 5 points per 1% | received and rejected per line |
+| Fulfilment | 15% | delivered vs cancelled by the supplier after issue (our cancellations ignored) | who cancelled, when cancelling |
+| Commercial | 15% | final invoice vs PO total (or an approved revised total): correct, overbilled, underbilled (₹2 / 0.5%); partial invoices, credit notes and short deliveries not scored | invoice amount and type |
+| Responsiveness | 10% | first quote-request send to the emailed quotation's own Date header (2 days full, 14 or no reply zero); a request counts once; uploads without a received time are not timed | quote request marked sent |
+
+Receipts (`POST /purchase-orders/{id}/deliver` with `receipt`, or `PUT /purchase-orders/{id}/receipt`) name each PO
+line by index exactly once; negative, non-finite or rejected > received quantities are refused, and a stored receipt
+that is incomplete counts as missing, never as a good delivery. With no receipts, on-time alone is used and marked
+partial. Missing factors are left out; the scaled weights (`applied_weight`) and each factor's `contribution` are
+returned and add up exactly to the score. `coverage` is the share of the full weight backed by records (partial =
+half). Under 3 assessed orders (delivered + supplier-cancelled): `new`, no score. Under 5 orders or 60% coverage:
+`provisional`, and the comparison moves it from the neutral 0.5 only in proportion to coverage. The ML late-delivery
+risk is shown **beside** it, labelled with its model version, training data and number of deliveries.
+
+**Comparison safeguards.** Prices are compared GST-inclusive: a printed total that reconciles with net + GST is
+inclusive, one that equals the net subtotal while GST is stated is exclusive and has GST added, anything else is
+`unknown` and is left off the price scale when others are known (a GST rate alone proves nothing). Quotations in
+another currency are not priced against the request's currency. Validation findings are never scored: they may be
+reading errors; a supplier arithmetic error is reported as confirmed only after a person has reviewed the quotation
+and left that figure as read. A quotation in another currency or with a high price anomaly is marked
+`requires_review`; the recommendation is the best-ranked quotation without such a flag, and awarding a flagged one
+needs `confirm_review`, which is recorded in the PO history. Weight overrides accept only the five criteria, finite
+and non-negative, not all zero (422 otherwise).
 
 ---
 

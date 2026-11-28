@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, List, Optional
 
-from pydantic import Field
+from pydantic import field_validator, Field
 
 from app.schemas.common import APIModel, PyObjectId
 
@@ -44,6 +44,12 @@ class SupplierScore(APIModel):
     reliability_status: str = "unlinked"  # rated | new | unlinked
     reliability_band: Optional[str] = None  # good | ok | attention | new
     reliability_reasons: List[str] = Field(default_factory=list)
+    tax_basis: str = "unknown"                  # inclusive | exclusive | unknown
+    comparable_price: Optional[float] = None    # GST-inclusive total used on the price scale
+    requires_review: bool = False               # must be checked before award (other currency, high price anomaly)
+    review_reasons: List[str] = Field(default_factory=list)
+    confirmed_supplier_errors: List[str] = Field(default_factory=list)  # never scored
+    unverified_issues: int = 0                  # may be reading errors; never scored
 
     coverage: float = 0.0            # fraction of requested items quoted
     matched_items: int = 0
@@ -94,4 +100,16 @@ class ComparisonRequest(APIModel):
 
     weights: Optional[dict[str, float]] = None
     include_ai_explanation: bool = True
+
+    @field_validator("weights")
+    @classmethod
+    def _supported_weights(cls, value):
+        from app.core.config import settings
+        from app.services.procurement.comparison import _normalize_weights, validate_weights
+
+        if value is None:
+            return value
+        checked = validate_weights(value)
+        _normalize_weights({**settings.scoring_weights(), **checked})  # not every weight zero
+        return checked
     quotation_ids: Optional[List[str]] = None

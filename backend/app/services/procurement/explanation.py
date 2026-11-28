@@ -58,9 +58,11 @@ def _payload(comparison: ComparisonResult) -> dict:
                 "missing_data": s.missing_data,
                 "warnings": s.warnings,
                 "price_anomaly": s.price_anomaly,
+                "requires_review_before_award": s.review_reasons,
             }
             for s in comparison.suppliers
         ],
+        "recommended_supplier": comparison.recommended_supplier_name,
         "comparison_warnings": comparison.warnings,
         "excluded_quotations": comparison.excluded,
     }
@@ -98,6 +100,10 @@ def _deterministic_explanation(comparison: ComparisonResult) -> AIExplanation:
         f"at {cost}. Ranking is calculated deterministically from the configured weights; "
         f"this summary restates those numbers and is not AI-generated."
     )
+    if top.requires_review:
+        summary += (f" It needs review before award ({' '.join(top.review_reasons)}); "
+                    + (f"the recommendation is {comparison.recommended_supplier_name}."
+                       if comparison.recommended_supplier_name else "no quotation can be recommended yet."))
     return AIExplanation(
         available=True,
         provider="deterministic",

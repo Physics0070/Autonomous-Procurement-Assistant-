@@ -26,7 +26,7 @@ import type { SupplierScore } from "@/types"
 const TRY_AGAIN = "We could not do this right now. Please try again in a minute."
 
 function rating(supplier: SupplierScore) {
-  const badge = scoreBadge(supplier.reliability_band, supplier.reliability_score)
+  const badge = scoreBadge(supplier.reliability_band, supplier.reliability_score, supplier.reliability_status)
   const why = supplier.reliability_status === "unlinked"
     ? "Not linked to a supplier record"
     : supplier.reliability_reasons.join(" · ") || "No completed orders yet"
@@ -119,6 +119,14 @@ export function ComparisonPage() {
   const { draftNegotiation } = useCommunicationActions()
   const sourcing = useRunSupervisor()
   const [actionError, setActionError] = React.useState<string | null>(null)
+  const awardRow = (supplier: SupplierScore) => {
+    if (supplier.requires_review &&
+        !window.confirm(`${supplier.supplier_name} needs review before award:\n\n${supplier.review_reasons.join("\n")}\n\nAward anyway?`)) {
+      return
+    }
+    act(award.mutateAsync({ requestId: requestId ?? "", quotationId: supplier.quotation_id, confirmReview: supplier.requires_review }),
+        "/purchase-orders")
+  }
   const act = (promise: Promise<unknown>, to: string) =>
     promise.then(() => navigate(to)).catch(() => setActionError(TRY_AGAIN))
 
@@ -127,7 +135,8 @@ export function ComparisonPage() {
   if (!data) return null
 
   const suppliers = data.suppliers
-  const top = suppliers[0]
+  // The recommendation is the best-ranked quotation that can be awarded as it stands, not simply the top score.
+  const top = suppliers.find((s) => s.quotation_id === data.recommended_quotation_id)
   const reasons = top ? reasonsFor(top, suppliers) : []
   const bullets =
     reasons.length > 0 ? reasons : data.ai_explanation.available ? data.ai_explanation.reasoning.slice(0, 3) : []
@@ -223,7 +232,7 @@ export function ComparisonPage() {
                     Negotiate
                   </Button>
                   <Button disabled={award.isPending}
-                          onClick={() => act(award.mutateAsync({ requestId: requestId ?? "", quotationId: top.quotation_id }), "/purchase-orders")}>
+                          onClick={() => awardRow(top)}>
                     Award
                   </Button>
                 </div>
@@ -253,7 +262,15 @@ export function ComparisonPage() {
                     return (
                       <TableRow key={supplier.quotation_id} className={cn(supplier.rank === 1 && "bg-success/5")}>
                         <TableCell className="tabular font-medium">{supplier.rank}</TableCell>
-                        <TableCell className="font-medium">{supplier.supplier_name}</TableCell>
+                        <TableCell className="font-medium">
+                          {supplier.supplier_name}
+                          {supplier.requires_review && (
+                            <div className="mt-1 space-y-0.5">
+                              <Badge variant="warning">Review before award</Badge>
+                              {supplier.review_reasons.map((r) => <p key={r} className="text-xs font-normal text-muted-foreground">{r}</p>)}
+                            </div>
+                          )}
+                        </TableCell>
                         <TableCell className="tabular text-right">
                           {total != null ? (
                             formatCurrency(total, supplier.currency)
@@ -284,7 +301,7 @@ export function ComparisonPage() {
                               Negotiate
                             </Button>
                             <Button size="sm" variant={supplier.rank === 1 ? "default" : "outline"} disabled={award.isPending}
-                                    onClick={() => act(award.mutateAsync({ requestId: requestId ?? "", quotationId: supplier.quotation_id }), "/purchase-orders")}>
+                                    onClick={() => awardRow(supplier)}>
                               Award
                             </Button>
                           </div>
