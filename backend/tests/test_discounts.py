@@ -50,12 +50,13 @@ def test_normalised_prices_are_what_is_actually_paid():
 def test_the_purchase_order_takes_the_discount_off_before_gst():
     quotation = {"id": "q1", "effective_data": {
         "items": [{"line_id": "line-1", "unit_price": 95, "tax_percentage": 18}],
-        "pricing": {"subtotal": 1000, "discount_amount": 100, "currency": "INR"}},
+        "pricing": {"subtotal": 1000, "discount_amount": 100, "discount_percentage": 10, "currency": "INR"}},
         "match_result": {"matches": [{"request_item_id": "r1", "matched": True, "quotation_line_id": "line-1"}]}}
     request = {"id": "req", "items": [{"item_id": "r1", "name": "Cable", "quantity": 20}]}
     po = build_purchase_order(request, quotation, None, {"gst_number": None})
     p = po["pricing"]
-    assert p["subtotal"] == 1900 and p["discount"] == 190  # same 10% share of the ordered value
+    # A 10% discount applies to whatever is ordered. (A fixed amount is not scaled: tests/test_scoring_followup.py.)
+    assert p["subtotal"] == 1900 and p["discount"] == 190 and p["discount_type"] == "percentage"
     assert sum(t["amount"] for t in p["taxes"]) == round(1710 * 0.18, 2)
     assert p["total"] == round(1900 - 190 + 1710 * 0.18, 2)
 

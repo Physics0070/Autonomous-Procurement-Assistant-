@@ -168,7 +168,7 @@ def emailed(request, days_after_first_send, synced_days_later=0):
 
 def test_repeated_rfq_sends_count_once_from_the_first_send():
     rfqs = [{"procurement_request_id": "r1", "sent_at": NOW - timedelta(days=30)},
-            {"procurement_request_id": "r1", "sent_at": NOW - timedelta(days=25)}]   # reminder
+            {"procurement_request_id": "r1", "sent_at": NOW - timedelta(days=29)}]   # reminder, before any reply
     replies = [emailed("r1", 2), emailed("r1", 6)]                                  # second quotation: not counted again
     factor = compute_reliability([full()] * 3, rfqs, replies, now=NOW)["factors"]["responsiveness"]
     assert factor["n"] == 1 and factor["score"] == 1.0  # 2 days from the first send

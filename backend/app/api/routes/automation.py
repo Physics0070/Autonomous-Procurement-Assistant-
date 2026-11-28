@@ -76,7 +76,7 @@ class ReceiptLineIn(APIModel):
 
 class ReceiptIn(APIModel):
     lines: list[ReceiptLineIn] = Field(min_length=1)
-    invoice_amount: Optional[float] = Field(default=None, ge=0, allow_inf_nan=False)
+    invoice_amount: Optional[float] = Field(default=None, gt=0, allow_inf_nan=False)
     # final: compared with the order total; partial and credit_note are recorded but not scored.
     invoice_type: Literal["final", "partial", "credit_note"] = "final"
     # An approved price change: the final invoice is compared with this instead of the PO total.

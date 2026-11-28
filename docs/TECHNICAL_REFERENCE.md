@@ -245,7 +245,7 @@ quantity or unit price rather than a plausible guess.
 only pages below `PDF_TEXT_MIN_CHARS_PER_PAGE` get rendered and OCR'd.
 
 **Reliability is a performance scorecard, and says so.** `app/services/procurement/reliability.py`
-(`method: "scorecard"`, `version: 2`). What is calculated automatically and what needs a person to record it:
+(`method: "scorecard"`, `version: 3`). What is calculated automatically and what needs a person to record it:
 
 | Factor | Weight | Calculated from | Needs recording |
 |---|---|---|---|

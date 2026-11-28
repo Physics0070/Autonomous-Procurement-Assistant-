@@ -50,7 +50,9 @@ class QuotationRepository(OrgScopedRepository):
                 organization_id,
                 {"procurement_request_id": to_object_id(procurement_request_id, "procurement_request_id")},
             ),
-            {"raw_content": 0, "ai_extraction.raw_response": 0},
+            # The plain text stays (comparison and purchase orders read GST wording from it); page and table detail do not.
+            {"raw_content.pages": 0, "raw_content.tables": 0, "raw_content.metadata": 0,
+             "raw_content.extraction_errors": 0, "ai_extraction.raw_response": 0},
         )
         return [serialize(d) for d in await cursor.to_list(length=500)]
 

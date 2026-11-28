@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import logging
 import math
+import re
 from datetime import datetime
 from typing import Any, Optional
 
@@ -59,13 +60,31 @@ def _close(a: float, b: float) -> bool:
     return abs(a - b) <= max(absolute, abs(b) * relative)
 
 
-def tax_basis(data: dict[str, Any]) -> tuple[str, Optional[float], Optional[str]]:
+_INCLUSIVE_WORDING = re.compile(
+    r"\b(incl(?:\.|usive|uding)?\s*(?:of\s*)?(?:all\s*)?(?:gst|taxes|tax)\b|(?:gst|taxes|tax)\s*incl(?:\.|uded|usive)?)",
+    re.IGNORECASE)
+_EXTRA_WORDING = re.compile(
+    r"\b((?:gst|igst|cgst|taxes|tax)\s*(?:@?\s*\d+(?:\.\d+)?\s*%?\s*)?(?:extra|additional|as applicable|will be charged|excluded|exclusive)"
+    r"|plus\s*(?:gst|taxes)|excl(?:\.|uding|usive)?\s*(?:of\s*)?(?:gst|taxes|tax))|\+\s*gst\b",
+    re.IGNORECASE)
+
+
+def gst_wording(text: Optional[str]) -> Optional[str]:
+    """What the document says about GST: inclusive, extra, or None when it says neither (or both)."""
+    text = text or ""
+    inclusive, extra = bool(_INCLUSIVE_WORDING.search(text)), bool(_EXTRA_WORDING.search(text))
+    return "inclusive" if inclusive and not extra else "extra" if extra and not inclusive else None
+
+
+def tax_basis(data: dict[str, Any], text: Optional[str] = None) -> tuple[str, Optional[float], Optional[str]]:
     """Whether the quoted total includes GST: (inclusive | exclusive | unknown, tax-inclusive total, note).
 
-    Decided only from figures that reconcile: a printed total equal to net subtotal + GST (+ freight) is inclusive;
-    equal to the net subtotal (+ freight) while a GST rate or amount is stated is exclusive, and GST is added to make
-    it comparable. A GST rate on its own says nothing about whether the total includes it.
+    Figures that reconcile come first: a printed total equal to net subtotal + GST (+ freight) is inclusive. A total
+    equal to the net subtotal (+ freight) is ambiguous - "rates inclusive of GST" or "GST extra" - so the document's
+    own wording decides; with no wording and a GST rate stated it is taken as GST extra and GST is added. A GST rate
+    on its own never shows that a total includes it.
     """
+    wording = gst_wording(text)
     pricing = data.get("pricing") or {}
     landed = pricing.get("landed_total") if pricing.get("landed_total") is not None else pricing.get("total_amount")
     printed, gross = pricing.get("total_amount"), pricing.get("subtotal")
@@ -80,16 +99,24 @@ def tax_basis(data: dict[str, Any]) -> tuple[str, Optional[float], Optional[str]
         if rated and all(t is not None and r is not None for t, r in rated):
             tax = sum(t * r / 100 for t, r in rated) * (net / gross)  # line GST rates, after the discount share
     if printed is None:
+        if wording == "inclusive":
+            return "inclusive", landed, "The quotation states its prices include GST."
         if net is not None and tax is not None:
             return "inclusive", landed, "Total worked out from the subtotal and GST."
+        if wording == "extra":
+            return "exclusive", None, "The quotation says GST is extra but gives no rate, so its GST-inclusive price is unknown."
         return "unknown", landed, None
     if net is None:
         return "unknown", printed, None
     if tax and any(_close(printed, net + tax + f) for f in {freight, 0.0}):
         return "inclusive", printed, None
     if any(_close(printed, net + f) for f in {freight, 0.0}):
+        if wording == "inclusive":
+            return "inclusive", printed, "The quotation states its prices include GST."
         if tax:
             return "exclusive", round(printed + tax, 2), f"GST of {round(tax, 2):,.2f} added: the quoted total excludes it."
+        if wording == "extra":
+            return "exclusive", None, "The quotation says GST is extra but gives no rate, so its GST-inclusive price is unknown."
         if tax == 0:
             return "inclusive", printed, "No GST applies."
     return "unknown", printed, None
@@ -114,22 +141,33 @@ def _issue_origin(quotation: dict[str, Any], validation: dict[str, Any]) -> tupl
     return confirmed, unverified
 
 
+NO_SPREAD_SCORE = 0.5  # a relative score needs at least two different values; otherwise it says nothing
+
+
+def _no_spread(values: list[float]) -> Optional[str]:
+    if len(values) < 2:
+        return "Only one quotation states this, so there is nothing to compare it with; scored neutral."
+    if max(values) == min(values):
+        return "The quotations are all the same on this, so it does not separate them; scored neutral."
+    return None
+
+
 def _lower_is_better(value: Optional[float], values: list[float]) -> float:
     """Normalize so the smallest value scores 1.0 and the largest 0.0."""
     if value is None or not values:
         return MISSING_DATA_SCORE
+    if _no_spread(values):
+        return NO_SPREAD_SCORE
     low, high = min(values), max(values)
-    if high == low:
-        return 1.0
     return round(1.0 - (value - low) / (high - low), 4)
 
 
 def _higher_is_better(value: Optional[float], values: list[float]) -> float:
     if value is None or not values:
         return MISSING_DATA_SCORE
+    if _no_spread(values):
+        return NO_SPREAD_SCORE
     low, high = min(values), max(values)
-    if high == low:
-        return 1.0
     return round((value - low) / (high - low), 4)
 
 
@@ -184,7 +222,7 @@ def build_comparison(
         supplier_doc = suppliers_by_id.get(str(supplier_id)) if supplier_id else None
         scorecard = (supplier_doc or {}).get("reliability") or {}
         reliability = scorecard.get("score")
-        basis, comparable_price, tax_note = tax_basis(data)
+        basis, comparable_price, tax_note = tax_basis(data, (quotation.get("raw_content") or {}).get("raw_text"))
 
         landed = pricing.get("landed_total")
         if landed is None:
@@ -273,8 +311,8 @@ def build_comparison(
             price_deductions.append(f"Quoted in {row['currency']}; not compared with {currency} prices.")
             review_reasons.append(f"Quoted in {row['currency']}: convert to {currency} before comparing or awarding.")
         elif row["comparable_price"] is None:
-            missing.append("total_cost")
-            price_deductions.append("No total cost could be determined from this quotation.")
+            missing.append("tax" if row["tax_basis"] == "exclusive" else "total_cost")
+            price_deductions.append(row["tax_note"] or "No total cost could be determined from this quotation.")
         elif not in_scale:
             missing.append("tax")
             price_deductions.append("Not compared on price: the figures do not show whether this total includes GST, "
@@ -284,6 +322,8 @@ def build_comparison(
             price_deductions.append(row["tax_note"])
         price_value = row["comparable_price"] if in_scale else None
         price_score = _lower_is_better(price_value, landed_values)
+        if price_value is not None and _no_spread(landed_values):
+            price_deductions.append(_no_spread(landed_values))
         criteria.append(
             CriterionScore(
                 criterion="price",
@@ -305,6 +345,8 @@ def build_comparison(
         delivery_score = _lower_is_better(
             float(row["delivery_days"]) if row["delivery_days"] is not None else None, delivery_values
         )
+        if row["delivery_days"] is not None and _no_spread(delivery_values):
+            delivery_deductions.append(_no_spread(delivery_values))
         criteria.append(
             CriterionScore(
                 criterion="delivery",
@@ -326,6 +368,8 @@ def build_comparison(
         payment_score = _higher_is_better(
             float(row["payment_days"]) if row["payment_days"] is not None else None, payment_values
         )
+        if row["payment_days"] is not None and _no_spread(payment_values):
+            payment_deductions.append(_no_spread(payment_values))
         if row["payment_days"] == 0:
             payment_deductions.append("Advance payment required; no credit period.")
         criteria.append(

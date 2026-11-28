@@ -30,7 +30,7 @@ WEIGHTS = {"on_time_in_full": 0.30, "quality": 0.30, "fulfilment": 0.15, "commer
 LABELS = {"on_time_in_full": "On-time, in-full delivery", "quality": "Product quality", "fulfilment": "Order fulfilment",
           "commercial": "Commercial reliability", "responsiveness": "Responsiveness"}
 METHOD = "scorecard"
-VERSION = 2
+VERSION = 3  # 3: per-round RFQ timing, zero invoices not scored
 MIN_ASSESSED_ORDERS = 3          # delivered + cancelled by the supplier, before any score is shown
 MIN_CONFIDENT_ORDERS = 5         # below this the score is provisional
 FULL_COVERAGE = 0.6              # share of the full weight that must be backed by records for a non-provisional score
@@ -157,6 +157,8 @@ def invoice_check(po: dict) -> str:
     amount = _quantity(receipt.get("invoice_amount"))
     if amount is None:
         return "none"
+    if amount == 0:
+        return "invalid"  # a zero invoice is a recording error or a free supply, not evidence of underbilling
     kind = receipt.get("invoice_type") or "final"
     if kind != "final":
         return kind  # partial | credit_note: not comparable with the order total
@@ -180,7 +182,7 @@ def invoice_check(po: dict) -> str:
 def _commercial(delivered: list[dict]) -> Optional[dict]:
     checks = [invoice_check(po) for po in delivered]
     scored = [c for c in checks if c in ("correct", "overbilled", "underbilled")]
-    skipped = {kind: checks.count(kind) for kind in ("partial", "credit_note", "not_comparable") if checks.count(kind)}
+    skipped = {kind: checks.count(kind) for kind in ("partial", "credit_note", "not_comparable", "invalid") if checks.count(kind)}
     if not scored:
         return None
     correct = scored.count("correct")
@@ -189,7 +191,8 @@ def _commercial(delivered: list[dict]) -> Optional[dict]:
     if wrong:
         reason += f" ({', '.join(wrong)})"
     if skipped:
-        names = {"partial": "partial invoice", "credit_note": "credit note", "not_comparable": "short delivery"}
+        names = {"partial": "partial invoice", "credit_note": "credit note", "not_comparable": "short delivery",
+                 "invalid": "zero invoice"}
         reason += "; not scored: " + ", ".join(f"{n} {names[k]}{'s' if n > 1 else ''}" for k, n in skipped.items())
     return _factor(correct / len(scored), len(scored), reason)
 
@@ -201,29 +204,48 @@ def reply_time(quotation: dict) -> Optional[datetime]:
     return _when(metadata.get("received_at")) if metadata.get("channel") == "gmail" else None
 
 
+def _rounds(sends: list[datetime], replies: list[datetime]) -> list[tuple[datetime, Optional[datetime]]]:
+    """Pair each quote-request round with its reply. A send while an earlier one is still unanswered is a reminder
+    and keeps the first send's clock; a send after a reply opens a new round; a reply with no open round (a second
+    quotation, or mail before any request) is not counted again."""
+    events = sorted([(t, 0) for t in sends] + [(t, 1) for t in replies])  # on a tie the send comes first
+    rounds: list[list] = []
+    for when, kind in events:
+        open_round = rounds and rounds[-1][1] is None
+        if kind == 0 and not open_round:
+            rounds.append([when, None])
+        elif kind == 1 and open_round:
+            rounds[-1][1] = when
+    return [(sent, answered) for sent, answered in rounds]
+
+
 def _responsiveness(rfqs: list[dict], quotations: list[dict], now: datetime) -> Optional[dict]:
-    first_sent: dict[str, datetime] = {}
-    for rfq in rfqs:  # a request sent twice to the same supplier counts once, from the first send
+    sends: dict[str, list[datetime]] = {}
+    for rfq in rfqs:
         request, sent = str(rfq.get("procurement_request_id") or ""), _when(rfq.get("sent_at"))
-        if request and sent and (request not in first_sent or sent < first_sent[request]):
-            first_sent[request] = sent
-    replies: dict[str, list[Optional[datetime]]] = {}
+        if request and sent:
+            sends.setdefault(request, []).append(sent)
+    timed: dict[str, list[datetime]] = {}
+    untimed_requests: set[str] = set()
     for q in quotations:
-        replies.setdefault(str(q.get("procurement_request_id") or ""), []).append(reply_time(q))
+        request, when = str(q.get("procurement_request_id") or ""), reply_time(q)
+        if when is None:
+            untimed_requests.add(request)
+        else:
+            timed.setdefault(request, []).append(when)
     scores, days, silent, untimed = [], [], 0, 0
-    for request, sent in first_sent.items():
-        answers = replies.get(request, [])
-        timed = [t for t in answers if t is not None and t >= sent]  # earlier mail was not a reply to this request
-        if timed:
-            waited = (min(timed) - sent).total_seconds() / 86400  # the first reply; later ones are not counted again
-            days.append(waited)
-            scores.append(1 - (min(max(waited, REPLY_FULL_DAYS), REPLY_ZERO_DAYS) - REPLY_FULL_DAYS)
-                          / (REPLY_ZERO_DAYS - REPLY_FULL_DAYS))
-        elif any(t is None for t in answers):
-            untimed += 1  # replied, but the reply time is unknown (an upload): not timed, not counted as silence
-        elif (now - sent).total_seconds() / 86400 >= REPLY_ZERO_DAYS:
-            silent += 1
-            scores.append(0.0)
+    for request, request_sends in sends.items():
+        for sent, answered in _rounds(request_sends, timed.get(request, [])):
+            if answered is not None:
+                waited = (answered - sent).total_seconds() / 86400
+                days.append(waited)
+                scores.append(1 - (min(max(waited, REPLY_FULL_DAYS), REPLY_ZERO_DAYS) - REPLY_FULL_DAYS)
+                              / (REPLY_ZERO_DAYS - REPLY_FULL_DAYS))
+            elif request in untimed_requests:
+                untimed += 1  # answered by an upload with no known reply time: not timed, not silence
+            elif (now - sent).total_seconds() / 86400 >= REPLY_ZERO_DAYS:
+                silent += 1
+                scores.append(0.0)
     if not scores:
         return None
     parts = [f"replied in {sum(days) / len(days):.1f} days on average"] if days else []
