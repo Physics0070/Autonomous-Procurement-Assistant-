@@ -21,8 +21,9 @@ This project automates that chain while keeping a person in charge:
 
 - **Collect:** upload PDF, scan, photo, Excel (`.xlsx` and old `.xls`) or CSV, or collect automatically from Gmail (read-only).
 - **Understand:** OCR where needed, AI extraction, then checks that every figure appears in the document, the arithmetic adds up, the GST number's check digit is valid, and a second reader looks at the page image and flags any amount the two readings disagree on.
-- **Compare:** weighted scoring in code (price, delivery, payment terms, supplier reliability, other terms) with a written explanation. The language model never does arithmetic.
-- **Act:** RFQ and negotiation e-mail drafts with a guardrail that stops them naming a competitor, and purchase orders with the correct CGST, SGST or IGST split, a PDF, and filing to Google Drive.
+- **Compare:** weighted scoring in code (price, delivery, payment terms, supplier performance, other terms) with a written explanation. The language model never does arithmetic. Prices are compared only when their GST treatment is known and in the same currency; a quotation in another currency, with an unknown GST basis or a price far out of range needs review and is never the recommendation.
+- **Score suppliers on evidence:** a rule-based scorecard from your own records (on-time in full from recorded receipts, rejection rate from lines actually inspected, fulfilment, invoice checks, reply time per quote request). Each factor shows how much of it is backed by records; with too few orders a supplier is "new" or "provisional" rather than guessed.
+- **Act:** RFQ and negotiation e-mail drafts with a guardrail that stops them naming a competitor, and purchase orders with the correct CGST, SGST or IGST split and discounts, a PDF, and filing to Google Drive. An award needs an up-to-date comparison, and a request has at most one live purchase order. What arrived, what was rejected at inspection and what was invoiced are recorded on delivery.
 - **Decide:** a supervisor agent routes specialist agents (comparison, recommendation, risk, negotiation, purchase order), pauses for approval, and resumes. An assistant answers questions from your own records.
 - **Learn:** calibrated late-delivery risk, price-error detection, spend reports, demand forecasts with a range, and HSN code suggestion from the official GST master.
 
@@ -40,7 +41,7 @@ Nothing is e-mailed by the app and nothing is ordered without a person approving
 | Supplier arithmetic mistakes sent for review (code-generated benchmark) | 11 of 11 |
 | HSN code, heading accuracy with the model | 91% on general goods, 98.8% on the easy benchmark |
 | Price errors caught (team-supplied labelled file) | precision 0.75, recall 1.00 |
-| Automated tests | 8,490 passing, 60 skipped (8,000+ generated stress cases) |
+| Automated tests | 8,574 passing, 60 skipped, 0 failing in the latest complete run (8,000+ generated stress cases); fix-by-fix results in [docs/SCORING_FIX_VERIFICATION.md](docs/SCORING_FIX_VERIFICATION.md) |
 
 **Team:** Vishwajeet Surve, Soham Joshi, Soham Mote and Atharva Sonje, Department of Computer Engineering, Vishwakarma Institute of Technology, Pune. Guide: Prashant L. Mandale.
 
@@ -106,7 +107,7 @@ Every setting, with its default and what happens without it, is listed in the [t
 
 ## Usage
 
-In the app: **Upload quotation**, check anything marked "Needs checking" next to the original file, **Compare prices**, then **Negotiate** or **Award**. Drafts wait on the Emails and Purchase orders pages until you approve them.
+In the app: **Upload quotation**, check anything marked "Needs checking" next to the original file (an arithmetic mistake that really is on the document can be confirmed as the supplier's own error), **Compare prices**, then **Negotiate** or **Award**. Drafts wait on the Emails and Purchase orders pages until you approve them. When goods arrive, mark the order delivered and record what was received; leave "Rejected" blank until the goods are inspected. These records are what the supplier scorecard is built from.
 
 Through the API (interactive documentation at `/docs`):
 
@@ -170,9 +171,11 @@ The complete picture (all numbers, models, APIs and limits) is in the [final rep
 - [x] Safe award: fresh comparison required, one live purchase order per request, GST basis reviewed
 - [ ] Faster photo reading: install Tesseract and clean images before OCR
 - [ ] Reliable handwriting: make the page-image reading the main one for low-confidence scans
-- [ ] Per-user rate limits and an AI spend cap, then a public deployment
+- [x] Sign-in and AI request limits, upload content checks, backup and restore script
+- [ ] An AI spend cap, shared rate-limit store for more than one server, then a public deployment
 - [ ] WhatsApp Business collection
-- [ ] Check every page on a phone and in every state
+- [ ] Check every page on a phone and in every state (the latest purchase-order and quotation-review changes were type-checked and built, not yet tried in a browser)
+- [ ] Validate the scorecard thresholds against real pilot deliveries
 - [ ] Verify Gmail end to end with a real mailbox (not yet done: needs one quotation sent as an attachment from
       another address to the connected inbox; Drive filing is verified)
 

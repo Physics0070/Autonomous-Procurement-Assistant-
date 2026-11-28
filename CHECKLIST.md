@@ -207,3 +207,4 @@ Updated after every task. ✅ done · 🔄 in progress · ⬜ not started · ⚠
 | F3 | Fingerprint ignored scorecards, weights, scoring version | ✅ fixed | `COMPARISON_VERSION`, default weights and supplier scorecards in the fingerprint |
 | F4 | One untimed upload cleared silence for every round | ✅ fixed | upload closes only the round open at its upload time |
 | F5 | Release check | ✅ | new file 12 failed / 1 passed before, 13 passed after; related 143 passed; **complete backend suite alone: 8,574 passed, 60 skipped, 0 failed**; tsc clean; vite build ok; Gmail end to end still ⚠️ waiting on team |
+| F6 | README brought up to date | ✅ | features (GST/currency review gates, evidence scorecard, safe award, receipts), test count 8,574, usage (inspection, confirming supplier errors), roadmap (limits done; spend cap, browser check, scorecard validation, Gmail open) |
